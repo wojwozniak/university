@@ -12,7 +12,7 @@ int main() {
         }
         i++;
         printf("Podaj znak: ");
-        // Trzeba tak zrobiæ ¿eby spacja dzia³a³a, trzeba daæ CTRL + Z (sam enter powoduje nieskoñczon¹ pêtlê)
+        // Trzeba tak zrobiÃ¦ Â¿eby spacja dziaÂ³aÂ³a, trzeba daÃ¦ CTRL + Z (sam enter powoduje nieskoÃ±czonÂ¹ pÃªtlÃª)
         scanf("%[^\n]s", &cur);
         //printf(" %c", cur);
         int curint = (int)cur;
