@@ -31,7 +31,7 @@ int main() {
     int a;
     for(int i=2; i*i<n; i++) {
         if(isPrime(i)) {
-            a = i;
+            a = 2*i;
             while(a<=n) {
                 table[a] = 0;
                 a+=i;
