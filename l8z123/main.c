@@ -31,9 +31,12 @@ int zad3(int n){
 int main() {
     int jeden = zad1(16);
     printf("Zadanie 1: %d\n", jeden);
+    // 136
     int dwa = zad2(16);
     printf("Zadanie 2: %d\n", dwa);
+    // 4
     int trzy = zad3(16);
     printf("Zadanie 3: %d\n", trzy);
+    //31
     return 0;
 }
