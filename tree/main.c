@@ -221,6 +221,7 @@ int main() {
         printf("\nPodaj polecenie: ");
         fgets(a, 20, stdin);
         printf("Podano polecenie: \n%s\n", a);
+        The expression strcmp( argc[i], "&") == 0 will check if the contents of the two strings are the same.
         if(a[0]=='p') {
             print(ftree);
             printf("aaaa");
