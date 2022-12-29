@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+
+#define INT_MIN -2147483648
+#define INT_MAX 214783647
+
 
 typedef struct node {
     int val;
@@ -7,6 +12,7 @@ typedef struct node {
     struct node *r;
 } node;
 
+// Function to create a new node
 node *create(int val) {
     node *fin = malloc(sizeof(node));
     if(fin != NULL) {
@@ -17,6 +23,7 @@ node *create(int val) {
     return fin;
 }
 
+// Function printing indentations (tree structure)
 void printspace(int depth) {
     printf("|");
     for(int i=0; i<depth-1; i++) {
@@ -25,6 +32,7 @@ void printspace(int depth) {
     return;
 }
 
+// Recursive function printing every node of three one by one
 void printpart(node *root, int depth) {
     if(root == NULL) {
         printf("</> \n");
@@ -42,23 +50,178 @@ void printpart(node *root, int depth) {
     printpart(root->r, depth+1);
 }
 
+// Function setting indentation and calling first printpart, to be reworked
 void print(node *root) {
     printf("Root: ");
     printpart(root, 1);
 }
 
+// Function inserting a number, return true if inserted, false if already there
+bool ins(node **rootptr, int val) {
+    node *root = *rootptr;
+    if(root == NULL) {
+        *rootptr = create(val);
+        return true;
+    }
+    if(val == root->val) {
+        return false;
+    }
+    if(val < root->val) {
+        return ins(&(root->l), val);
+    } else {
+        return ins(&(root->r), val);
+    }
+}
+
+// Function checking if number is already in the tree
+bool srch(node **rootptr, int val) {
+    node *root = *rootptr;
+    if(val == root->val) {
+        return true;
+    }
+    if(root == NULL) {
+        return false;
+    }
+    if(val < root->val) {
+        srch(&(root->l), val);
+    }
+    if(val > root->val) {
+        srch(&(root->r), val);
+    }
+}
+
+// Helper value for functions below
+int help=0;
+
+// Returns smallest value in the tree
+int minimum(node **rootptr) {
+    node *root = *rootptr;
+    if(root == NULL) {
+        return help;
+    }
+    help = root->val;
+    minimum(&(root->l));
+}
+
+// Returns biggest value in the tree
+int maximum(node **rootptr) {
+    node *root = *rootptr;
+    if(root == NULL) {
+        return help;
+    }
+    help = root->val;
+    maximum(&(root->r));
+}
+
+// Helper recursive function looking for next value inside tree
+void findnext(node **rootptr, int val) {
+    node *root = *rootptr;
+    if(root==NULL) {
+        return;
+    }
+    int value = root->val;
+    if(value < help && value > val) {
+        help = value;
+    }
+    if(value > val) {
+       findnext(&(root->l), val);
+    } else {
+        findnext(&(root->r), val);
+    }
+}
+
+// Function returning next value inside tree
+int next(node **rootptr, int val) {
+    help = INT_MAX;
+    findnext(rootptr, val);
+    if(help == INT_MAX) {
+        printf("BRAK!\n");
+    }
+    return help;
+}
+
+// Helper recursive function looking for previous value inside tree
+void findprev(node **rootptr, int val) {
+    node *root = *rootptr;
+    if(root == NULL) {
+        return;
+    }
+    int value = root->val;
+    if(value > help && value < val) {
+        help = value;
+    }
+    if(value >= val) {
+        findprev(&(root->l), val);
+    } else {
+        findprev(&(root->r), val);
+    }
+}
+
+// Function returning previous value inside tree
+int prev(node **rootptr, int val) {
+    help = INT_MIN;
+    findprev(rootptr, val);
+    if(help == INT_MIN) {
+        printf("Nie ma wiekszej liczby! \n");
+    }
+    return help;
+}
+
+// Helper function deleting value from tree and moving children' pointers
+void deletion(node **rootptr) {
+    node *root = *rootptr;
+    if(root->l == NULL && root->r == NULL) {
+        root = NULL;
+        return;
+    }
+    if(root->l == NULL && root->r != NULL) {
+        root = root->r;
+        return;
+    }
+    if(root->l != NULL && root->r == NULL) {
+        root = root->l;
+        return;
+    }
+    node *secondchild = root->r;
+    root = root->l;
+    deletion(&secondchild);
+}
+
+// Function deleting a value from tree
+bool del(node **rootptr, int val) {
+    node *root = *rootptr;
+    if(root == NULL) {
+        return false;
+    }
+    if(val == root->val) {
+        deletion(&root);
+        return true;
+    }
+    if(val < root->val) {
+        del(&(root->l), val);
+    }
+    if(val > root->val) {
+        del(&(root->r), val);
+    }
+}
 
 int main() {
-    node *one = create(1);
-    node *two = create(2);
-    node *three = create(3);
-    node *four = create(4);
-    node *five = create(5);
-
-    one->l = two;
-    one->r = three;
-    three->l = four;
-    four->r = five;
-
-    print(one);
+    node *tree = create(27);
+    ins(&tree, 22);
+    ins(&tree, 12);
+    ins(&tree, 11);
+    ins(&tree, 4);
+    ins(&tree, 16);
+    ins(&tree, 2);
+    ins(&tree, 8);
+    ins(&tree, 13);
+    ins(&tree, 122);
+    print(tree);
+    printf("\n");
+    printf("Minimum: %d\n", minimum(&tree));
+    printf("Maximum: %d\n", maximum(&tree));
+    printf("Next of 16: %d\n", next(&tree, 200));
+    printf("Prev of 12: %d\n", prev(&tree, 12));
+    printf("Deletion: %d\n", del(&tree, 1));
+    print(tree);
 }
