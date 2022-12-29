@@ -206,7 +206,49 @@ bool del(node **rootptr, int val) {
 }
 
 int main() {
-    node *tree = create(27);
+    printf("Binary Search Tree\n");
+    printf("We need to create first node - give value for the root: ");
+    int value;
+    scanf("%d", &value);
+    node *ftree = create(value);
+    printf("Utworzono drzewo! \n");
+    while(1) {
+        fflush(stdin);
+        char a[30] = "";
+        char func[10] = "";
+        char arg[20] = "";
+        printf("\nMozliwe polecenia: ins X, del X, srch X, min, max, prev X, next X, print, quit");
+        printf("\nPodaj polecenie: ");
+        fgets(a, 20, stdin);
+        printf("Podano polecenie: \n%s\n", a);
+        if(a[0]=='p') {
+            print(ftree);
+            printf("aaaa");
+        } else if (a=="quit") {
+            return 0;
+        }
+        int i=0;
+        while(a[i]!='\0') {
+            if(a[i] == ' ') {
+                for(int b=0; b<i; b++) {
+                    func[b] = a[b];
+                }
+                for(int b=i; b<30; b++) {
+                    if(a[b]=='\0') {
+                        goto here;
+                    }
+                    arg[b-i-1] = a[b];
+                }
+            }
+
+            i++;
+        }
+        here:;
+        int carg = atoi(arg);
+        printf("Wywolana funkcja: %s\n", func);
+        printf("Argument: %d\n", carg);
+    }
+    /*node *tree = create(27);
     ins(&tree, 22);
     ins(&tree, 12);
     ins(&tree, 11);
@@ -223,5 +265,5 @@ int main() {
     printf("Next of 16: %d\n", next(&tree, 200));
     printf("Prev of 12: %d\n", prev(&tree, 12));
     printf("Deletion: %d\n", del(&tree, 1));
-    print(tree);
+    print(tree); */
 }
