@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define INT_MIN -2147483648
 #define INT_MAX 214783647
@@ -101,7 +102,7 @@ int minimum(node **rootptr) {
     }
     help = root->val;
     minimum(&(root->l));
-}
+    }
 
 // Returns biggest value in the tree
 int maximum(node **rootptr) {
@@ -161,9 +162,6 @@ void findprev(node **rootptr, int val) {
 int prev(node **rootptr, int val) {
     help = INT_MIN;
     findprev(rootptr, val);
-    if(help == INT_MIN) {
-        printf("Nie ma wiekszej liczby! \n");
-    }
     return help;
 }
 
@@ -207,7 +205,7 @@ bool del(node **rootptr, int val) {
 
 int main() {
     printf("Binary Search Tree\n");
-    printf("We need to create first node - give value for the root: ");
+    printf("Musimy stworzyc korzen drzewa - podaj wartosc ktora ma sie tam znalezc: ");
     int value;
     scanf("%d", &value);
     node *ftree = create(value);
@@ -217,16 +215,24 @@ int main() {
         char a[30] = "";
         char func[10] = "";
         char arg[20] = "";
+        printf("\nBinary Search Tree");
         printf("\nMozliwe polecenia: ins X, del X, srch X, min, max, prev X, next X, print, quit");
         printf("\nPodaj polecenie: ");
         fgets(a, 20, stdin);
-        printf("Podano polecenie: \n%s\n", a);
-        The expression strcmp( argc[i], "&") == 0 will check if the contents of the two strings are the same.
-        if(a[0]=='p') {
+        if(strncmp(a, "print", 5) == 0) {
             print(ftree);
-            printf("aaaa");
-        } else if (a=="quit") {
+            printf("Wykonano polecenie!\n");
+            continue;
+        } else if(strncmp(a,"quit", 4) == 0) {
             return 0;
+        } else if (strncmp(a, "max", 3) == 0) {
+            int result = maximum(&ftree);
+            printf("Najwieksza liczba w drzewie to %d\n", result);
+            continue;
+        } else if (strncmp(a, "min", 3) == 0) {
+            int result = minimum(&ftree);
+            printf("Najmniejsza liczba w drzewie to %d\n", result);
+            continue;
         }
         int i=0;
         while(a[i]!='\0') {
@@ -246,25 +252,45 @@ int main() {
         }
         here:;
         int carg = atoi(arg);
-        printf("Wywolana funkcja: %s\n", func);
-        printf("Argument: %d\n", carg);
+        printf("Wywolana funkcja: %s z argumentem: %d\n", func, carg);
+        if (strncmp(a, "next", 4) == 0) {
+            int result = next(&ftree, carg);
+            if(result!=INT_MAX) {
+                printf("Nastepna liczba w drzewie to %d\n", result);
+            } else {
+                printf("Nie ma wiekszej liczby w drzewie!\n");
+            }
+        } else if (strncmp(a, "prev", 4) == 0) {
+            int result = prev(&ftree, carg);
+            if(result!=INT_MIN) {
+               printf("Poprzednia liczba w drzewie to %d\n", result);
+            } else {
+                printf("Nie ma mniejszej liczby w drzewie!\n");
+            }
+        } else if (strncmp(a, "ins", 3) == 0) {
+            int result = ins(&ftree, carg);
+            if(result == 1) {
+                printf("Wstawiono liczbe %d do drzewa!\n", carg);
+            } else {
+                printf("Liczba %d juz znajduje sie w drzewie!\n", carg);
+            }
+        }  else if (strncmp(a, "srch", 4) == 0) {
+            int result = srch(&ftree, carg);
+            printf("%d", result);
+            if(result == 1) {
+                printf("Znaleziono liczbe %d w drzewie\n", carg);
+            } else {
+                printf("Podana liczba nie wystepuje w drzewie!\n");
+            }
+        } else if (strncmp(a, "del", 3) == 0) {
+            int result = del(&ftree, carg);
+            if(result == 1) {
+                printf("Znaleziono i usunieto liczbe %d!\n", carg);
+            } else {
+                printf("Podana liczba nie wystepuje w drzewie!\n");
+            }
+        } else {
+            printf("Nie rozpoznano polecenia. Sprobuj jeszcze raz!\n");
+        }
     }
-    /*node *tree = create(27);
-    ins(&tree, 22);
-    ins(&tree, 12);
-    ins(&tree, 11);
-    ins(&tree, 4);
-    ins(&tree, 16);
-    ins(&tree, 2);
-    ins(&tree, 8);
-    ins(&tree, 13);
-    ins(&tree, 122);
-    print(tree);
-    printf("\n");
-    printf("Minimum: %d\n", minimum(&tree));
-    printf("Maximum: %d\n", maximum(&tree));
-    printf("Next of 16: %d\n", next(&tree, 200));
-    printf("Prev of 12: %d\n", prev(&tree, 12));
-    printf("Deletion: %d\n", del(&tree, 1));
-    print(tree); */
 }
