@@ -84,10 +84,9 @@ bool srch(node **rootptr, int val) {
         return false;
     }
     if(val < root->val) {
-        srch(&(root->l), val);
-    }
-    if(val > root->val) {
-        srch(&(root->r), val);
+        return srch(&(root->l), val);
+    } else {
+        return srch(&(root->r), val);
     }
 }
 
@@ -276,7 +275,6 @@ int main() {
             }
         }  else if (strncmp(a, "srch", 4) == 0) {
             int result = srch(&ftree, carg);
-            printf("%d", result);
             if(result == 1) {
                 printf("Znaleziono liczbe %d w drzewie\n", carg);
             } else {
