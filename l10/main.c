@@ -97,9 +97,22 @@ typedef struct elem {
      } else if (root->next != NULL) {
          print_rec(root->next);
      }
-     printf("%d", root->val);
+     printf("%d\n", root->val);
  }
 
+ //Task 7
+ elem *reverse_list(elem *root) {
+     if(root == NULL || root->next == NULL) {
+        return root;
+     }
+     elem *pom = reverse_list(root->next);
+     root->next->next = root;
+     root->next = NULL;
+     return pom;
+ }
+
+
 int main() {
+
     return 0;
 }
