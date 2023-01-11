@@ -3,11 +3,11 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define NUM 256
+#define NUM 128
 
 typedef struct node {
     struct node *children[NUM];
-    bool wordend;
+    int wordend;
 } node;
 
 
@@ -18,11 +18,11 @@ node *create() {
         newnode->children[i] = NULL;
     }
 
-    newnode->wordend = false;
+    newnode->wordend = 0;
     return newnode;
 }
 
-bool insert(node **root, char *text) {
+void insert(node **root, char *text) {
     if(*root == NULL) {
         *root = create();
     }
@@ -34,12 +34,7 @@ bool insert(node **root, char *text) {
         }
         helper = helper->children[text[i]];
     }
-    if(helper->wordend) {
-        return false;
-    } else {
-        helper->wordend = true;
-        return true;
-    }
+    (helper->wordend)++;
 }
 
 void printpart(node *root, char *history, int length) {
@@ -48,7 +43,7 @@ void printpart(node *root, char *history, int length) {
     newhistory[length+1] = 0;
 
     if(root->wordend) {
-        printf("Slowo: %s\n", history);
+        printf("Slowo %s wystepuje %d razy\n", history, root->wordend);
     }
 
     for(int i=0; i<NUM; i++) {
@@ -67,8 +62,74 @@ void print(node *root) {
     printpart(root, NULL, 0);
 }
 
-int main() {
+int search(node *root, char *text) {
+    int length = strlen(text);
+    node *helper = root;
+
+    for(int i=0; i<length; i++) {
+        if(helper->children[text[i]] == NULL) {
+            return 0;
+        }
+        helper = helper->children[text[i]];
+    }
+    return helper->wordend;
+}
+
+void callsearch(node *root, char *text) {
+    int returned = search(root, text);
+    printf("Wyszukiwanie slowa %s: wystepuje %d razy\n", text, returned);
+}
+
+void del(node *root) {
+    for(int i=0; i<NUM; i++) {
+        if(root->children[i] != NULL) {
+            del(root->children[i]);
+        }
+    }
+    free(root);
+}
+
+int parsefile(char* text, node *root) {
+    FILE *textfile = fopen(text, "r");
+    if(textfile == NULL) {
+        printf("ERROR! Nie mozna otworzyc pliku %s!\n", text);
+        return 1;
+    }
+    char x[1024];
+
+    while(fscanf(textfile, " %1023s", x) == 1) {
+        int length = strlen(x);
+        int lastchar = (int)x[length-1];
+        if(!((lastchar >=65 && lastchar <=90)||(lastchar >=48 && lastchar <=57)||(lastchar >= 97 && lastchar <= 122 )) ) {
+            x[length-1] = '\0';
+        }
+        printf("INSERTING %s\n", x);
+        insert(&root, text);
+    }
+
+    fclose(textfile);
+    return 0;
+}
+
+int main(int argc, char *argv[]) {
     node *root = NULL;
 
+    if(argc <= 2) {
+        return 1;
+    } else {
+        for(int i=1; i<argc; i++) {
+            int x = parsefile(argv[i], root);
+            if(x == 1) {
+                printf("ERROR! Konczenie dzialania programu!\n");
+                return 1;
+            }
+        }
+    }
 
+    print(root);
+
+    callsearch(root, "KROWA");
+
+    del(root);
+    return 0;
 }
