@@ -15,23 +15,29 @@ typedef struct elem {
  };
 
  // Task 1
- int *attach_elem(elem *node, int wart) {
+ void attach_elem(elem *node, int wart) {
      if(node->next == NULL) {
         node->next = utworz(wart);
-        return 0;
+        return;
      } else {
          attach_elem(node->next, wart);
      }
  }
 
  //Task 2
- int *delete_last(elem *node, elem *parent) {
+ void delete_last(elem *node, elem *parent) {
      if(node->next == NULL) {
+        free(node);
         parent->next = NULL;
-        return 0;
+        return;
      } else {
          delete_last(node->next, node);
      }
+ }
+
+ //Task 3
+ void connect_lists(elem *first, elem *second) {
+
  }
 
 int main() {
