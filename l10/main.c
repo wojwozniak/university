@@ -111,8 +111,67 @@ typedef struct elem {
      return pom;
  }
 
+ //Task 8
+void *divide_list(elem *root, elem *negatives, elem *parent) {
+    if(root == NULL) {
+        return;
+    }
+    if(root->val >= 0) {
+        divide_list(root->next, negatives, root);
+    } else {
+        parent->next = root->next;
+        if(negatives == NULL) {
+            negatives = root;
+            negatives->next = NULL;
+        } else {
+            negatives->next = root;
+            negatives->next->next = NULL;
+
+        }
+        divide_list(parent->next, negatives->next, parent);
+    }
+}
+
+//Task 10
+void sort_rec(elem *first, elem *second) {
+    if(second == NULL) {
+        return;
+    }
+    if(second->val >= first->val) {
+        sort_rec(first->next, second);
+    }
+
+}
+
+
+void connect_sorted(elem *first, elem *second) {
+    if(second == NULL || first == NULL) {
+        return;
+    }
+    if(first->val > second->val) {
+        int help = first->val;
+        first->val = second->val;
+        second->val = first->val;
+    }
+    sort_rec(elem *first, elem *sec);
+}
+
+
 
 int main() {
-
+    elem *aaa = utworz(15);
+    attach_elem(aaa, 16);
+    attach_elem(aaa, 17);
+    attach_elem(aaa, 19);
+    attach_elem(aaa, 21);
+    attach_elem(aaa, 23);
+    print_rev_list(aaa);
+    elem *bbb = utworz(0);
+    attach_elem(bbb, 12);
+    attach_elem(bbb, 18);
+    attach_elem(bbb, 21);
+    attach_elem(bbb, 22);
+    attach_elem(bbb, 140);
+    print_rev_list(bbb);
     return 0;
 }
