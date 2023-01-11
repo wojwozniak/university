@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+// 1-9 WORKING, 10 BUGGED
+
 typedef struct elem {
     int val;
     struct elem *next;
@@ -188,7 +190,7 @@ typedef struct selem {
  }
 
 
-//Task 10
+//Task 10 - NOT WORKING
 void sort_rec(elem *first, elem *second, elem *firstparent) {
     if(second == NULL) {
         return;
@@ -198,24 +200,19 @@ void sort_rec(elem *first, elem *second, elem *firstparent) {
         return;
     }
     if(second->val >= first->val) {
-        printf("aa");
         sort_rec(first->next, second, first);
     }
     if (second->val < first->val && firstparent == NULL) {
-        printf("bb");
-        elem *helper = first;
-        elem *secondnext = second->next;
-        second->next = NULL;
+        elem *firstnext = first->next;
         first = second;
-        first->next = helper;
-        sort_rec(first, secondnext, NULL);
+        first->next = firstnext;
+        sort_rec(first, second->next, NULL);
     } else {
         elem *helper = second->next;
         firstparent->next = second;
         second->next = first;
         sort_rec(first, second->next, first);
     }
-    printf("xx %d   %d\n", first->val, second->val);
 }
 
 // Chcemy zawsze obydwa mieæ zapisane pod first, dlatego te sprawdzenia
@@ -236,10 +233,8 @@ void connect_sorted(elem *first, elem *second) {
     sort_rec(first->next, second, NULL);
 }
 
-
-
 int main() {
-    /*elem *aaa = utworz(15);
+    elem *aaa = utworz(15);
     attach_elem(aaa, 16);
     attach_elem(aaa, 17);
     attach_elem(aaa, 19);
@@ -255,6 +250,6 @@ int main() {
     print_rev_list(bbb);
     printf("\n\n");
     connect_sorted(aaa,bbb);
-    print_rev_list(aaa); */
+    print_rev_list(aaa);
     return 0;
 }
