@@ -82,6 +82,24 @@ typedef struct elem {
      free(trash);
  }
 
+ //Task 6
+ void print_rec(elem *root) {
+     if(root->next != NULL) {
+        print_rec(root->next);
+     }
+     printf("%d\n", root->val);
+     return;
+ }
+
+ void print_rev_list(elem *root) {
+     if(root == NULL) {
+        return;
+     } else if (root->next != NULL) {
+         print_rec(root->next);
+     }
+     printf("%d", root->val);
+ }
+
 int main() {
     return 0;
 }
