@@ -69,6 +69,19 @@ typedef struct elem {
     }
  }
 
+ //Task 5
+ void add_to_front(elem *root, int val) {
+     elem *rootptr = root;
+     root = utworz(val);
+     root->next = rootptr;
+ }
+
+ void delete_from_front(elem *root) {
+     elem *trash = root;
+     root = root->next;
+     free(trash);
+ }
+
 int main() {
     return 0;
 }
