@@ -112,7 +112,7 @@ typedef struct elem {
  }
 
  //Task 8
-void *divide_list(elem *root, elem *negatives, elem *parent) {
+void divide_list(elem *root, elem *negatives, elem *parent) {
     if(root == NULL) {
         return;
     }
@@ -133,27 +133,51 @@ void *divide_list(elem *root, elem *negatives, elem *parent) {
 }
 
 //Task 10
-void sort_rec(elem *first, elem *second) {
+void sort_rec(elem *first, elem *second, elem *firstparent) {
     if(second == NULL) {
         return;
     }
-    if(second->val >= first->val) {
-        sort_rec(first->next, second);
+    if(first == NULL) {
+        first = second;
+        return;
     }
-
+    if(second->val >= first->val) {
+        printf("aa");
+        sort_rec(first->next, second, first);
+    }
+    if (second->val < first->val && firstparent == NULL) {
+        printf("bb");
+        elem *helper = first;
+        elem *secondnext = second->next;
+        second->next = NULL;
+        first = second;
+        first->next = helper;
+        sort_rec(first, secondnext, NULL);
+    } else {
+        elem *helper = second->next;
+        firstparent->next = second;
+        second->next = first;
+        sort_rec(first, second->next, first);
+    }
+    printf("xx %d   %d\n", first->val, second->val);
 }
 
-
+// Chcemy zawsze obydwa mieæ zapisane pod first, dlatego te sprawdzenia
 void connect_sorted(elem *first, elem *second) {
     if(second == NULL || first == NULL) {
-        return;
+            if(second == NULL && first ==  NULL || first !=NULL) {
+                return;
+            }
+            first = second;
+            free(second);
+            return;
     }
     if(first->val > second->val) {
         int help = first->val;
         first->val = second->val;
         second->val = first->val;
     }
-    sort_rec(elem *first, elem *sec);
+    sort_rec(first->next, second, NULL);
 }
 
 
@@ -166,12 +190,15 @@ int main() {
     attach_elem(aaa, 21);
     attach_elem(aaa, 23);
     print_rev_list(aaa);
-    elem *bbb = utworz(0);
+    elem *bbb = utworz(1);
     attach_elem(bbb, 12);
     attach_elem(bbb, 18);
     attach_elem(bbb, 21);
     attach_elem(bbb, 22);
     attach_elem(bbb, 140);
     print_rev_list(bbb);
+    printf("\n\n");
+    connect_sorted(aaa,bbb);
+    print_rev_list(aaa);
     return 0;
 }
