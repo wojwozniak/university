@@ -42,6 +42,33 @@ typedef struct elem {
      connect_lists(first->next, second);
  }
 
+ //Task 4 (call with NULL as 3rd argument)
+ void delete_val(elem *root, int val, elem *parent) {
+    if(root->val == val) {
+        if(parent == NULL) {
+            root = root->next;
+            if(root->next == NULL) {
+                return;
+            } else {
+                delete_val(root->next, val, NULL);
+            }
+        } else {
+            parent->next = root->next;
+            free(root);
+            if(parent->next == NULL) {
+                return;
+            } else {
+                delete_val(parent->next, val, parent);
+            }
+        }
+    } else {
+        if(root->next == NULL) {
+            return;
+        }
+        delete_val(root->next, val, root);
+    }
+ }
+
 int main() {
     return 0;
 }
