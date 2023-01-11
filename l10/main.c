@@ -132,6 +132,62 @@ void divide_list(elem *root, elem *negatives, elem *parent) {
     }
 }
 
+//Task 9
+typedef struct selem {
+    struct selem *prev;
+    int val;
+    struct selem *next;
+ } selem;
+
+ selem *create(int wart) {
+     selem *fin = malloc(sizeof(selem));
+     fin->val = wart;
+     fin->next = NULL;
+     fin->prev = NULL;
+     return fin;
+ };
+
+ void selem_to_end(selem *root, int val) {
+     if(root == NULL) {
+        root = create(val);
+        return;
+     }
+     if(root->next == NULL) {
+         root->next = create(val);
+         root->next->prev = root;
+         return;
+     }
+     selem_to_end(root->next, val);
+ }
+
+ void selem_to_front(selem *root, int val) {
+     if(root == NULL) {
+        root = create(val);
+        return;
+     }
+     selem *rootptr = root;
+     root = create(val);
+     root->next = rootptr;
+     rootptr->prev = root;
+ }
+
+ void selem_from_end(selem *root, selem *parent) {
+     if(root == NULL) {
+        return;
+     }
+     if(parent == NULL && root->next == NULL) {
+        root = NULL;
+        return;
+     }
+     if(root->next == NULL) {
+        parent->next = NULL;
+        free(root);
+        return;
+     }
+     selem_from_end(root->next, root);
+ }
+
+
 //Task 10
 void sort_rec(elem *first, elem *second, elem *firstparent) {
     if(second == NULL) {
@@ -183,7 +239,7 @@ void connect_sorted(elem *first, elem *second) {
 
 
 int main() {
-    elem *aaa = utworz(15);
+    /*elem *aaa = utworz(15);
     attach_elem(aaa, 16);
     attach_elem(aaa, 17);
     attach_elem(aaa, 19);
@@ -199,6 +255,6 @@ int main() {
     print_rev_list(bbb);
     printf("\n\n");
     connect_sorted(aaa,bbb);
-    print_rev_list(aaa);
+    print_rev_list(aaa); */
     return 0;
 }
