@@ -19,9 +19,8 @@ typedef struct elem {
      if(node->next == NULL) {
         node->next = utworz(wart);
         return;
-     } else {
-         attach_elem(node->next, wart);
      }
+    attach_elem(node->next, wart);
  }
 
  //Task 2
@@ -30,14 +29,17 @@ typedef struct elem {
         free(node);
         parent->next = NULL;
         return;
-     } else {
-         delete_last(node->next, node);
      }
+    delete_last(node->next, node);
  }
 
  //Task 3
  void connect_lists(elem *first, elem *second) {
-
+     if(first->next == NULL) {
+        first->next = second;
+        return;
+     }
+     connect_lists(first->next, second);
  }
 
 int main() {
