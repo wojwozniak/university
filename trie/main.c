@@ -22,7 +22,7 @@ node *create() {
     return newnode;
 }
 
-void insert(node **root, char *text) {
+int insert(node **root, char *text) {
     if(*root == NULL) {
         *root = create();
     }
@@ -35,6 +35,12 @@ void insert(node **root, char *text) {
         helper = helper->children[text[i]];
     }
     (helper->wordend)++;
+    return helper->wordend;
+}
+
+void callinsert(node **root, char *text) {
+    int x = insert(root, text);
+    printf("Skutecznie dodano slowo %s, po dodaniu wystepuje ono w drzewie %d razy!\n", text, x);
 }
 
 void printpart(node *root, char *history, int length) {
@@ -77,7 +83,7 @@ int search(node *root, char *text) {
 
 void callsearch(node *root, char *text) {
     int returned = search(root, text);
-    printf("Wyszukiwanie slowa %s: wystepuje %d razy\n", text, returned);
+    printf("Znaleziono %d wystapien slowa %s\n", returned, text);
 }
 
 void del(node *root) {
@@ -103,8 +109,7 @@ int parsefile(char* text, node *root) {
         if(!((lastchar >=65 && lastchar <=90)||(lastchar >=48 && lastchar <=57)||(lastchar >= 97 && lastchar <= 122 )) ) {
             x[length-1] = '\0';
         }
-        printf("INSERTING %s\n", x);
-        insert(&root, text);
+        insert(root, x);
     }
 
     fclose(textfile);
@@ -118,18 +123,35 @@ int main(int argc, char *argv[]) {
         return 1;
     } else {
         for(int i=1; i<argc; i++) {
-            int x = parsefile(argv[i], root);
+            int x = parsefile(argv[i], &root);
             if(x == 1) {
                 printf("ERROR! Konczenie dzialania programu!\n");
                 return 1;
             }
         }
     }
-
-    print(root);
-
-    callsearch(root, "KROWA");
-
-    del(root);
+    int choice = 0;
+    while(1) {
+        fflush(stdin);
+        printf("----------------------------------\nDrzewo Trie\n0 - Zakoncz\n1 - Wypisz cala zawartosc drzewa\n2 - Wyszukaj slowo\n3 - Dodaj slowo\nTwoj wybor: ");
+        scanf("%d", &choice);
+        if(choice == 0) {
+            return 0;
+        } else if (choice == 1) {
+            print(root);
+        } else if (choice == 2  || choice == 3) {
+            char a[64];
+            memset(a, '/0', sizeof(a));
+            printf("Podaj slowo: ");
+            scanf("%s", &a);
+            if(choice == 2) {
+                callsearch(root, a);
+            } else {
+                insert(&root, a);
+            }
+        } else {
+            printf("Nie rozpoznano polecenia. Sprobuj jeszcze raz!\n");
+        }
+    }
     return 0;
 }
