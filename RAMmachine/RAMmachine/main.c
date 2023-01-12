@@ -84,6 +84,7 @@ int main(int argc, char *argv[]) {
                 printf("Podaj argument polecenia: ");
                 scanf("%s", &payload);
                 printf("Podano argument %s\n", payload);
+                printf("Pelne polecenie: %s %s , marker %s , zapisuje na tasmie!\n", command, payload, marker);
                 if(strcasecmp(command, "LOAD") == 0) {
                     attach_to_end(main_tape, "LOAD", payload, marker);
                 } else if(strcasecmp(command, "STORE") == 0) {
