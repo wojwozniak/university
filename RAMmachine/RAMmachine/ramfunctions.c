@@ -161,7 +161,6 @@ void ram_mult(engine *engine, char payload[10]) {
 
 void ram_div(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia DIV z argumentem %s\n", payload);
-    printf("Wykonywanie polecenia MULT z argumentem %s\n", payload);
     int first = (int)payload[0];
     if(first == 61) {
         char command_value[9];
@@ -196,7 +195,16 @@ void ram_div(engine *engine, char payload[10]) {
 
 void ram_jump(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia JUMP z argumentem %s\n", payload);
-
+    exe *tape = get_end_of_tape(engine->tape);
+    exe *found = find_exe_with_marker(tape, payload);
+    if(found == NULL) {
+        printf("Nie mozna wykonac skoku - nie znaleziono takiego markera!\n");
+    } else {
+        int id = found->command_id;
+        engine->amount_of_exes = id;
+        printf("Wykonano skok do nr %d\n", id);
+    }
+    return;
 }
 
 void ram_jzero(engine *engine, char payload[10]) {
