@@ -80,6 +80,9 @@ int main(int argc, char *argv[]) {
                 attach_to_end(main_tape, "HALT", "", marker);
                 printf("Dodano polecenie do tasmy!\n");
                 break;
+            } else if (strcasecmp(command, "READ") == 0) {
+                attach_to_end(main_tape, "READ", payload, marker);
+                printf("Dodano polecenie do tasmy!\n");
             } else {
                 printf("Podaj argument polecenia: ");
                 scanf("%s", &payload);
@@ -101,8 +104,6 @@ int main(int argc, char *argv[]) {
                     attach_to_end(main_tape, "JUMP", payload, marker);
                 } else if(strcasecmp(command, "JZERO") == 0) {
                     attach_to_end(main_tape, "JZERO", payload, marker);
-                } else if(strcasecmp(command, "READ") == 0) {
-                    attach_to_end(main_tape, "READ", payload, marker);
                 } else if(strcasecmp(command, "WRITE") == 0) {
                     attach_to_end(main_tape, "WRITE", payload, marker);
                 } else {
