@@ -71,3 +71,12 @@ void *pop_last_exe(exe *tape) {
     new_end_of_tape->next = NULL;
     free(end_of_tape);
 }
+
+//Print out entire tape
+void print_all_exes(exe *tape) {
+    if(tape == NULL) {
+        return;
+    }
+    printf("%d %s %s %s \n", tape->command_id, tape->marker, tape->command, tape->payload);
+    print_all_exes(tape->next);
+}

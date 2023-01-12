@@ -31,6 +31,55 @@ bool is_engine_on(engine *engine) {
 }
 
 void execute_command(engine *engine, char command[6], char payload[10]) {
+    if(strcmp(command, "LOAD") == 0) {
+        ram_load(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "STORE") == 0) {
+        ram_store(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "ADD") == 0) {
+        ram_add(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "SUB") == 0) {
+        ram_sub(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "MULT") == 0) {
+        ram_mult(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "DIV") == 0) {
+        ram_div(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "JUMP") == 0) {
+        ram_jump(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "JZERO") == 0) {
+        ram_jzero(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "JGTZ") == 0) {
+        ram_jgtz(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "READ") == 0) {
+        ram_read(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "WRITE") == 0) {
+        ram_write(engine, command, payload);
+        return;
+    }
+    if(strcmp(command, "HALT") == 0) {
+        ram_halt(engine, command, payload);
+        return;
+    }
+
 }
 
 // Run single engine cycle with a tape

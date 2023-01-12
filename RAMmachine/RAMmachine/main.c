@@ -3,11 +3,13 @@
 #include <stdbool.h>
 #include <string.h>
 #include "exeheader.h"
-#include "exefunctions.c"
 #include "memoryheader.h"
-#include "memoryfunctions.c"
 #include "engineheaders.h"
+#include "ramheader.h"
+#include "exefunctions.c"
+#include "memoryfunctions.c"
 #include "enginefunctions.c"
+#include "ramfunctions.c"
 
 int main() {
     exe *main_tape = create("LOAD", "0", "");
