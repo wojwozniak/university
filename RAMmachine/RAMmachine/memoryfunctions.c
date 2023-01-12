@@ -22,6 +22,7 @@ memory_cell *create_new_cell(memory_cell *battery) {
         memory_cell *last_cell = get_last_cell(battery);
         new_id = last_cell->id + 1;
         prev = get_last_cell(battery);
+        last_cell->next = output;
     } else {
         new_id = 0;
     }
@@ -53,4 +54,13 @@ memory_cell *get_cell_with_id(memory_cell *battery, unsigned int id) {
         return output;
     }
     get_cell_with_id(battery->next, id);
+}
+
+void pop_last_cell(memory_cell *battery) {
+    if(battery == NULL) {
+        return;
+    } else if (battery->next == NULL) {
+        free(battery);
+    }
+    pop_last_cell(battery->next);
 }
