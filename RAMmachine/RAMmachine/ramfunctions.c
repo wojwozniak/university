@@ -52,7 +52,9 @@ void ram_store(engine *engine, char payload[10]) {
         printf("Zapisano liczbe %d w komorce nr %d (wskazywala na nia zawartosc komorki %d)\n", stored, help2->id, help->id);
     } else {
         printf("Zly argument dla funkcji STORE!\n");
+        return;
     }
+    engine->battery->value = 0;
     return;
 
 }
@@ -67,22 +69,128 @@ void ram_add(engine *engine, char payload[10]) {
         }
         int command = atoi(command_value);
         engine->battery->value += command;
-        printf("Dodano liczbe %d do akumulatora!\n");
+        printf("Dodano liczbe %d do akumulatora, aktualna wartosc w akumulatorze %d\n", command, engine->battery->value);
+    } else if (first >=48 && first <= 57) {
+        int command = atoi(payload);
+        memory_cell *help  = get_cell_with_id(engine->battery, command);
+        int helper = help->value;
+        engine->battery->value += helper;
+        printf("Dodano liczbe %d do akumulatora. Zrodlo to komorka nr %d, aktualna wartosc w akumulatorze %d\n", helper, help->id, engine->battery->value);
+    } else if (first == 94) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        memory_cell *helper = get_cell_with_id(engine->battery, command);
+        memory_cell *helper2 = get_cell_with_id(engine->battery, helper->value);
+        engine->battery->value += helper2->value;
+        printf("Dodano liczbe %d do akumulatora. Zrodlo to komorka nr %d, wskazala na nia komorka nr %d. Aktualna wartosc w akumulatorze to %d\n", helper2->value, helper2->id, helper->id, engine->battery->value);
+    } else {
+        printf("Zly argument dla funkcji ADD!\n");
     }
     return;
 }
 
 void ram_sub(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia SUB z argumentem %s\n", payload);
+    int first = (int)payload[0];
+    if(first == 61) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        engine->battery->value -= command;
+        printf("Odjeto liczbe %d od akumulatora, aktualna wartosc w akumulatorze %d\n", command, engine->battery->value);
+    } else if (first >=48 && first <= 57) {
+        int command = atoi(payload);
+        memory_cell *help  = get_cell_with_id(engine->battery, command);
+        int helper = help->value;
+        engine->battery->value -= helper;
+        printf("Odjeto liczbe %d do akumulatora. Zrodlo to komorka nr %d, aktualna wartosc w akumulatorze %d\n", helper, help->id, engine->battery->value);
+    } else if (first == 94) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        memory_cell *helper = get_cell_with_id(engine->battery, command);
+        memory_cell *helper2 = get_cell_with_id(engine->battery, helper->value);
+        engine->battery->value -= helper2->value;
+        printf("Odjeto liczbe %d od akumulatora. Zrodlo to komorka nr %d, wskazala na nia komorka nr %d. Aktualna wartosc w akumulatorze to %d\n", helper2->value, helper2->id, helper->id, engine->battery->value);
+    } else {
+        printf("Zly argument dla funkcji SUB!\n");
+    }
+    return;
 }
 
 void ram_mult(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia MULT z argumentem %s\n", payload);
+    int first = (int)payload[0];
+    if(first == 61) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        engine->battery->value *= command;
+        printf("Wymnozono liczbe %d przez zawartosc akumulatora, aktualna wartosc w akumulatorze %d\n", command, engine->battery->value);
+    } else if (first >=48 && first <= 57) {
+        int command = atoi(payload);
+        memory_cell *help  = get_cell_with_id(engine->battery, command);
+        int helper = help->value;
+        engine->battery->value *= helper;
+        printf("Wymnozono liczbe %d przez zawartosc akumulatora. Zrodlo to komorka nr %d, aktualna wartosc w akumulatorze %d\n", helper, help->id, engine->battery->value);
+    } else if (first == 94) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        memory_cell *helper = get_cell_with_id(engine->battery, command);
+        memory_cell *helper2 = get_cell_with_id(engine->battery, helper->value);
+        engine->battery->value *= helper2->value;
+        printf("Wymnozono liczbe %d przez zawartosc akumulatora. Zrodlo to komorka nr %d, wskazala na nia komorka nr %d. Aktualna wartosc w akumulatorze to %d\n", helper2->value, helper2->id, helper->id, engine->battery->value);
+    } else {
+        printf("Zly argument dla funkcji MULT!\n");
+    }
+    return;
 
 }
 
 void ram_div(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia DIV z argumentem %s\n", payload);
+    printf("Wykonywanie polecenia MULT z argumentem %s\n", payload);
+    int first = (int)payload[0];
+    if(first == 61) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        engine->battery->value /= command;
+        printf("Przedzielono zawartosc akumulatora przez liczbe %d, aktualna wartosc w akumulatorze %d\n", command, engine->battery->value);
+    } else if (first >=48 && first <= 57) {
+        int command = atoi(payload);
+        memory_cell *help  = get_cell_with_id(engine->battery, command);
+        int helper = help->value;
+        engine->battery->value /= helper;
+        printf("Przedzielono zawartosc akumulatora przez liczbe %d. Zrodlo to komorka nr %d, aktualna wartosc w akumulatorze %d\n", helper, help->id, engine->battery->value);
+    } else if (first == 94) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        memory_cell *helper = get_cell_with_id(engine->battery, command);
+        memory_cell *helper2 = get_cell_with_id(engine->battery, helper->value);
+        engine->battery->value /= helper2->value;
+        printf("Przedzielono zawartosc akumulatora przez liczbe %d. Zrodlo to komorka nr %d, wskazala na nia komorka nr %d. Aktualna wartosc w akumulatorze to %d\n", helper2->value, helper2->id, helper->id, engine->battery->value);
+    } else {
+        printf("Zly argument dla funkcji DIV!\n");
+    }
+    return;
 
 }
 
