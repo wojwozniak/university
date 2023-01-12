@@ -13,10 +13,13 @@
 #include "ramfunctions.c"
 #include "menufunctions.c"
 
+//Dodawanie kolejnych komorek az do id zbugowane!
+
 int main(int argc, char *argv[]) {
     exe *main_tape = create("LOAD", "0", "");
     memory_cell *battery = create_new_cell(NULL);
-    engine *main_engine = create_engine(battery);
+    exe *output = create("", "", "");
+    engine *main_engine = create_engine(battery, output);
     int choice;
     bool status;
     while(1) {
@@ -36,8 +39,9 @@ int main(int argc, char *argv[]) {
         }
         printf(" - 2 - Dopisz polecenie do tasmy\n");
         printf(" - 3 - Usun ostatnie polecenie z tasmy\n");
-        printf(" - 4 - Wypisz wszystkie polecenia z tasmy\n");
+        printf(" - 4 - Wypisz wszystkie polecenia z tasmy wejsciowej\n");
         printf(" - 5 - Wyczysc pamiec - usuwa wszystkie polecenia z tasmy i komorki pamieci!\n");
+        printf(" - 6 - Wypisz zawartosc tasmy wynikowej!\n");
         printf("Wybierz opcje by kontynuowac: ");
         scanf("%d", &choice);
         switch(choice) {
@@ -112,18 +116,23 @@ int main(int argc, char *argv[]) {
             break;
         case 4:
             printf("Wypisywanie wszystkich polecen!\n");
-            print_all_exes(main_tape);
+            print_all_exes(main_tape, true);
             break;
         case 5:
             clearMemory(main_tape, battery);
             printf("Wyczyszczono pamiec!\n");
+            break;
+        case 6:
+            printf("Wypisywanie outputu!\n");
+            print_all_exes(output, true);
+            printf("Koniec outputu!\n");
             break;
         default:
             printf("Nie rozpoznano polecenia - sprobuj podac je ponownie!\n");
             continue;
         }
         status = is_engine_on(main_engine);
-        unsigned int last_id = get_end_of_tape(main_tape);
+        unsigned int last_id = get_end_of_tape(main_tape)->command_id;
         while(status) {
             if(main_engine->amount_of_exes < last_id) {
               engine_cycle(main_engine, main_tape);
