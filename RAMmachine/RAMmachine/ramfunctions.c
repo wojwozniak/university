@@ -246,7 +246,7 @@ void ram_jgtz(engine *engine, char payload[10]) {
 }
 
 void ram_read(engine *engine, char payload[10]) {
-    printf("Wykonywanie polecenia READ");
+    printf("Wykonywanie polecenia READ\n");
     exe *input_roll = engine->input_roll;
     int x = atoi(input_roll->command);
     engine->battery->value = x;
