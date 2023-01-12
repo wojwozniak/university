@@ -246,7 +246,7 @@ void ram_jgtz(engine *engine, char payload[10]) {
 }
 
 void ram_read(engine *engine, char payload[10]) {
-    printf("Wykonywanie polecenia READ z argumentem %s\n", payload);
+    printf("Wykonywanie polecenia READ");
     exe *input_roll = engine->input_roll;
     int x = atoi(input_roll->command);
     engine->battery->value = x;
@@ -257,15 +257,16 @@ void ram_read(engine *engine, char payload[10]) {
 void ram_write(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia WRITE z argumentem %s\n", payload);
     exe *output_roll = engine->output_roll;
-    exe *new_cell = create_new_cell(output_roll);
+    char to_e[10];
     int first = (int)payload[0];
     if(first == 61) {
         char command_value[9];
         for(int i=0; i<8; i++) {
             command_value[i] = payload[i+1];
         }
-        strcpy(new_cell->command, command_value);
-        printf("Zapisano %s w komorce nr %d outputu!/n", command_value, new_cell->command_id);
+        strcpy(to_e, command_value);
+        attach_to_end(output_roll, "", to_e, "");
+        printf("Zapisano %s w komorce nr %d outputu!/n", command_value, get_end_of_tape(output_roll)->command_id);
     } else if (first == 94) {
         char command_value[9];
         for(int i=0; i<8; i++) {
@@ -276,8 +277,9 @@ void ram_write(engine *engine, char payload[10]) {
         memory_cell *helper2 = get_cell_with_id(engine->battery, helper->value);
         char out[10];
         itoa(helper2->value, out, 10);
-        strcpy(new_cell->command, out);
-        printf("Zapisano %s w komorce nr %d outputu!/n", out, new_cell->command_id);
+        strcpy(to_e, out);
+        attach_to_end(output_roll, "", to_e, "");
+        printf("Zapisano %s w komorce nr %d outputu!/n", out, get_end_of_tape(output_roll)->command_id);
     } else if (first >=48 && first <= 57) {
         char command_value[9];
         for(int i=0; i<8; i++) {
@@ -287,14 +289,13 @@ void ram_write(engine *engine, char payload[10]) {
         memory_cell *helper = get_cell_with_id(engine->battery, command);
         char out[10];
         itoa(helper->value, out, 10);
-        strcpy(new_cell->command, out);
-        printf("Zapisano %s w komorce nr %d outputu!/n", out, new_cell->command_id);
+        strcpy(to_e, out);
+        attach_to_end(output_roll, "", to_e, "");
+        printf("Zapisano %s w komorce nr %d outputu!/n", out, get_end_of_tape(output_roll)->command_id);
     } else {
         printf("Wrong argument for function WRITE!\n");
         return;
     }
-    new_cell->payload[0] = '\0';
-    output_roll->next = new_cell;
     engine->output_roll = engine->output_roll->next;
     return;
 }
