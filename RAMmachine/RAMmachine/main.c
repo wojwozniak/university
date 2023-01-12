@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
             fflush(stdin);
             scanf("%s", &command);
             printf("Podano polecenie %s\n", command);
-            printf("Podaj marker (do 5 liter) (podaj 0 jesli nie chcesz ustawiac zadnego markera):");
+            printf("Podaj marker (do 5 liter) (podaj 0 jesli nie chcesz ustawiac zadnego markera): ");
             fflush(stdin);
             scanf("%s", &marker);
             if(strcmp(marker, "0") == 0) {
