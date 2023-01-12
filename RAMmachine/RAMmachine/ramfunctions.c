@@ -30,15 +30,29 @@ void ram_load(engine *engine, char payload[10]) {
 }
 
 void ram_store(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia STORE\n");
     int first = (int)payload[0];
-    if(first == 61) {
-        printf("Invalid argument for function LOAD!\n");
-    } else if (first >=48 && first <= 57) {
+    if (first >=48 && first <= 57) {
+        int command = atoi(payload);
+        int stored = engine->battery->value;
+        memory_cell *help = get_cell_with_id(engine->battery, command);
+        help->value = stored;
+        printf("Zapisano liczbe %d w komorce nr %d\n", stored, command);
+        return;
+    } else if (first == 94) {
         char command_value[9];
         for(int i=0; i<8; i++) {
             command_value[i] = payload[i+1];
         }
+        int command = atoi(command_value);
+        int stored = engine->battery->value;
+        memory_cell *help = get_cell_with_id(engine->battery, command);
+        memory_cell *help2 = get_cell_with_id(engine->battery, help->value);
+        printf("Zapisano liczbe %d w komorce nr %d (wskazywala na nia zawartosc komorki %d)\n", stored, help2->id, help->id);
+    } else {
+        printf("Zly argument dla funkcji STORE!\n");
     }
+
 }
 
 void ram_add(engine *engine, char payload[10]) {
