@@ -7,8 +7,3 @@ void clearMemory(exe *tape, memory_cell *battery) {
     }
     return;
 }
-
-void handleFile(exe *tape, char path[20]) {
-    return;
-}
-
