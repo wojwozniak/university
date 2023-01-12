@@ -39,21 +39,19 @@ exe *attach_to_end(exe *tape, char command[6], char payload[10], char marker[10]
     return output;
 }
 
-// Find an exe on a given tape with id
+// Find an exe on a given tape with id (give end!)
 exe *find_exe_with_id(exe *tape, unsigned int id) {
     if(tape == NULL) {
         return NULL;
     }
     if(tape->command_id == id) {
         return tape;
-    } else if(tape->command_id > id) {
-        find_exe_with_id(tape->prev, id);
     } else {
-        find_exe_with_id(tape->next, id);
+        find_exe_with_id(tape->prev, id);
     }
 }
 
-//Find exe on a given tape by passing a marker
+//Find exe on a given tape by passing a marker (give end!)
 exe *find_exe_with_marker(exe *tape, char marker[10]) {
     if(tape == NULL) {
         return NULL;
@@ -61,7 +59,7 @@ exe *find_exe_with_marker(exe *tape, char marker[10]) {
     if(strcmp(marker,tape->marker) == 0) {
         return tape;
     }
-    find_exe_with_marker(tape->next, marker);
+    find_exe_with_marker(tape->prev, marker);
 }
 
 //Delete last exe on an given tape
