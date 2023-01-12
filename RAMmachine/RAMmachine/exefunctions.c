@@ -73,10 +73,14 @@ void *pop_last_exe(exe *tape) {
 }
 
 //Print out entire tape
-void print_all_exes(exe *tape) {
+void print_all_exes(exe *tape, bool ignore_head_ptr) {
     if(tape == NULL) {
         return;
     }
-    printf("%d %s %s %s \n", tape->command_id, tape->marker, tape->command, tape->payload);
-    print_all_exes(tape->next);
+    if(ignore_head_ptr) {
+        ignore_head_ptr = false;
+    } else {
+        printf("%d %s %s %s \n", tape->command_id, tape->marker, tape->command, tape->payload);
+    }
+    print_all_exes(tape->next, ignore_head_ptr);
 }
