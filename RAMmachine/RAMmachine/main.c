@@ -19,7 +19,8 @@ int main(int argc, char *argv[]) {
     exe *main_tape = create("LOAD", "0", "");
     memory_cell *battery = create_new_cell(NULL);
     exe *output = create("", "", "");
-    engine *main_engine = create_engine(battery, output, main_tape);
+    exe *input = create("", "", "");
+    engine *main_engine = create_engine(battery, output, main_tape, input);
     int choice;
     bool status;
     while(1) {

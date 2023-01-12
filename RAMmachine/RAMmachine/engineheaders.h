@@ -1,6 +1,6 @@
 typedef struct engine engine;
 
-engine *create_engine(memory_cell *battery, exe *output_roll, exe *tape);
+engine *create_engine(memory_cell *battery, exe *output_roll, exe *tape, exe *input);
 void turn_on_engine(engine *engine);
 void engine_cycle(engine *engine, exe *tape);
 bool is_engine_on(engine *engine);
