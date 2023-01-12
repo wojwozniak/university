@@ -33,3 +33,24 @@ memory_cell *create_new_cell(memory_cell *battery) {
     }
     return output;
 }
+
+memory_cell *create_up_to_id_and_return_cell(memory_cell *battery, unsigned int id) {
+    unsigned int current_last_id = get_last_cell(battery)->id;
+    memory_cell *output;
+    while(current_last_id < id) {
+        output = create_new_cell(battery);
+        current_last_id+=1;
+    }
+    return output;
+}
+
+memory_cell *get_cell_with_id(memory_cell *battery, unsigned int id) {
+    memory_cell *output;
+    if(battery->id == id) {
+        return battery;
+    } else if(battery->next == NULL) {
+        output = create_up_to_id_and_return_cell(battery, id);
+        return output;
+    }
+    get_cell_with_id(battery->next, id);
+}
