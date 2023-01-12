@@ -209,12 +209,40 @@ void ram_jump(engine *engine, char payload[10]) {
 
 void ram_jzero(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia JZERO z argumentem %s\n", payload);
-
+    if(engine->battery->value == 0) {
+        printf("Zawartosc akumulatora wynosi 0, mozna wykonac skok! \n");
+        exe *tape = get_end_of_tape(engine->tape);
+        exe *found = find_exe_with_marker(tape, payload);
+        if(found == NULL) {
+            printf("Nie mozna wykonac skoku - nie znaleziono takiego markera!\n");
+        } else {
+            int id = found->command_id;
+            engine->amount_of_exes = id;
+            printf("Wykonano skok do nr %d\n", id);
+        }
+    } else {
+        printf("Zawartosc akumulatora to %d, nie mozna wykonac skoku!\n", engine->battery->value);
+    }
+    return;
 }
 
 void ram_jgtz(engine *engine, char payload[10]) {
     printf("Wykonywanie polecenia JGTZ z argumentem %s\n", payload);
-
+    if(engine->battery->value > 0) {
+        printf("Zawartosc akumulatora > 0 (konkretniej %d), mozna wykonac skok! \n", engine->battery->value);
+        exe *tape = get_end_of_tape(engine->tape);
+        exe *found = find_exe_with_marker(tape, payload);
+        if(found == NULL) {
+            printf("Nie mozna wykonac skoku - nie znaleziono takiego markera!\n");
+        } else {
+            int id = found->command_id;
+            engine->amount_of_exes = id;
+            printf("Wykonano skok do nr %d\n", id);
+        }
+    } else {
+        printf("Zawartosc akumulatora to %d, nie mozna wykonac skoku!\n", engine->battery->value);
+    }
+    return;
 }
 
 void ram_read(engine *engine, char payload[10]) {
