@@ -12,7 +12,7 @@ engine *create_engine(memory_cell *battery) {
         output->battery = battery;
         output->amount_of_exes = 0;
     }
-    return battery;
+    return output;
 }
 
 // Turn on engine
@@ -30,13 +30,18 @@ bool is_engine_on(engine *engine) {
     return engine->turned_on;
 }
 
+void execute_command(engine *engine, char command[6], char payload[10]) {
+}
+
 // Run single engine cycle with a tape
 void engine_cycle(engine *engine, exe *tape) {
     int current_exe_id = engine->amount_of_exes + 1;
     exe *current_task = find_exe_with_id(tape, current_exe_id);
-    char *command = current_task->command;
-    char *payload = current_task->payload;
-    //execute_command(engine *engine, char *command, char *payload)
+    char command[6];
+    strcpy(command, current_task->command);
+    char payload[10];
+    strcpy(payload, current_task->payload);
+    execute_command(engine, command, payload);
     engine->amount_of_exes+=1;
     return;
 }

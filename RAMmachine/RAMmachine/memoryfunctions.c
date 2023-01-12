@@ -27,7 +27,7 @@ memory_cell *create_new_cell(memory_cell *battery) {
     }
     if(output != NULL) {
         output->id = new_id;
-        output->value = NULL;
+        output->value = 0;
         output->prev = prev;
         output->next = NULL;
     }

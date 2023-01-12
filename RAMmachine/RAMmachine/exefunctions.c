@@ -1,22 +1,22 @@
 typedef struct exe {
     unsigned int command_id;
-    char *command;
-    char *payload;
-    char *marker;
+    char command[6];
+    char payload[10];
+    char marker[10];
     struct exe *prev;
     struct exe *next;
 } exe;
 
 // Create tape
-exe *create(char *command, char *payload, char *marker) {
+exe *create(char command[6], char payload[10], char marker[10]) {
     exe *output = malloc(sizeof(exe));
     if(output!=NULL) {
-        output->command = command;
-        output->payload = payload;
-        output->marker = marker;
+        strcpy(output->command, command);
+        strcpy(output->payload, payload);
+        strcpy(output->marker, marker);
         output->prev = NULL;
         output->next = NULL;
-        output->command_id = NULL;
+        output->command_id = 0;
     }
     return output;
 }
@@ -30,7 +30,7 @@ exe *get_end_of_tape(exe *tape) {
 }
 
 // Create an exe and attach it to end of a given tape
-exe *attach_to_end(exe *tape, char *command, char *payload, char *marker) {
+exe *attach_to_end(exe *tape, char command[6], char payload[10], char marker[10]) {
     exe *output = create(command, payload, marker);
     exe *end_of_tape = get_end_of_tape(tape);
     output->prev = end_of_tape;
@@ -54,11 +54,11 @@ exe *find_exe_with_id(exe *tape, unsigned int id) {
 }
 
 //Find exe on a given tape by passing a marker
-exe *find_exe_with_marker(exe *tape, char *marker) {
+exe *find_exe_with_marker(exe *tape, char marker[10]) {
     if(tape == NULL) {
         return NULL;
     }
-    if(marker == tape->marker) {
+    if(strcmp(marker,tape->marker)) {
         return tape;
     }
     find_exe_with_marker(tape->next, marker);
