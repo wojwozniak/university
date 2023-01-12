@@ -190,66 +190,24 @@ typedef struct selem {
  }
 
 
-//Task 10 - NOT WORKING
-void sort_rec(elem *first, elem *second, elem *firstparent) {
-    if(second == NULL) {
-        return;
-    }
+//Task 10
+elem *connect_sorted(elem *first, elem *second) {
+    elem *output = NULL;
     if(first == NULL) {
-        first = second;
-        return;
+        return second;
+    } else if(second == NULL) {
+        return first;
     }
-    if(second->val >= first->val) {
-        sort_rec(first->next, second, first);
-    }
-    if (second->val < first->val && firstparent == NULL) {
-        elem *firstnext = first->next;
-        first = second;
-        first->next = firstnext;
-        sort_rec(first, second->next, NULL);
+    if(first->val <= second->val) {
+        output = first;
+        output->next = connect_sorted(first->next, second);
     } else {
-        elem *helper = second->next;
-        firstparent->next = second;
-        second->next = first;
-        sort_rec(first, second->next, first);
+        output = second;
+        second->next = connect_sorted(first, second->next);
     }
-}
-
-// Chcemy zawsze obydwa mieæ zapisane pod first, dlatego te sprawdzenia
-void connect_sorted(elem *first, elem *second) {
-    if(second == NULL || first == NULL) {
-            if(second == NULL && first ==  NULL || first !=NULL) {
-                return;
-            }
-            first = second;
-            free(second);
-            return;
-    }
-    if(first->val > second->val) {
-        int help = first->val;
-        first->val = second->val;
-        second->val = first->val;
-    }
-    sort_rec(first->next, second, NULL);
+    return output;
 }
 
 int main() {
-    elem *aaa = utworz(15);
-    attach_elem(aaa, 16);
-    attach_elem(aaa, 17);
-    attach_elem(aaa, 19);
-    attach_elem(aaa, 21);
-    attach_elem(aaa, 23);
-    print_rev_list(aaa);
-    elem *bbb = utworz(1);
-    attach_elem(bbb, 12);
-    attach_elem(bbb, 18);
-    attach_elem(bbb, 21);
-    attach_elem(bbb, 22);
-    attach_elem(bbb, 140);
-    print_rev_list(bbb);
-    printf("\n\n");
-    connect_sorted(aaa,bbb);
-    print_rev_list(aaa);
     return 0;
 }
