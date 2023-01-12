@@ -3,16 +3,18 @@ typedef struct engine {
     struct memory_cell *battery;
     unsigned int amount_of_exes;
     bool turning_off;
+    struct exe *output_roll;
 } engine;
 
 // Create new engine and attach battery to it
-engine *create_engine(memory_cell *battery) {
+engine *create_engine(memory_cell *battery, exe *output_roll) {
     engine *output = malloc(sizeof(engine));
     if(output != NULL) {
         output->turned_on = false;
         output->battery = battery;
         output->amount_of_exes = 0;
         output->turning_off = false;
+        output->output_roll = output_roll;
     }
     return output;
 }
