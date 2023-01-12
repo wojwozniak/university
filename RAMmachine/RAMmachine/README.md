@@ -1,4 +1,4 @@
-#Symulator maszyny RAM
+# Symulator maszyny RAM
 
 Projekt końcowy - wstęp do C sem. zimowy 2022/23
 
