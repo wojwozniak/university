@@ -1,1 +1,4 @@
-Solutions to tasks from 2022 C introduction course @ University of Wroclaw
+# C Course
+- taskLists contains solutions to tasks from 2022/23 C introduction course @ University of Wroclaw
+- abstractDataTypes contains ending tasks from this course
+- RAMmachine is finishing project
