@@ -140,7 +140,8 @@ int main(int argc, char *argv[]) {
         unsigned int last_id = get_end_of_tape(main_tape)->command_id;
         while(status) {
             if(main_engine->amount_of_exes < last_id) {
-              engine_cycle(main_engine, main_tape);
+                printf("Silnik wykonuje polecenie nr %d\n", main_engine->amount_of_exes+1);
+                engine_cycle(main_engine, main_tape);
             } else {
                 break;
             }

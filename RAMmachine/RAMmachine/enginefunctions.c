@@ -93,7 +93,9 @@ void execute_command(engine *engine, char command[6], char payload[10]) {
 // Run single engine cycle with a tape
 void engine_cycle(engine *engine, exe *tape) {
     int current_exe_id = engine->amount_of_exes + 1;
-    exe *current_task = find_exe_with_id(tape, current_exe_id);
+    exe *end_of_tape = get_end_of_tape(tape);
+    exe *current_task = find_exe_with_id(end_of_tape, current_exe_id);
+    //printf("Znaleziono zadanie!: id aktualnego zadania: %d\n", current_task->command_id);
     char command[6];
     strcpy(command, current_task->command);
     char payload[10];
