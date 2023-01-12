@@ -2,6 +2,7 @@ typedef struct engine {
     bool turned_on;
     struct memory_cell *battery;
     unsigned int amount_of_exes;
+    bool turning_off;
 } engine;
 
 // Create new engine and attach battery to it
@@ -11,6 +12,7 @@ engine *create_engine(memory_cell *battery) {
         output->turned_on = false;
         output->battery = battery;
         output->amount_of_exes = 0;
+        output->turning_off = false;
     }
     return output;
 }

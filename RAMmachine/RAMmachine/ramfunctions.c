@@ -30,7 +30,15 @@ void ram_load(engine *engine, char payload[10]) {
 }
 
 void ram_store(engine *engine, char payload[10]) {
-
+    int first = (int)payload[0];
+    if(first == 61) {
+        printf("Invalid argument for function LOAD!\n");
+    } else if (first >=48 && first <= 57) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+    }
 }
 
 void ram_add(engine *engine, char payload[10]) {
@@ -70,7 +78,8 @@ void ram_write(engine *engine, char payload[10]) {
 }
 
 void ram_halt(engine *engine, char payload[10]) {
-    printf("Halting the engine! \n");
+    printf("Wykonuje polecenie HALT! \n");
     turn_off_engine(engine);
+    engine->turning_off = true;
     return;
 }
