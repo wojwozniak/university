@@ -17,7 +17,6 @@ int main(int argc, char *argv[]) {
     exe *main_tape = create("LOAD", "0", "");
     memory_cell *battery = create_new_cell(NULL);
     engine *main_engine = create_engine(battery);
-    char input[20];
     int choice;
     bool status;
     while(1) {
@@ -37,7 +36,7 @@ int main(int argc, char *argv[]) {
         }
         printf(" - 2 - Dopisz polecenie do tasmy\n");
         printf(" - 3 - Usun ostatnie polecenie z tasmy\n");
-        printf(" - 4 - Wczytaj polecenia z pliku podanego w argumentach wywolania programu\n");
+        printf(" - 4 - Wypisz wszystkie polecenia z tasmy\n");
         printf(" - 5 - Wyczysc pamiec - usuwa wszystkie polecenia z tasmy i komorki pamieci!\n");
         printf("Wybierz opcje by kontynuowac: ");
         scanf("%d", &choice);
@@ -55,7 +54,54 @@ int main(int argc, char *argv[]) {
             }
             break;
         case 2:
-            break;
+            printf("Wpisz komende (bez argumentu!): ");
+            char command[6];
+            char payload[10];
+            char marker[10];
+            fflush(stdin);
+            scanf("%s", &command);
+            printf("Podano polecenie %s\n", command);
+            printf("Podaj marker (do 5 liter) (podaj 0 jesli nie chcesz ustawiac zadnego markera):");
+            fflush(stdin);
+            scanf("%s", &marker);
+            if(strcmp(marker, "0") == 0) {
+                marker[0] = '\0';
+            } else {
+                printf("Podano marker %s\n", marker);
+            }
+            if(strcasecmp(command, "HALT") == 0) {
+                attach_to_end(main_tape, "HALT", "", marker);
+                printf("Dodano polecenie do tasmy!\n");
+                break;
+            } else {
+                printf("Podaj argument polecenia: ");
+                scanf("%s", &payload);
+                printf("Podano argument %s\n", payload);
+                if(strcasecmp(command, "LOAD") == 0) {
+                    attach_to_end(main_tape, "LOAD", payload, marker);
+                } else if(strcasecmp(command, "STORE") == 0) {
+                    attach_to_end(main_tape, "STORE", payload, marker);
+                } else if(strcasecmp(command, "ADD") == 0) {
+                    attach_to_end(main_tape, "ADD", payload, marker);
+                } else if(strcasecmp(command, "SUB") == 0) {
+                    attach_to_end(main_tape, "SUB", payload, marker);
+                } else if(strcasecmp(command, "MULT") == 0) {
+                    attach_to_end(main_tape, "MULT", payload, marker);
+                } else if(strcasecmp(command, "DIV") == 0) {
+                    attach_to_end(main_tape, "DIV", payload, marker);
+                } else if(strcasecmp(command, "JUMP") == 0) {
+                    attach_to_end(main_tape, "JUMP", payload, marker);
+                } else if(strcasecmp(command, "JZERO") == 0) {
+                    attach_to_end(main_tape, "JZERO", payload, marker);
+                } else if(strcasecmp(command, "READ") == 0) {
+                    attach_to_end(main_tape, "READ", payload, marker);
+                } else if(strcasecmp(command, "WRITE") == 0) {
+                    attach_to_end(main_tape, "WRITE", payload, marker);
+                } else {
+                    printf("Nie rozpoznano polecenia! Sprobuj jeszcze raz!\n");
+                }
+                break;
+            }
         case 3:
             if(main_tape->next != NULL) {
                 pop_last_exe(main_tape);
@@ -65,7 +111,8 @@ int main(int argc, char *argv[]) {
             }
             break;
         case 4:
-            //handleFile();
+            printf("Wypisywanie wszystkich polecen!\n");
+            print_all_exes(main_tape);
             break;
         case 5:
             clearMemory(main_tape, battery);
@@ -82,6 +129,9 @@ int main(int argc, char *argv[]) {
               engine_cycle(main_engine, main_tape);
             } else {
                 break;
+            }
+            if(main_engine->turning_off) {
+                return 0;
             }
         }
     }
