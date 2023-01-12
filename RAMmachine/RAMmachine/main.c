@@ -19,18 +19,19 @@ int main(int argc, char *argv[]) {
     exe *main_tape = create("LOAD", "0", "");
     memory_cell *battery = create_new_cell(NULL);
     exe *output = create("", "", "");
-    engine *main_engine = create_engine(battery, output);
+    engine *main_engine = create_engine(battery, output, main_tape);
     int choice;
     bool status;
     while(1) {
         status = is_engine_on(main_engine);
-        printf("==================================\n");
+        printf("=================================================================================\n");
         printf("Symulator maszyny RAM\n");
         if(status) {
             printf("Aktualny status maszyny: natychmiastowe wykonywanie polecen!\n");
         } else {
             printf("Aktualny status maszyny: wylaczona. Zbiera polecenia dopoki jej nie uruchomisz!\n");
         }
+        printf("---------------------------------------------------------------------------------\n");
         printf("Mozliwe opcje:\n - 0 - Wylacz program\n");
         if(status) {
             printf(" - 1 - Wylacz tryb automatycznego wykonywania polecen\n");
@@ -42,6 +43,7 @@ int main(int argc, char *argv[]) {
         printf(" - 4 - Wypisz wszystkie polecenia z tasmy wejsciowej\n");
         printf(" - 5 - Wyczysc pamiec - usuwa wszystkie polecenia z tasmy i komorki pamieci!\n");
         printf(" - 6 - Wypisz zawartosc tasmy wynikowej!\n");
+        printf("---------------------------------------------------------------------------------\n");
         printf("Wybierz opcje by kontynuowac: ");
         scanf("%d", &choice);
         switch(choice) {
