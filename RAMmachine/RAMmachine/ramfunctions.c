@@ -14,7 +14,7 @@ void ram_load(engine *engine, char payload[10]) {
     }
     else if (first >= 48 && first <= 57) {
         int command = atoi(payload);
-        engine->battery->value = get_cell_with_id(engine->battery, command);
+        engine->battery->value = get_cell_with_id(engine->battery, command)->value;
         printf("Wczytano zawartosc komorki %d do akumulatora \n", command);
     } else {
         char command_value[9];
