@@ -1,7 +1,8 @@
 void ram_load(engine *engine, char payload[10]) {
+    printf("Wykonywanie funkcji LOAD z argumentem %s\n", payload);
     int first = (int)payload[0];
     if(!((first == 94)||(first >= 48 && first <= 57)||(first == 61))) {
-        printf("Invalid argument for function LOAD!\n");
+        printf("Zly argument dla funkcji LOAD!\n");
     }
     else if (first == 61) {
         char command_value[9];
@@ -30,7 +31,7 @@ void ram_load(engine *engine, char payload[10]) {
 }
 
 void ram_store(engine *engine, char payload[10]) {
-    printf("Wykonywanie polecenia STORE\n");
+    printf("Wykonywanie polecenia STORE z argumentem %s\n", payload);
     int first = (int)payload[0];
     if (first >=48 && first <= 57) {
         int command = atoi(payload);
@@ -52,42 +53,61 @@ void ram_store(engine *engine, char payload[10]) {
     } else {
         printf("Zly argument dla funkcji STORE!\n");
     }
+    return;
 
 }
 
 void ram_add(engine *engine, char payload[10]) {
-
+    printf("Wykonywanie polecenia ADD z argumentem %s\n", payload);
+    int first = (int)payload[0];
+    if(first == 61) {
+        char command_value[9];
+        for(int i=0; i<8; i++) {
+            command_value[i] = payload[i+1];
+        }
+        int command = atoi(command_value);
+        engine->battery->value += command;
+        printf("Dodano liczbe %d do akumulatora!\n");
+    }
+    return;
 }
 
 void ram_sub(engine *engine, char payload[10]) {
-
+    printf("Wykonywanie polecenia SUB z argumentem %s\n", payload);
 }
 
 void ram_mult(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia MULT z argumentem %s\n", payload);
 
 }
 
 void ram_div(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia DIV z argumentem %s\n", payload);
 
 }
 
 void ram_jump(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia JUMP z argumentem %s\n", payload);
 
 }
 
 void ram_jzero(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia JZERO z argumentem %s\n", payload);
 
 }
 
 void ram_jgtz(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia JGTZ z argumentem %s\n", payload);
 
 }
 
 void ram_read(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia READ z argumentem %s\n", payload);
 
 }
 
 void ram_write(engine *engine, char payload[10]) {
+    printf("Wykonywanie polecenia WRITE z argumentem %s\n", payload);
 
 }
 
