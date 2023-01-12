@@ -58,7 +58,7 @@ exe *find_exe_with_marker(exe *tape, char marker[10]) {
     if(tape == NULL) {
         return NULL;
     }
-    if(strcmp(marker,tape->marker)) {
+    if(strcmp(marker,tape->marker) == 0) {
         return tape;
     }
     find_exe_with_marker(tape->next, marker);
