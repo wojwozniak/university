@@ -11,8 +11,8 @@ Link podany w opisie projektu nie działa, skorzystałem więc z [tego](http://w
 - Plik inputu - liczby calkowite oddzielone enterem
 
 ## Kod dzieli się on na kilka głównych części
-- Główne menu
-- Funkcje pomocnicze menu (w tym wczytywanie / zapisywanie do plików)
-- Silnik (zawiera wskaźniki na taśmy wejścia, wyjścia i poleceń)
-- Taśmy (głównie taśma poleceń, taśmy wejścia/wyjścia)
-- Pamięć (akumulator)
+- Główne menu (main)
+- Funkcje pomocnicze menu (w tym wczytywanie / zapisywanie do plików) (menu)
+- Silnik (zawiera wskaźniki na taśmy wejścia, wyjścia i poleceń) (engine)
+- Taśmy (głównie taśma poleceń, taśmy wejścia/wyjścia) (exe)
+- Pamięć (akumulator) (memory)
