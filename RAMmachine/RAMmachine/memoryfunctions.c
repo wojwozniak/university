@@ -36,10 +36,14 @@ memory_cell *create_new_cell(memory_cell *battery) {
 }
 
 memory_cell *create_up_to_id_and_return_cell(memory_cell *battery, unsigned int id) {
-    unsigned int current_last_id = get_last_cell(battery)->id;
+    memory_cell *current_last = get_last_cell(battery);
+    unsigned int current_last_id = current_last->id;
+    memory_cell *helper = create_new_cell(battery);
+    current_last->next = helper;
     memory_cell *output;
     while(current_last_id < id) {
-        output = create_new_cell(output);
+        output = create_new_cell(helper);
+        helper = output;
         current_last_id+=1;
     }
     return output;
