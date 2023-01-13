@@ -41,7 +41,7 @@ memory_cell *create_up_to_id_and_return_cell(memory_cell *battery, unsigned int 
     memory_cell *helper = create_new_cell(battery);
     current_last->next = helper;
     memory_cell *output;
-    while(current_last_id < id) {
+    while(current_last_id < id-1) {
         output = create_new_cell(helper);
         helper = output;
         current_last_id+=1;
@@ -67,4 +67,12 @@ void pop_last_cell(memory_cell *battery) {
         free(battery);
     }
     pop_last_cell(battery->next);
+}
+
+void print_all_cells(memory_cell *battery) {
+    if(battery == NULL) {
+        return;
+    }
+    printf("Zawartosc komorki pamieci nr %d to %d\n", battery->id, battery->value);
+    print_all_cells(battery->next);
 }

@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
         printf(" - 5 - Wyczysc pamiec - usuwa wszystkie polecenia z tasmy i komorki pamieci!\n");
         printf(" - 6 - Wypisz zawartosc tasmy wejsciowej!\n");
         printf(" - 7 - Wypisz zawartosc tasmy wynikowej!\n");
+        printf(" - 8 - Wypisz zawartosc wszystkich zaincjalizowanych komorek pamieci!\n");
         printf("---------------------------------------------------------------------------------\n");
         printf("Wybierz opcje by kontynuowac: ");
         scanf("%d", &choice);
@@ -135,6 +136,7 @@ int main(int argc, char *argv[]) {
         case 4:
             printf("Wypisywanie wszystkich polecen!\n");
             print_all_exes(main_tape, true);
+            printf("Wypisano!\n");
             break;
         case 5:
             clearMemory(main_tape, battery);
@@ -150,6 +152,11 @@ int main(int argc, char *argv[]) {
             print_all_exes(output, true);
             printf("Koniec outputu!\n");
             break;
+        case 8:
+            printf("Wypisuje zawartosc wszystkich zainicjalizowanych komorek!\n");
+            print_all_cells(battery);
+            printf("Koniec!\n");
+            break;
         default:
             printf("Nie rozpoznano polecenia - sprobuj podac je ponownie!\n");
             continue;
@@ -164,7 +171,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
             if(main_engine->turning_off) {
-                printf("Wypisywanie outputu!\n");
+                printf("Maszyna sie wylacza wiec wypisuje output!\n");
                 print_all_exes(output, true);
                 printf("Koniec outputu!\n");
                 return 0;
