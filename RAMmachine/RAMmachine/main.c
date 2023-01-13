@@ -70,14 +70,17 @@ int main(int argc, char *argv[]) {
             fflush(stdin);
             scanf("%s", &command);
             printf("Podano polecenie %s\n", command);
-            printf("Podaj marker (do 5 liter) (podaj 0 jesli nie chcesz ustawiac zadnego markera): ");
-            fflush(stdin);
-            scanf("%s", &marker);
-            if(strcmp(marker, "0") == 0) {
-                marker[0] = '\0';
-            } else {
+            bool choice2;
+            printf("Czy chcesz podac marker?\n");
+            printf("0 - nie\n1 - tak\nWybor: ");
+            scanf("%d", &choice2);
+            if(choice2) {
+                printf("Podaj marker (do 5 liter): ");
+                fflush(stdin);
+                scanf("%s", &marker);
                 printf("Podano marker %s\n", marker);
             }
+            printf("Pominieto dodawanie markera\n");
             if(strcasecmp(command, "HALT") == 0) {
                 attach_to_end(main_tape, "HALT", "", marker);
                 printf("Dodano polecenie do tasmy!\n");
