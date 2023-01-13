@@ -266,7 +266,7 @@ void ram_write(engine *engine, char payload[10]) {
         }
         strcpy(to_e, command_value);
         attach_to_end(output_roll, "", to_e, "");
-        printf("Zapisano %s w komorce nr %d outputu!/n", command_value, get_end_of_tape(output_roll)->command_id);
+        printf("Zapisano %s w komorce nr %d outputu!\n", command_value, get_end_of_tape(output_roll)->command_id);
     } else if (first == 94) {
         char command_value[9];
         for(int i=0; i<8; i++) {
@@ -279,7 +279,7 @@ void ram_write(engine *engine, char payload[10]) {
         itoa(helper2->value, out, 10);
         strcpy(to_e, out);
         attach_to_end(output_roll, "", to_e, "");
-        printf("Zapisano %s w komorce nr %d outputu!/n", out, get_end_of_tape(output_roll)->command_id);
+        printf("Zapisano %s w komorce nr %d outputu!\n", out, get_end_of_tape(output_roll)->command_id);
     } else if (first >=48 && first <= 57) {
         char command_value[9];
         for(int i=0; i<8; i++) {
@@ -291,7 +291,7 @@ void ram_write(engine *engine, char payload[10]) {
         itoa(helper->value, out, 10);
         strcpy(to_e, out);
         attach_to_end(output_roll, "", to_e, "");
-        printf("Zapisano %s w komorce nr %d outputu!/n", out, get_end_of_tape(output_roll)->command_id);
+        printf("Zapisano %s w komorce nr %d outputu!\n", out, get_end_of_tape(output_roll)->command_id);
     } else {
         printf("Wrong argument for function WRITE!\n");
         return;
