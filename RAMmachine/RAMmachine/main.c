@@ -13,8 +13,6 @@
 #include "ramfunctions.c"
 #include "menufunctions.c"
 
-//Dodawanie kolejnych komorek az do id zbugowane!
-
 int main(int argc, char *argv[]) {
     exe *main_tape = create("LOAD", "0", "");
     memory_cell *battery = create_new_cell(NULL);
@@ -41,9 +39,10 @@ int main(int argc, char *argv[]) {
         }
         printf(" - 2 - Dopisz polecenie do tasmy\n");
         printf(" - 3 - Usun ostatnie polecenie z tasmy\n");
-        printf(" - 4 - Wypisz wszystkie polecenia z tasmy wejsciowej\n");
+        printf(" - 4 - Wypisz wszystkie polecenia z tasmy polecen\n");
         printf(" - 5 - Wyczysc pamiec - usuwa wszystkie polecenia z tasmy i komorki pamieci!\n");
-        printf(" - 6 - Wypisz zawartosc tasmy wynikowej!\n");
+        printf(" - 6 - Wypisz zawartosc tasmy wejsciowej!\n");
+        printf(" - 7 - Wypisz zawartosc tasmy wynikowej!\n");
         printf("---------------------------------------------------------------------------------\n");
         printf("Wybierz opcje by kontynuowac: ");
         scanf("%d", &choice);
@@ -61,6 +60,8 @@ int main(int argc, char *argv[]) {
             }
             break;
         case 2:
+            printf("Mozliwe komendy:\n");
+            printf("HALT, READ, LOAD, STORE, ADD, SUB, MULT, DIV, JUMP, JGTZ, JZERO, WRITE\n");
             printf("Wpisz komende (bez argumentu!): ");
             char command[6];
             char payload[10];
@@ -90,22 +91,34 @@ int main(int argc, char *argv[]) {
                 printf("Pelne polecenie: %s %s , marker %s , zapisuje na tasmie!\n", command, payload, marker);
                 if(strcasecmp(command, "LOAD") == 0) {
                     attach_to_end(main_tape, "LOAD", payload, marker);
+                    printf("Dopisano LOAD do tasmy!\n");
                 } else if(strcasecmp(command, "STORE") == 0) {
                     attach_to_end(main_tape, "STORE", payload, marker);
+                    printf("Dopisano STORE do tasmy!\n");
                 } else if(strcasecmp(command, "ADD") == 0) {
                     attach_to_end(main_tape, "ADD", payload, marker);
+                    printf("Dopisano ADD do tasmy!\n");
                 } else if(strcasecmp(command, "SUB") == 0) {
                     attach_to_end(main_tape, "SUB", payload, marker);
+                    printf("Dopisano SUB do tasmy!\n");
                 } else if(strcasecmp(command, "MULT") == 0) {
                     attach_to_end(main_tape, "MULT", payload, marker);
+                    printf("Dopisano MULT do tasmy!\n");
                 } else if(strcasecmp(command, "DIV") == 0) {
                     attach_to_end(main_tape, "DIV", payload, marker);
+                    printf("Dopisano DIV do tasmy!\n");
                 } else if(strcasecmp(command, "JUMP") == 0) {
                     attach_to_end(main_tape, "JUMP", payload, marker);
+                    printf("Dopisano JUMP do tasmy\n");
                 } else if(strcasecmp(command, "JZERO") == 0) {
                     attach_to_end(main_tape, "JZERO", payload, marker);
+                    printf("Dopisano JZERO do tasmy\n");
                 } else if(strcasecmp(command, "WRITE") == 0) {
                     attach_to_end(main_tape, "WRITE", payload, marker);
+                    printf("Dopisano WRITE do tasmy\n");
+                } else if(strcasecmp(command, "JGTZ") == 0) {
+                    attach_to_end(main_tape, "JGTZ", payload, marker);
+                    printf("Dopisano JGTZ do tasmy\n");
                 } else {
                     printf("Nie rozpoznano polecenia! Sprobuj jeszcze raz!\n");
                 }
@@ -128,6 +141,11 @@ int main(int argc, char *argv[]) {
             printf("Wyczyszczono pamiec!\n");
             break;
         case 6:
+            printf("Wypisywanie inputu!\n");
+            print_all_exes(input, true);
+            printf("Koniec inputu!\n");
+            break;
+        case 7:
             printf("Wypisywanie outputu!\n");
             print_all_exes(output, true);
             printf("Koniec outputu!\n");
