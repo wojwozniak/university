@@ -39,7 +39,6 @@ void ram_store(engine *engine, char payload[10]) {
         memory_cell *help = get_cell_with_id(engine->battery, command);
         help->value = stored;
         printf("Zapisano liczbe %d w komorce nr %d\n", stored, command);
-        return;
     } else if (first == 94) {
         char command_value[9];
         for(int i=0; i<8; i++) {
