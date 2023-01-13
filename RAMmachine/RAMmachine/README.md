@@ -6,7 +6,7 @@ Link podany w opisie projektu nie działa, skorzystałem więc z [tego](http://w
 
 ## Założenia:
 - Nietknięte wcześniej komórki mają wartość 0
-- Operacje na oddalonych komórkach inicjalizują wszystkie komórki po drodze (symuluję że jest to taśma, musi przejść przez mmaszynę)
+- Operacje na oddalonych komórkach inicjalizują wszystkie komórki po drodze (symuluję że jest to taśma, musi przejść przez maszynę)
 - Pozwalam operacji WRITE wybranie w której komórce zapisać output
 - Plik inputu - liczby calkowite oddzielone enterem
 
