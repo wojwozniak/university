@@ -164,6 +164,9 @@ int main(int argc, char *argv[]) {
                 break;
             }
             if(main_engine->turning_off) {
+                printf("Wypisywanie outputu!\n");
+                print_all_exes(output, true);
+                printf("Koniec outputu!\n");
                 return 0;
             }
         }
