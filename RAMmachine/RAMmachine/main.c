@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
     engine *main_engine = create_engine(battery, output, main_tape, input);
     int choice;
     bool status;
+    bool choice2;
     while(1) {
         status = is_engine_on(main_engine);
         printf("=================================================================================\n");
@@ -41,9 +42,10 @@ int main(int argc, char *argv[]) {
         printf(" - 3 - Usun ostatnie polecenie z tasmy\n");
         printf(" - 4 - Wypisz wszystkie polecenia z tasmy polecen\n");
         printf(" - 5 - Wyczysc pamiec - usuwa wszystkie polecenia z tasmy i komorki pamieci!\n");
-        printf(" - 6 - Wypisz zawartosc tasmy wejsciowej!\n");
-        printf(" - 7 - Wypisz zawartosc tasmy wynikowej!\n");
+        printf(" - 6 - Wypisz zawartosc tasmy wejsciowej do konsoli\n");
+        printf(" - 7 - Wypisz zawartosc tasmy wynikowej do konsoli/pliku\n");
         printf(" - 8 - Wypisz zawartosc wszystkich zaincjalizowanych komorek pamieci!\n");
+        printf(" - 9 - Wczytaj tasme inputu z pliku\n");
         printf("---------------------------------------------------------------------------------\n");
         printf("Wybierz opcje by kontynuowac: ");
         scanf("%d", &choice);
@@ -70,7 +72,6 @@ int main(int argc, char *argv[]) {
             fflush(stdin);
             scanf("%s", &command);
             printf("Podano polecenie %s\n", command);
-            bool choice2;
             printf("Czy chcesz podac marker?\n");
             printf("0 - nie\n1 - tak\nWybor: ");
             scanf("%d", &choice2);
@@ -151,14 +152,60 @@ int main(int argc, char *argv[]) {
             printf("Koniec inputu!\n");
             break;
         case 7:
-            printf("Wypisywanie outputu!\n");
-            print_all_exes(output, true);
-            printf("Koniec outputu!\n");
+            printf("Chcesz wypisac output do konsoli czy do pliku?\n");
+            printf("0 - konsola\n1 - plik\n");
+            printf("Twoj wybor: ");
+            scanf("%d", &choice2);
+            if(choice2) {
+                char xyz[100];
+                printf("Podaj nazwe pliku (w postaci 'nazwa.txt') do ktorego chcesz zapisac output: ");
+                scanf("%s", &xyz);
+                bool abc = write_output(xyz, output);
+                if(!abc) {
+                    printf("Zapisano poprawnie!\n");
+                } else {
+                    printf("Nie udalo sie zapisac!\n");
+                }
+            } else {
+                printf("Wypisywanie outputu!\n");
+                print_all_exes(output, true);
+                printf("Koniec outputu!\n");
+            }
             break;
         case 8:
             printf("Wypisuje zawartosc wszystkich zainicjalizowanych komorek!\n");
             print_all_cells(battery);
             printf("Koniec!\n");
+            break;
+        case 9:
+            printf("Chcesz podac nazwe pliku czy wczytac z argumentow wywolania?\n");
+            printf("0 - argumenty\n1 - podanie nazwy\n");
+            printf("Twoj wybor: ");
+            scanf("%d", &choice2);
+            if(choice2) {
+                char filename[100];
+                printf("Podaj nazwe pliku w postaci 'nazwa.txt'\n");
+                printf("Wpisz tutaj: ");
+                fflush(stdin);
+                scanf("%s", &filename);
+                printf("Probuje znalezc plik!\n");
+                readfile(filename, input);
+            } else {
+                if(checkIfArgv(argc)) {
+                    printf("Probuje znalezc pliki z argumentow!\n");
+                    for(int i=1; i<argc; i++) {
+                        bool x = readfile(argv[i], input);
+                        if(x == 1) {
+                            printf("Error reading file!\n");
+                        }
+                    }
+                } else {
+                    printf("Nie ma argumentow wywolania!\n");
+                }
+            }
+            printf("Aktualna zawartosc tasmy inputu: \n");
+            print_all_exes(input, true);
+            printf("Koniec inputu!\n");
             break;
         default:
             printf("Nie rozpoznano polecenia - sprobuj podac je ponownie!\n");
@@ -176,7 +223,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
             if(main_engine->turning_off) {
-                printf("Maszyna sie wylacza wiec wypisuje output!\n");
+                printf("Maszyna sie wylacza, wypisuje output!\n");
                 print_all_exes(output, true);
                 printf("Koniec outputu!\n");
                 return 0;
