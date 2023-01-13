@@ -166,7 +166,9 @@ int main(int argc, char *argv[]) {
         while(status) {
             if(main_engine->amount_of_exes < last_id) {
                 printf("Silnik wykonuje polecenie nr %d\n", main_engine->amount_of_exes+1);
+                printf("---------------------------------------------------------------------------------\n");
                 engine_cycle(main_engine, main_tape);
+                printf("---------------------------------------------------------------------------------\n");
             } else {
                 break;
             }
