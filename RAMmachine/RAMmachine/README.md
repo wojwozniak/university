@@ -9,8 +9,7 @@ Wykorzystuję głównie listy dwukierunkowe. Możnaby bez problemu wykorzystać 
 ## Założenia:
 - Nietknięte wcześniej komórki mają wartość 0
 - Operacje na oddalonych komórkach inicjalizują wszystkie komórki po drodze (symuluję że jest to taśma, musi przejść przez maszynę)
-- Pozwalam operacji WRITE wybranie w której komórce zapisać output
-- Plik inputu - liczby calkowite oddzielone enterem
+- Plik inputu i outputu - liczby calkowite oddzielone newline
 
 ## Kod dzieli się on na kilka głównych części
 - Główne menu (main)
