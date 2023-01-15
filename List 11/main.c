@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct node *pnode;
 typedef struct node {
@@ -65,7 +66,7 @@ int tree_depth(pnode root) {
 // Task 4
 void print_positive_sorted(pnode root) {
     if(root == NULL) {
-        return 0;
+        return;
     } else {
         print_positive_sorted(root->left);
         if(root->val > 0) {
@@ -74,6 +75,26 @@ void print_positive_sorted(pnode root) {
         print_positive_sorted(root->right);
     }
     return;
+}
+
+// Task 5
+bool is_tree_bst(pnode root) {
+    int count = 0;
+    if(root == NULL) {
+        return true;
+    } else {
+        if(root->left == NULL || root->left->val < root->val) {
+            count += 1;
+        }
+        if(root->right == NULL || root->val < root->right->val) {
+            count += 1;
+        }
+        count += is_tree_bst(root->left);
+        count += is_tree_bst(root->right);
+    }
+    if(count == 4) {
+        return true;
+    } else return false;
 }
 
 
@@ -96,6 +117,9 @@ int main() {
 
     //Test for 4
     //print_positive_sorted(root);
+
+    //Test for 5
+    //printf("%d", is_tree_bst(root));
 
     return 0;
 }
