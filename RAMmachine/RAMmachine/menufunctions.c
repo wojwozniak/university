@@ -37,6 +37,7 @@ bool write_output(char filename[100], exe *output_tape) {
     } else {
         while(output_tape!=NULL) {
             fprintf(textfile, output_tape->payload);
+            fprintf(textfile, "\n");
             output_tape = output_tape->next;
         }
         fclose(textfile);
