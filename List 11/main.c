@@ -62,22 +62,40 @@ int tree_depth(pnode root) {
     }
 }
 
+// Task 4
+void print_positive_sorted(pnode root) {
+    if(root == NULL) {
+        return 0;
+    } else {
+        print_positive_sorted(root->left);
+        if(root->val > 0) {
+            printf("%d\n", root->val);
+        }
+        print_positive_sorted(root->right);
+    }
+    return;
+}
 
 
 int main() {
     // Setup for tests
-    pnode aaa = utworz(1);
-    aaa->left = utworz(20);
-    aaa->right = utworz(10);
-    aaa->right->left = utworz(12);
-    //aaa->right->left->left = utworz(12);
+    pnode root = utworz(20);
+    root->left = utworz(10);
+    root->right = utworz(30);
+    root->left->left = utworz(5);
+    root->left->left->left = utworz(3);
+    root->left->left->left->left = utworz(-2);
+    root->right->left = utworz(25);
 
 
     // Test for 2
-    //printf("%d", tree_count(aaa));
+    //printf("%d", tree_count(root));
 
     //Test for 3
-    //printf("%d", tree_depth(aaa));
+    //printf("%d", tree_depth(root));
+
+    //Test for 4
+    //print_positive_sorted(root);
 
     return 0;
 }
