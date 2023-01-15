@@ -148,6 +148,8 @@ void insert_no_rec(pnode root, int val) {
     }
 }
 
+//# TODO - tasks 6,8
+
 int main() {
     // Setup for tests
     pnode root = utworz(20);
