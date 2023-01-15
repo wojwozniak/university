@@ -47,17 +47,37 @@ int tree_count(pnode root) {
     return output;
 }
 
+//Task 3
+int tree_depth(pnode root) {
+    if(root == NULL) {
+        return 0;
+    } else {
+        int left_depth = tree_depth(root->left);
+        int right_depth = tree_depth(root->right);
+        if(left_depth > right_depth) {
+            return left_depth + 1;
+        } else {
+            return right_depth + 1;
+        }
+    }
+}
+
 
 
 int main() {
-    /* Tests for 2
+    // Setup for tests
     pnode aaa = utworz(1);
     aaa->left = utworz(20);
     aaa->right = utworz(10);
     aaa->right->left = utworz(12);
-    printf("%d\n", tree_count(aaa));
-    aaa->right->right = utworz(12);
-    printf("%d", tree_count(aaa));
-    */
+    //aaa->right->left->left = utworz(12);
+
+
+    // Test for 2
+    //printf("%d", tree_count(aaa));
+
+    //Test for 3
+    //printf("%d", tree_depth(aaa));
+
     return 0;
 }
