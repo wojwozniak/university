@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-// 1-9 WORKING, 10 BUGGED
-
 typedef struct elem {
     int val;
     struct elem *next;
