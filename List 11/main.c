@@ -97,6 +97,56 @@ bool is_tree_bst(pnode root) {
     } else return false;
 }
 
+// Task 6
+/* Wystarczy dodac wskaznik z najmniejszej wartosci
+drugiego drzewa do najwiekszej pierwszego, a potem
+obrocic wskazniki od najwiekszej wartosci pierszego
+drzewa do jego korzenia
+*/
+/*
+NOT WORKING YET
+void merge_bsts(pnode root, pnode root2) {
+    if(root == NULL || root2 == NULL) {
+        return;
+    }
+    pnode largest_from_second = root2;
+    while(largest_from_second->left != NULL) {
+        largest_from_second = largest_from_second->left;
+    }
+    pnode traverse_first = root;
+    pnode copy_right = traverse_first->right;
+    while(traverse_first->right != NULL) {
+
+        copy_right = traverse_first->right;
+        traverse_first -> right->
+    }
+}
+*/
+
+// Task 7
+void insert_no_rec(pnode root, int val) {
+    pnode helper = root;
+    pnode last = NULL;
+    while(helper != NULL) {
+        last = helper;
+        if(val < helper->val) {
+            helper = helper->left;
+        } else if (val > helper->val) {
+            helper = helper->right;
+        } else {
+            printf("Juz tu jest!\n");
+            return;
+        }
+    }
+    pnode a = utworz(val);
+    if(val < last->val) {
+        last->left = a;
+        printf("Dodano na lewo od %d\n", last->val);
+    } else if (val > last->val) {
+        last->right = a;
+        printf("Dodano na prawo od %d\n", last->val);
+    }
+}
 
 int main() {
     // Setup for tests
@@ -120,6 +170,11 @@ int main() {
 
     //Test for 5
     //printf("%d", is_tree_bst(root));
+
+    // Test for 7
+    //insert_no_rec(root, 20);
+    //insert_no_rec(root, 21);
+    //insert_no_rec(root, -1);
 
     return 0;
 }
