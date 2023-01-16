@@ -72,8 +72,8 @@ typedef struct elem {
  //Task 5
  typedef struct relem {
     int val;
-    struct relem *next;
-    struct relem *tail;
+    struct elem *next;
+    struct elem *tail;
  } relem;
 
 relem *utworz_relem(int wart) {
@@ -85,30 +85,35 @@ relem *utworz_relem(int wart) {
  };
 
  void attach_relem(relem *root, int val) {
-     relem *tailptr = root->tail;
-     relem *new_el = utworz_relem(val);
+     elem *tailptr = root->tail;
+     elem *new_el = utworz(val);
      tailptr->next = new_el;
      root->tail = new_el;
  }
 
  void connect_relems(relem *root, relem *root2) {
-     root->tail->next = root2;
+     elem *new_root2 = utworz(root2->val);
+     new_root2->next = root2->next;
+     root->tail->next = new_root2;
      root->tail = root2->tail;
-     root2->tail = NULL;
+     free(root2);
  }
 
  void add_to_front(relem *root, int val) {
-     relem *rootptr = root;
-     root = utworz_relem(val);
-     root->next = rootptr;
-     root->tail = rootptr->tail;
-     rootptr->tail = NULL;
+     relem *new_root = utworz_relem(val);
+     elem *copy_old_root = utworz(root->val);
+     copy_old_root->next = root->next;
+     new_root->next = copy_old_root;
+     new_root->tail = root->tail;
+     root = new_root;
  }
 
  void delete_from_front(relem *root) {
      relem *trash = root;
-     root = root->next;
-     root->tail = trash->tail;
+     relem *new_root = utworz_relem(root->next->val);
+     new_root->next = root->next->next;
+     new_root->tail = root->tail;
+     root = new_root;
      free(trash);
  }
 
