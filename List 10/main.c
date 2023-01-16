@@ -70,15 +70,45 @@ typedef struct elem {
  }
 
  //Task 5
- void add_to_front(elem *root, int val) {
-     elem *rootptr = root;
-     root = utworz(val);
-     root->next = rootptr;
+ typedef struct relem {
+    int val;
+    struct relem *next;
+    struct relem *tail;
+ } relem;
+
+relem *utworz_relem(int wart) {
+     relem *fin = malloc(sizeof(relem));
+     fin->val = wart;
+     fin->next = NULL;
+     fin->tail = NULL;
+     return fin;
+ };
+
+ void attach_relem(relem *root, int val) {
+     relem *tailptr = root->tail;
+     relem *new_el = utworz_relem(val);
+     tailptr->next = new_el;
+     root->tail = new_el;
  }
 
- void delete_from_front(elem *root) {
-     elem *trash = root;
+ void connect_relems(relem *root, relem *root2) {
+     root->tail->next = root2;
+     root->tail = root2->tail;
+     root2->tail = NULL;
+ }
+
+ void add_to_front(relem *root, int val) {
+     relem *rootptr = root;
+     root = utworz_relem(val);
+     root->next = rootptr;
+     root->tail = rootptr->tail;
+     rootptr->tail = NULL;
+ }
+
+ void delete_from_front(relem *root) {
+     relem *trash = root;
      root = root->next;
+     root->tail = trash->tail;
      free(trash);
  }
 
