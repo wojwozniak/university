@@ -98,30 +98,16 @@ bool is_tree_bst(pnode root) {
 }
 
 // Task 6
-/* Wystarczy dodac wskaznik z najmniejszej wartosci
-drugiego drzewa do najwiekszej pierwszego, a potem
-obrocic wskazniki od najwiekszej wartosci pierszego
-drzewa do jego korzenia
-*/
-/*
-NOT WORKING YET
 void merge_bsts(pnode root, pnode root2) {
     if(root == NULL || root2 == NULL) {
         return;
     }
-    pnode largest_from_second = root2;
-    while(largest_from_second->left != NULL) {
-        largest_from_second = largest_from_second->left;
+    while(root->right != NULL) {
+        root = root->right;
     }
-    pnode traverse_first = root;
-    pnode copy_right = traverse_first->right;
-    while(traverse_first->right != NULL) {
-
-        copy_right = traverse_first->right;
-        traverse_first -> right->
-    }
+    root->right = root2;
+    return;
 }
-*/
 
 // Task 7
 void insert_no_rec(pnode root, int val) {
@@ -148,7 +134,22 @@ void insert_no_rec(pnode root, int val) {
     }
 }
 
-//# TODO - tasks 6,8
+//Task 8
+pnode rotate_left_new_root(pnode root) {
+    pnode y;
+    y = root->left;
+    root->left = y->right;
+    y->right = root;
+    return y;
+}
+
+pnode rotate_right_new_root(pnode root) {
+    pnode y;
+    y = root->right;
+    root->right = y->left;
+    y->left = root;
+    return y;
+}
 
 int main() {
     // Setup for tests
