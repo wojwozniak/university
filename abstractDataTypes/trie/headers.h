@@ -10,4 +10,4 @@ void print(node *root);
 int searcho(node *root, char *text);
 void callsearch(node *root, char *text);
 void del(node *root);
-int parsefile(char* text, node *root);
+int parsefile(char text[], node *root);

@@ -81,7 +81,8 @@ void handleMenu(engine *main_engine, int argc, char *argv[]) {
     switch(choice) {
     case 0:
         printf("Wylaczam program!\n");
-        return 0;
+        turn_off_engine(main_engine);
+        break;
     case 1:
         if(status) {
             turn_off_engine(main_engine);

@@ -15,7 +15,7 @@ node *create() {
     return newnode;
 }
 
-int inserto(node **root, char *text) {
+int inserto(node **rootptr, char *text) {
     if(*root == NULL) {
         *root = create();
     }
@@ -88,10 +88,9 @@ void del(node *root) {
     free(root);
 }
 
-int parsefile(char* text, node *root) {
+int parsefile(char text[], node *root) {
     FILE *textfile = fopen(text, "r");
     if(textfile == NULL) {
-        printf("ERROR! Nie mozna otworzyc pliku %s!\n", text);
         return 1;
     }
     char x[1024];

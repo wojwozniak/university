@@ -9,10 +9,12 @@ int main(int argc, char *argv[]) {
     node *root = NULL;
 
     if(argc <= 2) {
+        printf("Brak argumentow!\n");
         return 1;
     } else {
         for(int i=1; i<argc; i++) {
-            int x = parsefile(argv[i], &root);
+            printf("%s", argv[i]);
+            int x = parsefile(argv[i], root);
             if(x == 1) {
                 printf("ERROR! Konczenie dzialania programu!\n");
                 return 1;
@@ -30,7 +32,7 @@ int main(int argc, char *argv[]) {
             print(root);
         } else if (choice == 2  || choice == 3) {
             char a[64];
-            memset(a, '/0', sizeof(a));
+            memset(a, '\0', sizeof(a));
             printf("Podaj slowo: ");
             scanf("%s", &a);
             if(choice == 2) {
@@ -42,5 +44,6 @@ int main(int argc, char *argv[]) {
             printf("Nie rozpoznano polecenia. Sprobuj jeszcze raz!\n");
         }
     }
+    system("pause");
     return 0;
 }

@@ -52,7 +52,7 @@ void print_graph(graph *g){
     for(int from=0; from < g->numnodes; from++) {
         for(int to=0; to < g->numnodes; to++) {
             if(g->edges[from][to]) {
-                printf("%d -> %d\n", from, to);
+                printf("%d <-> %d\n", from, to);
             }
         }
     }
@@ -67,8 +67,11 @@ bool add_edge(graph *g, int from_node, int to_node) {
     if(has_edge(g, from_node, to_node)) {
         return false;
     }
-    g->edges[from_node][to_node] = true;
-    return true;
+    if(from_node != to_node) {
+       g->edges[from_node][to_node] = true;
+        return true;
+    }
+    return false;
 }
 
 bool has_edge(graph *g, int from_node, int to_node) {
@@ -121,5 +124,5 @@ int intergrity(graph *g) {
             return_value++;
         }
     }
-    return return_value;
+    return return_value-1;
 }
