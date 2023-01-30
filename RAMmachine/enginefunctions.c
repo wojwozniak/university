@@ -104,3 +104,8 @@ void engine_cycle(engine *engine, exe *tape) {
     engine->amount_of_exes+=1;
     return;
 }
+
+// Turning app off
+void end_eng(engine *engine) {
+    engine->turning_off = true;
+}

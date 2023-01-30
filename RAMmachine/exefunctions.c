@@ -68,6 +68,7 @@ void *pop_last_exe(exe *tape) {
     exe *new_end_of_tape = end_of_tape->prev;
     new_end_of_tape->next = NULL;
     free(end_of_tape);
+    return;
 }
 
 //Print out entire tape

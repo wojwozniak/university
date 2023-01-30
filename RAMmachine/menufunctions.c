@@ -1,3 +1,4 @@
+// Funkcja czyszczaca cala pamiec (akumulator, komorki pamieci, zapisane polecenia)
 void clearMemory(exe *tape, memory_cell *battery) {
     while(battery->next != NULL) {
         pop_last_cell(battery);
@@ -8,6 +9,7 @@ void clearMemory(exe *tape, memory_cell *battery) {
     return;
 }
 
+// Checking how many arguments you need
 int checkIfArgv(int argc) {
     if(argc <= 2) {
         return 0;
@@ -16,6 +18,7 @@ int checkIfArgv(int argc) {
     }
 }
 
+// Reading text file
 bool readfile(char filename[100], exe *input_tape) {
     FILE *textfile = fopen(filename, "r");
     if(textfile == NULL) {
@@ -29,6 +32,7 @@ bool readfile(char filename[100], exe *input_tape) {
     return 0;
 }
 
+// Writing output
 bool write_output(char filename[100], exe *output_tape) {
     FILE *textfile = fopen(filename, "w");
     if(textfile == NULL) {
@@ -45,6 +49,7 @@ bool write_output(char filename[100], exe *output_tape) {
     return 0;
 }
 
+// Main menu, choosing what to do
 void handleMenu(engine *main_engine, int argc, char *argv[]) {
     int choice;
     bool choice2;
@@ -81,7 +86,7 @@ void handleMenu(engine *main_engine, int argc, char *argv[]) {
     switch(choice) {
     case 0:
         printf("Wylaczam program!\n");
-        turn_off_engine(main_engine);
+        end_eng(main_engine);
         break;
     case 1:
         if(status) {

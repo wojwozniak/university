@@ -35,6 +35,7 @@ memory_cell *create_new_cell(memory_cell *battery) {
     return output;
 }
 
+// Creating memory cells up to given id, then returning last one
 memory_cell *create_up_to_id_and_return_cell(memory_cell *battery, unsigned int id) {
     memory_cell *current_last = get_last_cell(battery);
     unsigned int current_last_id = current_last->id;
@@ -49,6 +50,7 @@ memory_cell *create_up_to_id_and_return_cell(memory_cell *battery, unsigned int 
     return output;
 }
 
+// Getting cell with id (calling create when lacking)
 memory_cell *get_cell_with_id(memory_cell *battery, unsigned int id) {
     memory_cell *output;
     if(battery->id == id) {
@@ -60,6 +62,7 @@ memory_cell *get_cell_with_id(memory_cell *battery, unsigned int id) {
     get_cell_with_id(battery->next, id);
 }
 
+// Deleting last cell
 void pop_last_cell(memory_cell *battery) {
     if(battery == NULL) {
         return;
@@ -69,6 +72,7 @@ void pop_last_cell(memory_cell *battery) {
     pop_last_cell(battery->next);
 }
 
+// Printing all cells
 void print_all_cells(memory_cell *battery) {
     if(battery == NULL) {
         return;

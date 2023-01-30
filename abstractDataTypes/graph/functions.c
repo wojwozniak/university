@@ -124,5 +124,5 @@ int intergrity(graph *g) {
             return_value++;
         }
     }
-    return return_value-1;
+    return return_value;
 }
