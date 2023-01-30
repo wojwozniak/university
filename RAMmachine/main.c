@@ -21,6 +21,12 @@ int main(int argc, char *argv[]) {
     engine *main_engine = create_engine(battery, output, main_tape, input);
     while(1) {
         handleMenu(main_engine, argc, argv);
+        if(main_engine->turning_off) {
+            printf("Maszyna sie wylacza, wypisuje output!\n");
+            print_all_exes(output, true);
+            printf("Koniec outputu!\n");
+            return 0;
+        }
         unsigned int last_id = get_end_of_tape(main_tape)->command_id;
         while(is_engine_on(main_engine)) {
             if(main_engine->amount_of_exes < last_id) {
@@ -30,12 +36,6 @@ int main(int argc, char *argv[]) {
                 printf("---------------------------------------------------------------------------------\n");
             } else {
                 break;
-            }
-            if(main_engine->turning_off) {
-                printf("Maszyna sie wylacza, wypisuje output!\n");
-                print_all_exes(output, true);
-                printf("Koniec outputu!\n");
-                return 0;
             }
         }
     }
