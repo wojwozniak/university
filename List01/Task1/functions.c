@@ -83,8 +83,11 @@ Figura *new_square(float a, float b, float c, float d, float e, float f) {
         return NULL;
     }
     if((a!=b && a!=c && b!=c) || (d!=e && d!=f && e!=f)) {
-        printf("Figura nie jest kwadratem!\n");
+        printf("Figura nie jest prostokatem!\n");
         return NULL;
+    }
+    if(!( (dl_boku(a,b,d,e) == dl_boku(a,c,d,f)) && dl_boku(b,c,e,f) == dl_boku(a,c,d,f) )) {
+        printf("Figura nie jest kwadratem!\n");
     }
     Figura *output = setup_fig();
     output->typfig = 2;
@@ -131,4 +134,26 @@ float pole(Figura *f) {
             printf("Blad!\n");
             return 0;
     }
+}
+
+void przesun(Figura *f, float x, float y) {
+    switch(f->typfig) {
+        case 0:
+            f->b+=x;
+            f->c+=y;
+            break;
+        case 1:
+        case 2:
+            f->a+=x;
+            f->b+=x;
+            f->c+=x;
+            f->d+=y;
+            f->e+=y;
+            f->f+=y;
+            break;
+        default:
+            printf("Blad!\n");
+            break;
+    }
+    return;
 }

@@ -13,3 +13,4 @@ Figura *new_circle(float r, float x, float y);
 Figura *new_triangle(float a, float b, float c, float d, float e, float f);
 Figura *new_square(float a, float b, float c, float d, float e, float f);
 float pole(Figura *f);
+void przesun(Figura *f, float x, float y)
