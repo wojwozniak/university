@@ -95,3 +95,39 @@ Figura *new_square(float a, float b, float c, float d, float e, float f) {
     output->f = f;
     return output;
 }
+
+float pole(Figura *f) {
+    switch(f->typfig) {
+        //Pole kola: PI * r^2
+        case 0:
+            return M_PI*f->a*f->a;
+        // Pole trojkata - wzor z polowa obwodu
+        case 1:
+            // Printf aby uniknac bledu przy deklaracji zaraz po case
+            printf("");
+            float x = dl_boku(f->a, f->b, f->d, f->e);
+            float y = dl_boku(f->a, f->c, f->d, f->f);
+            float z = dl_boku(f->b, f->c, f->e, f->f);
+            float p = (x+y+z)/2;
+            return sqrtf(p*(p-x)*(p-y)*(p-z));
+        // Pole kwadratu - bok * bok
+        case 2:
+            printf("");
+            /* Obliczamy dlugosc boku kwadratu korzystajac
+            z faktu ze boki sa rownolegle do osi ukladu wsporzednych */
+            float bok;
+            if(f->a == f->b) {
+                bok = fabs(f->e - f->d);
+            } else if (f->a == f->c) {
+                bok = fabs(f->f - f->d);
+            } else if (f->d == f->e) {
+                bok = fabs(f->b - f->a);
+            } else {
+                bok = fabs(f->c - f->a);
+            }
+            return bok*bok;
+        default:
+            printf("Blad!\n");
+            return 0;
+    }
+}
