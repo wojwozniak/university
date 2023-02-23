@@ -36,7 +36,7 @@ Figura *setup_fig() {
 
 // Funkcja liczaca dlugosc boku ze wsporzednych
 float dl_boku(float x1, float x2, float y1, float y2) {
-    return sqrtf(fabs(fabs(x2-x1)*fabs(x2-x1) - fabs(y2-y1)*fabs(y2-y1)));
+    return sqrtf(fabs(fabs(x2-x1)*fabs(x2-x1) + fabs(y2-y1)*fabs(y2-y1)));
 }
 
 // Funkcja tworzaca nowe kolo
@@ -184,7 +184,7 @@ void show(Figura *f) {
             break;
         case 1:
             printf("Trojkat\n");
-            printf("Pole: %f\n, Wsporzedne wierzcholkow: %f,%f %f,%f %f,%f\n", pole(f), f->a,f->d,f->b,f->e,f->c,f->f);
+            printf("Pole: %f\nWsporzedne wierzcholkow: %f,%f %f,%f %f,%f\n", pole(f), f->a,f->d,f->b,f->e,f->c,f->f);
             break;
         case 2:
             printf("Kwadrat\n");
@@ -216,7 +216,7 @@ void show(Figura *f) {
                     h = f->f;
                 }
             }
-            printf("Pole kwadratu wynosi %f, dlugosc boku %f\nWsporzedne: %f,%f %f,%f %f,%f %f,%f", pole(f), i,f->a,f->d,f->b,f->e,f->c,f->f,g,h);
+            printf("Pole kwadratu wynosi %f, dlugosc boku %f\nWsporzedne: %f,%f %f,%f %f,%f %f,%f\n", pole(f), i,f->a,f->d,f->b,f->e,f->c,f->f,g,h);
             break;
         default:
             printf("Niezdefiniowana!\n");
