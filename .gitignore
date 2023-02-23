@@ -565,3 +565,4 @@ $RECYCLE.BIN/
 *.lnk
 
 *.cbp
+*.depend
