@@ -31,6 +31,7 @@ Figura *setup_fig() {
         output->e = 0;
         output->f = 0;
     }
+    return output;
 }
 
 // Funkcja liczaca dlugosc boku ze wsporzednych
