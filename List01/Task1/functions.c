@@ -208,3 +208,11 @@ void show(Figura *f) {
     }
     return;
 }
+
+float sumapol(Figura* f[], int size) {
+    float output = 0.0;
+    for(int i=0; i<size; i++) {
+        output+=pole(f[i]);
+    }
+    return output;
+}

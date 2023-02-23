@@ -15,3 +15,4 @@ Figura *new_square(float a, float b, float c, float d, float e, float f);
 float pole(Figura *f);
 void przesun(Figura *f, float x, float y);
 void show(Figura *f);
+float sumapol(Figura* f[], int size);
