@@ -36,7 +36,7 @@ Figura *setup_fig() {
 
 // Funkcja liczaca dlugosc boku ze wsporzednych
 float dl_boku(float x1, float x2, float y1, float y2) {
-    return sqrtf((x2-x1)*(x2-x1) - (y2-y1)*(y2-y1));
+    return sqrtf(fabs(fabs(x2-x1)*fabs(x2-x1) - fabs(y2-y1)*fabs(y2-y1)));
 }
 
 // Funkcja tworzaca nowe kolo
@@ -87,7 +87,7 @@ Figura *new_square(float a, float b, float c, float d, float e, float f) {
         printf("Figura nie jest prostokatem!\n");
         return NULL;
     }
-    if(!( (dl_boku(a,b,d,e) == dl_boku(a,c,d,f)) && (dl_boku(b,c,e,f) == dl_boku(a,c,d,f)) )) {
+    if((dl_boku(a,b,d,e) != dl_boku(a,c,d,f)) && (dl_boku(b,c,e,f) != dl_boku(a,c,d,f))) {
         printf("Figura nie jest kwadratem!\n");
         return NULL;
     }
