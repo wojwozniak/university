@@ -11,5 +11,7 @@
 */
 
 int main() {
+    Figura *f1 = new_square(0,4,0,0,0,6);
+    show(f1);
     return 0;
 }

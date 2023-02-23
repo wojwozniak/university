@@ -55,7 +55,7 @@ Figura *new_circle(float r, float x, float y) {
 
 // Funkcja tworzaca trojkat
 Figura *new_triangle(float a, float b, float c, float d, float e, float f) {
-    if( a==b || a==c || b==c || d==e || d==f || e==f ) {
+    if( (a==b && d==e) || (a==c && d==f) || (b==c && e==f) ) {
         printf("Wsporzedne wierzcholkow musza byc od siebie rozne!\n");
         return NULL;
     }
@@ -78,7 +78,7 @@ Figura *new_triangle(float a, float b, float c, float d, float e, float f) {
 }
 
 Figura *new_square(float a, float b, float c, float d, float e, float f) {
-    if( a==b || a==c || b==c || d==e || d==f || e==f ) {
+    if( (a==b && d==e) || (a==c && d==f) || (b==c && e==f) ) {
         printf("Wsporzedne wierzcholkow musza byc od siebie rozne!\n");
         return NULL;
     }
