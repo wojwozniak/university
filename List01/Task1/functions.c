@@ -23,7 +23,7 @@ typedef struct Figura {
 Figura *setup_fig() {
     Figura *output = malloc(sizeof(Figura));
     if(output != NULL) {
-        output->typfig = 0;
+        output->typfig = 2137;
         output->a = 0;
         output->b = 0;
         output->c = 0;
@@ -47,6 +47,7 @@ Figura *new_circle(float r, float x, float y) {
         return NULL;
     }
     Figura *output = setup_fig();
+    output->typfig = 0;
     output->a = r;
     output->b = x;
     output->c = y;
@@ -86,8 +87,9 @@ Figura *new_square(float a, float b, float c, float d, float e, float f) {
         printf("Figura nie jest prostokatem!\n");
         return NULL;
     }
-    if(!( (dl_boku(a,b,d,e) == dl_boku(a,c,d,f)) && dl_boku(b,c,e,f) == dl_boku(a,c,d,f) )) {
+    if(!( (dl_boku(a,b,d,e) == dl_boku(a,c,d,f)) && (dl_boku(b,c,e,f) == dl_boku(a,c,d,f)) )) {
         printf("Figura nie jest kwadratem!\n");
+        return NULL;
     }
     Figura *output = setup_fig();
     output->typfig = 2;
@@ -101,10 +103,15 @@ Figura *new_square(float a, float b, float c, float d, float e, float f) {
 }
 
 float pole(Figura *f) {
+    if(f == NULL) {
+        printf("Figura nie istnieje, nie ma wiec pola!\n");
+        return -1;
+    }
     switch(f->typfig) {
         //Pole kola: PI * r^2
         case 0:
             return M_PI*f->a*f->a;
+            break;
         // Pole trojkata - wzor z polowa obwodu
         case 1:
             // Printf aby uniknac bledu przy deklaracji zaraz po case
@@ -114,6 +121,7 @@ float pole(Figura *f) {
             float z = dl_boku(f->b, f->c, f->e, f->f);
             float p = (x+y+z)/2;
             return sqrtf(p*(p-x)*(p-y)*(p-z));
+            break;
         // Pole kwadratu - bok * bok
         case 2:
             printf("");
@@ -130,13 +138,18 @@ float pole(Figura *f) {
                 bok = fabs(f->c - f->a);
             }
             return bok*bok;
+            break;
         default:
             printf("Blad!\n");
             return 0;
+            break;
     }
 }
 
 void przesun(Figura *f, float x, float y) {
+    if(f == NULL) {
+        return;
+    }
     switch(f->typfig) {
         case 0:
             f->b+=x;
@@ -159,6 +172,9 @@ void przesun(Figura *f, float x, float y) {
 }
 
 void show(Figura *f) {
+    if(f == NULL) {
+        return;
+    }
     printf("==================\n");
     printf("Figura\n");
     switch(f->typfig) {
@@ -212,7 +228,9 @@ void show(Figura *f) {
 float sumapol(Figura* f[], int size) {
     float output = 0.0;
     for(int i=0; i<size; i++) {
-        output+=pole(f[i]);
+        if(f[i] != NULL) {
+           output+=pole(f[i]);
+        }
     }
     return output;
 }
