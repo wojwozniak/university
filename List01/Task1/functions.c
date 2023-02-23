@@ -157,3 +157,54 @@ void przesun(Figura *f, float x, float y) {
     }
     return;
 }
+
+void show(Figura *f) {
+    printf("==================\n");
+    printf("Figura\n");
+    switch(f->typfig) {
+        case 0:
+            printf("Kolo\n");
+            printf("Promien: %f\nPole: %f\n Wsporzedne srodka: %f,%f\n", f->a, pole(f), f->b, f->c);
+            break;
+        case 1:
+            printf("Trojkat\n");
+            printf("Pole: %f\n, Wsporzedne wierzcholkow: %f,%f %f,%f %f,%f\n", pole(f), f->a,f->d,f->b,f->e,f->c,f->f);
+            break;
+        case 2:
+            printf("Kwadrat\n");
+            /* Musimy policzyc wsporzedne czwartego wierzcholka i dl. boku
+            g - wsp. x, h - wsp. y, i - dl. boku */
+            float g,h,i;
+            if(f->a==f->b) {
+                i = fabs(f->e-f->d);
+                g=f->c;
+                if(f->d == f->e) {
+                    h=f->f;
+                } else {
+                    h = f->e;
+                }
+            } else if (f->a==f->c) {
+                i = fabs(f->f-f->d);
+                g=f->b;
+                if(f->d == f->f) {
+                    h=f->e;
+                } else {
+                    h=f->f;
+                }
+            } else {
+                i = fabs(f->f-f->e);
+                g = f->a;
+                if(f->e == f->f) {
+                    h = f->d;
+                } else {
+                    h = f->f;
+                }
+            }
+            printf("Pole kwadratu wynosi %f, dlugosc boku %f\nWsporzedne: %f,%f %f,%f %f,%f %f,%f", pole(f), i,f->a,f->d,f->b,f->e,f->c,f->f,g,h);
+            break;
+        default:
+            printf("Niezdefiniowana!\n");
+            break;
+    }
+    return;
+}
