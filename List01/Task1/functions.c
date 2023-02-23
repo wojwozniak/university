@@ -180,7 +180,7 @@ void show(Figura *f) {
     switch(f->typfig) {
         case 0:
             printf("Kolo\n");
-            printf("Promien: %f\nPole: %f\n Wsporzedne srodka: %f,%f\n", f->a, pole(f), f->b, f->c);
+            printf("Promien: %f\nPole: %f\nWsporzedne srodka: %f,%f\n", f->a, pole(f), f->b, f->c);
             break;
         case 1:
             printf("Trojkat\n");
