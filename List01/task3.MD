@@ -28,4 +28,4 @@ k) ( define ( five ) 5)
  - four - git: 4
  - five - #<procedure:five>
  - (four) - błąd jak w b)
-Ogólnie (five) staje się procedurą nieprzyjmującą argumentów i zwracającą 5, a four stałą=4
+Ogólnie (five) staje się procedurą nieprzyjmującą argumentów i zwracającą 5, a four zmienną=4
