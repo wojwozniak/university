@@ -1,3 +1,4 @@
+# Zadanie 2
 Wyrażenie w postaci prefiksowej:
 
 (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5)))))
