@@ -35,4 +35,4 @@
 )
 (test-fib-iter)
 
-; Wersja iteracyjna jest szybsza - ilosc wywolan w rekurencyjnej rosnie wykladniczo 2^n
+; Wersja iteracyjna jest szybsza - ilość wywołań w rekurencyjnej rosnie wykladniczo 2^n
