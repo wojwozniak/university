@@ -3,6 +3,7 @@
 * Lista 2: Zadanie 1
 * dotnet run Task1.cs
 * (Korzystam z .NET SDK 7.0.201)
+* Przed wywołaniem dotnet run korzystam z "dotnet new console"
 */
 
 // W tej klasie będziemy testować możliwości metod stworzonych na potrzeby tego zadania
