@@ -8,12 +8,16 @@
 // W tej klasie będziemy testować możliwości metod stworzonych na potrzeby tego zadania
 public class Program {
     public static void Main() {
+
+        // Testy dla metod z klasy IntStream
         Console.WriteLine("Testy dla podstawowego IntStream");
+
         // Tworzymy nowy strumień i wypisujemy 10 pierwszych wartości
         IntStream stream = new IntStream();
         for (int i = 0; i < 10; i++) {
             Console.WriteLine(stream.next());
         }
+        
         // Wywołujemy koniec strumienia
         Console.WriteLine(stream.eos());
         // Próbujemy wywołać next
