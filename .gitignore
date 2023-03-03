@@ -567,3 +567,5 @@ $RECYCLE.BIN/
 *.cbp
 *.depend
 *.layout
+
+.vscode
