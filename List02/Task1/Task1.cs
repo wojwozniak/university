@@ -98,7 +98,7 @@ public class IntStream {
 public class PrimeStream : IntStream {
     // Nadpisujemy odziedziczonego nexta
     public override int next() {
-        // Wywołujemy nexta z bazowej klasy i sprawdzamy czy dał nam liczbę pierwszą - wywołujemy go dopóki tego nie zrobi
+        // Wywołujemy nexta z bazowej klasy i sprawdzamy, czy dał nam liczbę pierwszą - wywołujemy go dopóki tego nie zrobi
         int nextPrime = base.next();
         while (!isPrime(nextPrime)) {
             nextPrime = base.next();
