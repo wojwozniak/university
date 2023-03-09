@@ -20,6 +20,14 @@ public class Wektor {
     private readonly float[] wspolrzedne;
 
     /*
+    * Inicjalizacja klasy wektor - wymuszamy podanie
+    * jego wymiarów (na potrzeby tablicy)
+    */
+    public Wektor(int wymiar) {
+        wspolrzedne = new float[wymiar];
+    }
+
+    /*
     * Funkcja dzięki której unikamy błędu CS0021
     * i możemy odnosić się do współrzędnych wektorów
     * za pomocą wektor[]
@@ -27,14 +35,6 @@ public class Wektor {
     public float this[int i] {
         get => wspolrzedne[i];
         set => wspolrzedne[i] = value;
-    }
-
-    /*
-    * Inicjalizacja klasy wektor - wymuszamy podanie
-    * jego wymiarów (na potrzeby tablicy)
-    */
-    public Wektor(int wymiar) {
-        wspolrzedne = new float[wymiar];
     }
 
     /* 
