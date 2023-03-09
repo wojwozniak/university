@@ -1,9 +1,12 @@
 /*
 * Wojciech Woźniak
 * Lista 2: Zadanie 4
-* dotnet run Task4.cs
 * (Korzystam z .NET SDK 7.0.201)
-* Przed wywołaniem dotnet run korzystam z "dotnet new console"
+* Użycie:
+* > Przenosimy plik do pustego folderu
+* > Przechodzimy w terminalu do tego folderu
+* > Wywołujemy "dotnet new console", co wygeneruje pliki pomocnicze
+* > Od teraz możemy kompilować za pomocą "dotnet run Task4.cs"
 */
 
 public class Program {
