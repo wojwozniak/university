@@ -25,6 +25,20 @@ public class MyDictionary<K,V> {
     private List<KeyValuePair<K,V>> list = new List<KeyValuePair<K,V>>();
 
     /* 
+    * Funkcja Find przyjmująca klucz i zwracająca  
+    * wartość dla tego klucza. Jeśli go nie znajdzie
+    * to zwraca wyjątek - błąd "nie znaleziono klucza 
+    */
+    public V Find(K key) {
+        foreach (KeyValuePair<K,V> pair in list) {
+            if (pair.Key.Equals(key)) {
+                return pair.Value;
+            }
+        }
+        throw new KeyNotFoundException("Nie znaleziono klucza!");
+    }
+
+    /* 
     * Funkcja dodająca element do listy (po prostu 
     * wywołujemy Add na głównej liście).
     * Próba dodania pary z kluczem w którym się już * znajduje na liście zwraca błąd.
@@ -37,20 +51,6 @@ public class MyDictionary<K,V> {
             return;
         }
         Console.WriteLine("Klucz już się znajduje na liście!");
-    }
-
-    /* 
-    * Funkcja Find przyjmująca klucz i zwracająca  
-    * wartość dla tego klucza. Jeśli go nie znajdzie
-    * to zwraca wyjątek - błąd "nie znaleziono klucza 
-    */
-    public V Find(K key) {
-        foreach (KeyValuePair<K,V> pair in list) {
-            if (pair.Key.Equals(key)) {
-                return pair.Value;
-            }
-        }
-        throw new KeyNotFoundException("Nie znaleziono klucza!");
     }
 
     /*
