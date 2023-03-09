@@ -17,7 +17,7 @@ public class Wektor {
     * Tablica liczb zmiennoprzecinkowych 
     * przechowujących współrzedne wektora
     */
-    private readonly float[] wspolrzedne;
+    private float[] wspolrzedne;
 
     /*
     * Inicjalizacja klasy wektor - wymuszamy podanie
