@@ -20,7 +20,7 @@ public class Wektor {
     private float[] wspolrzedne;
 
     /*
-    * Inicjalizacja klasy wektor - wymuszamy podanie
+    * Inicjacja klasy wektor - wymuszamy podanie
     * jego wymiarów (na potrzeby tablicy)
     */
     public Wektor(int wymiar) {
@@ -69,7 +69,7 @@ public class Wektor {
             throw new ArgumentException("Wymiary wektorów się różnią!");
         }
 
-        // Deklarujemy i inicjalizujemy zmienną z wynikiem
+        // Deklarujemy i inicjujemy zmienną z wynikiem
         float result = 0;
 
         // Dodajemy iloczyny kolejnych wartości w wektorze
@@ -111,7 +111,7 @@ public class Wektor {
 // Testy klasy Wektor
 class Program {
     public static void Main(string[] args) {
-        // Na początku inicjalizujemy dwa wektory [x,y,z]. 
+        // Na początku inicjujemy dwa wektory [x,y,z]. 
         Wektor v1 = new Wektor(3);
         v1[0] = 1;
         v1[1] = 2;
