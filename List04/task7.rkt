@@ -1,7 +1,5 @@
 #lang racket
 
-(reqiure rackunit)
-
 ;Kolejka FIFO (first in, first out) to struktura danych, do której można dodać element „na koniec”, a także podejrzeć i wyjąć element „na początku”. Prosta implementacja kolejki przy pomocy listy może wyglądać tak:
 ( define empty-queue null ) ; pusta kolejka
 ( define ( empty ? q ) ( null ? q ) ) ; czy kolejka jest pusta ?
