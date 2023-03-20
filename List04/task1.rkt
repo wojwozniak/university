@@ -7,12 +7,12 @@
 (define t
     (node
         (node ( leaf ) 2 ( leaf ))
-            5
-            (node 
-                (node ( leaf ) 6 ( leaf ))
-                8
-                (node ( leaf ) 9 ( leaf ))
-            )
+        5
+        (node 
+            (node ( leaf ) 6 ( leaf ))
+            8
+            (node ( leaf ) 9 ( leaf ))
+        )
     )
 )
 
