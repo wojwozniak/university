@@ -4,6 +4,10 @@
 ; Definiuje się je jako (node left value right), gdzie left i right to kolejne węzły, a value to wartość w węźle
 ; Węzły liścia z wartością leaf i bez dalszych deficji można uznać za wartość  null (pusty wskaźnik)
 
+; Definicja struktur
+(define-struct leaf () #:transparent)
+(define-struct node (l elem r) #:transparent)
+
 (define t
     (node
         (node ( leaf ) 2 ( leaf ))
