@@ -39,7 +39,7 @@
 ; Definicja tree-sum
 (define (tree-sum t)
     (fold-tree 
-        (lambda (e left right) (+ e left right)) 0 t
+        + 0 t
     )
 )
 
