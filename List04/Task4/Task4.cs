@@ -28,7 +28,7 @@ public class Production {
         set; 
     }
 
-    // Konstruktor (inicjacja pól leftSide i rightSide)
+    // Konstruktor (inicjowanie pól leftSide i rightSide)
     public Production(string leftSide, List<string> rightSide) {
         LeftSide = leftSide;
         RightSide = rightSide;
@@ -37,7 +37,7 @@ public class Production {
 
 public class Grammar {
 
-    // Settery i gettery dla symbolu startowego i listy produkcji
+    // Settery i gettery symbolu startowego i listy produkcji
     public string StartSymbol { 
         get; 
         set; 
@@ -47,7 +47,7 @@ public class Grammar {
         set; 
     }
 
-    // Konstruktor (inicjacja pól startSymbol i productions)
+    // Konstruktor (inicjowanie pól startSymbol i productions)
     public Grammar(string startSymbol, List<Production> productions) {
         StartSymbol = startSymbol;
         Productions = productions;
@@ -109,8 +109,8 @@ public class Grammar {
 
         // Iterujemy po symbolach produkcji
         foreach (string productionSymbol in productionSymbols) {
-            // Jeśli symbol nie jest symbolem końcowym 
-            // to wywołujemy rekurencyjnie tą metodę dla niego
+            // Jeśli symbol nie jest symbolem końcowym, 
+            // to wywołujemy rekurencyjnie tę metodę dla niego
             if (IsNotEnding(productionSymbol)) {
                 result += GenerateRandomWord(productionSymbol, rand);
             } else {
@@ -163,6 +163,7 @@ class Program {
         List<string> randomWords = grammar.GenerateRandomWords(5);
 
         // Wyświetlamy wygenerowane wyrazy
+        
         foreach (string word in randomWords) {
             Console.WriteLine(word);
         }

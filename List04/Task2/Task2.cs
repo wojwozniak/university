@@ -55,7 +55,7 @@ public class SlowaFibonacciego : IEnumerable<string> {
 /* Test SłowaFibonacciego jak w przykładzie */
 public class Program {
     public static void Main() {
-        SlowaFibonacciego sf = new SlowaFibonacciego(6);
+        SlowaFibonacciego sf = new SlowaFibonacciego(200);
         foreach (string s in sf)
             Console.WriteLine(s);
     }
