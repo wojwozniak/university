@@ -8,11 +8,13 @@
 
 ; b)
 ( define ( compose f g ) ( lambda ( x ) ( f ( g x ) ) ) )
-; Przyjmujemy funkcję f i g, zwracamy funkcję, która przyjmuje argument x i zwraca wynik funkcji f(g(x))
+; Przyjmujemy funkcję f i g, zwracamy funkcję, która przyjmuje 
+; argument x i zwraca wynik funkcji f(g(x))
 
 ; c)
 (define (flip f) (lambda (x y) (f y x)))
-; Przyjmujemy funkcję f, zwracamy funkcję, która przyjmuje argumenty x i y i zwraca wynik funkcji f z argumentami y i x
+; Przyjmujemy funkcję f, zwracamy funkcję, która przyjmuje 
+; argumenty x i y i zwraca wynik funkcji f z argumentami y i x
 
 ; d)
 (define (curry f) (lambda (x) (lambda (y) (f x y))))
