@@ -20,10 +20,12 @@ interfejs IEnumerable<string> */
 public class SlowaFibonacciego : IEnumerable<string> {
     private int n;
 
+    // Konstruktor
     public SlowaFibonacciego(int n) {
         this.n = n;
     }
 
+    // Implementacja interfejsu IEnumerable<string>
     public IEnumerator<string> GetEnumerator() {
         int i = 0;
         string s1 = "b";
