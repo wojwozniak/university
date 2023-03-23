@@ -17,52 +17,63 @@ using System.Collections.Generic;
 
 
 // Klasa Produkcji
-public class Production {
+public class Production
+{
     // Settery i gettery dla obu stron  
-    public string LeftSide { 
-        get; 
-        set; 
+    public string LeftSide
+    {
+        get;
+        set;
     }
-    public List<string> RightSide { 
-        get; 
-        set; 
+    public List<string> RightSide
+    {
+        get;
+        set;
     }
 
     // Konstruktor (inicjowanie pól leftSide i rightSide)
-    public Production(string leftSide, List<string> rightSide) {
+    public Production(string leftSide, List<string> rightSide)
+    {
         LeftSide = leftSide;
         RightSide = rightSide;
     }
 }
 
-public class Grammar {
+public class Grammar
+{
 
     // Settery i gettery symbolu startowego i listy produkcji
-    public string StartSymbol { 
-        get; 
-        set; 
+    public string StartSymbol
+    {
+        get;
+        set;
     }
-    public List<Production> Productions { 
-        get; 
-        set; 
+    public List<Production> Productions
+    {
+        get;
+        set;
     }
 
     // Konstruktor (inicjowanie pól startSymbol i productions)
-    public Grammar(string startSymbol, List<Production> productions) {
+    public Grammar(string startSymbol, List<Production> productions)
+    {
         StartSymbol = startSymbol;
         Productions = productions;
     }
 
     // Metoda zwracająca listę możliwych produkcji dla danego symbolu
-    private List<string> GetPossibleProductions(string symbol) {
+    private List<string> GetPossibleProductions(string symbol)
+    {
         // Lista wynikowa
         List<string> result = new List<string>();
 
         // Iteracja po wszystkich produkcjach
-        foreach (Production production in Productions) {
+        foreach (Production production in Productions)
+        {
             // Jeśli lewa strona produkcji jest równa symbolowi
             // to dodajemy prawą stronę do listy wynikowej
-            if (production.LeftSide == symbol) {
+            if (production.LeftSide == symbol)
+            {
                 result.AddRange(production.RightSide);
             }
         }
@@ -72,12 +83,15 @@ public class Grammar {
     }
 
     // Metoda sprawdzająca czy symbol jest symbolem końcowym
-    private bool IsNotEnding(string symbol) {
+    private bool IsNotEnding(string symbol)
+    {
 
         // Iteracja po wszystkich produkcjach.
         // Jeśli znajdziemy cokolwiek zwracamy prawdę
-        foreach (Production production in Productions) {
-            if (production.LeftSide == symbol) {
+        foreach (Production production in Productions)
+        {
+            if (production.LeftSide == symbol)
+            {
                 return true;
             }
         }
@@ -87,13 +101,15 @@ public class Grammar {
     }
 
     // Metoda generująca losowy wyraz
-    private string GenerateRandomWord(string symbol, Random rand) {
+    private string GenerateRandomWord(string symbol, Random rand)
+    {
 
         // Pobieramy listę możliwych produkcji dla danego symbolu
         List<string> possibleProductions = GetPossibleProductions(symbol);
 
         // Jeśli lista jest pusta, to zwracamy symbol
-        if (possibleProductions.Count == 0) {
+        if (possibleProductions.Count == 0)
+        {
             return symbol;
         }
 
@@ -108,12 +124,16 @@ public class Grammar {
         string result = "";
 
         // Iterujemy po symbolach produkcji
-        foreach (string productionSymbol in productionSymbols) {
+        foreach (string productionSymbol in productionSymbols)
+        {
             // Jeśli symbol nie jest symbolem końcowym, 
             // to wywołujemy rekurencyjnie tę metodę dla niego
-            if (IsNotEnding(productionSymbol)) {
+            if (IsNotEnding(productionSymbol))
+            {
                 result += GenerateRandomWord(productionSymbol, rand);
-            } else {
+            }
+            else
+            {
                 // w.p.p. dodajemy symbol do wyniku
                 result += productionSymbol;
             }
@@ -125,7 +145,8 @@ public class Grammar {
 
 
     // Metoda wywołująca generowanie losowych wyrazów
-    public List<string> GenerateRandomWords(int n) {
+    public List<string> GenerateRandomWords(int n)
+    {
 
         // Lista wynikowa
         List<string> result = new List<string>();
@@ -134,7 +155,8 @@ public class Grammar {
         Random rand = new Random();
 
         // Generujemy n losowych wyrazów
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             string word = GenerateRandomWord(StartSymbol, rand);
             result.Add(word);
         }
@@ -146,8 +168,10 @@ public class Grammar {
 
 
 // Klasa z testami
-class Program {
-    static void Main(string[] args) {
+class Program
+{
+    static void Main(string[] args)
+    {
 
         // Tworzymy listę produkcji
         var productions = new List<Production> {
@@ -162,9 +186,17 @@ class Program {
         // Generujemy 5 losowych wyrazów
         List<string> randomWords = grammar.GenerateRandomWords(5);
 
+        foreach (var production in productions) {
+            string fromSymbol = production.LeftSide;
+            List<string> toSymbols = production.RightSide;
+            foreach (string toSymbol in toSymbols)
+            {
+                Console.WriteLine($"'{fromSymbol}' -> '{toSymbol}'");
+            }
+        }
         // Wyświetlamy wygenerowane wyrazy
-        
-        foreach (string word in randomWords) {
+        foreach (string word in randomWords)
+        {
             Console.WriteLine(word);
         }
     }
