@@ -8,7 +8,7 @@
 * > Wywołujemy "dotnet new console", co wygeneruje pliki pomocnicze
 * > Usuwamy plik Program.cs (inaczej będzie się
 * pojawiać w konsoli również "Hello World")
-* > Od teraz możemy kompilować za pomocą "dotnet run Task2.cs"
+* > Od teraz możemy kompilować za pomocą "dotnet run Task4.cs"
 */
 
 using System;
