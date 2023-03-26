@@ -21,7 +21,7 @@ abstract class AbstractMilitaryRank implements MilitaryRank {
     }
 
     @Override
-  public int compareTo(MilitaryRank other) {
+    public int compareTo(MilitaryRank other) {
         return Integer.compare(getRankOrder(), ((AbstractMilitaryRank) other).getRankOrder());
     }
 
