@@ -1,5 +1,3 @@
-package List05.Task2;
-
 /*
 * Wojciech Woźniak
 * Lista 5: Zadanie 2
