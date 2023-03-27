@@ -54,3 +54,21 @@
 ; podstawiamy zmienne:
 ; (('_c -> ('_x -> '_y)) -> ('_c -> (('_z -> '_x) -> ('_z -> '_y))))
 ; wszystko się zgadza
+
+
+; c) (( curry compose ) ( curry apply ))
+; Wiemy już, że curry compose ma typ:
+; (('_a -> '_b) -> (('_c -> '_a) -> ('_c -> '_b)))
+; Musimy się zająć curry apply.
+;
+; curry: (('a 'b -> 'c) -> ('a -> ('b -> 'c)))
+; apply: (('a -> 'b) -> 'a -> 'b)
+; Podstawiając apply pod curry dostaniemy funkcję
+; identycznościową
+; (('_a -> '_b) -> ('_a -> '_b))
+; które musimy podstawić do curry compose
+; otrzymujemy
+; (('_a -> ('_b -> '_c)) -> ('_a -> ('_b -> '_c)))
+
+
+; Reszta podpunktów analogicznie
