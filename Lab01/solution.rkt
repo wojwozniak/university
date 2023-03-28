@@ -180,6 +180,9 @@
 )
 
 (define (table-sort cols tab)
+  ; Musimy tutaj wywoływać get-indexes pojedyńczo dla każdego
+  ; elementu tab, a później je złączyć, 
+  ; tak by mieć listę indeksów w dobrej kolejności
   (define indexes (get-indexes (table-schema tab) '() 0 cols))
   (displayln indexes)
 )
