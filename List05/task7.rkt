@@ -7,10 +7,6 @@
 (disj [l : Prop] [r : Prop])
 (neg [f : Prop]) )
 
-
-
-
-
 (define prop1
   (var "x"))
 
@@ -26,28 +22,39 @@
 
 
 
-;usuwanie duplikatow
+; Usuwanie duplikatow
 (define (rm-dupl lst)
   (cond [(equal? '() lst) '()]
-    [(member (first lst) (rest lst))
-     (rm-dupl (rest lst))]
-    [else (cons (first lst)
-           (rm-dupl (rest lst)))]))
+    [
+      (member (first lst) (rest lst))
+      (rm-dupl (rest lst))
+    ]
+    [else 
+      (cons (first lst)
+        (rm-dupl (rest lst))
+      )
+    ]
+  )
+)
 
 
 
-; iteracja
+; Iteracja
 (define (iter x xs)
-   (cond [(neg? x)   (iter (neg-f x) xs)]
-          [(disj? x)  (iter (disj-r x) (iter (disj-l x) xs))]
-          [(conj? x)  (iter (conj-r x) (iter (conj-l x) xs))]
-          [(var? x) (append xs (list x))]))
+  (cond 
+    [(neg? x) (iter (neg-f x) xs)]
+    [(disj? x) (iter (disj-r x) (iter (disj-l x) xs))]
+    [(conj? x) (iter (conj-r x) (iter (conj-l x) xs))]
+    [(var? x) (append xs (list x))]
+  )
+)
 
 
 
-;wynik
+; Zwracamy wynik
 (define (free-vars x)
-     (rm-dupl (iter x (list))))
+  (rm-dupl (iter x (list)))
+)
 
 (free-vars prop4)
 
