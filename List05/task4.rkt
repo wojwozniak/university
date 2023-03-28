@@ -1,5 +1,7 @@
 #lang racket
 
+; To w rackecie :(
+
 ; Zaimplementuj procedurę perms, 
 ; obliczającą wszystkie permutacje zadanej listy
 ; (w dowolnej kolejności). Na przykład:
