@@ -16,9 +16,9 @@
 
 ; Usuwanie duplikatów
 (define (rm-dupl lst)
-  (cond [(equal? '() lst) '()]
-    [
-      (member (first lst) (rest lst))
+  (cond 
+    [(equal? '() lst) '()]
+    [(member (first lst) (rest lst))
       (rm-dupl (rest lst))
     ]
     [else 
