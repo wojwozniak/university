@@ -1,6 +1,6 @@
 #lang racket
 
-; Providing default structures for tables
+; Domyślne struktury
 (provide 
   (struct-out column-info)
   (struct-out table)
@@ -19,10 +19,10 @@
   table-natural-join
 )
 
-; Defining column-info
+; Definicja column-info
 (define-struct column-info (name type) #:transparent)
 
-; Defining table
+; Definicja table
 (define-struct table (schema rows) #:transparent)
 
 ; Tabela cities
