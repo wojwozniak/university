@@ -1,23 +1,6 @@
 #lang racket
 
-; Domyślne struktury
-(provide 
-  (struct-out column-info)
-  (struct-out table)
-  (struct-out and-f)
-  (struct-out or-f)
-  (struct-out not-f)
-  (struct-out eq-f)
-  (struct-out eq2-f)
-  (struct-out lt-f)
-  table-insert
-  table-project
-  table-sort
-  table-select
-  table-rename
-  table-cross-join
-  table-natural-join
-)
+; #TODO Wstaw domyślne struktury
 
 ; Definicja column-info
 (define-struct column-info (name type) #:transparent)
@@ -61,47 +44,50 @@
   )
 )
 
-; Pusta tabela columns
+; Definicja tabeli columns
 (define (empty-table columns) (table columns '()))
 
-; Wstawianie
+; Funkcja sprawdzająca czy typy kolumn zgadzają się z typami wartości
+; a - wartość kolumny, b - column-info-type
+(define (compare-types a b)
+  (cond
+    [(and (string? a) (equal? b 'string)) #t]
+    [(and (number? a) (equal? b 'number)) #t]
+    [(and (boolean? a) (equal? b 'boolean)) #t]
+    [else #f]
+  )
+)
+
+; Funkcja wstawiająca do tabeli
 (define (table-insert row tab)
-  ;; uzupełnij
-)
-
-; Projekcja
-(define (table-project cols tab)
-  ;; uzupełnij
-)
-
-; Sortowanie
-(define (table-sort cols tab)
-  ;; uzupełnij
-)
-
-; Selekcja
-(define-struct and-f (l r))
-(define-struct or-f (l r))
-(define-struct not-f (e))
-(define-struct eq-f (name val))
-(define-struct eq2-f (name name2))
-(define-struct lt-f (name val))
-
-(define (table-select form tab)
-  ;; uzupełnij
-)
-
-; Zmiana nazwy
-(define (table-rename col ncol tab)
-  ;; uzupełnij
-)
-
-; Złączenie kartezjańskie
-(define (table-cross-join tab1 tab2)
-  ;; uzupełnij
-)
-
-; Złączenie
-(define (table-natural-join tab1 tab2)
-  ;; uzupełnij
+  ; Schemat tabeli
+  (define schema (table-schema tab))
+  ; Sprawdzenie czy długość wiersza jest równa tej w schemacie
+  (if (not (= (length row) (length schema)))
+    (error "Nie zgadza się ilość pól w wierszu!")
+    ; Definiujemy funkcję rekurencyjną,
+    ; przyjmującą kolumny ze schematu i wartości z wiersza
+    ; do wstawienia
+    (let rec ((cols schema) (vals row))
+      (cond
+        ; Jeśli nie ma więcej kolumn i wartości, zwracamy tabelę
+        [(and (null? cols) (null? vals)) 
+          (table
+            (table-schema tab)
+            (append (table-rows tab) (list row))
+          )
+        ]
+        ; Jeśli nazwa kolumny zgadza się z nazwą wartości,
+        ; wywołujemy rekurencyjne funkcję dla kolejnych wartości
+        [
+          (compare-types (car vals) (column-info-type (car cols)))
+          (rec (cdr cols) (cdr vals))
+        ]
+        ; Jeśli poprzednie sprawdzenie nie przeszło, zwracamy błąd
+        [else
+          (error "Nieprawidłowa nazwa wiersza" (car vals))
+        ]
+      )
+    )
+  )
 )
