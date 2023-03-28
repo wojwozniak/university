@@ -90,8 +90,8 @@
       numlst
       (if 
         (is-string-in-list (column-info-name (car tab)) cols)
-        (get-indexes (cdr tab) (append numlst (list i)) (+ i 1))
-        (get-indexes (cdr tab) numlst (+ i 1))
+        (get-indexes (cdr tab) (append numlst (list i)) (+ i 1) cols)
+        (get-indexes (cdr tab) numlst (+ i 1) cols)
       )
   )
 )
@@ -179,3 +179,9 @@
   )
 )
 
+(define (table-sort cols tab)
+  (define indexes (get-indexes (table-schema tab) '() 0 cols))
+  (displayln indexes)
+)
+
+(table-sort '(country city) cities)
