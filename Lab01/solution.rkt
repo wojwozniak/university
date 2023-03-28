@@ -2,6 +2,8 @@
 
 ; ### DEFINICJE I STARTOWE DANE ###
 
+
+
 ; #TODO Wstaw domyślne struktury
 
 ; Definicja column-info
@@ -49,7 +51,10 @@
 ; Definicja tabeli columns
 (define (empty-table columns) (table columns '()))
 
+
+
 ; ### FUNKCJE ###
+
 
 ; ## Funkcje Pomocnicze ##
 
@@ -90,6 +95,7 @@
       )
   )
 )
+
 
 
 ; ## Funkcje główne ##
@@ -172,3 +178,10 @@
     (table-rows tab)
   )
 )
+
+(define (table-sort cols tab)
+  (displayln cols)
+  (displayln tab)
+)
+
+(displayln (table-sort '( country city ) cities))
