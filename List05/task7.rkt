@@ -7,14 +7,11 @@
 (disj [l : Prop] [r : Prop])
 (neg [f : Prop]) )
 
-(define prop1
-  (var "x"))
+(define prop1 (var "x"))
 
-(define prop2
-  (var "y"))
+(define prop2 (var "y"))
 
-(define prop3
-  (conj prop1 prop2))
+(define prop3 (conj prop1 prop2))
 
 (define prop4 (disj prop3 prop1))
 
