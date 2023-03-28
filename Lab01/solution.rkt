@@ -179,9 +179,3 @@
   )
 )
 
-(define (table-sort cols tab)
-  (displayln cols)
-  (displayln tab)
-)
-
-(displayln (table-sort '( country city ) cities))
