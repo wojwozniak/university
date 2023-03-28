@@ -153,3 +153,24 @@
   (map-table (table-rows tab))
 )
 
+; Zmiana nazwy
+(define (table-rename col ncol tab)
+
+  ; Wewnętrzna funkcja rekurencyjna
+  (define (rename-column col-info)
+    ; Jeśli nazwa kolumny zgadza się z nazwą kolumny do zmiany,
+    ; zwracamy kolumnę z nową nazwą
+    ; w.p.p. zwracamy bez zmian
+    (if (eq? (column-info-name col-info) col)
+      (column-info ncol (column-info-type col-info))
+      col-info
+    )
+  )
+
+  ; Zwracamy tabelę z nagłówkami kolumn zwróconymi
+  ; przez rename-column
+  (table
+    (map rename-column (table-schema tab))
+    (table-rows tab)
+  )
+)
