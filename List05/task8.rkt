@@ -22,15 +22,11 @@
 
 (define (iter f)
    (cond 
-    [(neg? f)   (not (iter (neg-f f)))]
-    [(disj? f)  (or (iter (disj-r f)) (iter (disj-l f)))]
-    [(conj? f)  (and (iter (conj-r f)) (iter (conj-l f)))]
+    [(neg? f) (not (iter (neg-f f)))]
+    [(disj? f) (or (iter (disj-r f)) (iter (disj-l f)))]
+    [(conj? f) (and (iter (conj-r f)) (iter (conj-l f)))]
     [else (some-v (hash-ref ht (var-v f)))]
   )
 )
 
-
-
 (iter (conj prop5 prop1))
-
-     

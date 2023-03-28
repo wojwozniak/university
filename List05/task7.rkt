@@ -1,6 +1,5 @@
 #lang plait
 
-
 (define-type Prop
 (var [v : String])
 (conj [l : Prop] [r : Prop])
@@ -14,9 +13,6 @@
 (define prop3 (conj prop1 prop2))
 
 (define prop4 (disj prop3 prop1))
-
-
-
 
 
 ; Usuwanie duplikatow
@@ -34,8 +30,6 @@
   )
 )
 
-
-
 ; Iteracja
 (define (iter x xs)
   (cond 
@@ -45,8 +39,6 @@
     [(var? x) (append xs (list x))]
   )
 )
-
-
 
 ; Zwracamy wynik
 (define (free-vars x)
