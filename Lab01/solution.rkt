@@ -1,5 +1,7 @@
 #lang racket
 
+; ### DEFINICJE I STARTOWE DANE ###
+
 ; #TODO Wstaw domyślne struktury
 
 ; Definicja column-info
@@ -47,6 +49,10 @@
 ; Definicja tabeli columns
 (define (empty-table columns) (table columns '()))
 
+; ### FUNKCJE ###
+
+; ## Funkcje Pomocnicze ##
+
 ; Funkcja sprawdzająca czy typy kolumn zgadzają się z typami wartości
 ; a - wartość kolumny, b - column-info-type
 (define (compare-types a b)
@@ -57,6 +63,18 @@
     [else #f]
   )
 )
+
+; Funkcja sprawdzająca czy string str należy do listy lst
+(define (is-string-in-list str lst)
+  (for/or 
+    ([item (in-list lst)])
+    (equal? str item)
+  )
+)
+
+
+; ## Funkcje główne ##
+
 
 ; Funkcja wstawiająca do tabeli
 (define (table-insert row tab)
@@ -91,3 +109,47 @@
     )
   )
 )
+
+; Projekcja
+(define (table-project cols tab)
+  ; Tworzymy listę na której zapiszemy,
+  ; które wartości chcemy wypisać (ich indeksy).
+  ; Dodamy je za pomocą funkcji rec 
+  ; (korzystającej z is-string-in-list)
+  (define (rec tab numlst i)
+    ; Dopóki tab nie jest pusta przechodzimy po niej
+    ; i dla każdego elementu wywołujemy funkcję 
+    ; is-string-in-list, aktualizujemy iterator i
+    ; jeśli wartość jest prawdziwa, dodajemy iterator do listy
+    ; Jeśli tab jest pusta, zwracamy listę
+    (if
+      (equal? tab '())
+        numlst
+        (if 
+          (is-string-in-list (column-info-name (car tab)) cols)
+          (rec (cdr tab) (append numlst (list i)) (+ i 1))
+          (rec (cdr tab) numlst (+ i 1))
+        )
+    )
+  )
+  
+  ; Indeksy kolumn do wypisania
+  (define indexes (rec (table-schema tab) '() 0))
+
+  ; Funkcja rekurencyjna, która wypisuje wartości z wierszy 
+  ; (tylko te, które są w liście indexes)
+  (define (map-table list)
+    (if
+      (equal? list '())
+      '()
+      (cons
+        (map (lambda (x) (list-ref (car list) x)) indexes)
+        (map-table (cdr list))
+      )
+    )
+  )
+
+  ; Zwracamy tabelę z wierszami, które mają wartości z indeksów
+  (map-table (table-rows tab))
+)
+
