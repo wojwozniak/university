@@ -1,21 +1,20 @@
 #lang plait
 
+; Definicje z zadania
 (define-type Prop
 (var [v : String])
 (conj [l : Prop] [r : Prop])
 (disj [l : Prop] [r : Prop])
 (neg [f : Prop]) )
 
+; Definicje propów
 (define prop1 (var "x"))
-
 (define prop2 (var "y"))
-
 (define prop3 (conj prop1 prop2))
-
 (define prop4 (disj prop3 prop1))
 
 
-; Usuwanie duplikatow
+; Usuwanie duplikatów
 (define (rm-dupl lst)
   (cond [(equal? '() lst) '()]
     [
@@ -40,11 +39,12 @@
   )
 )
 
-; Zwracamy wynik
+; Zwracamy wynik bez zduplikowanych zmiennych
 (define (free-vars x)
   (rm-dupl (iter x (list)))
 )
 
+; Test
 (free-vars prop4)
 
 
