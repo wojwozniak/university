@@ -72,6 +72,25 @@
   )
 )
 
+; Funkcja zwracająca listę indeksów kolumn cols, 
+; które mają nazwy z listy tab
+(define (get-indexes tab numlst i cols)
+  ; Dopóki tab nie jest pusta przechodzimy po niej
+  ; i dla każdego elementu wywołujemy funkcję 
+  ; is-string-in-list, aktualizujemy iterator i
+  ; jeśli wartość jest prawdziwa, dodajemy iterator do listy
+  ; Jeśli tab jest pusta, zwracamy listę
+  (if
+    (equal? tab '())
+      numlst
+      (if 
+        (is-string-in-list (column-info-name (car tab)) cols)
+        (get-indexes (cdr tab) (append numlst (list i)) (+ i 1))
+        (get-indexes (cdr tab) numlst (+ i 1))
+      )
+  )
+)
+
 
 ; ## Funkcje główne ##
 
@@ -112,29 +131,8 @@
 
 ; Projekcja
 (define (table-project cols tab)
-  ; Tworzymy listę na której zapiszemy,
-  ; które wartości chcemy wypisać (ich indeksy).
-  ; Dodamy je za pomocą funkcji rec 
-  ; (korzystającej z is-string-in-list)
-  (define (rec tab numlst i)
-    ; Dopóki tab nie jest pusta przechodzimy po niej
-    ; i dla każdego elementu wywołujemy funkcję 
-    ; is-string-in-list, aktualizujemy iterator i
-    ; jeśli wartość jest prawdziwa, dodajemy iterator do listy
-    ; Jeśli tab jest pusta, zwracamy listę
-    (if
-      (equal? tab '())
-        numlst
-        (if 
-          (is-string-in-list (column-info-name (car tab)) cols)
-          (rec (cdr tab) (append numlst (list i)) (+ i 1))
-          (rec (cdr tab) numlst (+ i 1))
-        )
-    )
-  )
-  
   ; Indeksy kolumn do wypisania
-  (define indexes (rec (table-schema tab) '() 0))
+  (define indexes (get-indexes (table-schema tab) '() 0 cols))
 
   ; Funkcja rekurencyjna, która wypisuje wartości z wierszy 
   ; (tylko te, które są w liście indexes)
