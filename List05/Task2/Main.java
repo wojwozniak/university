@@ -130,8 +130,7 @@ public class Main {
         // Oczekiwane: 20
         System.out.println(expr2.evaluate());
 
-
-
+        
         // Dodawanie dwóch zmiennych
         Expression expr3 = new Add(new Variable("a"), new Variable("b"));
 
