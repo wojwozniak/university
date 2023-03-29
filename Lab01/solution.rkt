@@ -139,7 +139,6 @@
 (define (table-project cols tab)
   ; Indeksy kolumn do wypisania
   (define indexes (get-indexes (table-schema tab) '() 0 cols))
-
   ; Funkcja rekurencyjna, która wypisuje wartości z wierszy 
   ; (tylko te, które są w liście indexes)
   (define (map-table list)
@@ -179,12 +178,15 @@
   )
 )
 
+; Sortowanie
 (define (table-sort cols tab)
   ; Musimy tutaj wywoływać get-indexes pojedyńczo dla każdego
   ; elementu tab, a później je złączyć, 
   ; tak by mieć listę indeksów w dobrej kolejności
-  (define indexes (get-indexes (table-schema tab) '() 0 cols))
-  (displayln indexes)
+  (define sorted-index-list
+    (apply append (map (lambda (x) (get-indexes (table-schema tab) '() 0 (list x))) cols))
+  )
+  (displayln sorted-index-list)
 )
 
 (table-sort '(country city) cities)
