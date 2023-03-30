@@ -570,3 +570,5 @@ $RECYCLE.BIN/
 
 .vscode
 *.csproj
+*.iml
+/.idea/
