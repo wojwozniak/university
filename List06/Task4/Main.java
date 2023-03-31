@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 /*
 * Wojciech Woźniak
-* Lista 5: Zadanie 2
+* Lista 6: Zadanie 4
 * (Korzystam z kompilatora replit.com)
 * Można z niego skorzystać za pomocą
 * konta github.com -> new replit,
