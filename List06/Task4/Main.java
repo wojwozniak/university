@@ -1,6 +1,15 @@
 package List06.Task4;
 import java.util.Arrays;
 
+/*
+* Wojciech Woźniak
+* Lista 5: Zadanie 2
+* (Korzystam z kompilatora replit.com)
+* Można z niego skorzystać za pomocą
+* konta github.com -> new replit,
+* przeklejamy kod i klikamy run
+*/
+
 // Deklaracja klasy zawierającej metodę mergeSort
 public class Main {
     // Funkcja z testem działania
