@@ -82,10 +82,13 @@ class Main {
         MilitaryRank rank2 = new General();
 
         // Test dla getName
+        System.out.println(rank1.getName().equals("Sprawdzamy czy nazwa Szeregowego się zgadza")); 
         System.out.println(rank1.getName().equals("Szeregowy")); 
+        System.out.println(rank1.getName().equals("Sprawdzamy czy nazwa Generała się zgadza"));
         System.out.println(rank2.getName().equals("General")); 
 
         // Testy porównań
+        System.out.println(rank1.getName().equals("3 sprawdzenia czy zgadzają się 'poziomy rang'"));
         System.out.println(rank1.compareTo(rank2) < 0);
         System.out.println(rank2.compareTo(rank1) > 0); 
         System.out.println(rank1.compareTo(rank1) == 0); 
