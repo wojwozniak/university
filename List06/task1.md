@@ -6,6 +6,7 @@
 
 
 Let's try to prove this. 
+
 (Proof should be done using induction - it is easily adaptible from the proof below - we just start with empty list, then single element, then n+1 elements.)
 
 We'll start by taking the left-hand side of the equation.
