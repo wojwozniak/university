@@ -1,4 +1,6 @@
-Definition from lecture
+# Task 2 - proof that append always return value
+
+Definition of append from lecture
 
 ``` racket
 (define (append xs ys)
