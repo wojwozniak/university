@@ -64,7 +64,7 @@ We get expected results for base cases. So far so good.
 ## Inductive step
 We need to prove that neg-nnf is correct for all formulas. 
 
-Let's take any Φ, ѱ formulas and assume that neg-nnf is correct for them. We will prove that neg-nnf is correct for negation, conjuction and dysjunction of `Φ`, `ѱ` formulas.
+Let's take any Φ, ѱ formulas and assume that neg-nnf is correct for them. We will prove that neg-nnf is correct for negation, conjuction and dysjunction of Φ, ѱ formulas.
 
 1) `¬Φ` (Negation)
 
