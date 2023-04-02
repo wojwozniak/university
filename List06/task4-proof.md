@@ -78,6 +78,7 @@ Let's take any Φ, ѱ formulas and assume that neg-nnf is correct for them. We w
 
         First cond check evaluates to false - we go to the next one. Second cond check evaluates to false - we return disjunction of neg-nnf of both sides of the conjunction. We get (¬Φ ∪ ¬ѱ). Using De Morgan's law we get ¬(Φ ∩ ѱ).
 
+We get expected output for every case in the inductive step.
 
 By structural induction we have proven that neg-nnf is correct for all formulas (and, by extension that
 
