@@ -1,6 +1,6 @@
 # Task 1
 
-```
+```scheme
 (map f (map g xs)) === (map (lambda (x) (f (g x))) xs)
 ```
 
@@ -10,12 +10,12 @@ Let's try to prove this.
 
 We'll start by taking the left-hand side of the equation.
 
-```racket
+```scheme
 (map f (map g xs))
 ```
  this expression applies function g to all elements of the list xs and returns that list (let's call it xsg).
 
-```racket
+```scheme
 (map f xsg)
 ```
 
@@ -23,7 +23,7 @@ this expression applies function f to all elements of the list xsg and returns t
 
 Now let's take the right-hand side of the equation.
 
-```
+```scheme
 (map (lambda (x) (f (g x))) xs)
 ```
 This expression applies the lambda function to all elements of the list xs and returns that list (let's call it xsgf).

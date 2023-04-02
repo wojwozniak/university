@@ -2,7 +2,7 @@
 
 Definition of append from lecture
 
-``` racket
+``` scheme
 (define (append xs ys)
     (if (empty? xs)
         ys
