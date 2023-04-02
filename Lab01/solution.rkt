@@ -183,10 +183,18 @@
   ; Musimy tutaj wywoływać get-indexes pojedyńczo dla każdego
   ; elementu tab, a później je złączyć, 
   ; tak by mieć listę indeksów w dobrej kolejności
-  (define sorted-index-list
+  (define ind
     (apply append (map (lambda (x) (get-indexes (table-schema tab) '() 0 (list x))) cols))
   )
-  (displayln sorted-index-list)
+  ; Zwiększam każdy indeks o 1 - aby uwzględnić wagi dodane poniżej
+  (define indexes (map (lambda (x) (+ 1 x)) ind))
+
+  ; Wkładam rzędy do osobnej zmiennej i do każdego z nich dodaję na początku 0 (które użyjemy później do sortowania)
+  (define weighed-rows (map (lambda (x) (cons 0 x)) (table-rows tab)))
+  (displayln weighed-rows)
+
+  ; Zmien
+  
 )
 
 (table-sort '(country city) cities)
