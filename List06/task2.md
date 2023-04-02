@@ -25,3 +25,5 @@ Finally we will return list containing all elements of xs.
 
 4) Both lists have content.
 It will go similar to the previous case. First difference will appear on last if check - it will also evaluate to false (but ys is not empty) - finally we will return list containing all elements of xs and ys.
+
+(Proofs of 3 and 4 should be done using induction - it is easily adaptible from the proof above - we just start with empty list, then single element, then n+1 elements.)

@@ -12,3 +12,5 @@ Now let's take the right-hand side of the equation.
 Both sides apply first function g, then function f to each element of the list xs. So, they return the same list.
 
 So, the equation is true.
+
+(Proof should be done using induction - it is easily adaptible from the proof above - we just start with empty list, then single element, then n+1 elements.)
