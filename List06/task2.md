@@ -1,15 +1,17 @@
 Definition from lecture
 
+``` racket
 (define (append xs ys)
     (if (empty? xs)
         ys
         (cons (first xs) (append (rest xs) ys))
     )
 )
+```
 
 We need to prove that (append xs ys) always return some value (a list).
 
-We have 4 base cases.
+We have 4 base cases:
 
 1) Both lists are empty:
 First if evaluates to true, so we return ys (empty list)
