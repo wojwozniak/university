@@ -17,7 +17,7 @@ Defininition of `sorted?`:
 ```scheme
 (define (sorted? xs)
     (cond 
-        [(empty? (rest xs)) #t]
+        [(or (empty? xs) (empty? (rest xs))) #t]
         [(> (first xs) (first(rest xs))) #f]
         [else (sorted? (rest xs))]
     )
