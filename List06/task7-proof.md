@@ -102,10 +102,16 @@ It will be catched by this line in main cond expression:
 
         [(conj? f) (and (eval-formula v (conj-l f)) (eval-formula v (conj-r f)))]
 
+Which will return `(eval-formula v Φ) ∧ (eval-formula v ѱ)`. We know that `eval-formula v Φ` and `eval-formula v ѱ` are correct for Φ and ѱ formulas. So we get expected result for conjuction.
+
 
 3) `(Φ ∪ ѱ)`
 
+It will be catched by this line in main cond expression:
+    
+    [else (or (eval-formula v (disj-l f)) (eval-formula v (disj-r f)))]
 
+Which will return `(eval-formula v Φ) ∨ (eval-formula v ѱ)`. We know that `eval-formula v Φ` and `eval-formula v ѱ` are correct for Φ and ѱ formulas. So we get expected result for disjunction.
      
 
 We get expected output for every case in the inductive step. So we proved that `eval-nnf` works correctly for any `σ` and `φ`.
