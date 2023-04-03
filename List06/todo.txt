@@ -1,8 +1,8 @@
 1: git
 2: git 
-3: wystarczająco?
+3: git
 4: git
 5: git
 6: git
 7: dowód
-8: dowód
+8: git
