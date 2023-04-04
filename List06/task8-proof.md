@@ -64,7 +64,7 @@ It's hard to write it formally - we can help make it more clear by defining
 
     P(n) ≡ `sorted?` works correctly for any list of length `n`
 
-We already have proven that P(0) and P(1) are true. We need to prove that P(n+1) is true for any `n > 1`.
+We already have proven that P(0) and P(1) are true. We need to prove that P(n+1) is true for any `n`.
 
 Let's assume that `sorted?` works correctly for any list of length `n`. We need to prove that it works correctly for any list of length `n+1`.
 
