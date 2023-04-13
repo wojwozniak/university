@@ -213,15 +213,10 @@
   ; Musimy tutaj wywoływać get-indexes pojedyńczo dla każdego
   ; elementu tab, a później je złączyć, 
   ; tak by mieć listę indeksów w dobrej kolejności
-  (define ind
+  (define indexes
     (apply append (map (lambda (x) (get-indexes (table-schema tab) '() 0 (list x))) cols))
   )
-  ; Zwiększam każdy indeks o 1 - aby uwzględnić wagi dodane poniżej
-  (define indexes (map (lambda (x) (+ 1 x)) ind))
-
-  ; Wkładam rzędy do osobnej zmiennej i do każdego z nich dodaję na początku 0 (które użyjemy później do sortowania)
-  (define weighed-rows (map (lambda (x) (cons 0 x)) (table-rows tab)))
-  (displayln weighed-rows)
+  (displayln indexes)
 )
 
 
@@ -252,7 +247,7 @@
       ; Jeśli mamy sprawdzić czy name < val
       [(lt-f? form)
         (< 
-          (list-ref row (index (get-index (lt-f-name form) (table-schema tab)))) 
+          (list-ref row (get-index (lt-f-name form) (table-schema tab))) 
           (lt-f-val form)
         )
       ]
