@@ -2,22 +2,30 @@
 
 ; ### DEFINICJE I STARTOWE DANE ###
 
-
 (provide (struct-out column-info)
-         (struct-out table)
-         (struct-out and-f)
-         (struct-out or-f)
-         (struct-out not-f)
-         (struct-out eq-f)
-         (struct-out eq2-f)
-         (struct-out lt-f)
-         table-insert
-         table-project
-         table-sort
-         table-select
-         table-rename
-         table-cross-join
-         table-natural-join)
+  (struct-out table)
+  (struct-out and-f)
+  (struct-out or-f)
+  (struct-out not-f)
+  (struct-out eq-f)
+  (struct-out eq2-f)
+  (struct-out lt-f)
+  table-insert
+  table-project
+  table-sort
+  table-select
+  table-rename
+  table-cross-join
+  table-natural-join
+)
+
+; Formuły do selekcji
+(define-struct and-f (l r)) ; koniunkcja
+(define-struct or-f (l r)) ; dysjunkcja
+(define-struct not-f (e)) ; negacja
+(define-struct eq-f (name val)) ; wartość kolumny name = val
+(define-struct eq2-f (name name2)) ; name = name2
+(define-struct lt-f (name val)) ; wartość kolumny name < val
 
 ; Definicja column-info
 (define-struct column-info (name type) #:transparent)
@@ -109,7 +117,16 @@
   )
 )
 
-
+; Funkcja zwracająca wiersz
+(define (get-index row schema)
+  (let rec ((schema schema) (id 0))
+    (cond 
+      [(null? schema) (error "Nie ma w tej tabeli takiej kolumny!")]
+      [(eq? (column-info-name (car schema)) row) id]
+      [else (rec (cdr schema) (+ id 1))]
+    )
+  )
+)
 
 ; ## Funkcje główne ##
 
@@ -205,7 +222,85 @@
   ; Wkładam rzędy do osobnej zmiennej i do każdego z nich dodaję na początku 0 (które użyjemy później do sortowania)
   (define weighed-rows (map (lambda (x) (cons 0 x)) (table-rows tab)))
   (displayln weighed-rows)
+)
 
-  ; Zmien
-  
+
+; Selekcja
+(define (table-select form tab)
+  ; Wewnętrzna funkcja sprawdzająca czy formuła spełnia warunek
+  (define (eval form row)
+    ; Sprawdzamy typ formuły
+    (cond
+      ; Jeśli jest koniunkcją, zwracamy koniunkcję lewej i prawej strony
+      [(and-f? form) 
+        (and 
+          (eval (and-f-l form) row)
+          (eval (and-f-r form) row)
+        )
+      ]
+      ; Jeśli jest alternatywą, zwracamy alternatywę lewej i prawej strony
+      [(or-f? form) 
+        (or 
+          (eval (or-f-l form) row)
+          (eval (or-f-r form) row)
+        )
+      ]
+      ; Jeśli jest negacją, zwracamy negację formuły
+      [(not-f? form) 
+        (not (eval (not-f-e form) row))
+      ]
+      ; Jeśli mamy sprawdzić czy name < val
+      [(lt-f? form)
+        (< 
+          (list-ref row (index (get-index (lt-f-name form) (table-schema tab)))) 
+          (lt-f-val form)
+        )
+      ]
+      ; Jeśli mamy sprawdzić czy name = val
+      [(eq-f? form) 
+        (equal?
+          (list-ref row (get-index (eq-f-name form) (table-schema tab))) 
+          (eq-f-val form)
+        )
+      ]
+      ; Jeśli mamy sprawdzić czy name1 = name2
+      [(eq2-f? form) 
+        (equal? 
+          (list-ref row (get-index (eq2-f-name form) (table-schema tab))) 
+          (list-ref row (get-index (eq2-f-name2 form) (table-schema tab)))
+        )
+      ]
+      ; w.p.p.
+      [else (error "Nie istnieje taka formuła!")]
+    )
+  )
+
+  ; Zwracamy nową tabelę z wybranymi wierszami
+  (let 
+    ((new-rows
+      ; Wybieramy wiersze, które spełniają formułę
+      (filter-map
+        (lambda (row) (if (eval form row) row #f)) (table-rows tab)
+      )
+    ))
+    (make-table (table-schema tab) new-rows)
+  )
+)
+
+; Złączenie kartezjańskie
+(define (table-cross-join tab1 tab2)
+  (let* 
+    (
+      ; Nagłówki tabeli wynikowej
+      (headers (append (table-schema tab1) (table-schema tab2)))
+
+      ; Wiersze tabeli wynikowej
+      (r1 (table-rows tab1))
+      (r2 (table-rows tab2))
+      (rows (map (lambda (rw1) (map (lambda (rw2) (append rw1 rw2)) r2)) r1))
+    )
+
+    ; Zwróć tabelę wynikową
+    (make-table headers (apply append rows))
+  )
 )
