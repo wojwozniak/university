@@ -1,4 +1,8 @@
+
+// Deklaracja klasy Czasopismo - rozszerza WydawnictwoCiagle
 public class Czasopismo extends WydawnictwoCiagle {
+
+    // Klasa dodaje jedną zmienną - miesiąc wydania czasopisma
     private int miesiac;
 
     public Czasopismo(String tytul, String autor, int rokWydania, int numer, int miesiac) {

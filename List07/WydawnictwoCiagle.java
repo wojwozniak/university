@@ -1,5 +1,10 @@
 
+
+
+// Klasa WydawnictwoCiagle rozszerzająca klasę Ksiazka
 public class WydawnictwoCiagle extends Ksiazka {
+
+    // Klasa dodaje jedną zmienną - numer wydania
     private int numer;
 
     public WydawnictwoCiagle(String tytul, String autor, int rokWydania, int numer) {
