@@ -29,7 +29,7 @@ public class Main {
         }
 
         // Analogiczny test dla czasopisma
-        Czasopismo czasopismo = new Czasopismo("National Geographic", "Various", 2022, 4, 4);
+        Czasopismo czasopismo = new Czasopismo("Atlas wędkarski", "Różni autorzy", 2023, 1, 1);
         System.out.println(czasopismo);
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("czasopismo.ser"))) {
             oos.writeObject(czasopismo);
