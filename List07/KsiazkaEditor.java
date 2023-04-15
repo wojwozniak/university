@@ -9,22 +9,17 @@ public class KsiazkaEditor extends JComponent {
     // Edytowana książka
     private Ksiazka ksiazka;
 
-    // Pola tekstowe do edycji tytułu, autora i roku wydania
+    // Pola i przyciski
     private JTextField tytulField;
     private JTextField autorField;
     private JTextField rokWydaniaField;
-
-    // Przyciski do zapisu zmian i anulowania edycji
     private JButton zapiszButton;
     private JButton anulujButton;
+    private ActionListener actionListener;
 
-    // Konstruktor klasy
-    public KsiazkaEditor(Ksiazka ksiazka) {
+    // Konstruktor klasy - generujemy pola i przyciski
+    public KsiazkaEditor(Ksiazka ksiazka, ActionListener actionListener) {
         this.ksiazka = ksiazka;
-
-        System.out.println("Książka");
-        System.out.println("Przed zmianą:");
-        System.out.println(ksiazka);
 
         // Tworzenie pól tekstowych
         tytulField = new JTextField(ksiazka.getTytul(), 20);
@@ -76,30 +71,24 @@ public class KsiazkaEditor extends JComponent {
         });
     }
 
+    private void editKsiazka() {
+        ksiazka.setTytul(tytulField.getText());
+        ksiazka.setAutor(autorField.getText());
+        ksiazka.setRokWydania(Integer.parseInt(rokWydaniaField.getText()));
+        if (actionListener != null) {
+            actionListener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Książka zmodyfikowana"));
+        }
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(KsiazkaEditor.this);
+        frame.dispose();
+    }
+
     // Funkcja wywołująca renderowanie okna
-    public static void callEditor(Ksiazka ksiazka) {
-
-        // Tworzymy okno edycji obiektu klasy Ksiazka
-        KsiazkaEditor editor = new KsiazkaEditor(ksiazka);
-
-        // Wyświetlamy okno edycji
+    public static void callEditor(Ksiazka ksiazka, ActionListener actionListener) {
+        KsiazkaEditor editor = new KsiazkaEditor(ksiazka, actionListener);
         JFrame frame = new JFrame("Edycja książki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(editor);
         frame.pack();
         frame.setVisible(true);
-
-        // Co 0.1 sekundy sprawdzamy czy okno jest otwarte
-        while (frame.isVisible()) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Wyświetlamy zmieniony obiekt
-        System.out.println("Po zmianie:");
-        System.out.println(ksiazka);
     }
 }
