@@ -12,6 +12,7 @@ public class Editor {
         renderEditor();
     }
 
+    // Metoda renderująca edytor
     private void renderEditor() {
         JFrame mainFrame = new JFrame("Editor");
         JButton editButton = new JButton("Edytuj książkę");
@@ -23,22 +24,16 @@ public class Editor {
                 // Wypisujemy
                 System.out.println("Wywołujemy edytor dla:");
                 System.out.println(ksiazka);
-                KsiazkaEditor.callEditor(ksiazka, new EditorActionListener());
+                KsiazkaEditor.callEditor(ksiazka);
             }
         });
+
+        // Renderujemy okno
         JPanel panel = new JPanel();
         panel.add(editButton);
         mainFrame.add(panel);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.pack();
         mainFrame.setVisible(true);
-    }
-
-    private class EditorActionListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Zmodyfikowano element");
-            System.out.println(e);
-        }
     }
 }

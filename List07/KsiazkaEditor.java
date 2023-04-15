@@ -15,10 +15,9 @@ public class KsiazkaEditor extends JComponent {
     private JTextField rokWydaniaField;
     private JButton zapiszButton;
     private JButton anulujButton;
-    private ActionListener actionListener;
 
     // Konstruktor klasy - generujemy pola i przyciski
-    public KsiazkaEditor(Ksiazka ksiazka, ActionListener actionListener) {
+    public KsiazkaEditor(Ksiazka ksiazka) {
         this.ksiazka = ksiazka;
 
         // Tworzenie pól tekstowych
@@ -58,6 +57,9 @@ public class KsiazkaEditor extends JComponent {
                 ksiazka.setRokWydania(Integer.parseInt(rokWydaniaField.getText()));
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
                 frame.dispose();
+
+                System.out.println("Książka po edycji:");
+                System.out.println(ksiazka);
             }
         });
 
@@ -71,20 +73,18 @@ public class KsiazkaEditor extends JComponent {
         });
     }
 
+    // Metoda edycji danych książki
     private void editKsiazka() {
         ksiazka.setTytul(tytulField.getText());
         ksiazka.setAutor(autorField.getText());
         ksiazka.setRokWydania(Integer.parseInt(rokWydaniaField.getText()));
-        if (actionListener != null) {
-            actionListener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Książka zmodyfikowana"));
-        }
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(KsiazkaEditor.this);
         frame.dispose();
     }
 
     // Funkcja wywołująca renderowanie okna
-    public static void callEditor(Ksiazka ksiazka, ActionListener actionListener) {
-        KsiazkaEditor editor = new KsiazkaEditor(ksiazka, actionListener);
+    public static void callEditor(Ksiazka ksiazka) {
+        KsiazkaEditor editor = new KsiazkaEditor(ksiazka);
         JFrame frame = new JFrame("Edycja książki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(editor);
