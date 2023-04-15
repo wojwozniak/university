@@ -1,22 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class Editor {
 
-    // Zmienna przechowująca dane książki
-    private Ksiazka ksiazka;
-    private Czasopismo czasopismo;
-
     // Konstruktor - zapisuje książkę i renderuje edytor
     public Editor(Ksiazka ksiazka, Czasopismo czasopismo) {
-        this.ksiazka = ksiazka;
-        this.czasopismo = czasopismo;
-        renderEditor();
-    }
-
-    // Metoda renderująca edytor
-    private void renderEditor() {
 
         // Tworzymy okno edytora
         JFrame mainFrame = new JFrame("Edytor");
@@ -44,36 +32,25 @@ public class Editor {
 
         // Przycisk edycji magazynu
         JButton editMagazineButton = new JButton("Edytuj magazyn");
-        editMagazineButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Wypisujemy dane i wywołujemy edytor
-                System.out.println("Wywołujemy edytor dla:");
-                System.out.println(czasopismo);
-                CzasopismoEditor.callEditor(czasopismo);
-            }
+        editMagazineButton.addActionListener(e -> {
+            // Wypisujemy dane i wywołujemy edytor
+            System.out.println("Wywołujemy edytor dla:");
+            System.out.println(czasopismo);
+            CzasopismoEditor.callEditor(czasopismo);
         });
 
         // Przycisk edycji książki
         JButton editBookButton = new JButton("Edytuj książkę");
-        editBookButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Wypisujemy dane i wywołujemy edytor
-                System.out.println("Wywołujemy edytor dla:");
-                System.out.println(ksiazka);
-                KsiazkaEditor.callEditor(ksiazka);
-            }
+        editBookButton.addActionListener(e -> {
+            // Wypisujemy dane i wywołujemy edytor
+            System.out.println("Wywołujemy edytor dla:");
+            System.out.println(ksiazka);
+            KsiazkaEditor.callEditor(ksiazka);
         });
 
         // Przycisk zamknięcia
         JButton closeButton = new JButton("Zamknij");
-        closeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.dispose();
-            }
-        });
+        closeButton.addActionListener(e -> mainFrame.dispose());
 
         // Dodajemy przyciski do panelu
         buttonPanel.add(editMagazineButton);
