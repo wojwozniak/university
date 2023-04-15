@@ -15,6 +15,14 @@ public class Czasopismo extends WydawnictwoCiagle {
         this.miesiac = miesiac;
     }
 
+    public int getMiesiac() {
+        return miesiac;
+    }
+
+    public void setMiesiac(int miesiac) {
+        this.miesiac = miesiac;
+    }
+
     // Metoda toString() zwracająca informacje o obiekcie
     public String toString() {
         return super.toString() + ", " + miesiac + "/" + getRokWydania();

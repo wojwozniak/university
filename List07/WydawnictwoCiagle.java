@@ -13,6 +13,14 @@ public class WydawnictwoCiagle extends Ksiazka {
         this.numer = numer;
     }
 
+    public int getNumer() {
+        return numer;
+    }
+
+    public void setNumer(int numer) {
+        this.numer = numer;
+    }
+
     // Metoda toString() zwracająca informacje o obiekcie
     public String toString() {
         return super.toString() + ", numer " + numer;
