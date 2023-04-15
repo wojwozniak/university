@@ -3,7 +3,6 @@ import java.io.Serializable;
 // Klasa książka implementująca Serializable
 public class Ksiazka implements Serializable {
 
-
     /*
         Prywatne zmienne reprezezentujące
         tytuł, autora i rok wydania
