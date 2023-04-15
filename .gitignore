@@ -572,4 +572,5 @@ $RECYCLE.BIN/
 *.csproj
 *.iml
 **/.idea/
+**/out/
 *.ser
