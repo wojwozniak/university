@@ -28,12 +28,16 @@ public class Editor {
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         JLabel subtitleLabel = new JLabel("Kliknij przyciski poniżej by edytować");
         JLabel subtitle2Label = new JLabel("wypisane wcześniej książki");
+        JLabel ksiazkaLabel = new JLabel("Książka: " + ksiazka);
+        JLabel czasopismoLabel = new JLabel("Czasopismo: " + czasopismo);
 
         // Dodajemy panel z napisami
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.PAGE_AXIS));
         centerPanel.add(subtitleLabel);
         centerPanel.add(subtitle2Label);
+        centerPanel.add(ksiazkaLabel);
+        centerPanel.add(czasopismoLabel);
 
         // Tworzymy panel z przyciskami
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
