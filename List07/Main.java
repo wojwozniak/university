@@ -45,19 +45,8 @@ public class Main {
             e.printStackTrace();
         }
 
-        /*
-            Test edytora klasy książka
-            Tworzymy okno edycji obiektu klasy
-            Książka i wywołujemy je.
-            Po zamknięciu okna w konsoli pojawi się kod
-            po zmianach.
-        */
-        System.out.println("Teraz test edytora. Edytuj i kliknij zapisz.");
-        System.out.println("Przed zmianą:");
-        System.out.println(ksiazka[0]);
-        System.out.println("Po zmianie:");
-        KsiazkaEditor editor = new KsiazkaEditor(ksiazka[0]);
-        KsiazkaEditor.callEditor(ksiazka[0]);
+        Editor editor = new Editor(ksiazka[0]);
+        editor.editAndSave();
 
     }
 }
