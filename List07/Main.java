@@ -2,18 +2,22 @@ import java.io.*;
 
 // Główna klasa z testami
 public class Main {
+
+    // Wywołanie testów
     public static void main(String[] args) {
         serializationTest();
         editorTest();
-
-
     }
 
+
+    // Testy edycji
     public static void editorTest() {
+        // Tworzymy przykładowe zmienne i wywołujemy edytor
         final Ksiazka[] ksiazka = {new Ksiazka("Ostatnie Życzenie", "Andrzej Sapkowski", 1993)};
         Editor editor = new Editor(ksiazka[0]);
-
     }
+
+    // Testy serializacji i deserializacji
     public static void serializationTest() {
         System.out.println("Wypiszemy dwa obiekty - obydwa najpierw przed serializacją, a potem po serializacji i deserializacji");
 
