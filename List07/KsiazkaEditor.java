@@ -1,33 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 // Klasa edytora książki
 public class KsiazkaEditor extends JComponent {
 
-    // Edytowana książka
-    private Ksiazka ksiazka;
-
-    // Pola i przyciski
-    private JTextField tytulField;
-    private JTextField autorField;
-    private JTextField rokWydaniaField;
-    private JButton zapiszButton;
-    private JButton anulujButton;
-
     // Konstruktor klasy - generujemy pola i przyciski
     public KsiazkaEditor(Ksiazka ksiazka) {
-        this.ksiazka = ksiazka;
-
         // Tworzenie pól tekstowych
-        tytulField = new JTextField(ksiazka.getTytul(), 20);
-        autorField = new JTextField(ksiazka.getAutor(), 20);
-        rokWydaniaField = new JTextField(Integer.toString(ksiazka.getRokWydania()), 4);
+        JTextField tytulField = new JTextField(ksiazka.getTytul(), 20);
+        JTextField autorField = new JTextField(ksiazka.getAutor(), 20);
+        JTextField rokWydaniaField = new JTextField(Integer.toString(ksiazka.getRokWydania()), 4);
 
         // Tworzenie przycisków
-        zapiszButton = new JButton("Zapisz");
-        anulujButton = new JButton("Anuluj");
+        JButton zapiszButton = new JButton("Zapisz");
+        JButton anulujButton = new JButton("Anuluj");
 
         // Ustawienie layoutu
         setLayout(new BorderLayout());
@@ -42,44 +28,28 @@ public class KsiazkaEditor extends JComponent {
         fieldsPanel.add(new JLabel("Rok wydania:"));
         fieldsPanel.add(rokWydaniaField);
         add(fieldsPanel, BorderLayout.CENTER);
-
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.add(zapiszButton);
         buttonsPanel.add(anulujButton);
         add(buttonsPanel, BorderLayout.SOUTH);
 
         // Listener zapisu - zapisujemy obiekt i zamykamy okno
-        zapiszButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ksiazka.setTytul(tytulField.getText());
-                ksiazka.setAutor(autorField.getText());
-                ksiazka.setRokWydania(Integer.parseInt(rokWydaniaField.getText()));
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
-                frame.dispose();
+        zapiszButton.addActionListener(e -> {
+            ksiazka.setTytul(tytulField.getText());
+            ksiazka.setAutor(autorField.getText());
+            ksiazka.setRokWydania(Integer.parseInt(rokWydaniaField.getText()));
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
+            frame.dispose();
 
-                System.out.println("Książka po edycji:");
-                System.out.println(ksiazka);
-            }
+            System.out.println("Książka po edycji:");
+            System.out.println(ksiazka);
         });
 
         // Listener anulowania - zamykamy okno
-        anulujButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
-                frame.dispose();
-            }
+        anulujButton.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
+            frame.dispose();
         });
-    }
-
-    // Metoda edycji danych książki
-    private void editKsiazka() {
-        ksiazka.setTytul(tytulField.getText());
-        ksiazka.setAutor(autorField.getText());
-        ksiazka.setRokWydania(Integer.parseInt(rokWydaniaField.getText()));
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(KsiazkaEditor.this);
-        frame.dispose();
     }
 
     // Funkcja wywołująca renderowanie okna
