@@ -1,12 +1,5 @@
 public class Editor {
 
-    /*
-        Edytor klasy książka
-        Tworzymy okno edycji obiektu klasy
-        Książka i wywołujemy je.
-        Po zamknięciu okna w konsoli pojawi się kod
-        po zmianach.
-     */
     private Ksiazka ksiazka;
 
     public Editor(Ksiazka ksiazka) {
