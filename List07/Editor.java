@@ -4,9 +4,10 @@ public class Editor {
 
     public Editor(Ksiazka ksiazka) {
         this.ksiazka = ksiazka;
+        editKsiazka();
     }
 
-    public void editAndSave() {
+    public void editKsiazka() {
         System.out.println("Ksiazka");
         System.out.println("Przed zmianą:");
         System.out.println(ksiazka);

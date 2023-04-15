@@ -12,9 +12,7 @@ public class Main {
     public static void editorTest() {
         final Ksiazka[] ksiazka = {new Ksiazka("Ostatnie Życzenie", "Andrzej Sapkowski", 1993)};
         Editor editor = new Editor(ksiazka[0]);
-        editor.editAndSave();
 
-        // Editor.createEditorWindow(ksiazka[0]);
     }
     public static void serializationTest() {
         System.out.println("Wypiszemy dwa obiekty - obydwa najpierw przed serializacją, a potem po serializacji i deserializacji");
