@@ -63,14 +63,14 @@ public class Main {
         Thread leftThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Wywołano wątek nr " + Thread.currentThread().getName());
+                System.out.println("Wywołano wątek " + Thread.currentThread().getName());
                 mergeSort(left);
             }
         });
         Thread rightThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Wywołano wątek nr " + Thread.currentThread().getName());
+                System.out.println("Wywołano wątek " + Thread.currentThread().getName());
                 mergeSort(right);
             }
         });
