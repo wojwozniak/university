@@ -571,6 +571,5 @@ $RECYCLE.BIN/
 .vscode
 *.csproj
 *.iml
-/.idea/
-/out/
+**/.idea/
 *.ser
