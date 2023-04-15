@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Klasa edytora książki
 public class KsiazkaEditor extends JComponent {
 
     // Referencja do edytowanej książki
@@ -49,7 +50,7 @@ public class KsiazkaEditor extends JComponent {
         buttonsPanel.add(anulujButton);
         add(buttonsPanel, BorderLayout.SOUTH);
 
-        // Ustawienie akcji dla przycisków
+        // Listener zapisu - zapisujemy obiekt i zamykamy okno
         zapiszButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,6 +62,7 @@ public class KsiazkaEditor extends JComponent {
             }
         });
 
+        // Listener anulowania - zamykamy okno
         anulujButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,6 +74,7 @@ public class KsiazkaEditor extends JComponent {
 
     // Funkcja wywołująca renderowanie okna
     public static void callEditor(Ksiazka ksiazka) {
+
         // Tworzymy okno edycji obiektu klasy Ksiazka
         KsiazkaEditor editor = new KsiazkaEditor(ksiazka);
 
@@ -82,7 +85,7 @@ public class KsiazkaEditor extends JComponent {
         frame.pack();
         frame.setVisible(true);
 
-        // Czekamy na zamknięcie okna
+        // Co 0.1 sekundy sprawdzamy czy okno jest otwarte
         while (frame.isVisible()) {
             try {
                 Thread.sleep(100);

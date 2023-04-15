@@ -6,10 +6,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Wypiszemy dwa obiekty - obydwa najpierw przed serializacją, a potem po serializacji i deserializacji");
 
-        // Stwórz obiekt książka
+        /*
+            Tworzymy obiekt klasy Ksiazka (tablica jednoelementowa
+            w celu uniknięcia problemu przy wypisywaniu obiektu)
+        */ 
         final Ksiazka[] ksiazka = {new Ksiazka("Ostatnie Życzenie", "Andrzej Sapkowski", 1993)};
 
-        // Wypisz obiekt do konsoli
+        // Wypisujemy obiekt do konsoli
         System.out.println(ksiazka[0]);
 
         // Serializacja
