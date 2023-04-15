@@ -13,8 +13,9 @@ public class Main {
     // Testy edycji
     public static void editorTest() {
         // Tworzymy przykładowe zmienne i wywołujemy edytor
-        final Ksiazka[] ksiazka = {new Ksiazka("Ostatnie Życzenie", "Andrzej Sapkowski", 1993)};
-        Editor editor = new Editor(ksiazka[0]);
+        Ksiazka ksiazka = new Ksiazka("Ostatnie Życzenie", "Andrzej Sapkowski", 1993);
+        Czasopismo czasopismo = new Czasopismo("Atlas wędkarski", "Różni autorzy", 2023, 1, 1);
+        Editor editor = new Editor(ksiazka, czasopismo);
     }
 
     // Testy serializacji i deserializacji
