@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 // Klasa edytora książki
 public class KsiazkaEditor extends JComponent {
 
-    // Referencja do edytowanej książki
+    // Edytowana książka
     private Ksiazka ksiazka;
 
     // Pola tekstowe do edycji tytułu, autora i roku wydania
@@ -21,6 +21,10 @@ public class KsiazkaEditor extends JComponent {
     // Konstruktor klasy
     public KsiazkaEditor(Ksiazka ksiazka) {
         this.ksiazka = ksiazka;
+
+        System.out.println("Książka");
+        System.out.println("Przed zmianą:");
+        System.out.println(ksiazka);
 
         // Tworzenie pól tekstowych
         tytulField = new JTextField(ksiazka.getTytul(), 20);
@@ -95,6 +99,7 @@ public class KsiazkaEditor extends JComponent {
         }
 
         // Wyświetlamy zmieniony obiekt
+        System.out.println("Po zmianie:");
         System.out.println(ksiazka);
     }
 }
