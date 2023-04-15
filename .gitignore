@@ -573,4 +573,5 @@ $RECYCLE.BIN/
 *.iml
 **/.idea/
 **/out/
+/out/
 *.ser
