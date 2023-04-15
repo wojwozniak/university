@@ -4,10 +4,9 @@ import java.util.Arrays;
 /*
 * Wojciech Woźniak
 * Lista 6: Zadanie 4
-* (Korzystam z kompilatora replit.com)
-* Można z niego skorzystać za pomocą
-* konta github.com -> new replit,
-* przeklejamy kod i klikamy run
+* (Korzystam z kompilatora IntelliJ IDEA 2023.1
+* wersja studencka
+* (domyślna kompilacja przyciskiem "run")
 */
 
 // Deklaracja klasy zawierającej metodę mergeSort
@@ -58,8 +57,35 @@ public class Main {
         // (korzystamy z final by ominąć błąd)
         final Comparable[] left = Arrays.copyOfRange(array, start, mid + 1);
         final Comparable[] right = Arrays.copyOfRange(array, mid + 1, end + 1);
-        mergeSort(left);
-        mergeSort(right);
+
+
+        // Implementacja wielowątkowości
+        Thread leftThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Wywołano wątek nr " + Thread.currentThread().getName());
+                mergeSort(left);
+            }
+        });
+        Thread rightThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Wywołano wątek nr " + Thread.currentThread().getName());
+                mergeSort(right);
+            }
+        });
+
+        // Wywołujemy wątki
+        leftThread.start();
+        rightThread.start();
+
+        // Czekamy aż wątki zakończą działanie
+        try {
+            leftThread.join();
+            rightThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // Łączymy dwa ciągi (równocześnie je sortując)
         int i = 0, j = 0, k = start;
