@@ -3,8 +3,10 @@ import java.awt.event.*;
 
 public class Editor {
 
+    // Zmienna przechowująca dane książki
     private Ksiazka ksiazka;
 
+    // Konstruktor - zapisuje książkę i renderuje edytor
     public Editor(Ksiazka ksiazka) {
         this.ksiazka = ksiazka;
         renderEditor();
