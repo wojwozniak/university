@@ -1,15 +1,28 @@
 import java.io.*;
-import javax.swing.*;
 
 // Główna klasa z testami
 public class Main {
     public static void main(String[] args) {
+        serializationTest();
+        editorTest();
+
+
+    }
+
+    public static void editorTest() {
+        final Ksiazka[] ksiazka = {new Ksiazka("Ostatnie Życzenie", "Andrzej Sapkowski", 1993)};
+        Editor editor = new Editor(ksiazka[0]);
+        editor.editAndSave();
+
+        // Editor.createEditorWindow(ksiazka[0]);
+    }
+    public static void serializationTest() {
         System.out.println("Wypiszemy dwa obiekty - obydwa najpierw przed serializacją, a potem po serializacji i deserializacji");
 
         /*
             Tworzymy obiekt klasy Ksiazka (tablica jednoelementowa
             w celu uniknięcia problemu przy wypisywaniu obiektu)
-        */ 
+        */
         final Ksiazka[] ksiazka = {new Ksiazka("Ostatnie Życzenie", "Andrzej Sapkowski", 1993)};
 
         // Wypisujemy obiekt do konsoli
@@ -44,9 +57,5 @@ public class Main {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-        Editor editor = new Editor(ksiazka[0]);
-        editor.editAndSave();
-
     }
-}
+ }
