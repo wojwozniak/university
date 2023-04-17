@@ -13,7 +13,7 @@
             (cons/c (listof c) acc)
         )
     )
-    ; Domyślny foldl-map
+    ; foldl-map z treści zadania
     (define (it a xs ys)
         (if (null? xs)
             (cons (reverse  ys) a)
