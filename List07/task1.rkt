@@ -71,9 +71,13 @@
 )
 
 ; Przykładowe drzewa 2-3
-(define tree1 (single-node 1 (leaf) (leaf)))
-(define tree2 (single-node 1 (leaf) (single-node 1 (leaf) (leaf))))
+(define t1 (single-node 1 (leaf) (leaf)))
+(define t2 (single-node 1 (leaf) (single-node 1 (leaf) (leaf))))
 
 ; Sprawdzenie poprawności na przykładowych drzewach
-(23-tree? tree1)
-(23-tree? tree2)
+(23-tree? t1)
+(23-tree? t2)
+
+; Oczekiwana wartość
+; #t
+; #f
