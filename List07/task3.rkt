@@ -10,7 +10,7 @@
   ; a funkcja zwraca listę list elementów typu "a".
   
   (if (null? xs)
-    xs
+    (listof xs)
     (cons xs (suffixes-con (cdr xs)))
   )
 )
@@ -18,13 +18,14 @@
 ; Teraz suffixes bez kontraktu
 (define (suffixes xs)
   (if (null? xs)
-      xs
-      (cons xs (suffixes (cdr xs)))
+    (listof xs)
+    (cons xs (suffixes (cdr xs)))
   )
 )
 
+;(suffixes '())
 (time (suffixes (range 200)))
-(time (suffixes-con (range 200)))
+;(time (suffixes-con (range 200)))
 
 
 ; Druga wersja o 1 wolniejsza (ale coś się chyba buguje)
