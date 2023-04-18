@@ -1,5 +1,7 @@
 #lang racket
 
+; Negatywne to dane wejściowe, pozytywne to wyjściowe
+
 ; (parametric- >/c [a b] (-> a b a))
 ;   Kontrakt jest parametryczny, co oznacza, że działa dla dowolnych typów danych.
 ;   Funkcja przyjmuje trzy argumenty, dwa o typie "a" i jeden o typie "b".
@@ -8,6 +10,7 @@
     (parametric->/c [a b] (-> a b a))
     x
 )
+; N N P
 
 
 ; (parametric- >/c [a b c] (-> (-> a b c) (-> a b) a c))
@@ -18,6 +21,7 @@
     (parametric->/c [a b c] (-> (-> a b c) (-> a b) a c))
     (f x (g x))
 )
+; P P N P N N P
 
 
 ; (parametric- >/c [a b c] (-> (-> b c) (-> a b) (-> a c)))
@@ -29,7 +33,7 @@
         (f (g x))
     )
 )
-
+; P N P N N P
 
 ; (parametric- >/c [a] (-> (-> (-> a a) a) a))
 ;   Kontrakt jest parametryczny, co oznacza, że działa dla dowolnych typów danych.
@@ -39,3 +43,4 @@
     (parametric->/c [a] (-> (-> (-> a a) a) a))
     (f f)
 )
+; N P N P
