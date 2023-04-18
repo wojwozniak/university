@@ -8,7 +8,8 @@
   (double-node [elem1 : 'a] [elem2 : 'a] [l : (2-3Tree 'a)] [m : (2-3Tree 'a)] [r : (2-3Tree 'a)])
 )
 
-; Funkcja pomocnicza sprawdzająca max długość od korzenia do liscia
+; Funkcja pomocnicza sprawdzająca max długość od korzenia do liścia
+; Użyjemy jej w equal_length?
 (define (height [tree : (2-3Tree 'a)])
   (type-case (2-3Tree 'a) tree
     [(leaf) 1]
@@ -34,13 +35,17 @@
 )
 
 
-; Min to minimalna dopuszczalna wartość, max to maksymalna
+; Pomocnicza funkcja którą wykorzystanie w 23-tree?
+; min to minimalna wartość w węźle, max to maksymalna
+; Wywołamy funkcję z -inf.0, +inf.0
 (define (pom tree min max)
   (type-case (2-3Tree 'a) tree
+    ; Leaf zawsze spełnia warunek
     [(leaf) #t]
     [(single-node elem left right)
       ; Sprawdzamy czy min < double-node-elem1 tree < max dla elem
-      (and (and (< min elem) (< elem max))  
+      (and (and (< min elem) (< elem max))
+      ; Wywołujemy rekurencyjne dla child nodeów  
         (pom left min elem)
         (pom right elem max)
       )
@@ -51,6 +56,7 @@
       (and (< min elem1) (< elem1 max))
       ; Sprawdzamy czy min < double-node-elem1 tree < max dla elem2
       (and (< min elem2) (< elem2 max))
+      ; Wywołujemy rekurencyjne dla child nodeów
       (pom left min elem1)
       (pom right elem2 max)
       (pom middle elem1 elem2)
