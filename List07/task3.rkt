@@ -1,6 +1,6 @@
 #lang racket
 
-  ; Definiuje funkcję "suffixes" z jednym argumentem "xs".
+; Definiuje funkcję "suffixes" z jednym argumentem "xs".
 (define/contract (suffixes-con xs)
   ; Kontrakt mówi, że "xs" jest listą, a funkcja zwraca listę list.
   (parametric->/c [a] (-> (listof a) (listof (listof a))))
