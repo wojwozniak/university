@@ -1,3 +1,5 @@
+// Wojciech Woźniak - Lista 7
+
 import javax.swing.*;
 import java.awt.*;
 
