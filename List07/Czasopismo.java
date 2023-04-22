@@ -1,3 +1,5 @@
+// Wojciech Woźniak - Lista 7
+
 
 // Deklaracja klasy Czasopismo - rozszerza WydawnictwoCiagle
 public class Czasopismo extends WydawnictwoCiagle {

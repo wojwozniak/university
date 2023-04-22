@@ -1,3 +1,5 @@
+// Wojciech Woźniak - Lista 7
+
 // Klasa WydawnictwoCiagle rozszerzająca klasę Ksiazka
 public class WydawnictwoCiagle extends Ksiazka {
 

@@ -1,3 +1,5 @@
+// Wojciech Woźniak - Lista 7
+
 import java.io.*;
 
 // Główna klasa z testami
