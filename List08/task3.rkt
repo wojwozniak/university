@@ -78,9 +78,9 @@
         ; w.p.p.
         (begin
             ; Ustawiamy cdr węzła p na węzęł front
-            (set-mcdr p (mqueue-front q))
+            (set-mcdr! p (mqueue-front q))
             ; Ustawiamy car dotychczasowego frontu kolejki q na węzeł p
-            (set-mcar (mqueue-front q) p)
+            (set-mcar! (mqueue-front q) p)
             ; Ustawiamy front na węzeł p
             (set-mqueue-front! q p)
         )
@@ -97,8 +97,8 @@
             (set-mqueue-back! q p)
         )
         (begin
-            (set-mcdr (mqueue-back q) p)
-            (set-mcdr p (mqueue-back q))
+            (set-mcdr! (mqueue-back q) p)
+            (set-mcdr! p (mqueue-back q))
             (set-mqueue-back! q p)
         )
     )
@@ -113,7 +113,7 @@
             (set-mqueue-back! q null)
             (mcar p))
         (begin
-            (set-mcar (mcdr p) null)
+            (set-mcar! (mcdr p) null)
             (mcar p))
     )
 )
