@@ -21,10 +21,10 @@
     (contract-out
         [mqueue-empty?  (-> mqueue? boolean?)]
         [make-mqueue    (-> mqueue?)]
-        [mqueue-push-front   (-> nonempty-mqueue? any/c)]
-        [mqueue-push-back   (-> nonempty-mqueue? any/c)]
-        [mqueue-pop-front   (-> mqueue? any/c)]
-        [mqueue-pop-back    (-> mqueue? any/c)]
+        [mqueue-push-front   (-> nonempty-mqueue? any/c any/c)]
+        [mqueue-push-back   (-> nonempty-mqueue? any/c any/c)]
+        [mqueue-pop-front   (-> nonempty-mqueue? mqueue?)]
+        [mqueue-pop-back    (-> nonempty-mqueue? mqueue?)]
         ; Zostawiamy jednego join - jesteśmy w stanie uzyskać każdą 
         ; kolejność połączenia poprzez wywołanie join z odpowiednią kolejnością argumentów
         [mqueue-join    (-> nonempty-mqueue? nonempty-mqueue? void?)]
@@ -106,14 +106,62 @@
 
 ; Definicja procedury pop front dla kolejki dwukierunkowej
 (define (mqueue-pop-front q)
+    ; Zapisujemy węzeł front do zmiennej p
     (define p (mqueue-front q))
+    ; Ustawiamy front kolejki q na cdr węzła front
     (set-mqueue-front! q (mcdr p))
+    ; Jeśli to jedyny element w kolejce to jest ona teraz pusta
     (if (null? (mcdr p))
         (begin
             (set-mqueue-back! q null)
-            (mcar p))
+            (mcar p)
+        )
+        ; w.p.p. ustawiamy car cdra węzła front na null
         (begin
             (set-mcar! (mcdr p) null)
-            (mcar p))
+            (mcar p)
+        )
+    )
+)
+
+; Definicja procedury pop back dla kolejki dwukierunkowej
+; Działa analogicznie do pop front
+(define (mqueue-pop-back q)
+    (define p (mqueue-back q))
+    (set-mqueue-back! q (mcar p))
+    (if (null? (mcar p))
+        (begin
+            (set-mqueue-front! q null)
+            (mcdr p)
+        )
+        (begin
+            (set-mcdr! (mcar p) null)
+            (mcdr p)
+        )
+    )
+)
+
+; Definicja procedury join dla kolejki dwukierunkowej
+; Przyjmuje dwie kolejki q1 i q2
+(define (mqueue-join q1 q2)
+    ; Jeśli q1 jest pusta to ustawiamy front i back na front i back kolejki q2
+    (if (mqueue-empty? q1)
+        (begin
+            (set-mqueue-front! q1 (mqueue-front q2))
+            (set-mqueue-back! q1 (mqueue-back q2))
+        )
+        ; w.p.p. jeśli q2 jest pusta to nic nie robimy
+        (if (mqueue-empty? q2)
+            (void)
+            ; w.p.p. łączymy kolejki
+            (begin
+                ; Ustawiamy cdr węzła back kolejki q1 na front kolejki q2
+                (set-mcdr! (mqueue-back q1) (mqueue-front q2))
+                ; Ustawiamy car węzła front kolejki q2 na back kolejki q1
+                (set-mcar! (mqueue-front q2) (mqueue-back q1))
+                ; Ustawiamy back kolejki q1 na back kolejki q2
+                (set-mqueue-back! q1 (mqueue-back q2))
+            )
+        )
     )
 )
