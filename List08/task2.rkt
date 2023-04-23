@@ -20,7 +20,7 @@
                 ; Zapisujemy wskaźnik na kolejny element
                 ((next (cdr curr)))
                 ; Przepinamy wskaźnik cdr aktualnego elementu na poprzedni element
-                (set-cdr! curr prev)
+                (set-mcdr! curr prev)
                 ; Wywołujemy rekurencyjnie funkcję iter z 
                 ; aktualnym elementem jako poprzednim i 
                 ; wcześniej zapisanyn kolejnym elementem jako aktualnym
