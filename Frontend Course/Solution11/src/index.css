@@ -1,0 +1,151 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+body, html, #root {
+    background-color: whitesmoke;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans';
+}
+
+#wrapper {
+    width: 70%;
+    min-height: 50%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.15), 0 0 100px 0 rgba(25, 25, 25, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+#container {
+    min-height: 70%;
+    height: fit-content;
+    width: 100%;
+}
+
+#control-panel__label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-top: solid 3px whitesmoke;
+    padding-bottom: 10px;
+}
+
+#control-panel__controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95%;
+    gap: 20px;
+    justify-content: center;
+}
+
+#controls__button {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+#controls__button:hover {
+    background-color: gray;
+    color: white;
+}
+
+#controls__button:active {
+    background-color: black;
+    transform: translateY(2px);
+}
+
+#controls__textarea {
+    width: 400px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.task {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-around;
+    border-bottom: solid 1px whitesmoke;
+    padding: 10px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.task p {
+    width: 80%;
+    overflow-wrap: break-word;
+}
+
+.task__btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.task__check {
+    width: 20px;
+    height: 20px;
+    accent-color: gray;
+    cursor: pointer;
+}
+
+.task__button {
+    background-color: white;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: black;
+    border: 0px;
+    cursor: pointer;
+}
+
+.task__button:hover {
+    background-color: red;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    color: black;
+}
+
+.task__button:active {
+    background-color: darkred;
+    transform: translateY(2px);
+}
+
+#delete-all {
+    color: red;
+    margin: 7px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0px;
+    font-size: 15px;
+}
+
+#delete-all:hover {
+    text-decoration: underline;
+}
+
+#delete-all:active {
+    color: darkred;
+}

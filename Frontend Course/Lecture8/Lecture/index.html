@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <form id="addBook">
+        <h2>Add Book:</h2>
+        <label>
+          Title
+          <input required name="title" />
+        </label>
+        <label>
+          Author
+          <input required name="author" />
+        </label>
+        <label>
+          Pages
+          <input required name="pages" type="number" />
+        </label>
+
+        <button>Add!</button>
+      </form>
+    </div>
+    <div>
+      <h2>Books:</h2>
+      <ul id="books"></ul>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

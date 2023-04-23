@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./styles.css" rel="stylesheet" />
+        <title>Exercise 4</title>
+    </head>
+    <body>
+        <div id="main">
+            <h1 id="title">Contact us!</h1>
+            <form id="form">
+                <div class="input">
+                    <label for="name">Name (required)</label>
+                    <input id="name" type="text" required>
+                </div>
+                <div class="input">
+                    <label for="surname">Surname</label>
+                    <input id="surname" type="text">
+                </div>
+                <div class="input">
+                    <label for="email">Email (required)</label>
+                    <input id="email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-z]{2,4}" type="email" required>
+                </div>
+                <div class="input">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" pattern="[0-9]{9}" placeholder="123456789">
+                </div>
+                <div id="reason__box" class="input">
+                    <label for="reason">Reason (required)</label>
+                    <select id="reason" type="text" required>
+                        <option value="" disabled selected>-- select an option --</option>
+                        <option value="one">One</option>
+                        <option value="two">Two</option>
+                    </select>
+                </div>
+                <div id="message__box" class="input">
+                    <label for="message">Message (required)</label>
+                    <textarea id="message" type="text" required></textarea>
+                </div>
+                <div id="newsletter" class="input">
+                    <label for="newsletter__subscribe">Subscribe to the newsletter</label>
+                    <input id="newsletter__subscribe" type="checkbox">
+                </div>
+                <button class="submit" type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
