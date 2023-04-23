@@ -18,7 +18,7 @@
             ; w.p.p. przechodzimy po elementach
             (let
                 ; Zapisujemy wskaźnik na kolejny element
-                ((next (cdr curr)))
+                ((next (mcdr curr)))
                 ; Przepinamy wskaźnik cdr aktualnego elementu na poprzedni element
                 (set-mcdr! curr prev)
                 ; Wywołujemy rekurencyjnie funkcję iter z 
@@ -31,7 +31,8 @@
 
     ; Wywołujemy wewnętrzną pętlę iteracyjną
     (iter '() lst)
-
-    ; Zwracamy odwróconą listę
-    lst
 )
+
+(define lst (mcons 1 (mcons 2 (mcons 3 '()))))
+(displayln lst)
+(mreverse! lst)
