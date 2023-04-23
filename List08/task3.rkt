@@ -1,5 +1,9 @@
 #lang racket
 
+(module task3 racket)
+
+; #WIP - problem z mcons, staram się to ogarnąć
+
 ; Zadanie 3
 
 ; Wzorując się na implementacji kolejek z wykładu 
@@ -21,8 +25,8 @@
     (contract-out
         [mqueue-empty?  (-> mqueue? boolean?)]
         [make-mqueue    (-> mqueue?)]
-        [mqueue-push-front   (-> nonempty-mqueue? any/c any/c)]
-        [mqueue-push-back   (-> nonempty-mqueue? any/c any/c)]
+        [mqueue-push-front   (-> mqueue? any/c any/c)]
+        [mqueue-push-back   (-> mqueue? any/c any/c)]
         [mqueue-pop-front   (-> nonempty-mqueue? mqueue?)]
         [mqueue-pop-back    (-> nonempty-mqueue? mqueue?)]
         ; Zostawiamy jednego join - jesteśmy w stanie uzyskać każdą 
