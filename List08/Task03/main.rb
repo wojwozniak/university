@@ -146,8 +146,8 @@ def test()
     # Koniec testu 4
 
 
-    # Test 5: Zbyt wiele elementów na stosie
-        puts "Test 5: Zbyt wiele elementów na stosie"
+    # Test 5: Kilka operacji
+        puts "Test 5: Kilka operacji"
         wyrazenie = ONP.new([3, 4, 5, '+', '-'])
         zmienne = {}
         puts "Wyrażenie: #{wyrazenie.wyrazenie}"
