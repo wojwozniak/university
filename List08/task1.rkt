@@ -15,7 +15,7 @@
     (define tail (cdr lst))
 
     ; Ustawiamy wskaźnik ostatniego elementu na początek listy
-    (set-cdr! (last-pair lst) lst)
+    (set-mcdr! (last-pair lst) lst)
 
     ; Zwracamy tail (resztę listy)
     tail
