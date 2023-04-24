@@ -28,8 +28,8 @@
         [make-mqueue    (-> mqueue?)]
         [mqueue-push-front   (-> mqueue? any/c any/c)]
         [mqueue-push-back   (-> mqueue? any/c any/c)]
-        [mqueue-pop-front   (-> nonempty-mqueue? mqueue?)]
-        [mqueue-pop-back    (-> nonempty-mqueue? mqueue?)]
+        [mqueue-pop-front   (-> nonempty-mqueue? any/c)]
+        [mqueue-pop-back    (-> nonempty-mqueue? any/c)]
         ; Zostawiamy jednego join - jesteśmy w stanie uzyskać każdą 
         ; kolejność połączenia poprzez wywołanie join z odpowiednią kolejnością argumentów
         [mqueue-join    (-> nonempty-mqueue? nonempty-mqueue? void?)]
@@ -138,7 +138,7 @@
                 ; Definiujemy curr i next - aktualne car i cdr
                 (
                     (curr (mqueue-front q))
-                    (next (cdr (mqueue-front q)))
+                    (next (mcdr (mqueue-front q)))
                 )
                 (if (eq? next p)
                     ; Jeśli next jest ostatnim elementem to:
@@ -151,7 +151,7 @@
                         (mcar next)
                     )
                     ; w.p.p. wywołujemy rekurencyjnie rec 
-                    (rec next (cdr next))
+                    (rec next (mcdr next))
                 )
             )
         ]
