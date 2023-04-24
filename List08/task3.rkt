@@ -73,38 +73,25 @@
 ; Procedura push front dla kolejki dwukierunkowej
 ; Przyjmuje kolejkę q i element x do wstawienia
 (define (mqueue-push-front q x)
-    ; Tworzymy nowy węzęł p z wartością x i dwoma wskaźnikami
-    (define p (mcons x null))
-    (if (mqueue-empty? q)
-        ; Jeśli kolejka jest pusta to ustawiamy front i back na nowy węzeł (begin używamy by wykonać kilka poleceń jako jeden blok w if)
-        (begin
-            (set-mqueue-front! q p)
-            (set-mqueue-back! q p)
-        )
-        ; w.p.p.
-        (begin
-            ; Ustawiamy cdr węzła p na węzęł front
-            (set-mcdr! p (mqueue-front q))
-            ; Ustawiamy car dotychczasowego frontu kolejki q na węzeł p
-            (set-mcar! (mqueue-front q) p)
-            ; Ustawiamy front na węzeł p
-            (set-mqueue-front! q p)
-        )
+    ; Tworzymy nowy węzęł p z wartością x i cdr ustawionym na front kolejki q
+    (define p (mcons x (mqueue-front q)))
+    ; Ustawiamy car cdra węzła front na p
+    (set-mqueue-front! q p)
+    ; Jeśli kolejka jest pusta to ustawiamy back na p
+    (when (null? (mqueue-back q))
+      (set-mqueue-back! q p)
     )
 )
 
 ; Procedura push back dla kolejki dwukierunkowej
 ; Działa analogicznie do push front
 (define (mqueue-push-back q x)
-    (define p (mcons x null))
-    (if (mqueue-empty? q)
-        (begin
-            (set-mqueue-front! q p)
-            (set-mqueue-back! q p)
-        )
-        (begin
+    (if (null? (mqueue-back q))
+        ; Jeśli kolejka jest pusta to wywołujemy push-front
+        (mqueue-push-front q x)
+        ; w.p.p. tworzymy nowy węzeł p z wartością x i ustawiamy cdr i back na p
+        (let ((p (mcons x null)))
             (set-mcdr! (mqueue-back q) p)
-            (set-mcdr! p (mqueue-back q))
             (set-mqueue-back! q p)
         )
     )
@@ -114,37 +101,62 @@
 (define (mqueue-pop-front q)
     ; Zapisujemy węzeł front do zmiennej p
     (define p (mqueue-front q))
-    ; Ustawiamy front kolejki q na cdr węzła front
-    (set-mqueue-front! q (mcdr p))
-    ; Jeśli to jedyny element w kolejce to jest ona teraz pusta
-    (if (null? (mcdr p))
+    (if (null? p)
+        ; Kolejka nie może być pusta!
+        (error 'mqueue-pop "Error: Pusta kolejka!")
+        ; w.p.p.
         (begin
-            (set-mqueue-back! q null)
-            (mcar p)
-        )
-        ; w.p.p. ustawiamy car cdra węzła front na null
-        (begin
-            (set-mcar! (mcdr p) null)
+            ; Ustawiamy front na mcdr węzła p
+            (set-mqueue-front! q (mcdr p))
+            ; Jeśli front q jest pusty to ustawiamy back na null
+            (when (null? (mqueue-front q))
+                (set-mqueue-back! q null)
+            )
+            ; Zwracamy wartość węzła p
             (mcar p)
         )
     )
 )
 
 ; Definicja procedury pop back dla kolejki dwukierunkowej
-; Działa analogicznie do pop front
 (define (mqueue-pop-back q)
     (define p (mqueue-back q))
-    (set-mqueue-back! q (mcar p))
-    (if (null? (mcar p))
-        (begin
+    (cond
+        ; Brak elementów - zwróć błąd
+        [(null? p) (error "Error!: Pusta kolejka!")]
+        ; Jeden element - ustaw front i back na null
+        [(eq? p (mqueue-front q)) 
             (set-mqueue-front! q null)
-            (mcdr p)
-        )
-        (begin
-            (set-mcdr! (mcar p) null)
-            (mcdr p)
-        )
+            (set-mqueue-back! q null)
+            ; Zwracamy wartość węzła p
+            (mcar p)
+        ]
+        ; Dwa elementy - szukamy przedostatniego węzła
+        [else
+            ; Pomocnicza funkcja rekurencyjna
+            (let rec
+                ; Definiujemy curr i next - aktualne car i cdr
+                (
+                    (curr (mqueue-front q))
+                    (next (cdr (mqueue-front q)))
+                )
+                (if (eq? next p)
+                    ; Jeśli next jest ostatnim elementem to:
+                    ; Usuwamy wskaźnik next tego węzła
+                    ; Ustawiamy back na ten węzeł
+                    ; Zwracamy wartość ostatniego (usuniętego) węzła
+                    (begin
+                        (set-mcdr! curr null)
+                        (set-mqueue-back! q curr)
+                        (mcar next)
+                    )
+                    ; w.p.p. wywołujemy rekurencyjnie rec 
+                    (rec next (cdr next))
+                )
+            )
+        ]
     )
+    
 )
 
 ; Definicja procedury join dla kolejki dwukierunkowej
