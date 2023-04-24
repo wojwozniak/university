@@ -33,6 +33,7 @@
         ; Zostawiamy jednego join - jesteśmy w stanie uzyskać każdą 
         ; kolejność połączenia poprzez wywołanie join z odpowiednią kolejnością argumentów
         [mqueue-join    (-> nonempty-mqueue? nonempty-mqueue? void?)]
+        [mqueue-print (-> mqueue? void?)]
     )
 )
 
@@ -73,7 +74,7 @@
 ; Przyjmuje kolejkę q i element x do wstawienia
 (define (mqueue-push-front q x)
     ; Tworzymy nowy węzęł p z wartością x i dwoma wskaźnikami
-    (define p (mcons x null null))
+    (define p (mcons x null))
     (if (mqueue-empty? q)
         ; Jeśli kolejka jest pusta to ustawiamy front i back na nowy węzeł (begin używamy by wykonać kilka poleceń jako jeden blok w if)
         (begin
@@ -95,7 +96,7 @@
 ; Procedura push back dla kolejki dwukierunkowej
 ; Działa analogicznie do push front
 (define (mqueue-push-back q x)
-    (define p (mcons x null null))
+    (define p (mcons x null))
     (if (mqueue-empty? q)
         (begin
             (set-mqueue-front! q p)
@@ -169,4 +170,16 @@
             )
         )
     )
-) 
+)
+
+; Na potrzeby testów tworzę też funkcję wypisującą kolejkę
+(define (mqueue-print q)
+    (if (mqueue-empty? q)
+        (displayln "Kolejka jest pusta")
+        (do 
+            ((q q (mqueue-pop-front q)))
+            ((mqueue-empty? q))
+            (displayln (mqueue-front q))
+        )
+    )
+)

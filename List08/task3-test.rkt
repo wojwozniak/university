@@ -22,4 +22,4 @@
 
 ; Wypisujemy zawartość kolejki
 (displayln "Wypisujemy zawartość kolejki:")
-(displayln q)
+(mqueue-print q)
