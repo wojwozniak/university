@@ -42,3 +42,4 @@
 (displayln "Łączymy kolejki:")
 (mqueue-join q q2)
 (mqueue-print q) ; Oczekiwany output: {2 1 11 12}
+(mqueue-print q2) ; Oczekiwany output: "Kolejka jest pusta"
