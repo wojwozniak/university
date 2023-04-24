@@ -32,7 +32,7 @@
         [mqueue-pop-back    (-> nonempty-mqueue? any/c)]
         ; Zostawiamy jednego join - jesteśmy w stanie uzyskać każdą 
         ; kolejność połączenia poprzez wywołanie join z odpowiednią kolejnością argumentów
-        [mqueue-join    (-> nonempty-mqueue? nonempty-mqueue? void?)]
+        [mqueue-join    (-> mqueue? mqueue? void?)]
         [mqueue-print (-> mqueue? void?)]
     )
 )

@@ -32,3 +32,13 @@
 ; Wypisujemy zawartość kolejki
 ;(displayln "Wypisujemy zawartość kolejki:")
 ;(mqueue-print q) ; Oczekiwany output: {2 1}
+
+; Druga kolejka
+(define q2 (make-mqueue))
+(mqueue-push-front q2 11)
+(mqueue-push-back q2 12)
+
+; Łączymy kolejki
+(displayln "Łączymy kolejki:")
+(mqueue-join q q2)
+(mqueue-print q) ; Oczekiwany output: {2 1 11 12}
