@@ -5,6 +5,7 @@
 ; Zdefiniuj procedurę cycle!, która zapętla listę mutowalną, 
 ; czyli przepina wskaźnik ogona ostatniego elementu na początek listy.
 
+; --------------------------------------------
 
 ; Pomocnicza funkcja helper, która zwraca ostatni element listy
 (define (helper lst)

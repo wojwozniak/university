@@ -6,6 +6,8 @@
 ; „w miejscu”, czyli nie tworzy nowych bloczków mcons-em,
 ; a odpowiednio przepina wskaźniki.
 
+; --------------------------------------------
+
 ; Definicja mreverse!:
 (define (mreverse! lst)
 

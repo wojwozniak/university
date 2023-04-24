@@ -15,6 +15,7 @@
 ; Twoja implementacja powinna znajdować się w osobnym module, 
 ; a eksportowane procedury powinny mieć odpowiednie kontrakty.
 
+; --------------------------------------------
 
 ; Kod z wykładu zaadaptowany na potrzeby zadania
 
