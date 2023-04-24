@@ -162,25 +162,24 @@
 ; Definicja procedury join dla kolejki dwukierunkowej
 ; Przyjmuje dwie kolejki q1 i q2
 (define (mqueue-join q1 q2)
-    ; Jeśli q1 jest pusta to ustawiamy front i back na front i back kolejki q2
-    (if (mqueue-empty? q1)
-        (begin
+    (cond
+        ; Jeśli q2 jest pusta to nic nie robimy
+        [(and (mqueue-empty? q1) (mqueue-empty? q2)) (void)]
+        [(mqueue-empty? q2) (void)]
+        ; Jeśli q1 jest pusta to przepisujemy q2 do q1
+        [(mqueue-empty? q1)
             (set-mqueue-front! q1 (mqueue-front q2))
             (set-mqueue-back! q1 (mqueue-back q2))
-        )
-        ; w.p.p. jeśli q2 jest pusta to nic nie robimy
-        (if (mqueue-empty? q2)
-            (void)
-            ; w.p.p. łączymy kolejki
-            (begin
-                ; Ustawiamy cdr węzła back kolejki q1 na front kolejki q2
-                (set-mcdr! (mqueue-back q1) (mqueue-front q2))
-                ; Ustawiamy car węzła front kolejki q2 na back kolejki q1
-                (set-mcar! (mqueue-front q2) (mqueue-back q1))
-                ; Ustawiamy back kolejki q1 na back kolejki q2
-                (set-mqueue-back! q1 (mqueue-back q2))
-            )
-        )
+            (set-mqueue-front! q2 null)
+            (set-mqueue-back!  q2 null)
+        ]
+        ; w.p.p. dopisujemy q2 na koniec q1 i zeruje wskaźniki q2
+        [else
+            (set-mcdr! (mqueue-back q1) (mqueue-front q2))
+            (set-mqueue-back! q1 (mqueue-back q2))
+            (set-mqueue-front! q2 null)
+            (set-mqueue-back!  q2 null)
+        ]
     )
 )
 
