@@ -151,5 +151,5 @@
 
 (define exp1 (parse-Exp `(+ 2 1)))
 (eval exp1)
-(define exp2 (parse-Exp `(! (+ 2 1))))
+(define exp2 (parse-Exp `(! (+ 2 5))))
 (eval exp2)
