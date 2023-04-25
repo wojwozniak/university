@@ -2,8 +2,6 @@
 
 (module task3 racket)
 
-; #WIP - problem z mcons, staram się to ogarnąć
-
 ; Zadanie 3
 
 ; Wzorując się na implementacji kolejek z wykładu 
