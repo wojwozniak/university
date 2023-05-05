@@ -16,7 +16,7 @@ class ONP
     /
     attr_accessor :wyrazenie
   
-    # Konstuktor klasy ONP - inicjalizuje wyrażenie
+    # Konstuktor klasy ONP - inicjuje wyrażenie
     def initialize(wyrazenie)
       @wyrazenie = wyrazenie
     end
@@ -97,6 +97,18 @@ end
 
 # Funkcja z testami
 def test()
+
+    # Test 0
+        puts "Test 0"
+        wyrazenie = ONP.new([12, 13, '+', 3, 1, '-', '*', 2, '/'])
+        zmienne = {}
+        puts "Wyrażenie: #{wyrazenie.wyrazenie}"
+        puts "Zmienne: #{zmienne}"
+        wynik = wyrazenie.oblicz(zmienne)
+        puts "Oczekiwany wynik: 25"
+        puts "Wynik: #{wynik}"
+    # Koniec testu 0
+
 
     # Test 1: Dodawanie dwóch liczb
         puts "Test 1: Dodawanie dwóch liczb"
