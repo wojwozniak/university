@@ -85,7 +85,7 @@ class Function
 end
 
 
-# Testowanie klasy Function
+/ Testowanie klasy Function /
 
 # Definicja funkcji x^2 
 f = Function.new { |x| x**2 }
