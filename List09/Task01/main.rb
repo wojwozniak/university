@@ -34,7 +34,7 @@ class Function
 
       # Jeśli środek jest miejscem zerowym, zwracamy go
       if x4 == 0
-        return x4
+        return x3
       # Jeśli wartość funkcji w środku i na początku przedziału
       # jest mniejsza od zera, 
       # przesuwamy do środka prawą krawędź przedziału
@@ -54,27 +54,24 @@ class Function
   # Funkcja obliczająca pole powierzchni funkcji
   # w przedziale [a, b]
   def field(a, b)
-    # Zmienna przechowująca sumę pól prostokątów
-    sum = 0.0
-
-    # Liczba podprzedziałów (im większa, 
-    # tym dokładniejszy wynik, ale wolniej)
+    # Ilość podziałów przedziału
     n = 1000
+    # Szerokość podprzedziału
+    width = (b - a).to_f / n
+    # Suma pól podprzedziałów
+    sum = 0.0
+    # Wartość funkcji w punkcie a
+    x = a
 
-    # Długość podprzedziału
-    dx = (b - a) / n
-
-    # Sumujemy pola prostokątów 
-    # wyznaczonych przez podprzedziały
-    # (Średnia wartości dla krańców podprzedziałów)
-    (0...n).each do |i|
-      x1 = a + i * dx
-      x2 = x1 + dx
-      sum += (x2 - x1) * (@func.call(x1) + @func.call(x2)) / 2.0
+    # Obliczamy sumę pól podprzedziałów
+    n.times do
+      height = @func.call(x)
+      sum += height * width
+      x += width
     end
 
-    # Zwracamy sumę pól prostokątów
-    sum
+    # Zwracamy sumę pól podprzedziałów
+    return sum
   end
   
   # Funkcja obliczająca przybliżoną wartość pochodnej
@@ -90,8 +87,8 @@ end
 
 # Testowanie klasy Function
 
-# Definicja funkcji x^2 * sin(x)
-f = Function.new { |x| x**2 * Math.sin(x) }
+# Definicja funkcji x^2 
+f = Function.new { |x| x**2 }
 
 # Obliczenie wartości funkcji w punkcie x=0
 puts "Obliczenie wartości funkcji w punkcie x=0"
@@ -105,9 +102,9 @@ puts f.value(1)
 puts "Obliczenie miejsca zerowego w przedziale [-1, 1]"
 puts f.zero(-1, 1, 0.0001)
 
-# Obliczenie pola powierzchni między wykresem a osią OX w przedziale [0, Math::PI]
-puts "Obliczenie pola powierzchni między wykresem a osią OX w przedziale [0, Math::PI]"
-puts f.field(0, Math::PI)
+# Obliczenie pola powierzchni między wykresem a osią OX w przedziale [0, 4]
+puts "Obliczenie pola powierzchni między wykresem a osią OX w przedziale [0, 4]"
+puts f.field(0, 4)
 
 # Obliczenie przybliżonej wartości pochodnej w punkcie x=2
 puts "Obliczenie przybliżonej wartości pochodnej w punkcie x=2"
