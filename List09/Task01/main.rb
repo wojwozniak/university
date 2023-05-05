@@ -92,20 +92,25 @@ f = Function.new { |x| x**2 }
 
 # Obliczenie wartości funkcji w punkcie x=0
 puts "Obliczenie wartości funkcji w punkcie x=0"
+puts "Oczekiwany output: '0'"
 puts f.value(0)
 
 # Obliczenie wartości funkcji w punkcie x=1
 puts "Obliczenie wartości funkcji w punkcie x=1"
+puts "Oczekiwany output: '1'"
 puts f.value(1)
 
 # Obliczenie miejsca zerowego w przedziale [-1, 1]
 puts "Obliczenie miejsca zerowego w przedziale [-1, 1]"
+puts "Oczekiwany output: '0'"
 puts f.zero(-1, 1, 0.0001)
 
 # Obliczenie pola powierzchni między wykresem a osią OX w przedziale [0, 4]
 puts "Obliczenie pola powierzchni między wykresem a osią OX w przedziale [0, 4]"
+puts "Oczekiwany output: ~'21,3'"
 puts f.field(0, 4)
 
 # Obliczenie przybliżonej wartości pochodnej w punkcie x=2
 puts "Obliczenie przybliżonej wartości pochodnej w punkcie x=2"
+puts "Oczekiwany output: ~'4'"
 puts f.deriv(2)
