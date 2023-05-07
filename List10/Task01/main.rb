@@ -15,33 +15,31 @@
 # Prosta przykładowa klasa Collection      
 # przechowująca kolekcje elementów
 class Collection
-  def initialize(*elements)
-    @data = elements
-  end
-  
-  def swap(i, j)
-    @data[i], @data[j] = @data[j], @data[i]
-  end
-  
-  def length
-    @data.length
-  end
-  
-  def get(i)
-    @data[i]
-  end
+    def initialize(*elements)
+        @data = elements
+    end
+    
+    def swap(i, j)
+        @data[i], @data[j] = @data[j], @data[i]
+    end
+    
+    def length
+        @data.length
+    end
+    
+    def get(i)
+        @data[i]
+    end
 
-  def print_all
-    puts @data.to_s
-  end
-  
+    def print_all
+        puts @data.to_s
+    end
 end
 
 # Testy dla klasy Collection
 
-# Test metody swap: zamiana miejscami elementów w tablicy
+# Test metody swap
 # Oczekiwany output: [3, 2, 1]
-# Realny output: [3, 2, 1]
 def test_swap
     collection = Collection.new(1, 2, 3)
     collection.swap(0, 2)
@@ -50,9 +48,8 @@ def test_swap
     puts "Realny output: #{collection.instance_variable_get(:@data)}"
 end
 
-# Test metody length: zwracanie długości tablicy
+# Test metody length
 # Oczekiwany output: 3
-# Realny output: 3
 def test_length
     collection = Collection.new(1, 2, 3)
     puts "Test metody length"
@@ -60,9 +57,8 @@ def test_length
     puts "Realny output: #{collection.length}"
 end
   
-# Test metody get: zwracanie elementu o danym indeksie
+# Test metody get
 # Oczekiwany output: 2
-# Realny output: 2
 def test_get
     collection = Collection.new(1, 2, 3)
     puts "Test metody get"
@@ -118,6 +114,9 @@ end
 
 # Testy dla klasy Sorter
 
+
+# Test dla sortowania 1
+# Oczekiwany output: [1, 2, 3, 4, 5]
 def test_sort1()
     puts "Test sort1"
 
@@ -128,6 +127,8 @@ def test_sort1()
     puts collection.to_s
 end
   
+# Test dla sortowania 2
+# Oczekiwany output: [1, 2, 3, 4, 5]
 def test_sort2()
     puts "Test sort2"
 
