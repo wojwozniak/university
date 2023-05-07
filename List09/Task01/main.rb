@@ -1,6 +1,7 @@
 /
   Zadanie 1, Lista 9
   Autor: Wojciech Woźniak
+  Wersja 1.0 (2023-05-04)
   Kompilacja: ruby main.rb
 /
 
