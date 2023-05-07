@@ -5,6 +5,8 @@
   Kompilacja: ruby main.rb
 /
 
+#WIP - sortowanie na razie zbugowane
+
 # Na początku odpowiadając na pytanie
 # z treści zadania - w zależności od danych
 # sort2 będzie trochę szybszy (insertion sort)
