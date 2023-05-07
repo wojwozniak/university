@@ -32,9 +32,7 @@ class Function2D
         while x <= b
             y = c + step_size / 2.0
             while y <= d
-                # Obliczamy wartość funkcji w środku sześcianu
                 value = @func.call(x, y)
-                # Obliczamy objętość sześcianu i dodajemy do sumy objętości
                 volume += (value * step_size**3)
                 y += step_size
             end
