@@ -5,8 +5,6 @@
   Kompilacja: ruby main.rb
 /
 
-#WIP - sortowanie na razie zbugowane
-
 # Na początku odpowiadając na pytanie
 # z treści zadania - w zależności od danych
 # sort2 będzie trochę szybszy (insertion sort)
@@ -47,7 +45,7 @@ def test_swap
     collection.swap(0, 2)
     puts "Test metody swap"
     puts "Oczekiwany output: [3, 2, 1]"
-    puts "Realny output: #{collection.instance_variable_get(:@data)}"
+    puts "Realny output: #{collection.print_all}"
 end
 
 # Test metody length
@@ -125,8 +123,7 @@ def test_sort1()
     collection = Collection.new([4, 2, 1, 5, 3])
     Sorter.new.sort1(collection)
     puts "Oczekiwany output: [1, 2, 3, 4, 5]"
-    puts "Realny output: "
-    puts collection.to_s
+    puts "Realny output: #{collection.to_s}"
 end
   
 # Test dla sortowania 2
@@ -137,8 +134,7 @@ def test_sort2()
     collection = Collection.new([4, 2, 1, 5, 3])
     Sorter.new.sort2(collection)
     puts "Oczekiwany output: [1, 2, 3, 4, 5]"
-    puts "Realny output: "
-    puts collection.to_s
+    puts "Realny output: #{collection.to_s}"
 end
 
 
