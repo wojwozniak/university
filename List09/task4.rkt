@@ -65,8 +65,8 @@
     #\7 "__..."
     #\8 "___.."
     #\9 "____."
-    #\. "."
-    #\_ "_"
+    #\. ".-.-.-"
+    #\_ "__..__"
     #\space " "
   )
 )
@@ -102,9 +102,6 @@
 )
 
 
-; Testy - sprawdzamy też czy newline jest poprawnie kodowany
-(define str1 "Metody programowania")
-(define str2 "Metody 
-programowania")
-(morse-code str1)
-(morse-code str2)
+; Test
+(define str "Mp 22")
+(morse-code str)
