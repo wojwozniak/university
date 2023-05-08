@@ -1,6 +1,16 @@
 #lang plait
 
-(require "syntax.rkt")
+
+; SYNTAX.RKT
+(define-type Op
+    (op-add) (op-mul) (op-sub) (op-div)
+)
+
+(define-type Exp
+    (exp-number [n : Number])
+    (exp-op [op : Op] [e1 : Exp] [e2 : Exp])
+)
+; END OF SYNTAX.RKT
 
 (define-type (ParseResult 'a)
     (parse-err)
