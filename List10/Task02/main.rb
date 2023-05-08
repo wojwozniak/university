@@ -54,7 +54,8 @@ class Kolekcja
         end
     end 
 end
-  
+
+
 / Definicja klasy Element /
 class Element
 
