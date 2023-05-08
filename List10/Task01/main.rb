@@ -74,40 +74,33 @@ end
 class Sorter
 
     # Pierwsze sortowanie - bubble sort
-    def sort1(collection)
+    def self.sort1(collection)
         n = collection.length
         loop do
-            swapped = false
-    
-            (n-1).times do |i|
-            if collection.get(i) > collection.get(i+1)
-                collection.swap(i, i+1)
-                swapped = true
+          swapped = false
+          (n - 1).times do |i|
+            if collection.get(i) > collection.get(i + 1)
+              collection.swap(i, i + 1)
+              swapped = true
             end
-            end
-    
-            break unless swapped
+          end
+          break unless swapped
         end
-    
         collection
     end
   
     # Drugie sortowanie - insertion sort
-    def sort2(collection)
+    def self.sort2(collection)
         n = collection.length
-    
         (1...n).each do |i|
             key = collection.get(i)
             j = i - 1
-    
             while j >= 0 && collection.get(j) > key
-            collection.swap(j, j+1)
-            j -= 1
+                collection.instance_variable_get(:@data)[j + 1] = collection.get(j)
+                j -= 1
             end
-    
-            collection.instance_variable_get(:@data)[j+1] = key
+            collection.instance_variable_get(:@data)[j + 1] = key
         end
-    
         collection
     end
 end
@@ -117,28 +110,27 @@ end
 
 # Test dla sortowania 1
 # Oczekiwany output: [1, 2, 3, 4, 5]
-def test_sort1()
+def test_sort1
     puts "Test sort1"
-
-    collection = Collection.new([4, 2, 1, 5, 3])
-    Sorter.new.sort1(collection)
-    puts "Oczekiwany output: [1, 2, 3, 4, 5]"
-    puts "Realny output: #{collection.to_s}"
+    collection = Collection.new(4, 2, 1, 5, 3)
+    sorted_collection = Sorter.sort1(collection)
+    puts "Realny output:"
+    puts sorted_collection.print_all
 end
   
 # Test dla sortowania 2
 # Oczekiwany output: [1, 2, 3, 4, 5]
-def test_sort2()
+def test_sort2
     puts "Test sort2"
-
-    collection = Collection.new([4, 2, 1, 5, 3])
-    Sorter.new.sort2(collection)
+    collection = Collection.new(4, 2, 1, 5, 3)
+    sorted_collection = Sorter.sort2(collection)
     puts "Oczekiwany output: [1, 2, 3, 4, 5]"
-    puts "Realny output: #{collection.to_s}"
+    puts "Realny output:"
+    puts sorted_collection.print_all
 end
 
 
-# Wywołanie testów
+# Metoda wywołująca wszystkie testy
 def run_tests
     test_swap()
     test_length()
