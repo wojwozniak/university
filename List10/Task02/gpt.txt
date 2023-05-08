@@ -1,0 +1,66 @@
+Zgodnie z mailem sprzed paru tygodni 
+podaję treść "rozmowy" z ChatGPT dot. kodu z zadania (J - ja, C - ChatGPT)
+
+J: Jak działa wyszukiwanie interpolacyjne? Napisz kod wyszukania binarnego i interpolacyjnego w języku Ruby
+
+
+C:
+Wyszukiwanie interpolacyjne jest algorytmem wyszukiwania, który działa na posortowanej liście wartości numerycznych. Algorytm ten działa na podobnej zasadzie jak wyszukiwanie binarne, ale zamiast porównywać wartości z połową przedziału, interpolacja liniowa jest używana do określenia aproksymowanej pozycji szukanej wartości.
+
+Poniżej przedstawiony jest przykładowy kod w języku Ruby dla wyszukiwania binarnego i interpolacyjnego w posortowanej liście wartości numerycznych.
+
+ruby
+Copy code
+# Wyszukiwanie binarne
+def binary_search(list, value)
+  low = 0
+  high = list.length - 1
+
+  while low <= high
+    mid = (low + high) / 2
+
+    if list[mid] == value
+      return mid
+    elsif list[mid] < value
+      low = mid + 1
+    else
+      high = mid - 1
+    end
+  end
+
+  return nil
+end
+
+# Wyszukiwanie interpolacyjne
+def interpolation_search(list, value)
+  low = 0
+  high = list.length - 1
+
+  while low <= high && value >= list[low] && value <= list[high]
+    pos = low + ((value - list[low]) * (high - low)) / (list[high] - list[low])
+
+    if list[pos] == value
+      return pos
+    elsif list[pos] < value
+      low = pos + 1
+    else
+      high = pos - 1
+    end
+  end
+
+  return nil
+end
+W funkcji binary_search, podana lista jest dzielona na połowę na każdej iteracji, a wartość szukana jest porównywana z wartością w środku przedziału. W zależności od wyniku porównania, przedział jest zwężany do jednej z dwóch połówek, aż zostanie znaleziona szukana wartość lub dojdziemy do końca listy.
+
+W funkcji interpolation_search, interpolacja liniowa jest używana do określenia aproksymowanej pozycji szukanej wartości. W pierwszej iteracji, pos jest określane na podstawie stosunku różnicy wartości między wartością szukaną a wartością w pierwszej pozycji listy do różnicy wartości między wartością w pierwszej pozycji listy a wartością w ostatniej pozycji listy. Następnie pozycja ta jest porównywana z wartością szukaną, a przedział jest zwężany w kierunku wartości szukanej. Ta procedura jest powtarzana, aż zostanie znaleziona szukana wartość lub dojdziemy do końca listy.
+
+
+J: Jaka jest różnica między tymi typami wyszukiwań?
+
+C: Podstawową różnicą między wyszukiwaniem binarnym a interpolacyjnym jest w jaki sposób określane są pozycje, na których następuje sprawdzenie wartości z szukaną wartością.
+
+W wyszukiwaniu binarnym, pozycja do porównania z wartością szukaną jest określana poprzez dzielenie przedziału na połowę w każdej iteracji. Dzięki temu przedział jest skracany w szybkim tempie, co sprawia, że algorytm ma złożoność czasową O(log n), gdzie n to liczba elementów w liście.
+
+W wyszukiwaniu interpolacyjnym, pozycja do porównania z wartością szukaną jest określana na podstawie interpolacji liniowej, czyli obliczaniu pozycji na podstawie relacji między wartością szukaną a wartościami skrajnymi w przedziale. Dzięki temu pozycja do sprawdzenia jest bardziej precyzyjna, co pozwala na szybsze odnajdywanie wartości w niektórych przypadkach. Jednakże, w najgorszym przypadku, gdy wartości w liście są rozmieszczone nierównomiernie, algorytm może działać wolniej niż wyszukiwanie binarne, co sprawia, że jego złożoność czasowa wynosi O(n).
+
+Wyszukiwanie interpolacyjne jest zazwyczaj wydajniejsze niż wyszukiwanie binarne, gdy wartości w liście są równomiernie rozmieszczone. Jednakże, gdy wartości są nierównomiernie rozmieszczone, wyszukiwanie interpolacyjne może działać wolniej niż wyszukiwanie binarne. Dlatego też, w praktyce, wybór metody zależy od konkretnych warunków zastosowania.
