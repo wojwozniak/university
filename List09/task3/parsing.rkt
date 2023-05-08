@@ -11,7 +11,7 @@
 (provide 
     (contract-out 
         [match-sexp (-> any/c any/c any/c)]
-        [run-parser (-> any/c any/c)]
+        [run-parser (-> any/c any/c any/c)]
     )
 )
 
