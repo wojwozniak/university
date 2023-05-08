@@ -13,10 +13,6 @@
         [match-sexp (-> any/c any/c any/c)]
         [run-parser (-> any/c any/c)]
     )
-    (rename-out 
-        [parse-Op parse-op]
-        [parse-Exp parse-exp]
-    )
 )
 
 ; ---- Koniec dodanego kodu ----
