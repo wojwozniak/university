@@ -28,5 +28,3 @@
 (define (parse-op s) (run-parser op-parser s))
 
 (define (parse-exp s) (run-parser exp-parser s))
-
-(provide parse-op parse-exp)
