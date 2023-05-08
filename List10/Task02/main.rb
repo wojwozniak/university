@@ -1,8 +1,11 @@
 /
-  Zadanie 2, Lista 10
-  Autor: Wojciech Woźniak
-  Wersja 1.0 (2023-05-08)
-  Kompilacja: ruby main.rb
+    Zadanie 2, Lista 10
+    Autor: Wojciech Woźniak
+    Wersja 1.0 (2023-05-08)
+    Kompilacja: ruby main.rb
+    Użyto chatGPT do wyszukania informacji
+    nt. wyszukiwania interpolacyjnego - treść
+    "rozmowy" w pliku gpt.txt
 /
 
 / Definicja klasy Kolekcja /
@@ -64,5 +67,46 @@ class Element
       @wartosc = wartosc
       @poprzedni = nil
       @nastepny = nil
+    end
+end
+
+class Wyszukiwanie
+
+    # Metoda wyszukująca element w kolekcji binarnie
+    def self.binarnie(kolekcja, element)
+        lewy = 0
+        prawy = kolekcja.length - 1
+  
+        while lewy <= prawy
+            srodek = (lewy + prawy) / 2
+            if kolekcja[srodek] == element
+            return srodek
+            elsif kolekcja[srodek] < element
+            lewy = srodek + 1
+            else
+            prawy = srodek - 1
+            end
+        end
+  
+      return nil
+    end
+  
+    # Metoda wyszukująca element w kolekcji interpolacyjnie
+    def self.interpolacyjnie(kolekcja, element)
+        lewy = 0
+        prawy = kolekcja.length - 1
+    
+        while lewy <= prawy && element >= kolekcja[lewy] && element <= kolekcja[prawy]
+            srodek = lewy + ((element - kolekcja[lewy]) * (prawy - lewy)) / (kolekcja[prawy] - kolekcja[lewy])
+            if kolekcja[srodek] == element
+            return srodek
+            elsif kolekcja[srodek] < element
+            lewy = srodek + 1
+            else
+            prawy = srodek - 1
+            end
+        end
+    
+        return nil
     end
 end
