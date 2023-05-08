@@ -1,6 +1,5 @@
 #lang plait
 
-
 ; SYNTAX.RKT
 (define-type Op
     (op-add) (op-mul) (op-sub) (op-div)
@@ -12,11 +11,20 @@
 )
 ; END OF SYNTAX.RKT
 
+
+
+
+; Parser wyrażeń infixowych
+
+
+; Wynik może być błędem parsowania lub wartością odpowiedniego typu i listą pozostałych tokenów.
 (define-type (ParseResult 'a)
     (parse-err)
     (parse-ok [v : 'a] [rest : (Listof S-Exp)])
 )
 
+
+; Wynik może być błędem parsowania lub wartością odpowiedniego typu i listą pozostałych tokenów.
 (define (parse-op0 ss)
     (type-case (Listof S-Exp) ss
         [empty (parse-err)]
@@ -29,6 +37,9 @@
         ]
     )
 )
+
+
+; Obydwie funkcje parse-exp przyjmują listę tokenów i zwracają wynik parsowania.
 
 (define (parse-exp0 ss)
     (type-case (ParseResult Exp) (parse-exp1 ss)
@@ -48,6 +59,8 @@
         ]
     )
 )
+
+
 
 (define (parse-exp1 ss)
     (type-case (Listof S-Exp) ss
@@ -73,6 +86,7 @@
     )
 )
 
+; Funkcja parse-exp przyjmuje napis i zwraca wynik parsowania.
 (define (parse-exp s)
     (type-case (ParseResult Exp) (parse-exp0 (list s))
         [(parse-err) (error 'parse-exp "Syntax error")]
