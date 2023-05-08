@@ -1,0 +1,10 @@
+<expression> ::= <term> | <expression> <addop> <term>
+<term> ::= <factor> | <term> <mulop> <factor>
+<factor> ::= <factorial> | <factor> ^ <factorial>
+<unary> ::= <number> | - <number> | ( <expression> )
+<addop> ::= + | -
+<mulop> ::= * | /
+<divisor> ::= <unary> | ( <expression> )
+<number> ::= <digit> | <nonzero-digit> <number>
+<nonzero-digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<digit> ::= 0 | <nonzero-digit>
