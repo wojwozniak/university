@@ -70,6 +70,51 @@ class Element
     end
 end
 
+
+
+/ Testy dla kolekcji /
+
+
+# Test tworzenia kolekcji i dodawania elementów
+# Oczekiwany output: 1 2 3
+def test_dodaj_element_i_wypisz
+    collection = Kolekcja.new()
+    collection.dodaj_element(2)
+    collection.dodaj_element(1)
+    collection.dodaj_element(3)
+    puts "Test dodawania elementów i wypisywania zawartości"
+    puts "Oczekiwany output: 1 2 3"
+    aktualny = collection.head
+    while aktualny != nil
+        print aktualny.wartosc, " "
+        aktualny = aktualny.nastepny
+    end
+    puts ""
+end
+
+# Test dodawania kolejnych elementów i wypisywania zawartości
+# Oczekiwany output: 1 2 3 4 5
+def test_dodaj_kolejne_elementy_i_wypisz
+    collection = Kolekcja.new()
+    collection.dodaj_element(2)
+    collection.dodaj_element(1)
+    collection.dodaj_element(3)
+    collection.dodaj_element(5)
+    collection.dodaj_element(4)
+    puts "Test dodawania kolejnych elementów i wypisywania zawartości"
+    puts "Oczekiwany output: 1 2 3 4 5"
+    aktualny = collection.head
+    while aktualny != nil
+        print aktualny.wartosc, " "
+        aktualny = aktualny.nastepny
+    end
+    puts ""
+end
+
+/ Koniec testów dla kolekcji /
+
+
+/ Klasa Wyszukiwanie /
 class Wyszukiwanie
 
     # Metoda wyszukująca element w kolekcji binarnie
@@ -110,3 +155,65 @@ class Wyszukiwanie
         return nil
     end
 end
+
+
+
+/ Testy dla wyszukiwań /
+
+
+
+# Test metody binarnie
+# Oczekiwany output: 2
+def test_binarnie
+    collection = [1, 2, 3, 4, 5]
+    element = 3
+    puts "Test metody binarnie"
+    puts "Oczekiwany output: 2"
+    puts "Realny output: #{Wyszukiwanie.binarnie(collection, element)}"
+end
+  
+# Test metody binarnie dla brakującego elementu
+# Oczekiwany output: nil
+def test_binarnie_brakujacy
+    collection = [1, 2, 3, 4, 5]
+    element = 6
+    puts "Test metody binarnie dla brakującego elementu"
+    puts "Oczekiwany output: nil (brak widocznego outputu)"
+    puts "Realny output: #{Wyszukiwanie.binarnie(collection, element)}"
+end
+  
+# Test metody interpolacyjnie
+# Oczekiwany output: 2
+def test_interpolacyjnie
+    collection = [1, 2, 3, 4, 5]
+    element = 3
+    puts "Test metody interpolacyjnie"
+    puts "Oczekiwany output: 2"
+    puts "Realny output: #{Wyszukiwanie.interpolacyjnie(collection, element)}"
+end
+  
+# Test metody interpolacyjnie dla brakującego elementu
+# Oczekiwany output: nil
+def test_interpolacyjnie_brakujacy
+    collection = [1, 2, 3, 4, 5]
+    element = 6
+    puts "Test metody interpolacyjnie dla brakującego elementu"
+    puts "Oczekiwany output: nil (brak widocznego outputu)"
+    puts "Realny output: #{Wyszukiwanie.interpolacyjnie(collection, element)}"
+end
+
+/ Koniec testów dla wyszukiwań /
+
+
+
+/ Wywołanie testów /
+def run_tests
+    test_dodaj_element_i_wypisz()
+    test_dodaj_kolejne_elementy_i_wypisz()
+    test_binarnie()
+    test_binarnie_brakujacy()
+    test_interpolacyjnie()
+    test_interpolacyjnie_brakujacy()
+end
+
+run_tests()
