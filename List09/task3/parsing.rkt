@@ -10,8 +10,8 @@
 ; Kontrakt eksportujący odpowiednie funkcje parsujące.
 (provide 
     (contract-out 
-        [match-sexp (-> any/c any/c any/c)]
-        [run-parser (-> any/c any/c any/c)]
+        [match-sexp (-> any/c any/c boolean?)]
+        [run-parser (-> any/c any/c void)]
     )
 )
 
