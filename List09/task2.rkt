@@ -8,7 +8,7 @@ atom -> symbol | number | boolean ; atom
 
 digit -> | 0 | 1 | ... | 9 ; cyfra
 boolean -> #f | #t | ; wartości logiczne
-valid_char -> a | ... | z | A ... | Z | ! | / | @ | $ | % | ^ | & | & | - | + | . ; znaki specjalne
+valid_char -> a | ... | z | A ... | Z | ! | / | @ | $ | % | ^ | & | - | + | . ; znaki specjalne
 
 number -> digit+ ; liczba
 
