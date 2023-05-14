@@ -33,11 +33,6 @@
     ;[wire-or   (-> wire? wire? wire?)]
     ;[wire-nor  (-> wire? wire? wire?)]
     ;[wire-xor  (-> wire? wire? wire?)]
-
-    ;[bus-value (-> (listof wire?) natural?)]
-    ;[bus-set!  (-> (listof wire?) natural? void?)]
-
-    ;[flip-flop (-> wire? wire? wire? void?)]
   )
 )
 

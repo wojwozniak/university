@@ -1,3 +1,11 @@
+; Moved some code here to make main file able to compile
+
+[bus-value (-> (listof wire?) natural?)]
+[bus-set!  (-> (listof wire?) natural? void?)]
+
+[flip-flop (-> wire? wire? wire? void?)]
+
+
 ; ===================================================================
 ; ### BUS FUNCTIONS ###
 
