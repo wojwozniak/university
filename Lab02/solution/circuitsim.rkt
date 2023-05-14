@@ -6,23 +6,19 @@
 ; Simulator interface
 (provide sim? wire?
   (contract-out
-    ; Simulation-specific contracts
     [make-sim        (-> sim?)]
     [sim-wait!       (-> sim? positive? void?)]
     [sim-time        (-> sim? real?)]
     [sim-add-action! (-> sim? positive? (-> any/c) void?)]
 
-    ; Wire-specific contracts
     [make-wire       (-> sim? wire?)]
     [wire-on-change! (-> wire? (-> any/c) void?)]
     [wire-value      (-> wire? boolean?)]
     [wire-set!       (-> wire? boolean? void?)]
 
-    ; Bus-specific contracts (magistrale)
     [bus-value (-> (listof wire?) natural?)]
     [bus-set!  (-> (listof wire?) natural? void?)]
 
-    ; Gate-specific contracts
     [gate-not  (-> wire? wire? void?)]
     [gate-and  (-> wire? wire? wire? void?)]
     [gate-nand (-> wire? wire? wire? void?)]
@@ -30,7 +26,6 @@
     [gate-nor  (-> wire? wire? wire? void?)]
     [gate-xor  (-> wire? wire? wire? void?)]
 
-    ; WireLogic-specific contracts
     [wire-not  (-> wire? wire?)]
     [wire-and  (-> wire? wire? wire?)]
     [wire-nand (-> wire? wire? wire?)]
@@ -38,7 +33,6 @@
     [wire-nor  (-> wire? wire? wire?)]
     [wire-xor  (-> wire? wire? wire?)]
 
-    ; Flip-flop contract
     [flip-flop (-> wire? wire? wire? void?)]
   )
 )
