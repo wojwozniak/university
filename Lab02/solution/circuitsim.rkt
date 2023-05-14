@@ -136,12 +136,14 @@
 
 ; ===================================================================
 ; ### GATES ###
+; Values are determined on the output tick - as per assignment
 
 
 ; gate-not
 ; wire wire => void
 ; Function implements a NOT gate
-(define (gate-not in out)
+; Delay: 1 tick
+(define (gate-not out in)
   (displayln "")
   ;#TODO CODE
 )
@@ -150,7 +152,8 @@
 ; gate-and
 ; wire wire wire => void
 ; Function implements an AND gate
-(define (gate-and in1 in2 out)
+; Delay: 1 tick
+(define (gate-and out in1 in2)
   (displayln "")
   ;#TODO CODE
 )
@@ -159,7 +162,8 @@
 ; gate-nand
 ; wire wire wire => void
 ; Function implements a NAND gate
-(define (gate-nand in1 in2 out)
+; Delay: 1 tick
+(define (gate-nand out in1 in2)
   (displayln "")
   ;#TODO CODE
 )
@@ -168,7 +172,8 @@
 ; gate-or
 ; wire wire wire => void
 ; Function implements an OR gate
-(define (gate-or in1 in2 out)
+; Delay: 1 tick
+(define (gate-or out in1 in2)
   (displayln "")
   ;#TODO CODE
 )
@@ -177,7 +182,8 @@
 ; gate-nor
 ; wire wire wire => void
 ; Function implements a NOR gate
-(define (gate-nor in1 in2 out)
+; Delay: 1 tick
+(define (gate-nor out in1 in2)
   (displayln "")
   ;#TODO CODE
 )
@@ -186,19 +192,24 @@
 ; gate-xor
 ; wire wire wire => void
 ; Function implements an XOR gate
-(define (gate-xor in1 in2 out)
+; Delay: 2 ticks
+(define (gate-xor out in1 in2)
   (displayln "")
   ;#TODO CODE
 )
 
 
 ; ===================================================================
-; ### WIRES ###
+; ### WIRE LOGIC ###
+; Values are determined on the output tick - as per assignment
+; It's connecting the gates to the wires 
+; Function's output is a wire (with a value that would be returned by the gate)
 
 
 ; wire-not
 ; wire => wire
 ; Function implements a NOT gate
+; Delay: 1 tick
 (define (wire-not in)
   (displayln "")
   ;#TODO CODE
@@ -208,6 +219,7 @@
 ; wire-and
 ; wire wire => wire
 ; Function implements an AND gate
+; Delay: 1 tick
 (define (wire-and in1 in2)
   (displayln "")
   ;#TODO CODE
@@ -217,6 +229,7 @@
 ; wire-nand
 ; wire wire => wire
 ; Function implements a NAND gate
+; Delay: 1 tick
 (define (wire-nand in1 in2)
   (displayln "")
   ;#TODO CODE
@@ -226,6 +239,7 @@
 ; wire-or
 ; wire wire => wire
 ; Function implements an OR gate
+; Delay: 1 tick
 (define (wire-or in1 in2)
   (displayln "")
   ;#TODO CODE
@@ -235,6 +249,7 @@
 ; wire-nor
 ; wire wire => wire 
 ; Function implements a NOR gate
+; Delay: 1 tick
 (define (wire-nor in1 in2)
   (displayln "")
   ;#TODO CODE
@@ -244,6 +259,7 @@
 ; wire-xor
 ; wire wire => wire
 ; Function implements an XOR gate
+; Delay: 2 ticks
 (define (wire-xor in1 in2)
   (displayln "")
   ;#TODO CODE
