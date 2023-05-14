@@ -115,6 +115,7 @@
 ; (wire function) => void
 ; Function adds a new instant-action to the wire (fired on value change)
 (define (wire-on-change! wire function)
+  ;#TODO WIP
   (wire-actions wire) (cons function (wire-actions wire))
 )
 
