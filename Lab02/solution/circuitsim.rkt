@@ -61,13 +61,13 @@
 
 ; sim-wait!
 ; sim int+ => void
-; Function waits for the given amount of time
+; Function runs clock for a given amount of ticks
 ; #TODO CODE
 
 
 ; sim-time
 ; sim => int
-; Function returns the current time of the simulator
+; Function returns the current ticks of the simulator
 (define (sim-time sim)
   (sim-current-time sim)
 )
@@ -107,7 +107,7 @@
 
 ; wire-on-change!
 ; wire function => void
-; Function adds a new action to the simulator
+; Function adds a new action to the wire (fired on value change)
 ; #TODO CODE
 
 
@@ -118,7 +118,7 @@
 
 ; wire-set!
 ; wire boolean => void
-; Function sets the value of the wire
+; Function updates the value of the wire
 ; #TODO CODE
 
 
