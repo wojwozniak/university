@@ -5,7 +5,7 @@
 
 ; Defining structures
 (struct sim (current-time event-queue))
-(struct wire (value actions))
+(struct wire (val actions))
 
 ; Simulator interface
 (provide sim? wire?
@@ -17,7 +17,7 @@
 
     [make-wire       (-> sim? wire?)]
     ;[wire-on-change! (-> wire? (-> any/c) void?)]
-    ;[wire-value      (-> wire? boolean?)]
+    [wire-value      (-> wire? boolean?)]
     ;[wire-set!       (-> wire? boolean? void?)]
 
     ;[gate-not  (-> wire? wire? void?)]
@@ -94,8 +94,7 @@
 ; wire-value
 ; wire => boolean
 ; Function returns the current value of the wire
-; #TODO CODE
-
+(define (wire-value wire) (wire-val wire))
 
 ; wire-set!
 ; wire boolean => void
