@@ -1,13 +1,3 @@
-; Moved default provided functions to this file to be able to test those implemented by myself
-
-
-
-; ===================================================================
-; ### ONLY CODE PROVIDED BY DEFAULT BELOW THIS LINE ###
-; ===================================================================
-
-
-
 ; ===================================================================
 ; ### BUS FUNCTIONS ###
 
