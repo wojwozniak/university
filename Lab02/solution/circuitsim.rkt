@@ -9,7 +9,6 @@
 
 ; Simulator interface
 (provide sim? wire?
-  ;TODO move default-functions back to this file after finishing other ones
   (contract-out
     [make-sim        (-> sim?)]
     ;[sim-wait!       (-> sim? positive? void?)]
@@ -34,6 +33,8 @@
     ;[wire-or   (-> wire? wire? wire?)]
     ;[wire-nor  (-> wire? wire? wire?)]
     ;[wire-xor  (-> wire? wire? wire?)]
+
+    ;TODO move default-contracts back to this file after finishing other ones
   )
 )
 
@@ -189,3 +190,5 @@
 ; ===================================================================
 ; ### ONLY CODE PROVIDED BY DEFAULT BELOW THIS LINE ###
 ; ===================================================================
+
+;TODO move default-functions back to this file after finishing other ones
