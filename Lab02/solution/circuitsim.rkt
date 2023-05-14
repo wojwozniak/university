@@ -44,6 +44,7 @@
 )
 
 ; Bus-set! definition (implementation provided by default)
+; Function sets values of all wires in the bus to the given value
 (define (bus-set! wires value)
   (match wires
     ['() (void)]
@@ -57,6 +58,8 @@
 )
 
 ; bus-value definition (implementation provided by default)
+; Function returns the value of the bus
+; (i.e. the value of the binary number represented by the bus)
 (define (bus-value ws)
   (foldr 
     (lambda 
@@ -69,6 +72,7 @@
 )
 
 ; Flip-flop definition (implementation provided by default)
+; Function implements a flip-flop with the given clock and data wires
 (define (flip-flop out clk data)
   (define sim (wire-sim data))
   (define w1  (make-wire sim))
