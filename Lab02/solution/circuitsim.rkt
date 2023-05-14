@@ -43,13 +43,7 @@
 ; make-sim
 ; () => sim
 ; Function creates a new simulator
-(define (make-sim)
-  ; We have two variables, current-time and event-queue
-  ; current-time is the current time of the simulator
-  ; event-queue is a heap of events, sorted by time
-  (define current-time 0)
-  (define event-queue (make-heap < #:key second>))
-)
+; #TODO CODE
 
 
 ; sim-wait!
