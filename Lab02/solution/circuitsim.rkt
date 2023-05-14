@@ -15,7 +15,7 @@
     [sim-time        (-> sim? real?)]
     ;[sim-add-action! (-> sim? positive? (-> any/c) void?)]
 
-    ;[make-wire       (-> sim? wire?)]
+    [make-wire       (-> sim? wire?)]
     ;[wire-on-change! (-> wire? (-> any/c) void?)]
     ;[wire-value      (-> wire? boolean?)]
     ;[wire-set!       (-> wire? boolean? void?)]
