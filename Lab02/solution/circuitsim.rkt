@@ -113,10 +113,9 @@
 
 ; wire-on-change!
 ; (wire function) => void
-; Function adds a new action to the wire (fired on value change)
+; Function adds a new instant-action to the wire (fired on value change)
 (define (wire-on-change! wire function)
-  (displayln "")
-  ;#TODO CODE
+  (wire-actions wire) (cons function (wire-actions wire))
 )
 
 
@@ -130,7 +129,8 @@
 ; Function updates the value of the wire
 (define (wire-set! wire value)
   (displayln "")
-  ;#TODO CODE
+  ; #TODO CODE
+  ; Remember to call wire-on-change! if the value has changed
 )
 
 
