@@ -41,13 +41,10 @@
 
 
 
-; ### ONLY CODE PROVIDED BY DEFAULT AND TESTS BELOW THIS LINE ###
-
-
+; ### ONLY CODE PROVIDED BY DEFAULT BELOW THIS LINE ###
 
 
 ; ### BUS FUNCTIONS ###
-
 
 ; Bus-set! definition (implementation provided by default)
 ; Function sets values of all wires in the bus to the given value
@@ -77,8 +74,7 @@
   )
 )
 
-
-; ### Flip-flop ###
+; ### FLIP-FLOP ###
 
 ; Flip-flop definition (implementation provided by default)
 ; Function implements a flip-flop with the given clock and data wires
@@ -91,8 +87,3 @@
   (gate-nand w2 w3 data)
   (gate-nand out w1 (wire-nand out w3))
 )
-
-
-; ### TESTS ###
-; Tests for the simulator
-; WIP
