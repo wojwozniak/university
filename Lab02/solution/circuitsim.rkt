@@ -37,14 +37,159 @@
   )
 )
 
+; ===================================================================
+; ### SIMULATOR ###
+
+; make-sim
+; () => sim
+; Function creates a new simulator
+(define (make-sim)
+  ; We have two variables, current-time and event-queue
+  ; current-time is the current time of the simulator
+  ; event-queue is a heap of events, sorted by time
+  (define current-time 0)
+  (define event-queue (make-heap < #:key second>))
+)
+
+
+; sim-wait!
+; sim int+ => void
+; Function waits for the given amount of time
+; #TODO CODE
+
+
+; sim-time
+; sim => int
+; Function returns the current time of the simulator
+; #TODO CODE
+
+
+; sim-add-action
+; (sim int+ function) => void
+; Function adds a new action to the simulator
+; #TODO CODE
+
+
+
+; ===================================================================
+; ### WIRE ###
+
+
+; make-wire
+; sim => wire
+; Function creates a new wire
+; #TODO CODE
+
+
+; wire-on-change!
+; wire function => void
+; Function adds a new action to the simulator
+; #TODO CODE
+
+
+; wire-value
+; wire => boolean
+; Function returns the current value of the wire
+; #TODO CODE
+
+
+; wire-set!
+; wire boolean => void
+; Function sets the value of the wire
+; #TODO CODE
+
+
+; ===================================================================
+; ### GATES ###
+
+
+; gate-not
+; wire wire => void
+; Function implements a NOT gate
+; #TODO CODE
+
+
+; gate-and
+; wire wire wire => void
+; Function implements an AND gate
+; #TODO CODE
+
+
+; gate-nand
+; wire wire wire => void
+; Function implements a NAND gate
+; #TODO CODE
+
+
+; gate-or
+; wire wire wire => void
+; Function implements an OR gate
+; #TODO CODE
+
+
+; gate-nor
+; wire wire wire => void
+; Function implements a NOR gate
+; #TODO CODE
+
+
+; gate-xor
+; wire wire wire => void
+; Function implements an XOR gate
+; #TODO CODE
+
+
+; ===================================================================
+; ### WIRES ###
+
+
+; wire-not
+; wire wire => void
+; Function implements a NOT gate
+; #TODO CODE
+
+
+; wire-and
+; wire wire wire => void
+; Function implements an AND gate
+; #TODO CODE
+
+
+; wire-nand
+; wire wire wire => void
+; Function implements a NAND gate
+; #TODO CODE
+
+
+; wire-or
+; wire wire wire => void
+; Function implements an OR gate
+; #TODO CODE
+
+
+; wire-nor
+; wire wire wire => void
+; Function implements a NOR gate
+; #TODO CODE
+
+
+; wire-xor
+; wire wire wire => void
+; Function implements an XOR gate
+; #TODO CODE
 
 
 
 
+; ===================================================================
 ; ### ONLY CODE PROVIDED BY DEFAULT BELOW THIS LINE ###
+; ===================================================================
 
 
+
+; ===================================================================
 ; ### BUS FUNCTIONS ###
+
 
 ; Bus-set! definition (implementation provided by default)
 ; Function sets values of all wires in the bus to the given value
@@ -60,6 +205,7 @@
   )
 )
 
+
 ; bus-value definition (implementation provided by default)
 ; Function returns the value of the bus
 ; (i.e. the value of the binary number represented by the bus)
@@ -74,7 +220,11 @@
   )
 )
 
+
+; ===================================================================
 ; ### FLIP-FLOP ###
+
+
 
 ; Flip-flop definition (implementation provided by default)
 ; Function implements a flip-flop with the given clock and data wires
