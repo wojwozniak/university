@@ -9,6 +9,7 @@
 
 ; Simulator interface
 (provide sim? wire?
+  ;TODO move default-functions back to this file after finishing other ones
   (contract-out
     [make-sim        (-> sim?)]
     ;[sim-wait!       (-> sim? positive? void?)]
