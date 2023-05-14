@@ -4,7 +4,7 @@
 (require data/heap)
 
 ; Defining structures
-(struct sim (event-queue current-time))
+(struct sim (current-time event-queue))
 (struct wire (test test2))
 
 ; Simulator interface
@@ -12,7 +12,7 @@
   (contract-out
     [make-sim        (-> sim?)]
     ;[sim-wait!       (-> sim? positive? void?)]
-    ;[sim-time        (-> sim? real?)]
+    [sim-time        (-> sim? real?)]
     ;[sim-add-action! (-> sim? positive? (-> any/c) void?)]
 
     ;[make-wire       (-> sim? wire?)]
@@ -52,7 +52,7 @@
 (define (make-sim)
   (define current-time 0)
   (define event-queue (make-heap <=))
-  (list current-time event-queue)
+  (sim current-time event-queue)
 )
 
 
@@ -65,7 +65,9 @@
 ; sim-time
 ; sim => int
 ; Function returns the current time of the simulator
-; #TODO CODE
+(define (sim-time sim)
+  (sim-current-time sim)
+)
 
 
 ; sim-add-action
