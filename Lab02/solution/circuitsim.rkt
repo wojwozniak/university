@@ -8,8 +8,8 @@
 (struct wire (val actions))
 
 
-; It was not explicitly stated in the assignment,
-; but I also create action struct to make it easier
+; It was not explicitly explained in the assignment,
+; so I also create action struct to make it easier
 ; to work with actions
 (struct action (time function))
 (define (make-action time function) (action time function))
@@ -89,7 +89,7 @@
     ]
   )
 )
-;#TODO test sim-add-action!
+;#TODO test sim-add-action a bit more
 
 
 
