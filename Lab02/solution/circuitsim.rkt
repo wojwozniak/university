@@ -7,7 +7,17 @@
 (struct sim (current-time event-queue))
 (struct wire (val actions))
 
-; Simulator interface
+
+; It was not explicitly stated in the assignment,
+; but I also create action struct to make it easier
+; to work with actions
+(struct action (time function))
+(define (make-action time function) (action time function))
+
+
+; ===================================================================
+; ### CONTRACTS ###
+
 (provide sim? wire?
   (contract-out
     [make-sim        (-> sim?)]
@@ -70,7 +80,13 @@
 (define (sim-add-action! sim time action)
   (cond
     [(<= time 0) (error "Time must be positive")]
-    [else (heap-add! (sim-event-queue sim) (+ time (sim-time sim)) action)]
+    ; head-add! takes a heap and a value and adds it to the heap (and returns void)
+    [else 
+      (heap-add!
+        (sim-event-queue sim) 
+        (make-action (+ (sim-current-time sim) time) action)
+      )
+    ]
   )
 )
 ;#TODO test sim-add-action!
