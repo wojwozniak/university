@@ -3,37 +3,41 @@
 ; Importing data/heap reqiured for event queue
 (require data/heap)
 
+; Defining structures
+(struct sim (event-queue current-time))
+(struct wire (test test2))
+
 ; Simulator interface
 (provide sim? wire?
   (contract-out
     [make-sim        (-> sim?)]
-    [sim-wait!       (-> sim? positive? void?)]
-    [sim-time        (-> sim? real?)]
-    [sim-add-action! (-> sim? positive? (-> any/c) void?)]
+    ;[sim-wait!       (-> sim? positive? void?)]
+    ;[sim-time        (-> sim? real?)]
+    ;[sim-add-action! (-> sim? positive? (-> any/c) void?)]
 
-    [make-wire       (-> sim? wire?)]
-    [wire-on-change! (-> wire? (-> any/c) void?)]
-    [wire-value      (-> wire? boolean?)]
-    [wire-set!       (-> wire? boolean? void?)]
+    ;[make-wire       (-> sim? wire?)]
+    ;[wire-on-change! (-> wire? (-> any/c) void?)]
+    ;[wire-value      (-> wire? boolean?)]
+    ;[wire-set!       (-> wire? boolean? void?)]
 
-    [gate-not  (-> wire? wire? void?)]
-    [gate-and  (-> wire? wire? wire? void?)]
-    [gate-nand (-> wire? wire? wire? void?)]
-    [gate-or   (-> wire? wire? wire? void?)]
-    [gate-nor  (-> wire? wire? wire? void?)]
-    [gate-xor  (-> wire? wire? wire? void?)]
+    ;[gate-not  (-> wire? wire? void?)]
+    ;[gate-and  (-> wire? wire? wire? void?)]
+    ;[gate-nand (-> wire? wire? wire? void?)]
+    ;[gate-or   (-> wire? wire? wire? void?)]
+    ;[gate-nor  (-> wire? wire? wire? void?)]
+    ;[gate-xor  (-> wire? wire? wire? void?)]
 
-    [wire-not  (-> wire? wire?)]
-    [wire-and  (-> wire? wire? wire?)]
-    [wire-nand (-> wire? wire? wire?)]
-    [wire-or   (-> wire? wire? wire?)]
-    [wire-nor  (-> wire? wire? wire?)]
-    [wire-xor  (-> wire? wire? wire?)]
+    ;[wire-not  (-> wire? wire?)]
+    ;[wire-and  (-> wire? wire? wire?)]
+    ;[wire-nand (-> wire? wire? wire?)]
+    ;[wire-or   (-> wire? wire? wire?)]
+    ;[wire-nor  (-> wire? wire? wire?)]
+    ;[wire-xor  (-> wire? wire? wire?)]
 
-    [bus-value (-> (listof wire?) natural?)]
-    [bus-set!  (-> (listof wire?) natural? void?)]
+    ;[bus-value (-> (listof wire?) natural?)]
+    ;[bus-set!  (-> (listof wire?) natural? void?)]
 
-    [flip-flop (-> wire? wire? wire? void?)]
+    ;[flip-flop (-> wire? wire? wire? void?)]
   )
 )
 
