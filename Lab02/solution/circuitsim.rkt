@@ -5,7 +5,7 @@
 
 ; Defining structures
 (struct sim (current-time event-queue))
-(struct wire (test test2))
+(struct wire (value actions))
 
 ; Simulator interface
 (provide sim? wire?
