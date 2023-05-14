@@ -16,9 +16,6 @@
     [wire-value      (-> wire? boolean?)]
     [wire-set!       (-> wire? boolean? void?)]
 
-    [bus-value (-> (listof wire?) natural?)]
-    [bus-set!  (-> (listof wire?) natural? void?)]
-
     [gate-not  (-> wire? wire? void?)]
     [gate-and  (-> wire? wire? wire? void?)]
     [gate-nand (-> wire? wire? wire? void?)]
@@ -33,9 +30,24 @@
     [wire-nor  (-> wire? wire? wire?)]
     [wire-xor  (-> wire? wire? wire?)]
 
+    [bus-value (-> (listof wire?) natural?)]
+    [bus-set!  (-> (listof wire?) natural? void?)]
+
     [flip-flop (-> wire? wire? wire? void?)]
   )
 )
+
+
+
+
+
+; ### ONLY CODE PROVIDED BY DEFAULT AND TESTS BELOW THIS LINE ###
+
+
+
+
+; ### BUS FUNCTIONS ###
+
 
 ; Bus-set! definition (implementation provided by default)
 ; Function sets values of all wires in the bus to the given value
@@ -65,6 +77,9 @@
   )
 )
 
+
+; ### Flip-flop ###
+
 ; Flip-flop definition (implementation provided by default)
 ; Function implements a flip-flop with the given clock and data wires
 (define (flip-flop out clk data)
@@ -76,3 +91,8 @@
   (gate-nand w2 w3 data)
   (gate-nand out w1 (wire-nand out w3))
 )
+
+
+; ### TESTS ###
+; Tests for the simulator
+; WIP
