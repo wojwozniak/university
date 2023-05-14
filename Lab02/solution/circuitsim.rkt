@@ -13,7 +13,7 @@
     [make-sim        (-> sim?)]
     ;[sim-wait!       (-> sim? positive? void?)]
     [sim-time        (-> sim? real?)]
-    ;[sim-add-action! (-> sim? positive? (-> any/c) void?)]
+    [sim-add-action! (-> sim? positive? (-> any/c) void?)]
 
     [make-wire       (-> sim? wire?)]
     ;[wire-on-change! (-> wire? (-> any/c) void?)]
@@ -66,10 +66,17 @@
 )
 
 
-; sim-add-action
+; sim-add-action!
 ; (sim int+ function) => void
 ; Function adds a new action to the simulator
-; #TODO CODE
+; We also check if the time is positive
+(define (sim-add-action! sim time action)
+  (cond
+    [(<= time 0) (error "Time must be positive")]
+    [else (heap-add! (sim-event-queue sim) (+ time (sim-time sim)) action)]
+  )
+)
+;#TODO test sim-add-action!
 
 
 
