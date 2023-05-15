@@ -1,6 +1,5 @@
 #lang plait
 
-; #WIP - not finished yet
 
 ;; abstract syntax -------------------------------
 
@@ -13,7 +12,7 @@
 
 (define-type Exp
   (numE [n : Number])
-  (opE [op : Op] [l : Exp] [r : Exp])
+  (opE [op : Op] [args : (Listof Exp)]) ; Change to (Listof Exp) for variable number of args
 )
 
 ;; parse ----------------------------------------
@@ -24,13 +23,12 @@
       (s-exp-match? `NUMBER s)
       (numE (s-exp->number s))
     ]
-    [(s-exp-match? `{SYMBOL ANY ANY} s)
-      (opE 
+    [(s-exp-match? `{SYMBOL ANY ...} s)   ; Change to `{SYMBOL ANY ...} for variable number of args
+      (opE
         (parse-op (s-exp->symbol (first (s-exp->list s))))
-        (parse (second (s-exp->list s)))
-        (parse (third (s-exp->list s)))
+        (map parse (rest (s-exp->list s)))   ; Change to maping rest of arguments instead of fixed 2
       )
-    ]
+    ] 
     [else (error 'parse "invalid input")]
   )
 )
@@ -62,7 +60,15 @@
 (define (eval [e : Exp]) : Value
   (type-case Exp e
     [(numE n) n]
-    [(opE o l r) ((op->proc o) (eval l) (eval r))]
+    [(opE o args) (eval-op o args)] ; Change to eval-op o args for variable number of args
+  )
+)
+
+(define (eval-op [o : Op] [args : (Listof Exp)]) : Value ; Add eval-op function
+  (cond
+    [(empty? args) 0]
+    [(empty? (rest args)) (eval (first args))]
+    [else ((op->proc o) (eval (first args)) (eval-op o (rest args)))]
   )
 )
 
@@ -81,3 +87,13 @@
 (define (main [e : S-Exp]) : Void
   (print-value (eval (parse e)))
 )
+
+;; tests --------------------------------------
+
+(main `{+})
+(display "\n")
+(main `{+ 1})
+(display "\n")
+(main `{+ 1 2})
+(display "\n")
+(main `{+ 1 2 3 4})
