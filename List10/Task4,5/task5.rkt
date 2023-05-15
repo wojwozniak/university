@@ -3,8 +3,6 @@
 ; ===================================================================
 #lang plait
 
-; #WIP
-
 (module+ test
   (print-only-errors #t))
 
@@ -18,10 +16,10 @@
   (eql)
   (leq)
   ; ========================= CHANGE ==============================
-  (cons2)
-  (car2)
-  (cdr2)
-  (null2?)
+  (cons)
+  (car)
+  (cdr)
+  (null?)
   ; ======================= END CHANGE ============================
 )
 
@@ -66,29 +64,48 @@
       )
     ]
     ; ========================= CHANGE ==============================
-    [(s-exp-match? `{cons2 ANY ANY} s)
-      (cons2
+    [(s-exp-match? `{cons ANY ANY} s)
+      (consE
         (parse (second (s-exp->list s)))
         (parse (third (s-exp->list s)))
       )
     ]
     [(s-exp-match? `{car ANY} s)
-      (car2
+      (car
         (parse (second (s-exp->list s)))
       )
     ]
     [(s-exp-match? `{cdr ANY} s)
-      (cdr2
+      (cdr
         (parse (second (s-exp->list s)))
       )
     ]
     [(s-exp-match? `{null? ANY} s)
-      (null2)
+      (nullE)
     ]
     ; ======================= END CHANGE ============================
     [else (error 'parse "invalid input")]
   )
 )
+
+(define (parse-cond [ss : (Listof S-Exp)]) : (Listof (Exp * Exp))
+  (type-case (Listof S-Exp) ss
+    [empty empty]
+    [(cons ss s)
+     (if (s-exp-match? `{ANY ANY} s)
+        (cons 
+          (pair 
+            (parse (first (s-exp->list s)))
+            (parse (second (s-exp->list s)))
+          )
+          (parse-cond ss)
+        )
+        (error 'parse "invalid input: cond")
+      )
+    ]
+  )
+)
+
 
 (define (parse-op [op : Symbol]) : Op
   (cond
@@ -142,7 +159,7 @@
     [(eql) (op-num-bool->proc =)]
     [(leq) (op-num-bool->proc <=)]
     ; ========================= CHANGE ==============================
-    [(cons2) (lambda (v1 v2) (cons v1 v2))]
+    [(cons) (lambda (v1 v2) (cons v1 v2))]
     [(car) (lambda (v) (car v))]
     [(cdr) (lambda (v) (cdr v))]
     [(null?) (lambda (v) (null? v))]
@@ -178,24 +195,6 @@
         (fst c)
         (snd c )
         (cond->if cs)
-      )
-    ]
-  )
-)
-
-(define (parse-cond [ss : (Listof S-Exp)]) : (Listof (Exp * Exp))
-  (type-case (Listof S-Exp) ss
-    [empty empty]
-    [(cons ss s)
-     (if (s-exp-match? `{ANY ANY} s)
-        (cons 
-          (pair 
-            (parse (first (s-exp->list s)))
-            (parse (second (s-exp->list s)))
-          )
-          (parse-cond ss)
-        )
-        (error 'parse "invalid input: cond")
       )
     ]
   )
