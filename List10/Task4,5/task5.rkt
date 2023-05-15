@@ -17,7 +17,6 @@
   (eql)
   (leq)
   ; ========================= CHANGE ==============================
-  (cons)
   (car)
   (cdr)
   (null?)
@@ -72,14 +71,10 @@
       )
     ]
     [(s-exp-match? `{car ANY} s)
-      (car
-        (parse (second (s-exp->list s)))
-      )
+      (parse (second (s-exp->list s)))
     ]
     [(s-exp-match? `{cdr ANY} s)
-      (cdr
-        (parse (second (s-exp->list s)))
-      )
+      (parse (second (s-exp->list s)))
     ]
     [(s-exp-match? `{null? ANY} s)
       (nullE)
@@ -160,10 +155,9 @@
     [(eql) (op-num-bool->proc =)]
     [(leq) (op-num-bool->proc <=)]
     ; ========================= CHANGE ==============================
-    [(cons) (lambda (v1 v2) (cons v1 v2))]
-    [(car) (lambda (v) (car v))]
-    [(cdr) (lambda (v) (cdr v))]
-    [(null?) (lambda (v) (null? v))]
+    [(car) (lambda (v) (first v))]
+    [(cdr) (lambda (v) (rest v))]
+    [(null?) (lambda (v) (empty? v))]
     ; ======================= END CHANGE ============================
   )
 )
@@ -182,8 +176,8 @@
     ]
     [(condE cs) (eval (cond->if cs))]
     ; ========================= CHANGE ==============================
-    [(consE car cdr) (cons (eval car) (eval cdr))]
-    [(nullE) (null?)]
+    [(consE car cdr) (cons (eval first) (eval rest))]
+    [(nullE) (empty)]
     ; ======================= END CHANGE ============================
   )
 )
