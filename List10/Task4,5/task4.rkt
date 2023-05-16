@@ -186,9 +186,12 @@
 (define (run [e : S-Exp]) : Value (eval (desugar (parse e))))
 
 ; Example
+
+(desugar (parse `{cond {{= 0 1} {* 3 4}}
+                       {{= 1 1} 8}}))
+
 (run `{cond {{= 0 1} {* 3 4}}
             {{= 1 1} 8}})
-
 
 ; Do we want to implement separate language without cond? Idk, i certainly don't
 
