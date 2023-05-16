@@ -31,7 +31,7 @@
   ; let with 2+ bindings same as above
   (syntax-rules ()
     [(let () a) a]
-    [(let ([x a]) b) ((lambda (x) b) a)]
+    [(let ([x a]) body) ((lambda (x) body) a)]
     [(let ([x1 a1] [x2 a2] ...) body)
       ((lambda (x1 x2 ...) body) a1 a2 ...)
     ]
@@ -45,7 +45,7 @@
   ; let* with 2+ bindings same as above
   (syntax-rules ()
     [(let* () a) a]
-    [(let ([x a]) b) ((lambda (x) b) a)]
+    [(let ([x a]) body) ((lambda (x) body) a)]
     [(let* ([x1 a1] [x2 a2] ...) body)
       ((lambda (x1) (let* ([x2 a2] ...) body)) a1)
     ]
