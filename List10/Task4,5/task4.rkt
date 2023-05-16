@@ -193,7 +193,7 @@
 (run `{cond {{= 0 1} {* 3 4}}
             {{= 1 1} 8}})
 
-; Do we want to implement separate language without cond? Idk, i certainly don't
+; Do we want to implement separate language without cond? I think it is not necessary, because we can just use desugar function to convert condE to ifE.
 
 ; ======================================================================
 ; End of Task 4
