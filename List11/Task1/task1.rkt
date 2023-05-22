@@ -172,9 +172,6 @@
 (define (run [e : S-Exp]) : Answer
   (eval (parse-exp e)))
 
-;; Exercise: get rid of Plait's error procedure from the evaluator altogether
-
-
 ;; printer ———————————————————————————————————-
 
 (define (value->string [v : Value]) : String
