@@ -1,5 +1,12 @@
 #lang plait
 
+; ======================================================================
+; Task 1 - my changes marked with #NEW
+; Changes at:
+; ~80 line
+; ~150 line
+; ======================================================================
+
 
 ;; abstract syntax -------------------------------
 
@@ -54,7 +61,7 @@
     [(eq? op '=) (eql)]
     [(eq? op '<=) (leq)]
     [else (error 'parse "unknown operator")]))
-                
+
 
 ;; eval --------------------------------------
 
@@ -67,27 +74,45 @@
 
 (define-type Binding
   (bind [name : Symbol]
-        [val : Value]))
+        [val : (-> Value)]))
 
 ;; environments
 
 (define-type-alias Env (Listof Binding))
 (define mt-env empty)
 
+; ======================================================================
+; # NEW
+; ======================================================================
 
+
+; v now is a function, which returns a value.
 (define 
-  (extend-env [env : Env] [x : Symbol] [v : Value]) : Env
+  (extend-env [env : Env] [x : Symbol] [v : (-> Value)]) : Env
   (cons (bind x v) env)
 )
 
 
+; ((bind-val b)) instead of (bind-val b) - we want to evaluate the value of b on demand
+; instead of evaluating it right away.
 (define (lookup-env [n : Symbol] [env : Env]) : Value
   (type-case (Listof Binding) env
     [empty (error 'lookup "unbound variable")]
-    [(cons b rst-env) (cond
-                        [(eq? n (bind-name b))
-                         (bind-val b)]
-                        [else (lookup-env n rst-env)])]))
+    [(cons b rst-env) 
+      (cond
+        [
+          (eq? n (bind-name b))
+          ((bind-val b))
+        ]
+        [else (lookup-env n rst-env)]
+      )
+    ]
+  )
+)
+
+; ======================================================================
+; # end of first part of changes, more below
+; ======================================================================
 
 ;; primitive operations
 
@@ -126,34 +151,58 @@
 
 ;; evaluation function (eval/apply)
 
-(define (eval [e : Exp] [env : Env]) : Value
-  (type-case Exp e
-    [(numE n) (numV n)]
-    [(opE o l r) ((op->proc o) (eval l env) (eval r env))]
-    [(ifE b l r)
-     (type-case Value (eval b env)
-       [(boolV v)
-        (if v (eval l env) (eval r env))]
-       [else
-        (error 'eval "type error")])]
-    [(varE x)
-     (lookup-env x env)]
-    [(letE x e1 e2)
-     (let ([v1 (eval e1 env)])
-       (eval e2 (extend-env env x v1)))]
-    [(lamE x b)
-     (funV x b env)]
-    [(appE e1 e2)
-     (apply (eval e1 env) (eval e2 env))]))
+; ======================================================================
+; # NEW
+; ======================================================================
 
-(define (apply [v1 : Value] [v2 : Value]) : Value
+(define (eval [e : Exp] [env : Env]) : Value
+  (begin (display env)
+    (type-case Exp e
+      [(numE n) (numV n)]
+      [(opE o l r) ((op->proc o) (eval l env) (eval r env))]
+      [(ifE b l r)
+      (type-case Value (eval b env)
+        [(boolV v)
+          (if v (eval l env) (eval r env))]
+        [else
+          (error 'eval "type error")])]
+      [(varE x)
+      (lookup-env x env)]
+      [(letE x e1 e2)
+      (let ([v1 (lambda() (eval e1 env))])
+        (eval e2 (extend-env env x v1)))]
+      [(lamE x b)
+      (funV x b env)]
+      ; #NEW change here - changed (apply (eval e1 env) (eval e2 env)) to (apply (eval e1 env) e2)
+      ; so that we don't evaluate the second argument right away, but instead pass it as a function
+      ; which returns a value.
+      [(appE e1 e2)
+        (apply (eval e1 env) e2)
+      ]
+      ; end of change
+    )
+  )
+)
+
+; Changed [v2: Value] to [v2: Exp] - we want to evaluate the second argument on demand.
+(define (apply [v1 : Value] [v2 : Exp]) : Value
   (type-case Value v1
     [(funV x b env)
-     (eval b (extend-env env x v2))]
-    [else (error 'apply "not a function")]))
+      ; #NEW change here - changed (eval b (extend-env env x v2)) to (eval b (extend-env env x (lambda() (eval v2 env))))
+      ; evaluate the second argument on demand.
+      (eval b (extend-env env x (lambda() (eval v2 env))))
+    ]
+    [else (error 'apply "not a function")]
+  )
+)
+
+; ======================================================================
+; # end of task
+; ======================================================================
 
 (define (run [e : S-Exp]) : Value
   (eval (parse e) mt-env))
+
 
 
 ;; printer ———————————————————————————————————-
