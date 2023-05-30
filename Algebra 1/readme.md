@@ -20,11 +20,13 @@
 - L7: 1,2,3,4,6,7,9,10 (S: 8/10) (Sb: 43/70)
 - L8: 1,3,4,6,7,8,10 (S: 7/10) (Sb: 50/80) <- Aktualnie 62,5% zgłoszonych zadań
 - L9: 3,6,7,10 (S: 4/10) (Sb: 54/90) 
-- L10: 0/10 (I was ill `:(`)          
-- L11: 3,7,8,9 (S: 4/10) (Sb: 58/100)                  
-- L12: 2,4,5,8,9,11 (S: 6/10) (Sb: 64/110) 
-- L13: ?              
-- L14: ?                               
+- L10: 0/10 (I was ill `:(`) (Sb: 54/100)  
+- L11: 3,7,8,9 (S: 4/10) (Sb: 58/110)                  
+- L12: 2,4,5,8,9,11 (S: 6/10) (Sb: 64/120)
+- Aby zagwarantować 3,5 potrzebne jeszcze:
+- (12 przy 5 / 10 przy 6 / 8 przy 7 / 6 przy 8)
+- L13: ? (S: ?/10) (Sb: ?/130)
+- L14: ? (S: ?/10) (Sb: ?/140)         
 
 
 ## Zadania domowe                       
@@ -33,4 +35,4 @@
 
 
 ## Punkty
-Licząc tylko punkty z list zadań do listy 9 - na razie *30,85%* według wzoru
+Licząc do listy 12 + zadanie domowe 1 = 43,5%
