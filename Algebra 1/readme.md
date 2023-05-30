@@ -21,15 +21,15 @@
 - L8: 1,3,4,6,7,8,10 (S: 7/10) (Sb: 50/80) <- Aktualnie 62,5% zgłoszonych zadań
 - L9: 3,6,7,10 (S: 4/10) (Sb: 54/90) 
 - L10: 0/10 (I was ill `:(`)          
-- L11: 4/10 (Sb: 58/100)                  
-- L12: ?                  
+- L11: 3,7,8,9 (S: 4/10) (Sb: 58/100)                  
+- L12: 2,4,5,8,9,11 (S: 6/10) (Sb: 64/110) 
 - L13: ?              
 - L14: ?                               
 
 
 ## Zadania domowe                       
-- Zadanie domowe 1: z7/L8 : x/10 
-- Zadanie domowe 2: ???               
+- Zadanie domowe 1: z7/L8 : 7/10 
+- Zadanie domowe 2: z9/L12: ?/10             
 
 
 ## Punkty
