@@ -40,12 +40,12 @@
     [gate-nor  (-> wire? wire? wire? void?)]
     [gate-xor  (-> wire? wire? wire? void?)]
 
-    [wire-not  (-> wire? wire?)] ;TODO
-    [wire-and  (-> wire? wire? wire?)] ;TODO
-    [wire-nand (-> wire? wire? wire?)] ;TODO
-    [wire-or   (-> wire? wire? wire?)] ;TODO
-    [wire-nor  (-> wire? wire? wire?)] ;TODO
-    [wire-xor  (-> wire? wire? wire?)] ;TODO
+    [wire-not  (-> wire? wire?)]
+    [wire-and  (-> wire? wire? wire?)]
+    [wire-nand (-> wire? wire? wire?)]
+    [wire-or   (-> wire? wire? wire?)]
+    [wire-nor  (-> wire? wire? wire?)]
+    [wire-xor  (-> wire? wire? wire?)]
 
     [bus-value (-> (listof wire?) natural?)]
     [bus-set!  (-> (listof wire?) natural? void?)]
