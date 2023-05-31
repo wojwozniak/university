@@ -29,9 +29,9 @@
     [sim-add-action! (-> sim? positive? (-> any/c) void?)]
 
     [make-wire       (-> sim? wire?)]
-    [wire-on-change! (-> wire? (-> any/c) void?)] ;TODO
+    [wire-on-change! (-> wire? (-> any/c) void?)]
     [wire-value      (-> wire? boolean?)]
-    [wire-set!       (-> wire? boolean? void?)] ;TODO
+    [wire-set!       (-> wire? boolean? void?)]
 
     [gate-not  (-> wire? wire? void?)] ;TODO
     [gate-and  (-> wire? wire? wire? void?)] ;TODO
@@ -98,7 +98,6 @@
     ]
   )
 )
-;#TODO test sim-add-action a bit more
 
 
 
@@ -106,11 +105,23 @@
 ; ### WIRE ###
 
 
+; Helper call-wire-actions function
+(define (call-wire-actions list)
+  (if (empty? list)
+    (void)
+    (begin
+      ((car list))
+      (call-wire-actions (cdr list))
+    )
+  )
+)
+
+
 ; make-wire
 ; (sim) => wire
 ; Function creates a new wire
 (define (make-wire sim)
-  (wire #f '())
+  (wire #f '() sim)
 )
 
 
@@ -118,8 +129,10 @@
 ; (wire function) => void
 ; Function adds a new instant-action to the wire (fired on value change)
 (define (wire-on-change! wire function)
-  ;#TODO WIP
-  (wire-actions wire) (cons function (wire-actions wire))
+  (begin 
+    (set-wire-actions! wire (cons (wire-actions wire) function))
+    (function)
+  )
 )
 
 
@@ -132,9 +145,13 @@
 ; (wire boolean) => void
 ; Function updates the value of the wire
 (define (wire-set! wire value)
-  (displayln "")
-  ; #TODO CODE
-  ; Remember to call wire-on-change! if the value has changed
+  (if (eq? value (wire-val wire))
+    (void)
+    (begin
+      (set-wire-val! wire value)
+      (call-wire-actions (wire-actions wire))
+    )
+  )
 )
 
 
