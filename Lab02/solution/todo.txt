@@ -1,1 +1,0 @@
-wire functions implementation assumes that we dont pass wires from two different simulations - fix that later
