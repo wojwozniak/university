@@ -10,23 +10,8 @@
 (struct sim ([current-time #:mutable] [event-queue #:mutable]))
 (struct wire ([val #:mutable] [actions #:mutable] [sim]))
 
-
-; It was not explicitly explained in the assignment,
-; so I also create action struct to make it easier
-; to work with actions
-(struct action (time function))
-(define (make-action time function) (action time function))
-
-; Defining custom comparator for the heap
-(define (comparator action1 action2)
-  (define time1 (action-time action1))
-  (define time2 (action-time action2))
-  (cond
-    [(< time1 time2) -1]
-    [(> time1 time2) 1]
-    [else 0]
-  )
-)
+; I also create action structure for the event queue
+(struct action (out in1 in2 function))
 
 ; ===================================================================
 ; ### CONTRACTS ###
@@ -67,6 +52,13 @@
 ; ===================================================================
 ; ### SIMULATOR ###
 
+; Helper comparator function for the event queue
+; (list list) => boolean
+; Function compares two actions
+(define (comparator a b)
+  (< (car a) (car b))
+)
+
 ; make-sim
 ; () => sim
 ; Function creates a new simulator
@@ -79,29 +71,30 @@
 ; (sim int+) => void
 ; Function runs clock for a given amount of ticks
 (define (sim-wait! sim ticks)
-  (cond
-    [(<= ticks 0) (error "Wrong number of ticks!")]
-    [else
-      ; Update current time in sim
-      (set-sim-current-time! sim (+ (sim-current-time sim) ticks))
-      ; Loop through all events in the queue
-      (let loop ([time (sim-current-time sim)])
-        (cond
-          ; If queue is empty, return void
-          [(zero? (heap-count (sim-event-queue sim))) (void)]
-          ; If the next event is in the future, also return void
-          [(> (action-time (heap-min (sim-event-queue sim))) time) (void)]
-          [else
-            (begin
-              (heap-remove-min! (sim-event-queue sim))
-              (action-function (heap-min (sim-event-queue sim)))
-              (loop (action-time (heap-min (sim-event-queue sim))))
-            )
-          ]
+  ; Define target time
+  (define target (+ (sim-current-time sim) ticks))
+  ; Define recursive helper function
+  (define (rec)
+    ; Check if queue is empty (so we avoid error when checking time in first element when queue is empty)
+    (when (> (heap-count (sim-event-queue sim)) 0)
+      (when (<= 
+            (car (heap-min (sim-event-queue sim))) 
+            target)
+        (begin
+          ; Delete first element from the queue
+          (heap-remove-min! (sim-event-queue sim))
+          ; Update current time to the time of the action
+          (set-sim-current-time! sim (car (heap-min (sim-event-queue sim))))
+          ; Execute the action
+          (execute! (cdr (heap-min (sim-event-queue sim))))
+          ; Call the function again
+          (rec)
         )
       )
-    ]
+    )
   )
+  ; Call the helper functionss
+  (rec)
 )
 
 
@@ -118,15 +111,9 @@
 ; Function adds a new action to the simulator
 ; We also check if the time is positive
 (define (sim-add-action! sim time action)
-  (cond
-    [(<= time 0) (error "Time must be positive")]
-    ; head-add! takes a heap and a value and adds it to the heap (and returns void)
-    [else 
-      (heap-add!
-        (sim-event-queue sim) 
-        (make-action (+ (sim-current-time sim) time) action)
-      )
-    ]
+  (heap-add!
+    (sim-event-queue sim) 
+    (cons time action)
   )
 )
 
@@ -136,14 +123,45 @@
 ; ### WIRE ###
 
 
-; Helper call-wire-actions function
-(define (call-wire-actions list)
-  (if (empty? list)
-    (display "Empty list")
-    (begin
-      ((action-function (car list)))
-      (call-wire-actions (cdr list))
+; Helper execute! function
+; (action) => void
+; Function executes the action
+(define (execute! action)
+  ; Check if second input is null
+  (if (null? (action-in2 action))
+    ; If it is, we call the function with only one input
+    (wire-set!
+      (action-out action)
+      (
+        (action-function action) 
+        (wire-value (action-in1 action))
+      )
     )
+    ; If it is not, we call the function with two inputs
+    (wire-set!
+      (action-out action)
+      (
+        (action-function action) 
+        (wire-value (action-in1 action))
+        (wire-value (action-in2 action))
+      )
+    )
+  )
+)
+
+; Helper call-wire-actions function
+; (sim list) => void
+; Function calls all actions in the lists
+(define (call-wire-actions sim list)
+  (for-each
+    (lambda 
+      (action)
+      (sim-add-action! 
+        sim 
+        (+ sim-time (car action)) 
+        (cdr action)
+      )
+    ) list
   )
 )
 
@@ -164,7 +182,7 @@
     (set-wire-actions! 
       wire 
       (cons 
-        (make-action (sim-current-time (wire-sim wire)) function) 
+        function
         (wire-actions wire)
       )
     )
@@ -187,14 +205,10 @@
     (void)
     (begin
       (set-wire-val! wire value)
-      (call-wire-actions (wire-actions wire))
+      (call-wire-actions (wire-sim wire) (wire-actions wire))
     )
   )
 )
-
-
-; ===================================================================
-; I'm 99% sure everything below this line is correct
 
 
 ; ===================================================================
