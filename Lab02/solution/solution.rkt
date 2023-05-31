@@ -318,7 +318,7 @@
 ; Function implements a NOT gate
 ; Delay: 1 tick
 (define (wire-not in)
-  (define out (make-wire))
+  (define out (make-wire (wire-sim in)))
   (gate-not out in)
   out
 )
@@ -329,7 +329,7 @@
 ; Function implements an AND gate
 ; Delay: 1 tick
 (define (wire-and in1 in2)
-  (define out (make-wire))
+  (define out (wire-sim in1))
   (gate-and out in1 in2)
   out
 )
@@ -340,7 +340,7 @@
 ; Function implements a NAND gate
 ; Delay: 1 tick
 (define (wire-nand in1 in2)
-  (define out (make-wire))
+  (define out (wire-sim in1))
   (gate-nand out in1 in2)
   out
 )
@@ -351,7 +351,7 @@
 ; Function implements an OR gate
 ; Delay: 1 tick
 (define (wire-or in1 in2)
-  (define out (make-wire))
+  (define out (wire-sim in1))
   (gate-or out in1 in2)
   out
 )
@@ -362,7 +362,7 @@
 ; Function implements a NOR gate
 ; Delay: 1 tick
 (define (wire-nor in1 in2)
-  (define out (make-wire))
+  (define out (wire-sim in1))
   (gate-nor out in1 in2)
   out
 )
@@ -373,7 +373,7 @@
 ; Function implements an XOR gate
 ; Delay: 2 ticks
 (define (wire-xor in1 in2)
-  (define out (make-wire))
+  (define out (wire-sim in1))
   (gate-xor out in1 in2)
   out
 )
