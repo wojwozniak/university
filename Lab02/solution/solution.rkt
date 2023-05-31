@@ -3,14 +3,11 @@
 ; Importing data/heap reqiured for event queue
 (require data/heap)
 
-; Importing trace for debugging
-(require racket/trace)
-
 ; Defining structures
 (struct sim ([current-time #:mutable] event-queue))
 (struct wire ([val #:mutable] [actions #:mutable] [sim]))
 
-; I also create action structure for the event queue
+; I also created action structure for the event queue
 (struct action (out in1 in2 function))
 
 ; ===================================================================
@@ -48,10 +45,6 @@
     [flip-flop (-> wire? wire? wire? void?)]
   )
 )
-
-; ===================================================================
-; ##### Functions #####
-; ===================================================================
 
 ; ===================================================================
 ; ### SIMULATOR ###
@@ -164,6 +157,19 @@
   )
 )
 
+; wire-set!
+; (wire boolean) => void
+; Function updates the value of the wire
+(define (wire-set! wire value)
+  (if (eq? value (wire-val wire))
+    (void)
+    (begin
+      (set-wire-val! wire value)
+      (call-wire-actions (wire-sim wire) (wire-actions wire))
+    )
+  )
+)
+
 
 ; make-wire
 ; (sim) => wire
@@ -195,23 +201,6 @@
 ; (wire) => boolean
 ; Function returns the current value of the wire
 (define (wire-value wire) (wire-val wire))
-
-; wire-set!
-; (wire boolean) => void
-; Function updates the value of the wire
-(define (wire-set! wire value)
-  (if (eq? value (wire-val wire))
-    (void)
-    (begin
-      (set-wire-val! wire value)
-      (call-wire-actions (wire-sim wire) (wire-actions wire))
-    )
-  )
-)
-
-; ===================================================================
-; Everything below works (at least I hope so)
-
 
 ; ===================================================================
 ; ### GATES ###
@@ -361,12 +350,6 @@
   (gate-xor out in1 in2)
   out
 )
-
-
-
-; ===================================================================
-; ### ONLY CODE PROVIDED BY DEFAULT BELOW THIS LINE ###
-; ===================================================================
 
 ; ===================================================================
 ; ### BUS FUNCTIONS ###
