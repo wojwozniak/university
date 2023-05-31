@@ -17,6 +17,16 @@
 (struct action (time function))
 (define (make-action time function) (action time function))
 
+; Defining custom comparator for the heap
+(define (comparator action1 action2)
+  (define time1 (action-time action1))
+  (define time2 (action-time action2))
+  (cond
+    [(< time1 time2) -1]
+    [(> time1 time2) 1]
+    [else 0]
+  )
+)
 
 ; ===================================================================
 ; ### CONTRACTS ###
@@ -62,7 +72,7 @@
 ; Function creates a new simulator
 ; We create current-time variable, event-queue heap and return
 ; a list of these two variables (so we can access them)
-(define (make-sim) (sim 0 (make-heap <=)))
+(define (make-sim) (sim 0 (make-heap comparator)))
 
 
 ; sim-wait!
