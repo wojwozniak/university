@@ -7,7 +7,7 @@
 (require racket/trace)
 
 ; Defining structures
-(struct sim ([current-time #:mutable] [event-queue #:mutable]))
+(struct sim ([current-time #:mutable] event-queue))
 (struct wire ([val #:mutable] [actions #:mutable] [sim]))
 
 ; I also create action structure for the event queue
@@ -50,21 +50,18 @@
 )
 
 ; ===================================================================
+; ##### Functions #####
+; ===================================================================
+
+; ===================================================================
 ; ### SIMULATOR ###
 
-; Helper comparator function for the event queue
-; (list list) => boolean
-; Function compares two actions
-(define (comparator a b)
-  (< (car a) (car b))
-)
 
 ; make-sim
 ; () => sim
 ; Function creates a new simulator
-; We create current-time variable, event-queue heap and return
-; a list of these two variables (so we can access them)
-(define (make-sim) (sim 0 (make-heap comparator)))
+; We create current-time variable, event-queue heap and return the simulator
+(define (make-sim) (sim 0 (lambda (a b) (< (car a) (car b)))))
 
 
 ; sim-wait!
@@ -209,6 +206,9 @@
     )
   )
 )
+
+; ===================================================================
+; Everything below works (at least I hope so)
 
 
 ; ===================================================================
