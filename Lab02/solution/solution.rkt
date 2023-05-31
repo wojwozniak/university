@@ -24,7 +24,7 @@
 (provide sim? wire?
   (contract-out
     [make-sim        (-> sim?)]
-    [sim-wait!       (-> sim? positive? void?)] ;TODO
+    [sim-wait!       (-> sim? positive? void?)]
     [sim-time        (-> sim? real?)]
     [sim-add-action! (-> sim? positive? (-> any/c) void?)]
 
@@ -69,8 +69,29 @@
 ; (sim int+) => void
 ; Function runs clock for a given amount of ticks
 (define (sim-wait! sim ticks)
-  (displayln "")
-  ; #TODO CODE
+  (cond
+    [(<= ticks 0) (error "Wrong number of ticks!")]
+    [else
+      ; Update current time in sim
+      (set-sim-current-time! sim (+ (sim-current-time sim) ticks))
+      ; Loop through all events in the queue
+      (let loop ([time (sim-current-time sim)])
+        (cond
+          ; If queue is empty, return void
+          [(zero? (heap-count (sim-event-queue sim))) (void)]
+          ; If the next event is in the future, also return void
+          [(> (action-time (heap-min (sim-event-queue sim))) time) (void)]
+          [else
+            (begin
+              (heap-remove-min! (sim-event-queue sim))
+              (action-function (heap-min (sim-event-queue sim)))
+              (loop (action-time (heap-min (sim-event-queue sim))))
+            )
+          ]
+        )
+      )
+    ]
+  )
 )
 
 
