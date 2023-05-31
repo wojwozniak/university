@@ -93,7 +93,7 @@
   ; Call the helper functionss
   (rec) 
   ; Update current time to the target time
-  (set-sim-time! sim target)
+  (set-sim-current-time! sim target)
 )
 
 
