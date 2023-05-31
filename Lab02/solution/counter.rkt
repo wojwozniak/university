@@ -20,10 +20,12 @@
 ; w kolejnych cyklach zegara. Licznik nie jest resetowany,
 ; więc początkowa wartość licznika jest trudna do określenia
 (define (tick)
-  (wire-on-change! clk (lambda () (display "Hello World!")))
   (wire-set! clk #t)
   (sim-wait! sim 20)
   (wire-set! clk #f)
   (sim-wait! sim 20)
   (bus-value counter)
 )
+
+; Przykładowe wywołania funkcji tick
+(tick)

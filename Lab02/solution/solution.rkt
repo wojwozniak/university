@@ -139,9 +139,9 @@
 ; Helper call-wire-actions function
 (define (call-wire-actions list)
   (if (empty? list)
-    (void)
+    (display "Empty list")
     (begin
-      ((car list))
+      ((action-function (car list)))
       (call-wire-actions (cdr list))
     )
   )
@@ -161,7 +161,14 @@
 ; Function adds a new instant-action to the wire (fired on value change)
 (define (wire-on-change! wire function)
   (begin 
-    (set-wire-actions! wire (cons function (wire-actions wire)))
+    (set-wire-actions! 
+      wire 
+      (cons 
+        (make-action (sim-current-time (wire-sim wire)) function) 
+        (wire-actions wire)
+      )
+    )
+    (display (wire-actions wire))
     (function)
   )
 )
