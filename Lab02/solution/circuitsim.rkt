@@ -3,9 +3,12 @@
 ; Importing data/heap reqiured for event queue
 (require data/heap)
 
+; Importing trace for debugging
+(require racket/trace)
+
 ; Defining structures
-(struct sim (current-time event-queue))
-(struct wire (val actions))
+(struct sim ([current-time #:mutable] [event-queue #:mutable]))
+(struct wire ([val #:mutable] [actions #:mutable] [sim]))
 
 
 ; It was not explicitly explained in the assignment,
