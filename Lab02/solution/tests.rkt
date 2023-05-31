@@ -1,6 +1,6 @@
-; This is a test file for circuitsim.rkt
+; This is a test file for solution.rkt
 #lang racket
-(require "circuitsim.rkt")
+(require "solution.rkt")
 
 
 
@@ -22,7 +22,7 @@
 ; =================
 ; sim-add-action!
 ; sim-add-action! is a procedure that takes a sim, time, and an action and adds the action to the sim
-(sim-add-action! a 1 (lambda () (display "Hello World!")))
+;(sim-add-action! a 1 (lambda () (display "Hello World!")))
 
 
 ; =================
@@ -30,14 +30,14 @@
 
 ; make-wire is a procedure that takes a sim and returns a wire
 ; Expected: a wire
-(define w (make-wire a))
-w
+;(define w (make-wire a))
+;w
 
 ; =================
 ; wire-value
 ; wire-value is a procedure that takes a wire and returns the current value of the wire
 ; Expected: #f
-(wire-value w)
+;(wire-value w)
 
 ; =================
 ; wire-set!
@@ -49,4 +49,4 @@ w
 ; =================
 ; wire-on-change!
 ; wire-on-change! is a procedure that takes a wire and an action and adds the action to the wire
-(wire-on-change! w (lambda () (display "Hello World!")))
+;(wire-on-change! w (lambda () (display "Hello World!")))
