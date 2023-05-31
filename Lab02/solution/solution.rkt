@@ -194,27 +194,38 @@
 
 
 ; ===================================================================
+; I'm 99% sure everything below this line is correct
+
+
+; ===================================================================
 ; ### GATES ###
 ; Values are determined on the output tick - as per assignment
 
+
+; To simplify the code, I decided to implement  create-gate function
+
+; create-gate
+; (wire wire wire function int+) => void
+; Helper function generating new gate
+; Takes 5 argumengts: output wire, input wire 1, input wire 2, function and delay
+(define (create-gate out in1 in2 function delay)
+  (wire-on-change! 
+    in1 
+    (cons delay (action out in1 in2 function))
+  )
+  (when (not (null? in2))
+    (wire-on-change! 
+      in2 (cons delay (action out in1 in2 function))
+    )
+  )
+)
 
 ; gate-not
 ; (wire wire) => void
 ; Function implements a NOT gate
 ; Delay: 1 tick
 (define (gate-not out in)
-  (define (gate-not-helper)
-    (sim-add-action!
-      ; sim - get the simulation from the wire
-      (wire-sim out)
-      ; delay - 1 tick
-      1
-      ; action - negate the value of the input wire
-      (lambda () (wire-set! out (not (wire-value in))))
-    )
-  )
-  ; Call wire-on-change! on the input wire passing helper function
-  (wire-on-change! in gate-not-helper)
+  (create-gate out in null not 1)
 )
 
 
@@ -223,19 +234,7 @@
 ; Function implements an AND gate
 ; Delay: 1 tick
 (define (gate-and out in1 in2)
-  (define (gate-and-helper)
-    (sim-add-action!
-      ; sim - get the simulation from the wire
-      (wire-sim out)
-      ; delay - 1 tick
-      1
-      ; action - set the value of the output wire to the AND of the input wires
-      (lambda () (wire-set! out (and (wire-value in1) (wire-value in2))))
-    )
-  )
-  ; Call wire-on-change! on the input wires passing helper function
-  (wire-on-change! in1 gate-and-helper)
-  (wire-on-change! in2 gate-and-helper)
+  (create-gate out in1 in2 (lambda (x y) (and x y)) 1)
 )
 
 
@@ -244,19 +243,7 @@
 ; Function implements a NAND gate
 ; Delay: 1 tick
 (define (gate-nand out in1 in2)
-  (define (gate-nand-helper)
-    (sim-add-action!
-      ; sim - get the simulation from the wire
-      (wire-sim out)
-      ; delay - 1 tick
-      1
-      ; action - set the value of the output wire to the NAND of the input wires
-      (lambda () (wire-set! out (not (and (wire-value in1) (wire-value in2)))))
-    )
-  )
-  ; Call wire-on-change! on the input wires passing helper function
-  (wire-on-change! in1 gate-nand-helper)
-  (wire-on-change! in2 gate-nand-helper)
+  (create-gate out in1 in2 (lambda (x y) (not (and x y))) 1)
 )
 
 
@@ -265,19 +252,7 @@
 ; Function implements an OR gate
 ; Delay: 1 tick
 (define (gate-or out in1 in2)
-  (define (gate-or-helper)
-    (sim-add-action!
-      ; sim - get the simulation from the wire
-      (wire-sim out)
-      ; delay - 1 tick
-      1
-      ; action - set the value of the output wire to the OR of the input wires
-      (lambda () (wire-set! out (or (wire-value in1) (wire-value in2))))
-    )
-  )
-  ; Call wire-on-change! on the input wires passing helper function
-  (wire-on-change! in1 gate-or-helper)
-  (wire-on-change! in2 gate-or-helper)
+  (create-gate out in1 in2 (lambda (x y) (or x y)) 1)
 )
 
 
@@ -286,19 +261,7 @@
 ; Function implements a NOR gate
 ; Delay: 1 tick
 (define (gate-nor out in1 in2)
-  (define (gate-nor-helper)
-    (sim-add-action!
-      ; sim - get the simulation from the wire
-      (wire-sim out)
-      ; delay - 1 tick
-      1
-      ; action - set the value of the output wire to the NOR of the input wires
-      (lambda () (wire-set! out (not (or (wire-value in1) (wire-value in2)))))
-    )
-  )
-  ; Call wire-on-change! on the input wires passing helper function
-  (wire-on-change! in1 gate-nor-helper)
-  (wire-on-change! in2 gate-nor-helper)
+  (create-gate out in1 in2 (lambda (x y) (not (or x y))) 1)
 )
 
 
@@ -307,19 +270,7 @@
 ; Function implements an XOR gate
 ; Delay: 2 ticks
 (define (gate-xor out in1 in2)
-  (define (gate-xor-helper)
-    (sim-add-action!
-      ; sim - get the simulation from the wire
-      (wire-sim out)
-      ; delay - 2 ticks
-      2
-      ; action - set the value of the output wire to the XOR of the input wires
-      (lambda () (wire-set! out (xor (wire-value in1) (wire-value in2))))
-    )
-  )
-  ; Call wire-on-change! on the input wires passing helper function
-  (wire-on-change! in1 gate-xor-helper)
-  (wire-on-change! in2 gate-xor-helper)
+  (create-gate out in1 in2 (lambda (p q) (not (equal? p q))) 2)
 )
 
 
