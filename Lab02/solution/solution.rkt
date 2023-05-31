@@ -161,7 +161,7 @@
 ; Function adds a new instant-action to the wire (fired on value change)
 (define (wire-on-change! wire function)
   (begin 
-    (set-wire-actions! wire (cons (wire-actions wire) function))
+    (set-wire-actions! wire (cons function (wire-actions wire)))
     (function)
   )
 )
