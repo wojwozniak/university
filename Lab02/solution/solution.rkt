@@ -5,7 +5,7 @@
 
 ; Defining structures
 (struct sim ([time #:mutable] event-queue))
-(struct wire ([value #:mutable] [actions #:mutable] [sim]))
+(struct wire ([value #:mutable] [actions #:mutable] sim))
 
 ; I also created action structure for the event queue
 (struct action (out in1 in2 function))
@@ -54,7 +54,9 @@
 ; () => sim
 ; Function creates a new simulator
 ; We create current-time variable, event-queue heap and return the simulator
-(define (make-sim) (sim 0 (lambda (a b) (< (car a) (car b)))))
+(define (make-sim) 
+  (sim 0 (make-heap (lambda (a b) (< (car a) (car b)))))
+)
 
 
 ; sim-wait!
@@ -83,8 +85,8 @@
       )
     )
   )
-  ; Call the helper functionss
-  (rec) 
+  ; Call the helper functions
+  (rec)
   ; Update current time to the target time
   (set-sim-time! sim target)
 )
@@ -95,10 +97,7 @@
 ; Function adds a new action to the simulator
 ; We also check if the time is positive
 (define (sim-add-action! sim time action)
-  (heap-add!
-    (sim-event-queue sim) 
-    (cons time action)
-  )
+  (heap-add! (sim-event-queue sim) (cons time action))
 )
 
 
