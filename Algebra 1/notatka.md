@@ -43,8 +43,9 @@ Przykłady przestrzeni liniowych:
 
 $\mathbb{LIN(U)}$ to zbiór wszystkich kombinacji liniowych wektorów z $\mathbb{U}$.
 
-Przykładowe zadanie (z9a/L1):
+
 ```
+Przykładowe zadanie (z9a/L1):
 Rozważmy przestrzeń Z_3^3 (zbiór trzyelementowych wektorów nad ciałem reszt modulo 3).
 Ile wektorów należy do LIN((1,2,1),(2,1,1))?
 
@@ -74,7 +75,10 @@ Odp: 9 wektorów
 ```
 
 ```
-Inny przykład - w z8a/L1 proszą nas o przedstawienie wektora jako kombinacji liniowej innych wektorów. Nie jest to nic skomplikowanego - musimy jedynie rozwiązać układ równań liniowych (jak w liceum)
+Inny przykład - w z8a/L1 proszą nas 
+o przedstawienie wektora jako kombinacji liniowej innych wektorów. 
+Nie jest to nic skomplikowanego - 
+musimy jedynie rozwiązać układ równań liniowych (jak w liceum)
 ```
 
 ## 1.5. Niezależność liniowa
