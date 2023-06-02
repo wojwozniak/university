@@ -1,17 +1,10 @@
 #lang racket
 
-; Importing data/heap reqiured for event queue
 (require data/heap)
 
-; Defining structures
 (struct sim ([time #:mutable] event-queue))
 (struct wire ([value #:mutable] [actions #:mutable] sim))
-
-; I also created action structure for the event queue
 (struct action (out in1 in2 function))
-
-; ===================================================================
-; ### CONTRACTS ###
 
 (provide sim? wire?
   (contract-out
@@ -72,7 +65,7 @@
 (define (sim-add-action! sim time action) (heap-add! (sim-event-queue sim) (cons time action)))
 
 ; ===================================================================
-; ### WIRE ###
+; ### WIRE FUNCTIONS ###
 
 (define (execute! action)
   (if (null? (action-in2 action))
