@@ -4,8 +4,8 @@
 (require data/heap)
 
 ; Defining structures
-(struct sim ([current-time #:mutable] event-queue))
-(struct wire ([val #:mutable] [actions #:mutable] [sim]))
+(struct sim ([time #:mutable] event-queue))
+(struct wire ([value #:mutable] [actions #:mutable] [sim]))
 
 ; I also created action structure for the event queue
 (struct action (out in1 in2 function))
@@ -62,7 +62,7 @@
 ; Function runs clock for a given amount of ticks
 (define (sim-wait! sim ticks)
   ; Define target time
-  (define target (+ (sim-current-time sim) ticks))
+  (define target (+ (sim-time sim) ticks))
   ; Define recursive helper function
   (define (rec)
     ; Check if queue is empty (so we avoid error when checking time in first element when queue is empty)
@@ -74,7 +74,7 @@
           ; Delete first element from the queue
           (heap-remove-min! (sim-event-queue sim))
           ; Update current time to the time of the action
-          (set-sim-current-time! sim (car (heap-min (sim-event-queue sim))))
+          (set-sim-time! sim (car (heap-min (sim-event-queue sim))))
           ; Execute the action
           (execute! (cdr (heap-min (sim-event-queue sim))))
           ; Call the function again
@@ -86,15 +86,7 @@
   ; Call the helper functionss
   (rec) 
   ; Update current time to the target time
-  (set-sim-current-time! sim target)
-)
-
-
-; sim-time
-; (sim) => int
-; Function returns the current ticks of the simulator
-(define (sim-time sim)
-  (sim-current-time sim)
+  (set-sim-time! sim target)
 )
 
 
@@ -161,10 +153,10 @@
 ; (wire boolean) => void
 ; Function updates the value of the wire
 (define (wire-set! wire value)
-  (if (eq? value (wire-val wire))
+  (if (eq? value (wire-value wire))
     (void)
     (begin
-      (set-wire-val! wire value)
+      (set-wire-value! wire value)
       (call-wire-actions (wire-sim wire) (wire-actions wire))
     )
   )
@@ -196,11 +188,6 @@
   )
 )
 
-
-; wire-value
-; (wire) => boolean
-; Function returns the current value of the wire
-(define (wire-value wire) (wire-val wire))
 
 ; ===================================================================
 ; ### GATES ###
