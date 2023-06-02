@@ -69,18 +69,18 @@
   (define (rec)
     ; Check if queue is empty (so we avoid error when checking time in first element when queue is empty)
     (when (> (heap-count (sim-event-queue sim)) 0)
-      (when (<= 
-            (car (heap-min (sim-event-queue sim))) 
-            target)
-        (begin
-          ; Delete first element from the queue
-          (heap-remove-min! (sim-event-queue sim))
-          ; Update current time to the time of the action
-          (set-sim-time! sim (car (heap-min (sim-event-queue sim))))
-          ; Execute the action
-          (execute! (cdr (heap-min (sim-event-queue sim))))
-          ; Call the function again
-          (rec)
+      (let ([item (heap-min (sim-event-queue sim))])
+        (when (<= (car item) target)
+          (begin
+            ; Delete first element from the queue
+            (heap-remove-min! (sim-event-queue sim))
+            ; Update current time to the time of the action
+            (set-sim-time! sim (car item))
+            ; Execute the action
+            (execute! (cdr item))
+            ; Call the function again
+            (rec)
+          )
         )
       )
     )
