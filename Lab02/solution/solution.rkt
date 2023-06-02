@@ -142,7 +142,7 @@
       (action)
       (sim-add-action! 
         sim 
-        (+ sim-time (car action)) 
+        (+ (sim-time sim) (car action)) 
         (cdr action)
       )
     ) list
@@ -172,19 +172,18 @@
 
 
 ; wire-on-change!
-; (wire function) => void
+; (wire action) => void
 ; Function adds a new instant-action to the wire (fired on value change)
-(define (wire-on-change! wire function)
+(define (wire-on-change! wire action)
   (begin 
     (set-wire-actions! 
       wire 
       (cons 
-        function
+        action
         (wire-actions wire)
       )
     )
-    (display (wire-actions wire))
-    (function)
+    (execute! (cdr action))
   )
 )
 
