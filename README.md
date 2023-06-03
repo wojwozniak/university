@@ -1,2 +1,2 @@
 # uni-math
-Repo with math courses' tasklists
+Repo with math courses' tasklists and notes
