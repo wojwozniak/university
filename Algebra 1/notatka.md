@@ -113,4 +113,9 @@ Pozwala on nam obliczyć rozwiązania zadań w których dostajemy przestrzenie U
 
 Wartstwą przestrzeni liniowej $\mathbb{V}$ nazywamy zbiór wszystkich wektorów, które są kombinacją liniową wektorów z $\mathbb{V}$. Intuicyjnie - jest to przestrzeń przesunięta o wektor v.
 
-## 3.1. Przekszałcenia liniowe
+## 3.1. Przekszałcenia liniowe (homomorfizmy)
+
+
+Przekształceniem liniowym (homomorfizmem) nazywamy funkcję $f: \mathbb{V} \rightarrow \mathbb{W}$, która zachowuje działania liniowe, tzn.:
+- $f(v_1 + v_2) = f(v_1) + f(v_2)$
+- $f(\alpha v) = \alpha f(v)$
