@@ -96,3 +96,21 @@ Jest to minimalny zbiór wektorów, których kombinacja liniowa daje dowolny wek
 Bazę uzyskać możemy eliminacją Gaussa (pozbywamy się tylko wektorów zerowych, lub w przypadku brakujących "schodków" - dodajemy wektory, które są liniowo niezależne z pozostałymi).
 
 2.2. - wyrażenie wektora w bazie - tak samo jak wyrażenie innymi wektorami
+
+## 2.3. Wymiar przestrzeni liniowej
+
+Wymiar przestrzeni liniowej to liczba wektorów w jej bazie (moc jej bazy).
+
+Dla przestrzeni zawierającej tylko wektor zerowy, wymiar wynosi 0.
+
+### !!! Ważny wzór:
+
+$$dim(\mathbb{U} \cap \mathbb{V}) = dim(\mathbb{U}) + dim(\mathbb{V}) - dim(\mathbb{U} + \mathbb{V})$$
+
+Pozwala on nam obliczyć rozwiązania zadań w których dostajemy przestrzenie U i V, a mamy obliczyć wymiar sumy i przecięcia tych przestrzeni _(zad2,3/L3, zad10/L7 i egzaminy)_.
+
+## 2.5. Wartstwy
+
+Wartstwą przestrzeni liniowej $\mathbb{V}$ nazywamy zbiór wszystkich wektorów, które są kombinacją liniową wektorów z $\mathbb{V}$. Intuicyjnie - jest to przestrzeń przesunięta o wektor v.
+
+## 3.1. Przekszałcenia liniowe
