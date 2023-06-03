@@ -119,3 +119,11 @@ Wartstwą przestrzeni liniowej $\mathbb{V}$ nazywamy zbiór wszystkich wektorów
 Przekształceniem liniowym (homomorfizmem) nazywamy funkcję $f: \mathbb{V} \rightarrow \mathbb{W}$, która zachowuje działania liniowe, tzn.:
 - $f(v_1 + v_2) = f(v_1) + f(v_2)$
 - $f(\alpha v) = \alpha f(v)$
+
+## 3.2. Jądro  i obraz przekształcenia liniowego
+
+Jądrem przekształcenia liniowego $f: \mathbb{V} \rightarrow \mathbb{W}$ nazywamy zbiór wektorów z $\mathbb{V}$, które są przekształcane przez $f$ w wektor zerowy z $\mathbb{W}$.
+
+Obrazem przekształcenia liniowego $f: \mathbb{V} \rightarrow \mathbb{W}$ nazywamy zbiór wektorów z $\mathbb{W}$, które są przekształceniem wektorów z $\mathbb{V}$ przez $f$.
+
+#TODO tutaj rozpiszę lepiej i ogarnę dokładniej
