@@ -285,3 +285,29 @@ w.p.p. rząd macierzy wynosi 3
 
 ```
 </details>
+
+## 4.6. Obliczanie bazy jądra przekształcenia
+
+M * Id(n) = M
+
+Wykonujemy eliminację Gaussa na macierzy M. Wektory w drugiej macierzy odpowiadające kolumnom z zerami w pierwszej macierzy tworzą bazę jądra.
+
+Przykładowo:
+```
+1  1  0  ->   1  0  0    
+0  1 -1       0  0 -1
+
+Wykonując te same operacje na macierzy Id(3)
+
+1  0  0      1 -1  0
+0  1  0  ->  0  1  0
+0  0  1      0  1  1
+
+Jedyną kolumną z zerami w pierwszej macierzy jest druga - bazą jądra będzie więc wektor drugi z macierzy Id(3) po przekształceniu, czyli baza to {(-1,1,1)}
+
+Możemy sprawdzić to wzorem dim(Ker(f)) = dim(V) - dim(Im(f)) === 3 - 2 = 1
+```
+
+Inna opcja:
+- przekształcenie w macierz schodkową
+- stworzenie układu równań
