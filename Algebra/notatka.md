@@ -1,7 +1,4 @@
-# Algebra
-
-Prosta notatka na bazie skryptu i list
-
+# Algebra - notatka
 ## 1.1. Ciała
 *Ciało* to zbiór z działaniami mnożenia i dodawania - działają one tak jak intuicyjnie oczekujemy. Należą do niego dwa specjalne elementy: 0 i 1 - one również działają intuicyjnie.
 
