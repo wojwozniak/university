@@ -1,4 +1,7 @@
 # Algebra - notatka
+
+Niektóre indeksy są pominięte - numeruję dokładnie tak samo jak w skrypcie.
+
 ## 1.1. Ciała
 *Ciało* to zbiór z działaniami mnożenia i dodawania - działają one tak jak intuicyjnie oczekujemy. Należą do niego dwa specjalne elementy: 0 i 1 - one również działają intuicyjnie.
 
@@ -222,3 +225,28 @@ bazą jądra jest {(1, -1, 1)}
 ```
 
 </details>
+
+## 4.1. Macierze
+
+### Definicja
+Macierzą rozmiaru mxn nad ciałem $\mathbb{F}$ nazywamy funkcję $A: \{1,2,...,m\} \times \{1,2,...,n\} \rightarrow \mathbb{F}$
+
+Zwykle macierz oznaczamy jako tabelę liczb.
+
+### Zestawienie macierzy
+Dosłownie "zestawiamy" macierze, zapisujemy dwie obok siebie jak jedną (w pionie lub w poziomie)
+
+### Wzory
+- Id * A = A * Id = A
+- A(B + C) = AB + AC
+- a(AB) = (aA)B = A(aB)
+- A[B|C] = [AB|AC] 
+
+### Transpozycja
+Obrót względem głównej przekątnej
+
+- $(A^T)^T = A$
+- $(A + B)^T = A^T + B^T$
+- $(AB)^T = B^T A^T$
+
+## 4.3. Operacje elementarne
