@@ -44,10 +44,12 @@ Przykłady przestrzeni liniowych:
 $\mathbb{LIN(U)}$ to zbiór wszystkich kombinacji liniowych wektorów z $\mathbb{U}$.
 
 
+<details>
+<summary>Ile wektorów należy do LIN((1,2,1),(2,1,1))?</summary>
+
 ```
-Przykładowe zadanie (z9a/L1):
 Rozważmy przestrzeń Z_3^3 (zbiór trzyelementowych wektorów nad ciałem reszt modulo 3).
-Ile wektorów należy do LIN((1,2,1),(2,1,1))?
+
 
 Pomocniczo:
 w1:
@@ -73,13 +75,8 @@ Teraz wszystkie możliwe sumy w1+w2:
 Odp: 9 wektorów
 
 ```
+</details>
 
-```
-Inny przykład - w z8a/L1 proszą nas 
-o przedstawienie wektora jako kombinacji liniowej innych wektorów. 
-Nie jest to nic skomplikowanego - 
-musimy jedynie rozwiązać układ równań liniowych (jak w liceum)
-```
 
 ## 1.5. Niezależność liniowa
 Zbiór wektorów $\mathbb{U}$ jest *liniowo niezależny* jeśli jedyną kombinacją liniową wektorów z tego zbioru, która daje wektor zerowy jest ta, w której wszystkie współczynniki są zerami.
@@ -120,12 +117,11 @@ Przekształceniem liniowym (homomorfizmem) nazywamy funkcję $f: \mathbb{V} \rig
 - $f(v_1 + v_2) = f(v_1) + f(v_2)$
 - $f(\alpha v) = \alpha f(v)$
 
+<details>
+<summary>Czy L(x, y) = (2x-y, x+3y-1, 5x+2y) jest przekształceniem liniowym?</summary>
+
 ```
-Przykład zadania:
-z8a/L3
-Czy L(x, y) = (2x-y, x+3y-1, 5x+2y) jest przekształceniem liniowym?
-```
-```
+
 Rozwiązanie:
 Sprawdzamy warunki:
 - L(x + y) = L(x) + L(y)
@@ -145,6 +141,7 @@ wówczas praktycznie zawsze (zawsze?)
 nie będzie to przekształcenie liniowe.
 
 ```
+</details>
 
 ## 3.2. Jądro  i obraz przekształcenia liniowego
 
@@ -168,13 +165,15 @@ I że następujące warunki są równoważne:
 
 (Co mieliśmy udowodnić w jednym z zadań)
 
-```
-zad1a/L4
 
-Wyznacz bazę obrazu dla 
-F(x,y,z) = (2x+y, 3x−z, 5x+y−z, −2x+2y−2z)
+
+<details>
+<summary>Wyznacz bazę obrazu dla 
+<b>F(x,y,z) = (2x+y, 3x−z, 5x+y−z, −2x+2y−2z)</b></summary>
+
+
 ```
-```
+
 Rozwiązanie:
 
 F(1,0,0) = (2,3,5,-2)
@@ -196,12 +195,13 @@ Po eliminacji Gaussa otrzymujemy:
 Odp:
 bazą obrazu jest {(1,0,1,2), (2,3,5,-2)}
 ```
+</details>
 
-```
-zad2a/L4
-Wyznacz bazę jądra dla
-H(x,y,z) = (x+y, y+z)
-```
+
+<details>
+<summary>Wyznacz bazę jądra dla
+<b>H(x,y,z) = (x+y, y+z)</b></summary>
+
 ```
 Rozwiązanie:
 Najpierw skorzystamy ze wzoru:
@@ -224,3 +224,5 @@ Mnożąc macierz przez wektor (x,y,z) otrzymujemy (-y, y, -y). Wiemy że dim(Ker
 Odp:
 bazą jądra jest {(1, -1, 1)}
 ```
+
+</details>
