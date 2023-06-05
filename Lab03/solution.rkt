@@ -3,4 +3,5 @@
 (define-type-alias Value Number)
 
 (define (run [s : S-Exp]) : Value
-  (error 'run "not implemented"))
+  (error 'run "not implemented")
+)
