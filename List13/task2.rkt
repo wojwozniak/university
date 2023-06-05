@@ -135,7 +135,8 @@ fib        0 1 1 2 3 5 ...
   )
 )
 
-; Check if number is prime (SoE-like algorithm)
+; Check if number is prime by checking if it is divisible 
+; by any of the prime numbers in the list
 (define (check-prime n prime-list)
   (if (null? prime-list)
     #t
