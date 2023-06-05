@@ -17,13 +17,16 @@ O przestrzeni liniowej można myśleć jak o uogólnieniu $\mathbb{R}^n$ - jest 
 - jest on zamknięty na dodawanie (dodając dwa wektory z tego zbioru otrzymujemy wektor należący do tego zbioru)
 - -,,- na mnożenie przez skalar
 
+<details>
+<summary>Przykład z zad2/L1</summary>
+
 ```
-Przykład z zad2/L1 (pokażę też przemienność i łączność):
 5a+2b=0
 a) a=0, b=0: 0=0 spełnione
 b) 5(a1+a2) + 2(b1+b2) = 5a1+5a2+2b1+2b2 = 5a1+2b1 + 5a2+2b2 = 0+0 = 0 spełnione
 c) 5(ka) + 2(kb) = k(5a+2b) = k*0 = 0 spełnione
 ```
+</details>
 
 Spełnione są również następujące własności:
 - dla każdego elementu istnieje element przeciwny
@@ -85,14 +88,10 @@ Prostszym sformułowaniem jest to, że wektory są liniowo niezależne jeśli ni
 
 W zadaniach będziemy udowadniać liniową niezależność wektorów korzystając z metody eliminacji Gaussa, przekształcając macierz wektorów w macierz schodkową. Jeśli w macierzy schodkowej nie ma zerowego wiersza, to wektory są liniowo niezależne.
 
-1.6. Metoda eliminacji Gaussa - pomijam - w razie czego polecam YT
-
 ## 2.1. Baza
 Jest to minimalny zbiór wektorów, których kombinacja liniowa daje dowolny wektor z przestrzeni. W przestrzeni $\mathbb{R}^n$ baza to zbiór $n$ wektorów, które są liniowo niezależne.
 
 Bazę uzyskać możemy eliminacją Gaussa (pozbywamy się tylko wektorów zerowych, lub w przypadku brakujących "schodków" - dodajemy wektory, które są liniowo niezależne z pozostałymi).
-
-2.2. - wyrażenie wektora w bazie - tak samo jak wyrażenie innymi wektorami
 
 ## 2.3. Wymiar przestrzeni liniowej
 
@@ -213,8 +212,8 @@ dim(Ker(f)) = 3 - 2 = 1
 
 Teraz wyznaczamy bazę jądra:
 zapiszmy najpierw macierz:
- -1 1  0
-  0 1 -1
+-1  1  0
+ 0  1 -1
 
 x = -y
 z = -y
