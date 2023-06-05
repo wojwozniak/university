@@ -250,3 +250,38 @@ Obrót względem głównej przekątnej
 - $(AB)^T = B^T A^T$
 
 ## 4.3. Operacje elementarne
+
+Z definicji, operacje elementarne to:
+- zamiana kolumn
+- zamiana wierszy
+- pomnożenie wiersza przez niezerowy skalar
+- dodanie do wiersza innego wiersza pomnożonego przez skalar
+
+Zauważamy tutaj że możemy zinterpretować cały proces eliminacji Gaussa jako kolejne działania macierzy elementarnych.
+
+## 4.5. Rząd macierzy
+
+Rząd macierzy to wymiar przestrzeni generowanej przez wektory będące kolumnami/wierszami macierzy.
+
+<details>
+<summary>Wyznacz rząd macierzy w zależności od parametru</summary>
+
+```
+Macierz:
+
+5  p  5  p
+1  1  1  1
+p  p  2  2
+
+Rozwiązanie:
+Zauważamy że dla p = 5 
+wektory 1 i 2 będą liniowo zależne,
+a dla p = 2
+liniowo zależne będą 2 i 3
+
+Odp:
+Dla p = 2 lub p = 5 rząd macierzy wynosi 2
+w.p.p. rząd macierzy wynosi 3
+
+```
+</details>
