@@ -125,7 +125,7 @@ fib        0 1 1 2 3 5 ...
 ;; our own implementation of delay and force (needs to be moved at the top of the file)
 
 ; =============================================
-; ============== Task 2 solution ==============
+; ============== Task 3 solution ==============
 ; =============================================
 
 
