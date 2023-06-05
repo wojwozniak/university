@@ -120,10 +120,107 @@ Przekształceniem liniowym (homomorfizmem) nazywamy funkcję $f: \mathbb{V} \rig
 - $f(v_1 + v_2) = f(v_1) + f(v_2)$
 - $f(\alpha v) = \alpha f(v)$
 
+```
+Przykład zadania:
+z8a/L3
+Czy L(x, y) = (2x-y, x+3y-1, 5x+2y) jest przekształceniem liniowym?
+```
+```
+Rozwiązanie:
+Sprawdzamy warunki:
+- L(x + y) = L(x) + L(y)
+- L(a * x) = a * L(x)
+a) L(x1+x2, y1+y2) = 
+(2(x1+x2)-(y1+y2), (x1+x2)+3(y1+y2)-1, 5(x1+x2)+2(y1+y2)) = 
+L(x1,y1) + L(x2,y2)
+b) L(a * x1, a * y1) = 
+(2(a * x1)-(a * y1), (a * x1)+3(a * y1)-1, 5(a * x1)+2(a * y1)) = 
+a * L(x1,y1)
+
+Odp: TAK
+
+Czerwoną flagą w takim zadaniu jest 
+mnożenie dwóch zmiennych - 
+wówczas praktycznie zawsze (zawsze?) 
+nie będzie to przekształcenie liniowe.
+
+```
+
 ## 3.2. Jądro  i obraz przekształcenia liniowego
 
 Jądrem przekształcenia liniowego $f: \mathbb{V} \rightarrow \mathbb{W}$ nazywamy zbiór wektorów z $\mathbb{V}$, które są przekształcane przez $f$ w wektor zerowy z $\mathbb{W}$.
+(Wektory które są przekształcane w zerowy wektor przez $f$)
 
 Obrazem przekształcenia liniowego $f: \mathbb{V} \rightarrow \mathbb{W}$ nazywamy zbiór wektorów z $\mathbb{W}$, które są przekształceniem wektorów z $\mathbb{V}$ przez $f$.
+(Wszystkie wektory z $\mathbb{W}$, które są przekształceniem wektorów z $\mathbb{V}$ przez $f$)
 
-#TODO tutaj rozpiszę lepiej i ogarnę dokładniej
+### Jest bardzo dużo zadań z jądra i obrazu!
+
+Pamiętamy o wzorze:
+
+$dim(\mathbb{V}) = dim(Ker(f)) + dim(Im(f))$
+
+I że następujące warunki są równoważne:
+- Przekształcenie F jest różnowartościowe
+- dim(Ker(F)) = 0
+- ker(F) składa się z jednego wektora
+- dim(Im(F)) = dim(V)
+
+(Co mieliśmy udowodnić w jednym z zadań)
+
+```
+zad1a/L4
+
+Wyznacz bazę obrazu dla 
+F(x,y,z) = (2x+y, 3x−z, 5x+y−z, −2x+2y−2z)
+```
+```
+Rozwiązanie:
+
+F(1,0,0) = (2,3,5,-2)
+F(0,1,0) = (1,0,1,2)
+F(0,0,1) = (0,-1,-1,-2)
+
+Zapisujemy jako macierz:
+
+1  0  1  2
+2  3  5 -2
+0 -1 -1 -2
+
+Po eliminacji Gaussa otrzymujemy:
+
+1  0  1  2
+0  3  3  6
+0  0  0  0
+
+Odp:
+bazą obrazu jest {(1,0,1,2), (2,3,5,-2)}
+```
+
+```
+zad2a/L4
+Wyznacz bazę jądra dla
+H(x,y,z) = (x+y, y+z)
+```
+```
+Rozwiązanie:
+Najpierw skorzystamy ze wzoru:
+dim(V) = dim(Ker(f)) + dim(Im(f))
+stąd wiemy że 
+dim(Ker(f)) = dim(V) - dim(Im(f))
+a więc
+dim(Ker(f)) = 3 - 2 = 1
+
+Teraz wyznaczamy bazę jądra:
+zapiszmy najpierw macierz:
+ -1 1  0
+  0 1 -1
+
+x = -y
+z = -y
+
+Mnożąc macierz przez wektor (x,y,z) otrzymujemy (-y, y, -y). Wiemy że dim(Ker(f)) = 1, więc wystarczy nam jeden wektor, np. (1, -1, 1)
+
+Odp:
+bazą jądra jest {(1, -1, 1)}
+```
