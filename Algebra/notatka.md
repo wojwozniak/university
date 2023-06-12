@@ -308,6 +308,76 @@ Jedyną kolumną z zerami w pierwszej macierzy jest druga - bazą jądra będzie
 Możemy sprawdzić to wzorem dim(Ker(f)) = dim(V) - dim(Im(f)) === 3 - 2 = 1
 ```
 
-Inna opcja:
-- przekształcenie w macierz schodkową
-- stworzenie układu równań
+# TODO - obliczanie bazy obrazu
+
+
+## 5. #TODO - nie ogarniam ale nie było na listach, posprawdzam jeszcze egzaminy 
+
+<br><br><br><br>
+
+## 6.1. Wyznacznik
+
+Funkcja na macierzach kwadratowych, która spełnia następujące warunki:
+- det(Id(n)) = 1
+- det(A) = 0 <=> A jest liniowo zależna
+- zamiana kolumny zmienia znak wyznacznika
+- dodanie do kolumny innej kolumny pomnożonej przez skalar nie zmienia wyznacznika
+
+## 6.2. Metody obliczania wyznacznika i ważne wzory
+
+### Rozwinięcie Laplace'a
+Wzór:
+
+ $det(A) = \sum_{i=1}^{n} (-1)^{i+j} a_{ij} det(A_{ij})$
+
+Ważne - pamiętamy o tym -1 w wyznaczniku!
+
+### Obliczanie małych wyznaczników - legalne dla macierzy 2x2 i 3x3 (dla większych najpierw Laplace)
+
+Na macierz 2x2 wzór = ad - bc
+
+Dla 3x3 metoda Sarrusa - rozwijamy kolumny poza macierz.
+
+
+### Wzory dot. wyznaczników
+
+- $det(AB) = det(A)det(B)$
+- $det(A^T) = det(A)$
+- $det(A^{-1}) = \frac{1}{det(A)}$
+- $det(A^k) = det(A)^k$
+
+## 7.1. Układy równań liniowych
+
+Układ równań liniowych możemy zapisywać w postaci macierzowej:
+
+$Ax = b$
+
+gdzie A to macierz współczynników, x to wektor niewiadomych, b to wektor wyrazów wolnych.
+
+### 7.3. n zmiennych, n równań, macierz odwracalna
+
+Jest to bazowy przypadek - możemy skorzystać ze wzorów Cramera - więcej w przykładzie poniżej
+
+<details>
+<summary>Rozwiąż układ za pomocą wzorów Cramera</summary>
+
+```
+2  -1  *  x1   =   1
+1  16     x2      17
+
+
+x = det(An)/det(A)
+
+Gdzie A to macierz bez zmian a An to macierz z n kolumną zastąpioną wektorem wyrazów wolnych
+
+det(A) = 2*16 + 1*1 = 33
+(det A1) = 1*16 + 1*17 = 33
+(det A2) = 2*17 - 1*1 = 33
+
+x1 = 33 / 33 = 1
+x2 = 33 / 33 = 1
+
+```
+</details>
+
+## 7.4. Ogólne układy
