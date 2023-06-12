@@ -381,3 +381,23 @@ x2 = 33 / 33 = 1
 </details>
 
 ## 7.4. Ogólne układy
+
+### Układ jednorodny
+
+Układem jednorodnym nazywamy układ równań postaci Ax = 0. Zawsze ma rozwiązanie x = 0.
+
+### Układ niejednorodny
+
+Układem niejednorodnym nazywamy układ równań postaci Ax = b. Rozwiązujemy Gaussem. To czy ile ma rozwiązań wnioskujemy z ilości niewiadomych i równań.
+
+## 8.1. Wartość własna, wektor własny
+
+Wartością własną macierzy A nazywamy liczbę $\lambda$ taką, że istnieje wektor $v \neq 0$ taki, że $Av = \lambda v$
+
+
+## 8.3. Wielomian charakterystyczny
+
+Wielomian charakterystyczny macierzy A to wielomian $p_A(\lambda) = det(A - \lambda I)$
+
+W skrócie - w całej głównej przekątnej odejmujemy $\lambda$ i obliczamy wyznacznik. Otrzymujemy równanie, którego rozwiązaniami są wartości własne danej macierzy.
+
