@@ -71,7 +71,7 @@
     [(symbol=? op '-)  -]
     [(symbol=? op '*)  *]
     [(symbol=? op '<=) <=]
-    [else (error 'parse "Unknown operator!")]
+    [else (error 'parse-op "Unknown operator!")]
   )
 )
 
@@ -139,7 +139,7 @@
 
 
     ; If we don't match any of the above, then return an error
-    [else (error 'parse "Unknown type of expression!")]
+    [else (error 'parse-exp "Unknown type of expression!")]
   )
 )
 
@@ -169,11 +169,11 @@
       (type-case Exp fun
         [(varE x)
           (if (find env x)
-            (error 'eval "Argument already defined!")
+            (error 'extend-env-list "Argument already defined!")
             (extend-env-list (extend-env env x (first args)) funs (rest args))
           )
         ]
-        [else (error 'eval "Type error!")]
+        [else (error 'extend-env-list "Type error!")]
       )
     ]
     [empty env]
@@ -189,14 +189,14 @@
           (type-case Exp name
             [(varE x)
               (if (find env x)
-                (error 'define "Name already taken!")
+                (error 'extend-env-funcs "Name already taken!")
                 (extend-env-funcs (extend-env env x fun) funs)
               )
             ]
-            [else (error 'define "Type error!")]
+            [else (error 'extend-env-funcs "Type error!")]
           )
         ]
-       [else (error 'define "Not a function!")])
+       [else (error 'extend-env-funcs "Not a function!")])
     ]
     [empty env]
   )
@@ -205,7 +205,7 @@
 ; Helper function for finding a variable in an enviroment
 (define (find-var [env : Env] [x : Symbol]) : (Boxof Storable)
   (type-case (Listof Binding) env
-    [empty (error 'lookup "Variable not found!")]
+    [empty (error 'find-var "Variable not found!")]
     [(cons b rst-env)
       (cond
         [(eq? x (bind-name b)) (bind-ref b)]
@@ -262,7 +262,7 @@
             (eval e2 (extend-env var x v1) fun)
           )
         ]
-        [else (error 'let "Wrong type of variable name!")]
+        [else (error 'eval "Wrong type of variable name!")]
       )
     ]
     [(opE op l r) (op (eval l var fun) (eval r var fun))]
@@ -315,34 +315,3 @@
 
 ; Run and print function
 (define (main [e : S-Exp]) : Void (display (run e)))
-
-
-
-
-; =============================================================
-; ================== Part V - Tests ===========================
-; =============================================================
-
-(main `{define
-{[fun fact (n) = {ifz n then 1 else {n * {fact ({n - 1})}}}]}
-for
-{fact (5)}})
-
-(display "\n")
-
-(main `{define
-{[fun gcd (m n) = {ifz n
-then m
-else {ifz {m <= n}
-then {gcd (m {n - m})}
-else {gcd ({m - n} n)}}}]}
-for
-{gcd (81 63)}})
-
-(display "\n")
-
-(main `{define
-{[fun even (n) = {ifz n then 0 else {odd ({n - 1})}}]
-[fun odd (n) = {ifz n then 42 else {even ({n - 1})}}]}
-for
-{even (1024)}})
