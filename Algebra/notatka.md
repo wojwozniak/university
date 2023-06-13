@@ -401,3 +401,58 @@ Wielomian charakterystyczny macierzy A to wielomian $p_A(\lambda) = det(A - \lam
 
 W skrócie - w całej głównej przekątnej odejmujemy $\lambda$ i obliczamy wyznacznik. Otrzymujemy równanie, którego rozwiązaniami są wartości własne danej macierzy.
 
+## 8.4. Krotności algebraiczna i geometryczna
+
+Krotność geometryczna to wymiar przestrzeni wektorów własnych dla $\lambda$. Dla M jest to $dim(Ker(M - \lambda Id))$
+
+Krotność algebraiczna to krotność $\lambda$ jako pierwiastka wielomianu charakterystycznego.
+
+### #TODO - przykład z zadania 3/L9 i ew. 11/L8
+
+## 8.5. Diagonalizowalność macierzy
+
+Macierz M jest diagonalizowalna $\iff$ jest podobna do macierzy diagonalnej.
+
+Przekształcenie liniowe jest diagonalne, jeśli jego macierz (w jakiejś bazie) jest diagonalizowalna.
+
+### Poniższe twierdzenia są równoważne
+- M jest diagonalizowalna
+- M ma n liniowo niezależnych wektorów własnych
+- Suma wymiarów przestrzeni wektorów własnych jest równa n
+
+## 8.6. Macierze Jordana
+
+### #TODO na razie nie ogarniam co tu się dzieje, później do tego wrócę
+
+## 8.7. Macierze symetryczne
+
+Macierz M jest symetryczna $\iff$ $M^T = M$
+
+Zawsze ma ona n niezależnych wektorów własnych.
+
+## 9.1. Macierze sąsiedstwa
+
+Internet modelujemy jako graf - wierzchołki to strony, krawędzie to linki między stronami (bez pętli n->n). Naszym celem jest znalezienie najważniejszych stron korzystając z ilości linków do danej strony.
+
+### Znormalizowana macierz sąsiedztwa
+
+Kolumny sumują się do 1 jeśli istnieje w niej jakikolwiek element. Wszystkie liczby nieujemne.
+
+Inna nazwa to macierz (wektor) <b>stochastyczna</b>.
+
+
+## 9.2. PageRank
+
+Dla znormalizowanej macierzy sąsiedstwa M definiujemy:
+
+$M' = (1-m)M + m * \frac{1}{n}J$
+gdzie J to macierz elementów 1/n.
+
+## 9.3. Obliczanie PageRanku
+
+### #TODO - zadanie z listy ogarnąć i wrzucić tutaj
+
+### #TODO - reszta tematów 9.x
+
+
+### #TODO 10.2. i 10.3. - do sprawdzenia na listach i starych egzaminach
