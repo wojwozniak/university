@@ -616,10 +616,6 @@ Rząd permutacji = 3 * 2 * 5 = 30
 
 </details>
 
-## 15.2. Parzystość permutacji
-
-### #TODO - temat + 1/L14
-
 
 <br><br><br><br>
 # Dalej jeszcze nie dotarliśmy na zajęciach - start od str. 113 skryptu i listy 14
