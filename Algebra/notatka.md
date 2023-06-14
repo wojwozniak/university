@@ -543,7 +543,33 @@ Rząd permutacji - NWW złożenia cykli.
 
 Permutację można rozłożyć na cykle. Cykl to permutacja, która przesuwa elementy cyklicznie. Intuicyjnie - gdy w tabelce mamy między innymi przejście 1->2->3->1, możemy zapisać to jako (1,2,3). Tabelkę można zapisać jako iloczyn cykli.
 
-### #TODO - 10,11 / L13
+<details>
+<summary>
+Podaj permutację odwrotną. Rozłóż permutację na cykle. Podaj rząd permutacji.
+</summary>
+<br>
+
+$\sigma$ =
+$\begin{pmatrix}1&2&3&4&5&6&7&8&9&10\\7&4&1&2&9&8&3&5&10&6\end{pmatrix}$
+
+
+$\sigma^{-1}$ = 
+$\begin{pmatrix}7&4&1&2&9&8&3&5&10&6\\1&2&3&4&5&6&7&8&9&10\end{pmatrix}$
+
+teraz posortujmy tabelę rosnąco
+
+$\sigma^{-1}$ =
+$\begin{pmatrix}1&2&3&4&5&6&7&8&9&10\\3&4&7&2&8&10&1&6&5&9\end{pmatrix}$
+
+Cykle $\sigma$: (1,7,3), (2,4), (5,9,10,6,8)
+
+Cykle $\sigma^{-1}$: (1,3,7), (2,4), (5,8,6,10,9)
+
+Zauważamy że cykle $\sigma$ i $\sigma^{-1}$ składają się z tych samych elementów - różnią się tylko kolejnością. 
+
+Rząd permutacji = 3 * 2 * 5 = 30
+
+</details>
 
 ## 15.2. Parzystość permutacji
 
