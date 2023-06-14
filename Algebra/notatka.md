@@ -456,3 +456,47 @@ gdzie J to macierz elementów 1/n.
 
 
 ### #TODO 10.2. i 10.3. - do sprawdzenia na listach i starych egzaminach
+
+## 11.1. Baza ortonormalna
+
+Niech $V$ będzie skończenie wymiarową przestrzenią Euklidesową (unitarną). Wtedy $V$ ma bazę ortonormalną.
+
+
+## 11.2. Dopełnienie ortogonalne
+
+### #TODO - def i zadania 5/L10 i 3/L11
+
+## 11.3. Rzuty i rzuty prostopadłe
+
+Rzutem nazywamy przekształcenie liniowe $P: V \rightarrow V$ takie, że $P^2 = P$. O rzucie $P$ mówimy, że jest rzutem na podprzestrzeń $Im P$
+
+
+## 12.1. Izometrie
+
+Izometrią nazywamy przekształcenie liniowe $f: V \rightarrow V$ takie, że $||f(x)|| = ||x||$ dla każdego $x \in V$.
+
+## 12.2. Macierze ortogonalne
+
+Macierz kwadratową $M$ nazywamy ortogonalną, jeśli kolumny są parami ortogonalne oraz są długości 1.
+
+$M$ jest ortogonalna wtedy i tylko wtedy gdy $M^T = M^{-1}$
+
+Macierze ortogonalne są zamknięte na mnożenie, transponowanie i odwracanie.
+
+# Część II - Algebra abstrakcyjna
+
+## Grupy
+
+## 14.1. Automorfizmy
+
+Dla danego obiektu kombinatorycznego $S$ jego grupa przekształceń $G=Aut(S)$ powinna spełniać następujące warunki:
+- przekształcenie identycznościowe należy do $G$
+- jeśli $f,g \in G$ to te przekształcenia można składać i $f \circ g \in G$
+- dla każdego $f \in G$ istnieje $f^{-1}$ takie że $f \circ f^{-1} = f^{-1} \circ f = id$
+
+Przykłady:
+- kwadrat i jego symetrie
+- dwudziestościan foremny i jego obroty
+- macierz nxn i mnożenie przez macierze odwracalne
+
+## 14.2.
