@@ -464,7 +464,7 @@ Niech $V$ będzie skończenie wymiarową przestrzenią Euklidesową (unitarną).
 
 ## 11.2. Dopełnienie ortogonalne
 
-### #TODO - def i zadania 5/L10 i 3/L11
+### #TODO - def i zadanie 3/L11
 
 ## 11.3. Rzuty i rzuty prostopadłe
 
