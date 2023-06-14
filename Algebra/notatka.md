@@ -308,7 +308,7 @@ Jedyną kolumną z zerami w pierwszej macierzy jest druga - bazą jądra będzie
 Możemy sprawdzić to wzorem dim(Ker(f)) = dim(V) - dim(Im(f)) === 3 - 2 = 1
 ```
 
-# TODO - obliczanie bazy obrazu
+# #TODO - obliczanie bazy obrazu
 
 
 ## 5. #TODO - nie ogarniam ale nie było na listach, posprawdzam jeszcze egzaminy 
@@ -536,6 +536,8 @@ $\begin{pmatrix}1&2&3&4&5&6&7&8&9&10\\2&3&4&5&6&7&8&9&10&1\end{pmatrix}$
 Gdzie w pierwszym wierszu są liczby od 1 do n, a w drugim wierszu liczby po przekształceniu. 
 
 Złożenie - intuicyjnie.
+
+Rząd permutacji - NWW złożenia cykli.
 
 ## 15.1. Rozkład permutacji na cykle
 
