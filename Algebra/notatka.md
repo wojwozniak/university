@@ -483,6 +483,12 @@ $M$ jest ortogonalna wtedy i tylko wtedy gdy $M^T = M^{-1}$
 
 Macierze ortogonalne są zamknięte na mnożenie, transponowanie i odwracanie.
 
+## 13. Macierze dodatnio określone
+
+Definicja intuicyjna.
+
+### #TODO - zadania 2,4/L12
+
 # Część II - Algebra abstrakcyjna
 
 ## Grupy
@@ -499,4 +505,18 @@ Przykłady:
 - dwudziestościan foremny i jego obroty
 - macierz nxn i mnożenie przez macierze odwracalne
 
-## 14.2.
+## 14.2. Grupa
+
+Definicja grupy:
+
+Zbiór G z działaniem $\circ$ jest grupą jeśli:
+- $\circ$ jest łączne
+- istnieje element neutralny
+- każdy element ma element odwrotny
+
+## 14.3. Tabelka działań
+
+Tabela działań dla grupy G podaje wszystkie możliwe wyniki działania $\circ$ na elementach G.
+
+
+### #TODO 8,9,10,11 / L12
