@@ -518,8 +518,53 @@ Zbiór G z działaniem $\circ$ jest grupą jeśli:
 
 Tabela działań dla grupy G podaje wszystkie możliwe wyniki działania $\circ$ na elementach G.
 
+<details>
+<summary>Który zbiór z działaniem jest grupą?</summary>
+<br>
+Sprawdzamy zgodnie z definicją grupy. Najczęstsze przypadki że nie jest:
 
-### #TODO 8,9,10,11 / L12
+- Musi istnieć element neutrualny - jedna kolumna i jeden odpowiadający jej wiersz musi nie zmieniać elementów. 
+- W każdej kolumnie i wierszu musi być dokładnie jeden egzemplarz każdego elementu.
+</details>
+
+<details>
+<summary>Tabelka działań grupy obrotów i symetrii kwadratu</summary>
+
+<br>
+
+Mamy 8 elementów: 4 obroty i 4 symetrie które zwrócą nam taki sam kwadrat (symetrycznie ustawiony)
+
+- Obroty: 0, 90, 180, 270
+- Symetrie: 0s, 180s, 90s, 270s
+
+Nie zapamiętujemy tabelki - wystarczy potrafić stworzyć obroty i symetrie a następnie je złożyć (można "rysunkowo"). 
+
+| $\circ$ | 0 | 90 | 180 | 270 | 0s | 180s | 90s | 270s |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | 0 | 90 | 180 | 270 | 0s | 180s | 90s | 270s |
+| 90 | 90 | 180 | 270 | 0 | 90s | 270s | 0s | 180s |
+| 180 | 180 | 270 | 0 | 90 | 180s | 0s | 270s | 90s |
+| 270 | 270 | 0 | 90 | 180 | 270s | 90s | 180s | 0s |
+| 0s | 0s | 270s | 180s | 90s | 0 | 90 | 180 | 270 |
+| 180s | 180s | 90s | 0s | 270s | 180 | 270 | 0 | 90 |
+| 90s | 90s | 0s | 270s | 180s | 90 | 180 | 270 | 0 |
+| 270s | 270s | 180s | 90s | 0s | 270 | 0 | 90 | 180 |
+
+</details>
+
+<details>
+<summary>Czy X zbiór z działaniem jest grupą? </summary>
+<br>
+
+- zbiór liczb naturalnych z dodawaniem? Nie, nie ma elementu neutralnego ani odwrotnego.
+- zbiór liczb całkowitych z mnożeniem? Nie, nie ma elementu odwrotnego.
+- zbiór liczb postaci 1/k, k całkowite dodatnie, z mnożeniem? Nie, nie ma elementu odwrotnego.
+- zbiór liczb wymiernych, z dodawaniem - tak
+- zbiór liczb wymiernych bez zera, z mnożeniem, tak
+
+</details>
+
+<br>
 
 ### #TODO - reszta tematów z grup
 
