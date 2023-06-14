@@ -485,10 +485,34 @@ Macierze ortogonalne są zamknięte na mnożenie, transponowanie i odwracanie.
 
 ## 13. Macierze dodatnio określone
 
-Definicja intuicyjna.
+Macierz jest dodatnio określona gdy wyznaczniki każdego z jej minorów głównych są dodatnie. (Minory główne - macierze 1x1, 2x2, 3x3...nxn idąc od lewego górnego rogu po przekątnej)
 
-### #TODO - zadania 2,4/L12
+Każdą dodatnio określoną macierz można przedstawić w postaci $A = B^TB$ dla pewnej macierzy B - np. za pomocą rozkładu Cholesky'ego.
 
+<details>
+<summary>Sprawdź, czy macierz jest dodatnio określona</summary>
+<br>
+
+Macierz A: 
+$$
+\begin{bmatrix}
+1 & 2 & 0 \\
+-2 & 2 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+$$
+
+Wyznaczniki minorów głównych:
+A1: 1
+A2: 6
+A3: 6
+
+Wszystkie są dodatnie, więc macierz jest dodatnio określona.
+
+</details>
+
+
+<br><br>
 # Część II - Algebra abstrakcyjna
 
 ## Grupy
