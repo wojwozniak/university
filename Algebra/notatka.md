@@ -520,3 +520,33 @@ Tabela działań dla grupy G podaje wszystkie możliwe wyniki działania $\circ$
 
 
 ### #TODO 8,9,10,11 / L12
+
+### #TODO - reszta tematów z grup
+
+## 15. Grupy permutacji
+
+Grupa permutacji to zbiór wszystkich bijekcji ze zbioru $\{1,2,...,n\}$ w siebie. Operacją jest składanie funkcji. 
+
+($\sigma$*$\sigma'$)($i$) = $\sigma$($\sigma'$($i$)).
+
+Permutacje zapisujemy jako dwuwierszową tabelkę, np:
+
+$\begin{pmatrix}1&2&3&4&5&6&7&8&9&10\\2&3&4&5&6&7&8&9&10&1\end{pmatrix}$
+
+Gdzie w pierwszym wierszu są liczby od 1 do n, a w drugim wierszu liczby po przekształceniu. 
+
+Złożenie - intuicyjnie.
+
+## 15.1. Rozkład permutacji na cykle
+
+Permutację można rozłożyć na cykle. Cykl to permutacja, która przesuwa elementy cyklicznie. Intuicyjnie - gdy w tabelce mamy między innymi przejście 1->2->3->1, możemy zapisać to jako (1,2,3). Tabelkę można zapisać jako iloczyn cykli.
+
+### #TODO - 10,11 / L13
+
+## 15.2. Parzystość permutacji
+
+### #TODO - temat + 1/L14
+
+
+<br><br><br><br>
+# Dalej jeszcze nie dotarliśmy na zajęciach - start od str. 113 skryptu i listy 14
