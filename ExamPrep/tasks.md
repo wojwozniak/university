@@ -16,6 +16,9 @@ niech ns będzie lista liczb całkowitych.
 5. (parametric->/ c [a] (-> (-> a boolean?) ( listof a) ( cons/c ( listof a) ( listof a))))
 6. (parametric->/c [a b] (-> (-> a b) (listof a) (-> b (listof a)))) 
 
+# Foldr i foldl
+1. Zaimplementuj funkcję foldr przy pomocy foldl
+2. Zaimplementuj funkcję foldl przy pomocy foldr
 
 
 ✅
