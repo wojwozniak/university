@@ -1,5 +1,7 @@
-# List 1
+# Lista 1
 
-Basics, nothing special.
+Podstawy - nic ciekawego
 
-# List 2
+# Lista 2
+
+- Wolne i związane wystąpienia zmiennych (związane - zadeklarowane w scope wyrażenia)
