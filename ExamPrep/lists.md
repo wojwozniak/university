@@ -15,6 +15,10 @@ wyrażenie 2: inicjalizuje nazwę
 wyrażenie 1: oblicza wartość, przypisuje do nazwy
 wyrażenie 2: oblicza wartość, przypisuje do nazwy
 
+Ogólnie zmienne w let widzą tylko powyżej
+let* widzi wszystkie powyżej i obok
+letrec widzi wszystko, pozwala na wzajemną rekurencję np. is-even is-odd odejmujący do zera
+
 # Lista 2
 
 - Wolne i związane wystąpienia zmiennych (związane - zadeklarowane w scope wyrażenia)
