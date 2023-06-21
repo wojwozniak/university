@@ -303,3 +303,9 @@ Tutaj ważne są matchingi - przykładowe wyrażenie:
 # Lista 13
 
 - Strumienie
+
+
+# Laby
+
+- Eksportujemy deklaracją provide (wewnątrz struct-out, contract-out)
+- Improtujemy reqiure (pliki własne w katalogu 'nazwa.rkt')
