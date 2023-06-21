@@ -29,6 +29,15 @@
 
 - foldl i foldr - aplikujemy funkcję do listy (foldl od lewej, foldr od prawej) - przekazujemy funkcję, akumulator i listę
 
+; Dobra definicja foldl wraz z kontraktem
+(define/contract (foldl f x xs)
+    (parametric->/c (a b) (-> (-> a b b) b (listof a) b))
+    (if (empty? xs)
+        x
+        (foldl f (f (car xs) x) (cdr xs))
+    )
+)
+
 # Lista 4
 
 - Drzewa binarne - definiujemy node i leaf (gdzie node (left value right) a leaf to "pusty" node)
