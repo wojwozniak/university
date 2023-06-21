@@ -78,24 +78,26 @@ Czy następujące wyrażenia są dobrze typowane, i jeśli tak to jaki jest ich 
 
 Lambdy ułożone są tak:
 
-- {x} -> ({y} -> ({z}))
+- {x} -> ({y} -> {z})
 
 W ciele lambdy z zauważamy że x i y są funkcjami przyjmującymi ten sam typ (nazwijmy go 'a)
 
-- (['a -> __]) -> ((['a -> {z}]))
+
+- (['a -> __]) -> (['a -> __] -> {z})
 
 teraz zajmujemy się ciałem z
+
 x też musi zwrócić funkcję (bo ((x z) (y z)))
 
-- (['a -> [ __ -> __ ]]) -> (['a -> __] -> (['a -> __]))
+- (['a -> [ __ -> __ ]]) -> (['a -> __] -> ['a -> __])
 
 Podstawiamy typ argumentu dla y
 
-- (['a -> [ 'b -> __ ]]) -> (['a -> __] -> (['a -> 'b]))
+- (['a -> [ 'b -> __ ]]) -> (['a -> __] -> ['a -> 'b])
 
 i uzupełniając ostatni typ otrzymujemy
 
-- (['a -> [ 'b -> 'c ]]) -> (['a -> 'c] -> (['a -> 'b]))
+- (['a -> [ 'b -> 'c ]]) -> (['a -> 'c] -> ['a -> 'b])
 
 
 # Lista 6
