@@ -73,7 +73,6 @@ Czy następujące wyrażenia są dobrze typowane, i jeśli tak to jaki jest ich 
         (lambda (z) ((x z) (y z)))
     )
 )
-
 ```
 
 Lambdy ułożone są tak:
@@ -203,6 +202,9 @@ Zatem własność P zachodzi dla wszystkich Alist
 
 </details>
 
+<br><br>
+
+
 # Lista 7
 
 - Wystąpienia pozytywne i negatywne zmiennych
@@ -302,6 +304,54 @@ Tutaj ważne są matchingi - przykładowe wyrażenie:
 # Lista 13
 
 - Strumienie
+
+### Podstawowe definicje
+```scheme
+(define stream-car car)
+
+(define (stream-cdr s)
+    (force (cdr s))
+)
+
+(define (map2 f xs ys)
+    (stream-cons
+        (f 
+            (stream-car xs)
+            (stream-car ys)
+        )
+        (map2 f (stream-cdr xs) (stream-cdr ys))
+    )
+)
+```
+
+### Przykłady kodu
+```scheme
+(define ones (stream-cons 1 ones))
+
+(define (integers-from n)
+    (stream-cons n (integers-from (+ n 1)))
+)
+
+(define nats (integers-from 0))
+
+(define fibs
+    (stream-cons 0 (stream-cons 1 (map2 + fibs (stream-cdr fibs))))
+)
+
+(define fact
+    (stream-cons 1 (map2 * (stream-cdr nats) fact))
+)
+```
+
+### Iterator (wypisanie kodu)
+```scheme
+(define (iterate stream counter limit)
+    (when (<= counter limit)
+        (displayln (stream-ref stream counter))
+        (iterate stream (+ counter 1) limit)
+    )
+)
+```
 
 
 # Laby
