@@ -35,16 +35,112 @@
 
 # Lista 5
 
-- Kontrakty
-- Typy wyrażeń
+- Wystąpienia pozytywne i negatywne zmiennych
 
 # Lista 6
 
 - Dowody indukcyjne
+    - Dla wszystkiego co przyjmuje listy:
+        - Zachodzi P(empty)
+        - Dla każdego elementu x i listy xs jeśli zachodzi P(xs) to zachodzi P((cons x xs))
+
+Przykładowo:
+
+```scheme
+
+(define-type (Alist 'a)
+    (a-null)
+    (a-cons [hd : 'a] [tl : (Alist 'a)])
+    (a-append [l : (Alist 'a)] [r : (Alist 'a)])
+)
+
+```
+
+- Zachodzi P(a-null)
+- Dla dowolnego elemetu x typu 'a oraz dowolnej listy xs typu (Alist 'a) jeśli zachodzi P(xs) to zachodzi P((a-cons x xs))
+- Dla dowolnych list xs i ys typu (Alist 'a) jeśli zachodzi P(xs) i zachodzi P(ys) to zachodzi P((a-append xs ys))
+Wtedy własność jest spełniona dla wszystkich list
+
+<details><summary>Przykładowy dowód</summary>
+
+```scheme
+
+(define (a-rev xs)
+    (type-case (Alist 'a) xs
+        [(a-null) (a-null)]
+        [(a-cons x xs) (a-append (a-rev xs) (a-cons x (a-null)))]
+        [(a-append l r) (a-append (a-rev r) (a-rev l))]))
+        
+(define (to-list xs)
+    (type-case (Alist 'a) xs
+        [(a-null) empty]
+        [(a-cons x xs) (cons x (to-list xs))]
+        [(a-append l r) (a-append (a-rev r) (a-rev l))]))
+    
+(define (reverse xs)
+    (type-case (Listof 'a) xs
+        [empty empty]
+        [(cons x xs) (append (reverse xs) (list x))]))
+
+```
+
+Dla powyższej implementacji udowodnimy że zachodzi (to-list (a-rev xs)) === (reverse (to-list xs))
+
+1) P((a-null))
+
+Niech xs == (a-null)
+
+L = (to-list (a-rev xs)) == (to-list (a-null)) == empty
+P = (reverse (to-list xs)) == (reverse empty) == empty
+
+L === P
+
+2) P((a-cons x xs))
+
+Weźmy dowolne x typu 'a i xs typu (Alist 'a) i załóżmy że zachodzi P(xs). Pokażemy że zachodzi P(a-cons x xs)
+
+L = (to-list (a-rev (a-cons x xs))) == 
+(to-list (a-append (a-rev xs) (a-cons x (a-null)))) == 
+(append (to-list (a-rev xs) (to-list (a-cons x (a-null))))) ==
+(append (reverse (to-list xs)) (cons x empty))
+
+Lemat 1 - dla dowolnego x i dowolnej list xs zachodzi
+(append (reverse xs)(cons x empty)) == (reverse (cons x xs))
+
+P = (reverse (to-list (a-cons x xs))) ==
+(reverse (cons x (to-list xs)))
+
+Zauważamy ze (to-list xs) oblicza się do listy plaitowej, zatem możemy skorzytsrać z lematu 1 i otrzymujemy
+
+L == (reverse (cons x (to-list xs))) == P
+
+
+3) P((a-append xs ys))
+Weźmy dowolne xs i ys typu (Alist 'a) i załóżmy że zachodzi P(xs) i zachodzi P(ys). Pokażemy że zachodzi P((a-append xs ys))
+
+L = (to-list (a-rev (a-append xs ys))) ==
+(to-list (a-append (a-rev ys) (a-rev xs))) ==
+(append (to-list (a-rev ys)) (to-list (a-rev xs))) ==
+(append (reverse (to-list ys)) (reverse (to-list xs)))
+
+P = (reverse (to-list (a-append xs ys))) ==
+(reverse (append (to-list xs) (to-list ys)))
+
+Lemat 2: Dla dowolnych list xs, ys zachodzi 
+(append (reverse xs) (reverse ys)) == (reverse (append ys xs))
+
+Korzystając z lematu 2 otrzymujemy
+
+L == (reverse (append (to-list xs) (to-list ys))) == P
+
+Zatem własność P zachodzi dla wszystkich Alist
+
+
+</details>
 
 # Lista 7
 
-- Kontrakty cd.
+- Kontrakty
 
 # Lista 8
 
