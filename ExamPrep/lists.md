@@ -146,6 +146,27 @@ Zatem własność P zachodzi dla wszystkich Alist
 
 Negatywne wkładamy do pudełka, pozytywne z niego wyciągamy
 
+### ! Ważne - uwaga na błąd!
+Lecimy od prawej - jeśli mamy funkcję w funkcji to będzie to "na odwrót"
+
+tzn dla prostego przypadku:
+
+; (parametric->/c [a b] (-> a b a))
+;  N N P (wkładamy zmienne typu a i b, wyciągamy a)
+
+Ale tutaj już
+
+; (parametric->/c [a b] (-> (-> a b) (listof a) (listof b)))
+; P N P N (wyjdzie nam (listof b), (listof a) wkładamy jako argument
+ale pierwsze a jest wystąpieniem pozytywnym (mimo że też my je dostarczamy))
+
+; analogicznie
+; (parametric- >/c [a b c] (-> (-> a b c) (-> a b) a c))
+; P P N P N N P
+
+; (parametric- >/c [a] (-> (-> (-> a a) a) a))
+; N P N P
+
 # Lista 8
 
 - Wskaźniki
