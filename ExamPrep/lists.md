@@ -46,6 +46,60 @@
 
 - Kontrakty
 
+## Przykład
+
+Napisz kontrakt dla append-map
+
+```scheme
+(define/contract (append-map f xs)
+    (parametric->/c (a b) (-> (-> a (listof b)) (listof a) (listof b)))
+    (if (null? xs)
+        null
+        (append 
+            (f (car xs))
+            (append-map f (cdr xs))
+        )
+    )
+)
+```
+
+## Przykład 2
+
+Czy następujące wyrażenia są dobrze typowane, i jeśli tak to jaki jest ich typ?
+
+```scheme
+(lambda (x) 
+    (lambda (y) 
+        (lambda (z) ((x z) (y z)))
+    )
+)
+
+```
+
+Lambdy ułożone są tak:
+
+- {x} -> ({y} -> ({z}))
+
+W ciele lambdy z zauważamy że x i y są funkcjami przyjmującymi ten sam typ (nazwijmy go 'a)
+
+- (['a -> __]) -> ((['a -> {z}]))
+
+teraz zajmujemy się ciałem z
+x też musi zwrócić funkcję (bo ((x z) (y z)))
+
+- (['a -> [ __ -> __ ]]) -> (['a -> __] -> (['a -> __]))
+
+Podstawiamy typ argumentu dla y
+
+- (['a -> [ 'b -> __ ]]) -> (['a -> __] -> (['a -> 'b]))
+
+i uzupełniając ostatni typ otrzymujemy
+
+- (['a -> [ 'b -> 'c ]]) -> (['a -> 'c] -> (['a -> 'b]))
+
+
+
+
 # Lista 6
 
 - Dowody indukcyjne
