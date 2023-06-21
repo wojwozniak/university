@@ -166,7 +166,7 @@ tzn dla prostego przypadku:
 Ale tutaj już
 
 ; (parametric->/c [a b] (-> (-> a b) (listof a) (listof b)))
-; P N P N (wyjdzie nam (listof b), (listof a) wkładamy jako argument
+; P N N P (wyjdzie nam (listof b), (listof a) wkładamy jako argument
 ale pierwsze a jest wystąpieniem pozytywnym (mimo że też my je dostarczamy))
 
 ; analogicznie
@@ -178,7 +178,44 @@ ale pierwsze a jest wystąpieniem pozytywnym (mimo że też my je dostarczamy))
 
 # Lista 8
 
-- Wskaźniki
+- Programowanie imperatywne
+
+Mamy opcję set! która zmienia wartość zmiennej 
+
+Dla list: mutowalne pary, listy, wektory
+
+mcons, mcar, mcdr
+(set-mcar! {co} {na co})
+(set-mcdr! {co} {na co})
+
+(make-vector {rozmiar} {typ})
+(vector-ref {wektor} {indeks}) - acessor
+(vector-set! {wektor} {indeks} {wartość}) - setter
+
+## Przykład zadania
+
+Cykliczna lista łączona:
+
+(define-struct node (elem [next #:mutable] [next-next #:mutable]))
+
+musi zachodzić (eq? (node-next (node-next e)) (node-next-next e))
+
+Mamy zaimplementować wstawianie elementu po next
+
+Interesują nas pierwsze 4 elementy (+ ten który wstawiamy). Edytować będziemy wskaźniki w pierwszych dwóch (i we wstawianym)
+
+```
+(define (insert-after-next node elem)
+    (let [new (make-node elem (node-next node) (node-next-next node))]
+        (set-node-next! new (node-next-next node))
+        (set-node-next-next! new (node-next-next (node-next node)))
+        ... i tak dalej dla elementów node-next i node
+    )
+)
+```
+
+## mreverse bez tworzenia nowych elementów
+
 
 # Lista 9
 
