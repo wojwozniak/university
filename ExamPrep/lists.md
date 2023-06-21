@@ -98,9 +98,6 @@ i uzupełniając ostatni typ otrzymujemy
 - (['a -> [ 'b -> 'c ]]) -> (['a -> 'c] -> (['a -> 'b]))
 
 
-~credits dla dobrej duszy z dc która to rozpisała na chacie
-
-
 # Lista 6
 
 - Dowody indukcyjne
