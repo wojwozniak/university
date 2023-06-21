@@ -1,3 +1,8 @@
+# MP Debilpack
+
+TYPY SĄ SPRAWDZANE PRZY KOMPILACJI
+KONTRAKTY DOPIERO PRZY WYWOŁANIU FUNKCJI
+
 # Lista 1
 
 - eq? sprawdza czy to ten sam obiekt
@@ -331,6 +336,14 @@ Tutaj ważne są matchingi - przykładowe wyrażenie:
 
 ```scheme
 (s-exp-match? `(lambda ANY ANY) expr)
+```
+
+Środowiska - przechowujemy wartości zmiennych
+
+```scheme
+(define-type Storable (valS [v : 'a]))
+(define-type Binding (bind [name : Symbol] [ref : (Boxof Storable)]))
+(define-type-alias Env (Listof Binding))
 ```
 
 
