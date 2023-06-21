@@ -58,6 +58,23 @@ letrec widzi wszystko, pozwala na wzajemną rekurencję np. is-even is-odd odejm
 
 - Drzewa binarne - definiujemy node i leaf (gdzie node (left value right) a leaf to "pusty" node)
 
+```scheme
+(define (fold-tree f acc t)
+    (cond 
+        [(leaf? t) acc]
+        [(node? t) 
+            (f
+                (node-elem t)
+                (fold-tree f acc (node-l t))
+                (fold-tree f acc (node-r t))
+            )
+        ]
+    )
+)
+```
+
+Tak ma wyglądać fold-tree, jak to masz git to wszystkie zadania braindead
+
 # Lista 5
 
 - Kontrakty
@@ -374,3 +391,8 @@ Tutaj ważne są matchingi - przykładowe wyrażenie:
 
 - Eksportujemy deklaracją provide (wewnątrz struct-out, contract-out)
 - Improtujemy reqiure (pliki własne w katalogu 'nazwa.rkt')
+
+
+# !!!
+Zapytaj o kontrakty z pliku w folderze tasks
+Ogarnij lepiej dowody indukcyjne
