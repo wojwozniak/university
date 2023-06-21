@@ -216,14 +216,34 @@ Interesują nas pierwsze 4 elementy (+ ten który wstawiamy). Edytować będziem
 
 ## mreverse bez tworzenia nowych elementów
 
+```scheme
+(define (mreverse lst)
+    (let ((result (mcons '() '())))
+        (let loop ((lst lst))
+            (when (not (mnull? lst))
+                (let ((temp (mcdr lst)))
+                    (set-mcdr lst (mcdr result))
+                    (set-mcdr result lst)
+                    (set! lst temp)
+                    (loop lst)
+                )
+            )
+        )
+        (mcdr result)
+    )
+)
+```
 
-# Lista 9
+# Lista 9, 10,11,12
 
-- S-Expression
+- Parsery i interpretery, S-Expressions
 
-# Lista 10,11,12
+Tutaj ważne są matchingi - przykładowe wyrażenie:
 
-- Parsery i interpretery
+```scheme
+(s-exp-match? `(lambda ANY ANY) expr)
+```
+
 
 # Lista 13
 
