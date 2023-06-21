@@ -3,6 +3,18 @@
 - eq? sprawdza czy to ten sam obiekt
 - equal? sprawdza czy to obiekty o tych samych wartościach
 
+
+let*
+wyrażenie 1: inicjalizuje nazwę, oblicza wartość, przypisuje
+itd.
+
+letrec
+wyrażenie 1: inicjalizuje nazwę
+wyrażenie 2: inicjalizuje nazwę
+...
+wyrażenie 1: oblicza wartość, przypisuje do nazwy
+wyrażenie 2: oblicza wartość, przypisuje do nazwy
+
 # Lista 2
 
 - Wolne i związane wystąpienia zmiennych (związane - zadeklarowane w scope wyrażenia)
