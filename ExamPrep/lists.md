@@ -35,7 +35,7 @@
 
 # Lista 5
 
-- Wystąpienia pozytywne i negatywne zmiennych
+- Kontrakty
 
 # Lista 6
 
@@ -84,6 +84,7 @@ Wtedy własność jest spełniona dla wszystkich list
 
 ```
 
+```
 Dla powyższej implementacji udowodnimy że zachodzi (to-list (a-rev xs)) === (reverse (to-list xs))
 
 1) P((a-null))
@@ -135,12 +136,15 @@ L == (reverse (append (to-list xs) (to-list ys))) == P
 
 Zatem własność P zachodzi dla wszystkich Alist
 
+```
 
 </details>
 
 # Lista 7
 
-- Kontrakty
+- Wystąpienia pozytywne i negatywne zmiennych
+
+Negatywne wkładamy do pudełka, pozytywne z niego wyciągamy
 
 # Lista 8
 
