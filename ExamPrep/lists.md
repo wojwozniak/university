@@ -53,7 +53,7 @@
         - Zachodzi P(empty)
         - Dla każdego elementu x i listy xs jeśli zachodzi P(xs) to zachodzi P((cons x xs))
 
-Przykładowo:
+## Przykładowo:
 
 ```scheme
 
