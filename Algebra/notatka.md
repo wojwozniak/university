@@ -403,9 +403,9 @@ W skrócie - w całej głównej przekątnej odejmujemy $\lambda$ i obliczamy wyz
 
 ## 8.4. Krotności algebraiczna i geometryczna
 
-Krotność geometryczna to wymiar przestrzeni wektorów własnych dla $\lambda$. Dla M jest to $dim(Ker(M - \lambda Id))$
+Krotność geometryczna to liczba liniowo niezależnych wektorów własnych odpowiadających danej wartości własnej.
 
-Krotność algebraiczna to krotność $\lambda$ jako pierwiastka wielomianu charakterystycznego.
+Krotność algebraiczna to krotność $\lambda$ jako pierwiastka wielomianu charakterystycznego. (czyli ile razy $\lambda$ występuje w wielomianie)
 
 ### #TODO - przykład z zadania 3/L9 i ew. 11/L8
 
