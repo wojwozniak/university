@@ -719,6 +719,52 @@ a przystaje do b modulo m, jeśli m dzieli a-b.
 
 Algorytm Euklidesa służy do znalezienia NWD dwóch liczb. Jest trochę definicji - ale najprościej zapamiętać jak działa najprostszy algorytm, zdarzały się zadania gdzie trzeba było go zastosować.
 
+Rozszerzony algorytm - przykład:
+
+NWD(13, 5):
+
+13 = 2 * 5 + 3
+
+5 = 1 * 3 + 2
+
+3 = 1 * 2 + 1
+
+2 = 2 * 1 + 0
+
+NWD to ostatnia niezerowa reszta z dzielenia, czyli w tym przypadku 1.
+
+NWD(13, 5) = 1
+
+teraz wyznaczamy reszty z dzielenia w każdym równaniu (oprócz tego z resztą zero - je ignorujemy)
+
+3 = 13 - 2 * 5
+
+2 = 5 - 1 * 3
+
+1 = 3 - 1 * 2
+
+Teraz zaczynamy od końca i podstawiamy kolejne równania do poprzednich:
+
+1 = 3 - 1 * 2 = 3 - 1 * (5 - 1 * 3) = 2 * 3 - 1 * 5 = 2 * (13 - 2 * 5) - 1 * 5 = 2 * 13 - 5 * 5
+
+Wyznaczyliśmy równanie diofantyczne: NWD(13, 5) = 1 = 2 * 13 - 5 * 5
+
+
 ## 19.4. Elementy odwracalne
 
 Element a pierścienia R nazywamy odwracalnym, jeśli istnieje element b taki, że ab = ba = 1. Element b nazywamy wtedy elementem odwrotnym do a.
+
+## 19.5. Chińskie twierdzenie o resztach
+
+Jeśli m1, m2 ..., mk są parami względnie pierwsze, to naturalny homomorfizm pierścieni jest izomorfizmem.
+
+## 20.1. Pierścień wielomianów
+
+Pierścień wielomianów o współczynnikach z pierścienia R oznaczamy R[x]. Elementy tego pierścienia to wielomiany o współczynnikach z R.
+
+Działania działają intuicyjnie. deg(f) tak samo.
+
+## 20.3. Dzielenie i NWD wielomianów
+
+#TODO
+
