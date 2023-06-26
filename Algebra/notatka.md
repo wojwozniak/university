@@ -640,6 +640,85 @@ Rząd permutacji = 3 * 2 * 5 = 30
 
 </details>
 
+## 15.2. Parzystość / nieparzystość permutacji
 
-<br><br><br><br>
-# Dalej jeszcze nie dotarliśmy na zajęciach - start od str. 113 skryptu i listy 14
+Parzystość permutacji to parzystość ilości jej inwersji. Definicja trochę z dupy, wytłumaczę jak to policzyć poniżej.
+
+### Wzorki związane z parzystością
+
+sgn($\sigma$) = (-1)^k, gdzie k to ilość inwersji w permutacji $\sigma$.
+
+sgn($\sigma$ * $\sigma'$) = sgn($\sigma$) * sgn($\sigma'$)
+
+### Określenie parzystości
+
+Przykładowo - mamy taką permutację której parzystość chcemy określić:
+
+$\sigma$ = 
+$\begin{pmatrix}1&2&3&4&5\\1&3&5&4&2\end{pmatrix}$
+
+Pierwszy wiersz jest w dobrej kolejności, patrzymy więc na drugi. Patrzymy na to ile elementów jest jest "na lewo od mniejszego od siebie elementu". Dla tego przypadku:
+1 - wszystko git
+2 - {3,2} (3 jest na lewo od mniejszego od sb 2)
+3 - {5,4}, {5,2} (5 jest na lewo od mniejszego od sb 4, 5 jest na lewo od mniejszego od sb 2)
+4 - {4,2}
+
+Mamy więc 4 inwersje, permutacja jest parzysta (a znak permutacji to 1 (dodatnia)).
+
+## 16.0. Działania grupy na zbiorze
+
+Definicje:
+
+- Orbita - zbiór elementów, które można uzyskać z danego elementu grupy przez działanie grupy.
+
+- Stabilizator - zbiór elementów grupy, które działają na danym elemencie grupy i dają ten sam element grupy. (Taka jakby funkcja identycznościowa ale chyba lepiej tak tego na egzaminie nie nazywać)  
+
+## 16.1. Mnożenie podzbiorów grupy
+
+W podzbiorach grupy zawsze zdefiniowane jest mnożenie. Jest ono łączne. Czasem potrzebna też będzie rozdzielność względem sumy tj. np. (A+B)*C = A*C + B*C.
+
+## 17.1. Warstwy
+
+Warstwa to podgrupa.
+
+Gdy H <= G to warstwą lewostronną H (w G) są zbiory postaci aH = {ah : h $\in$ H}. 
+
+Warstwą prawostronną H (w G) są zbiory postaci Ha = {ha : h $\in$ H}.
+
+Każde dwie warstwy H w G są równoliczne. Są też rozłączne lub identyczne.
+
+
+#TODO - reszta o warstwach
+
+## 19.1. Pierścienie
+
+Pierścień to zbiór R z dwoma działaniami + i * takimi, że:
+
+- (R, +) jest grupą przemienną
+
+- (R, *) jest półgrupą
+
+Ponadto zachodzi rozdzielność mnożenia względem dodawania.
+
+Pierścień jest z jednością, jeśli istnieje element neutralny względem mnożenia. (czyli intuicyjnie - 1)
+
+Pierścień jest przemienny, jeśli mnożenie jest przemienne. (ab = ba)
+
+
+Przykłady pierścieni:
+- Liczby całkowite Z
+- Zm: liczby modulo m z dodawaniem i mnożeniem
+
+## 19.2. Arytmetyka modularna
+
+### Przystawanie
+
+a przystaje do b modulo m, jeśli m dzieli a-b.
+
+## 19.3. Algorytm Euklidesa
+
+Algorytm Euklidesa służy do znalezienia NWD dwóch liczb. Jest trochę definicji - ale najprościej zapamiętać jak działa najprostszy algorytm, zdarzały się zadania gdzie trzeba było go zastosować.
+
+## 19.4. Elementy odwracalne
+
+Element a pierścienia R nazywamy odwracalnym, jeśli istnieje element b taki, że ab = ba = 1. Element b nazywamy wtedy elementem odwrotnym do a.
