@@ -90,6 +90,18 @@ Prostszym sformułowaniem jest to, że wektory są liniowo niezależne jeśli ni
 
 W zadaniach będziemy udowadniać liniową niezależność wektorów korzystając z metody eliminacji Gaussa, przekształcając macierz wektorów w macierz schodkową. Jeśli w macierzy schodkowej nie ma zerowego wiersza, to wektory są liniowo niezależne.
 
+## 1.6. Metoda eliminacji Gaussa
+
+Metoda eliminacji Gaussa pozwala na rozwiązanie układu równań liniowych. W zadaniach będziemy jej używać do sprawdzania liniowej niezależności wektorów.
+
+Wpływ eliminacji na wyznacznik macierzy:
+- mnożenie wiersza przez skalar $k$ powoduje pomnożenie wyznacznika przez $k$
+- dodanie do wiersza innego wiersza pomnożonego przez skalar $k$ nie zmienia wyznacznika
+- zamiana miejscami dwóch wierszy powoduje zmianę znaku wyznacznika
+
+Najlepiej więc korzystać jedynie z pierwszej operacji - szczególnie że jest braindead algorytm wykorzystujący tylko tę operację.
+
+
 # 2. Baza, wymiar, warstwy
 
 ## 2.1. Baza
