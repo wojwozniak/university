@@ -51,11 +51,9 @@ Spis treści:
     - [#TODO - przykład zadania?](#todo---przykład-zadania)
   - [8.3. Wielomian charakterystyczny](#83-wielomian-charakterystyczny)
   - [8.4. Krotności algebraiczna i geometryczna](#84-krotności-algebraiczna-i-geometryczna)
-    - [#TODO - przykład z zadania 3/L9 i ew. 11/L8](#todo---przykład-z-zadania-3l9-i-ew-11l8)
   - [8.5. Diagonalizowalność macierzy](#85-diagonalizowalność-macierzy)
     - [Poniższe twierdzenia są równoważne](#poniższe-twierdzenia-są-równoważne)
   - [8.6. Macierze Jordana](#86-macierze-jordana)
-    - [#TODO na razie nie ogarniam co tu się dzieje, później do tego wrócę](#todo-na-razie-nie-ogarniam-co-tu-się-dzieje-później-do-tego-wrócę)
   - [8.7. Macierze symetryczne](#87-macierze-symetryczne)
 - [9. Macierze i grafy](#9-macierze-i-grafy)
   - [9.1. Macierze sąsiedstwa](#91-macierze-sąsiedstwa)
@@ -562,11 +560,9 @@ W skrócie - w całej głównej przekątnej odejmujemy $\lambda$ i obliczamy wyz
 
 ## 8.4. Krotności algebraiczna i geometryczna
 
-Krotność geometryczna to liczba liniowo niezależnych wektorów własnych odpowiadających danej wartości własnej.
-
 Krotność algebraiczna to krotność $\lambda$ jako pierwiastka wielomianu charakterystycznego. (czyli ile razy $\lambda$ występuje w wielomianie)
 
-### #TODO - przykład z zadania 3/L9 i ew. 11/L8
+Krotność geometryczna to liczba liniowo niezależnych wektorów własnych odpowiadających danej wartości własnej. Podstawiamy do macierz M-lambdaI wartość własną i wyznaczamy bazę jądra. Ilość wektorów w tej bazie to krotność geometryczna. Zawsze będzie ona większa lub równa 1 i mniejsza lub równa krotności algebraicznej.
 
 ## 8.5. Diagonalizowalność macierzy
 
@@ -581,7 +577,35 @@ Przekształcenie liniowe jest diagonalne, jeśli jego macierz (w jakiejś bazie)
 
 ## 8.6. Macierze Jordana
 
-### #TODO na razie nie ogarniam co tu się dzieje, później do tego wrócę
+Klatką Jordana nazywamy macierz postaci:
+
+$$
+\begin{bmatrix}
+\lambda & 1 & 0 & 0 & \dots & 0 & 0 \\
+0 & \lambda & 1 & 0 & \dots & 0 & 0 \\
+0 & 0 & \lambda & 1 & \dots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \dots & \lambda & 1 \\
+0 & 0 & 0 & 0 & \dots & 0 & \lambda \\
+\end{bmatrix}
+$$
+
+Macierz Jordana to macierz postaci:
+
+$$
+\begin{bmatrix}
+J_1 & 0 & 0 & 0 & \dots & 0 & 0 \\
+0 & J_2 & 0 & 0 & \dots & 0 & 0 \\
+0 & 0 & J_3 & 0 & \dots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \dots & J_{k-1} & 0 \\
+0 & 0 & 0 & 0 & \dots & 0 & J_k \\
+\end{bmatrix}
+$$
+
+gdzie $J_i$ to klatka Jordana.
+
+Klatka Jordana J rozmiaru kxk ma jedną wartość własną $\lambda$ o krotności algebraicznej i geometrycznej równej k.
 
 ## 8.7. Macierze symetryczne
 
