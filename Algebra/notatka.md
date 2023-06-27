@@ -939,7 +939,9 @@ Pozwala zliczyć ilość nierozróżnialnych względem działania grupy obiektó
 Wzór posrany, dlatego debiloodpornie:
 
 ```
-DZIELIMY   (MOŻLIWE OPCJE) ^ ILOŚĆ CYKLI (permutacja)    PRZEZ ILOŚĆ GRUP
+DZIELIMY SUMĘ:
+      DLA KAŻDEJ GRUPY (MOŻLIWE OPCJE) ^ ILOŚĆ CYKLI (permutacja)    
+      PRZEZ ILOŚĆ GRUP
 
 
 np.
