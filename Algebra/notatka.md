@@ -2,6 +2,8 @@
 
 Niektóre indeksy są pominięte - numeruję dokładnie tak samo jak w skrypcie.
 
+# 1. Wstęp
+
 ## 1.1. Ciała
 *Ciało* to zbiór z działaniami mnożenia i dodawania - działają one tak jak intuicyjnie oczekujemy. Należą do niego dwa specjalne elementy: 0 i 1 - one również działają intuicyjnie.
 
@@ -88,6 +90,8 @@ Prostszym sformułowaniem jest to, że wektory są liniowo niezależne jeśli ni
 
 W zadaniach będziemy udowadniać liniową niezależność wektorów korzystając z metody eliminacji Gaussa, przekształcając macierz wektorów w macierz schodkową. Jeśli w macierzy schodkowej nie ma zerowego wiersza, to wektory są liniowo niezależne.
 
+# 2. Baza, wymiar, warstwy
+
 ## 2.1. Baza
 Jest to minimalny zbiór wektorów, których kombinacja liniowa daje dowolny wektor z przestrzeni. W przestrzeni $\mathbb{R}^n$ baza to zbiór $n$ wektorów, które są liniowo niezależne.
 
@@ -108,6 +112,8 @@ Pozwala on nam obliczyć rozwiązania zadań w których dostajemy przestrzenie U
 ## 2.5. Wartstwy
 
 Wartstwą przestrzeni liniowej $\mathbb{V}$ nazywamy zbiór wszystkich wektorów, które są kombinacją liniową wektorów z $\mathbb{V}$. Intuicyjnie - jest to przestrzeń przesunięta o wektor v.
+
+# 3. Przekształcenia liniowe
 
 ## 3.1. Przekszałcenia liniowe (homomorfizmy)
 
@@ -226,6 +232,8 @@ bazą jądra jest {(1, -1, 1)}
 
 </details>
 
+# 4. Macierze
+
 ## 4.1. Macierze
 
 ### Definicja
@@ -315,6 +323,8 @@ Możemy sprawdzić to wzorem dim(Ker(f)) = dim(V) - dim(Im(f)) === 3 - 2 = 1
 
 <br><br><br><br>
 
+# 6. Wyznacznik
+
 ## 6.1. Wyznacznik
 
 Funkcja na macierzach kwadratowych, która spełnia następujące warunki:
@@ -345,6 +355,8 @@ Dla 3x3 metoda Sarrusa - rozwijamy kolumny poza macierz.
 - $det(A^T) = det(A)$
 - $det(A^{-1}) = \frac{1}{det(A)}$
 - $det(A^k) = det(A)^k$
+
+# 7. Rozwiązywanie układów równań liniowych
 
 ## 7.1. Układy równań liniowych
 
@@ -390,6 +402,8 @@ Układem jednorodnym nazywamy układ równań postaci Ax = 0. Zawsze ma rozwiąz
 
 Układem niejednorodnym nazywamy układ równań postaci Ax = b. Rozwiązujemy Gaussem. To czy ile ma rozwiązań wnioskujemy z ilości niewiadomych i równań.
 
+# 8. Wartości i wektory własne
+
 ## 8.1. Wartość własna, wektor własny
 
 Wartością własną macierzy A nazywamy liczbę $\lambda$ taką, że istnieje wektor $v \neq 0$ taki, że $Av = \lambda v$
@@ -430,6 +444,8 @@ Macierz M jest symetryczna $\iff$ $M^T = M$
 
 Zawsze ma ona n niezależnych wektorów własnych.
 
+# 9. Macierze i grafy
+
 ## 9.1. Macierze sąsiedstwa
 
 Internet modelujemy jako graf - wierzchołki to strony, krawędzie to linki między stronami (bez pętli n->n). Naszym celem jest znalezienie najważniejszych stron korzystając z ilości linków do danej strony.
@@ -456,6 +472,8 @@ gdzie J to macierz elementów 1/n.
 
 
 ### #TODO 10.2. i 10.3. - do sprawdzenia na listach i starych egzaminach
+
+# 11. Baza ortonormalna, rzuty, ortonormalizacja
 
 ## 11.1. Baza ortonormalna
 
