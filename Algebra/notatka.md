@@ -1162,10 +1162,8 @@ Działania działają intuicyjnie. deg(f) tak samo.
 
 Otrzymujemy dwa wielomiany, np. f(x) = 2x^3 + 3x^2 + 4x + 5 i g(x) = 2x^3 + x^2 + 2x + 3. Chcemy znaleźć ich NWD.
 
-Odejmujemy "mniejszy" wielomian od większego:
+Dzielimy wielomiany z resztą
 
-f(x) - g(x) = 2x^3 + 3x^2 + 4x + 5 - (2x^3 + x^2 + 2x + 3) = 2x^2 + 2x + 2
+Jeśli reszta jest zerem to NWD to dzielnik.
 
-Następnie dzielimy pisemnie większy z wielomianów przez otrzymany wielomian.
-
-Ostatnia niezerowa reszta z dzielenia to NWD.
+w.p.p. korzystamy z faktu że gcd(af+b, f) = gcd(b, f) aż dojdziemy do sytuacji gdzie reszta jest zerem.
