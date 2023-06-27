@@ -634,8 +634,21 @@ Niech $V$ będzie skończenie wymiarową przestrzenią Euklidesową (unitarną).
 
 ## 11.2. 11.4. Dopełnienie ortogonalne, algorytm Grama-Schmidta ortonormalizacji bazy
 
+Mamy w bazie wektory $v_1, v_2, \dots, v_n$. Chcemy znaleźć bazę ortonormalną. Po pierwsze ogarniamy żeby to była w ogóle baza - wywalamy liniowo zależne wektory i uzupełniamy bazę jeśli jakichś wektorów brakuje.
 
-#TODO - zadanie 3/L11
+Następnie robimy (u to nowe wektory):
+
+```
+u1 = v1
+u2 = v2 - ((v2*u1)/u1*u1) ** u1 
+(gdzie ** to iloczyn wektorowy)
+u3 = v3 - ((v3*u1)/u1*u1) ** u1 - ((v3*u2)/u2*u2) ** u2
+i tak dalej...
+
+Na sam koniec dzielimy wszystkie wektory przez ich długość. (chcemy by były =1)
+
+```
+
 
 ## 11.3. Rzuty i rzuty prostopadłe
 
