@@ -59,7 +59,6 @@ Spis treści:
   - [9.3. Obliczanie PageRanku](#93-obliczanie-pageranku)
 - [10. Iloczyn skalarny](#10-iloczyn-skalarny)
 - [11. Baza ortonormalna, rzuty, ortonormalizacja](#11-baza-ortonormalna-rzuty-ortonormalizacja)
-  - [11.1. Baza ortonormalna](#111-baza-ortonormalna)
   - [11.2. 11.4. Dopełnienie ortogonalne, algorytm Grama-Schmidta ortonormalizacji bazy](#112-114-dopełnienie-ortogonalne-algorytm-grama-schmidta-ortonormalizacji-bazy)
   - [11.3. Rzuty i rzuty prostopadłe](#113-rzuty-i-rzuty-prostopadłe)
 - [12. Izometrie i macierze ortogonalne](#12-izometrie-i-macierze-ortogonalne)
@@ -631,10 +630,7 @@ Mnożymy liczby na tych samych pozycjach i sumujemy.
 
 Baza ortonormalna to baza, w której wszystkie wektory są ortogonalne (wzajemnie prostopadłe) i mają długość 1.
 
-## 11.1. Baza ortonormalna
-
 Niech $V$ będzie skończenie wymiarową przestrzenią Euklidesową (unitarną). Wtedy $V$ ma bazę ortonormalną.
-
 
 ## 11.2. 11.4. Dopełnienie ortogonalne, algorytm Grama-Schmidta ortonormalizacji bazy
 
