@@ -777,7 +777,7 @@ x === 6 (mod 7)
 x = 3k + 1
 
 3k + 1 === 4 (mod 5)
-3k === 3 (mod 5)  * 2
+3k === 3 (mod 5)     | * 2
 k === 1 (mod 5)
 k = 5l + 1
 
@@ -795,6 +795,33 @@ x = 105m + 34
 Odpowiedź jest w postaci 105m + 34
 
 Najmniejsza nieujemna liczba spełniająca to równanie to 34.
+```
+
+</details>
+
+<details><summary>Drugi przykład (z listy zadań)</summary>
+
+```
+x mod 7 = 1
+x mod 5 = 4
+
+najpierw zapiszmy bardziej przejrzyście:
+
+x === 1 (mod 7)
+x === 4 (mod 5)
+
+x = 7k + 1
+7k+1 === 4 mod 5
+7k === 3 mod 5
+2k === 3 mod 5    | * 3
+k === 4 mod 5
+k = 5m + 4
+
+x = 7(5m + 4) + 1
+x = 35m + 29
+
+Odp: 29
+
 ```
 
 </details>
