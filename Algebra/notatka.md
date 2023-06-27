@@ -28,7 +28,6 @@ Spis treści:
   - [4.4. Przekształcenia liniowe dla macierzy](#44-przekształcenia-liniowe-dla-macierzy)
   - [4.5. Rząd macierzy](#45-rząd-macierzy)
   - [4.6. Obliczanie bazy jądra przekształcenia](#46-obliczanie-bazy-jądra-przekształcenia)
-    - [#TODO - obliczanie bazy obrazu](#todo---obliczanie-bazy-obrazu)
   - [4.7. 4.8. Macierz odwrotna](#47-48-macierz-odwrotna)
   - [4.9. Obliczanie macierzy odwrotnej (algorytm)](#49-obliczanie-macierzy-odwrotnej-algorytm)
 - [5. Przekształcenia liniowe i macierze](#5-przekształcenia-liniowe-i-macierze)
@@ -44,11 +43,9 @@ Spis treści:
   - [7.4. 7.5. Ogólne układy (Gauss)](#74-75-ogólne-układy-gauss)
     - [Układ jednorodny](#układ-jednorodny)
     - [Układ niejednorodny](#układ-niejednorodny)
-    - [#TODO - przykład](#todo---przykład)
 - [8. Wartości i wektory własne](#8-wartości-i-wektory-własne)
   - [8.1. Wartość własna, wektor własny](#81-wartość-własna-wektor-własny)
   - [8.2. Macierze podobne](#82-macierze-podobne)
-    - [#TODO - przykład zadania?](#todo---przykład-zadania)
   - [8.3. Wielomian charakterystyczny](#83-wielomian-charakterystyczny)
   - [8.4. Krotności algebraiczna i geometryczna](#84-krotności-algebraiczna-i-geometryczna)
   - [8.5. Diagonalizowalność macierzy](#85-diagonalizowalność-macierzy)
@@ -60,15 +57,12 @@ Spis treści:
     - [Znormalizowana macierz sąsiedztwa](#znormalizowana-macierz-sąsiedztwa)
   - [9.2. PageRank](#92-pagerank)
   - [9.3. Obliczanie PageRanku](#93-obliczanie-pageranku)
-    - [#TODO - zadanie z listy ogarnąć i wrzucić tutaj](#todo---zadanie-z-listy-ogarnąć-i-wrzucić-tutaj)
 - [10. Iloczyn skalarny](#10-iloczyn-skalarny)
   - [10.1. Standardowy iloczyn skalarny](#101-standardowy-iloczyn-skalarny)
   - [10.2. Dopełnie ortogonalne](#102-dopełnie-ortogonalne)
-    - [#TODO - ogarnąć co było na listach i tu wrzucić](#todo---ogarnąć-co-było-na-listach-i-tu-wrzucić)
 - [11. Baza ortonormalna, rzuty, ortonormalizacja](#11-baza-ortonormalna-rzuty-ortonormalizacja)
   - [11.1. Baza ortonormalna](#111-baza-ortonormalna)
   - [11.2. Dopełnienie ortogonalne](#112-dopełnienie-ortogonalne)
-    - [#TODO - def i zadanie 3/L11](#todo---def-i-zadanie-3l11)
   - [11.3. Rzuty i rzuty prostopadłe](#113-rzuty-i-rzuty-prostopadłe)
 - [12. Izometrie i macierze ortogonalne](#12-izometrie-i-macierze-ortogonalne)
   - [12.1. Izometrie](#121-izometrie)
@@ -439,8 +433,6 @@ Jedyną kolumną z zerami w pierwszej macierzy jest druga - bazą jądra będzie
 Możemy sprawdzić to wzorem dim(Ker(f)) = dim(V) - dim(Im(f)) === 3 - 2 = 1
 ```
 
-### #TODO - obliczanie bazy obrazu
-
 ## 4.7. 4.8. Macierz odwrotna
 
 Macierz kwadratowa A jest macierzą odwracalną, gdy istnieje takie B, że AB = BA = Id(n). Wtedy B nazywamy macierzą odwrotną do macierzy A. Macierz odwrotna jest jednoznacznie określona.
@@ -538,8 +530,6 @@ Układem jednorodnym nazywamy układ równań postaci Ax = 0. Zawsze ma rozwiąz
 
 Układem niejednorodnym nazywamy układ równań postaci Ax = b. Rozwiązujemy Gaussem. To czy ile ma rozwiązań wnioskujemy z ilości niewiadomych i równań.
 
-### #TODO - przykład
-
 # 8. Wartości i wektory własne
 
 ## 8.1. Wartość własna, wektor własny
@@ -549,8 +539,6 @@ Wartością własną macierzy A nazywamy liczbę $\lambda$ taką, że istnieje w
 ## 8.2. Macierze podobne
 
 Macierze A i B są podobne, jeśli istnieje macierz odwracalna P taka, że $B = P^{-1}AP$
-
-### #TODO - przykład zadania?
 
 ## 8.3. Wielomian charakterystyczny
 
@@ -635,7 +623,7 @@ gdzie J to macierz elementów 1/n.
 
 ## 9.3. Obliczanie PageRanku
 
-### #TODO - zadanie z listy ogarnąć i wrzucić tutaj
+#TODO - zadanie z listy ogarnąć i wrzucić tutaj
 
 # 10. Iloczyn skalarny
 
@@ -645,7 +633,7 @@ Mnożymy liczby na tych samych pozycjach i sumujemy.
 
 ## 10.2. Dopełnie ortogonalne
 
-### #TODO - ogarnąć co było na listach i tu wrzucić
+#TODO - ogarnąć co było na listach i tu wrzucić
 
 # 11. Baza ortonormalna, rzuty, ortonormalizacja
 
@@ -656,7 +644,7 @@ Niech $V$ będzie skończenie wymiarową przestrzenią Euklidesową (unitarną).
 
 ## 11.2. Dopełnienie ortogonalne
 
-### #TODO - def i zadanie 3/L11
+#TODO - def i zadanie 3/L11
 
 ## 11.3. Rzuty i rzuty prostopadłe
 
@@ -1084,4 +1072,12 @@ Działania działają intuicyjnie. deg(f) tak samo.
 
 ## 20.3. Dzielenie i NWD wielomianów
 
-#TODO
+Otrzymujemy dwa wielomiany, np. f(x) = 2x^3 + 3x^2 + 4x + 5 i g(x) = 2x^3 + x^2 + 2x + 3. Chcemy znaleźć ich NWD.
+
+Odejmujemy "mniejszy" wielomian od większego:
+
+f(x) - g(x) = 2x^3 + 3x^2 + 4x + 5 - (2x^3 + x^2 + 2x + 3) = 2x^2 + 2x + 2
+
+Następnie dzielimy pisemnie większy z wielomianów przez otrzymany wielomian.
+
+Ostatnia niezerowa reszta z dzielenia to NWD.
