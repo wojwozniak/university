@@ -439,6 +439,11 @@ Układem niejednorodnym nazywamy układ równań postaci Ax = b. Rozwiązujemy G
 
 Wartością własną macierzy A nazywamy liczbę $\lambda$ taką, że istnieje wektor $v \neq 0$ taki, że $Av = \lambda v$
 
+## 8.2. Macierze podobne
+
+Macierze A i B są podobne, jeśli istnieje macierz odwracalna P taka, że $B = P^{-1}AP$
+
+### #TODO - przykład zadania?
 
 ## 8.3. Wielomian charakterystyczny
 
@@ -499,10 +504,15 @@ gdzie J to macierz elementów 1/n.
 
 ### #TODO - zadanie z listy ogarnąć i wrzucić tutaj
 
-### #TODO - reszta tematów 9.x
+# 10. Iloczyn skalarny
 
+## 10.1. Standardowy iloczyn skalarny
 
-### #TODO 10.2. i 10.3. - do sprawdzenia na listach i starych egzaminach
+Mnożymy liczby na tych samych pozycjach i sumujemy.
+
+## 10.2. Dopełnie ortogonalne
+
+### #TODO - ogarnąć co było na listach i tu wrzucić
 
 # 11. Baza ortonormalna, rzuty, ortonormalizacja
 
@@ -519,6 +529,7 @@ Niech $V$ będzie skończenie wymiarową przestrzenią Euklidesową (unitarną).
 
 Rzutem nazywamy przekształcenie liniowe $P: V \rightarrow V$ takie, że $P^2 = P$. O rzucie $P$ mówimy, że jest rzutem na podprzestrzeń $Im P$
 
+# 12. Izometrie i macierze ortogonalne
 
 ## 12.1. Izometrie
 
