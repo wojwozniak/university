@@ -342,7 +342,7 @@ Macierz odwrotna istnieje wtedy i tylko wtedy, gdy:
 - rząd macierzy A jest równy n
 - wyznacznik macierzy A jest różny od 0
 
-# 4.9. Obliczanie macierzy odwrotnej (algorytm)
+## 4.9. Obliczanie macierzy odwrotnej (algorytm)
 
 Składamy macierz A z macierzą Id. Następnie poprzez działania na wierszach macierzy A doprowadzamy ją do macierzy Id. Dokładnie te same działania wykonujemy na macierzy Id - po zakończeniu macierz Id stanie się macierzą odwrotną do macierzy A.
 
