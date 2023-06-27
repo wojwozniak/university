@@ -1057,11 +1057,12 @@ Element a pierścienia R nazywamy odwracalnym, jeśli istnieje element b taki, �
 (Inna definicja niż w skrypcie (z blackpenredpen, bardziej zrozumiała ale możliwe że zła XD))
 
 Jeśli m1, m2 ..., mk są parami względnie pierwsze, to zbiór rozwiązań układu równań:
-
+```
 x1 = a1 (mod m1)
 x2 = a2 (mod m2)
 ...
 xk = ak (mod mk)
+```
 
 jest niepusty i składa się z jednego elementu modulo N = m1 * m2 * ... * mk.
 
