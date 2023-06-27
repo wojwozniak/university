@@ -77,7 +77,7 @@ Spis treści:
   - [12.2. Macierze ortogonalne](#122-macierze-ortogonalne)
   - [13. Macierze dodatnio określone](#13-macierze-dodatnio-określone)
 - [Część II - Algebra abstrakcyjna](#część-ii---algebra-abstrakcyjna)
-  - [Grupy](#grupy)
+- [14. Grupy](#14-grupy)
   - [14.1. Automorfizmy](#141-automorfizmy)
   - [14.2. Grupa](#142-grupa)
   - [14.3. Tabelka działań](#143-tabelka-działań)
@@ -91,9 +91,10 @@ Spis treści:
   - [15.2. Parzystość / nieparzystość permutacji](#152-parzystość--nieparzystość-permutacji)
     - [Wzorki związane z parzystością](#wzorki-związane-z-parzystością)
     - [Określenie parzystości](#określenie-parzystości)
-  - [16.0. Działania grupy na zbiorze](#160-działania-grupy-na-zbiorze)
+- [16. Działania grupy na zbiorze](#16-działania-grupy-na-zbiorze)
   - [16.1. Mnożenie podzbiorów grupy](#161-mnożenie-podzbiorów-grupy)
-  - [17.1. Warstwy](#171-warstwy)
+- [17. Warstwy](#17-warstwy)
+- [19. Pierścienie. Arytmetyka modularna](#19-pierścienie-arytmetyka-modularna)
   - [19.1. Pierścienie](#191-pierścienie)
   - [19.2. Arytmetyka modularna](#192-arytmetyka-modularna)
     - [Przystawanie](#przystawanie)
@@ -102,6 +103,7 @@ Spis treści:
   - [19.5. Chińskie twierdzenie o resztach](#195-chińskie-twierdzenie-o-resztach)
     - [Równania, układy równań modulo](#równania-układy-równań-modulo)
     - [Elementy odwrotne modulo](#elementy-odwrotne-modulo)
+- [20. Wielomiany](#20-wielomiany)
   - [20.1. Pierścień wielomianów](#201-pierścień-wielomianów)
   - [20.3. Dzielenie i NWD wielomianów](#203-dzielenie-i-nwd-wielomianów)
 
@@ -680,7 +682,7 @@ Wszystkie są dodatnie, więc macierz jest dodatnio określona.
 <br><br>
 # Część II - Algebra abstrakcyjna
 
-## Grupy
+# 14. Grupy
 
 ## 14.1. Automorfizmy
 
@@ -855,7 +857,7 @@ Pierwszy wiersz jest w dobrej kolejności, patrzymy więc na drugi. Patrzymy na 
 
 Mamy więc 4 inwersje, permutacja jest parzysta (a znak permutacji to 1 (dodatnia)).
 
-## 16.0. Działania grupy na zbiorze
+# 16. Działania grupy na zbiorze
 
 Definicje:
 
@@ -867,7 +869,7 @@ Definicje:
 
 W podzbiorach grupy zawsze zdefiniowane jest mnożenie. Jest ono łączne. Czasem potrzebna też będzie rozdzielność względem sumy tj. np. (A+B)*C = A*C + B*C.
 
-## 17.1. Warstwy
+# 17. Warstwy
 
 Warstwa to podgrupa.
 
@@ -879,6 +881,8 @@ Każde dwie warstwy H w G są równoliczne. Są też rozłączne lub identyczne.
 
 
 #TODO - reszta o warstwach
+
+# 19. Pierścienie. Arytmetyka modularna
 
 ## 19.1. Pierścienie
 
@@ -1043,6 +1047,8 @@ Element odwrotny to 2.
 Jako że nie mamy posranie wielkich mod to nie musimy robić rozszerzonego algorytmu Euklidesa.
 
 </details>
+
+# 20. Wielomiany
 
 ## 20.1. Pierścień wielomianów
 
