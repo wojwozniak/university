@@ -316,6 +316,15 @@ Jedyną kolumną z zerami w pierwszej macierzy jest druga - bazą jądra będzie
 Możemy sprawdzić to wzorem dim(Ker(f)) = dim(V) - dim(Im(f)) === 3 - 2 = 1
 ```
 
+## 4.7. Macierz odwrotna
+
+Macierz kwadratowa A jest macierzą odwracalną, gdy istnieje takie B, że AB = BA = Id(n). Wtedy B nazywamy macierzą odwrotną do macierzy A. Macierz odwrotna jest jednoznacznie określona.
+
+Macierz odwrotna istnieje wtedy i tylko wtedy, gdy:
+- rząd macierzy A jest równy n
+- wyznacznik macierzy A jest różny od 0
+
+
 # #TODO - obliczanie bazy obrazu
 
 
