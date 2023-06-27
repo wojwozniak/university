@@ -212,8 +212,8 @@ dim(Ker(f)) = 3 - 2 = 1
 
 Teraz wyznaczamy bazę jądra:
 zapiszmy najpierw macierz:
--1  1  0
- 0  1 -1
+ 1  1  0
+ 0  1  1
 
 x = -y
 z = -y
