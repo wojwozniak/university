@@ -104,12 +104,12 @@ Najlepiej więc korzystać jedynie z pierwszej operacji - szczególnie że jest 
 
 # 2. Baza, wymiar, warstwy
 
-## 2.1. Baza
+## 2.1. i 2.2. Baza i wyrażenie wektora w bazie
 Jest to minimalny zbiór wektorów, których kombinacja liniowa daje dowolny wektor z przestrzeni. W przestrzeni $\mathbb{R}^n$ baza to zbiór $n$ wektorów, które są liniowo niezależne.
 
 Bazę uzyskać możemy eliminacją Gaussa (pozbywamy się tylko wektorów zerowych, lub w przypadku brakujących "schodków" - dodajemy wektory, które są liniowo niezależne z pozostałymi).
 
-## 2.3. Wymiar przestrzeni liniowej
+## 2.3. i 2.4. Wymiar przestrzeni liniowej
 
 Wymiar przestrzeni liniowej to liczba wektorów w jej bazie (moc jej bazy).
 
@@ -246,7 +246,7 @@ bazą jądra jest {(1, -1, 1)}
 
 # 4. Macierze
 
-## 4.1. Macierze
+## 4.1. Macierze (skip 4.2.)
 
 ### Definicja
 Macierzą rozmiaru mxn nad ciałem $\mathbb{F}$ nazywamy funkcję $A: \{1,2,...,m\} \times \{1,2,...,n\} \rightarrow \mathbb{F}$
@@ -278,6 +278,10 @@ Z definicji, operacje elementarne to:
 - dodanie do wiersza innego wiersza pomnożonego przez skalar
 
 Zauważamy tutaj że możemy zinterpretować cały proces eliminacji Gaussa jako kolejne działania macierzy elementarnych.
+
+## 4.4. Przekształcenia liniowe dla macierzy
+
+Przekształcenie liniowe można zapisać w postaci macierzy.
 
 ## 4.5. Rząd macierzy
 
@@ -328,7 +332,9 @@ Jedyną kolumną z zerami w pierwszej macierzy jest druga - bazą jądra będzie
 Możemy sprawdzić to wzorem dim(Ker(f)) = dim(V) - dim(Im(f)) === 3 - 2 = 1
 ```
 
-## 4.7. Macierz odwrotna
+### #TODO - obliczanie bazy obrazu
+
+## 4.7. 4.8. Macierz odwrotna
 
 Macierz kwadratowa A jest macierzą odwracalną, gdy istnieje takie B, że AB = BA = Id(n). Wtedy B nazywamy macierzą odwrotną do macierzy A. Macierz odwrotna jest jednoznacznie określona.
 
@@ -336,13 +342,15 @@ Macierz odwrotna istnieje wtedy i tylko wtedy, gdy:
 - rząd macierzy A jest równy n
 - wyznacznik macierzy A jest różny od 0
 
+# 4.9. Obliczanie macierzy odwrotnej (algorytm)
 
-# #TODO - obliczanie bazy obrazu
+Składamy macierz A z macierzą Id. Następnie poprzez działania na wierszach macierzy A doprowadzamy ją do macierzy Id. Dokładnie te same działania wykonujemy na macierzy Id - po zakończeniu macierz Id stanie się macierzą odwrotną do macierzy A.
 
 
-## 5. #TODO - nie ogarniam ale nie było na listach, posprawdzam jeszcze egzaminy 
 
-<br><br><br><br>
+# 5. Przekształcenia liniowe i macierze
+
+Wszystko co było na listach / egzaminach jest powyżej lub poniżej.
 
 # 6. Wyznacznik
 
@@ -354,7 +362,7 @@ Funkcja na macierzach kwadratowych, która spełnia następujące warunki:
 - zamiana kolumny zmienia znak wyznacznika
 - dodanie do kolumny innej kolumny pomnożonej przez skalar nie zmienia wyznacznika
 
-## 6.2. Metody obliczania wyznacznika i ważne wzory
+## 6.2. 6.3. 6.4. Metody obliczania wyznacznika i ważne wzory
 
 ### Rozwinięcie Laplace'a
 Wzór:
@@ -379,7 +387,7 @@ Dla 3x3 metoda Sarrusa - rozwijamy kolumny poza macierz.
 
 # 7. Rozwiązywanie układów równań liniowych
 
-## 7.1. Układy równań liniowych
+## 7.1. 7.2. Układy równań liniowych
 
 Układ równań liniowych możemy zapisywać w postaci macierzowej:
 
@@ -387,7 +395,7 @@ $Ax = b$
 
 gdzie A to macierz współczynników, x to wektor niewiadomych, b to wektor wyrazów wolnych.
 
-### 7.3. n zmiennych, n równań, macierz odwracalna
+## 7.3. n zmiennych, n równań, macierz odwracalna
 
 Jest to bazowy przypadek - możemy skorzystać ze wzorów Cramera - więcej w przykładzie poniżej
 
@@ -413,7 +421,7 @@ x2 = 33 / 33 = 1
 ```
 </details>
 
-## 7.4. Ogólne układy
+## 7.4. 7.5. Ogólne układy (Gauss)
 
 ### Układ jednorodny
 
@@ -422,6 +430,8 @@ Układem jednorodnym nazywamy układ równań postaci Ax = 0. Zawsze ma rozwiąz
 ### Układ niejednorodny
 
 Układem niejednorodnym nazywamy układ równań postaci Ax = b. Rozwiązujemy Gaussem. To czy ile ma rozwiązań wnioskujemy z ilości niewiadomych i równań.
+
+### #TODO - przykład
 
 # 8. Wartości i wektory własne
 
