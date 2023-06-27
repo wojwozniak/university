@@ -1,7 +1,5 @@
 # Algebra - notatka
 
-Niektóre indeksy są pominięte - numeruję dokładnie tak samo jak w skrypcie.
-
 # 1. Wstęp
 
 ## 1.1. Ciała
@@ -923,4 +921,3 @@ Działania działają intuicyjnie. deg(f) tak samo.
 ## 20.3. Dzielenie i NWD wielomianów
 
 #TODO
-
