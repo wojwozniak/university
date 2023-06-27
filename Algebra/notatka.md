@@ -767,6 +767,8 @@ xk = ak (mod mk)
 
 jest niepusty i składa się z jednego elementu modulo N = m1 * m2 * ... * mk.
 
+### Równania, układy równań modulo
+
 <details><summary>Układ równań modulo (naturalne)</summary>
 
 ```
@@ -823,6 +825,32 @@ x = 35m + 29
 Odp: 29
 
 ```
+
+</details>
+
+### Elementy odwrotne modulo
+
+Element a jest odwracalny modulo m, jeśli istnieje element b taki, że ab === 1 (mod m).
+
+Inaczej: NWD(a, m) = 1
+
+Najtrudniejsze co się znalazło w tym roku na liście to znalezienie elementu odwrotnego modulo 15. (8^-1 (mod 15)). Na egzaminach były o wiele trudniejsze - ale listy 15 i 16 mają być pobieżnie więc modlimy się żeby tego nie było.
+
+
+<details><summary>Przykład: 8^-1 (mod 15)</summary>
+
+```
+NWD(8, 15) = 1 - istnieje więc element odwrotny
+
+Rozwiązujemy równanie:
+
+8x === 1 (mod 15)  | * 2
+x === 2 (mod 15)
+
+Element odwrotny to 2.
+```
+
+Jako że nie mamy posranie wielkich mod to nie musimy robić rozszerzonego algorytmu Euklidesa.
 
 </details>
 
