@@ -756,7 +756,14 @@ Element a pierścienia R nazywamy odwracalnym, jeśli istnieje element b taki, �
 
 ## 19.5. Chińskie twierdzenie o resztach
 
-Jeśli m1, m2 ..., mk są parami względnie pierwsze, to naturalny homomorfizm pierścieni jest izomorfizmem.
+Jeśli m1, m2 ..., mk są parami względnie pierwsze, to zbiór rozwiązań układu równań:
+
+x1 = a1 (mod m1)
+x2 = a2 (mod m2)
+...
+xk = ak (mod mk)
+
+jest niepusty i składa się z jednego elementu modulo N = m1 * m2 * ... * mk.
 
 ## 20.1. Pierścień wielomianów
 
