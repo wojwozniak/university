@@ -1170,3 +1170,5 @@ Dzielimy wielomiany z resztą
 Jeśli reszta jest zerem to NWD to dzielnik.
 
 w.p.p. korzystamy z faktu że gcd(af+b, f) = gcd(b, f) aż dojdziemy do sytuacji gdzie reszta jest zerem.
+
+możemy skorzystać też z gcd(f, g) = gcd(f - g, g)
