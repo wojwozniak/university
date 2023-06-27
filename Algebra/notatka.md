@@ -58,8 +58,6 @@ Spis treści:
   - [9.2. PageRank](#92-pagerank)
   - [9.3. Obliczanie PageRanku](#93-obliczanie-pageranku)
 - [10. Iloczyn skalarny](#10-iloczyn-skalarny)
-  - [10.1. Standardowy iloczyn skalarny](#101-standardowy-iloczyn-skalarny)
-  - [10.2. Dopełnie ortogonalne](#102-dopełnie-ortogonalne)
 - [11. Baza ortonormalna, rzuty, ortonormalizacja](#11-baza-ortonormalna-rzuty-ortonormalizacja)
   - [11.1. Baza ortonormalna](#111-baza-ortonormalna)
   - [11.2. Dopełnienie ortogonalne](#112-dopełnienie-ortogonalne)
@@ -623,17 +621,11 @@ gdzie J to macierz elementów 1/n.
 
 ## 9.3. Obliczanie PageRanku
 
-#TODO - zadanie z listy ogarnąć i wrzucić tutaj
+Zajmuje bardzo dużo czasu - jest nadzieja że na pierwszej części nie będzie.
 
 # 10. Iloczyn skalarny
 
-## 10.1. Standardowy iloczyn skalarny
-
 Mnożymy liczby na tych samych pozycjach i sumujemy.
-
-## 10.2. Dopełnie ortogonalne
-
-#TODO - ogarnąć co było na listach i tu wrzucić
 
 # 11. Baza ortonormalna, rzuty, ortonormalizacja
 
@@ -892,9 +884,6 @@ Gdy H <= G to warstwą lewostronną H (w G) są zbiory postaci aH = {ah : h $\in
 Warstwą prawostronną H (w G) są zbiory postaci Ha = {ha : h $\in$ H}.
 
 Każde dwie warstwy H w G są równoliczne. Są też rozłączne lub identyczne.
-
-
-#TODO - reszta o warstwach
 
 # 19. Pierścienie. Arytmetyka modularna
 
