@@ -351,6 +351,8 @@ bazą jądra jest {(1, -1, 1)}
 
 </details>
 
+<br><br>
+
 # 4. Macierze
 
 ## 4.1. Macierze (skip 4.2.)
