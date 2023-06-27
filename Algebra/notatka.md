@@ -902,6 +902,8 @@ sgn($\sigma$ * $\sigma'$) = sgn($\sigma$) * sgn($\sigma'$)
 
 ### Określenie parzystości
 
+Patrzymy na to ile elementów jest "na lewo od mniejszego od siebie elementu". 
+
 Przykładowo - mamy taką permutację której parzystość chcemy określić:
 
 $\sigma$ = 
@@ -909,7 +911,6 @@ $\begin{pmatrix}1&2&3&4&5\\1&3&5&4&2\end{pmatrix}$
 
 ```
 Pierwszy wiersz jest w dobrej kolejności, patrzymy więc na drugi. 
-Patrzymy na to ile elementów jest jest "na lewo od mniejszego od siebie elementu". 
 Dla tego przypadku:
 1 - wszystko git
 2 - {3,2} (3 jest na lewo od mniejszego od sb 2)
