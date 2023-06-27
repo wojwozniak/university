@@ -680,12 +680,12 @@ Następnie robimy (u to nowe wektory):
 
 ```
 u1 = v1
-u2 = v2 - ((v2*u1)/u1*u1) ** u1 
-(gdzie ** to iloczyn wektorowy)
-u3 = v3 - ((v3*u1)/u1*u1) ** u1 - ((v3*u2)/u2*u2) ** u2
-i tak dalej...
+u2 = v2 - (v2 * u1) ** u1 (** mnożenie wektorowe)
+u3 = v3 - (v3 * u1) ** u1 - (v3 * u2) ** u2
+...
 
-Na sam koniec dzielimy wszystkie wektory przez ich długość. (chcemy by były =1)
+Na koniec normalizujemy wektory (dzielimy przez ich długość)
+
 
 ```
 
