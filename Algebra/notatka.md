@@ -756,6 +756,8 @@ Element a pierścienia R nazywamy odwracalnym, jeśli istnieje element b taki, �
 
 ## 19.5. Chińskie twierdzenie o resztach
 
+(Inna definicja niż w skrypcie (z blackpenredpen, bardziej zrozumiała ale możliwe że zła XD))
+
 Jeśli m1, m2 ..., mk są parami względnie pierwsze, to zbiór rozwiązań układu równań:
 
 x1 = a1 (mod m1)
@@ -764,6 +766,38 @@ x2 = a2 (mod m2)
 xk = ak (mod mk)
 
 jest niepusty i składa się z jednego elementu modulo N = m1 * m2 * ... * mk.
+
+<details><summary>Układ równań modulo (naturalne)</summary>
+
+```
+x === 1 (mod 3)
+x === 4 (mod 5)
+x === 6 (mod 7)
+
+x = 3k + 1
+
+3k + 1 === 4 (mod 5)
+3k === 3 (mod 5)  * 2
+k === 1 (mod 5)
+k = 5l + 1
+
+x = 3(5l + 1) + 1
+x = 15l + 4
+
+15l + 4 === 6 (mod 7)
+15l === 2 (mod 7)
+l === 2 (mod 7)
+l = 7m + 2
+
+x = 15(7m + 2) + 4
+x = 105m + 34
+
+Odpowiedź jest w postaci 105m + 34
+
+Najmniejsza nieujemna liczba spełniająca to równanie to 34.
+```
+
+</details>
 
 ## 20.1. Pierścień wielomianów
 
