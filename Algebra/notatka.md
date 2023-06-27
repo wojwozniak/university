@@ -82,6 +82,7 @@ Spis treści:
     - [Określenie parzystości](#określenie-parzystości)
 - [16. Działania grupy na zbiorze](#16-działania-grupy-na-zbiorze)
   - [16.1. Mnożenie podzbiorów grupy](#161-mnożenie-podzbiorów-grupy)
+  - [16.3. Lemat Burnside'a](#163-lemat-burnsidea)
 - [17. Warstwy](#17-warstwy)
 - [19. Pierścienie. Arytmetyka modularna](#19-pierścienie-arytmetyka-modularna)
   - [19.1. Pierścienie](#191-pierścienie)
@@ -886,6 +887,53 @@ Definicje:
 ## 16.1. Mnożenie podzbiorów grupy
 
 W podzbiorach grupy zawsze zdefiniowane jest mnożenie. Jest ono łączne. Czasem potrzebna też będzie rozdzielność względem sumy tj. np. (A+B)*C = A*C + B*C.
+
+## 16.3. Lemat Burnside'a
+
+Pozwala zliczyć ilość nierozróżnialnych względem działania grupy obiektów.
+
+Wzór posrany, dlatego debiloodpornie:
+
+```
+DZIELIMY SUMĘ PRZEZ ILOŚĆ GRUP
+
+CO DZIELIMY?
+
+DLA ID ILOŚĆ USTAWIEŃ
+
+DLA INNYCH (MOŻLIWE OPCJE) ^ ILOŚĆ CYKLI (permutacja) 
+
+np.
+
+mamy naszyjnik z 6 korali, każdy może mieć 3 kolory
+
+W podstawie zawsze 3 bo 3 kolory
+
+id: wszystkie opcje 3^6
+
+rotacje:
+r1: 3 (1,2,3,4,5,6)
+r2: 3^2 (1,3,5)(2,4,6)
+r3: 3^3 (1,4)(2,5)(3,6)
+r4: 3^2 (1,5,3)(2,6,4)
+r5: 3 (1,6,5,4,3,2)
+
+symetrie: (mamy ich 6: 3 przekątne i trzy przez środki boków)
+Dla przekątnych mamy 3^4 np. (1,4)(3,6)(2)(5)
+Dla środków boków mamy 3^3 np. (1,3,5)(2,4,6)
+i to i to x3 bo po 3 symetrie
+
+Sumując: 3^6 + 3 + 3^2 + 3^3 + 3^2 + 3 + 3 * 3^4 + 3 * 3^3 = 1104
+
+Dzielimy przez ilość grup
+
+1104 / 12 = 92
+
+Wynik to 92
+
+dziękuję za uwagę
+
+```
 
 # 17. Warstwy
 
