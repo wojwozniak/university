@@ -81,8 +81,12 @@ Spis treści:
   - [14.1. Automorfizmy](#141-automorfizmy)
   - [14.2. Grupa](#142-grupa)
   - [14.3. Tabelka działań](#143-tabelka-działań)
-    - [#TODO - reszta tematów z grup](#todo---reszta-tematów-z-grup)
-  - [15. Grupy permutacji](#15-grupy-permutacji)
+  - [14.4. Homomorfizm i izomorfizm](#144-homomorfizm-i-izomorfizm)
+    - [Przykłady](#przykłady)
+  - [14.5. Rząd elementu (potęga elementu)](#145-rząd-elementu-potęga-elementu)
+  - [14.6. Podgrupa](#146-podgrupa)
+  - [14.7. Grupa cykliczna](#147-grupa-cykliczna)
+- [15. Grupy permutacji](#15-grupy-permutacji)
   - [15.1. Rozkład permutacji na cykle](#151-rozkład-permutacji-na-cykle)
   - [15.2. Parzystość / nieparzystość permutacji](#152-parzystość--nieparzystość-permutacji)
     - [Wzorki związane z parzystością](#wzorki-związane-z-parzystością)
@@ -751,9 +755,34 @@ Nie zapamiętujemy tabelki - wystarczy potrafić stworzyć obroty i symetrie a n
 
 <br>
 
-### #TODO - reszta tematów z grup
+## 14.4. Homomorfizm i izomorfizm
 
-## 15. Grupy permutacji
+Homomorfizm to przekształcenie grup które zachowuje działanie. tj. dla każdego $a,b \in G$ zachodzi $f(a \circ b) = f(a) \circ f(b)$
+
+o jest izomorfizmem jeśli istnieje odwzorowanie odwrotne $o^{-1}$ które jest przekształceniem odwrotnym i homomorfizmem.
+
+### Przykłady
+- macierze odwracalne rozmiaru n x n nad F
+
+Homoformizm przekształca element neutrualny w element neutrualny
+
+## 14.5. Rząd elementu (potęga elementu)
+
+Rząd elementu to najmniejsza dodatnia potęga n taka że $a^n = e$ gdzie e to element neutralny.
+
+Potęgą elementu a nazywamy dowolny element postaci $a^n$ gdzie n to liczba całkowita.
+
+## 14.6. Podgrupa
+
+Podgrupa to podzbiór grupy który jest grupą względem tego samego działania.
+
+## 14.7. Grupa cykliczna
+
+Grupa cykliczna to grupa w której istnieje element a taki że każdy inny element grupy można przedstawić jako $a^n$ dla pewnej liczby całkowitej n.
+
+Inaczej: grupa cykliczna generowana jest przez 1 element.
+
+# 15. Grupy permutacji
 
 Grupa permutacji to zbiór wszystkich bijekcji ze zbioru $\{1,2,...,n\}$ w siebie. Operacją jest składanie funkcji. 
 
