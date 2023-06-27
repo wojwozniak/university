@@ -18,6 +18,7 @@ Spis treści:
   - [3.1. Przekszałcenia liniowe (homomorfizmy)](#31-przekszałcenia-liniowe-homomorfizmy)
   - [3.2. Jądro  i obraz przekształcenia liniowego](#32-jądro--i-obraz-przekształcenia-liniowego)
     - [Jest bardzo dużo zadań z jądra i obrazu!](#jest-bardzo-dużo-zadań-z-jądra-i-obrazu)
+    - [Baza jądra - ważne!](#baza-jądra---ważne)
 - [4. Macierze](#4-macierze)
   - [4.1. Macierze (skip 4.2.)](#41-macierze-skip-42)
     - [Definicja](#definicja)
@@ -341,7 +342,45 @@ bazą jądra jest {(1, -1, 1)}
 
 </details>
 
-<br><br>
+
+### Baza jądra - ważne!
+
+Może się zesrać przy większych przestrzeniach
+Chcemy doprowadzić do macierzy schodkowej - ale tak, żeby np. dla dwóch wierszy mieć dwie kolumny z tylko jednym niezerowym elementem. np.:
+
+TAK:
+```
+-1 -2 0 -3 -3
+ 0  3 1 -2  5
+```
+NIE:
+```
+-1 1 1 -1 2
+ 0 3 1 -2 5
+```
+
+Różnią się one tylko jedną operacją - z jednej wyznaczymy bez problemu bazę jądra, przy drugiej nie mamy szans.
+
+Dla poprawnej macierzy:
+```
+-a-2b-3d-3e = 0
+3b+c-2d+5e = 0
+
+a = -2b-3d-3e
+c = -3b+2d-5e
+
+I teraz
+
+[a,b,c,d,e]^T = b * [-2,1,-3,0,0] + d * [-3,0,2,1,0] + e * [-3,0,-5,0,1]
+
+(odpowiedni element jest równy 1, dla a i c podstawiamy odp. liczby z układu równań (-2 * b da nam -2b jak w równaniu 1), dla reszty zera)
+
+
+Odp:
+kerF = {[-2,1,-3,0,0], [-3,0,2,1,0], [-3,0,-5,0,1]}
+```
+
+
 
 # 4. Macierze
 
