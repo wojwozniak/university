@@ -679,12 +679,12 @@ Mamy w bazie wektory $v_1, v_2, \dots, v_n$. Chcemy znaleźć bazę ortonormaln�
 Następnie robimy (u to nowe wektory):
 
 ```
-u1 = v1
-u2 = v2 - (v2 * u1) ** u1 (** mnożenie wektorowe)
-u3 = v3 - (v3 * u1) ** u1 - (v3 * u2) ** u2
+u1 = v1 / ||v1||
+u2 = (v2 - (v2 * u1) ** u1)   / długość tego co dostaniemy             (** mnożenie wektorowe)
+u3 = v3 - (v3 * u1) ** u1 - (v3 * u2) ** u2         / długość tego co dostaniemy
 ...
 
-Na koniec normalizujemy wektory (dzielimy przez ich długość)
+Dopełnieniem ortogononalnym podzbioru A nazywamy wszystkie wektory z V, które są ortogonalne do wszystkich wektorów z A.
 
 
 ```
