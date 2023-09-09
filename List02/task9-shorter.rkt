@@ -1,31 +1,31 @@
 #lang racket
 
-(define (najmniejszy-element lista)
+(define (sm xs)
     (cond
-        [(null? lista) #f]
-        [(null? (cdr lista)) (car lista)]
-        [else (min (car lista) (najmniejszy-element (cdr lista)))]
+        [(null? xs) #f]
+        [(null? (cdr xs)) (car xs)]
+        [else (min (car xs) (sm (cdr xs)))]
     )
 )
 
-(define (usun-element lista wartosc)
+(define (del xs val)
     (cond
-        [(null? lista) lista]
-        [(equal? (car lista) wartosc) (cdr lista)]
-        [else (cons (car lista) (usun-element (cdr lista) wartosc))]
+        [(null? xs) xs]
+        [(equal? (car xs) val) (cdr xs)]
+        [else (cons (car xs) (del (cdr xs) val))]
     )
 )
 
 (define (select xs)
-    (if (eq? (najmniejszy-element xs) #f)
+    (if (eq? (sm xs) #f)
         xs
-        (cons (najmniejszy-element xs) (usun-element xs (najmniejszy-element xs)))
+        (cons (sm xs) (del xs (sm xs)))
     )  
 )
 
 (define (select-sort xs)
     (if (null? xs) 
         '()
-        (cons (najmniejszy-element xs) (select-sort (usun-element xs (najmniejszy-element xs)))) 
+        (cons (sm xs) (select-sort (del xs (sm xs)))) 
     )
 )
