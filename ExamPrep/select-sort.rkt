@@ -29,3 +29,11 @@
         (cons (sm xs) (select-sort (del xs (sm xs)))) 
     )
 )
+
+; Trzy funkcje pomocnicze
+; 1. Zwraca najmniejszy element listy (null dla pustej) (pierwszy element dla pierwszego) (min z pierwszego i rec dla reszty)
+; 2. Usuwa pierwsze wystąpienie elementu z listy
+; 3. Select - zwracamy listę jeśli pusta, w.p.p. consujemy najmniejszy element z resztą listy bez najmniejszego elementu
+;
+; Select-sort - zwracamy pustą listę jeśli pusta, w.p.p. consujemy najmniejszy element z resztą listy bez najmniejszego elementu
+; Wszędzie rekurencja
