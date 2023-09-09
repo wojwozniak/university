@@ -2,11 +2,11 @@
     (cond
         [(empty? lst) '()]
         [else 
-            (let ([pivot (first lst)])
+            (let ([pivot (car lst)])
                     (append 
-                        (quicksort (filter (lambda (x) (< x pivot)) (rest lst)))
+                        (quicksort (filter (lambda (x) (< x pivot)) (cdr lst)))
                         (list pivot)
-                        (quicksort (filter (lambda (x) (>= x pivot)) (rest lst)))
+                        (quicksort (filter (lambda (x) (>= x pivot)) (cdr lst)))
                     )
             )
         ]
