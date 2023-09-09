@@ -1,3 +1,5 @@
+#lang racket
+
 (define (quicksort lst)
     (cond
         [(empty? lst) '()]
