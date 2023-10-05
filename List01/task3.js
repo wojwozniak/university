@@ -30,3 +30,9 @@ const firsts = (upperBound) => {
 };
 
 console.log(firsts(100000));
+
+
+// Na potrzeby zadania 4
+const run = () => {
+    console.log(firsts(100000));
+}
