@@ -8,6 +8,7 @@
 
 
 /**
+ * @param {number} upperBound górna granica przedziału
  * @returns {Array} ciąg liczb spełniających warunek
  */
 const nums = (upperBound) => {
