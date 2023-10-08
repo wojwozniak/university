@@ -9,7 +9,8 @@ using namespace std;
 
 double calculateIn(int n) {
     if (n == 0) {
-        double out = log(2024 / 2023);
+        double x = 2024 / 2023;
+        double out = log(x);
         return out; // I0 = ln(2024 / 2023)
     }
 
@@ -58,6 +59,6 @@ int main() {
         cout << "I" << 2 * i + 2 << "         = " << evenResults[i] << endl;
         cout << "I" << 2 * i + 2 << " z calki = " << integralResults[i] << endl;
     }
-    
+
     return 0;
 }
