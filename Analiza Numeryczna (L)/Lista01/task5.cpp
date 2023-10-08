@@ -6,16 +6,7 @@
 
 using namespace std;
 
-double calculateIn(int n) {
-    if (n == 0) {
-        double x = 2024.0 / 2023.0;
-        double out = log(x);
-        return out; // I0 = ln(2024 / 2023)
-    }
-
-    double In_1 = calculateIn(n - 1);
-    return (1.0 / n) - 2023.0 * In_1;
-}
+/* Obliczanie całki */
 
 double f(double x, int n) {
     return pow(x, n) / (x + 2023);
@@ -28,6 +19,19 @@ double calculateInIntegral(int n) {
         suma += f(x, n) * dx;
     }
     return suma;
+}
+/* Koniec obliczania całki */
+
+/* Obliczanie I_n z zależności rekurencyjnej */
+double calculateIn(int n) {
+    if (n == 0) {
+        double x = 2024.0 / 2023.0;
+        double out = log(x);
+        return out; // I0 = ln(2024 / 2023)
+    }
+
+    double In_1 = calculateIn(n - 1);
+    return (1.0 / n) - 2023.0 * In_1;
 }
 
 int main() {
