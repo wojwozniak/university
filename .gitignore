@@ -1,3 +1,8 @@
 .vscode
 tempCodeRunnerFile.java
 *.class
+bin
+obj
+*.cbp
+*.layout
+*.depend

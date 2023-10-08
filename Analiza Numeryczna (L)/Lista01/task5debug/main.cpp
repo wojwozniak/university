@@ -6,7 +6,7 @@
 
 using namespace std;
 
-/* Obliczanie całki */
+/* Obliczanie ca�ki */
 
 double f(double x, int n) {
     return pow(x, n) / (x + 2023);
@@ -20,25 +20,9 @@ double calculateInIntegral(int n) {
     }
     return suma;
 }
-/* Koniec obliczania całki */
+/* Koniec obliczania ca�ki */
 
-/* Obliczanie I_n z zależności rekurencyjnej */
-// dwie osobne funkcje żeby uprościć debugowanie
-double calculateInRecursion(int n) {
-    if (n == 0) {
-        double x = 2024.0 / 2023.0;
-        double out = log(x);
-        return out; // I0 = ln(2024 / 2023)
-    }
-
-    double In_1 = calculateInRecursion(n - 1);
-    double rest = 2023.0 * In_1;
-    double ulamek = 1.0 / n;
-    double output = ulamek - rest;
-    return output;
-}
-
-
+/* Obliczanie I_n z zale�no�ci rekurencyjnej */
 double calculateIn(int n) {
     if (n == 0) {
         double x = 2024.0 / 2023.0;
@@ -46,19 +30,14 @@ double calculateIn(int n) {
         return out; // I0 = ln(2024 / 2023)
     }
 
-    double In_1 = calculateInRecursion(n - 1);
-    double rest = 2023.0 * In_1;
-    double ulamek = 1.0 / n;
-    double output = ulamek - rest;
-    double integral = calculateInIntegral(n);
-    return output;
+    double In_1 = calculateIn(n - 1);
+    return (1.0 / n) - 2023.0 * In_1;
 }
-/* Koniec obliczania I_n z zależności rekurencyjnej */
 
 int main() {
     vector<double> oddResults; // Przechowuje wyniki dla I1, I3, ..., I19
     vector<double> evenResults; // Przechowuje wyniki dla I2, I4, ..., I20
-    vector<double> integralResults; // Przechowuje wyniki dla I1, I2, I3, ..., I20 z całki
+    vector<double> integralResults; // Przechowuje wyniki dla I1, I2, I3, ..., I20 z ca�ki
 
     for (int n = 1; n <= 20; ++n) {
         double In_result = calculateIn(n);
