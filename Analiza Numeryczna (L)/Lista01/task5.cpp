@@ -8,7 +8,7 @@ using namespace std;
 
 double calculateIn(int n) {
     if (n == 0) {
-        double x = 2024 / 2023;
+        double x = 2024.0 / 2023;
         double out = log(x);
         return out; // I0 = ln(2024 / 2023)
     }
@@ -22,7 +22,7 @@ double f(double x, int n) {
 }
 
 double calculateInIntegral(int n) {
-    double dx = 0.001;
+    double dx = 0.0001;
     double suma = 0.0;
     for (double x = 0; x <= 1; x += dx) {
         suma += f(x, n) * dx;
