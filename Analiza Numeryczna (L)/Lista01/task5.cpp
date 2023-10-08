@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 double calculateIn(int n) {
     if (n == 0) {
         double x = 2024 / 2023;
@@ -17,7 +16,6 @@ double calculateIn(int n) {
     double In_1 = calculateIn(n - 1);
     return (1.0 / n) - 2023 * In_1;
 }
-
 
 double f(double x, int n) {
     return pow(x, n) / (x + 2023);
@@ -31,7 +29,6 @@ double calculateInIntegral(int n) {
     }
     return suma;
 }
-
 
 int main() {
     vector<double> oddResults; // Przechowuje wyniki dla I1, I3, ..., I19
