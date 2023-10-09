@@ -29,7 +29,7 @@ print(cmp1)
 dmp1 = dekompresja(cmp1)
 print(dmp1)
 
-print("Test 2: Test kompresowania tekstu.")
+print("Test 2: tekst 'Test kompresowania tekstu.'")
 txt2 = "Test kompresowania tekstu."
 cmp2 = kompresja(txt2)
 print(cmp2)
