@@ -23,3 +23,10 @@ int main() {
 // na skrajnie małych liczbach, z powodu 
 // dokładności typu double wynik jest zaokrąglany 
 // do zera
+
+// Granica w zerze: 2023
+// Mamy 0/0
+// mnożymy ułamek * licznik/licznik
+// dochodzimy do postaci 1 / sqrt(x^14 + 1) + 1
+// ułamek = 1/2
+// 1/2 * 4046 = 2023
