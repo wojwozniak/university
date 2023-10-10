@@ -23,6 +23,6 @@ int main() {
 // y2 = 0.012346   - 1/81 ze wzoru, git
 // y3 = -0.001372  - -1/729 ze wzoru, git
 // y4 = 0.000152   - 1/6561 ze wzoru, git
-// y5 = -0.000017  - -1/59049 ze wzoru, już lekko niedokładność
+// potem zaczyna powoli sie zokraglac do zera
 // prawdziwa zabawa od y13, gdzie liczba zaczyna z powrotem rosnąć
 // No więc wyniki wiarygodne nie są
