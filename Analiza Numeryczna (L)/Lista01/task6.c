@@ -5,7 +5,7 @@ int main() {
     double mianownik = 1;
 
     double result = 4 * licznik / mianownik;
-    for(long i = 0; i < 2999999; ++i) {
+    for(long i = 0; i < 1999999; ++i) {
         licznik *= -1;
         mianownik += 2;
         result += 4 * licznik / mianownik;
