@@ -1,0 +1,3 @@
+javac -d . Powitanie.java
+
+java List01.Powitanie
