@@ -1,4 +1,9 @@
 package List01;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Powitanie {
@@ -30,6 +35,13 @@ public class Powitanie {
     }
 
     public static void main(String[] args) {
+        try {
+            System.setIn(new FileInputStream(FileDescriptor.in));
+            System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out), true, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Podaj swoje imię: ");
