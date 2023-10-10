@@ -23,7 +23,7 @@ double calculateInIntegral(int n) {
 /* Koniec obliczania całki */
 
 /* Obliczanie I_n z zależności rekurencyjnej */
-// dwie osobne funkcje żeby uprościć debugowanie
+// ta funkcja tylko po to żeby szybciej w debugu przeklikać
 double calculateInRecursion(int n) {
     if (n == 0) {
         double x = 2024.0 / 2023.0;
