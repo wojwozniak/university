@@ -1,16 +1,16 @@
 # University
 
 
-## Table of Contents (in polish)
+## Table of Contents (in Polish)
 
-### Semester 1:
+### Semestr I:
 - Logika dla Informatyków
 - Analiza Matematyczna
 - [x] Kurs C (projekt końcowy osobno w RAM-Machine)
 - [x] Wstęp do Informatyki
 - [x] Kurs tworzenia aplikacji frontendowych
 
-### Semester 2:
+### Semestr II:
 - Algebra
 - [x] Metody Programowania
 - [x] Programowanie Obiektowe
