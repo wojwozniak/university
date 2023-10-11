@@ -6,7 +6,7 @@
 ### Semestr I:
 - Logika dla Informatyków
 - Analiza Matematyczna
-- [x] Kurs C (projekt końcowy osobno w RAM-Machine)
+- [x] Kurs C
 - [x] Wstęp do Informatyki
 - [x] Kurs tworzenia aplikacji frontendowych
 
