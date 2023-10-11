@@ -9,6 +9,7 @@
 - [x] Kurs C
 - [x] Wstęp do Informatyki
 - [x] Kurs tworzenia aplikacji frontendowych
+- Manipulacje i nadużycia na rynkach finansowych
 
 ### Semestr II:
 - Algebra
