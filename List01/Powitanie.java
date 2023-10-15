@@ -58,12 +58,52 @@ public class Powitanie {
         String rokRzymski = rzymska(rokUrodzenia);
         System.out.println("Twój rok urodzenia w zapisie rzymskim: " + rokRzymski);
 
-        String[] zwierzeta = {
-            "Szczur", "Bawół", "Tygrys", "Królik", "Smok", "Wąż", "Koń", "Owca", "Małpa", "Kurczak", "Pies", "Świnia"
-        };
-
         int indeksZwierzecia = (rokUrodzenia - 1900) % 12;
-        System.out.println("Twój patron z kalendarza chińskiego to: " + zwierzeta[indeksZwierzecia]);
+        
+        String patronZKalendarza = "";
+        
+        switch (indeksZwierzecia) {
+            case 0:
+                patronZKalendarza = "Szczur";
+                break;
+            case 1:
+                patronZKalendarza = "Bawół";
+                break;
+            case 2:
+                patronZKalendarza = "Tygrys";
+                break;
+            case 3:
+                patronZKalendarza = "Królik";
+                break;
+            case 4:
+                patronZKalendarza = "Smok";
+                break;
+            case 5:
+                patronZKalendarza = "Wąż";
+                break;
+            case 6:
+                patronZKalendarza = "Koń";
+                break;
+            case 7:
+                patronZKalendarza = "Owca";
+                break;
+            case 8:
+                patronZKalendarza = "Małpa";
+                break;
+            case 9:
+                patronZKalendarza = "Kurczak";
+                break;
+            case 10:
+                patronZKalendarza = "Pies";
+                break;
+            case 11:
+                patronZKalendarza = "Świnia";
+                break;
+            default:
+                patronZKalendarza = "Nieznany";
+        }
+        
+        System.out.println("Twój patron z kalendarza chińskiego to: " + patronZKalendarza);
         scanner.close();
     }
 }
