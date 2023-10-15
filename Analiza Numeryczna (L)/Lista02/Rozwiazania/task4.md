@@ -9,7 +9,7 @@ a)
 Przeczytaj tekst dostępny pod adresem *adres* mówiący o tym, że niefrasobliwe używanie arytmetyki zmiennopozycyjnej może prowadzić do prawdziwej tragedii (szczegóły patrz raport GAO/IMTEC-92-26). Streść, własnymi słowami, opisane tam zdarzenie i przedstaw istotę opisanego problemu.
 
 b)
-Jeśli znasz inne, podobne przykłady, to przygotuj krótką, ale ciekawą notatkę na ten temat używając systemu LATEX i przekaż wykładowcy1 — być może dostaniesz dodatkowy punkt.
+Jeśli znasz inne, podobne przykłady, to przygotuj krótką, ale ciekawą notatkę na ten temat używając systemu LATEX i przekaż wykładowcy — być może dostaniesz dodatkowy punkt.
 
 
 ## Rozwiązanie
