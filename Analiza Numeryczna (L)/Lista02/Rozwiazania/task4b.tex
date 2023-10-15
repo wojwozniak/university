@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\title{Katastrofa Ariane 5 z 1996r. - zad. 2.4 z AN(L)}
+\author{Wojciech Woźniak, nr ind. 339644, grupa PWo wtorek 14-16}
+\date{}
+
+\maketitle
+
+\section*{Wprowadzenie}
+Problem podobny do wspomnianego w pierwszej części zadania czwartego zdarzył się w 1996 roku w Gujanie Francuskiej. Zaledwie 40 sekund po starcie wybuchła rakieta Ariane 5 Europejskiej Agencji Kosmicznej. Prace nad rakietą trwały ponad dekadę, straty przekroczyły 500 milionów dolarów - a wszystko przez jedną linię kodu i problem z konwersją liczby zmiennoprzecinkowej na całkowitą.
+
+
+\section*{Geneza problemu}
+Kluczowym aspektem tej katastrofy były błędy związane z konwersją liczb. Oprogramowanie Ariane 5 używało 64-bitowych liczb zmiennoprzecinkowych do reprezentacji prędkości horyzontalnej rakiety. W jednym miejscu, liczby te były konwertowane na 16-bitową liczbę całkowitą. Otrzymana liczba była większa niż 32767 - a więc większa niż mogła się w tej zmiennej zmieścić.
+
+\section*{Przebieg awarii}
+Powyższy problem spowodował zajęcie części pamięci zajmowanej wcześniej przez system sterowania silnikami rakiety. Mimo uruchomienia systemu awaryjnego, nie udało się utrzymać poprawnego działania programu. Silniki zaczęły pracować z maksymalną mocą, co doprowadziło do wybuchu.
+
+
+Winna awarii była poniższa linia kodu (język Ada):
+\begin{verbatim}
+P_M_DERIVE(T_ALG.E_BH) := 
+  UC_16S_EN_16NS (TDB.T_ENTIER_16S ((1.0/C_M_LSB_BH) * G_M_INFO_DERIVE(T_ALG.E_BH)));
+\end{verbatim}
+
+\section*{Podsumowanie}
+
+Jedna linia kodu spowodowała ponad pół miliarda dolarów (a uwzględniając inflację prawie miliard) strat i znacząco spowolniła rozwój europejskiego programu kosmicznego. Tak samo jak historia o awarii Patriota z 1991 roku pokazuje ona, jak ważne jest dokładne pisanie kodu (i ostrożne podchodzenie do arytmetyki zmiennopozycyjnej).
+
+\end{document}
+ 
