@@ -3,18 +3,18 @@
 
 \begin{document}
 
-\title{Katastrofa Ariane 5 z 1996r. - zad. 2.4 z AN(L)}
-\author{Wojciech Woźniak, nr ind. 339644, grupa PWo wtorek 14-16}
+\title{Katastrofa Ariane 5 z 1996r}
+\author{}
 \date{}
 
 \maketitle
 
 \section*{Wprowadzenie}
-Problem podobny do wspomnianego w pierwszej części zadania czwartego zdarzył się w 1996 roku w Gujanie Francuskiej. Zaledwie 40 sekund po starcie wybuchła rakieta Ariane 5 Europejskiej Agencji Kosmicznej. Prace nad rakietą trwały ponad dekadę, straty przekroczyły 500 milionów dolarów - a wszystko przez jedną linię kodu i problem z konwersją liczby zmiennoprzecinkowej na całkowitą.
+Problem podobny do wspomnianego w pierwszej części zadania czwartego zdarzył się w 1996 roku w Gujanie Francuskiej. Zaledwie 40 sekund po starcie wybuchła rakieta Ariane 5 Europejskiej Agencji Kosmicznej. Prace nad rakietą trwały ponad dekadę, straty przekroczyły 500 milionów dolarów --- a wszystko przez jedną linię kodu i problem z konwersją liczby zmiennopozycyjnej na całkowitą.
 
 
 \section*{Geneza problemu}
-Kluczowym aspektem tej katastrofy były błędy związane z konwersją liczb. Oprogramowanie Ariane 5 używało 64-bitowych liczb zmiennoprzecinkowych do reprezentacji prędkości horyzontalnej rakiety. W jednym miejscu, liczby te były konwertowane na 16-bitową liczbę całkowitą. Otrzymana liczba była większa niż 32767 - a więc większa niż mogła się w tej zmiennej zmieścić.
+Kluczowym aspektem tej katastrofy były błędy związane z konwersją liczb. Oprogramowanie Ariane 5 używało 64-bitowych liczb zmiennopozycyjnej do reprezentacji prędkości horyzontalnej rakiety. W jednym miejscu, liczby te były konwertowane na 16-bitową liczbę całkowitą. Otrzymana liczba była większa niż 32767 - a więc większa niż mogła się w tej zmiennej zmieścić.
 
 \section*{Przebieg awarii}
 Powyższy problem spowodował zajęcie części pamięci zajmowanej wcześniej przez system sterowania silnikami rakiety. Mimo uruchomienia systemu awaryjnego, nie udało się utrzymać poprawnego działania programu. Silniki zaczęły pracować z maksymalną mocą, co doprowadziło do wybuchu.
