@@ -15,4 +15,8 @@ function createFs(n) {
 var myfs = createFs(10);
 console.log(myfs[0]());
 console.log(myfs[2]());
-console.log(myfs[7]())
+console.log(myfs[7]());
+
+// 1) let się poprawnie scope'uje
+// 2) funkcja anonimowa zwraca funkcję, która zwraca j
+// 3) nadal będzie git
