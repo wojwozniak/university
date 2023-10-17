@@ -23,8 +23,8 @@ double calculate_new(int k) {
 }
 
 int main() {
-    printf("Result_old: %lf\n", calculate_old(29));
-    printf("Result_new: %lf\n", calculate_new(10000));
+    printf("Result_old: %lf\n", calculate_old(30));
+    //printf("Result_new: %lf\n", calculate_new(10000));
     return 0;
 }
 
