@@ -18,7 +18,12 @@ def uprosc_zdanie(tekst, dl_slowa, liczba_slow):
         # Usuń losowo wyrazy, jeśli jest ich za dużo
         if len(slowa) > liczba_slow:
             do_usuniecia = len(slowa) - liczba_slow
-            slowa = random.sample(slowa, liczba_slow)
+            
+            # Losowo wybierz słowa do usunięcia
+            slowa_do_usuniecia = random.sample(slowa, do_usuniecia)
+            
+            # Usuń wybrane słowa
+            slowa = [slowo for slowo in slowa if slowo not in slowa_do_usuniecia]  
 
         # Połącz słowa w nowe zdanie
         nowe_zdanie = ' '.join(slowa)
