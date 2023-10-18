@@ -1,8 +1,11 @@
 Zadania domowe:
 - z3 / L1 : ?
+- z2 / L2 : ?
 
 Tablica:
 - z12 / L1 : git
+- z7 / L2 : git
 
 Deklaracje:
 - Lista 1: 9 / 12 (11 / 14 licząc zadania z minusem)
+- Lista 2: 14 / 14
