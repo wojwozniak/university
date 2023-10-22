@@ -41,7 +41,7 @@ public final class LiczbyPierwsze {
 
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.err.println("Użycie: java LiczbyPierwsze [liczby całkowite]");
+            System.err.println("Brak argumentu wywołania. Podaj liczbę do rozkładu.");
             return;
         }
 
