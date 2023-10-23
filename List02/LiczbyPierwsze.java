@@ -1,59 +1,63 @@
 package List02;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class LiczbyPierwsze {
-    public static boolean czyPierwsza(long x) {
-        if (x <= 1) {
-            return false;
+    private final static int POTEGA2 = 21;
+    private final static int[] SITO = new int[1 << POTEGA2];
+    
+    static {
+        for (int i = 2; i < SITO.length; i++) {
+            SITO[i] = i;
         }
-        for (int i = 2; i * i <= x; i++) {
-            if (x % i == 0) {
-                return false;
+        for (int i = 2; i * i < SITO.length; i++) {
+            if (SITO[i] == i) {
+                for (int j = i * i; j < SITO.length; j += i) {
+                    if (SITO[j] == j) {
+                        SITO[j] = i;
+                    }
+                }
             }
         }
-        return true;
     }
 
-    public static List<Long> naCzynnikiPierwsze(long x) {
-        List<Long> factors = new ArrayList<>();
-
-        if (x < 0) {
-            factors.add(-1L);
-            x = Math.abs(x);
+    public static boolean czyPierwsza(long x) {
+        if (x < 2) {
+            return false;
         }
+        return SITO[(int) x] == x;
+    }
 
-        if (x == 0 || x == 1) {
-            factors.add(x);
-            return factors;
+    public static long[] naCzynnikiPierwsze(long x) {
+        if (x < 2) {
+            return new long[]{x};
         }
-
-        for (long i = 2; i <= x; i++) {
-            while (x % i == 0) {
-                factors.add(i);
-                x /= i;
+        long[] czynniki = new long[64];
+        int index = 0;
+        while (x != 1) {
+            int dzielnik = SITO[(int) x];
+            czynniki[index++] = dzielnik;
+            while (x % dzielnik == 0) {
+                x /= dzielnik;
             }
         }
-
-        return factors;
+        long[] wynik = new long[index];
+        System.arraycopy(czynniki, 0, wynik, 0, index);
+        return wynik;
     }
 
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.err.println("Brak argumentu wywołania. Podaj liczbę do rozkładu.");
+            System.err.println("Proszę podać argumenty wywołania.");
             return;
         }
 
         for (String arg : args) {
             try {
                 long liczba = Long.parseLong(arg);
-                List<Long> czynniki = naCzynnikiPierwsze(liczba);
-
                 System.out.print(liczba + " = ");
-                for (int i = 0; i < czynniki.size(); i++) {
-                    System.out.print(czynniki.get(i));
-                    if (i < czynniki.size() - 1) {
+                long[] czynniki = naCzynnikiPierwsze(liczba);
+                for (int i = 0; i < czynniki.length; i++) {
+                    System.out.print(czynniki[i]);
+                    if (i < czynniki.length - 1) {
                         System.out.print(" * ");
                     }
                 }
