@@ -5,9 +5,12 @@ public final class LiczbyPierwsze {
     private final static int[] SITO = new int[1 << POTEGA2];
 
     static {
+        // Inicjalizacja sita
         for (int i = 2; i < SITO.length; i++) {
             SITO[i] = i;
         }
+
+        // Zapełnienie sita dla wielokrotności każdej z liczb.
         for (int i = 2; i * i < SITO.length; i++) {
             if (SITO[i] == i) {
                 for (int j = i * i; j < SITO.length; j += i) {
@@ -23,16 +26,23 @@ public final class LiczbyPierwsze {
         if (x < 2) {
             return false;
         }
+
+        // Zwracamy wartość z sita
         return SITO[(int) x] == x;
     }
 
     public static long[] naCzynnikiPierwsze(long x) {
+        // Dla -1, 0, 1:
         if (x < 2) {
             return new long[] { x };
         }
+
+        // Pomocniczy ciąg z czynnikami (zakładam max. 64, można zwiększyć)
         long[] czynniki = new long[64];
         int index = 0;
         while (x != 1) {
+
+            // Szukamy czynników w sicie, dzielimy x przez dzielnik
             int dzielnik = SITO[(int) x];
             czynniki[index++] = dzielnik;
             while (x % dzielnik == 0) {
@@ -40,6 +50,8 @@ public final class LiczbyPierwsze {
             }
         }
         long[] wynik = new long[index];
+
+        // Kopiujemy ciąg do tablicy wynikowej odpowiedniej długości, zwracamy wynik
         System.arraycopy(czynniki, 0, wynik, 0, index);
         return wynik;
     }
