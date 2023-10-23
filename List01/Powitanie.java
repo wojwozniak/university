@@ -42,7 +42,7 @@ public class Powitanie {
             e.printStackTrace();
         }
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in, "852");
 
         System.out.print("Podaj swoje imię: ");
         String imie = scanner.nextLine();
