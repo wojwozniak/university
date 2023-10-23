@@ -3,7 +3,7 @@ package List02;
 public final class LiczbyPierwsze {
     private final static int POTEGA2 = 21;
     private final static int[] SITO = new int[1 << POTEGA2];
-    
+
     static {
         for (int i = 2; i < SITO.length; i++) {
             SITO[i] = i;
@@ -28,7 +28,7 @@ public final class LiczbyPierwsze {
 
     public static long[] naCzynnikiPierwsze(long x) {
         if (x < 2) {
-            return new long[]{x};
+            return new long[] { x };
         }
         long[] czynniki = new long[64];
         int index = 0;
