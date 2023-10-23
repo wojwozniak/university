@@ -32,9 +32,14 @@ public final class LiczbyPierwsze {
     }
 
     public static long[] naCzynnikiPierwsze(long x) {
+        if(x % 1 != 0) {
+            System.err.println("Liczba nie jest całkowita");
+        }
         // Dla -1, 0, 1:
-        if (x < 2) {
+        if (x < 2 && x > -2) {
             return new long[] { x };
+        } else if (x <= -2) {
+            x*= -1;
         }
 
         // Pomocniczy ciąg z czynnikami (zakładam max. 64, można zwiększyć)
@@ -44,9 +49,9 @@ public final class LiczbyPierwsze {
 
             // Szukamy czynników w sicie, dzielimy x przez dzielnik
             int dzielnik = SITO[(int) x];
-            czynniki[index++] = dzielnik;
             while (x % dzielnik == 0) {
                 x /= dzielnik;
+                czynniki[index++] = dzielnik;
             }
         }
         long[] wynik = new long[index];
@@ -67,6 +72,11 @@ public final class LiczbyPierwsze {
                 long liczba = Long.parseLong(arg);
                 System.out.print(liczba + " = ");
                 long[] czynniki = naCzynnikiPierwsze(liczba);
+                if(liczba == -1) {
+                    System.out.print("-");
+                } else if (liczba < -1) {
+                    System.out.print("-1 * ");
+                }
                 for (int i = 0; i < czynniki.length; i++) {
                     System.out.print(czynniki[i]);
                     if (i < czynniki.length - 1) {
