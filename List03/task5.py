@@ -22,7 +22,7 @@ def max_sublist_sum(lista):
     return max_range
 
 # Przykładowe użycie:
-lista = [1, -2, 3, 4, -5, 6, 7, -8, 7]
+lista = [1, 100000, -1, 100000]
 wynik = max_sublist_sum(lista)
 
 print("Największa suma podlisty znajduje się między indeksami:", wynik)
