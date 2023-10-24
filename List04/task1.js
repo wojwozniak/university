@@ -1,12 +1,12 @@
 // Funkcja z wykładu
-function getLastProto(o) { 
-    var p = o; 
-    do { 
-        o = p; 
+function getLastProto(o) {
+    var p = o;
+    do {
+        o = p;
         p = Object.getPrototypeOf(o);
-    } while (p); 
- 
-    return o; 
+    } while (p);
+
+    return o;
 }
 
 // Test 1
