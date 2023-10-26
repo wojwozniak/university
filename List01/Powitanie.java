@@ -1,9 +1,4 @@
 package List01;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Powitanie {
