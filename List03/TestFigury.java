@@ -1,6 +1,5 @@
-package List03.test;
-
-import List03.figury.*;
+package List03;
+import figury.*;
 
 
 public class TestFigury {
@@ -9,12 +8,12 @@ public class TestFigury {
 
         // Tworzenie punktów
         Punkt punkt1 = new Punkt(1.0, 2.0);
-        //Punkt punkt2 = new Punkt(3.0, 4.0);
-        //Punkt punkt3 = new Punkt(5.0, 6.0);
-        //Punkt punkt4 = new Punkt(7.0, 9.5);
+        Punkt punkt2 = new Punkt(3.0, 4.0);
+        Punkt punkt3 = new Punkt(5.0, 6.0);
         System.out.println("Punkt 1: " + punkt1.x + ", " + punkt1.y);
 
     
+
         // Część 2: Wektory
 
         // Tworzenie wektorów
@@ -22,39 +21,51 @@ public class TestFigury {
         Wektor wektor2 = new Wektor(4.0, 6.0);
 
         // Składamy wektor1 i wektor2
-        //Wektor suma = Wektor.złożWektory(wektor1, wektor2);
-        //System.out.println("Suma wektorów: " + suma.x + ", " + suma.y);
+        Wektor suma = Wektor.złożWektory(wektor1, wektor2);
+        System.out.println("Suma wektorów: " + suma.x + ", " + suma.y);
 
-        /*
+
+
+        // Część 3: Proste
+
+        // Tworzenie prostych
+        Prosta prosta1 = new Prosta(1.0, 1.0, 1.0);
+        Prosta prosta2 = new Prosta(2.0, 2.0, 2.0);
+
+        // Przesuwamy prostą o wektor
+        System.out.println("Prosta1: " + prosta1);
+        Prosta.przesuńProsta(prosta1, wektor1);
+        System.out.println("Prosta1 po przesunięciu: " + prosta1);        
+
+        // Równoległość, prostopadłość, punkt przecięcia
+        boolean czyRownolegle = Prosta.czyRównoległe(prosta1, prosta2);
+        boolean czyProstopadle = Prosta.czyProstopadłe(prosta1, prosta2);
+        Punkt punktPrzeciecia = Prosta.punktPrzecięcia(prosta1, prosta2);
+        System.out.println("Czy proste są równoległe? " + czyRownolegle);
+        System.out.println("Czy proste są prostopadłe? " + czyProstopadle);
+        System.out.println("Punkt przecięcia prostych: " + punktPrzeciecia);
+
+
+        // Część 4: Odcinek
+
         // Tworzenie odcinka
         Odcinek odcinek = new Odcinek(punkt1, punkt2);
+
+        // Odbijamy względem punktu
+        System.out.println("Odcinek: " + odcinek);
+        odcinek.obróć(punkt1, Math.PI / 2);
+        System.out.println("Odcinek po obróceniu: " + odcinek);
+
+
+        
+        // Część 5: Trójkąt
 
         // Tworzenie trójkąta
         Trojkat trojkat = new Trojkat(punkt1, punkt2, punkt3);
 
-        // Obrót punktu
-        punkt2.obroc(punkt1, 90.0); // Obrót o 90 stopni wokół punktu punkt1
-
-        // Odbicie punktu
-        Prosta prosta = new Prosta(1.0, 1.0, 0.0); // Przykładowa prosta Ax + By + C = 0
-        punkt3.odbij(prosta); // Odbicie punktu względem prostej
-
-        // Testy klas Wektor i Prosta
-        Wektor wektor1 = new Wektor(1.0, 2.0);
-        Wektor wektor2 = new Wektor(2.0, 3.0);
-        Wektor suma = Wektor.skladajWektory(wektor1, wektor2);
-
-        Prosta prosta1 = new Prosta(1.0, 1.0, 1.0);
-        Prosta prosta2 = new Prosta(2.0, 2.0, 2.0);
-        boolean czyRownolegle = Prosta.czyRownolegle(prosta1, prosta2);
-        boolean czyProstopadle = Prosta.czyProstopadle(prosta1, prosta2);
-        Punkt punktPrzeciecia = Prosta.punktPrzeciecia(prosta1, prosta2);
-
-        // Wyświetlenie wyników
-        System.out.println("Suma wektorów: " + suma);
-        System.out.println("Czy proste są równoległe? " + czyRownolegle);
-        System.out.println("Czy proste są prostopadłe? " + czyProstopadle);
-        System.out.println("Punkt przecięcia prostych: " + punktPrzeciecia);
-        */
+        // Przesuwamy trójkąt o wektor
+        System.out.println("Trójkąt: " + trojkat);
+        trojkat.przesuń(wektor1);
+        System.out.println("Trójkąt po przesunięciu: " + trojkat);
     }
 }
