@@ -1,4 +1,4 @@
-package List03.figury;
+package figury;
 
 public final class Prosta {
     public final double a;

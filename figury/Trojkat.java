@@ -1,27 +1,44 @@
-package List03.figury;
+package figury;
 
-public class Odcinek {
+public class Trojkat {
     private Punkt punktA;
     private Punkt punktB;
+    private Punkt punktC;
 
-    public Odcinek(Punkt punktA, Punkt punktB) {
-        // Jedyny przypadek, w którym nie można utworzyć odcinka to gdy punkty A i B są
-        // takie same
-        if (punktA.equals(punktB)) {
-            throw new IllegalArgumentException("Punkty A i B są takie same, nie można utworzyć odcinka.");
+    public Trojkat(Punkt punktA, Punkt punktB, Punkt punktC) {
+        if (punktA.equals(punktB) || punktA.equals(punktC) || punktB.equals(punktC)) {
+            throw new IllegalArgumentException("Punkty trójkąta są takie same, nie można utworzyć trójkąta.");
         }
+
+        // Sprawdzamy jeszcze wspoliniosc punktów
+        // Wzór na współliniowość punktów: (1/2) | [x1(y2 – y3) + x2(y3 – y1) + x3[y1 –
+        // y2]| = 0
+        double a = punktA.x;
+        double b = punktA.y;
+        double c = punktB.x;
+        double d = punktB.y;
+        double e = punktC.x;
+        double f = punktC.y;
+
+        if (a * (d - f) + c * (f - b) + e * (b - d) == 0) {
+            throw new IllegalArgumentException("Punkty trójkąta są współliniowe, nie można utworzyć trójkąta.");
+        }
+
         this.punktA = punktA;
         this.punktB = punktB;
+        this.punktC = punktC;
     }
 
     public void przesuń(Wektor v) {
         punktA = new Punkt(punktA.x + v.x, punktA.y + v.y);
         punktB = new Punkt(punktB.x + v.x, punktB.y + v.y);
+        punktC = new Punkt(punktC.x + v.x, punktC.y + v.y);
     }
 
     public void obróć(Punkt p, double kąt) {
         punktA = obróćPunkt(punktA, p, kąt);
         punktB = obróćPunkt(punktB, p, kąt);
+        punktC = obróćPunkt(punktC, p, kąt);
     }
 
     private Punkt obróćPunkt(Punkt p, Punkt obrót, double kąt) {
@@ -37,6 +54,7 @@ public class Odcinek {
     public void odbij(Prosta p) {
         punktA = odbijPunkt(punktA, p);
         punktB = odbijPunkt(punktB, p);
+        punktC = odbijPunkt(punktC, p);
     }
 
     private Punkt odbijPunkt(Punkt punkt, Prosta prosta) {

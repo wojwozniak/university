@@ -1,4 +1,4 @@
-package List03.figury;
+package figury;
 
 public class Punkt {
     public double x;
