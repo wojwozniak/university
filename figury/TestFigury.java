@@ -32,9 +32,9 @@ public class TestFigury {
         Prosta prosta2 = new Prosta(2.0, 2.0, 2.0);
 
         // Przesuwamy prostą o wektor
-        System.out.println("Prosta1: " + prosta1);
+        System.out.println("Prosta1: " + prosta1.a + "x + " + prosta1.b + "y + " + prosta1.c + " = 0");
         Prosta.przesuńProsta(prosta1, wektor1);
-        System.out.println("Prosta1 po przesunięciu: " + prosta1);        
+        System.out.println("Prosta1 po przesunięciu: " + prosta1.a + "x + " + prosta1.b + "y + " + prosta1.c + " = 0");        
 
         // Równoległość, prostopadłość, punkt przecięcia
         boolean czyRownolegle = Prosta.czyRównoległe(prosta1, prosta2);
@@ -42,7 +42,7 @@ public class TestFigury {
         Punkt punktPrzeciecia = Prosta.punktPrzecięcia(prosta1, prosta2);
         System.out.println("Czy proste są równoległe? " + czyRownolegle);
         System.out.println("Czy proste są prostopadłe? " + czyProstopadle);
-        System.out.println("Punkt przecięcia prostych: " + punktPrzeciecia);
+        System.out.println("Punkt przecięcia prostych: " + punktPrzeciecia.x + ", " + punktPrzeciecia.y);
 
 
         // Część 4: Odcinek
@@ -51,9 +51,9 @@ public class TestFigury {
         Odcinek odcinek = new Odcinek(punkt1, punkt2);
 
         // Odbijamy względem punktu
-        System.out.println("Odcinek: " + odcinek);
+        System.out.println("Odcinek: " + odcinek.punktA.x + ", " + odcinek.punktA.y + " - " + odcinek.punktB.x + ", " + odcinek.punktB.y);
         odcinek.obróć(punkt1, Math.PI / 2);
-        System.out.println("Odcinek po obróceniu: " + odcinek);
+        System.out.println("Odcinek po obróceniu: " + odcinek.punktA.x + ", " + odcinek.punktA.y + " - " + odcinek.punktB.x + ", " + odcinek.punktB.y);
 
 
         
@@ -63,8 +63,8 @@ public class TestFigury {
         Trojkat trojkat = new Trojkat(punkt1, punkt2, punkt3);
 
         // Przesuwamy trójkąt o wektor
-        System.out.println("Trójkąt: " + trojkat);
+        System.out.println("Trójkąt: " + trojkat.punktA.x + ", " + trojkat.punktA.y + " - " + trojkat.punktB.x + ", " + trojkat.punktB.y + " - " + trojkat.punktC.x + ", " + trojkat.punktC.y);
         trojkat.przesuń(wektor1);
-        System.out.println("Trójkąt po przesunięciu: " + trojkat);
+        System.out.println("Trójkąt po przesunięciu: " + trojkat.punktA.x + ", " + trojkat.punktA.y + " - " + trojkat.punktB.x + ", " + trojkat.punktB.y + " - " + trojkat.punktC.x + ", " + trojkat.punktC.y);
     }
 }
