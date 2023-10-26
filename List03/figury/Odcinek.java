@@ -20,17 +20,17 @@ public class Odcinek {
     }
 
     public void obróć(Punkt p, double kąt) {
-        punktA = obróćPunkt(punktA, kąt);
-        punktB = obróćPunkt(punktB, kąt);
+        punktA = obróćPunkt(punktA, p, kąt);
+        punktB = obróćPunkt(punktB, p, kąt);
     }
 
-    private Punkt obróćPunkt(Punkt p, double kąt) {
+    private Punkt obróćPunkt(Punkt p, Punkt obrót, double kąt) {
         // Ze wzorów na obrót punktu wokół innego punktu o zadany kąt
         // (https://pl.wikipedia.org/wiki/Obr%C3%B3t)
         double staryX = p.x;
         double staryY = p.y;
-        double nowyX = p.x + (staryX - p.x) * Math.cos(kąt) - (staryY - p.y) * Math.sin(kąt);
-        double nowyY = p.y + (staryX - p.x) * Math.sin(kąt) + (staryY - p.y) * Math.cos(kąt);
+        double nowyX = obrót.x + (staryX - obrót.x) * Math.cos(kąt) - (staryY - obrót.y) * Math.sin(kąt);
+        double nowyY = obrót.y + (staryX - obrót.x) * Math.sin(kąt) + (staryY - obrót.y) * Math.cos(kąt);
         return new Punkt(nowyX, nowyY);
     }
 
