@@ -1,8 +1,8 @@
 package figury;
 
 public class Odcinek {
-    private Punkt punktA;
-    private Punkt punktB;
+    public Punkt punktA;
+    public Punkt punktB;
 
     public Odcinek(Punkt punktA, Punkt punktB) {
         // Jedyny przypadek, w którym nie można utworzyć odcinka to gdy punkty A i B są
