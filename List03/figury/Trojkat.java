@@ -54,7 +54,7 @@ public class Trojkat {
     public void odbij(Prosta p) {
         punktA = odbijPunkt(punktA, p);
         punktB = odbijPunkt(punktB, p);
-        punktC = odbijPunkt(punktC, )
+        punktC = odbijPunkt(punktC, p);
     }
 
     private Punkt odbijPunkt(Punkt punkt, Prosta prosta) {
