@@ -1,9 +1,9 @@
 package figury;
 
 public class Trojkat {
-    private Punkt punktA;
-    private Punkt punktB;
-    private Punkt punktC;
+    public Punkt punktA;
+    public Punkt punktB;
+    public Punkt punktC;
 
     public Trojkat(Punkt punktA, Punkt punktB, Punkt punktC) {
         if (punktA.equals(punktB) || punktA.equals(punktC) || punktB.equals(punktC)) {
