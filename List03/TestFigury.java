@@ -1,5 +1,6 @@
-package figury;
+package List03;
 
+import figury.*;
 
 public class TestFigury {
     public static void main(String[] args) {
@@ -8,7 +9,7 @@ public class TestFigury {
         // Tworzenie punktów
         Punkt punkt1 = new Punkt(1.0, 2.0);
         Punkt punkt2 = new Punkt(3.0, 4.0);
-        Punkt punkt3 = new Punkt(5.0, 6.0);
+        Punkt punkt4 = new Punkt(-5.0, 6.0);
         System.out.println("Punkt 1: " + punkt1.x + ", " + punkt1.y);
 
     
@@ -30,6 +31,7 @@ public class TestFigury {
         // Tworzenie prostych
         Prosta prosta1 = new Prosta(1.0, 1.0, 1.0);
         Prosta prosta2 = new Prosta(2.0, 2.0, 2.0);
+        Prosta prosta3 = new Prosta(-3.0, 3.0, 3.0);
 
         // Przesuwamy prostą o wektor
         System.out.println("Prosta1: " + prosta1.a + "x + " + prosta1.b + "y + " + prosta1.c + " = 0");
@@ -39,7 +41,7 @@ public class TestFigury {
         // Równoległość, prostopadłość, punkt przecięcia
         boolean czyRownolegle = Prosta.czyRównoległe(prosta1, prosta2);
         boolean czyProstopadle = Prosta.czyProstopadłe(prosta1, prosta2);
-        Punkt punktPrzeciecia = Prosta.punktPrzecięcia(prosta1, prosta2);
+        Punkt punktPrzeciecia = Prosta.punktPrzecięcia(prosta1, prosta3);
         System.out.println("Czy proste są równoległe? " + czyRownolegle);
         System.out.println("Czy proste są prostopadłe? " + czyProstopadle);
         System.out.println("Punkt przecięcia prostych: " + punktPrzeciecia.x + ", " + punktPrzeciecia.y);
@@ -60,7 +62,7 @@ public class TestFigury {
         // Część 5: Trójkąt
 
         // Tworzenie trójkąta
-        Trojkat trojkat = new Trojkat(punkt1, punkt2, punkt3);
+        Trojkat trojkat = new Trojkat(punkt1, punkt2, punkt4);
 
         // Przesuwamy trójkąt o wektor
         System.out.println("Trójkąt: " + trojkat.punktA.x + ", " + trojkat.punktA.y + " - " + trojkat.punktB.x + ", " + trojkat.punktB.y + " - " + trojkat.punktC.x + ", " + trojkat.punktC.y);
