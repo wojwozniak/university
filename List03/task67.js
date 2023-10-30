@@ -1,6 +1,4 @@
 // Zadanie 6
-
-// Zwykły iterator
 function createFibIterator() {
     let a = 0, b = 1;
 
@@ -19,7 +17,6 @@ function createFibIterator() {
     };
 }
 
-// Użycie zwykłego iteratora
 function useIterator() {
     var fibIterator = createFibIterator();
     for (var result; (result = fibIterator.next(), !result.done);) {
@@ -40,7 +37,6 @@ function* fibGenerator() {
     }
 }
 
-// Użycie generatora
 function useGenerator() {
     for (var i of fibGenerator()) {
         console.log(i);
