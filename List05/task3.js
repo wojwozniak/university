@@ -4,20 +4,20 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const wylosowanaLiczba = Math.floor(Math.random() * 101);
+const r = Math.floor(Math.random() * 101);
 
 function rozpocznijGre() {
   rl.question('Zgadnij liczbę od 0 do 100: ', (odpowiedz) => {
     const liczba = parseInt(odpowiedz);
 
-    if (liczba === wylosowanaLiczba) {
-      console.log('To jest właśnie ta liczba!');
+    if (liczba === r) {
+      console.log('to jest właśnie ta liczba');
       rl.close();
-    } else if (liczba < wylosowanaLiczba) {
-      console.log('Moja liczba jest większa.');
+    } else if (liczba < r) {
+      console.log('moja liczba jest większa');
       rozpocznijGre();
     } else {
-      console.log('Moja liczba jest mniejsza.');
+      console.log('moja liczba jest mniejsza');
       rozpocznijGre();
     }
   });
