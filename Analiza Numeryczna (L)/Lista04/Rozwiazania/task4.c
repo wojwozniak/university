@@ -1,31 +1,39 @@
 #include <stdio.h>
 #include <math.h>
 
-double function(double x) {
+double function(double x)
+{
     return pow(x, 4) - log(x + 4);
 }
 
-double estimateZero(double a, double b, double epsilon) {
+double estimateZero(double a, double b, double epsilon)
+{
     int n = (int)ceil(log2((b - a) / (2 * epsilon)));
 
-    for (int krok = 0; krok < n; krok++) {
+    for (int krok = 0; krok < n; krok++)
+    {
         double mn = (a + b) / 2;
         double mnv = function(mn);
 
-        if (mnv == 0 || (b - a) / 2 < epsilon) {
+        if (mnv == 0 || (b - a) / 2 < epsilon)
+        {
             return mn;
         }
 
-        if (mnv * function(a) < 0) {
+        if (mnv * function(a) < 0)
+        {
             b = mn;
-        } else {
+        }
+        else
+        {
             a = mn;
         }
     }
     return (a + b) / 2;
 }
 
-int main() {
+int main()
+{
     double a1 = -2;
     double b1 = 0;
     double a2 = 0;

@@ -1,18 +1,21 @@
 #include <stdio.h>
 #include <math.h>
 
-double funkcja(double x) {
+double funkcja(double x)
+{
     return x - 0.49;
 }
 
-int main() {
+int main()
+{
     double a0 = 0;
     double b0 = 1;
 
-    double an = a0; 
+    double an = a0;
     double bn = b0;
 
-    for (int n = 1; n <= 5; n++) {
+    for (int n = 1; n <= 5; n++)
+    {
         double mn = (an + bn) / 2;
 
         double en = (bn - an) / 2;
@@ -26,9 +29,12 @@ int main() {
         printf("f(xn) = %lf\n", fn);
         printf("|en| = %lf\n", en_abs);
 
-        if (fn > 0) {
+        if (fn > 0)
+        {
             bn = mn;
-        } else {
+        }
+        else
+        {
             an = mn;
         }
     }
