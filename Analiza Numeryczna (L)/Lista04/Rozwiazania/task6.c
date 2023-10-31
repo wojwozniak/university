@@ -19,7 +19,7 @@ double calculateApproximation(double x0, double a)
 
 int main()
 {
-    double a = 0.1;
+    double a = 2.0;
     double x0_values[] = {-4, -2.0, -1.5, -1.0, -0.5, 0.5, 1.0, 1.5, 2.0};
 
     for (int i = 0; i < 9; i++)
