@@ -2,6 +2,7 @@ Zadania domowe:
 - z3 / L1 : ?
 - z2 / L2 : ?
 - z7 / L3 : ?
+- z1 / L4 : ?
 
 Jak na razie: ?
 Do zdobycia: min. 8 pkt, w tym min 3 z list grafowych
@@ -18,8 +19,9 @@ Deklaracje:
 - Lista 1: 9 / 12
 - Lista 2: 14 / 14
 - Lista 3: 9 / 11
+- Lista 4: 9 / 9
 
-Jak na razie: 32 pkt (/37)
+Jak na razie: 41 pkt (/46)
 
 65 na 3
 75 na 4
