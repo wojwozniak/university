@@ -40,18 +40,23 @@ public class Odcinek {
     }
 
     private Punkt odbijPunkt(Punkt punkt, Prosta prosta) {
-        // Ze wzoru na odbicie punktu (x, y) wzgledem prostej w postaci ogólnej ax + by
-        // + c = 0
         double a = prosta.a;
         double b = prosta.b;
         double c = prosta.c;
         double x = punkt.x;
         double y = punkt.y;
 
-        double d = (a * a + b * b);
-        double nowyX = (b * (b * x - a * y) - a * c) / d;
-        double nowyY = (a * (-b * x + a * y) - b * c) / d;
+        double a_prostopadla = -b;
+        double b_prostopadla = a;
 
-        return new Punkt(nowyX, nowyY);
+        double c_prostopadla = -(a_prostopadla * x) - (b_prostopadla * y);
+
+        double x_przeciecia = (b * c_prostopadla - b_prostopadla * c) / (a * b_prostopadla - a_prostopadla * b);
+        double y_przeciecia = (-a * c_prostopadla + a_prostopadla * c) / (a * b_prostopadla - a_prostopadla * b);
+
+        double x_roznica = x_przeciecia - x;
+        double y_roznica = y_przeciecia - y;
+
+        return new Punkt(x_przeciecia + x_roznica, y_przeciecia + y_roznica);
     }
 }
