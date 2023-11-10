@@ -9,7 +9,7 @@ public class Liczba extends Wyrazenie {
 
     @Override
     public double oblicz() {
-        return (int) wartosc;
+        return wartosc;
     }
 
     @Override
