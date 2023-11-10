@@ -49,3 +49,4 @@ urls = ["https://www.example.com", "https://www.sample.com", "https://www.travel
 index = create_index(urls)
 sl = "example"
 mpwResult = mpw(index, sl)
+print(mpwResult)
