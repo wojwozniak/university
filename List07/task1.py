@@ -30,6 +30,7 @@ def parse_into_index(responseText, output, lock, url):
     text = soup.get_text()
     words = re.findall(r'\w+', text.lower())
 
+    # lock zapewnia, że tylko jeden wątek na raz będzie modyfikował output
     with lock:
         for word in words:
             if word in output:
