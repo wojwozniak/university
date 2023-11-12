@@ -15,4 +15,9 @@ public class Odejmowanie extends Wyrazenie {
     public double oblicz() {
         return left.oblicz() - right.oblicz();
     }
+
+    @Override
+    public String toString() {
+        return "(" + left.toString() + " - " + right.toString() + ")";
+    }
 }

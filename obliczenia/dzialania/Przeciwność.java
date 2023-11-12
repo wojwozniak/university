@@ -13,4 +13,9 @@ public class Przeciwność extends Wyrazenie {
     public double oblicz() {
         return -wyr.oblicz();
     }
+
+    @Override
+    public String toString() {
+        return "-(" + wyr.toString() + ")";
+    }
 }

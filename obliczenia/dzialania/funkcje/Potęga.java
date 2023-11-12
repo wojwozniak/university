@@ -15,4 +15,9 @@ public class Potęga extends Wyrazenie {
     public double oblicz() {
         return Math.pow(podstawa.oblicz(), wykładnik.oblicz());
     }
+
+    @Override
+    public String toString() {
+        return "(" + podstawa.toString() + " ^ " + wykładnik.toString() + ")";
+    }
 }

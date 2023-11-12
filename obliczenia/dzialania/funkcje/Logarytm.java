@@ -16,4 +16,9 @@ public class Logarytm extends Wyrazenie {
         // Korzystamy ze wzoru: log_a(b) = log_c(b) / log_c(a)
         return Math.log(liczba.oblicz()) / Math.log(podstawa.oblicz());
     }
+
+    @Override
+    public String toString() {
+        return "log(" + podstawa.toString() + ", " + liczba.toString() + ")";
+    }
 }

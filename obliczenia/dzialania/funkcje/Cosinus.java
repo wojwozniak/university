@@ -13,4 +13,9 @@ public class Cosinus extends Wyrazenie {
     public double oblicz() {
         return Math.cos(wyr.oblicz());
     }
+
+    @Override
+    public String toString() {
+        return "cos(" + wyr.toString() + ")";
+    }
 }

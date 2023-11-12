@@ -13,4 +13,9 @@ public class Odwrotność extends Wyrazenie {
     public double oblicz() {
         return 1 / wyr.oblicz();
     }
+
+    @Override
+    public String toString() {
+        return "1 / " + wyr.toString();
+    }
 }

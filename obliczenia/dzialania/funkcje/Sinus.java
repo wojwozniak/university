@@ -13,4 +13,9 @@ public class Sinus extends Wyrazenie {
     public double oblicz() {
         return Math.sin(wyr.oblicz());
     }
+
+    @Override
+    public String toString() {
+        return "sin(" + wyr.toString() + ")";
+    }
 }
