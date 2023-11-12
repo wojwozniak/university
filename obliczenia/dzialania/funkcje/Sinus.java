@@ -1,4 +1,4 @@
-package obliczenia.dzialania;
+package obliczenia.dzialania.funkcje;
 
 import obliczenia.Wyrazenie;
 
