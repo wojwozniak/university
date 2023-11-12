@@ -1,4 +1,7 @@
+package struktury;
+
 // Klasa implementująca zbiór za pomocą tablicy
+
 public class ZbiorTablicowy implements Zbior, Cloneable {
 
     // Implementacja zbioru za pomocą tablicy

@@ -1,3 +1,5 @@
+package struktury;
+
 public interface Zbior {
     Para szukaj(String k);
 

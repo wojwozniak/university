@@ -1,3 +1,5 @@
+package struktury;
+
 public class Para implements Cloneable, Comparable<Para> {
     // Klucz niemodyfikowalny
     public final String klucz;
