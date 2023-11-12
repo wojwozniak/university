@@ -1,2 +1,0 @@
-jar cvf figury.jar figury/*.class
-a potem dodajemy referencję settings.json
