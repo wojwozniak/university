@@ -1,13 +1,11 @@
 package obliczenia;
 
-public class Stala extends Operand {
-    protected final double wartosc;
-    private final String nazwa;
+public class Pi extends Stala {
+    private final double wartosc = Math.PI;
+    private final String nazwa = "PI";
 
-    public Stala(double wartosc, String nazwa) {
-        super(wartosc);
-        this.wartosc = wartosc;
-        this.nazwa = nazwa;
+    public Pi() {
+        super(Math.PI, "PI");
     }
 
     @Override
