@@ -28,4 +28,17 @@ public class E extends Stala {
         Stala other = (Stala) obj;
         return wartosc == other.wartosc;
     }
+
+                    // sample:
+    // @Override
+    // public Cosinus clone() {
+    //     Cosinus cloned = new Cosinus(this.wyr);
+    //     return cloned;
+    // }
+
+    @Override
+    public E clone() {
+        E cloned = new E();
+        return cloned;
+    }
 }

@@ -20,4 +20,19 @@ public class Potęga extends Wyrazenie {
     public String toString() {
         return "(" + podstawa.toString() + " ^ " + wykładnik.toString() + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Potęga))
+            return false;
+        Potęga other = (Potęga) obj;
+        return podstawa.equals(other.podstawa) && wykładnik.equals(other.wykładnik);
+    }
+    @Override
+    public Potęga clone() {
+        Potęga cloned = new Potęga(this.podstawa, this.wykładnik);
+        return cloned;
+    }
 }

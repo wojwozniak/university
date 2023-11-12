@@ -16,6 +16,22 @@ public class Odwrotność extends Wyrazenie {
 
     @Override
     public String toString() {
-        return "1 / " + wyr.toString();
+        return "(1 / " + wyr.toString() + ")";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Odwrotność))
+            return false;
+        Odwrotność other = (Odwrotność) obj;
+        return wyr.equals(other.wyr);
+    }
+
+    @Override
+    public Odwrotność clone() {
+        Odwrotność cloned = new Odwrotność(this.wyr);
+        return cloned;
     }
 }

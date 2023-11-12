@@ -33,4 +33,11 @@ public class Stala extends Operand {
         Stala other = (Stala) obj;
         return wartosc == other.wartosc;
     }
+
+    @Override
+    public Stala clone() {
+        Stala cloned = new Stala(this.wartosc, this.nazwa);
+        return cloned;
+    }
+
 }

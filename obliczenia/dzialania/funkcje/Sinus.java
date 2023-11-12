@@ -18,4 +18,20 @@ public class Sinus extends Wyrazenie {
     public String toString() {
         return "sin(" + wyr.toString() + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Sinus))
+            return false;
+        Sinus other = (Sinus) obj;
+        return wyr.equals(other.wyr);
+    }
+
+    @Override
+    public Sinus clone() {
+        Sinus cloned = new Sinus(this.wyr);
+        return cloned;
+    }
 }

@@ -21,4 +21,20 @@ public class Logarytm extends Wyrazenie {
     public String toString() {
         return "log(" + podstawa.toString() + ", " + liczba.toString() + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Logarytm))
+            return false;
+        Logarytm other = (Logarytm) obj;
+        return podstawa.equals(other.podstawa) && liczba.equals(other.liczba);
+    }
+
+    @Override
+    public Logarytm clone() {
+        Logarytm cloned = new Logarytm(this.podstawa, this.liczba);
+        return cloned;
+    }
 }

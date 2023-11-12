@@ -16,6 +16,22 @@ public class Przeciwność extends Wyrazenie {
 
     @Override
     public String toString() {
-        return "-(" + wyr.toString() + ")";
+        return "-" + wyr.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Przeciwność))
+            return false;
+        Przeciwność other = (Przeciwność) obj;
+        return wyr.equals(other.wyr);
+    }
+
+    @Override
+    public Przeciwność clone() {
+        Przeciwność cloned = new Przeciwność(this.wyr);
+        return cloned;
     }
 }

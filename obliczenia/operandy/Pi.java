@@ -29,4 +29,10 @@ public class Pi extends Stala {
         Stala other = (Stala) obj;
         return wartosc == other.wartosc;
     }
+
+    @Override   
+    public Pi clone() {
+        Pi cloned = new Pi();
+        return cloned;
+    }   
 }

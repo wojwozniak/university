@@ -38,7 +38,7 @@ public class Zmienna extends Operand {
 
     @Override
     public String toString() {
-        return identyfikator + " = " + oblicz();
+        return "(" + identyfikator + " = " + oblicz() +")";
     }
 
     @Override
@@ -47,5 +47,11 @@ public class Zmienna extends Operand {
         if (obj == null || getClass() != obj.getClass()) return false;
         Zmienna zmienna = (Zmienna) obj;
         return identyfikator.equals(zmienna.identyfikator);
+    }
+
+    @Override
+    public Zmienna clone() {
+        Zmienna cloned = new Zmienna(this.identyfikator);
+        return cloned;
     }
 }

@@ -20,4 +20,20 @@ public class Mnożenie extends Wyrazenie {
     public String toString() {
         return "(" + left.toString() + " * " + right.toString() + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Mnożenie))
+            return false;
+        Mnożenie other = (Mnożenie) obj;
+        return left.equals(other.left) && right.equals(other.right);
+    }
+
+    @Override
+    public Mnożenie clone() {
+        Mnożenie cloned = new Mnożenie(this.left, this.right);
+        return cloned;
+    }
 }

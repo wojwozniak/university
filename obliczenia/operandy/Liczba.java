@@ -30,4 +30,10 @@ public class Liczba extends Wyrazenie {
         Liczba other = (Liczba) obj;
         return wartosc == other.wartosc;
     }
+
+    @Override
+    public Liczba clone() {
+        Liczba cloned = new Liczba(this.wartosc);
+        return cloned;
+    }
 }
