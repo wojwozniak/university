@@ -1,11 +1,11 @@
 package obliczenia;
 
-public class Pi extends Stala {
-    private final double wartosc = Math.PI;
-    private final String nazwa = "PI";
+public class E extends Stala {
+    private final double wartosc = Math.E;
+    private final String nazwa = "E";
 
-    public Pi() {
-        super(Math.PI, "PI");
+    public E() {
+        super(Math.E, "E");
     }
 
     @Override
@@ -21,7 +21,6 @@ public class Pi extends Stala {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
-            return true;
         }
         if (!(obj instanceof Stala)) {
             return false;
