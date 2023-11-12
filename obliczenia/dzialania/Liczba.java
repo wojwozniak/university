@@ -1,4 +1,6 @@
-package obliczenia;
+package obliczenia.dzialania;
+
+import obliczenia.Wyrazenie;
 
 public class Liczba extends Wyrazenie {
     private double wartosc;

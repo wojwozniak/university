@@ -1,4 +1,6 @@
-package obliczenia;
+package obliczenia.dzialania;
+
+import obliczenia.Wyrazenie;
 
 public class Dodawanie extends Wyrazenie {
     private final Wyrazenie left;

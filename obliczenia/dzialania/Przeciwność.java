@@ -1,4 +1,6 @@
-package obliczenia;
+package obliczenia.dzialania;
+
+import obliczenia.Wyrazenie;
 
 public class Przeciwność extends Wyrazenie {
     private final Wyrazenie wyr;
