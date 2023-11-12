@@ -1,6 +1,6 @@
 package obliczenia;
 
-public class Stala extends Wyrazenie {
+public class Stala extends Operand {
     // Stałe zapisane jako statyczne zmienne, 
     // dzięki czemu możemy z nich korzystać bez tworzenia obiektu
     public static final Stala E = new Stala(Math.E, "e");
@@ -10,6 +10,7 @@ public class Stala extends Wyrazenie {
     private final String nazwa;
 
     public Stala(double wartosc, String nazwa) {
+        super(wartosc);
         this.wartosc = wartosc;
         this.nazwa = nazwa;
     }

@@ -2,11 +2,12 @@ package obliczenia;
 import struktury.*;
 
 
-public class Zmienna extends Wyrazenie {
+public class Zmienna extends Operand {
     private static final ZbiorTablicowy zbiorZmiennych = new ZbiorTablicowy(10);
     private final String identyfikator;
 
     public Zmienna(String identyfikator) {
+        super(odczytajZmienna(identyfikator));
         this.identyfikator = identyfikator;
     }
 
