@@ -1,7 +1,3 @@
-package List03;
-
-import figury.*;
-
 public class TestFigury {
     public static void main(String[] args) {
         // Część 1: Punkty

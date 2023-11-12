@@ -1,0 +1,4 @@
+skompilowanie wszystkich plików figur (bez package u góry bo się psuje wtedy): javac *.java
+spakowanie: jar cvf figury.jar figury/*.class
+kompilacja: javac -cp figury.jar Testfigury.java
+uruchomienie: java -cp figury.jar TestFigury.java
