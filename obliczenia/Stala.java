@@ -1,6 +1,11 @@
 package obliczenia;
 
 public class Stala extends Wyrazenie {
+    // Stałe zapisane jako statyczne zmienne, 
+    // dzięki czemu możemy z nich korzystać bez tworzenia obiektu
+    public static final Stala E = new Stala(Math.E, "e");
+    public static final Stala PI = new Stala(Math.PI, "pi");
+
     private final double wartosc;
     private final String nazwa;
 
