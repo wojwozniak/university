@@ -1,0 +1,14 @@
+package obliczenia;
+
+public class Przeciwność extends Wyrazenie {
+    private final Wyrazenie wyr;
+
+    public Przeciwność(Wyrazenie wyr) {
+        this.wyr = wyr;
+    }
+
+    @Override
+    public double oblicz() {
+        return -wyr.oblicz();
+    }
+}
