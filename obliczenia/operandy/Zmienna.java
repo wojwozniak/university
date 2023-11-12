@@ -1,4 +1,5 @@
-package obliczenia;
+package obliczenia.operandy;
+import obliczenia.Operand;
 import struktury.*;
 
 

@@ -1,4 +1,6 @@
-package obliczenia;
+package obliczenia.operandy;
+
+import obliczenia.Operand;
 
 public class Stala extends Operand {
     protected final double wartosc;

@@ -1,4 +1,4 @@
-package obliczenia;
+package obliczenia.operandy;
 
 public class E extends Stala {
     private final double wartosc = Math.E;

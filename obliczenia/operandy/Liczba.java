@@ -1,4 +1,6 @@
-package obliczenia;
+package obliczenia.operandy;
+
+import obliczenia.Operand;
 
 public class Liczba extends Operand {
     private final double liczba;
