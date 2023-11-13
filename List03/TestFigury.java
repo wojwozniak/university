@@ -32,7 +32,7 @@ public class TestFigury {
         // Przesuwamy prostą o wektor
         System.out.println("Prosta1: " + prosta1.a + "x + " + prosta1.b + "y + " + prosta1.c + " = 0");
         Prosta.przesuńProsta(prosta1, wektor1);
-        System.out.println("Prosta1 po przesunięciu: " + prosta1.a + "x + " + prosta1.b + "y + " + prosta1.c + " = 0");        
+        System.out.println("Prosta1 po przesunięciu: " + prosta2.a + "x + " + prosta2.b + "y + " + prosta2.c + " = 0");        
 
         // Równoległość, prostopadłość, punkt przecięcia
         boolean czyRownolegle = Prosta.czyRównoległe(prosta1, prosta2);
