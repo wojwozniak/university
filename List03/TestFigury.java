@@ -63,6 +63,6 @@ public class TestFigury {
         // Przesuwamy trójkąt o wektor
         System.out.println("Trójkąt: " + trojkat.punktA.x + ", " + trojkat.punktA.y + " - " + trojkat.punktB.x + ", " + trojkat.punktB.y + " - " + trojkat.punktC.x + ", " + trojkat.punktC.y);
         trojkat.przesuń(wektor1);
-        System.out.println("Trójkąt po przesunięciu: " + trojkat.punktA.x + ", " + trojkat.punktA.y + " - " + trojkat.punktB.x + ", " + trojkat.punktB.y + " - " + trojkat.punktC.x + ", " + trojkat.punktC.y);
+        System.out.println("Trójkąt po przesunięciu: " + trojkat.punktA.x + ", " + trojkat.punktA.y + ", " + trojkat.punktB.x + ", " + trojkat.punktB.y + " - " + trojkat.punktC.x + ", " + trojkat.punktC.y);
     }
 }
