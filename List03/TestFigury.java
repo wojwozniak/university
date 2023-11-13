@@ -9,7 +9,6 @@ public class TestFigury {
         System.out.println("Punkt 1: " + punkt1.x + ", " + punkt1.y);
 
     
-
         // Część 2: Wektory
 
         // Tworzenie wektorów
@@ -26,13 +25,14 @@ public class TestFigury {
 
         // Tworzenie prostych
         Prosta prosta1 = new Prosta(1.0, 1.0, 1.0);
+        Prosta prosta1b = new Prosta(1.0, 1.0, 3.0);
         Prosta prosta2 = new Prosta(2.0, 2.0, 2.0);
         Prosta prosta3 = new Prosta(-3.0, 3.0, 3.0);
 
         // Przesuwamy prostą o wektor
         System.out.println("Prosta1: " + prosta1.a + "x + " + prosta1.b + "y + " + prosta1.c + " = 0");
         Prosta.przesuńProsta(prosta1, wektor1);
-        System.out.println("Prosta1 po przesunięciu: " + prosta2.a + "x + " + prosta2.b + "y + " + prosta2.c + " = 0");        
+        System.out.println("Prosta1 po przesunięciu: " + prosta1b.a + "x + " + prosta1b.b + "y + " + prosta1b.c + " = 0");        
 
         // Równoległość, prostopadłość, punkt przecięcia
         boolean czyRownolegle = Prosta.czyRównoległe(prosta1, prosta2);
