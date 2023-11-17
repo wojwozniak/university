@@ -3,6 +3,7 @@ import asyncio
 from private import apikey1, apikey2
 
 
+# Funkcja z dokumentacji aiohttp z dodanym exception handlingiem
 async def fetch_data(url, headers):
     async with aiohttp.ClientSession() as session:
         try:
