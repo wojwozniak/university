@@ -1,4 +1,4 @@
-Podsumowanie materiałów z list ćwiczeń
+Szybkie i proste podsumowanie list 1-6 przed sprawdzianem
 
 Spis treści
 =================
