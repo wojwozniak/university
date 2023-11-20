@@ -1,34 +1,33 @@
-<!-- views/form.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Submission Form</title>
+    <title>Deklaracja</title>
 </head>
 
 <body>
-    <h1>Task Submission Form</h1>
+    <h1>Deklaracja</h1>
     <% if (locals.error) { %>
         <p style="color: red;">
             <%= locals.error %>
         </p>
         <% } %>
             <form action="/submit" method="post">
-                <label for="firstName">First Name:</label>
+                <label for="firstName">Imię:</label>
                 <input type="text" id="firstName" name="firstName" required><br>
 
-                <label for="lastName">Last Name:</label>
+                <label for="lastName">Nazwisko:</label>
                 <input type="text" id="lastName" name="lastName" required><br>
 
-                <label for="activity">Activity:</label>
+                <label for="activity">Zajęcia:</label>
                 <input type="text" id="activity" name="activity" required><br>
 
-                <label for="tasks">Task Results (comma-separated):</label>
+                <label for="tasks">Zgłoszone zadania:</label>
                 <input type="text" id="tasks" name="tasks" required><br>
 
-                <button type="submit">Submit</button>
+                <button type="submit">Zgłoś</button>
             </form>
 </body>
 

@@ -1,7 +1,5 @@
-// server.js
 const express = require('express');
 const session = require('express-session');
-
 const app = express();
 const port = 3000;
 
@@ -19,7 +17,7 @@ app.post('/submit', (req, res) => {
     const { firstName, lastName, activity, tasks } = req.body;
 
     if (!firstName || !lastName || !activity) {
-        res.render('form', { error: 'Please fill in all fields.' });
+        res.render('form', { error: 'Uzupełnij wszystkie pola.' });
         return;
     }
 
@@ -46,6 +44,4 @@ app.get('/print', (req, res) => {
     res.render('print', { formData });
 });
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
+app.listen(port, () => console.log(`Listening on port ${port}`));

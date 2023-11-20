@@ -1,20 +1,19 @@
-<!-- views/print.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Printable Task Submission</title>
+    <title>Deklaracja do wydrukowania</title>
 </head>
 
 <body>
-    <h1>Printable Task Submission</h1>
-    <p>Name: <%= formData.firstName %>
+    <h1>Deklaracja do wydrukowania</h1>
+    <p>Imię i nazwisko: <%= formData.firstName %>
             <%= formData.lastName %>
     </p>
-    <p>Activity: <%= formData.activity %>
+    <p>Zajęcia: <%= formData.activity %>
     </p>
-    <p>Task Results: <%= formData.taskResults.join(', ') %></p>
+    <p>Zadania: <%= formData.taskResults.join(', ') %></p>
 </body>
 </html>
