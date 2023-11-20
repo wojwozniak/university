@@ -5,9 +5,6 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.util.logging.*;
 
-import obliczenia.Wymierna;
-import rozgrywka.Gra;
-
 public class Okno extends Frame {
     // Deklaracja komponentów GUI
     private TextField licznikTextField, mianownikTextField, wyswietlaczField;
@@ -120,12 +117,12 @@ public class Okno extends Frame {
 
         // Label wyświetlacza
         wyswietlaczLabel = new Label("Stan gry:");
-        wyswietlaczLabel.setBounds(230, 80, 70, 20);
+        wyswietlaczLabel.setBounds(245, 80, 70, 20);
         add(wyswietlaczLabel);
 
         // TextField wyświetlacza
         wyswietlaczField = new TextField("Wybierz zakres i rozpocznij grę", 10);
-        wyswietlaczField.setBounds(230, 100, 300, 20);
+        wyswietlaczField.setBounds(245, 100, 300, 20);
         add(wyswietlaczField);
         wyswietlaczField.setEditable(false);
         wyswietlaczField.setBackground(Color.GREEN);
@@ -142,32 +139,32 @@ public class Okno extends Frame {
 
         // Label zgadnięty górny limit
         zgadnietyGornyLimitLabel = new Label("Zgadnięty górny limit");
-        zgadnietyGornyLimitLabel.setBounds(50, 180, 160, 20);
+        zgadnietyGornyLimitLabel.setBounds(50, 180, 200, 20);
         add(zgadnietyGornyLimitLabel);
 
         // Label zgadnięty dolny limit
         zgadnietyDolnyLimitLabel = new Label("Zgadnięty dolny limit");
-        zgadnietyDolnyLimitLabel.setBounds(50, 200, 160, 20);
+        zgadnietyDolnyLimitLabel.setBounds(50, 200, 200, 20);
         add(zgadnietyDolnyLimitLabel);
 
         // Label zakresu
         zakresLabel = new Label("Zakres - górna granica (5-20):");
-        zakresLabel.setBounds(230, 130, 250, 20);
+        zakresLabel.setBounds(245, 130, 250, 20);
         add(zakresLabel);
 
         // Suwak zakresu
         zakresScrollbar = new Scrollbar(Scrollbar.HORIZONTAL, 12, 1, 5, 20);
-        zakresScrollbar.setBounds(230, 150, 300, 20);
+        zakresScrollbar.setBounds(245, 150, 300, 20);
         add(zakresScrollbar);
 
         // Label liczby prób
         probyLabel = new Label("Liczba prób:");
-        probyLabel.setBounds(230, 180, 100, 20);
+        probyLabel.setBounds(245, 180, 100, 20);
         add(probyLabel);
 
         // Suwak liczby prób
         probyScrollbar = new Scrollbar(Scrollbar.HORIZONTAL, 0, 1, 0, 10);
-        probyScrollbar.setBounds(230, 200, 300, 20);
+        probyScrollbar.setBounds(245, 200, 300, 20);
         add(probyScrollbar);
 
         // Inicjalizacja obiektu Gra
@@ -264,20 +261,20 @@ public class Okno extends Frame {
                     int porownanie = gra.porownaj(propozycja);
                     if (porownanie < 0) {
                         wyswietlaczField
-                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " jest za mała!");
+                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " " + "(" + propozycja.toFloat() + ") jest za mała!");
                         if (zgadnietyDolnyLimit == null || zgadnietyDolnyLimit.compareTo(propozycja) < 0) {
                             zgadnietyDolnyLimit = propozycja;
                             zgadnietyDolnyLimitLabel
-                                    .setText("Zgadnięty dolny limit: " + zgadnietyDolnyLimit.toString());
+                                    .setText("Zgadnięty dolny limit: " + zgadnietyDolnyLimit.toString() + " (" + zgadnietyDolnyLimit.toFloat() + ")");
                         }
 
                     } else {
                         wyswietlaczField
-                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " jest za duża!");
+                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " " + "(" + propozycja.toFloat() + ") jest za duża!");
                         if (zgadnietyGornyLimit == null || zgadnietyGornyLimit.compareTo(propozycja) > 0) {
                             zgadnietyGornyLimit = propozycja;
                             zgadnietyGornyLimitLabel
-                                    .setText("Zgadnięty górny limit: " + zgadnietyGornyLimit.toString());
+                                    .setText("Zgadnięty górny limit: " + zgadnietyGornyLimit.toString() + " (" + zgadnietyGornyLimit.toFloat() + ")");
                         }
 
                     }

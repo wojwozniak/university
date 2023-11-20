@@ -1,5 +1,7 @@
 package obliczenia;
 
+import java.text.DecimalFormat;
+
 public class Wymierna implements Comparable<Wymierna> {
     private int licznik, mianownik;
 
@@ -117,5 +119,11 @@ public class Wymierna implements Comparable<Wymierna> {
         int nowyMianownik = a.mianownik * b.licznik;
 
         return new Wymierna(nowyLicznik, nowyMianownik);
+    }
+
+    public String toFloat() {
+        double result = (double) this.licznik / this.mianownik;
+        DecimalFormat decimalFormat = new DecimalFormat("#.####");
+        return decimalFormat.format(result);
     }
 }
