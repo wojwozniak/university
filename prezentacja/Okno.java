@@ -5,6 +5,9 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.util.logging.*;
 
+import obliczenia.Wymierna;
+import rozgrywka.Gra;
+
 public class Okno extends Frame {
     // Deklaracja komponentów GUI
     private TextField licznikTextField, mianownikTextField, wyswietlaczField;
