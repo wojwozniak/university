@@ -1,4 +1,5 @@
 package rozgrywka;
+
 import obliczenia.Wymierna;
 
 public class Gra {
@@ -15,7 +16,7 @@ public class Gra {
     }
 
     // Metoda start
-    public void start(int z) {
+    public int start(int z) {
         if (z < 5 || z > 20)
             throw new IllegalArgumentException("Zakres: 5-20.");
         zakres = z;
@@ -29,11 +30,14 @@ public class Gra {
         } while (licz >= mian);
         liczba = new Wymierna(licz, mian);
         // Inicjalizacja
-        maksIloscProb = 3;
+        maksIloscProb = (int) Math.ceil(3 * (Math.log(zakres) / Math.log(2)));
         licznikProb = 0;
         aktywna = true;
+        System.out.println(liczba.getLicznik() + " " + liczba.getMianownik());
 
-        assert liczba.getLicznik() < liczba.getMianownik() : "Błąd losowania w metodzie start().";
+        return  liczba.getMianownik() - liczba.getLicznik() > 0
+                ? maksIloscProb 
+                : -1;
     }
 
     // Metoda odgadnij - zwraca "zwycięstwo", "porażka" lub "kontynuacja"
@@ -45,27 +49,43 @@ public class Gra {
 
         if (propozycja.equals(liczba)) {
             aktywna = false;
-            return "zwycięstwo";
+            return "ZWYCIĘSTWO";
         }
 
         if (licznikProb == maksIloscProb) {
             aktywna = false;
-            return "porażka";
+            return "PORAŻKA";
         }
 
-        return "kontynuacja";
+        return "KONTYNUACJA";
     }
 
     // Metoda do rezygnacji z rozgrywki
     public String rezygnuj() {
-        if (!aktywna)
-            throw new IllegalStateException("Gra nie jest aktywna.");
         aktywna = false;
-        return "rezygnacja";
+        return "REZYGNACJA";
     }
 
     // Metoda do sprawdzenia, czy gra jest aktywna
     public boolean czyAktywna() {
         return aktywna;
+    }
+
+    public int ileProbUzyto() {
+        return licznikProb;
+    }
+
+    public int ileProbZostalo() {
+        return maksIloscProb - licznikProb;
+    }
+
+    public int porownaj(Wymierna proba) {
+        if (!aktywna) {
+            throw new IllegalStateException("Gra nie jest aktywna.");
+        }
+        if (proba.equals(liczba)) {
+            return 0;
+        }
+        return proba.compareTo(liczba);
     }
 }
