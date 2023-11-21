@@ -28,9 +28,9 @@ Deklaracje:
 - Lista 4: 9 / 9 (40 / 45)
 - Lista 5: 0 / 10 (choroba, do odrobienia) (40 + x / 55)
 - Lista 6: 4 / 10 (44 + x / 65)
-- Lista 7: 5 / 14 (49 + x / 79)
+- Lista 7: 5 / 13 (49 + x / 78)
 
-Jak na razie: 49 + x pkt (/79)
+Jak na razie: 49 + x pkt (/78)
 
 65 na 3
 75 na 4
