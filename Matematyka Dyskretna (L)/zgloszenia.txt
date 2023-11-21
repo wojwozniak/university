@@ -4,6 +4,7 @@ Zadania domowe:
 - z7 / L3 : ?
 - z1 / L4 : ?
 - z1 / L6 : ?
+- z3 / L7 : ?
 
 Jak na razie: 
 - 1 + ? pkt z niegrafowych
@@ -27,8 +28,9 @@ Deklaracje:
 - Lista 4: 9 / 9 (40 / 45)
 - Lista 5: 0 / 10 (choroba, do odrobienia) (40 + x / 55)
 - Lista 6: 4 / 10 (44 + x / 65)
+- Lista 7: 5 / 14 (49 + x / 79)
 
-Jak na razie: 44 + x pkt (/65)
+Jak na razie: 49 + x pkt (/79)
 
 65 na 3
 75 na 4
