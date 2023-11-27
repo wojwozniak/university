@@ -139,6 +139,22 @@ public class Okno extends Frame {
                 obslugaPropozycji();
             }
         });
+        propozycjaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                try {
+                    int licznik = Integer.parseInt(licznikTextField.getText());
+                    int mianownik = Integer.parseInt(mianownikTextField.getText());
+                    
+                    Wymierna lb = new Wymierna(licznik, mianownik);
+                    wyswietlaczField.setText("Twoja liczba: " + lb.toString() + " (" + lb.toFloat() + "). Kliknij, aby potwierdzić wybór!");
+                    wyswietlaczField.setBackground(Color.YELLOW);
+                }
+                catch (NumberFormatException e) {
+                    wyswietlaczField.setText("Niepoprawny format aktualnie wpisanej liczby!");
+                    wyswietlaczField.setBackground(Color.RED);
+                }                
+            }
+        });
 
         // Label zgadnięty górny limit
         zgadnietyGornyLimitLabel = new Label("Zgadnięty górny limit");
@@ -264,20 +280,24 @@ public class Okno extends Frame {
                     int porownanie = gra.porownaj(propozycja);
                     if (porownanie < 0) {
                         wyswietlaczField
-                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " " + "(" + propozycja.toFloat() + ") jest za mała!");
+                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " " + "("
+                                        + propozycja.toFloat() + ") jest za mała!");
                         if (zgadnietyDolnyLimit == null || zgadnietyDolnyLimit.compareTo(propozycja) < 0) {
                             zgadnietyDolnyLimit = propozycja;
                             zgadnietyDolnyLimitLabel
-                                    .setText("Zgadnięty dolny limit: " + zgadnietyDolnyLimit.toString() + " (" + zgadnietyDolnyLimit.toFloat() + ")");
+                                    .setText("Zgadnięty dolny limit: " + zgadnietyDolnyLimit.toString() + " ("
+                                            + zgadnietyDolnyLimit.toFloat() + ")");
                         }
 
                     } else {
                         wyswietlaczField
-                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " " + "(" + propozycja.toFloat() + ") jest za duża!");
+                                .setText("Podana przez Ciebie liczba " + propozycja.toString() + " " + "("
+                                        + propozycja.toFloat() + ") jest za duża!");
                         if (zgadnietyGornyLimit == null || zgadnietyGornyLimit.compareTo(propozycja) > 0) {
                             zgadnietyGornyLimit = propozycja;
                             zgadnietyGornyLimitLabel
-                                    .setText("Zgadnięty górny limit: " + zgadnietyGornyLimit.toString() + " (" + zgadnietyGornyLimit.toFloat() + ")");
+                                    .setText("Zgadnięty górny limit: " + zgadnietyGornyLimit.toString() + " ("
+                                            + zgadnietyGornyLimit.toFloat() + ")");
                         }
 
                     }
