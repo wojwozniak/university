@@ -14,8 +14,8 @@ def p(x, xs):
 # Funkcja zwracajaca n punktów Czebyszewa w przedziale [-1, 1]
 def chebyshev(n):
     chebyshev_points = [] 
-    for k in range(n):
-        cosval = (k * math.pi) / n
+    for k in range(1, n+1):
+        cosval = ((2 * k - 1)  * math.pi) / (2 * n)
         chebyshev_point = math.cos(cosval)
         chebyshev_points.append(chebyshev_point)
         
