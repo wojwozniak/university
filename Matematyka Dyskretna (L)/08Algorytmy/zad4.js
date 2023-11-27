@@ -6,19 +6,19 @@
 const czyRowne = (G, H) => {
     if (G.length !== H.length) return false; // Sprawdzamy czy warunek na pewno jest spełniony
     const n = G.length; // Liczba wierzchołków
-    
+
     for(let i=0; i<n; ++i) {
         let visited = new Array(n).fill(false); // Tablica odwiedzonych wierzchołków
-        let node_diff = 0; // Różnica wierzchołków
+        let difference = 0; // Różnica wierzchołków
         for(vertex in G[i]) {
             visited[vertex] = true; // Oznaczamy wierzchołek jako odwiedzony
-            ++node_diff; // Zwiększamy różnicę wierzchołków
+            ++difference; // Zwiększamy różnicę wierzchołków
         }
         for(vertex in H[i]) {
-            if(visited[vertex]) --node_diff; // Jeśli wierzchołek jest odwiedzony to zmniejszamy różnicę
+            if(visited[vertex]) --difference; // Jeśli wierzchołek jest odwiedzony to zmniejszamy różnicę
             else return false; // W przeciwnym wypadku zwracamy false
         }
-        if(node_diff !== 0) return false; // Jeśli różnica wierzchołków jest różna od 0 to zwracamy false
+        if(difference !== 0) return false; // Jeśli różnica wierzchołków jest różna od 0 to zwracamy false
     }
     return true; // Zwracamy true jeśli wszystkie warunki są spełnione
 }
