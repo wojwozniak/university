@@ -29,9 +29,9 @@ Deklaracje:
 - Lista 5: 0 / 10 (choroba) (40 / 55)
 - Lista 6: 4 / 10 (44 / 65)
 - Lista 7: 5 / 13 (49 / 78)
-- Lista 8: x
+- Lista 8: 3 / 8 (52 / 86)
 
-Jak na razie: 49 pkt (/78)
+Jak na razie: 52 pkt (/86)
 
 65 na 3
 75 na 4
