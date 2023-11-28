@@ -4,27 +4,12 @@
 # Zamiast tego pobiorę z api inne dane do części z przewidywaniem inflacji na 2023 rok.
 from inflation import data_2021, data_2022
 from matplotlib import pyplot as plt
-from private import apikey
-import aiohttp
-import asyncio
-
-# Funkcja do pobierania danych z API
-async def fetch_data(url, headers):
-    async with aiohttp.ClientSession() as session:
-        try:
-            async with session.get(url, headers=headers) as response:
-                response.raise_for_status()
-                data = await response.text()
-                return data
-        except aiohttp.ClientResponseError as e:
-            print(e)
-            return None
 
 
 # Generowanie wykresu
 def generate_plot():
     plt.figure(figsize=(8, 6)) # Rozmiar wykresu
-    plt.title("Inflacja w Polsce w latach 2021-2022 i predykcja na 2023 rok")
+    plt.title("Inflacja w Polsce w latach 2021-2022")
     plt.xlabel("Miesiąc")
     plt.ylabel("Wartość inflacji [%]")
     plt.grid() # Dodajemy siatkę w tle
@@ -36,4 +21,4 @@ def generate_plot():
     plt.savefig("List09/result.png") # Zapisanie wykresu do pliku
     plt.show() # Wyświetlenie wykresu w oknie
     
-#generate_plot()
+generate_plot()
