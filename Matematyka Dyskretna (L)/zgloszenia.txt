@@ -1,15 +1,15 @@
 Zadania domowe:
 - z3 / L1 : 1 pkt
-- z2 / L2 : ?
-- z7 / L3 : ?
+- z2 / L2 : 1 pkt
+- z7 / L3 : 0.9 pkt
 - z1 / L4 : ?
 - z1 / L6 : ?
 - z3 / L7 : ?
 
 Jak na razie: 
-- 1 + ? pkt z niegrafowych
+- 2.9 + ? pkt z niegrafowych
 - 0 / min. 3 z grafowych
-1 + ? / min. 8 pkt
+2.9 + ? / min. 8 pkt
 Do zdobycia: min. 8 pkt, w tym min 3 z list grafowych
 
 Tablica:
@@ -26,11 +26,12 @@ Deklaracje:
 - Lista 2: 13 / 13 (22 / 25)
 - Lista 3: 9 / 11 (31 / 36)
 - Lista 4: 9 / 9 (40 / 45)
-- Lista 5: 0 / 10 (choroba, do odrobienia) (40 + x / 55)
-- Lista 6: 4 / 10 (44 + x / 65)
-- Lista 7: 5 / 13 (49 + x / 78)
+- Lista 5: 0 / 10 (choroba) (40 / 55)
+- Lista 6: 4 / 10 (44 / 65)
+- Lista 7: 5 / 13 (49 / 78)
+- Lista 8: x
 
-Jak na razie: 49 + x pkt (/78)
+Jak na razie: 49 pkt (/78)
 
 65 na 3
 75 na 4
