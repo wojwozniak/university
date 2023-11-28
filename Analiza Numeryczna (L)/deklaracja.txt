@@ -1,10 +1,12 @@
 Punkty z list:
 
-Lista 1: 8/9 (bez zadania 7)
+Lista 1: 8/9
 Lista 2: 12/10 (2 bonusowe za 4b) (20/19)
 Lista 3: 4/10 (24/29)
-Lista 4: 7/11 (+ zgloszenie) (31/40)
-Lista 5: 0/11 (do odrobienia kiedyś za 6/11) - jeszcze zad10 proste ogarnac (31+x/51)
-Lista 6: 9/9 (40+x/60)
+Lista 4: 7/11 (31/40)
+Lista 5: 4/11 (35/51)
+Lista 6: 9/9 (44/60)
+Sprawdzian: 10/30
+Lista 7: x
 
-Jak na razie: 40+x/60 (/ 64 wymagane do zdania)
+Jak na razie: 54/90 (/ 64 wymagane do zdania)
