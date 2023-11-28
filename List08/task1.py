@@ -25,13 +25,11 @@ async def main():
     urlfull2 = url2 + endpoint2
     
     headers1 = {
-        "X-RapidAPI-Key": apikey1,
-        "X-RapidAPI-Host": url1
+        "X-RapidAPI-Key": apikey1
     }
     
     headers2 = {
-        "X-RapidAPI-Key": apikey2,
-        "X-RapidAPI-Host": url2
+        "X-RapidAPI-Key": apikey2
     }
 
     tasks = [
