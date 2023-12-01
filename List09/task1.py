@@ -1,7 +1,3 @@
-# Dane na temat inflacji pobrałem ręcznie - API 
-# stat.gov.pl wymaga wysłania formularza i oczekiwania na odpowiedź,
-# a nigdzie indziej nie znalazłem darmowego api z tymi danymi.
-# Zamiast tego pobiorę z api inne dane do części z przewidywaniem inflacji na 2023 rok.
 from inflation import data_2021, data_2022
 from matplotlib import pyplot as plt
 
