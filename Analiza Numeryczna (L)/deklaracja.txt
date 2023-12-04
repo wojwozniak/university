@@ -1,18 +1,21 @@
 Punkty z list:
-
 Lista 1: 8/9
 Lista 2: 12/10 (2 bonusowe za 4b) (20/19)
 Lista 3: 4/10 (24/29)
 Lista 4: 7/11 (31/40)
 Lista 5: 4/11 (35/51)
-Blok 1 zaliczony: -> L1, L2, L4
+Blok 1: -> L1, L2, L4 - zaliczone
 Lista 6: 9/9 (44/60)
 Sprawdzian: 10/30 (54/90)
 Lista 7: 7/11 (61 / 101)
-Lista 8: x2
-Lista 9: x3
+Lista 8: 6 / 9 (67 / 110)
+Lista 9: x
+Lista 10: x
 Blok 2: -> L6, L7, ....
+Lista 11: x
+Lista 12: x
+Lista 13: x
+Lista 14: x
+Blok 3: -> ...
 
-
-
-Jak na razie: 61/101 (/ 64 wymagane do zdania)
+Łącznie wymagane 64 pkt, idk ile było na wyższe ale chyba 5 przy około 100 pkt
