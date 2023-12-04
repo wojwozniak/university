@@ -4,7 +4,7 @@ package algorithms;
 public class BST<T extends Comparable<T>> implements Dictionary<T> {
 
     // Korzeń drzewa
-    Node root;
+    public Node root;
 
     // Wewnętrzna klasa node reprezentująca węzeł drzewa
     class Node {
