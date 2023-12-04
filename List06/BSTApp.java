@@ -1,3 +1,5 @@
+package List06;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,12 +7,11 @@ import java.awt.event.ActionListener;
 
 import algorithms.BST;
 
-
 // Prosta aplikacja okienkowa obsługująca drzewo BST
 public class BSTApp extends JFrame {
 
     // Prywatne pola klasy - drzewo BST i panel do rysowania drzewa
-    private BST<String> bst;
+    private BST<Integer> bst;
     private CustomPanel customPanel;
 
     // Metoda main tworzy obiekt klasy BSTApp
@@ -50,11 +51,10 @@ public class BSTApp extends JFrame {
         inputField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String value = inputField.getText();
-                if (!value.isEmpty()) {
-                    bst.insert(value);
-                    customPanel.repaint();
-                }
+                String input = inputField.getText();
+                int value = Integer.parseInt(input);
+                bst.insert(value);
+                customPanel.repaint();
                 inputField.setText("");
             }
         });
@@ -64,11 +64,10 @@ public class BSTApp extends JFrame {
         insertBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String value = inputField.getText();
-                if (!value.isEmpty()) {
-                    bst.insert(value);
-                    customPanel.repaint();
-                }
+                String input = inputField.getText();
+                int value = Integer.parseInt(input);
+                bst.insert(value);
+                customPanel.repaint();
                 inputField.setText("");
             }
         });
@@ -79,11 +78,10 @@ public class BSTApp extends JFrame {
         removeBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String value = inputField.getText();
-                if (!value.isEmpty()) {
-                    bst.remove(value);
-                    customPanel.repaint();
-                }
+                String input = inputField.getText();
+                int value = Integer.parseInt(input);
+                bst.remove(value);
+                customPanel.repaint();
             }
         });
         controlPanel.add(removeBtn);
@@ -108,40 +106,36 @@ public class BSTApp extends JFrame {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            drawTree(g, getWidth() / 2, 30, bst.root);
+            drawTree(g, getWidth() / 2, 30, bst.root, 1);
         }
 
-        // Stałe do rysowania drzewa
         private static final int r = 30;
-        private static final int h = 60;
+        private static final int h = 80;
 
-        // Rekurencyjna metoda rysująca drzewo
-        private void drawTree(Graphics g, int x, int y, BST<String>.Node node) {
+        private void drawTree(Graphics g, int x, int y, BST<Integer>.Node node, int depth) {
             if (node != null) {
-                int leftX = x - 100;
-                int rightX = x + 100;
+                int leftX = x - 450 / depth;
+                int rightX = x + 450 / depth;
                 int childY = y + h;
-        
-                // Recursively draw the left subtree if the left child exists
+
+                // Rekursywnie rysujemy lewe poddrzewo jeśli istnieje
                 if (node.left != null) {
-                    drawTree(g, leftX, childY, node.left);
-        
-                    // Draw a line connecting the current node to its left child
+                    drawTree(g, leftX, childY, node.left, depth + 1);
+
+                    // Rysujemy linię łączącą węzeł z lewym dzieckiem
                     g.setColor(Color.BLACK);
                     g.drawLine(x, y + r, leftX, childY - r);
                 }
-        
-                // Draw the current node
+
+                // Rysujemy węzeł
                 g.setColor(Color.GREEN);
                 g.fillOval(x - r, y - r, 2 * r, 2 * r);
                 g.setColor(Color.BLACK);
-                g.drawString(node.value, x - 5, y + 5);
-        
-                // Recursively draw the right subtree if the right child exists
+                g.drawString(node.value.toString(), x - 5, y + 5);
+
+                // Rekursywnie rysujemy prawe poddrzewo jeśli istnieje
                 if (node.right != null) {
-                    drawTree(g, rightX, childY, node.right);
-        
-                    // Draw a line connecting the current node to its right child
+                    drawTree(g, rightX, childY, node.right, depth + 1);
                     g.setColor(Color.BLACK);
                     g.drawLine(x, y + r, rightX, childY - r);
                 }
