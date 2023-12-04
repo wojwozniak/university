@@ -52,10 +52,9 @@ p, q = eval_pq(lamb)
 h = eval_h(ts)
 
 
-
 # Funkcje do wyliczania d, u i M
 def eval_d(x, y):
-    d = [0]  
+    d = [0]
     for i in range(1, len(x)-1):
         f1 = (y[i+1] - y[i]) / x[i+1] - x[i]
         f2 = (y[i] - y[i-1]) / x[i] - x[i-1]
@@ -72,22 +71,22 @@ def eval_u(d, lamb, p):
 
 # Funkcja do wyliczania M
 def eval_m(u, q):
-    M = [u[-1]] # ostatni element listy u
-    max = len(u) # dlugosc listy u
-    for i in range(1, max): # Iterujemy od 1 do max, ale odejmujemy we wzorze więc lecimy od tyłu
-        M.append(u[max-i] + q[max-i]*M[i-1]) # Wyliczamy wartości M
-    M.append(0) # Dodajemy 0 na koniec listy
-    M = M[::-1] # Odwracamy listę
+    M = [u[-1]]  # ostatni element listy u
+    max = len(u)  # dlugosc listy u
+    for i in range(1, max):  # Iterujemy od 1 do max, ale odejmujemy we wzorze więc lecimy od tyłu
+        M.append(u[max-i] + q[max-i]*M[i-1])  # Wyliczamy wartości M
+    M.append(0)  # Dodajemy 0 na koniec listy
+    M = M[::-1]  # Odwracamy listę
     return M
 
 # Funkcja pomocnicza wyliczająca S_k dla danego xk
 def eval_sk(xk, x, y, m, h, k):
     return (
-            (1/6) * m[k-1] * (x[k] - xk)**3
-            + (1/6) * m[k] * (xk - x[k-1])**3
-            + (y[k-1] - (1/6) * m[k-1] * h[k]**2)*(x[k] - xk)
-            + (y[k] - (1/6) * m[k] * h[k]**2)*(xk - x[k-1])
-        )/h[k]
+        (1/6) * m[k-1] * (x[k] - xk)**3
+        + (1/6) * m[k] * (xk - x[k-1])**3
+        + (y[k-1] - (1/6) * m[k-1] * h[k]**2)*(x[k] - xk)
+        + (y[k] - (1/6) * m[k] * h[k]**2)*(xk - x[k-1])
+    )/h[k]
 
 
 # Funkcja do wyliczenia S
@@ -96,8 +95,8 @@ def eval_s(x, y, p, q, lamb, h, xs):
     d = eval_d(x, y)
     u = eval_u(d, lamb, p)
     m = eval_m(u, q)
-    
-    ys = [] # Lista do przechowywania wyników
+
+    ys = []  # Lista do przechowywania wyników
     i = 1
     for xk in xs:
         if (xk >= x[i-1]) and (xk <= x[i]):
@@ -105,7 +104,7 @@ def eval_s(x, y, p, q, lamb, h, xs):
         if xk > x[i]:
             i += 1
             ys.append(eval_sk(xk, x, y, m, h, i))
-    
+
     return ys
 
 
@@ -118,9 +117,9 @@ y_result = eval_s(ts, ys, p, q, lamb, h, a)
 ax.plot(x_result, y_result, color='red')
 plt.show()
 
-#points = list(zip(x_result, y_result))
-#points.sort(key=lambda point: point[0])
-#x_result, y_result = zip(*points)
+# points = list(zip(x_result, y_result))
+# points.sort(key=lambda point: point[0])
+# x_result, y_result = zip(*points)
 
-#ax.plot(x_result, y_result, color='red')
-#plt.show()
+# ax.plot(x_result, y_result, color='red')
+# plt.show()
