@@ -71,12 +71,12 @@ def eval_u(d, lamb, p):
 
 # Funkcja do wyliczania M
 def eval_m(u, q):
-    M = [u[-1]]  # ostatni element listy u
-    max = len(u)  # dlugosc listy u
+    M = [u[-1]] 
+    max = len(u)  
     for i in range(1, max):  # Iterujemy od 1 do max, ale odejmujemy we wzorze więc lecimy od tyłu
-        M.append(u[max-i] + q[max-i]*M[i-1])  # Wyliczamy wartości M
-    M.append(0)  # Dodajemy 0 na koniec listy
-    M = M[::-1]  # Odwracamy listę
+        M.append(u[max-i] + q[max-i]*M[i-1])  
+    M.append(0) 
+    M = M[::-1] 
     return M
 
 # Funkcja pomocnicza wyliczająca S_k dla danego xk
