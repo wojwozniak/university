@@ -11,7 +11,7 @@ const initializeArrays = (n) => {
 
 /**
  * Funkcja isBipartite sprawdza czy graf jest dwudzielny
- * @param {Array[]} graph - Graf w postaci tablicy list sąsiedztwa 
+ * @param {Number[][]} graph - Graf w postaci tablicy list sąsiedztwa 
  * @param {number} v - Wierzchołek startowy - może być dowolny
  * @param {boolean[]} visited - Tablica odwiedzonych wierzchołków
  * @param {number[]} color - Tablica kolorów wierzchołków
