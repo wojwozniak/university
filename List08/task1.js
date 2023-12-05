@@ -22,6 +22,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+app.get('/upload', async (req, res) => {
+    var content = await fs.promises.readFile('List08/upload.html', 'utf-8');
+    res.end(content);
+});
+
 app.post('/upload', upload.single('file'), (req, res) => {
     res.send('File uploaded successfully!');
 });
