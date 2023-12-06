@@ -5,6 +5,7 @@ Zadania domowe:
 - z1 / L4 : ?
 - z1 / L6 : ?
 - z3 / L7 : ?
+- z8 / L9 : ?
 
 Jak na razie: 
 - 2.9 + ? pkt z niegrafowych
@@ -22,17 +23,19 @@ Jak na razie: 3 pkt
 Do zdobycia: min. 7 pkt
 
 Deklaracje:
-- Lista 1: 9 / 12
-- Lista 2: 13 / 13 (22 / 25)
-- Lista 3: 9 / 11 (31 / 36)
-- Lista 4: 9 / 9 (40 / 45)
-- Lista 5: 0 / 10 (choroba) (40 / 55)
-- Lista 6: 4 / 10 (44 / 65)
-- Lista 7: 5 / 13 (49 / 78)
-- Lista 8: 3 / 8 (52 / 86)
+- Lista 1: 9 / 12 - 1 zaliczona
+- Lista 2: 13 / 13 (22 / 25) - 2 zaliczone
+- Lista 3: 9 / 11 (31 / 36) - 3 zaliczone
+- Lista 4: 9 / 9 (40 / 45) - 4 zaliczone
+- Lista 5: 0 / 10 (choroba) (40 / 55) - 4 zaliczone
+- Lista 6: 4 / 10 (44 / 65) - 5 zaliczone
+- Lista 7: 5 / 13 (49 / 78) - 6 zaliczone
+- Lista 8: 3 / 8 (52 / 86) - 7 zaliczone
+- Lista 9: 6 / 11 (58 / 97) - 8 zaliczone
 
-Jak na razie: 52 pkt (/86)
+Jak na razie: 58 pkt
 
 65 na 3
 75 na 4
 (punkty)
++ 10 zaliczonych list
