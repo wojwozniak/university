@@ -5,6 +5,7 @@ List04: 8/8 (35/35) (100%) - z 7.11
 List05: 10/10 (45/45) (100%) - z 14.11
 List06: 10/10 (55/55) (100%) - z 21.11
 List07: 4/5 (59/60) (98%) - z 28.11
-List08: x/10 (59 + x /67) - z 5.12
-List09: y / 25 (59 + x + y/92) - do końca semestru
-Łącznie: 59 + x + y / 92
+List08: 5/7 (64/67) (96%) - z 5.12
+List09: x / 25 (59 + x / 92) - do końca semestru
+List10: - jeszcze nieznana, pojawi sie przy bazach danych
+Łącznie: 59 + x / 92
