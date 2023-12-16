@@ -35,9 +35,10 @@ Deklaracje:
 - Lista 7: 5 / 13 (49 / 78) - 6 zaliczonych
 - Lista 8: 3 / 8 (52 / 86) - 7 zaliczonych
 - Lista 9: 6 / 11 (58 / 97) - 8 zaliczonych
-- Lista 10: x / 10 (58 + x / 107)
+- Lista 10: 4 / 10 (62 / 107)
+- Lista 11: x
 
-Jak na razie: 58 pkt
+Jak na razie: 62 pkt
 
 71 na 3
 81? na 4
