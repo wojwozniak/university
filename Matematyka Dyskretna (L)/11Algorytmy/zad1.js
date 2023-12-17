@@ -26,8 +26,6 @@ const topoSort = (graph, queue) => {
         }
     }
 
-    if(graph.some(x => x.length > 0)) return null;
-
-
+    if(graph.some(x => x.length > 0)) return null; // Jeśli graf zawiera cykl, zwróć null
     return result;
 }
