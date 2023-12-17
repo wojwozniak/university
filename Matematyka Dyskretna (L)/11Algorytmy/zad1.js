@@ -1,13 +1,13 @@
 /**
  * Sortowanie topologiczne w złożoności czasowej O(V + E)
  * @param {[][]} graph - graf w postaci list sąsiedztwa
- * @param {[]} queue - kolejka wierzchołków o stopniu wejściowym równym 0
+ * @param {[]} zerolist - lista wierzchołków o stopniu wejściowym równym 0
  * @returns {[]} - posortowana topologicznie kolejność wierzchołków
  * lub null jeśli graf zawiera cykl (ale z założenia zadania nie zawiera)
  */
-const topoSort = (graph, queue) => {
+const topoSort = (graph, zerolist) => {
     const R = []; // Lista wynikowa
-    let Q = [...queue]; // Kopia kolejki
+    let Q = [...zerolist]; // Kopia kolejki
 
     // Dopóki kolejka nie jest pusta
     while (Q.length > 0) {
