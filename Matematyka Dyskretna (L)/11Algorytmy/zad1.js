@@ -1,7 +1,7 @@
 /**
  * Sortowanie topologiczne w złożoności czasowej O(V + E)
  * @param {[][]} graph - graf w postaci list sąsiedztwa
- * @param {[]} queue - kolejka wierzchołków 0 stopnia
+ * @param {[]} queue - kolejka wierzchołków o stopniu wejściowym równym 0
  * @returns {[]} - posortowana topologicznie kolejność wierzchołków
  * lub null jeśli graf zawiera cykl (ale z założenia zadania nie zawiera)
  */
