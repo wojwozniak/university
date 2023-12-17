@@ -7,7 +7,7 @@
  */
 const topoSort = (graph, zerolist) => {
     const R = []; // Lista wynikowa
-    let Q = [...zerolist]; // Kopia kolejki
+    const Q = [...zerolist]; // Kopia kolejki
 
     // Dopóki kolejka nie jest pusta
     while (Q.length > 0) {
