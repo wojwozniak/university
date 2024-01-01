@@ -1,0 +1,7 @@
+Zrobione:
+- introduction
+- variables
+- strings
+- numbers
+- if-statements
+- arrays

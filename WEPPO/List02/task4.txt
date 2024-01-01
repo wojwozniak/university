@@ -1,0 +1,6 @@
+typeof sprawdza typ zmiennej i zwraca string
+np. "number" "string" "boolean" "object" "function" "undefined"
+typeof null zwraca "object" - błąd w JS
+
+
+instanceof sprawdza czy zmienna jest instancją danej klasy i zwraca boolean
