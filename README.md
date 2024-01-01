@@ -1,9 +1,12 @@
-# University
+# University Courses - UWr
 
+## Introduction
 
-## Table of Contents (in Polish)
+This repository contains my solutions to the tasks from the courses I took at the University of Warsaw. The courses are listed below. The repository is organized by courses. Each course has its own directory. The directory contains the tasks and the solutions.
 
-### Semestr I:
+## Table of Contents
+
+### Semester I:
 - Logika dla Informatyków
 - Analiza Matematyczna
 - [x] Kurs C
@@ -11,7 +14,10 @@
 - [x] Kurs tworzenia aplikacji frontendowych
 - Manipulacje i nadużycia na rynkach finansowych
 
-### Semestr II:
+### Semester II:
 - Algebra
 - [x] Metody Programowania
-- [x] Programowanie Obiektowe
+- [x] Programowanie Obiektowe 
+
+### Semester III:
+- [x] Wybrane Elementy Praktyki Projektowania Oprogramowania
