@@ -581,3 +581,14 @@ List09/Task01/tempCodeRunnerFile.rb
 List09/Task02/tempCodeRunnerFile.rb
 List10/Task01/tempCodeRunnerFile.rb
 List10/Task02/tempCodeRunnerFile.rb
+.vscode
+tempCodeRunnerFile.java
+*.class
+bin
+obj
+*.cbp
+*.layout
+*.depend
+tempCodeRunnerFile.cpp
+tempCodeRunnerFile.c
+Analiza Numeryczna (L)/skrypt.pdf

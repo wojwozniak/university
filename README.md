@@ -21,3 +21,5 @@ This repository contains my solutions to the tasks from the courses I took at th
 
 ### Semester III:
 - [x] Wybrane Elementy Praktyki Projektowania Oprogramowania
+- [x] Matematyka Dyskretna (L)
+- [x] Analiza Numeryczna
