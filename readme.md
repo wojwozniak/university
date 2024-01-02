@@ -24,3 +24,4 @@ This repository contains my solutions to the tasks from the courses I took at th
 - [x] Matematyka Dyskretna (L)
 - [x] Analiza Numeryczna
 - [x] Kurs Java
+- [x] Kurs Python 
