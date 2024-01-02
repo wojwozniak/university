@@ -592,3 +592,6 @@ obj
 tempCodeRunnerFile.cpp
 tempCodeRunnerFile.c
 Analiza Numeryczna (L)/skrypt.pdf
+*.class
+tempCodeRunnerFile.java
+.idea

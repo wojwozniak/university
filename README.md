@@ -23,3 +23,4 @@ This repository contains my solutions to the tasks from the courses I took at th
 - [x] Wybrane Elementy Praktyki Projektowania Oprogramowania
 - [x] Matematyka Dyskretna (L)
 - [x] Analiza Numeryczna
+- [x] Kurs Java
