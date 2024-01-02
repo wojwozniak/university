@@ -7,15 +7,15 @@ This repository contains my solutions to the tasks from the courses I took at th
 ## Table of Contents
 
 ### Semester I:
-- Logika dla Informatyków
-- Analiza Matematyczna
+- [x] Logika dla Informatyków
+- [x] Analiza Matematyczna
 - [x] Kurs C
 - [x] Wstęp do Informatyki
 - [x] Kurs tworzenia aplikacji frontendowych
 - Manipulacje i nadużycia na rynkach finansowych
 
 ### Semester II:
-- Algebra
+- [x] Algebra
 - [x] Metody Programowania
 - [x] Programowanie Obiektowe 
 
