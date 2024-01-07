@@ -3,27 +3,23 @@ Zadania domowe:
 - z2 / L2 : 1 pkt
 - z7 / L3 : 0.9 pkt
 - z1 / L4 : 0.2 pkt
-- z1 / L6 : ?
-- z3 / L7 : ?
 - z4 / L8 : ?
-- z8 / L9 : ?
 - z4 / L10 : ?
 - z1 / L11 : ?
 
 Jak na razie: 
-- 3.2 + ? pkt z niegrafowych
+- 3.1 pkt z niegrafowych
 - ? / min. 3 z grafowych
-2.9 + ? / min. 8 pkt
-Do zdobycia: min. 8 pkt, w tym min 3 z list grafowych
-idk czy ileś więcej na 4
+Suma: 3.1 + ? / min. 8 pkt
 
 Tablica:
 - z12 / L1 : 1 pkt
 - z7 / L2 : 0,5 pkt
 - z12 / L3 : 1 pkt
 - z12 / L6 : 0,5 pkt
+- z7 / L11 : 1 pkt
 
-Jak na razie: 3 pkt
+Jak na razie: 4 pkt
 Do zdobycia: min. 5 pkt, chyba 7 na 4
 
 Deklaracje:
@@ -37,7 +33,8 @@ Deklaracje:
 - Lista 8: 3 / 8 (52 / 86) - 7 zaliczonych
 - Lista 9: 6 / 11 (58 / 97) - 8 zaliczonych
 - Lista 10: 4 / 10 (62 / 107) - 9 zaliczonych
-- Lista 11: 3 / 9  (65 / 116) - ????
+- Lista 11: 3 / 9  (65 / 116) - 10 zaliczonych /// Wymaganie 10 zaliczonych list - zaliczone
+- Lista 12: ? / 11 (65 + ? / 127) - ???
 
 Jak na razie: 65 pkt
 
