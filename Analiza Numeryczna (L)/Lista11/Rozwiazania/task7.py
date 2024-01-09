@@ -90,6 +90,7 @@ def genChartsC(x_points, y_points, x_plot_values, degree):
     ck_minus_1 = eval_ck(Pk_minus_2_list, sum_Pk_minus_2_square, x_points) # c_k-1 (c1)
     Pk_minus_1_list = [x - ck_minus_1 for x in x_points] # Pk-1 (P1)
     Pk_minus_1_square_list = [p * p for p in Pk_minus_1_list] # Pk-1^2 (P1^2)
+    
     Pk_square = [p * p for p in Pk_minus_1_list] # Pk^2 (P2^2)
     sum_Pk_square = sum(Pk_square) # suma Pk^2 (suma P2^2)
     sum_Pk_minus_1_square = len(x_points) # suma Pk-1^2 (suma P1^2)
@@ -135,3 +136,8 @@ for degree in range(2, 16):
 
 plt.tight_layout()
 plt.show()
+
+
+# Komentarz
+# W b efekt Rungego
+# W c od trzeciego stopnia już jest dobrze
