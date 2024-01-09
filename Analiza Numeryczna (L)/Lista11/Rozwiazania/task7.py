@@ -85,46 +85,59 @@ def genChartsC(x_points, y_points, x_plot_values, degree):
     plt.subplot(5, 4, degree + 1)
     plt.title(f"c) Wielomian optymalny, stopień {degree}")
 
-    Pk_minus_2_list = [1 for x in range(len(x_points))] # Pk-2, aktualnie P0
-    sum_Pk_minus_2_square = len(x_points) # suma Pk-2^2 (w tym przypadku P0^2)
-    ck_minus_1 = eval_ck(Pk_minus_2_list, sum_Pk_minus_2_square, x_points) # c_k-1 (c1)
-    Pk_minus_1_list = [x - ck_minus_1 for x in x_points] # Pk-1 (P1)
-    Pk_minus_1_square_list = [p * p for p in Pk_minus_1_list] # Pk-1^2 (P1^2)
-    
-    Pk_square = [p * p for p in Pk_minus_1_list] # Pk^2 (P2^2)
-    sum_Pk_square = sum(Pk_square) # suma Pk^2 (suma P2^2)
-    sum_Pk_minus_1_square = len(x_points) # suma Pk-1^2 (suma P1^2)
+    Pk_minus_2_list = [1 for x in range(len(x_points))]  # Pk-2, aktualnie P0
+    sum_Pk_minus_2_square = len(x_points)  # suma Pk-2^2 (w tym przypadku P0^2)
+    ck_minus_1 = eval_ck(
+        Pk_minus_2_list,
+        sum_Pk_minus_2_square,
+        x_points)  # c_k-1 (c1)
+    Pk_minus_1_list = [x - ck_minus_1 for x in x_points]  # Pk-1 (P1)
+    Pk_minus_1_square_list = [p * p for p in Pk_minus_1_list]  # Pk-1^2 (P1^2)
+
+    sum_Pk_minus_1_square = len(x_points)  # suma Pk-1^2 (suma P1^2)
+
+    Pk_square = [p * p for p in Pk_minus_1_list]  # Pk^2 (P2^2)
+    sum_Pk_square = sum(Pk_square)  # suma Pk^2 (suma P2^2)
 
     # Listy pomocnicze - wartości początkowe
-    c_list = [0, ck_minus_1] # c_k
-    d_list = [0, 0] # d_k
-    a_list = [eval_ak(Pk_minus_2_list, sum_Pk_minus_2_square, y_points), eval_ak(
-        Pk_minus_1_list, sum_Pk_square, y_points)] # a_k
+    c_list = [0, ck_minus_1]  # c_k
+    d_list = [0, 0]  # d_k
+    a_list = [
+        eval_ak(Pk_minus_2_list, sum_Pk_minus_2_square, y_points),
+        eval_ak(Pk_minus_1_list, sum_Pk_square, y_points)
+    ]  # a_k
 
     # Wielomiany Pk - w zad. 3 rozpisane, liczymy iteracyjnie dla k = 2, 3, ..., degree
     for k in range(2, degree + 1):
-        sum_Pk_minus_2_square = sum_Pk_minus_1_square # suma Pk-2^2
-        sum_Pk_minus_1_square = sum_Pk_square # suma Pk-1^2
+        sum_Pk_minus_2_square = sum_Pk_minus_1_square  # suma Pk-2^2
+        sum_Pk_minus_1_square = sum_Pk_square  # suma Pk-1^2
 
-        ck = eval_ck(Pk_minus_1_square_list, sum_Pk_minus_1_square, x_points) # c_k
-        dk = eval_dk(sum_Pk_minus_1_square, sum_Pk_minus_2_square) # d_k
+        ck = eval_ck(Pk_minus_1_square_list,
+                     sum_Pk_minus_1_square, x_points)  # c_k
+        dk = eval_dk(sum_Pk_minus_1_square, sum_Pk_minus_2_square)  # d_k
 
-        old_Pk_minus_1 = Pk_minus_1_list # Pk-1
-        Pk_minus_1_list = [(x - ck) * xPk_minus_1 - dk * xPk_minus_2 for xPk_minus_1,
-                           xPk_minus_2, x in zip(Pk_minus_1_list, Pk_minus_2_list, x_points)] # Pk-1
-        Pk_minus_2_list = old_Pk_minus_1 # Pk-2
+        old_Pk_minus_1 = Pk_minus_1_list  # Pk-1
+        Pk_minus_1_list = [
+            (x - ck) * xPk_minus_1 - dk * xPk_minus_2
+            for xPk_minus_1, xPk_minus_2, x
+            in zip(Pk_minus_1_list, Pk_minus_2_list, x_points)
+        ]  # Pk-1
+        Pk_minus_2_list = old_Pk_minus_1  # Pk-2
 
-        c_list.append(ck) 
+        c_list.append(ck)
         d_list.append(dk)
 
-        Pk_square_list = [p * p for p in Pk_minus_1_list] # Pk^2
-        Pk_minus_1_square_list = Pk_square_list # Pk-1^2
-        sum_Pk_square = sum(Pk_square_list) # suma Pk^2
-        a_list.append(eval_ak(Pk_minus_1_list, sum_Pk_square, y_points)) # a_k
+        Pk_square_list = [p * p for p in Pk_minus_1_list]  # Pk^2
+        Pk_minus_1_square_list = Pk_square_list  # Pk-1^2
+        sum_Pk_square = sum(Pk_square_list)  # suma Pk^2
+        a_list.append(eval_ak(Pk_minus_1_list, sum_Pk_square, y_points))  # a_k
 
     # Wykres
-    plt.plot(x_plot_values, [eval_at_given_x(
-        x, c_list, d_list, a_list, degree) for x in x_plot_values])
+    plt.plot(x_plot_values,
+             [eval_at_given_x(x, c_list, d_list, a_list, degree)
+              for x
+              in x_plot_values
+              ])
     plt.scatter(x_points, y_points, color='red')
 
 
