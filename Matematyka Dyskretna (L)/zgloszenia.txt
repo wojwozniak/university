@@ -19,8 +19,9 @@ Tablica:
 - z12 / L3 : 1 pkt
 - z12 / L6 : 0,5 pkt
 - z7 / L11 : 1 pkt
+- z7 / L12 : 1 pkt - Zaliczone!!!
 
-Jak na razie: 4 pkt
+Jak na razie: 5 pkt
 Do zdobycia: min. 5 pkt, chyba 7 na 4
 
 Deklaracje:
