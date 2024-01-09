@@ -109,28 +109,28 @@ def genChartsC(x_points, y_points, x_plot_values, degree):
 
     # Wielomiany Pk - w zad. 3 rozpisane, liczymy iteracyjnie dla k = 2, 3, ..., degree
     for k in range(2, degree + 1):
-        sum_Pk_minus_2_square = sum_Pk_minus_1_square  # suma Pk-2^2
-        sum_Pk_minus_1_square = sum_Pk_square  # suma Pk-1^2
+        sum_Pk_minus_2_square = sum_Pk_minus_1_square
+        sum_Pk_minus_1_square = sum_Pk_square 
 
         ck = eval_ck(Pk_minus_1_square_list,
-                     sum_Pk_minus_1_square, x_points)  # c_k
-        dk = eval_dk(sum_Pk_minus_1_square, sum_Pk_minus_2_square)  # d_k
+                     sum_Pk_minus_1_square, x_points) 
+        dk = eval_dk(sum_Pk_minus_1_square, sum_Pk_minus_2_square) 
 
-        old_Pk_minus_1 = Pk_minus_1_list  # Pk-1
+        old_Pk_minus_1 = Pk_minus_1_list
         Pk_minus_1_list = [
             (x - ck) * xPk_minus_1 - dk * xPk_minus_2
             for xPk_minus_1, xPk_minus_2, x
             in zip(Pk_minus_1_list, Pk_minus_2_list, x_points)
-        ]  # Pk-1
-        Pk_minus_2_list = old_Pk_minus_1  # Pk-2
+        ] 
+        Pk_minus_2_list = old_Pk_minus_1 
 
         c_list.append(ck)
         d_list.append(dk)
 
-        Pk_square_list = [p * p for p in Pk_minus_1_list]  # Pk^2
-        Pk_minus_1_square_list = Pk_square_list  # Pk-1^2
-        sum_Pk_square = sum(Pk_square_list)  # suma Pk^2
-        a_list.append(eval_ak(Pk_minus_1_list, sum_Pk_square, y_points))  # a_k
+        Pk_square_list = [p * p for p in Pk_minus_1_list]
+        Pk_minus_1_square_list = Pk_square_list 
+        sum_Pk_square = sum(Pk_square_list) 
+        a_list.append(eval_ak(Pk_minus_1_list, sum_Pk_square, y_points))
 
     # Wykres
     plt.plot(x_plot_values,
