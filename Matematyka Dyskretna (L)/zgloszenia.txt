@@ -6,6 +6,7 @@ Zadania domowe:
 - z4 / L8 : ?
 - z4 / L10 : ?
 - z1 / L11 : ?
+- z2, z6, z9 / L12 : ?
 
 Jak na razie: 
 - 3.1 pkt z niegrafowych
@@ -34,7 +35,7 @@ Deklaracje:
 - Lista 9: 6 / 11 (58 / 97) - 8 zaliczonych
 - Lista 10: 4 / 10 (62 / 107) - 9 zaliczonych
 - Lista 11: 3 / 9  (65 / 116) - 10 zaliczonych /// Wymaganie 10 zaliczonych list - zaliczone
-- Lista 12: ? / 11 (65 + ? / 127) - ???
+- Lista 12: 6-7 / 11 (71-72 / 127) - jeśli git to wystarczająca ilość punktów na 3
 
 Jak na razie: 65 pkt
 
