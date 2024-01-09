@@ -36,9 +36,9 @@ Deklaracje:
 - Lista 9: 6 / 11 (58 / 97) - 8 zaliczonych
 - Lista 10: 4 / 10 (62 / 107) - 9 zaliczonych
 - Lista 11: 3 / 9  (65 / 116) - 10 zaliczonych /// Wymaganie 10 zaliczonych list - zaliczone
-- Lista 12: 6-7 / 11 (71-72 / 127) - jeśli git to wystarczająca ilość punktów na 3
+- Lista 12: 6 / 11 (71 / 127) - jeśli git to wystarczająca ilość punktów na 3
 
-Jak na razie: 65 pkt
+Jak na razie: 71 pkt
 
 71 na 3
 81? na 4
