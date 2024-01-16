@@ -33,9 +33,9 @@ a_c, b_c = -np.pi, np.pi/6
 
 # Wybór podpunktu zadania
 
-#R = romper(f, a, b, 20)
+R = romper(f, a, b, 20)
 #R = romper(f_b, a_b, b_b, 20)
-R = romper(f_c, a_c, b_c, 20)
+#R = romper(f_c, a_c, b_c, 20)
 
 # Utworzenie heatmapy z macierzy R
 plt.figure(figsize=(10, 8))
@@ -45,3 +45,6 @@ plt.title("Macierz Romberga")
 plt.xlabel("k")
 plt.ylabel("m")
 plt.show()
+
+# Komentarz:
+# Bardzo szybko otrzymujemy wynik o dużej dokładności
