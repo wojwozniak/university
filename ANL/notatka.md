@@ -62,6 +62,17 @@ Dla $n$ operacji arytmetycznych na liczbach zmiennoprzecinkowych błąd wynosi c
 
 Dla $x,y \in \mathbb{R}$, $x \neq y$ i $x,y$ są blisko siebie, to $x-y$ może być obarczone dużym błędem względnym.
 
+Przykłady:
+
+$f(x) = 14\frac{1-cos(17x)}{x^2}$
+<details>
+<summary>Rozwiązanie problemu</summary>
+
+```
+Dla x bliskiego 0 odejmujemy dwie bardzo bliskie sobie liczby. możemy więc tracić cyfry znaczące. Aby tego uniknąć, możemy zastosować wzór Taylora dla cos(17x). Po policzeniu pierwszym wyrazem we wzorze będzie 2023 (przy dalszych wyrazach jakieś xsy). Licząc granicę głównego wyrażenia otrzymujemy 2023, więc będzie szło to w dobrym kierunku.
+```
+</details>
+
 
 ## Uwarunkowanie zadania i numeryczna poprawność
 
