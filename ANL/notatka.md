@@ -30,6 +30,10 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.5 Podaj definicję zadania źle uwarunkowanego, a następne zbadaj uwarunkowanie zadania obliczania wartości funkcji $f(x) = cos(x)$ dla $x \\in \\mathbb{R}$](#zadanie-l145-podaj-definicję-zadania-źle-uwarunkowanego-a-następne-zbadaj-uwarunkowanie-zadania-obliczania-wartości-funkcji-fx--cosx-dla-x-in-mathbbr)
         - [Zadanie L14.6 - Załóżmy że x0, x1, ..., xn są tego samego znaku. Uzasadnij, że zadanie obliczenia ich sumy jest zadaniem dobrze uwarunkowanym. Jakie znaczenie ma w kontekście obliczeń numerycznych?](#zadanie-l146---załóżmy-że-x0-x1--xn-są-tego-samego-znaku-uzasadnij-że-zadanie-obliczenia-ich-sumy-jest-zadaniem-dobrze-uwarunkowanym-jakie-znaczenie-ma-w-kontekście-obliczeń-numerycznych)
         - [Zadanie L14.7 - Wyprowadź wzór na wskaźnik uwarunkowania zadania obliczania wartości funkcji $f$ w punkcie x. Wartość funkcji $f(x) = e^{5x}$ obliczamy w punkcie x ~= 0.8. Jak dużej utraty dwójkowych cyfr znaczących należy się spodziewać, jeżeli x odbiega od 0.8 o jedną dwójkową cyfrę znaczącą?](#zadanie-l147---wyprowadź-wzór-na-wskaźnik-uwarunkowania-zadania-obliczania-wartości-funkcji-f-w-punkcie-x-wartość-funkcji-fx--e5x-obliczamy-w-punkcie-x--08-jak-dużej-utraty-dwójkowych-cyfr-znaczących-należy-się-spodziewać-jeżeli-x-odbiega-od-08-o-jedną-dwójkową-cyfrę-znaczącą)
+        - [#TODO - Zadanie L14.9: $x^{-5}(sin(3x) - 3x + 9x^3 / 2)$ - obliczanie dla x ~= 0 może wiązać się z utratą cyfr znaczących wyniku. Zakładając że |x| \<= 1/10, zaproponuj sposób obliczenia wyniku z błędem mniejszym niż $10^{-7}$](#todo---zadanie-l149-x-5sin3x---3x--9x3--2---obliczanie-dla-x--0-może-wiązać-się-z-utratą-cyfr-znaczących-wyniku-zakładając-że-x--110-zaproponuj-sposób-obliczenia-wyniku-z-błędem-mniejszym-niż-10-7)
+        - [Zadanie L14.10 - Podaj w miarę bezpieczny numerycznie algorytm obliczania zer równania kwadratowego $ax^2 + bx + c = 0$ dla $a \\neq 0$. Zastosowaną strategię uzasadnij odwołując się do omówionych na wykładzie problemów wynikających z przyjętego modelu arytmetyki zmiennoprzecinkowej.](#zadanie-l1410---podaj-w-miarę-bezpieczny-numerycznie-algorytm-obliczania-zer-równania-kwadratowego-ax2--bx--c--0-dla-a-neq-0-zastosowaną-strategię-uzasadnij-odwołując-się-do-omówionych-na-wykładzie-problemów-wynikających-z-przyjętego-modelu-arytmetyki-zmiennoprzecinkowej)
+        - [Zadanie L14.11: Do rozwiązania zadania obliczeniowego $A$ użyto komputera i algorytmu numerycznie poprawnego. Czy można mieć pewność, że otrzymany w ten sposób wynik jest bliski dokładnemu wynikowi zadania $A$? Odpowiedź uzasadnij.](#zadanie-l1411-do-rozwiązania-zadania-obliczeniowego-a-użyto-komputera-i-algorytmu-numerycznie-poprawnego-czy-można-mieć-pewność-że-otrzymany-w-ten-sposób-wynik-jest-bliski-dokładnemu-wynikowi-zadania-a-odpowiedź-uzasadnij)
+        - [Zadanie L14.12: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:](#zadanie-l1412-sprawdź-czy-algorytm-jest-algorytmem-numerycznie-poprawnym)
 
 
 ## Teoria wstępna
@@ -316,6 +320,72 @@ Zadanie jest dobrze uwarunkowane dla naszego x.
 
 Jak dużej utraty dwójkowych cyfr znaczących należy się spodziewać, jeżeli x odbiega od 0.8 o jedną dwójkową cyfrę znaczącą? #TODO
 
+```
+
+</details>
+
+
+#####  #TODO - Zadanie L14.9: $x^{-5}(sin(3x) - 3x + 9x^3 / 2)$ - obliczanie dla x ~= 0 może wiązać się z utratą cyfr znaczących wyniku. Zakładając że |x| <= 1/10, zaproponuj sposób obliczenia wyniku z błędem mniejszym niż $10^{-7}$
+
+
+##### Zadanie L14.10 - Podaj w miarę bezpieczny numerycznie algorytm obliczania zer równania kwadratowego $ax^2 + bx + c = 0$ dla $a \neq 0$. Zastosowaną strategię uzasadnij odwołując się do omówionych na wykładzie problemów wynikających z przyjętego modelu arytmetyki zmiennoprzecinkowej.
+
+<details>
+<summary>Rozwiązanie L14.10</summary>
+
+<br />
+
+```
+delta = b^2 - 4ac
+x1 = -b - sqrt(delta) / 2a
+x2 = -b + sqrt(delta) / 2a
+
+Problem jest przy x2, bo odejmujemy dwie bardzo bliskie sobie liczby. x1 jest bezpieczny. Możemy obliczyć x1 normalnie, a x2 obliczyć z wzoru Viete'a:
+
+x1 * x2 = c/a
+
+x2 = c/a / x1
+
+```
+
+</details>
+
+
+##### Zadanie L14.11: Do rozwiązania zadania obliczeniowego $A$ użyto komputera i algorytmu numerycznie poprawnego. Czy można mieć pewność, że otrzymany w ten sposób wynik jest bliski dokładnemu wynikowi zadania $A$? Odpowiedź uzasadnij.
+
+<details>
+<summary>Rozwiązanie L14.11</summary>
+
+<br />
+
+```
+Nie można mieć pewności. Zadanie może być źle uwarunkowane, więc nawet jeśli algorytm jest numerycznie poprawny, to wynik może być bardzo odległy od prawdziwego.
+```
+
+</details>
+
+
+##### Zadanie L14.12: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:
+
+```
+S = x[0];
+
+for i from 1 to 4
+  do
+    S = 3*S + x[i];
+  od;
+
+return S;
+```
+
+<details>
+<summary>Rozwiązanie L14.12</summary>
+
+<br />
+
+```
+Aby rozwiązać zadanie, musimy rozpisać wszystkie obliczenia wykonywane przez algorytm. Pamiętamy że każde obliczenie wprowadza błąd (1 + 2^-t)
+Rozpisujemy wszystko, łączymy błędy twierdzeniem o kumulacji błędów i sprawdzamy czy wynik jest w postaci f(x) = y * (1 + alfa)
 ```
 
 </details>
