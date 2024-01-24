@@ -33,7 +33,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [#TODO - Zadanie L14.9: $x^{-5}(sin(3x) - 3x + 9x^3 / 2)$ - obliczanie dla x ~= 0 może wiązać się z utratą cyfr znaczących wyniku. Zakładając że |x| \<= 1/10, zaproponuj sposób obliczenia wyniku z błędem mniejszym niż $10^{-7}$](#todo---zadanie-l149-x-5sin3x---3x--9x3--2---obliczanie-dla-x--0-może-wiązać-się-z-utratą-cyfr-znaczących-wyniku-zakładając-że-x--110-zaproponuj-sposób-obliczenia-wyniku-z-błędem-mniejszym-niż-10-7)
         - [Zadanie L14.10 - Podaj w miarę bezpieczny numerycznie algorytm obliczania zer równania kwadratowego $ax^2 + bx + c = 0$ dla $a \\neq 0$. Zastosowaną strategię uzasadnij odwołując się do omówionych na wykładzie problemów wynikających z przyjętego modelu arytmetyki zmiennoprzecinkowej.](#zadanie-l1410---podaj-w-miarę-bezpieczny-numerycznie-algorytm-obliczania-zer-równania-kwadratowego-ax2--bx--c--0-dla-a-neq-0-zastosowaną-strategię-uzasadnij-odwołując-się-do-omówionych-na-wykładzie-problemów-wynikających-z-przyjętego-modelu-arytmetyki-zmiennoprzecinkowej)
         - [Zadanie L14.11: Do rozwiązania zadania obliczeniowego $A$ użyto komputera i algorytmu numerycznie poprawnego. Czy można mieć pewność, że otrzymany w ten sposób wynik jest bliski dokładnemu wynikowi zadania $A$? Odpowiedź uzasadnij.](#zadanie-l1411-do-rozwiązania-zadania-obliczeniowego-a-użyto-komputera-i-algorytmu-numerycznie-poprawnego-czy-można-mieć-pewność-że-otrzymany-w-ten-sposób-wynik-jest-bliski-dokładnemu-wynikowi-zadania-a-odpowiedź-uzasadnij)
-        - [Zadanie L14.12: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:](#zadanie-l1412-sprawdź-czy-algorytm-jest-algorytmem-numerycznie-poprawnym)
+        - [Zadanie L14.12, L14.13: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:](#zadanie-l1412-l1413-sprawdź-czy-algorytm-jest-algorytmem-numerycznie-poprawnym)
 
 
 ## Teoria wstępna
@@ -365,7 +365,7 @@ Nie można mieć pewności. Zadanie może być źle uwarunkowane, więc nawet je
 </details>
 
 
-##### Zadanie L14.12: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:
+##### Zadanie L14.12, L14.13: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:
 
 ```
 S = x[0];
@@ -389,3 +389,5 @@ Rozpisujemy wszystko, łączymy błędy twierdzeniem o kumulacji błędów i spr
 ```
 
 </details>
+
+L14.13 analogicznie do L14.12
