@@ -16,15 +16,16 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Działania na liczbach zmiennoprzecinkowych - błąd](#działania-na-liczbach-zmiennoprzecinkowych---błąd)
     - [Twierdzenie o kumulacji błędów](#twierdzenie-o-kumulacji-błędów)
     - [Zjawisko utraty cyfr znaczących](#zjawisko-utraty-cyfr-znaczących)
+        - [Zadanie L14.8 Wytłumacz kiedy występuje i na czym polega zjawisko utraty cyfr znaczących wyniku. Dla jakich wartości x obliczanie wartości wyrażenia $(sqrt(x^2+2) + x)^{-1}$ może wiązać się z utratą cyfr znaczących wyniku? Zaproponuj sposób obliczenia wynioku dokładniejszego.](#zadanie-l148-wytłumacz-kiedy-występuje-i-na-czym-polega-zjawisko-utraty-cyfr-znaczących-wyniku-dla-jakich-wartości-x-obliczanie-wartości-wyrażenia-sqrtx22--x-1-może-wiązać-się-z-utratą-cyfr-znaczących-wyniku-zaproponuj-sposób-obliczenia-wynioku-dokładniejszego)
       - [Zadanie z listy - jak naprawić utratę cyfr znaczących?](#zadanie-z-listy---jak-naprawić-utratę-cyfr-znaczących)
   - [Uwarunkowanie zadania i numeryczna poprawność](#uwarunkowanie-zadania-i-numeryczna-poprawność)
     - [Wzór na uwarunkowanie zadania](#wzór-na-uwarunkowanie-zadania)
+    - [Algorytm numerycznie poprawny](#algorytm-numerycznie-poprawny)
     - [Zadania z uwarunkowaniem (L14.3-L14.7):](#zadania-z-uwarunkowaniem-l143-l147)
         - [Zadanie L14.4 - Sprawdź, czy zadanie jest dobrze uwarunkowane:](#zadanie-l144---sprawdź-czy-zadanie-jest-dobrze-uwarunkowane)
         - [Zadanie L14.5 Podaj definicję zadania źle uwarunkowanego, a następne zbadaj uwarunkowanie zadania obliczania wartości funkcji $f(x) = cos(x)$ dla $x \\in \\mathbb{R}$](#zadanie-l145-podaj-definicję-zadania-źle-uwarunkowanego-a-następne-zbadaj-uwarunkowanie-zadania-obliczania-wartości-funkcji-fx--cosx-dla-x-in-mathbbr)
         - [Zadanie L14.6 - Załóżmy że x0, x1, ..., xn są tego samego znaku. Uzasadnij, że zadanie obliczenia ich sumy jest zadaniem dobrze uwarunkowanym. Jakie znaczenie ma w kontekście obliczeń numerycznych?](#zadanie-l146---załóżmy-że-x0-x1--xn-są-tego-samego-znaku-uzasadnij-że-zadanie-obliczenia-ich-sumy-jest-zadaniem-dobrze-uwarunkowanym-jakie-znaczenie-ma-w-kontekście-obliczeń-numerycznych)
         - [Zadanie L14.7 - Wyprowadź wzór na wskaźnik uwarunkowania zadania obliczania wartości funkcji $f$ w punkcie x. Wartość funkcji $f(x) = e^{5x}$ obliczamy w punkcie x ~= 0.8. Jak dużej utraty dwójkowych cyfr znaczących należy się spodziewać, jeżeli x odbiega od 0.8 o jedną dwójkową cyfrę znaczącą?](#zadanie-l147---wyprowadź-wzór-na-wskaźnik-uwarunkowania-zadania-obliczania-wartości-funkcji-f-w-punkcie-x-wartość-funkcji-fx--e5x-obliczamy-w-punkcie-x--08-jak-dużej-utraty-dwójkowych-cyfr-znaczących-należy-się-spodziewać-jeżeli-x-odbiega-od-08-o-jedną-dwójkową-cyfrę-znaczącą)
-    - [Algorytm numerycznie poprawny](#algorytm-numerycznie-poprawny)
 
 
 ## Teoria wstępna
@@ -107,7 +108,41 @@ Dla $n$ operacji arytmetycznych na liczbach zmiennoprzecinkowych błąd wynosi c
 
 ### Zjawisko utraty cyfr znaczących
 
-Dla $x,y \in \mathbb{R}$, $x \neq y$ i $x,y$ są blisko siebie, to $x-y$ może być obarczone dużym błędem względnym.
+Dla $x,y \in \mathbb{R}$, $x \neq y$ i $x,y$ są blisko siebie, to $x-y$ może być obarczone dużym błędem.
+
+Zjawisko to bierze się z reprezentacji liczb w komputerze. By wytłumaczyć skąd się bierze zauważmy trzy fakty: 
+
+1) Odejmując bardzo bliskie sobie liczby, otrzymujemy bardzo malutki ułamek. 
+2) Liczby przechowujemy w określonej dokładności - cyfry mantysy bardzo daleko po przecinku nie są przechowywane.
+3) Mantysa ma mieć wartość w przedziale $[1/2, 1)$.
+
+Łącząc te fakty - po odjęciu tych liczb dostaniemy malutki ułamek który musimy "przesunąć" w zakres mantysy. Po przesunięciu nie wiemy jakie były bardziej oddalone cyfry, więc nie wiemy jaką wartość przyjąć. W efekcie otrzymujemy błąd.
+
+##### Zadanie L14.8 Wytłumacz kiedy występuje i na czym polega zjawisko utraty cyfr znaczących wyniku. Dla jakich wartości x obliczanie wartości wyrażenia $(sqrt(x^2+2) + x)^{-1}$ może wiązać się z utratą cyfr znaczących wyniku? Zaproponuj sposób obliczenia wynioku dokładniejszego.
+
+<details>
+
+<summary>Rozwiązanie L14.8</summary>
+
+<br />
+
+```
+Wytłumaczenie powyżej.
+
+W naszym przypadku problem będzie dla ujemnych x - konkretniej takich dla których sqrt(x^2 + 2) jest bliskie x.
+
+Zaproponowany sposób obliczenia dokładniejszego:
+
+Przekształcamy wyrażenie, przenosząc niewymierne wyrażenie do licznika. 
+Otrzymujemy wtedy:
+```
+$\frac{\sqrt(x^2 + 2) - x}{2}$
+
+```
+W liczniku mamy spokój, bo nie znajdziemy takiego x by było bliskie sqrt(x^2 + 2). W mianowniku mamy 2, więc git. Nie będziemy mieli więc żadnych dziwnych artefaktów.
+```
+
+</details>
 
 
 #### Zadanie z listy - jak naprawić utratę cyfr znaczących?
@@ -134,6 +169,14 @@ Wskaźnik uwarunkowania określamy wzorem $cond(x) = \frac{\Delta f}{\Delta x}$.
 
 Można wyprowadzić dokładniejszy wzór:
 $cond(x) = \frac{x * f'(x)}{f(x)}$
+
+
+### Algorytm numerycznie poprawny
+
+Algorytm jest numerycznie poprawny, jeśli wynik jego działania może być zinterpretowany jako mało zaburzony dokładny wynik dla mało zaburzonych danych.
+$fl(A(a)) = A(a * (1 + \beta)) * (1 + \alpha)$
+
+gdzie $\beta$ to zaburzenie danych, a $\alpha$ to zaburzenie wyniku.
 
 
 ### Zadania z uwarunkowaniem (L14.3-L14.7):
@@ -252,11 +295,3 @@ Jak dużej utraty dwójkowych cyfr znaczących należy się spodziewać, jeżeli
 ```
 
 </details>
-
-
-### Algorytm numerycznie poprawny
-
-Algorytm jest numerycznie poprawny, jeśli wynik jego działania może być zinterpretowany jako mało zaburzony dokładny wynik dla mało zaburzonych danych.
-$fl(A(a)) = A(a * (1 + \beta)) * (1 + \alpha)$
-
-gdzie $\beta$ to zaburzenie danych, a $\alpha$ to zaburzenie wyniku.
