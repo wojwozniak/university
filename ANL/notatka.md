@@ -17,7 +17,11 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Twierdzenie o kumulacji błędów](#twierdzenie-o-kumulacji-błędów)
     - [Zjawisko utraty cyfr znaczących](#zjawisko-utraty-cyfr-znaczących)
         - [Zadanie L14.8 Wytłumacz kiedy występuje i na czym polega zjawisko utraty cyfr znaczących wyniku. Dla jakich wartości x obliczanie wartości wyrażenia $(sqrt(x^2+2) + x)^{-1}$ może wiązać się z utratą cyfr znaczących wyniku? Zaproponuj sposób obliczenia wynioku dokładniejszego.](#zadanie-l148-wytłumacz-kiedy-występuje-i-na-czym-polega-zjawisko-utraty-cyfr-znaczących-wyniku-dla-jakich-wartości-x-obliczanie-wartości-wyrażenia-sqrtx22--x-1-może-wiązać-się-z-utratą-cyfr-znaczących-wyniku-zaproponuj-sposób-obliczenia-wynioku-dokładniejszego)
-      - [Zadanie z listy - jak naprawić utratę cyfr znaczących?](#zadanie-z-listy---jak-naprawić-utratę-cyfr-znaczących)
+        - [Zadanie L2.8 - jak naprawić utratę cyfr znaczących?](#zadanie-l28---jak-naprawić-utratę-cyfr-znaczących)
+        - [Zadanie L3.1 - jak naprawić utratę cyfr znaczących?](#zadanie-l31---jak-naprawić-utratę-cyfr-znaczących)
+          - [a) $f(x) = \\frac{1}{x^3 + \\sqrt{x^6+2023^2}}$](#a-fx--frac1x3--sqrtx620232)
+          - [b) $f(x) = log\_2(x) - 2$](#b-fx--log_2x---2)
+          - [c) $f(x) = x^{-3}(\\Pi / 2 - x - arctg(x))$](#c-fx--x-3pi--2---x---arctgx)
   - [Uwarunkowanie zadania i numeryczna poprawność](#uwarunkowanie-zadania-i-numeryczna-poprawność)
     - [Wzór na uwarunkowanie zadania](#wzór-na-uwarunkowanie-zadania)
     - [Algorytm numerycznie poprawny](#algorytm-numerycznie-poprawny)
@@ -136,7 +140,7 @@ Zaproponowany sposób obliczenia dokładniejszego:
 Przekształcamy wyrażenie, przenosząc niewymierne wyrażenie do licznika. 
 Otrzymujemy wtedy:
 ```
-$\frac{\sqrt(x^2 + 2) - x}{2}$
+$\frac{\sqrt{x^2 + 2} - x}{2}$
 
 ```
 W liczniku mamy spokój, bo nie znajdziemy takiego x by było bliskie sqrt(x^2 + 2). W mianowniku mamy 2, więc git. Nie będziemy mieli więc żadnych dziwnych artefaktów.
@@ -145,17 +149,36 @@ W liczniku mamy spokój, bo nie znajdziemy takiego x by było bliskie sqrt(x^2 +
 </details>
 
 
-#### Zadanie z listy - jak naprawić utratę cyfr znaczących?
+##### Zadanie L2.8 - jak naprawić utratę cyfr znaczących?
 
 
-L2) $f(x) = 14\frac{1-cos(17x)}{x^2}$
+L2.8) $f(x) = 14\frac{1-cos(17x)}{x^2}$
 
 <details>
-<summary>Rozwiązanie L2</summary>
+<summary>Rozwiązanie L2.8</summary>
 
 ```
 Dla x bliskiego 0 odejmujemy dwie bardzo bliskie sobie liczby. możemy więc tracić cyfry znaczące. Aby tego uniknąć, możemy zastosować wzór Taylora dla cos(17x). Po policzeniu pierwszym wyrazem we wzorze będzie 2023 (przy dalszych wyrazach jakieś xsy). Licząc granicę głównego wyrażenia otrzymujemy 2023, więc będzie szło to w dobrym kierunku.
 ```
+</details>
+
+
+##### Zadanie L3.1 - jak naprawić utratę cyfr znaczących?
+
+###### a) $f(x) = \frac{1}{x^3 + \sqrt{x^6+2023^2}}$ 
+###### b) $f(x) = log_2(x) - 2$
+###### c) $f(x) = x^{-3}(\Pi / 2 - x - arctg(x))$
+
+<details>
+<summary>Rozwiązania L3.1</summary>
+<br />
+
+```
+a) podobne do L14.8 powyżej, niewymierność do licznika i obraca się znak
+b) log_2(x) - 2 = log_2(x / 4) - usuwamy odejmowanie, dzielenie jest bezpieczne
+c) Przerabiamy na arctg(x), potem Taylor
+```
+
 </details>
 
 
@@ -290,6 +313,7 @@ f(x) = e^(5x)
 f'(x) = 5e^(5x)
 cond(x) = (5e^(5x) * x) / e^(5x) = 5x
 Zadanie jest dobrze uwarunkowane dla naszego x.
+
 Jak dużej utraty dwójkowych cyfr znaczących należy się spodziewać, jeżeli x odbiega od 0.8 o jedną dwójkową cyfrę znaczącą? #TODO
 
 ```
