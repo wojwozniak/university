@@ -34,6 +34,15 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.10 - Podaj w miarę bezpieczny numerycznie algorytm obliczania zer równania kwadratowego $ax^2 + bx + c = 0$ dla $a \\neq 0$. Zastosowaną strategię uzasadnij odwołując się do omówionych na wykładzie problemów wynikających z przyjętego modelu arytmetyki zmiennoprzecinkowej.](#zadanie-l1410---podaj-w-miarę-bezpieczny-numerycznie-algorytm-obliczania-zer-równania-kwadratowego-ax2--bx--c--0-dla-a-neq-0-zastosowaną-strategię-uzasadnij-odwołując-się-do-omówionych-na-wykładzie-problemów-wynikających-z-przyjętego-modelu-arytmetyki-zmiennoprzecinkowej)
         - [Zadanie L14.11: Do rozwiązania zadania obliczeniowego $A$ użyto komputera i algorytmu numerycznie poprawnego. Czy można mieć pewność, że otrzymany w ten sposób wynik jest bliski dokładnemu wynikowi zadania $A$? Odpowiedź uzasadnij.](#zadanie-l1411-do-rozwiązania-zadania-obliczeniowego-a-użyto-komputera-i-algorytmu-numerycznie-poprawnego-czy-można-mieć-pewność-że-otrzymany-w-ten-sposób-wynik-jest-bliski-dokładnemu-wynikowi-zadania-a-odpowiedź-uzasadnij)
         - [Zadanie L14.12, L14.13: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:](#zadanie-l1412-l1413-sprawdź-czy-algorytm-jest-algorytmem-numerycznie-poprawnym)
+  - [Rozwiązywanie równań nieliniowych](#rozwiązywanie-równań-nieliniowych)
+    - [Metoda bisekcji](#metoda-bisekcji)
+      - [Własności metody:](#własności-metody)
+    - [Metoda Newtona (stycznych)](#metoda-newtona-stycznych)
+      - [Własności metody](#własności-metody-1)
+    - [Metoda siecznych](#metoda-siecznych)
+      - [Własności metody](#własności-metody-2)
+    - [Wykładnik zbieżności ciągu (rząd metody)](#wykładnik-zbieżności-ciągu-rząd-metody)
+  - [Interpolacja wielomianowa](#interpolacja-wielomianowa)
 
 
 ## Teoria wstępna
@@ -391,3 +400,65 @@ Rozpisujemy wszystko, łączymy błędy twierdzeniem o kumulacji błędów i spr
 </details>
 
 L14.13 analogicznie do L14.12
+
+
+## Rozwiązywanie równań nieliniowych
+
+Znajdujemy miejsce zerowe funkcji $f(x)$
+
+
+### Metoda bisekcji
+
+1) Zaczynamy z dwoma punktami $a$ i $b$ takimi, że $f(a) * f(b) < 0$ (funkcja ma różne znaki w tych punktach).
+2) Wyznaczamy środek przedziału $c = (a+b)/2$
+3) Jeśli $f(c) = 0$ to koniec, $c$ jest miejscem zerowym
+4) w.p.p. sprawdzamy znak $f(c)$ i wybieramy przedział $[a,c]$ lub $[c,b]$.
+5) Powtarzamy od 2) aż do uzyskania odpowiedniej dokładności.
+
+#### Własności metody:
+- Zbieżność liniowa
+- Znamy długość k-tego przedziału
+- Możemy łatwo policzyć ilość wymaganych iteracji dla danej dokładności $\epsilon$ - wzór: roof: $\log_2(\frac{b_0-a_0}{2 \epsilon})$
+
+
+### Metoda Newtona (stycznych)
+
+1) Wybieramy $x_0$ jako przybliżenie początkowe
+2) Obliczamy $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$
+
+#### Własności metody
+- Szybka zbieżność przy dobrze wybranym $x_0$
+- Konieczność liczenia pochodnej - dla skomplikowanych funkcji może być to problematyczne
+- Może nie zbiegać lub zapętlić się dla niektórych $x_0$ 
+
+
+### Metoda siecznych
+
+Dla dwóch wybranych punktów przeprowadzamy sieczną. Punkt przecięcia siecznej z osią OX jest kolejnym przybliżeniem. (Przesuwamy punkt który ma ten sam znak co nowy, musimy mieć cały czas różne)
+
+1) Wybieramy $x_0$ i $x_1$ jako przybliżenia początkowe
+2) Obliczamy $x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}$
+
+#### Własności metody
+- Nie musimy liczyć pochodnej
+- Wolniejsza zbieżność niż metoda Newtona
+- Zgadujemy x0 i x1
+- Może nie zbiegać lub zapętlić się dla niektórych $x_0$ i $x_1$
+
+### Wykładnik zbieżności ciągu (rząd metody)
+
+Dla ciągu $x_n$ zbieżnego do jakiejś stałej C, jeśli istnieje taka stała $p > 1$ i $n_0$ że dla każdego $n > n_0$ zachodzi:
+
+
+$C = \lim_{n \to \infty} \frac{|x_{n+1} - x^*|}{|x_n - x^*|^p}$
+
+to $p$ nazywamy wykładnikiem zbieżności ciągu, a $C$ stałą asymptotyczną. 
+
+Dla $p = 1$ mówimy o zbieżności liniowej, dla $p = 2$ o zbieżności kwadratowej.
+
+
+
+
+
+
+## Interpolacja wielomianowa
