@@ -58,6 +58,8 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Ilorazy różnicowe](#ilorazy-różnicowe)
   - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
   - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
+    - [Konstrukcja NIFS3](#konstrukcja-nifs3)
+  - [Krzywe parametryczne](#krzywe-parametryczne)
 
 
 ## Teoria wstępna
@@ -652,3 +654,18 @@ $x_k = cos(\frac{2k+1}{2n+2} \pi)$
 dzięki temu mamy więcej węzłów przy końcach minimalizując efekt Rungego.
 
 ## Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia
+
+Zamiast robić jeden wzór, robimy kilka na mniejszych przedziałach. Dla każdego przedziału mamy wielomian 3. stopnia. Można stworzyć taki wielomian na dwa sposoby, ale wersja ze wzorem jawnym jest na egzaminie nielegalna - pokażę więc tylko najprostszą konstrukcję.
+
+### Konstrukcja NIFS3
+
+Tworzymy układy równań, które dla każdego węzła spełniają:
+- jest wielomianem 3. stopnia
+- ciągłość w, w' i w''
+- w''(x0) = w''(xn) = 0 (naturalność)
+
+NIFS3 zawsze istnieje i jest jednoznaczna.
+
+## Krzywe parametryczne
+
+Krzywa parametryczna to funkcja $f: [a,b] \to \mathbb{R}^2$.
