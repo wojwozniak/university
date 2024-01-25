@@ -56,6 +56,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Interpolacja wielomianowa Lagrange'a](#interpolacja-wielomianowa-lagrangea)
   - [Doliczanie kolejnego punktu](#doliczanie-kolejnego-punktu)
         - [Zadanie L14.24: Znajdź postać Newtona wielomianu interpolacyjnego Lagrange'a 4 stopnia dla punktów $(-2; 1), (-1;2), (1;10), (2;29), (3;106)$](#zadanie-l1424-znajdź-postać-newtona-wielomianu-interpolacyjnego-lagrangea-4-stopnia-dla-punktów--2-1--12-110-229-3106)
+        - [Zadanie L14.26 - Funkcję $f(x) = cos(x/2)$ interpolujemy Lagrangem w węzłach Czebyszewa. Jak należy dobrać n, aby błąd interpolacji był mniejszy niż $10^{-8}$ dla $x \\in \[-1, 1\]$?](#zadanie-l1426---funkcję-fx--cosx2-interpolujemy-lagrangem-w-węzłach-czebyszewa-jak-należy-dobrać-n-aby-błąd-interpolacji-był-mniejszy-niż-10-8-dla-x-in--1-1)
   - [Ilorazy różnicowe](#ilorazy-różnicowe)
   - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
   - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
@@ -677,6 +678,21 @@ $L(x) = \frac{1}{120}x^4 - \frac{1}{6}x^3 + \frac{11}{8}x^2 - \frac{11}{6}x + 1$
 </details>
 
 Zadanie L14.25 rozwiązywalne analogicznie do L14.24
+
+##### Zadanie L14.26 - Funkcję $f(x) = cos(x/2)$ interpolujemy Lagrangem w węzłach Czebyszewa. Jak należy dobrać n, aby błąd interpolacji był mniejszy niż $10^{-8}$ dla $x \in [-1, 1]$?
+
+<details>
+<summary>Rozwiązanie L14.26 #TODO</summary>
+
+<br />
+
+```
+Znamy wzór na błąd interpolacji Lagrange'a:
+```
+$f(x) - L_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} * max(p_{n+1}(x))$
+
+
+</details>
 
 ## Ilorazy różnicowe
 
