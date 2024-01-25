@@ -36,12 +36,15 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.12, L14.13: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:](#zadanie-l1412-l1413-sprawdź-czy-algorytm-jest-algorytmem-numerycznie-poprawnym)
   - [Rozwiązywanie równań nieliniowych](#rozwiązywanie-równań-nieliniowych)
     - [Metoda bisekcji](#metoda-bisekcji)
-      - [Własności metody:](#własności-metody)
+      - [Własności metody (zadanie L14.15):](#własności-metody-zadanie-l1415)
     - [Metoda Newtona (stycznych)](#metoda-newtona-stycznych)
-      - [Własności metody](#własności-metody-1)
+      - [Własności metody](#własności-metody)
+        - [Zadanie L14.17 - Niech $\\alpha$ będzie zerowym miejscem funkcji f (f($\\alpha$) = 0, f'($\\alpha$) $\\not=$ 0). Udowodnij że wówczas rząd zbieżności metody Newtona wynosi 2.](#zadanie-l1417---niech-alpha-będzie-zerowym-miejscem-funkcji-f-falpha--0-falpha-not-0-udowodnij-że-wówczas-rząd-zbieżności-metody-newtona-wynosi-2)
+        - [Zadanie L14.18: zaproponuj efektywny algorytm obliczania z dużą dokładnością wartości $\\sqrt{a}$ wykorzystując jedynie operacje arytmetyczne (+, -, \*, /)](#zadanie-l1418-zaproponuj-efektywny-algorytm-obliczania-z-dużą-dokładnością-wartości-sqrta-wykorzystując-jedynie-operacje-arytmetyczne-----)
     - [Metoda siecznych](#metoda-siecznych)
-      - [Własności metody](#własności-metody-2)
+      - [Własności metody](#własności-metody-1)
     - [Wykładnik zbieżności ciągu (rząd metody)](#wykładnik-zbieżności-ciągu-rząd-metody)
+        - [Zadanie L14.20: Podaj efektywny algorytm wyznaczania liczby naturalnej a, której cyframi dziesiętnymi (od najbardziej do najmniej znaczącej) są a\_n, a\_n-1, ..., a\_0, gdzie a\_n != 0](#zadanie-l1420-podaj-efektywny-algorytm-wyznaczania-liczby-naturalnej-a-której-cyframi-dziesiętnymi-od-najbardziej-do-najmniej-znaczącej-są-a_n-a_n-1--a_0-gdzie-a_n--0)
   - [Interpolacja wielomianowa](#interpolacja-wielomianowa)
 
 
@@ -415,7 +418,7 @@ Znajdujemy miejsce zerowe funkcji $f(x)$
 4) w.p.p. sprawdzamy znak $f(c)$ i wybieramy przedział $[a,c]$ lub $[c,b]$.
 5) Powtarzamy od 2) aż do uzyskania odpowiedniej dokładności.
 
-#### Własności metody:
+#### Własności metody (zadanie L14.15):
 - Zbieżność liniowa
 - Znamy długość k-tego przedziału
 - Możemy łatwo policzyć ilość wymaganych iteracji dla danej dokładności $\epsilon$ - wzór: roof: $\log_2(\frac{b_0-a_0}{2 \epsilon})$
@@ -429,7 +432,57 @@ Znajdujemy miejsce zerowe funkcji $f(x)$
 #### Własności metody
 - Szybka zbieżność przy dobrze wybranym $x_0$
 - Konieczność liczenia pochodnej - dla skomplikowanych funkcji może być to problematyczne
-- Może nie zbiegać lub zapętlić się dla niektórych $x_0$ 
+- Może nie zbiegać lub zapętlić się dla niektórych $x_0$
+
+
+##### Zadanie L14.17 - Niech $\alpha$ będzie zerowym miejscem funkcji f (f($\alpha$) = 0, f'($\alpha$) $\not=$ 0). Udowodnij że wówczas rząd zbieżności metody Newtona wynosi 2.
+
+<details>
+<summary>Rozwiązanie L14.17</summary>
+
+<br />
+
+```
+Pokazaliśmy na ćwiczeniach, że jeśli: 
+F(x) = x, 
+F'(x) = F''(x) = ... = F(x)^(n-1)'(x) = 0,
+F(x)^(n)' != 0, 
+to rząd zbieżności metody Newtona wynosi n.
+(Słownie - wszystkie pochodne do n-1-tej włącznie są równe 0, a n-ta nie jest równa 0 - wtedy rząd zbieżności wynosi n)
+
+Na potrzeby zadania niezbędne jest pamiętanie wzoru pochodnej dla ułamka: (f/g)' = (f'g - fg') / g^2
+
+Newton: x_{i+1} = x_i - f(x_i) / f'(x_i)
+Rozpisujemy po kolei wartość i wszystkie pochodne.
+Po przekształceniach uzyskamy:
+F(x) = x
+F'(x) = 0
+F''(x) = f''(x) / f'(x)
+
+Warunki spełnione, więc rząd zbieżności wynosi 2.
+
+Zauważmy że F(x) != f(x) (duże F to metoda Newtona, małe f to funkcja którą chcemy wyliczyć)
+
+```
+
+</details>
+
+
+##### Zadanie L14.18: zaproponuj efektywny algorytm obliczania z dużą dokładnością wartości $\sqrt{a}$ wykorzystując jedynie operacje arytmetyczne (+, -, *, /)
+
+<details>
+<summary>Rozwiązanie L14.18</summary>
+
+<br />
+
+```
+Zgadujemy funkcję taką że f(x) = 0 <=> x = \sqrt{a}
+f(x) = x^2 - a
+f'(x) = 2x
+x_n+1 = x_n - f(x_n) / f'(x_n) = x_n - (x_n^2 - a) / 2x_n = (x_n + a / x_n) / 2
+```
+
+</details>
 
 
 ### Metoda siecznych
@@ -457,8 +510,29 @@ to $p$ nazywamy wykładnikiem zbieżności ciągu, a $C$ stałą asymptotyczną.
 Dla $p = 1$ mówimy o zbieżności liniowej, dla $p = 2$ o zbieżności kwadratowej.
 
 
+##### Zadanie L14.20: Podaj efektywny algorytm wyznaczania liczby naturalnej a, której cyframi dziesiętnymi (od najbardziej do najmniej znaczącej) są a_n, a_n-1, ..., a_0, gdzie a_n != 0
 
+<details>
+<summary>Rozwiązanie L14.20</summary>
+
+<br />
+
+```
+Brakuje chyba jakiejś informacji precyzującej, bo jak dostajemy po prostu ciąg to:
+
+int a = 0;
+for(int i = n; i >= 0; i--)
+  a *= 10;
+  a += a_i;
+
+i mamy
+```
+
+</details>
 
 
 
 ## Interpolacja wielomianowa
+
+
+#TODO, tu będzie też pominięte L14.14
