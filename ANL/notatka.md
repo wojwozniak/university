@@ -46,6 +46,18 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Wykładnik zbieżności ciągu (rząd metody)](#wykładnik-zbieżności-ciągu-rząd-metody)
         - [Zadanie L14.20: Podaj efektywny algorytm wyznaczania liczby naturalnej a, której cyframi dziesiętnymi (od najbardziej do najmniej znaczącej) są a\_n, a\_n-1, ..., a\_0, gdzie a\_n != 0](#zadanie-l1420-podaj-efektywny-algorytm-wyznaczania-liczby-naturalnej-a-której-cyframi-dziesiętnymi-od-najbardziej-do-najmniej-znaczącej-są-a_n-a_n-1--a_0-gdzie-a_n--0)
   - [Interpolacja wielomianowa](#interpolacja-wielomianowa)
+    - [Postaci wielomianów](#postaci-wielomianów)
+      - [Postać naturalna potęgowa](#postać-naturalna-potęgowa)
+      - [Postać Newtona](#postać-newtona)
+    - [Postać Czebyszewa](#postać-czebyszewa)
+  - [Schemat Hornera](#schemat-hornera)
+  - [Uogólniony schemat Hornera](#uogólniony-schemat-hornera)
+  - [Algorytm Clenshawa - #TODO](#algorytm-clenshawa---todo)
+  - [Interpolacja wielomianowa Lagrange'a](#interpolacja-wielomianowa-lagrangea)
+  - [Doliczanie kolejnego punktu](#doliczanie-kolejnego-punktu)
+  - [Ilorazy różnicowe](#ilorazy-różnicowe)
+  - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
+  - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
 
 
 ## Teoria wstępna
@@ -535,4 +547,108 @@ i mamy
 ## Interpolacja wielomianowa
 
 
-#TODO, tu będzie też pominięte L14.14
+### Postaci wielomianów
+
+#### Postać naturalna potęgowa
+
+$w(x) = \sum_{k=0}^{n} a_k x^k$ gdzie $a_k$ to współczynniki wielomianu
+
+#### Postać Newtona
+
+$w(x) = \sum_{k=0}^{n} b_k p_k(x)$ gdzie $b_k$ to współczynniki wielomianu, a $p_k(x)$ to dwumiany:
+
+$p_0(x) = 1$
+
+$p_k(x) = \prod_{i=0}^{k-1} (x - x_i)$
+
+(czyli dla k=1 jeden dwumian, dla k=2 dwa dwumiany...)
+
+
+### Postać Czebyszewa
+
+$T_0(x) = 1$
+
+$T_1(x) = x$
+
+$T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)$
+
+- T_k ma dokładnie k pierwiastków w przedziale [-1, 1]
+- dla $x \in [-1, 1]$ mamy $T_k(x) = cos(k * arccos(x))$
+
+## Schemat Hornera
+
+Z wielomianu 
+
+$w(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0$ 
+
+tworzymy:
+
+$w(x) = a_0 + x(a_1 + x(a_2 + ... + x(a_{n-1} + x a_n)...))$
+
+<br />
+
+I dzięki temu definiujemy algorytm:
+
+$w_n = a_n$
+
+$w_k = w_{k+1} * x + a_k$ dla $k = n-1, n-2, ..., 0$
+
+Działa on w O(n), jest numerycznie poprawny.
+
+## Uogólniony schemat Hornera
+
+Dla wielomianu 
+
+$w(x) = b_n p_n(x) + b_{n-1} p_{n-1}(x) + ... + b_1 p_1(x) + b_0 p_0(x)$, 
+
+gdzie $b_k$ i $p_k$ były zdefiniowane wcześniej, tworzymy:
+
+$w(x) = (...((b_n(x - x_{n-1}) + b_{n-1})(x - x_{n-2}) + b_{n-2})(x-x_{n-3}).... + b_1)(x-x_0) + b_0$
+
+<br />
+
+I dzięki temu definiujemy algorytm:
+
+$w_n = b_n$
+
+$w_k = w_{k+1} * (x - x_k) + b_k$ dla $k = n-1, n-2, ..., 0$
+
+Działa on w O(n), jest numerycznie poprawny.
+
+## Algorytm Clenshawa - #TODO
+
+## Interpolacja wielomianowa Lagrange'a
+
+$L_n(x) = \sum_{k=0}^{n} y_k l_k(x)$, gdzie $l_k(x) = \prod_{i=0, i \neq k}^{n} \frac{x - x_i}{x_k - x_i}$
+
+Zadanie interpolacji Lagrange'a ma zawsze jednoznaczne rozwiązanie.
+
+## Doliczanie kolejnego punktu
+
+Aby nie lecieć wzorem od początku $O(n^2)$, możemy doliczać kolejny punkt w $O(n)$ zapisując wielomian w postaci Newtona:
+
+$L_{n+1} = L_n + y_{n+1} p_{n+1}$
+
+## Ilorazy różnicowe
+
+$f[x_k] = f(x_k)$
+
+$f[x_k, x_{k+1}] = \frac{f[x_{k+1}] - f[x_k]}{x_{k+1} - x_k}$
+
+$f[x_k, x_{k+1}, ..., x_{k+m}] = \frac{f[x_{k+1}, x_{k+2}, ..., x_{k+m}] - f[x_k, x_{k+1}, ..., x_{k+m-1}]}{x_{k+m} - x_k}$
+
+## Błąd interpolacji Lagrange'a
+
+Wzór:
+
+$f(x) = L_n(x) + \frac{f^{(n+1)}(\xi)}{(n+1)!} \prod_{i=0}^{n} (x - x_i)$
+
+gdzie $\xi$ jest dowolnym punktem z przedziału $[x_0, x_n]$
+
+Aby zminimalizować błąd interpolacji, należy odpowiednio wybrać węzły. Najlepiej wybrać węzły Czebyszewa, czyli:
+
+$x_k = cos(\frac{2k+1}{2n+2} \pi)$
+
+dzięki temu mamy więcej węzłów przy końcach minimalizując efekt Rungego.
+
+## Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia
