@@ -623,7 +623,7 @@ Działa on w O(n), jest numerycznie poprawny.
 
 $L_n(x) = \sum_{k=0}^{n} y_k l_k(x)$, gdzie $l_k(x) = \prod_{i=0, i \neq k}^{n} \frac{x - x_i}{x_k - x_i}$
 
-Zadanie interpolacji Lagrange'a ma zawsze jednoznaczne rozwiązanie.
+Zadanie interpolacji Lagrange'a ma zawsze jednoznaczne rozwiązanie. Z jednoznaczności wynika, że jeśli mamy $n+1$ punktów, to wielomian interpolacyjny ma stopień co najwyżej $n$. Zdarzały się zadania gdzie mieliśmy podać wielomian interpolacyjny dla $n+1$ punktów - mówimy wówczas że z jednoznaczności $f(x) = L_n(x)$.
 
 ## Doliczanie kolejnego punktu
 
