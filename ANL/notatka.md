@@ -55,6 +55,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Algorytm Clenshawa - #TODO](#algorytm-clenshawa---todo)
   - [Interpolacja wielomianowa Lagrange'a](#interpolacja-wielomianowa-lagrangea)
   - [Doliczanie kolejnego punktu](#doliczanie-kolejnego-punktu)
+        - [Zadanie L14.24: Znajdź postać Newtona wielomianu interpolacyjnego Lagrange'a 4 stopnia dla punktów $(-2; 1), (-1;2), (1;10), (2;29), (3;106)$](#zadanie-l1424-znajdź-postać-newtona-wielomianu-interpolacyjnego-lagrangea-4-stopnia-dla-punktów--2-1--12-110-229-3106)
   - [Ilorazy różnicowe](#ilorazy-różnicowe)
   - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
   - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
@@ -630,6 +631,52 @@ Zadanie interpolacji Lagrange'a ma zawsze jednoznaczne rozwiązanie. Z jednoznac
 Aby nie lecieć wzorem od początku $O(n^2)$, możemy doliczać kolejny punkt w $O(n)$ zapisując wielomian w postaci Newtona:
 
 $L_{n+1} = L_n + y_{n+1} p_{n+1}$
+
+
+##### Zadanie L14.24: Znajdź postać Newtona wielomianu interpolacyjnego Lagrange'a 4 stopnia dla punktów $(-2; 1), (-1;2), (1;10), (2;29), (3;106)$
+
+<details>
+<summary>Rozwiązanie L14.24</summary>
+
+<br />
+Wielomian interpolacyjny Lagrange'a 4 stopnia ma postać:
+
+
+$L(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)(x-x_1) + a_3(x-x_0)(x-x_1)(x-x_2) + a_4(x-x_0)(x-x_1)(x-x_2)(x-x_3)$
+
+lub ogólniej:
+$L(x) = y_0 l_0(x) + y_1 l_1(x) + y_2 l_2(x) + y_3 l_3(x) + y_4 l_4(x)$
+
+gdzie:
+
+$y_0 = 1$
+$y_1 = 2$
+$y_2 = 10$
+$y_3 = 29$
+$y_4 = 106$
+
+$l_0(x) = \frac{(x-x_1)(x-x_2)(x-x_3)(x-x_4)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)(x_0-x_4)} = \frac{(x+1)(x-1)(x-2)(x-3)}{(-2+1)(-2-1)(-2-2)(-2-3)} = \frac{(x+1)(x-1)(x-2)(x-3)}{120}$
+
+$l_1(x) = \frac{(x-x_0)(x-x_2)(x-x_3)(x-x_4)}{(x_1-x_0)(x_1-x_2)(x_1-x_3)(x_1-x_4)} = \frac{(x+2)(x-1)(x-2)(x-3)}{(1+2)(1-1)(1-2)(1-3)} = \frac{(x+2)(x-1)(x-2)(x-3)}{-12}$
+
+$l_2(x) = \frac{(x-x_0)(x-x_1)(x-x_3)(x-x_4)}{(x_2-x_0)(x_2-x_1)(x_2-x_3)(x_2-x_4)} = \frac{(x+2)(x+1)(x-2)(x-3)}{(2+2)(2+1)(2-2)(2-3)} = \frac{(x+2)(x+1)(x-2)(x-3)}{24}$
+
+$l_3(x) = \frac{(x-x_0)(x-x_1)(x-x_2)(x-x_4)}{(x_3-x_0)(x_3-x_1)(x_3-x_2)(x_3-x_4)} = \frac{(x+2)(x+1)(x-1)(x-3)}{(3+2)(3+1)(3-1)(3-3)} = \frac{(x+2)(x+1)(x-1)(x-3)}{-20}$
+
+$l_4(x) = \frac{(x-x_0)(x-x_1)(x-x_2)(x-x_3)}{(x_4-x_0)(x_4-x_1)(x_4-x_2)(x_4-x_3)} = \frac{(x+2)(x+1)(x-1)(x-2)}{(4+2)(4+1)(4-1)(4-2)} = \frac{(x+2)(x+1)(x-1)(x-2)}{60}$
+
+Wstawiamy do wzoru:
+
+$L(x) = 1 * \frac{(x+1)(x-1)(x-2)(x-3)}{120} + 2 * \frac{(x+2)(x-1)(x-2)(x-3)}{-12} + 10 * \frac{(x+2)(x+1)(x-2)(x-3)}{24} + 29 * \frac{(x+2)(x+1)(x-1)(x-3)}{-20} + 106 * \frac{(x+2)(x+1)(x-1)(x-2)}{60}$
+
+Po przekształceniach:
+
+$L(x) = \frac{1}{120}x^4 - \frac{1}{6}x^3 + \frac{11}{8}x^2 - \frac{11}{6}x + 1$
+
+
+</details>
+
+Zadanie L14.25 rozwiązywalne analogicznie do L14.24
 
 ## Ilorazy różnicowe
 
