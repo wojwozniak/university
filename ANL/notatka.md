@@ -83,17 +83,39 @@ Rzeczywiste: $x = s * m * 2^c$ gdzie $s \in \{-1,1\}$, $m \in [1/2, 1)$, $c$ ca�
 
 <details>
 <summary>
-  L14.1 #TODO Udowodnij, że dodatnia liczba rzeczywista ma skończone rozwinięcie dwójkowe wtedy i tylko wtedy gdy jest postaci m / 2^n
+  L14.1 Udowodnij, że dodatnia liczba rzeczywista ma skończone rozwinięcie dwójkowe wtedy i tylko wtedy gdy jest postaci m / 2^n
 </summary>
 
 <br/>
 
-$x = s * m * 2^c$ gdzie $s \in \{-1,1\}$, $m \in [1/2, 1)$, $c$ całkowity wykładnik
-
-Dodatnia liczba, więc wyrzucamy $s$.
-
 ```
-Dokończyć
+Musimy pokazać implikację w obydwie strony.
+
+L => P
+
+c_n, c_n-1, ..., c_0, c_-1, c_-2, ..., c_-k - rozwinięcie dwójkowe liczby x
+
+x = c_n * 2^n + c_n-1 * 2^n-1 + ... + c_0 * 2^0 + c_-1 * 2^-1 + c_-2 * 2^-2 + ... + c_-k * 2^-k =
+
+c_n * 2^(n+k) + ... + c_-k    <-- liczba całkowita
+-------------------------
+2^k
+
+mamy więc szukaną postać
+
+P => L
+
+x = m / 2^n, m całkowite 
+m = cl * 2^l + cl-1 * 2^l-1 + ... + c_0 * 2^0
+
+x = 
+
+cl * 2^l + cl-1 * 2^l-1 + ... + c_0 * 2^0
+-----------------------------------------
+2^n
+
+przesuwamy kropkę dziesiętną o l miejsc w lewo, nie zmieni to "skończenia" liczby, zmienia się tylko "wartość" bitów.
+
 ```
 </details>
 
