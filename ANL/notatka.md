@@ -63,6 +63,8 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Konstrukcja NIFS3](#konstrukcja-nifs3)
         - [Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)](#zadanie-l1430--znajdź-nifs3-dla--20228043--41989--2-1983-0-1977-1-1974-3-1968-2022--4089)
   - [Krzywe parametryczne](#krzywe-parametryczne)
+        - [Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$](#zadanie-l1437--aproksymacja---wyznacz-prawdopodobne-a-wzór-ct--2at22018-1)
+        - [Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x\_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n \< N) też jest funkcją parzystą.](#zadanie-l1440--rozważmy-zadanie-wielomianowej-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym-dla-węzłów-postaci-x_k---a--2ak--n-udowodniej-że-jeśli-aproksymowana-funkcja-jest-parzysta-to-n-ty-wielomian-optymalny-n--n-też-jest-funkcją-parzystą)
 
 
 ## Teoria wstępna
@@ -346,7 +348,7 @@ cond(x) = (x0 + x1 + ... + xn) * 1 / (x0 + x1 + ... + xn) = 1
 
 <details>
 
-<summary>Rozwiązanie L14.7 #TODO dokończyć</summary>
+<summary>Rozwiązanie L14.7</summary>
 
 <br />
 
@@ -367,10 +369,10 @@ Nasz przykład:
 f(x) = e^(5x)
 f'(x) = 5e^(5x)
 cond(x) = (5e^(5x) * x) / e^(5x) = 5x
-Zadanie jest dobrze uwarunkowane dla naszego x.
+cond(~0.8) ~= 4
 
-Jak dużej utraty dwójkowych cyfr znaczących należy się spodziewać, jeżeli x odbiega od 0.8 o jedną dwójkową cyfrę znaczącą? #TODO
-
+Błąd argumentu: ~2^-t
+Błąd wyniku: 4 * 2^-t
 ```
 
 </details>
@@ -770,3 +772,64 @@ Ogólnie raczej jeśli będziemy mieli realnie liczyć NIFS3, to dostaniemy tak 
 ## Krzywe parametryczne
 
 Krzywa parametryczna to funkcja $f: [a,b] \to \mathbb{R}^2$.
+
+
+##### Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$
+
+<details>
+<summary>Rozwiązanie L14.37</summary>
+
+<br />
+
+```
+C(t) = 2^{(At^2+2018)^{-1}}
+
+log_2(C(t)) = 1 / (At^2 + 2018)
+
+1 / log_2(C(t)) - 2018 = At^2
+
+d_k = 1 / log_2(C(t_k)) - 2018
+
+d(t) = 1 / log_2(C(t)) - 2018
+
+I teraz:
+```
+$E(a) = \sum_{k=0}^{N} (At_k^2 - d_k)^2$
+szukamy minimum E(a) 
+
+</details>
+
+
+
+##### Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n < N) też jest funkcją parzystą.
+
+<details>
+<summary>Rozwiązanie L14.40</summary>
+
+<br />
+
+```
+x = -a + (2ak) / N   x_0 = -a, krok 2a/N,  x_N = a
+
+punkty są więc symetryczne
+
+f_0, f_1, ..., f_N
+
+f_0 = f_N
+f_1 = f_N-1
+....
+```
+Wielomian optymalny: 
+$w^*_n(x) = \sum_{k=0}^{n} \frac{<f, p_n>}{<p, p_n>}p_n(x)$
+
+$P_0(x) = 1$ - tylko parzyste potęgi
+
+$<f, P_0> = \sum_{k=0}^{N} f_i * 1 = 0$
+
+$P_1(x) = (x - \frac{<xP_0, P_0>}{<P_0, P_0>}) * P_0(x)$ = $<xP_0, P_0>$ = $\sum_{k=0}^{N} x_k = 0$ 
+
+$P_1(x)$ - tylko nieparzyste potęgi 
+
+#TODO dokończyć
+
+</details>
