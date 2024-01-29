@@ -46,6 +46,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Wykładnik zbieżności ciągu (rząd metody)](#wykładnik-zbieżności-ciągu-rząd-metody)
         - [Zadanie L14.20: Podaj efektywny algorytm wyznaczania liczby naturalnej a, której cyframi dziesiętnymi (od najbardziej do najmniej znaczącej) są a\_n, a\_n-1, ..., a\_0, gdzie a\_n != 0](#zadanie-l1420-podaj-efektywny-algorytm-wyznaczania-liczby-naturalnej-a-której-cyframi-dziesiętnymi-od-najbardziej-do-najmniej-znaczącej-są-a_n-a_n-1--a_0-gdzie-a_n--0)
         - [Zadanie L14.21. - Sformułuj i uzasadnij uogólniony schemat Hornera obliczania wartości wielomianu podanego w postaci Newtona](#zadanie-l1421---sformułuj-i-uzasadnij-uogólniony-schemat-hornera-obliczania-wartości-wielomianu-podanego-w-postaci-newtona)
+        - [Zadanie L14.23. - Mamy wielomian postaci $W\_n(x) = z\_0(x-z\_1)(x-z\_2)...(x-z\_n), gdzie z\_i są dane. Opracuj i uzasadnij oszczędny algorytm znajdowania postaci potęgowej wielomianu w\_n. Określ złożoność algorytmu. Gdszie, w kontekście metod omówionych w ramach wykładu, algorytm może mieć zastosowanie?](#zadanie-l1423---mamy-wielomian-postaci-w_nx--z_0x-z_1x-z_2x-z_n-gdzie-z_i-są-dane-opracuj-i-uzasadnij-oszczędny-algorytm-znajdowania-postaci-potęgowej-wielomianu-w_n-określ-złożoność-algorytmu-gdszie-w-kontekście-metod-omówionych-w-ramach-wykładu-algorytm-może-mieć-zastosowanie)
   - [Interpolacja wielomianowa](#interpolacja-wielomianowa)
     - [Postaci wielomianów](#postaci-wielomianów)
       - [Postać naturalna potęgowa](#postać-naturalna-potęgowa)
@@ -621,6 +622,39 @@ $w_n = a_n$
 $w_k = (x-x_k)w_{k+1} + a_k$ dla $k = n-1, n-2, ..., 0$
 
 <br />
+
+</details>
+
+##### Zadanie L14.23. - Mamy wielomian postaci $W_n(x) = z_0(x-z_1)(x-z_2)...(x-z_n), gdzie z_i są dane. Opracuj i uzasadnij oszczędny algorytm znajdowania postaci potęgowej wielomianu w_n. Określ złożoność algorytmu. Gdszie, w kontekście metod omówionych w ramach wykładu, algorytm może mieć zastosowanie?
+
+<details>
+<summary>Rozwiązanie L14.23</summary>
+
+<br />
+
+```
+Wielomian przekształcamy podobnie jak L14.21.
+Dotrzemy do postaci, która pozwoli nam zauważyć że będziemy mogli liczyć to w czasie liniowym.
+Do policzenia i zapamiętania będzie
+Suma z_n
+Robimy akumulator.
+W akumulatorze dajemy minus iloczyn z_n
+Obliczamy sumę z_n * x i pamiętamy ją
+Doliczamy zapamiętaną sumę do akumulatora
+I w pętli dla kolejnych i
+  Wymnażamy zapamiętaną sumę przez x
+  Doliczamy do akumulatora
+
+Złożoność liniowa, bo mamy jedną pętlę 1-n, w której wykonujemy stałą liczbę operacji (no i też suma liniowo będzie policzona)
+
+Jakie to ma zastosowanie?
+
+Jest to "doliczenie kolejnej obserwacji" w interpolacji Lagrange'a do wielomianu w postaci Newtona. Chcemy to tak doliczać bo mozemy dodawać kolejne punkty w czasie liniowym, a nie kwadratowym.
+
+Potrzebujemy jednak przerobić postać Newtona na postać potęgową, jeśli chcemy policzyć całkę - nasz algorytm pozwala to zrobić również w czasie liniowym.
+
+Szybkie liczenie całki przydaje się przy kwadraturach.
+```
 
 </details>
 
