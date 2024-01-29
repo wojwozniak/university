@@ -65,6 +65,9 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Krzywe parametryczne](#krzywe-parametryczne)
         - [Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$](#zadanie-l1437--aproksymacja---wyznacz-prawdopodobne-a-wzór-ct--2at22018-1)
         - [Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x\_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n \< N) też jest funkcją parzystą.](#zadanie-l1440--rozważmy-zadanie-wielomianowej-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym-dla-węzłów-postaci-x_k---a--2ak--n-udowodniej-że-jeśli-aproksymowana-funkcja-jest-parzysta-to-n-ty-wielomian-optymalny-n--n-też-jest-funkcją-parzystą)
+  - [Macierze](#macierze)
+    - [Rozkład LU](#rozkład-lu)
+    - [Metoda faktoryzacji](#metoda-faktoryzacji)
 
 
 ## Teoria wstępna
@@ -833,3 +836,63 @@ $P_1(x)$ - tylko nieparzyste potęgi
 #TODO dokończyć
 
 </details>
+
+
+## Macierze
+
+### Rozkład LU
+
+$A = LU$
+
+gdzie L to macierz trójkątna dolna, a U to macierz trójkątna górna.
+
+Bierzemy macierz A i szukamy macierzy trójkątnej górnej jak robiliśmy to na algebrze, poprzez odejmowanie i dodawanie wierszy. 
+
+Zapisujemy wszystkie operacje które zrobiliśmy.
+
+Otrzymana macierz jest macierzą U.
+
+Macierz L generujemy z zapisanych operacji które wykonaliśmy na A. 
+
+Np mieliśmy w zadaniu z listy takie operacje:
+
+- $r_2 = r_2 + 3 r_1$
+- $r_3 = r_3 - 5 r_1$
+- $r_4 = r_4 + 9 r_1$
+- $r_3 = r_3 + 7 r_2$
+- $r_4 = r_4 - 11 r_2$
+- $r_4 = r_4 - 19 r_3$
+
+Druga kolumna mówi nam w którym rzędzie będzie wartość,
+r w trzeciej w której kolumnie a wartość będzie argumentem przy r z odwrotnym znakiem.
+
+Np. dla $r_2 = r_2 + 3 r_1$ mamy -3 w drugim rzędzie, pierwszej kolumnie
+
+Cała macierz którą uzyskamy:
+
+$\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+-3 & 1 & 0 & 0 \\
+5 & -7 & 1 & 0 \\
+-9 & 11 & 19 & 1 \\
+\end{bmatrix}$
+
+### Metoda faktoryzacji
+
+- $Ax = b$
+- $LUx = b$
+- $L(Ux) = b$
+- $Ly = b$
+
+Stąd wyznaczamy y i rozwiązujemy $Ux = y$ uzysukjąc rozwiązanie x.
+
+W skrócie:
+
+$Ax = b$
+
+zamienia się w:
+
+$Ly = b$, gdzie znamy L oraz b
+$Ux = y$, gdzie znamy U oraz y z poprzedniego równania
+
+Rozwiążemy takie zadanie w czasie $O(n^2)$ - nie zawsze jednak rozwiazanie istnieje.
