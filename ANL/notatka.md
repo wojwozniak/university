@@ -69,6 +69,8 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Rozkład LU](#rozkład-lu)
     - [Metoda faktoryzacji](#metoda-faktoryzacji)
     - [Wyznacznik macierzy:](#wyznacznik-macierzy)
+        - [Zadanie L14.50. - Rozkład LU macierzy i obliczenie Ax = b metodą faktoryzacji - rozwiązane na papierze (proste tylko dużo pisania)](#zadanie-l1450---rozkład-lu-macierzy-i-obliczenie-ax--b-metodą-faktoryzacji---rozwiązane-na-papierze-proste-tylko-dużo-pisania)
+        - [Zadanie L14.54. : Opracuj metodę rozkładu LU macierzy postaci (liczby na przekątnej, ostatnim wierszu, ostatniej kolumnie). Podaj jej złożoność.](#zadanie-l1454--opracuj-metodę-rozkładu-lu-macierzy-postaci-liczby-na-przekątnej-ostatnim-wierszu-ostatniej-kolumnie-podaj-jej-złożoność)
 
 
 ## Teoria wstępna
@@ -894,6 +896,7 @@ $Ax = b$
 zamienia się w:
 
 $Ly = b$, gdzie znamy L oraz b
+
 $Ux = y$, gdzie znamy U oraz y z poprzedniego równania
 
 Rozwiążemy takie zadanie w czasie $O(n^2)$ - nie zawsze jednak rozwiazanie istnieje.
@@ -905,3 +908,35 @@ $det(A) = det(L) * det(U)$,
 gdzie w naszym przypadku przekątna L to same jedynki, więc 
 
 $det(A) = det(U) = u_{11} * u_{22} * ... * u_{nn}$
+
+##### Zadanie L14.50. - Rozkład LU macierzy i obliczenie Ax = b metodą faktoryzacji - rozwiązane na papierze (proste tylko dużo pisania)
+
+##### Zadanie L14.54. : Opracuj metodę rozkładu LU macierzy postaci (liczby na przekątnej, ostatnim wierszu, ostatniej kolumnie). Podaj jej złożoność.
+
+<details>
+<summary>Rozwiązanie L14.54</summary>
+
+<br />
+
+```
+Złożoność: O(n)
+macierz mniej wiecej wyglada tak
+
+a1 0 0 0 0 c1
+0 a2 0 0 0 c2
+0 0 a3 0 0 c3
+0 0 0 a4 0 c4
+0 0 0 0 a5 c5
+0 0 0 0 0  c6
+b1 b2 b3 b4 b5 an
+
+Liczymy najpierw U (jak na algebrze, od ost. wiersza odejmujemy b1/a1, b2/a2, b3/a3 od ostatniego wiersza)
+przekątna nie zmienia się poza ostatnim el: an-c1/a1 - c2/a2 - c3/a3 - c4/a4 - c5/a5
+
+A L będzie macierzą I z dodanymi w ostatnim wierszu b1/a1, b2/a2, b3/a3, b4/a4, b5/a5.
+
+Obliczamy więc liniowo prawy dolny element U (resztę znamy z góry), a potem liniowo ostatni wiersz L (resztę znamy z góry).
+
+```
+
+</details>
