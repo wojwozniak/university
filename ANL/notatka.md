@@ -45,6 +45,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
       - [Własności metody](#własności-metody-1)
     - [Wykładnik zbieżności ciągu (rząd metody)](#wykładnik-zbieżności-ciągu-rząd-metody)
         - [Zadanie L14.20: Podaj efektywny algorytm wyznaczania liczby naturalnej a, której cyframi dziesiętnymi (od najbardziej do najmniej znaczącej) są a\_n, a\_n-1, ..., a\_0, gdzie a\_n != 0](#zadanie-l1420-podaj-efektywny-algorytm-wyznaczania-liczby-naturalnej-a-której-cyframi-dziesiętnymi-od-najbardziej-do-najmniej-znaczącej-są-a_n-a_n-1--a_0-gdzie-a_n--0)
+        - [Zadanie L14.21. - Sformułuj i uzasadnij uogólniony schemat Hornera obliczania wartości wielomianu podanego w postaci Newtona](#zadanie-l1421---sformułuj-i-uzasadnij-uogólniony-schemat-hornera-obliczania-wartości-wielomianu-podanego-w-postaci-newtona)
   - [Interpolacja wielomianowa](#interpolacja-wielomianowa)
     - [Postaci wielomianów](#postaci-wielomianów)
       - [Postać naturalna potęgowa](#postać-naturalna-potęgowa)
@@ -598,6 +599,30 @@ i mamy
 </details>
 
 
+##### Zadanie L14.21. - Sformułuj i uzasadnij uogólniony schemat Hornera obliczania wartości wielomianu podanego w postaci Newtona
+
+<details>
+<summary>Rozwiązanie L14.21</summary>
+
+<br />
+
+Wielomian w postaci Newtona:
+
+$w(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)(x-x_1) + ... + a_n(x-x_0)(x-x_1)...(x-x_{n-1})$
+
+Możemy go zapisać jako:
+
+$w(x) = a_0 + (x-x_0)(a_1 + (x-x_1)(a_2 + ... + (x-x_{n-1})(a_n))...)$
+
+wtedy:
+
+$w_n = a_n$
+
+$w_k = (x-x_k)w_{k+1} + a_k$ dla $k = n-1, n-2, ..., 0$
+
+<br />
+
+</details>
 
 ## Interpolacja wielomianowa
 
