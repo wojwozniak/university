@@ -60,6 +60,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.26 - Funkcję $f(x) = cos(x/2)$ interpolujemy Lagrangem w węzłach Czebyszewa. Jak należy dobrać n, aby błąd interpolacji był mniejszy niż $10^{-8}$ dla $x \\in \[-1, 1\]$?](#zadanie-l1426---funkcję-fx--cosx2-interpolujemy-lagrangem-w-węzłach-czebyszewa-jak-należy-dobrać-n-aby-błąd-interpolacji-był-mniejszy-niż-10-8-dla-x-in--1-1)
   - [Ilorazy różnicowe](#ilorazy-różnicowe)
   - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
+        - [Zadanie L14.28. : Dostajemy liczby $a\_0, a\_1, ..., a\_{n-1}$. Zaproponuj algorytm znajdowania takich $c\_0, c\_1, ... c\_n$ że dla każdego $x \\in \\mathbb{R}$ zachodzi $x^n = c\_0 + c\_1(x - a\_0) + c\_2(x - a\_0)(x - a\_1) + ... + c\_n(x - a\_0)(x - a\_1)...(x - a\_{n-1})$ Podaj jego złożoność.](#zadanie-l1428--dostajemy-liczby-a_0-a_1--a_n-1-zaproponuj-algorytm-znajdowania-takich-c_0-c_1--c_n-że-dla-każdego-x-in-mathbbr-zachodzi-xn--c_0--c_1x---a_0--c_2x---a_0x---a_1----c_nx---a_0x---a_1x---a_n-1-podaj-jego-złożoność)
   - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
     - [Konstrukcja NIFS3](#konstrukcja-nifs3)
         - [Zadanie L14.29 - Podaj definicję NIFS3 i znajdź NIFS3 dla $(-1;-1), (0;2), (1;-3)$](#zadanie-l1429---podaj-definicję-nifs3-i-znajdź-nifs3-dla--1-1-02-1-3)
@@ -799,6 +800,29 @@ Aby zminimalizować błąd interpolacji, należy odpowiednio wybrać węzły. Na
 $x_k = cos(\frac{2k+1}{2n+2} \pi)$
 
 dzięki temu mamy więcej węzłów przy końcach minimalizując efekt Rungego.
+
+
+
+##### Zadanie L14.28. : Dostajemy liczby $a_0, a_1, ..., a_{n-1}$. Zaproponuj algorytm znajdowania takich $c_0, c_1, ... c_n$ że dla każdego $x \in \mathbb{R}$ zachodzi $x^n = c_0 + c_1(x - a_0) + c_2(x - a_0)(x - a_1) + ... + c_n(x - a_0)(x - a_1)...(x - a_{n-1})$ Podaj jego złożoność.
+
+<details>
+<summary>Rozwiązanie L14.28</summary>
+
+<br />
+
+```
+Obserwacja: to jest interpolacja Lagrange'a dla punktów:
+(a_0, a_0^n), (a_1, a_1^n), ..., (a_{n-1}, a_{n-1}^n)
+Dodajemy jeszcze jedną obserwację (a_n, a_n^n) żeby mieć n+1 punktów.
+
+b_0 = a_0^n
+b_1 = f[a_1, a_0]
+b_2 = f[a_2, a_1, a_0]
+...
+Mamy złożoność jak interpolacja Lagrange'a, czyli O(n^2) i obliczeniowo i pamięciowo.
+```
+
+</details>
 
 ## Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia
 
