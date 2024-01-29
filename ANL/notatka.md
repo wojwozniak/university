@@ -72,7 +72,14 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Metody całkowania](#metody-całkowania)
       - [Całkowanie przez części](#całkowanie-przez-części)
       - [Całkowanie przez podstawienie](#całkowanie-przez-podstawienie)
+  - [Wszystko o kwadraturach poniżej #TODO](#wszystko-o-kwadraturach-poniżej-todo)
     - [Kwadratura liniowa](#kwadratura-liniowa)
+    - [Kwadratura interpolacyjna](#kwadratura-interpolacyjna)
+    - [Kwadratura Newtona-Cotesa](#kwadratura-newtona-cotesa)
+    - [Wzór trapezów, złożony wzór trapezów](#wzór-trapezów-złożony-wzór-trapezów)
+    - [Wzór Simpsona, złożony wzór Simpsona](#wzór-simpsona-złożony-wzór-simpsona)
+    - [Metoda Romberga](#metoda-romberga)
+    - [Kwadratura Gausa](#kwadratura-gausa)
   - [Macierze](#macierze)
     - [Rozkład LU](#rozkład-lu)
     - [Metoda faktoryzacji](#metoda-faktoryzacji)
@@ -931,9 +938,37 @@ $\int{f(x)g'(x)dx} = f(x)g(x) - \int{f'(x)g(x)dx}$
 
 $\int{f(g(x))g'(x)dx} = \int{f(u)du}$
 
+
+## Wszystko o kwadraturach poniżej #TODO
+
 ### Kwadratura liniowa
 
-Kwadratura liniowa to kwadratura, która przybliża funkcję f(x) wielomianem 1. stopnia. Kwadratura liniowa może mieć rząd co najwyżej 2n+2 (było podane jako twierdzenie, jest to też zadanie L14.45.)
+Kwadratura liniowa to kwadratura, która przybliża funkcję f(x)/ Kwadratura liniowa może mieć rząd co najwyżej 2n+2 (było podane jako twierdzenie, jest to też zadanie L14.45.)
+
+### Kwadratura interpolacyjna
+
+Ideą tej kwadratury jest całkowanie wielomianu Ln(x) zamiast funkcji f(x). Kwadratura liniowa ma rząd większy lub równy n+1 <=> jest ona kwadraturą interpolacyjną.
+
+### Kwadratura Newtona-Cotesa
+
+Kwadratura Newtona-Cotesa to kwadratura interpolacyjna, w której węzły są równoodległe. k-ty węzeł to $x_k = a + k * h$, gdzie $h = \frac{b-a}{n}$
+
+### Wzór trapezów, złożony wzór trapezów
+
+Jest to metoda rzędu 2. Dla danej funkcji na danym przedziale szacujemy wartość całki za pomocą kwadratury $Q_1(f) = \frac{b-a}{2}(f(a) + f(b))$. (Liczymy pole trapezu)
+
+### Wzór Simpsona, złożony wzór Simpsona
+
+Jest to metoda rzędu 4. Dla danej funkcji na danym przedziale szacujemy wartość całki za pomocą kwadratury 
+
+$Q_2(f) = \frac{b-a}{w}(\frac{1}{3}f(a) + \frac{4}{3}f(\frac{a+b}{2}) + \frac{1}{3}f(b))$. 
+
+### Metoda Romberga
+
+Liczymy elementy T(0,i), wypełniamy tablicę Romberga (macierz dolnotrójkątną)
+
+### Kwadratura Gausa
+
 
 ## Macierze
 
