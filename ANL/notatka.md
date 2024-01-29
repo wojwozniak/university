@@ -276,6 +276,8 @@ Zadanie jest źle uwarunkowane, jeśli mała zmiana danych powoduje dużą zmian
 
 Wskaźnik uwarunkowania określamy wzorem $cond(x) = \frac{\Delta f}{\Delta x}$. Jeśli $cond(x)$ jest bliskie 1, to zadanie jest dobrze uwarunkowane, w przeciwnym wypadku źle uwarunkowane.
 
+Możemy powiedzieć, że jeżeli nie umiemy znaleźć x gdzie się psuje, to zadanie jest dobrze uwarunkowane.
+
 Można wyprowadzić dokładniejszy wzór:
 $cond(x) = \frac{x * f'(x)}{f(x)}$
 
@@ -473,6 +475,7 @@ Rozpisujemy wszystko, łączymy błędy twierdzeniem o kumulacji błędów i spr
 </details>
 
 L14.13 analogicznie do L14.12 - rozpisujemy w każdej iteracji 4 błędy i zwijamy je w a^n z daszkiem (gdzie każdy z nich ma błąd 4 * 2^-t) Stosujemy taki jakby schemat Hornera, a on jest numerycznie poprawny.
+Możemy bez problemu oznaczyć jeszcze jakimś innym symbolem a_k po odjęciu, wtedy mamy błąd 5 * 2^-t, i te błędy nam się sumują - nie wymnażają się tak wprost widocznie, ale nie psują się tak jak na przykładzie z powtórzenia z PWO.
 
 
 ## Rozwiązywanie równań nieliniowych
