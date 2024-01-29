@@ -468,7 +468,7 @@ Rozpisujemy wszystko, łączymy błędy twierdzeniem o kumulacji błędów i spr
 
 </details>
 
-L14.13 analogicznie do L14.12
+L14.13 analogicznie do L14.12 - rozpisujemy w każdej iteracji 4 błędy i zwijamy je w a^n z daszkiem (gdzie każdy z nich ma błąd 4 * 2^-t) Stosujemy taki jakby schemat Hornera, a on jest numerycznie poprawny.
 
 
 ## Rozwiązywanie równań nieliniowych
