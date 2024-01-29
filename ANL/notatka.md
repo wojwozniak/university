@@ -61,6 +61,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
   - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
     - [Konstrukcja NIFS3](#konstrukcja-nifs3)
+        - [Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)](#zadanie-l1430--znajdź-nifs3-dla--20228043--41989--2-1983-0-1977-1-1974-3-1968-2022--4089)
   - [Krzywe parametryczne](#krzywe-parametryczne)
 
 
@@ -750,6 +751,21 @@ Tworzymy układy równań, które dla każdego węzła spełniają:
 - w''(x0) = w''(xn) = 0 (naturalność)
 
 NIFS3 zawsze istnieje i jest jednoznaczna.
+
+
+##### Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)
+
+<details>
+<summary>Rozwiązanie L14.30</summary>
+
+<br />
+
+```
+Zadanie jest podchwytliwe - możemy od razu zauważyć że będzie to prosta y = -3x + 1977. 
+
+Ogólnie raczej jeśli będziemy mieli realnie liczyć NIFS3, to dostaniemy tak góra 3-4 węzły żeby nie było godziny liczenia.
+```
+</details>
 
 ## Krzywe parametryczne
 
