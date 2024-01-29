@@ -68,6 +68,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Macierze](#macierze)
     - [Rozkład LU](#rozkład-lu)
     - [Metoda faktoryzacji](#metoda-faktoryzacji)
+    - [Wyznacznik macierzy:](#wyznacznik-macierzy)
 
 
 ## Teoria wstępna
@@ -896,3 +897,11 @@ $Ly = b$, gdzie znamy L oraz b
 $Ux = y$, gdzie znamy U oraz y z poprzedniego równania
 
 Rozwiążemy takie zadanie w czasie $O(n^2)$ - nie zawsze jednak rozwiazanie istnieje.
+
+### Wyznacznik macierzy:
+
+$det(A) = det(L) * det(U)$, 
+
+gdzie w naszym przypadku przekątna L to same jedynki, więc 
+
+$det(A) = det(U) = u_{11} * u_{22} * ... * u_{nn}$
