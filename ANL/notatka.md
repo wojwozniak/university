@@ -39,6 +39,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
       - [Własności metody (zadanie L14.15):](#własności-metody-zadanie-l1415)
     - [Metoda Newtona (stycznych)](#metoda-newtona-stycznych)
       - [Własności metody](#własności-metody)
+        - [Zadanie L14.16 : Przybliżone obliczanie wartości $^5\\sqrt{a}$ metodą newtona, $dobranie x\_0 i warunek stopu$](#zadanie-l1416--przybliżone-obliczanie-wartości-5sqrta-metodą-newtona-dobranie-x_0-i-warunek-stopu)
         - [Zadanie L14.17 - Niech $\\alpha$ będzie zerowym miejscem funkcji f (f($\\alpha$) = 0, f'($\\alpha$) $\\not=$ 0). Udowodnij że wówczas rząd zbieżności metody Newtona wynosi 2.](#zadanie-l1417---niech-alpha-będzie-zerowym-miejscem-funkcji-f-falpha--0-falpha-not-0-udowodnij-że-wówczas-rząd-zbieżności-metody-newtona-wynosi-2)
         - [Zadanie L14.18: zaproponuj efektywny algorytm obliczania z dużą dokładnością wartości $\\sqrt{a}$ wykorzystując jedynie operacje arytmetyczne (+, -, \*, /)](#zadanie-l1418-zaproponuj-efektywny-algorytm-obliczania-z-dużą-dokładnością-wartości-sqrta-wykorzystując-jedynie-operacje-arytmetyczne-----)
     - [Metoda siecznych](#metoda-siecznych)
@@ -502,6 +503,39 @@ Znajdujemy miejsce zerowe funkcji $f(x)$
 - Szybka zbieżność przy dobrze wybranym $x_0$
 - Konieczność liczenia pochodnej - dla skomplikowanych funkcji może być to problematyczne
 - Może nie zbiegać lub zapętlić się dla niektórych $x_0$
+
+##### Zadanie L14.16 : Przybliżone obliczanie wartości $^5\sqrt{a}$ metodą newtona, $dobranie x_0 i warunek stopu$
+
+<details>
+<summary>Rozwiązanie L14.16</summary>
+
+<br />
+
+
+Zgadujemy funkcję taką że $f(x) = 0 <=> x = ^5\sqrt{a}$
+
+$f(x) = x^5 - a$
+
+$f'(x) = 5x^4$
+
+$x_{i+1} = x_i - \frac{x_i^5 - a}{5x_i^4} = \frac{4x_i^5 + a}{5x_i^4}$ = $\frac{4}{5}x_i + \frac{a}{5x_i^4}$ - wzór kolejnych przybliżeń
+
+Dobieranie przykładowego przybliżenia - w podobnym zadaniu na liście sprawdzaliśmy to eksperymentalnie - wówczas najlepiej działało dla bardzo małych wartości - tu też tak bym zrobił.
+
+Warunek stopu w metodzie Newtona składa się z kilku części:
+
+- Osiągnięcie odpowiedniej dokładności
+
+oraz
+- Górny limit iteracji, w razie jakby się popsuło nie chcemy lecieć w nieskończość
+
+lub
+
+- Odpowiednio mała zmiana między kolejnymi przybliżeniami - jeśli przybliżenia są bardzo blisko siebie, to znaczy że metoda się zapętliła i nie ma sensu dalej liczyć
+
+
+
+</details>
 
 
 ##### Zadanie L14.17 - Niech $\alpha$ będzie zerowym miejscem funkcji f (f($\alpha$) = 0, f'($\alpha$) $\not=$ 0). Udowodnij że wówczas rząd zbieżności metody Newtona wynosi 2.
