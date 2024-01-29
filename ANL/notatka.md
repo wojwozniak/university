@@ -56,21 +56,33 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Interpolacja wielomianowa Lagrange'a](#interpolacja-wielomianowa-lagrangea)
   - [Doliczanie kolejnego punktu](#doliczanie-kolejnego-punktu)
         - [Zadanie L14.24: Znajdź postać Newtona wielomianu interpolacyjnego Lagrange'a 4 stopnia dla punktów $(-2; 1), (-1;2), (1;10), (2;29), (3;106)$](#zadanie-l1424-znajdź-postać-newtona-wielomianu-interpolacyjnego-lagrangea-4-stopnia-dla-punktów--2-1--12-110-229-3106)
+        - [Zadanie L14.25 - Znajdź wielomian interpolacyjny Lagrange'a dla punktów a) $(-2; 2), (-1;0), (0;-2), (1;-4)$ i b) $(1;-4), (2;-30), (-1;0), (-2;2), (0,2)$ w postaci Newtona](#zadanie-l1425---znajdź-wielomian-interpolacyjny-lagrangea-dla-punktów-a--2-2--10-0-2-1-4-i-b-1-4-2-30--10--22-02-w-postaci-newtona)
         - [Zadanie L14.26 - Funkcję $f(x) = cos(x/2)$ interpolujemy Lagrangem w węzłach Czebyszewa. Jak należy dobrać n, aby błąd interpolacji był mniejszy niż $10^{-8}$ dla $x \\in \[-1, 1\]$?](#zadanie-l1426---funkcję-fx--cosx2-interpolujemy-lagrangem-w-węzłach-czebyszewa-jak-należy-dobrać-n-aby-błąd-interpolacji-był-mniejszy-niż-10-8-dla-x-in--1-1)
   - [Ilorazy różnicowe](#ilorazy-różnicowe)
   - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
   - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
     - [Konstrukcja NIFS3](#konstrukcja-nifs3)
+        - [Zadanie L14.29 - Podaj definicję NIFS3 i znajdź NIFS3 dla $(-1;-1), (0;2), (1;-3)$](#zadanie-l1429---podaj-definicję-nifs3-i-znajdź-nifs3-dla--1-1-02-1-3)
         - [Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)](#zadanie-l1430--znajdź-nifs3-dla--20228043--41989--2-1983-0-1977-1-1974-3-1968-2022--4089)
   - [Krzywe parametryczne](#krzywe-parametryczne)
         - [Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$](#zadanie-l1437--aproksymacja---wyznacz-prawdopodobne-a-wzór-ct--2at22018-1)
         - [Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x\_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n \< N) też jest funkcją parzystą.](#zadanie-l1440--rozważmy-zadanie-wielomianowej-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym-dla-węzłów-postaci-x_k---a--2ak--n-udowodniej-że-jeśli-aproksymowana-funkcja-jest-parzysta-to-n-ty-wielomian-optymalny-n--n-też-jest-funkcją-parzystą)
+  - [Kwadratury](#kwadratury)
+    - [Funkcja podcałkowa, funkcja pierwotna](#funkcja-podcałkowa-funkcja-pierwotna)
+    - [Metody całkowania](#metody-całkowania)
+      - [Całkowanie przez części](#całkowanie-przez-części)
+      - [Całkowanie przez podstawienie](#całkowanie-przez-podstawienie)
+    - [Kwadratura liniowa](#kwadratura-liniowa)
   - [Macierze](#macierze)
     - [Rozkład LU](#rozkład-lu)
     - [Metoda faktoryzacji](#metoda-faktoryzacji)
     - [Wyznacznik macierzy:](#wyznacznik-macierzy)
         - [Zadanie L14.50. - Rozkład LU macierzy i obliczenie Ax = b metodą faktoryzacji - rozwiązane na papierze (proste tylko dużo pisania)](#zadanie-l1450---rozkład-lu-macierzy-i-obliczenie-ax--b-metodą-faktoryzacji---rozwiązane-na-papierze-proste-tylko-dużo-pisania)
+        - [Zadanie L14.51. - Algorytm numerycznego wyznaczania rzędu macierzy](#zadanie-l1451---algorytm-numerycznego-wyznaczania-rzędu-macierzy)
+        - [Zadanie L14.52. - Algorytm wyznaczania macierzy odwrotnej $A^{-1}$](#zadanie-l1452---algorytm-wyznaczania-macierzy-odwrotnej-a-1)
+        - [Zadanie L14.53. : Algorytm wyznaczania macierzy X spełniającej równanie $AX = B$, gdzie A, B są macierzami kwadratowymi (X też jest). Podaj złożoność algorytmu. #TODO](#zadanie-l1453--algorytm-wyznaczania-macierzy-x-spełniającej-równanie-ax--b-gdzie-a-b-są-macierzami-kwadratowymi-x-też-jest-podaj-złożoność-algorytmu-todo)
         - [Zadanie L14.54. : Opracuj metodę rozkładu LU macierzy postaci (liczby na przekątnej, ostatnim wierszu, ostatniej kolumnie). Podaj jej złożoność.](#zadanie-l1454--opracuj-metodę-rozkładu-lu-macierzy-postaci-liczby-na-przekątnej-ostatnim-wierszu-ostatniej-kolumnie-podaj-jej-złożoność)
+        - [Zadanie L14.55. Algorytm LU dla macierzy trójprzekątniowej (z założeniem że istnieje)](#zadanie-l1455-algorytm-lu-dla-macierzy-trójprzekątniowej-z-założeniem-że-istnieje)
 
 
 ## Teoria wstępna
@@ -701,14 +713,48 @@ Wstawiamy do wzoru:
 
 $L(x) = 1 * \frac{(x+1)(x-1)(x-2)(x-3)}{120} + 2 * \frac{(x+2)(x-1)(x-2)(x-3)}{-12} + 10 * \frac{(x+2)(x+1)(x-2)(x-3)}{24} + 29 * \frac{(x+2)(x+1)(x-1)(x-3)}{-20} + 106 * \frac{(x+2)(x+1)(x-1)(x-2)}{60}$
 
-Po przekształceniach:
+Po przekształceniach w postaci potęgowej: 
 
 $L(x) = \frac{1}{120}x^4 - \frac{1}{6}x^3 + \frac{11}{8}x^2 - \frac{11}{6}x + 1$
 
+Postać Newtona policzę w zadaniu poniżej (inny wzorek, wsm. chyba bardziej przydatny)
 
 </details>
 
-Zadanie L14.25 rozwiązywalne analogicznie do L14.24
+##### Zadanie L14.25 - Znajdź wielomian interpolacyjny Lagrange'a dla punktów a) $(-2; 2), (-1;0), (0;-2), (1;-4)$ i b) $(1;-4), (2;-30), (-1;0), (-2;2), (0,2)$ w postaci Newtona 
+
+<details>
+<summary>Rozwiązanie L14.25 a)</summary>
+
+<br />
+
+```
+Liczymy ilorazy różnicowe, robimy tą taką piramidę.
+Dzięki nim wyznaczamy współczynniki a_k.
+
+a_0 = y_0 = 2
+a_1 = f[x1, x0]
+a_2 = f[x2, x1, x0]
+...
+a_n = f[xn, xn-1, ..., x0] 
+
+gdzie ilorazy różnicowe - pamiętamy że liczy się je odejmując w liczniku najwyższą wartość od najniższej, a w mianowniku to samo z argumentami
+
+np.
+
+f[x1, x0] = (y1 - y0) / (x1 - x0)
+
+a 
+
+f[x2,x1,x0] = (f[x2,x1] - f[x1,x0]) / (x2 - x0)
+
+Postać Newtona wielomianu to będzie:
+
+L(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)(x-x_1).... do konca
+```
+</details>
+
+Podpunkt b rozwiązalibyśmy analogicznie.
 
 ##### Zadanie L14.26 - Funkcję $f(x) = cos(x/2)$ interpolujemy Lagrangem w węzłach Czebyszewa. Jak należy dobrać n, aby błąd interpolacji był mniejszy niż $10^{-8}$ dla $x \in [-1, 1]$?
 
@@ -760,6 +806,27 @@ Tworzymy układy równań, które dla każdego węzła spełniają:
 
 NIFS3 zawsze istnieje i jest jednoznaczna.
 
+
+##### Zadanie L14.29 - Podaj definicję NIFS3 i znajdź NIFS3 dla $(-1;-1), (0;2), (1;-3)$
+
+
+<details>
+<summary>Rozwiązanie L14.29</summary>
+
+<br />
+
+```
+NIFS3 to funkcja będąca wielomianem trzeciego stopnia, która spełnia następujące warunki dla każdego węzła:
+- jest wielomianem 3. stopnia
+- ciągłość w, w' i w''
+- w''(x0) = w''(xn) = 0 (naturalność)
+```
+Znajdźmy NIFS3 - koniecznie układem równań, wzór jawny jest zakazany na egzaminie
+```
+
+```
+
+</details>
 
 ##### Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)
 
@@ -840,6 +907,33 @@ $P_1(x)$ - tylko nieparzyste potęgi
 
 </details>
 
+## Kwadratury
+
+Ideą kwadratury (całkowania numerycznego) jest zastąpienie trudnej funkcji f(x) dla $x \in [a,b]$ funkcją prostszą, np. wielomianem w(x) (które potrafimy łatwo całkować), co pozwoli nam prosto przybliżyć wartość całki.
+
+### Funkcja podcałkowa, funkcja pierwotna
+
+Niech f będzie dowolną funkcją podcałkową dla $x \in [a,b]$. Funkcją pierwotną f nazywamy funkcję F, której pochodną jest f, czyli $F' = f$.
+
+Wtedy można policzyć całkę oznaczoną korzystając z własności
+
+$\int_{a}^{b} f(x) dx = F(b) - F(a)$
+
+### Metody całkowania
+
+Powtórka z analizy matematycznej.
+
+#### Całkowanie przez części
+
+$\int{f(x)g'(x)dx} = f(x)g(x) - \int{f'(x)g(x)dx}$
+
+#### Całkowanie przez podstawienie
+
+$\int{f(g(x))g'(x)dx} = \int{f(u)du}$
+
+### Kwadratura liniowa
+
+Kwadratura liniowa to kwadratura, która przybliża funkcję f(x) wielomianem 1. stopnia. Kwadratura liniowa może mieć rząd co najwyżej 2n+2 (było podane jako twierdzenie, jest to też zadanie L14.45.)
 
 ## Macierze
 
@@ -911,6 +1005,43 @@ $det(A) = det(U) = u_{11} * u_{22} * ... * u_{nn}$
 
 ##### Zadanie L14.50. - Rozkład LU macierzy i obliczenie Ax = b metodą faktoryzacji - rozwiązane na papierze (proste tylko dużo pisania)
 
+##### Zadanie L14.51. - Algorytm numerycznego wyznaczania rzędu macierzy 
+
+<details>
+<summary>Rozwiązanie L14.51</summary>
+
+<br />
+
+```
+Wyznaczamy macierz U, a potem liczymy ile jest niezerowych wierszy - mamy wynik
+
+```
+</details>
+
+##### Zadanie L14.52. - Algorytm wyznaczania macierzy odwrotnej $A^{-1}$
+
+<details>
+<summary>Rozwiązanie L14.52</summary>
+
+<br />
+
+```
+Robimy rozkład LU, a potem korzystamy ze wzoru:
+A^-1 = U^-1 * L^-1
+```
+</details>
+
+##### Zadanie L14.53. : Algorytm wyznaczania macierzy X spełniającej równanie $AX = B$, gdzie A, B są macierzami kwadratowymi (X też jest). Podaj złożoność algorytmu. #TODO
+
+<details>
+<summary>Rozwiązanie L14.53</summary>
+
+<br />
+
+```
+```
+</details>
+
 ##### Zadanie L14.54. : Opracuj metodę rozkładu LU macierzy postaci (liczby na przekątnej, ostatnim wierszu, ostatniej kolumnie). Podaj jej złożoność.
 
 <details>
@@ -936,6 +1067,23 @@ przekątna nie zmienia się poza ostatnim el: an-c1/a1 - c2/a2 - c3/a3 - c4/a4 -
 A L będzie macierzą I z dodanymi w ostatnim wierszu b1/a1, b2/a2, b3/a3, b4/a4, b5/a5.
 
 Obliczamy więc liniowo prawy dolny element U (resztę znamy z góry), a potem liniowo ostatni wiersz L (resztę znamy z góry).
+
+```
+
+</details>
+
+##### Zadanie L14.55. Algorytm LU dla macierzy trójprzekątniowej (z założeniem że istnieje)
+
+<details>
+<summary>Rozwiązanie L14.55</summary>
+
+<br />
+
+```
+Podobny pomysł co w L14.54 - wyznaczamy standardowo U, a L będzie macierzą I z dodanymi w ostatnim wierszu b1/a1, b2/a2, b3/a3, b4/a4, b5/a5... (tyle ile jest elementów na przekątnej)
+
+Złożoność czasowa: O(n)
+Złożoność pamięciowa: O(n^2) (z tego że pamiętamy macierz nXn, ale można też zapisać tylko potrzebne elementy i mieć ~3 * O(n))
 
 ```
 
