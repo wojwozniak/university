@@ -31,7 +31,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.5 Podaj definicję zadania źle uwarunkowanego, a następne zbadaj uwarunkowanie zadania obliczania wartości funkcji $f(x) = cos(x)$ dla $x \\in \\mathbb{R}$](#zadanie-l145-podaj-definicję-zadania-źle-uwarunkowanego-a-następne-zbadaj-uwarunkowanie-zadania-obliczania-wartości-funkcji-fx--cosx-dla-x-in-mathbbr)
         - [Zadanie L14.6 - Załóżmy że x0, x1, ..., xn są tego samego znaku. Uzasadnij, że zadanie obliczenia ich sumy jest zadaniem dobrze uwarunkowanym. Jakie znaczenie ma w kontekście obliczeń numerycznych?](#zadanie-l146---załóżmy-że-x0-x1--xn-są-tego-samego-znaku-uzasadnij-że-zadanie-obliczenia-ich-sumy-jest-zadaniem-dobrze-uwarunkowanym-jakie-znaczenie-ma-w-kontekście-obliczeń-numerycznych)
         - [Zadanie L14.7 - Wyprowadź wzór na wskaźnik uwarunkowania zadania obliczania wartości funkcji $f$ w punkcie x. Wartość funkcji $f(x) = e^{5x}$ obliczamy w punkcie x ~= 0.8. Jak dużej utraty dwójkowych cyfr znaczących należy się spodziewać, jeżeli x odbiega od 0.8 o jedną dwójkową cyfrę znaczącą?](#zadanie-l147---wyprowadź-wzór-na-wskaźnik-uwarunkowania-zadania-obliczania-wartości-funkcji-f-w-punkcie-x-wartość-funkcji-fx--e5x-obliczamy-w-punkcie-x--08-jak-dużej-utraty-dwójkowych-cyfr-znaczących-należy-się-spodziewać-jeżeli-x-odbiega-od-08-o-jedną-dwójkową-cyfrę-znaczącą)
-        - [#TODO - Zadanie L14.9: $x^{-5}(sin(3x) - 3x + 9x^3 / 2)$ - obliczanie dla x ~= 0 może wiązać się z utratą cyfr znaczących wyniku. Zakładając że |x| \<= 1/10, zaproponuj sposób obliczenia wyniku z błędem mniejszym niż $10^{-7}$](#todo---zadanie-l149-x-5sin3x---3x--9x3--2---obliczanie-dla-x--0-może-wiązać-się-z-utratą-cyfr-znaczących-wyniku-zakładając-że-x--110-zaproponuj-sposób-obliczenia-wyniku-z-błędem-mniejszym-niż-10-7)
+        - [Zadanie L14.9: $x^{-5}(sin(3x) - 3x + 9x^3 / 2)$ - obliczanie dla x ~= 0 może wiązać się z utratą cyfr znaczących wyniku. Zakładając że |x| \<= 1/10, zaproponuj sposób obliczenia wyniku z błędem mniejszym niż $10^{-7}$](#zadanie-l149-x-5sin3x---3x--9x3--2---obliczanie-dla-x--0-może-wiązać-się-z-utratą-cyfr-znaczących-wyniku-zakładając-że-x--110-zaproponuj-sposób-obliczenia-wyniku-z-błędem-mniejszym-niż-10-7)
         - [Zadanie L14.10 - Podaj w miarę bezpieczny numerycznie algorytm obliczania zer równania kwadratowego $ax^2 + bx + c = 0$ dla $a \\neq 0$. Zastosowaną strategię uzasadnij odwołując się do omówionych na wykładzie problemów wynikających z przyjętego modelu arytmetyki zmiennoprzecinkowej.](#zadanie-l1410---podaj-w-miarę-bezpieczny-numerycznie-algorytm-obliczania-zer-równania-kwadratowego-ax2--bx--c--0-dla-a-neq-0-zastosowaną-strategię-uzasadnij-odwołując-się-do-omówionych-na-wykładzie-problemów-wynikających-z-przyjętego-modelu-arytmetyki-zmiennoprzecinkowej)
         - [Zadanie L14.11: Do rozwiązania zadania obliczeniowego $A$ użyto komputera i algorytmu numerycznie poprawnego. Czy można mieć pewność, że otrzymany w ten sposób wynik jest bliski dokładnemu wynikowi zadania $A$? Odpowiedź uzasadnij.](#zadanie-l1411-do-rozwiązania-zadania-obliczeniowego-a-użyto-komputera-i-algorytmu-numerycznie-poprawnego-czy-można-mieć-pewność-że-otrzymany-w-ten-sposób-wynik-jest-bliski-dokładnemu-wynikowi-zadania-a-odpowiedź-uzasadnij)
         - [Zadanie L14.12, L14.13: Sprawdź, czy algorytm jest algorytmem numerycznie poprawnym:](#zadanie-l1412-l1413-sprawdź-czy-algorytm-jest-algorytmem-numerycznie-poprawnym)
@@ -226,6 +226,13 @@ A więc:
 $six(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...$
 
 $cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...$
+
+x ~= 0, więc można przekształcić tak żeby pokazać że jest to szereg naprzemienny zbiegający do 0 i odrzucić dalsze wyrazy.
+
+np. dla sin
+
+k-ty wyraz to $\frac{3^{2k+3}}{(2k+3)!}x^{2k-2} < \epsilon$
+Rozwiązujemy ze względu dla k, i w ten sposób ogarniamy ile wyrazów potrzebujemy.
 
 ##### Zadanie L14.8 Wytłumacz kiedy występuje i na czym polega zjawisko utraty cyfr znaczących wyniku. Dla jakich wartości x obliczanie wartości wyrażenia $(sqrt(x^2+2) + x)^{-1}$ może wiązać się z utratą cyfr znaczących wyniku? Zaproponuj sposób obliczenia wynioku dokładniejszego.
 
@@ -428,7 +435,55 @@ Błąd wyniku: 4 * 2^-t
 </details>
 
 
-#####  #TODO - Zadanie L14.9: $x^{-5}(sin(3x) - 3x + 9x^3 / 2)$ - obliczanie dla x ~= 0 może wiązać się z utratą cyfr znaczących wyniku. Zakładając że |x| <= 1/10, zaproponuj sposób obliczenia wyniku z błędem mniejszym niż $10^{-7}$
+#####  Zadanie L14.9: $x^{-5}(sin(3x) - 3x + 9x^3 / 2)$ - obliczanie dla x ~= 0 może wiązać się z utratą cyfr znaczących wyniku. Zakładając że |x| <= 1/10, zaproponuj sposób obliczenia wyniku z błędem mniejszym niż $10^{-7}$
+
+<details>
+
+<summary>Rozwiązanie L14.9</summary>
+
+<br />
+
+Zadanko z rozwinięciem sinusa w Taylora.
+
+$f(x) = x^{-5}(sin(3x) - 3x + 9x^3 / 2)$
+
+$sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...$
+
+$sin(3x) = 3x - \frac{3^3x^3}{3!} + \frac{3^5x^5}{5!} - \frac{3^7x^7}{7!} + ...$
+
+Zapiszmy f(x) jako ułamek
+
+$f(x) = \frac{sin(3x) - 3x + 9x^3 / 2}{x^5}$
+
+Widzimy że jak podstawimy za sin(3x) rozwinięcie Taylora to skrócą się dwa pierwsze wyrazy rozwinięcia z licznikiem.
+
+$f(x) = \frac{\frac{3^5x^5}{5!} - \frac{3^7x^7}{7!} + ...}{x^5}$
+
+x^5 skróci się z x^5 w mianowniku, więc otrzymamy:
+
+$f(x) = \frac{3^5}{5!} - \frac{3^7x^2}{7!} + ...$
+
+Gdzie nie zajdzie już zjawisko utraty cyfr znaczących.
+
+k-ty wyraz rozwiniecia wyraża się wzorem $\frac{3^{2k+3}}{(2k+3)!}x^{2k-2}$
+
+Są one w ciągu naprzemiennym malejącym, wystarczy więc że weźmiemy k pierwszych wyrazów aby otrzymać zadaną dokładność. Epsilon <= $10^{-7}$
+
+$x <= 1/10$
+
+I to jeszcze przekształcamy by wyznaczyć odp. k
+
+$\frac{3^{2k+3}}{(2k+3)!}x^{2k-2} <= 10^{-7}$
+
+Najgorsza sytuacja będzie dla x = 1/10, więc podstawiamy:
+
+$\frac{3^{2k+3}}{(2k+3)!} * 10^{-2k+2} <= 10^{-7}$
+
+I tu przekształcenia są dosyć trudne, można to zrobić na chama kalkulatorem - k powinno być małe.
+
+
+
+</details>
 
 
 ##### Zadanie L14.10 - Podaj w miarę bezpieczny numerycznie algorytm obliczania zer równania kwadratowego $ax^2 + bx + c = 0$ dla $a \neq 0$. Zastosowaną strategię uzasadnij odwołując się do omówionych na wykładzie problemów wynikających z przyjętego modelu arytmetyki zmiennoprzecinkowej.
