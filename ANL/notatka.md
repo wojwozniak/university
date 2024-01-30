@@ -45,6 +45,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.18: zaproponuj efektywny algorytm obliczania z dużą dokładnością wartości $\\sqrt{a}$ wykorzystując jedynie operacje arytmetyczne (+, -, \*, /)](#zadanie-l1418-zaproponuj-efektywny-algorytm-obliczania-z-dużą-dokładnością-wartości-sqrta-wykorzystując-jedynie-operacje-arytmetyczne-----)
     - [Metoda siecznych](#metoda-siecznych)
       - [Własności metody](#własności-metody-1)
+        - [Zadanie L14.19. : Sformułuj i podaj interpretację geometryczną metody siecznych. Jak w wypadku tej metody powinien wyglądać warunek stopu?](#zadanie-l1419--sformułuj-i-podaj-interpretację-geometryczną-metody-siecznych-jak-w-wypadku-tej-metody-powinien-wyglądać-warunek-stopu)
     - [Wykładnik zbieżności ciągu (rząd metody)](#wykładnik-zbieżności-ciągu-rząd-metody)
         - [Zadanie L14.20: Podaj efektywny algorytm wyznaczania liczby naturalnej a, której cyframi dziesiętnymi (od najbardziej do najmniej znaczącej) są a\_n, a\_n-1, ..., a\_0, gdzie a\_n != 0](#zadanie-l1420-podaj-efektywny-algorytm-wyznaczania-liczby-naturalnej-a-której-cyframi-dziesiętnymi-od-najbardziej-do-najmniej-znaczącej-są-a_n-a_n-1--a_0-gdzie-a_n--0)
         - [Zadanie L14.21. - Sformułuj i uzasadnij uogólniony schemat Hornera obliczania wartości wielomianu podanego w postaci Newtona](#zadanie-l1421---sformułuj-i-uzasadnij-uogólniony-schemat-hornera-obliczania-wartości-wielomianu-podanego-w-postaci-newtona)
@@ -677,6 +678,39 @@ Dla dwóch wybranych punktów przeprowadzamy sieczną. Punkt przecięcia sieczne
 - Wolniejsza zbieżność niż metoda Newtona
 - Zgadujemy x0 i x1
 - Może nie zbiegać lub zapętlić się dla niektórych $x_0$ i $x_1$
+
+
+##### Zadanie L14.19. : Sformułuj i podaj interpretację geometryczną metody siecznych. Jak w wypadku tej metody powinien wyglądać warunek stopu?
+
+<details>
+
+<summary>Rozwiązanie L14.19</summary>
+
+<br />
+
+```
+Metoda polega na wybraniu początkowych punktów x_0 i x_1, a następnie przeprowadzeniu siecznej przez te punkty. Punkt przecięcia siecznej z osią OX jest kolejnym przybliżeniem.
+
+Jako że interpretacja geometryczna, to chyba fajnie by było to narysować.
+```
+Wzór na kolejne przybliżenie:
+
+$x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}$
+
+Warunek stopu jest podobny do tego w metodzie Newtona:
+
+- Osiągnięcie odpowiedniej dokładności
+
+oraz:
+
+- Górny limit iteracji, w razie jakby się popsuło nie chcemy lecieć w nieskończość
+
+lub
+
+- Odpowiednio mała zmiana między kolejnymi przybliżeniami - jeśli przybliżenia są bardzo blisko siebie, to znaczy że metoda się zapętliła i nie ma sensu dalej liczyć
+
+
+</details>
 
 ### Wykładnik zbieżności ciągu (rząd metody)
 
