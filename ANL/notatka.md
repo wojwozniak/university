@@ -1233,7 +1233,7 @@ $\begin{bmatrix}
 
 Gdzie wartość iloczynu skalarnego zależy od punktów dla których jest liczony - dla każdego punktu mnożymy wartości dwóch danych dla których jest liczony. Np. dla 
 
-$<f1; f2>$ 
+<f1, f2>
 
 mnożymy wartości $f1$ i $f2$ dla danego punktu i sumujemy.
 
