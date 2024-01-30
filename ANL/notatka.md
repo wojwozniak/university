@@ -79,10 +79,13 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Aproksymacja dla funkcji dwóch zmiennych](#aproksymacja-dla-funkcji-dwóch-zmiennych)
     - [Suma kilku funkcji tej samej zmiennej](#suma-kilku-funkcji-tej-samej-zmiennej)
         - [Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$](#zadanie-l1437--aproksymacja---wyznacz-prawdopodobne-a-wzór-ct--2at22018-1)
+        - [Zadanie L14.38. Aproksymacja f(x) do funkcji postaci $y(x) = \\frac{ax^2-3}{x^2+1}$](#zadanie-l1438-aproksymacja-fx-do-funkcji-postaci-yx--fracax2-3x21)
         - [Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x\_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n \< N) też jest funkcją parzystą.](#zadanie-l1440--rozważmy-zadanie-wielomianowej-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym-dla-węzłów-postaci-x_k---a--2ak--n-udowodniej-że-jeśli-aproksymowana-funkcja-jest-parzysta-to-n-ty-wielomian-optymalny-n--n-też-jest-funkcją-parzystą)
     - [Ortogonalność funkcji](#ortogonalność-funkcji)
     - [Ortogonalizacja Grama-Schmidta](#ortogonalizacja-grama-schmidta)
+    - [Ciąg wielomianów ortogonalnych](#ciąg-wielomianów-ortogonalnych)
     - [Wielomian optymalny](#wielomian-optymalny)
+        - [Zadanie L14.42 : Podaj definicję ciągu wielomianów ortogonalnych względem dyskretnego iloczynu skalarnego. Jak efektywnie wyznaczać takie wielomiany? Jakie jest ich zastosowanie w aproksymacji średniokwadratowej na zbiorze dyskretnym?](#zadanie-l1442--podaj-definicję-ciągu-wielomianów-ortogonalnych-względem-dyskretnego-iloczynu-skalarnego-jak-efektywnie-wyznaczać-takie-wielomiany-jakie-jest-ich-zastosowanie-w-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym)
   - [Kwadratury](#kwadratury)
     - [Funkcja podcałkowa, funkcja pierwotna](#funkcja-podcałkowa-funkcja-pierwotna)
     - [Metody całkowania](#metody-całkowania)
@@ -1314,6 +1317,30 @@ szukamy minimum E(a)
 
 </details>
 
+##### Zadanie L14.38. Aproksymacja f(x) do funkcji postaci $y(x) = \frac{ax^2-3}{x^2+1}$
+
+<details>
+
+<summary>Rozwiązanie L14.38</summary>
+
+<br />
+
+```
+Typowe zadanie z aproksymacji. Od razu pakujemy w funkcję błędu. W treści była podana tabelka danych, ale no wciąż po prostu jako funkcję podstawiamy.
+
+E(a) = suma od 0 do N (f(x_k) - y(x_k))^2
+
+liczymy pochodną po a (y(x) najpierw przekształcamy)
+
+Poźniej trochę przekształceń (dużo wyciągania poza sumę - jeśli mnożymy każdy wyraz przez stałą, to możemy tą stałą wyjąć poza sumę)
+
+Wyznaczamy a
+
+W treści były jeszcze dwie wartości do podstawienia które upraszczały na koniec wzór.
+```
+
+</details>
+
 
 
 ##### Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n < N) też jest funkcją parzystą.
@@ -1365,7 +1392,21 @@ $g_1 = f_1 - \frac{<f_1, g_0>}{<g_0, g_0>}g_0$
 
 $g_n = f_n - \frac{<f_n, g_0>}{<g_0, g_0>}g_0 - \frac{<f_n, g_1>}{<g_1, g_1>}g_1 - ... - \frac{<f_n, g_{n-1}>}{<g_{n-1}, g_{n-1}>}g_{n-1}$
 
-można wyznaczać też funkcje ortogonalne inną metodą (która jest szybsza i lepsza numerycznie), ale ma ona dużo trudniejszy do zapamiętania wzór i jeszcze chyba nigdy się nie pojawiła na egzaminie.
+### Ciąg wielomianów ortogonalnych
+
+Ciąg wielomianów ortogonalnych to ciąg wielomianów spełniających warunek:
+
+$P_0(x) = 1$
+
+$P_1(x) = x - c_1$
+
+$P_k(x) = (x - c_k)P_{k-1}(x) - d_kP_{k-2}(x)$
+
+gdzie $c_k = \frac{<xP_{k-1}, P_{k-1}>}{<P_{k-1}, P_{k-1}>}$
+
+$d_k = \frac{<P_{k-1}, P_{k-1}>}{<P_{k-2}, P_{k-2}>}$
+
+Złożoność O(mN), numerycznie działa to bardzo dobrze
 
 ### Wielomian optymalny
 
@@ -1374,6 +1415,34 @@ Wielomian optymalny to wielomian, który jest najlepszym przybliżeniem funkcji 
 $w^*_n(x) = \sum_{k=0}^{n} \frac{<f, p_k>}{<p_k, p_k>}p_k(x)$
 
 gdzie $p_k$ to wielomiany ortogonalne względem dyskretnego iloczynu skalarnego dla zbioru $X = {x_0, x_1, ..., x_N}$
+
+##### Zadanie L14.42 : Podaj definicję ciągu wielomianów ortogonalnych względem dyskretnego iloczynu skalarnego. Jak efektywnie wyznaczać takie wielomiany? Jakie jest ich zastosowanie w aproksymacji średniokwadratowej na zbiorze dyskretnym?
+
+<details>
+
+<summary>Rozwiązanie L14.42</summary>
+
+<br />
+
+```
+Wielomiany są ortogonalne, jeśli iloczyn skalarny jest równy 0.
+
+Ciąg wielomianów ortogonalnych względem dyskretnego iloczynu skalarnego to ciąg wielomianów określonych wzorem rekurencyjnym:
+
+P_0(x) = 1
+
+P_1(x) = x - c_1
+
+P_k(x) = (x - c_k)P_{k-1}(x) - d_kP_{k-2}(x)
+
+Powyższa metoda jest najbardziej optymalna i działa dobrze pod względem numerycznym.
+
+Zastosowanie w aproksymacji średniokwadratowej na zbiorze dyskretnym:
+Są nam one potrzebne do wyznaczenia wielomianu optymalnego, który jest najlepszym przybliżeniem funkcji f(x) w sensie aproksymacji średniokwadratowej.
+
+```
+
+</details>
 
 ## Kwadratury
 
