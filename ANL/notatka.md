@@ -70,6 +70,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Konstrukcja NIFS3](#konstrukcja-nifs3)
         - [Zadanie L14.29 - Podaj definicję NIFS3 i znajdź NIFS3 dla $(-1;-1), (0;2), (1;-3)$](#zadanie-l1429---podaj-definicję-nifs3-i-znajdź-nifs3-dla--1-1-02-1-3)
         - [Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)](#zadanie-l1430--znajdź-nifs3-dla--20228043--41989--2-1983-0-1977-1-1974-3-1968-2022--4089)
+        - [Zadanie L14.31 : PWO++ NSpline3(x,y,z) miejsca zerowe](#zadanie-l1431--pwo-nspline3xyz-miejsca-zerowe)
         - [Zadanie L14.32 : PWO++ NSpline3(x,y,z)](#zadanie-l1432--pwo-nspline3xyz)
   - [Krzywe parametryczne](#krzywe-parametryczne)
   - [Aproksymacja średniokwadratowa](#aproksymacja-średniokwadratowa)
@@ -1133,6 +1134,29 @@ Ogólnie raczej jeśli będziemy mieli realnie liczyć NIFS3, to dostaniemy tak 
 ```
 </details>
 
+##### Zadanie L14.31 : PWO++ NSpline3(x,y,z) miejsca zerowe
+
+<details>
+
+<summary>Rozwiązanie L14.31</summary>
+
+<br />
+
+```
+Zobacz najpierw L14.32
+
+Mamy 101 węzłów, więc 100 przedziałów. Mamy ograniczenie m < 2n
+m < 200
+Pokazałem że dla policzenia skrajnych przedziałów wystarczy jeden punkt pośredni, dla pozostałych bierzemy 2.
+1 + 1 + 98 * 2 = 198 < 200
+
+Dla każdego przedziału wyznaczamy a,b,c,d z układu równań (wpisujemy w macierz, eliminacja Gaussa i mamy)
+Używamy Solve3 dla każdej ze znalezionych funkcji => mamy wszystkie miejsca zerowe. Done.
+
+```
+
+</details>
+
 ##### Zadanie L14.32 : PWO++ NSpline3(x,y,z)
 
 <details>
@@ -1154,6 +1178,8 @@ Można jednak zmniejszyć ilość punktów w z (co jest od nas wymagane)
 
 Możemy skorzystać z faktu że f''(x) = 0 dla skraju przedzialu czyli brakuje nam jednego punktu.
 Potem dla kolejnego przedziału brakuje nam znów dwóch danych, ale znamy graniczącą funkcję - możemy łatwo policzyć jej pierwszą i drugą pochodną. Mamy więc wszystko co jest potrzebne - więc chyba ogólnie tylko dwa punkty z potrzebujemy? #TODO dopytać się, bo na repetach inaczej wyszło ale idk o co z M tam chodziło.
+
+Dodam tu jeszcze - tak, możemy rozwiązać układ równań algorytmem. Zapisujemy układ jako macierz 4x4. M * [y0,y1,y2,y3] = [a,b,c,d]
 ```
 
 </details>
