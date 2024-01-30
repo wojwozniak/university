@@ -57,6 +57,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
   - [Uogólniony schemat Hornera](#uogólniony-schemat-hornera)
   - [Algorytm Clenshawa - #TODO](#algorytm-clenshawa---todo)
   - [Interpolacja wielomianowa Lagrange'a](#interpolacja-wielomianowa-lagrangea)
+    - [Błąd interpolacji](#błąd-interpolacji)
   - [Doliczanie kolejnego punktu](#doliczanie-kolejnego-punktu)
         - [Zadanie L14.24: Znajdź postać Newtona wielomianu interpolacyjnego Lagrange'a 4 stopnia dla punktów $(-2; 1), (-1;2), (1;10), (2;29), (3;106)$](#zadanie-l1424-znajdź-postać-newtona-wielomianu-interpolacyjnego-lagrangea-4-stopnia-dla-punktów--2-1--12-110-229-3106)
         - [Zadanie L14.25 - Znajdź wielomian interpolacyjny Lagrange'a dla punktów a) $(-2; 2), (-1;0), (0;-2), (1;-4)$ i b) $(1;-4), (2;-30), (-1;0), (-2;2), (0,2)$ w postaci Newtona](#zadanie-l1425---znajdź-wielomian-interpolacyjny-lagrangea-dla-punktów-a--2-2--10-0-2-1-4-i-b-1-4-2-30--10--22-02-w-postaci-newtona)
@@ -774,11 +775,26 @@ $L_n(x) = \sum_{k=0}^{n} y_k l_k(x)$, gdzie $l_k(x) = \prod_{i=0, i \neq k}^{n} 
 
 Zadanie interpolacji Lagrange'a ma zawsze jednoznaczne rozwiązanie. Z jednoznaczności wynika, że jeśli mamy $n+1$ punktów, to wielomian interpolacyjny ma stopień co najwyżej $n$. Zdarzały się zadania gdzie mieliśmy podać wielomian interpolacyjny dla $n+1$ punktów - mówimy wówczas że z jednoznaczności $f(x) = L_n(x)$.
 
+### Błąd interpolacji
+
+Błąd interpolacji to różnica między wartością funkcji a wartością wielomianu interpolacyjnego w danym punkcie. Mamy na to wzorek, który trzeba zapamiętać bo zdarzają się zadania gdzie trzeba go użyć:
+
+$|f(x) - L_n(x)| <= max|\frac{f^{(n+1)}{(\xi)}}{(n+1)!}| * max_{[a,b]}|p_{n+1}(x)|$
+
+A więc maksymalna wartość pochodnej n+1 stopnia w danych przedziale podzielona przez (n+1)! razy maksymalna wartość $p_{n+1}(x)$
+
+Uwaga - na maksymalną wartość tego drugiego będzie wpływać rozmieszczenie punktów!:
+
+- dla równoodległych punktów maksymalna wartość $p_{n+1}(x)$ będzie zależeć od odległości między dwoma skrajnymi punktami (chyba)
+- dla punktów Czebyszewa na ćwiczeniach wyprowadziliśmy wzór $\frac{(b-a)^{n+1}}{2^{2n+1}}$ - ważne by go zapamiętać, i mieć nadzieję że nie będą kazali go wyprowadzić bo to zadanie było posrane (ew. można pamiętać że robi się przekształcenie liniowe z [-1,1] na [a,b])
+
+
 ## Doliczanie kolejnego punktu
 
 Aby nie lecieć wzorem od początku $O(n^2)$, możemy doliczać kolejny punkt w $O(n)$ zapisując wielomian w postaci Newtona:
 
 $L_{n+1} = L_n + y_{n+1} p_{n+1}$
+
 
 
 ##### Zadanie L14.24: Znajdź postać Newtona wielomianu interpolacyjnego Lagrange'a 4 stopnia dla punktów $(-2; 1), (-1;2), (1;10), (2;29), (3;106)$
@@ -863,7 +879,7 @@ Podpunkt b rozwiązalibyśmy analogicznie.
 ##### Zadanie L14.26 - Funkcję $f(x) = cos(x/2)$ interpolujemy Lagrangem w węzłach Czebyszewa. Jak należy dobrać n, aby błąd interpolacji był mniejszy niż $10^{-8}$ dla $x \in [-1, 1]$?
 
 <details>
-<summary>Rozwiązanie L14.26 #TODO</summary>
+<summary>Rozwiązanie L14.26</summary>
 
 <br />
 
@@ -872,6 +888,48 @@ Znamy wzór na błąd interpolacji Lagrange'a:
 ```
 $f(x) - L_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} * max(p_{n+1}(x))$
 
+```
+I w takim zadanku węzły mogą być ustawione na dwa sposoby:
+- równoodległe
+- Czebyszewa
+
+Węzły Czebyszewa są lepsze dla błędu (ale trzeba pamiętać gorszy wzór XD)
+```
+```
+dla wezłów równoodległych:
+
+#TODO zapytać się czy na pewno tak jest
+max(p_{n+1}(x)) = b-a 
+
+dla Czebyszewa:
+
+max(p_{n+1}(x)) = (a-b)^{n+1} / 2^{2n+1}
+```
+
+```
+liczymy teraz zadanko
+
+pochodna cos(x/2) = -1/2 * sin(x/2)
+pochodna pochodnej cos(x/2) = -1/4 * cos(x/2)
+...
+pochodna n-ta cos(x/2) = (-1/2)^n * cos(x/2)
+```
+
+$f^{(n+1)}(\xi) = (-1/2)^n * 1$ (za cosinusa)
+
+i tu będzie jeszcze (n+1)! w mianowniku
+
+$max(p_{n+1}(x)) = 2^{-n}$
+
+$(-1/2)^n * 2^{-n} * \frac{1}{(n+1)!} <= 10^{-8}$
+
+$L = (-1)^n * 2^{n} * 2^{-n} * \frac{1}{(n+1)!}$
+
+$\frac{1}{(n+1)!} <= 10^{-8}$
+
+$(n+1)! >= 10^8$
+
+Korzystając z kalkulator możemy wyznaczyć że n >= 11
 
 </details>
 
