@@ -71,6 +71,11 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.29 - Podaj definicję NIFS3 i znajdź NIFS3 dla $(-1;-1), (0;2), (1;-3)$](#zadanie-l1429---podaj-definicję-nifs3-i-znajdź-nifs3-dla--1-1-02-1-3)
         - [Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)](#zadanie-l1430--znajdź-nifs3-dla--20228043--41989--2-1983-0-1977-1-1974-3-1968-2022--4089)
   - [Krzywe parametryczne](#krzywe-parametryczne)
+  - [Aproksymacja średniokwadratowa](#aproksymacja-średniokwadratowa)
+    - [Norma na zbiorze dyskretnym](#norma-na-zbiorze-dyskretnym)
+    - [Wyznaczanie funkcji najlepiej dopasowanej w sensie aproksymacji średniokwadratowej do danych](#wyznaczanie-funkcji-najlepiej-dopasowanej-w-sensie-aproksymacji-średniokwadratowej-do-danych)
+    - [Aproksymacja dla funkcji dwóch zmiennych](#aproksymacja-dla-funkcji-dwóch-zmiennych)
+    - [Suma kilku funkcji tej samej zmiennej](#suma-kilku-funkcji-tej-samej-zmiennej)
         - [Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$](#zadanie-l1437--aproksymacja---wyznacz-prawdopodobne-a-wzór-ct--2at22018-1)
         - [Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x\_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n \< N) też jest funkcją parzystą.](#zadanie-l1440--rozważmy-zadanie-wielomianowej-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym-dla-węzłów-postaci-x_k---a--2ak--n-udowodniej-że-jeśli-aproksymowana-funkcja-jest-parzysta-to-n-ty-wielomian-optymalny-n--n-też-jest-funkcją-parzystą)
   - [Kwadratury](#kwadratury)
@@ -1129,6 +1134,102 @@ Ogólnie raczej jeśli będziemy mieli realnie liczyć NIFS3, to dostaniemy tak 
 
 Krzywa parametryczna to funkcja $f: [a,b] \to \mathbb{R}^2$.
 
+## Aproksymacja średniokwadratowa
+
+### Norma na zbiorze dyskretnym
+
+Norma na zbiorze dyskretnym to funkcja $||.||: \mathbb{R}^n \to \mathbb{R}$, która spełnia następujące warunki:
+
+- $||x|| >= 0$ i $||x|| = 0 <=> x = 0$
+- $||\alpha x|| = |\alpha| * ||x||$
+
+Jest ona określona wzorem 
+
+$||f|| = \sqrt{\sum_{k=0}^{N} p(x_k)f(x_k)^2}$
+
+### Wyznaczanie funkcji najlepiej dopasowanej w sensie aproksymacji średniokwadratowej do danych
+
+Powiedzmy że dana funkcja to $f$, a funkcja którą aproksymujemy to $y$. Zwykle w takim zadaniu dostajemy postać funkcji (tzn. np. $y(x)=(x-1)(2023x + a)-2024x)$ i mamy znaleźć $a$.), jeżeli tego by nie było to walnęłoby się interpolację XD
+
+Mamy podaną jakąś funkcję (lub tabelkę z danymi, działa to tak samo) i funkcję jakiejś postaci z jakąś niewiadomą.
+
+Musimy wyznaczyć funkcję błędu w zależności od tej niewiadomej. 
+
+Dla $f(x)$ i $y(x)$
+
+$E(a) = \sum_{k=0}^{N} (f(x_k) - y(x_k))^2$
+
+I teraz działamy tak jak w liceum - szukamy minimum lokalnego E(a) i mamy naszą funkcję.
+
+Czyli liczymy pochodną po a:
+
+$E'(a) = 2 \sum_{k=0}^{N} (f(x_k) - y(x_k)) * (-y'(x_k))$
+
+To powyżej to zwykły wzorek na pochodną - powinno być tam f'(x) ale jako że to pochodna po po a to jest to równe 0.
+
+Dla przykładu z góry:
+
+$E'(a) = -2 \sum_{k=0}^{N} (f(x_k) - y(x_k)) * (x-1)$
+
+I szukamy minimum lokalnego - przyrównujemy E'(a) do 0, po czym przekształcamy równanie tak, by wyznaczyć a.
+
+Przy liczeniu jakichś posranych funkcji pamiętamy, że możemy podstawić coś za fragmenty funkcji (b_k, c_k zamiast jakichś wielkich wyrażeń bez a)
+
+### Aproksymacja dla funkcji dwóch zmiennych
+
+Dostaliśmy na wykładzie wzór, miejmy nadzieję że nie trzeba go będzie pamiętać.
+
+Przyrównujemy pochodne cząstkowe do 0.
+
+Dla funkcji y=ax+b mamy:
+
+$a = \frac{(N+1)S_4-S_1S_3}{(N+1)S_2-S_1^2}$
+
+$b = \frac{S_2S_3-S_1S_4}{(N+1)S_2-S_1^2}$
+
+gdzie:
+
+$S_i = \sum_{k=0}^{N} x_k^i$ dla $i=1,2$
+
+$S_3 = \sum_{k=0}^{N} f(x_k)$
+
+$S_4 = \sum_{k=0}^{N} x_kf(x_k)$
+
+### Suma kilku funkcji tej samej zmiennej
+
+Przykładowo $H(t) = h_0 + a_1sin(\frac{2\pi t}{12}) + a_2cos(\frac{2\pi t}{12})$
+
+$f1$ = 1
+
+$f2$ = $sin(\frac{2\pi t}{12})$
+
+$f3$ = $cos(\frac{2\pi t}{12})$
+
+Rozwiązujemy takie równanie:
+
+$\begin{bmatrix}
+<f1, f1> & <f1, f2> & <f1, f3> \\
+<f2, f1> & <f2, f2> & <f2, f3> \\
+<f3, f1> & <f3, f2> & <f3, f3> \\
+\end{bmatrix}$
+
+*
+
+$\begin{bmatrix}
+h_0 \\
+a_1 \\
+a_2 \\
+\end{bmatrix}$
+
+=
+
+$\begin{bmatrix}
+<f1, H(t)> \\
+<f2, H(t)> \\
+<f3, H(t)> \\
+\end{bmatrix}$
+
+Gdzie wartość iloczynu skalarnego zależy od punktów dla których jest liczony - dla każdego punktu mnożymy wartości dwóch danych dla których jest liczony. Np dla $<f1, f2>$ mnożymy wartości $f1$ i $f2$ dla danego punktu i sumujemy.
 
 ##### Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$
 
