@@ -1231,7 +1231,11 @@ $\begin{bmatrix}
 <f3, H(t)> \\
 \end{bmatrix}$
 
-Gdzie wartość iloczynu skalarnego zależy od punktów dla których jest liczony - dla każdego punktu mnożymy wartości dwóch danych dla których jest liczony. Np dla $<f1, f2>$ mnożymy wartości $f1$ i $f2$ dla danego punktu i sumujemy.
+Gdzie wartość iloczynu skalarnego zależy od punktów dla których jest liczony - dla każdego punktu mnożymy wartości dwóch danych dla których jest liczony. Np. dla 
+
+$<f1; f2>$ 
+
+mnożymy wartości $f1$ i $f2$ dla danego punktu i sumujemy.
 
 ##### Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$
 
