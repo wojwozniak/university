@@ -16,6 +16,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Działania na liczbach zmiennoprzecinkowych - błąd](#działania-na-liczbach-zmiennoprzecinkowych---błąd)
     - [Twierdzenie o kumulacji błędów](#twierdzenie-o-kumulacji-błędów)
     - [Zjawisko utraty cyfr znaczących](#zjawisko-utraty-cyfr-znaczących)
+    - [Rozwinięcia Taylora](#rozwinięcia-taylora)
         - [Zadanie L14.8 Wytłumacz kiedy występuje i na czym polega zjawisko utraty cyfr znaczących wyniku. Dla jakich wartości x obliczanie wartości wyrażenia $(sqrt(x^2+2) + x)^{-1}$ może wiązać się z utratą cyfr znaczących wyniku? Zaproponuj sposób obliczenia wynioku dokładniejszego.](#zadanie-l148-wytłumacz-kiedy-występuje-i-na-czym-polega-zjawisko-utraty-cyfr-znaczących-wyniku-dla-jakich-wartości-x-obliczanie-wartości-wyrażenia-sqrtx22--x-1-może-wiązać-się-z-utratą-cyfr-znaczących-wyniku-zaproponuj-sposób-obliczenia-wynioku-dokładniejszego)
         - [Zadanie L2.8 - jak naprawić utratę cyfr znaczących?](#zadanie-l28---jak-naprawić-utratę-cyfr-znaczących)
         - [Zadanie L3.1 - jak naprawić utratę cyfr znaczących?](#zadanie-l31---jak-naprawić-utratę-cyfr-znaczących)
@@ -207,6 +208,24 @@ Zjawisko to bierze się z reprezentacji liczb w komputerze. By wytłumaczyć sk�
 3) Mantysa ma mieć wartość w przedziale $[1/2, 1)$.
 
 Łącząc te fakty - po odjęciu tych liczb dostaniemy malutki ułamek który musimy "przesunąć" w zakres mantysy. Po przesunięciu nie wiemy jakie były bardziej oddalone cyfry, więc nie wiemy jaką wartość przyjąć. W efekcie otrzymujemy błąd.
+
+### Rozwinięcia Taylora
+
+Daję to tutaj, bo nie ma innego tematu gdzie pasuje to lepiej i właśnie tutaj jest to wykorzystywane. Zdarzają się całkiem często zadania z unikaniem straty cyfr znaczących gdzie mamy funkcję trygonometryczną (sinus lub cosinus, inne się nie zdarzyło). Wtedy aby uniknąć odejmowania dwóch rzeczy bliskich siebie bierzemy rozwinięcie Taylora.
+
+Rozwinięcie Taylora funkcji $f$:
+
+$f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n + R_n(x)$
+
+Gdzie bierzemy wystarczającą dla naszej reprezentacji liczbę wyrazów. Któryś z pierwszych wyrazów powinien nam się skrócić (dzięki czemu unikamy odejmowania bliskich sobie rzeczy). Zwykle mamy ten wzór w zerze, wtedy upraszcza się do:
+
+$f(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n + R_n(x)$
+
+A więc:
+
+$six(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...$
+
+$cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...$
 
 ##### Zadanie L14.8 Wytłumacz kiedy występuje i na czym polega zjawisko utraty cyfr znaczących wyniku. Dla jakich wartości x obliczanie wartości wyrażenia $(sqrt(x^2+2) + x)^{-1}$ może wiązać się z utratą cyfr znaczących wyniku? Zaproponuj sposób obliczenia wynioku dokładniejszego.
 
