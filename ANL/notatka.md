@@ -70,6 +70,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Konstrukcja NIFS3](#konstrukcja-nifs3)
         - [Zadanie L14.29 - Podaj definicję NIFS3 i znajdź NIFS3 dla $(-1;-1), (0;2), (1;-3)$](#zadanie-l1429---podaj-definicję-nifs3-i-znajdź-nifs3-dla--1-1-02-1-3)
         - [Zadanie L14.30 : Znajdź NIFS3 dla (-2022;8043), (-4;1989), (-2; 1983), (0; 1977), (1; 1974), (3; 1968), (2022, -4089)](#zadanie-l1430--znajdź-nifs3-dla--20228043--41989--2-1983-0-1977-1-1974-3-1968-2022--4089)
+        - [Zadanie L14.32 : PWO++ NSpline3(x,y,z)](#zadanie-l1432--pwo-nspline3xyz)
   - [Krzywe parametryczne](#krzywe-parametryczne)
   - [Aproksymacja średniokwadratowa](#aproksymacja-średniokwadratowa)
     - [Norma na zbiorze dyskretnym](#norma-na-zbiorze-dyskretnym)
@@ -1130,6 +1131,31 @@ Zadanie jest podchwytliwe - możemy od razu zauważyć że będzie to prosta y =
 
 Ogólnie raczej jeśli będziemy mieli realnie liczyć NIFS3, to dostaniemy tak góra 3-4 węzły żeby nie było godziny liczenia.
 ```
+</details>
+
+##### Zadanie L14.32 : PWO++ NSpline3(x,y,z)
+
+<details>
+
+<summary>Rozwiązanie L14.32</summary>
+
+<br />
+
+```
+Trzeba sobie dokładnie przeanalizowac co to robi, co zwraca i co dostajemy na początek.
+
+Potrzebujemy dla każdego przedziału policzyć całkę oznaczoną (wielomianu 3. stopnia)
+
+Mamy na start 2 węzły dla każdego przedziału, brakuje nam dwóch danych
+
+Najbardziej prymitywna działająca wersja - dodajemy w z kolejne dwa węzły dla każdego przedziału => 4 wartości dla 4 niewiadomych, rozwiązujemy układ równań i możemy policzyć prosto wartość całki.
+
+Można jednak zmniejszyć ilość punktów w z (co jest od nas wymagane)
+
+Możemy skorzystać z faktu że f''(x) = 0 dla skraju przedzialu czyli brakuje nam jednego punktu.
+Potem dla kolejnego przedziału brakuje nam znów dwóch danych, ale znamy graniczącą funkcję - możemy łatwo policzyć jej pierwszą i drugą pochodną. Mamy więc wszystko co jest potrzebne - więc chyba ogólnie tylko dwa punkty z potrzebujemy? #TODO dopytać się, bo na repetach inaczej wyszło ale idk o co z M tam chodziło.
+```
+
 </details>
 
 ## Krzywe parametryczne
