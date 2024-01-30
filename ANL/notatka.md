@@ -78,6 +78,9 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Suma kilku funkcji tej samej zmiennej](#suma-kilku-funkcji-tej-samej-zmiennej)
         - [Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$](#zadanie-l1437--aproksymacja---wyznacz-prawdopodobne-a-wzór-ct--2at22018-1)
         - [Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x\_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n \< N) też jest funkcją parzystą.](#zadanie-l1440--rozważmy-zadanie-wielomianowej-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym-dla-węzłów-postaci-x_k---a--2ak--n-udowodniej-że-jeśli-aproksymowana-funkcja-jest-parzysta-to-n-ty-wielomian-optymalny-n--n-też-jest-funkcją-parzystą)
+    - [Ortogonalność funkcji](#ortogonalność-funkcji)
+    - [Ortogonalizacja Grama-Schmidta](#ortogonalizacja-grama-schmidta)
+    - [Wielomian optymalny](#wielomian-optymalny)
   - [Kwadratury](#kwadratury)
     - [Funkcja podcałkowa, funkcja pierwotna](#funkcja-podcałkowa-funkcja-pierwotna)
     - [Metody całkowania](#metody-całkowania)
@@ -1290,6 +1293,32 @@ $P_1(x)$ - tylko nieparzyste potęgi
 #TODO dokończyć
 
 </details>
+
+### Ortogonalność funkcji
+
+Funkcje $f$ i $g$ są ortogonalne na zbiorze dyskretnym jeśli $<f, g> = 0$
+
+### Ortogonalizacja Grama-Schmidta
+
+Dostajemy funkcje $f_0, f_1, ..., f_n$ i chcemy je ortogonalizować.
+
+$g_0 = f_0$
+
+$g_1 = f_1 - \frac{<f_1, g_0>}{<g_0, g_0>}g_0$
+
+...
+
+$g_n = f_n - \frac{<f_n, g_0>}{<g_0, g_0>}g_0 - \frac{<f_n, g_1>}{<g_1, g_1>}g_1 - ... - \frac{<f_n, g_{n-1}>}{<g_{n-1}, g_{n-1}>}g_{n-1}$
+
+można wyznaczać też funkcje ortogonalne inną metodą (która jest szybsza i lepsza numerycznie), ale ma ona dużo trudniejszy do zapamiętania wzór i jeszcze chyba nigdy się nie pojawiła na egzaminie.
+
+### Wielomian optymalny
+
+Wielomian optymalny to wielomian, który jest najlepszym przybliżeniem funkcji f(x) w sensie aproksymacji średniokwadratowej. Wyraża się on wzorem
+
+$w^*_n(x) = \sum_{k=0}^{n} \frac{<f, p_k>}{<p_k, p_k>}p_k(x)$
+
+gdzie $p_k$ to wielomiany ortogonalne względem dyskretnego iloczynu skalarnego dla zbioru $X = {x_0, x_1, ..., x_N}$
 
 ## Kwadratury
 
