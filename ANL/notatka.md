@@ -63,7 +63,6 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
         - [Zadanie L14.25 - Znajdź wielomian interpolacyjny Lagrange'a dla punktów a) $(-2; 2), (-1;0), (0;-2), (1;-4)$ i b) $(1;-4), (2;-30), (-1;0), (-2;2), (0,2)$ w postaci Newtona](#zadanie-l1425---znajdź-wielomian-interpolacyjny-lagrangea-dla-punktów-a--2-2--10-0-2-1-4-i-b-1-4-2-30--10--22-02-w-postaci-newtona)
         - [Zadanie L14.26 - Funkcję $f(x) = cos(x/2)$ interpolujemy Lagrangem w węzłach Czebyszewa. Jak należy dobrać n, aby błąd interpolacji był mniejszy niż $10^{-8}$ dla $x \\in \[-1, 1\]$?](#zadanie-l1426---funkcję-fx--cosx2-interpolujemy-lagrangem-w-węzłach-czebyszewa-jak-należy-dobrać-n-aby-błąd-interpolacji-był-mniejszy-niż-10-8-dla-x-in--1-1)
   - [Ilorazy różnicowe](#ilorazy-różnicowe)
-  - [Błąd interpolacji Lagrange'a](#błąd-interpolacji-lagrangea)
         - [Zadanie L14.28. : Dostajemy liczby $a\_0, a\_1, ..., a\_{n-1}$. Zaproponuj algorytm znajdowania takich $c\_0, c\_1, ... c\_n$ że dla każdego $x \\in \\mathbb{R}$ zachodzi $x^n = c\_0 + c\_1(x - a\_0) + c\_2(x - a\_0)(x - a\_1) + ... + c\_n(x - a\_0)(x - a\_1)...(x - a\_{n-1})$ Podaj jego złożoność.](#zadanie-l1428--dostajemy-liczby-a_0-a_1--a_n-1-zaproponuj-algorytm-znajdowania-takich-c_0-c_1--c_n-że-dla-każdego-x-in-mathbbr-zachodzi-xn--c_0--c_1x---a_0--c_2x---a_0x---a_1----c_nx---a_0x---a_1x---a_n-1-podaj-jego-złożoność)
   - [Naturalna Interpolacyjna Funkcja Sklejana 3. stopnia](#naturalna-interpolacyjna-funkcja-sklejana-3-stopnia)
     - [Konstrukcja NIFS3](#konstrukcja-nifs3)
@@ -783,7 +782,11 @@ $|f(x) - L_n(x)| <= max|\frac{f^{(n+1)}{(\xi)}}{(n+1)!}| * max_{[a,b]}|p_{n+1}(x
 
 A więc maksymalna wartość pochodnej n+1 stopnia w danych przedziale podzielona przez (n+1)! razy maksymalna wartość $p_{n+1}(x)$
 
-Uwaga - na maksymalną wartość tego drugiego będzie wpływać rozmieszczenie punktów!:
+Aby zminimalizować błąd interpolacji, należy odpowiednio wybrać węzły. Najlepiej wybrać węzły Czebyszewa, czyli:
+
+$x_k = cos(\frac{2k+1}{2n+2} \pi)$
+
+Uwaga - na maksymalną wartość tego drugiego elemtu wzoru będzie wpływać rozmieszczenie punktów!:
 
 - dla równoodległych punktów maksymalna wartość $p_{n+1}(x)$ będzie zależeć od odległości między dwoma skrajnymi punktami (chyba)
 - dla punktów Czebyszewa na ćwiczeniach wyprowadziliśmy wzór $\frac{(b-a)^{n+1}}{2^{2n+1}}$ - ważne by go zapamiętać, i mieć nadzieję że nie będą kazali go wyprowadzić bo to zadanie było posrane (ew. można pamiętać że robi się przekształcenie liniowe z [-1,1] na [a,b])
@@ -933,6 +936,8 @@ Korzystając z kalkulator możemy wyznaczyć że n >= 11
 
 </details>
 
+W zadaniu L14.27. liczy się praktycznie tak samo. Nie jest powiedziane wprost że są to węzły Czebyszewa ale pamietamy wzorek że tak. #TODO - nie pasuje mi to 1/2 we wzorze x_nk, bo wtedy przesuwamy węzły lekko w prawo - pierwszy węzeł nie jest wtedy na krawędzi przedziału i mamy o 1 mniej węzęł - możliwe że zwiększałoby to bład. Na repetach wzór na błąd był ten sam, więc w razie czego się będzie można kłóćić - nagranie 29.01, od mniej więcej początku do 12 minuty.
+
 ## Ilorazy różnicowe
 
 $f[x_k] = f(x_k)$
@@ -940,21 +945,6 @@ $f[x_k] = f(x_k)$
 $f[x_k, x_{k+1}] = \frac{f[x_{k+1}] - f[x_k]}{x_{k+1} - x_k}$
 
 $f[x_k, x_{k+1}, ..., x_{k+m}] = \frac{f[x_{k+1}, x_{k+2}, ..., x_{k+m}] - f[x_k, x_{k+1}, ..., x_{k+m-1}]}{x_{k+m} - x_k}$
-
-## Błąd interpolacji Lagrange'a
-
-Wzór:
-
-$f(x) = L_n(x) + \frac{f^{(n+1)}(\xi)}{(n+1)!} \prod_{i=0}^{n} (x - x_i)$
-
-gdzie $\xi$ jest dowolnym punktem z przedziału $[x_0, x_n]$
-
-Aby zminimalizować błąd interpolacji, należy odpowiednio wybrać węzły. Najlepiej wybrać węzły Czebyszewa, czyli:
-
-$x_k = cos(\frac{2k+1}{2n+2} \pi)$
-
-dzięki temu mamy więcej węzłów przy końcach minimalizując efekt Rungego.
-
 
 
 ##### Zadanie L14.28. : Dostajemy liczby $a_0, a_1, ..., a_{n-1}$. Zaproponuj algorytm znajdowania takich $c_0, c_1, ... c_n$ że dla każdego $x \in \mathbb{R}$ zachodzi $x^n = c_0 + c_1(x - a_0) + c_2(x - a_0)(x - a_1) + ... + c_n(x - a_0)(x - a_1)...(x - a_{n-1})$ Podaj jego złożoność.
