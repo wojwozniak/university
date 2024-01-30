@@ -86,14 +86,13 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Metody całkowania](#metody-całkowania)
       - [Całkowanie przez części](#całkowanie-przez-części)
       - [Całkowanie przez podstawienie](#całkowanie-przez-podstawienie)
-  - [Wszystko o kwadraturach poniżej #TODO](#wszystko-o-kwadraturach-poniżej-todo)
     - [Kwadratura liniowa](#kwadratura-liniowa)
     - [Kwadratura interpolacyjna](#kwadratura-interpolacyjna)
     - [Kwadratura Newtona-Cotesa](#kwadratura-newtona-cotesa)
     - [Wzór trapezów, złożony wzór trapezów](#wzór-trapezów-złożony-wzór-trapezów)
     - [Wzór Simpsona, złożony wzór Simpsona](#wzór-simpsona-złożony-wzór-simpsona)
     - [Metoda Romberga](#metoda-romberga)
-    - [Kwadratura Gausa](#kwadratura-gausa)
+    - [Kwadratura Gaussa](#kwadratura-gaussa)
   - [Macierze](#macierze)
     - [Rozkład LU](#rozkład-lu)
     - [Metoda faktoryzacji](#metoda-faktoryzacji)
@@ -1345,8 +1344,6 @@ $\int{f(x)g'(x)dx} = f(x)g(x) - \int{f'(x)g(x)dx}$
 $\int{f(g(x))g'(x)dx} = \int{f(u)du}$
 
 
-## Wszystko o kwadraturach poniżej #TODO
-
 ### Kwadratura liniowa
 
 Kwadratura liniowa to kwadratura, która przybliża funkcję f(x)/ Kwadratura liniowa może mieć rząd co najwyżej 2n+2 (było podane jako twierdzenie, jest to też zadanie L14.45.)
@@ -1373,7 +1370,9 @@ $Q_2(f) = \frac{b-a}{w}(\frac{1}{3}f(a) + \frac{4}{3}f(\frac{a+b}{2}) + \frac{1}
 
 Liczymy elementy T(0,i), wypełniamy tablicę Romberga (macierz dolnotrójkątną)
 
-### Kwadratura Gausa
+### Kwadratura Gaussa
+
+Kwadraturami Gaussa nazywamy kwadratury rzędu 2n+2 - są zawsze interpolujące (no bo rząd >= n+1)
 
 
 ## Macierze
