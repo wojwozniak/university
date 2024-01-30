@@ -1313,7 +1313,12 @@ d(t) = 1 / log_2(C(t)) - 2018
 I teraz:
 ```
 $E(a) = \sum_{k=0}^{N} (At_k^2 - d_k)^2$
-szukamy minimum E(a) 
+szukamy minimum E'(a)
+
+pochodna ładnie nam się uprości, dojdziemy do:
+
+A = suma d_kt_k^2 / suma t_k^4
+
 
 </details>
 
