@@ -86,6 +86,7 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Wielomian optymalny](#wielomian-optymalny)
         - [Zadanie L14.39 : Znajdź wielomiany optymalne P\_0, P\_1, P\_2 ortogonalne względem iloczynu skalarnego $\<f, g\> = \\sum\_{k=0}^{N} f(x\_k)g(x\_k)$ dla zbioru X = {-2,-1, 0, 1, 2}. Wykorzystując te wielomiany, znajdź wielomian optymalny drugiego stopnia dla danych (-2; 4) (-1; 1) (0; 1) (1; 1) (2; 4)](#zadanie-l1439--znajdź-wielomiany-optymalne-p_0-p_1-p_2-ortogonalne-względem-iloczynu-skalarnego-f-g--sum_k0n-fx_kgx_k-dla-zbioru-x---2-1-0-1-2-wykorzystując-te-wielomiany-znajdź-wielomian-optymalny-drugiego-stopnia-dla-danych--2-4--1-1-0-1-1-1-2-4)
         - [Zadanie L14.42 : Podaj definicję ciągu wielomianów ortogonalnych względem dyskretnego iloczynu skalarnego. Jak efektywnie wyznaczać takie wielomiany? Jakie jest ich zastosowanie w aproksymacji średniokwadratowej na zbiorze dyskretnym?](#zadanie-l1442--podaj-definicję-ciągu-wielomianów-ortogonalnych-względem-dyskretnego-iloczynu-skalarnego-jak-efektywnie-wyznaczać-takie-wielomiany-jakie-jest-ich-zastosowanie-w-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym)
+        - [Zadanie L14.43. Wielomian optymalny drugiego stopnia dla danych - rozwiązane na papierze, prosto ze wzorków. Podobno jest jakaś sztuczka żeby mniej liczyć, ale nie znalazłem.](#zadanie-l1443-wielomian-optymalny-drugiego-stopnia-dla-danych---rozwiązane-na-papierze-prosto-ze-wzorków-podobno-jest-jakaś-sztuczka-żeby-mniej-liczyć-ale-nie-znalazłem)
   - [Kwadratury](#kwadratury)
     - [Funkcja podcałkowa, funkcja pierwotna](#funkcja-podcałkowa-funkcja-pierwotna)
     - [Metody całkowania](#metody-całkowania)
@@ -1401,7 +1402,7 @@ $w^*_n(x) = \sum_{k=0}^{n} a_k p_k(x)$
 
 gdzie $p_k$ to wielomiany ortogonalne względem dyskretnego iloczynu skalarnego dla zbioru $X = {x_0, x_1, ..., x_N}$
 
-a a_k = $\frac{<f, p_k>}{<p_k, p_k>}$
+a $a_k$ = $\frac{<f, p_k>}{<p_k, p_k>}$
 
 ##### Zadanie L14.39 : Znajdź wielomiany optymalne P_0, P_1, P_2 ortogonalne względem iloczynu skalarnego $<f, g> = \sum_{k=0}^{N} f(x_k)g(x_k)$ dla zbioru X = {-2,-1, 0, 1, 2}. Wykorzystując te wielomiany, znajdź wielomian optymalny drugiego stopnia dla danych (-2; 4) (-1; 1) (0; 1) (1; 1) (2; 4)
 
@@ -1480,6 +1481,8 @@ Zastosowanie w aproksymacji średniokwadratowej na zbiorze dyskretnym:
 Są nam one potrzebne do wyznaczenia wielomianu optymalnego, który jest najlepszym przybliżeniem funkcji f(x) w sensie aproksymacji średniokwadratowej.
 
 ```
+
+##### Zadanie L14.43. Wielomian optymalny drugiego stopnia dla danych - rozwiązane na papierze, prosto ze wzorków. Podobno jest jakaś sztuczka żeby mniej liczyć, ale nie znalazłem.
 
 </details>
 
