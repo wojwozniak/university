@@ -245,6 +245,10 @@ $six(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...$
 
 $cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...$
 
+
+Pochodna sinusa to cosinus
+Pochodna cosinusa to -sinus
+
 x ~= 0, więc można przekształcić tak żeby pokazać że jest to szereg naprzemienny zbiegający do 0 i odrzucić dalsze wyrazy.
 
 np. dla sin
