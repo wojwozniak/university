@@ -80,11 +80,11 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
     - [Suma kilku funkcji tej samej zmiennej](#suma-kilku-funkcji-tej-samej-zmiennej)
         - [Zadanie L14.37 : Aproksymacja - wyznacz prawdopodobne A. Wzór: $C(t) = 2^{(At^2+2018)^{-1}}$](#zadanie-l1437--aproksymacja---wyznacz-prawdopodobne-a-wzór-ct--2at22018-1)
         - [Zadanie L14.38. Aproksymacja f(x) do funkcji postaci $y(x) = \\frac{ax^2-3}{x^2+1}$](#zadanie-l1438-aproksymacja-fx-do-funkcji-postaci-yx--fracax2-3x21)
-        - [Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x\_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n \< N) też jest funkcją parzystą.](#zadanie-l1440--rozważmy-zadanie-wielomianowej-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym-dla-węzłów-postaci-x_k---a--2ak--n-udowodniej-że-jeśli-aproksymowana-funkcja-jest-parzysta-to-n-ty-wielomian-optymalny-n--n-też-jest-funkcją-parzystą)
     - [Ortogonalność funkcji](#ortogonalność-funkcji)
     - [Ortogonalizacja Grama-Schmidta](#ortogonalizacja-grama-schmidta)
     - [Ciąg wielomianów ortogonalnych](#ciąg-wielomianów-ortogonalnych)
     - [Wielomian optymalny](#wielomian-optymalny)
+        - [Zadanie L14.39 : Znajdź wielomiany optymalne P\_0, P\_1, P\_2 ortogonalne względem iloczynu skalarnego $\<f, g\> = \\sum\_{k=0}^{N} f(x\_k)g(x\_k)$ dla zbioru X = {-2,-1, 0, 1, 2}. Wykorzystując te wielomiany, znajdź wielomian optymalny drugiego stopnia dla danych (-2; 4) (-1; 1) (0; 1) (1; 1) (2; 4)](#zadanie-l1439--znajdź-wielomiany-optymalne-p_0-p_1-p_2-ortogonalne-względem-iloczynu-skalarnego-f-g--sum_k0n-fx_kgx_k-dla-zbioru-x---2-1-0-1-2-wykorzystując-te-wielomiany-znajdź-wielomian-optymalny-drugiego-stopnia-dla-danych--2-4--1-1-0-1-1-1-2-4)
         - [Zadanie L14.42 : Podaj definicję ciągu wielomianów ortogonalnych względem dyskretnego iloczynu skalarnego. Jak efektywnie wyznaczać takie wielomiany? Jakie jest ich zastosowanie w aproksymacji średniokwadratowej na zbiorze dyskretnym?](#zadanie-l1442--podaj-definicję-ciągu-wielomianów-ortogonalnych-względem-dyskretnego-iloczynu-skalarnego-jak-efektywnie-wyznaczać-takie-wielomiany-jakie-jest-ich-zastosowanie-w-aproksymacji-średniokwadratowej-na-zbiorze-dyskretnym)
   - [Kwadratury](#kwadratury)
     - [Funkcja podcałkowa, funkcja pierwotna](#funkcja-podcałkowa-funkcja-pierwotna)
@@ -1346,26 +1346,6 @@ W treści były jeszcze dwie wartości do podstawienia które upraszczały na ko
 
 </details>
 
-
-
-##### Zadanie L14.40 : Rozważmy zadanie wielomianowej aproksymacji średniokwadratowej na zbiorze dyskretnym dla węzłów postaci x_k = -a + (2ak) / N. Udowodniej, że jeśli aproksymowana funkcja jest parzysta, to n-ty wielomian optymalny (n < N) też jest funkcją parzystą.
-
-<details>
-<summary>Rozwiązanie L14.40</summary>
-
-<br />
-
-```
-x = -a + (2ak) / N   x_0 = -a, krok 2a/N,  x_N = a
-
-punkty są więc symetryczne
-
-f_0, f_1, ..., f_N
-
-f_0 = f_N
-f_1 = f_N-1
-....
-```
 Wielomian optymalny: 
 $w^*_n(x) = \sum_{k=0}^{n} \frac{<f, p_n>}{<p, p_n>}p_n(x)$
 
@@ -1420,6 +1400,58 @@ Wielomian optymalny to wielomian, który jest najlepszym przybliżeniem funkcji 
 $w^*_n(x) = \sum_{k=0}^{n} \frac{<f, p_k>}{<p_k, p_k>}p_k(x)$
 
 gdzie $p_k$ to wielomiany ortogonalne względem dyskretnego iloczynu skalarnego dla zbioru $X = {x_0, x_1, ..., x_N}$
+
+##### Zadanie L14.39 : Znajdź wielomiany optymalne P_0, P_1, P_2 ortogonalne względem iloczynu skalarnego $<f, g> = \sum_{k=0}^{N} f(x_k)g(x_k)$ dla zbioru X = {-2,-1, 0, 1, 2}. Wykorzystując te wielomiany, znajdź wielomian optymalny drugiego stopnia dla danych (-2; 4) (-1; 1) (0; 1) (1; 1) (2; 4)
+
+<details>
+
+<summary>Rozwiązanie L14.39</summary>
+
+<br />
+
+```
+Tu w oryginalnej treści iloczyn był zapisany wprost, tj.
+
+(f,g) = f(-2)g(-2) + f(-1)g(-1) + f(0)g(0) + f(1)g(1) + f(2)g(2)
+ale wiemy że to jest to samo
+
+a)
+Korzystamy ze wzorku
+
+P_0(x) = 1
+
+P_1(x) = x - c_1
+
+P_k(x) = (x - c_k)P_{k-1}(x) - d_kP_{k-2}(x)
+
+W naszym przypadku:
+
+P_0(x) = 1
+
+P_1(x) = x - c_1
+
+P_2(x) = (x - c_2)P_1(x) - d_2
+
+wychodzi c_1 = 0, c_2 = 0, d_2 = 2
+
+P_0(x) = 1
+
+P_1(x) = x
+
+P_2(x) = x^2 - 2
+
+b)
+
+Wielomian optymalny to:
+
+w^2_*(x) = a_0 + a_1 x + a_2 (x^2-2)
+
+gdzie na a mamy jawny wzorek
+
+obliczamy i gotowe
+```
+
+</details>
 
 ##### Zadanie L14.42 : Podaj definicję ciągu wielomianów ortogonalnych względem dyskretnego iloczynu skalarnego. Jak efektywnie wyznaczać takie wielomiany? Jakie jest ich zastosowanie w aproksymacji średniokwadratowej na zbiorze dyskretnym?
 
