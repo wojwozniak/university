@@ -1397,9 +1397,11 @@ Złożoność O(mN), numerycznie działa to bardzo dobrze
 
 Wielomian optymalny to wielomian, który jest najlepszym przybliżeniem funkcji f(x) w sensie aproksymacji średniokwadratowej. Wyraża się on wzorem
 
-$w^*_n(x) = \sum_{k=0}^{n} \frac{<f, p_k>}{<p_k, p_k>}p_k(x)$
+$w^*_n(x) = \sum_{k=0}^{n} a_k p_k(x)$
 
 gdzie $p_k$ to wielomiany ortogonalne względem dyskretnego iloczynu skalarnego dla zbioru $X = {x_0, x_1, ..., x_N}$
+
+a a_k = $\frac{<f, p_k>}{<p_k, p_k>}$
 
 ##### Zadanie L14.39 : Znajdź wielomiany optymalne P_0, P_1, P_2 ortogonalne względem iloczynu skalarnego $<f, g> = \sum_{k=0}^{N} f(x_k)g(x_k)$ dla zbioru X = {-2,-1, 0, 1, 2}. Wykorzystując te wielomiany, znajdź wielomian optymalny drugiego stopnia dla danych (-2; 4) (-1; 1) (0; 1) (1; 1) (2; 4)
 
