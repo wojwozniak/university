@@ -94,10 +94,14 @@ Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosy�
       - [Całkowanie przez podstawienie](#całkowanie-przez-podstawienie)
     - [Kwadratura liniowa](#kwadratura-liniowa)
     - [Kwadratura interpolacyjna](#kwadratura-interpolacyjna)
+        - [Zadanie L14.46 : Opisz w szczegółach kwadratury intepolacyjne (m.in. podaj ideę - odpowiedni rysunek mile widziany, wyprowadź wzory na współczynniki, uzwględnij szczególną sytuację gdy węzły są równoodległe, nie zapomnij o najlepszych kwadraturach interpolacyjnych)](#zadanie-l1446--opisz-w-szczegółach-kwadratury-intepolacyjne-min-podaj-ideę---odpowiedni-rysunek-mile-widziany-wyprowadź-wzory-na-współczynniki-uzwględnij-szczególną-sytuację-gdy-węzły-są-równoodległe-nie-zapomnij-o-najlepszych-kwadraturach-interpolacyjnych)
     - [Kwadratura Newtona-Cotesa](#kwadratura-newtona-cotesa)
     - [Wzór trapezów, złożony wzór trapezów](#wzór-trapezów-złożony-wzór-trapezów)
     - [Wzór Simpsona, złożony wzór Simpsona](#wzór-simpsona-złożony-wzór-simpsona)
+        - [Zadanie L14.47 : Opisz ideę kwadratur złożonych. Wyprowadź złożony wzór Simpsona.](#zadanie-l1447--opisz-ideę-kwadratur-złożonych-wyprowadź-złożony-wzór-simpsona)
     - [Metoda Romberga](#metoda-romberga)
+        - [Zadanie L14.48: Opisz metodę Romberga obliczania przybliżonej wartości całki oznaczonej od -3 do 2 z f(x).](#zadanie-l1448-opisz-metodę-romberga-obliczania-przybliżonej-wartości-całki-oznaczonej-od--3-do-2-z-fx)
+        - [Zadanie L14.49 : Opisz kwadratury złożone. Jaką mają one przewagę nad kwadraturami Newtona-Cotesa? Czy są one związane z metodą Romberga? Jeśli tak, to w jaki sposób?](#zadanie-l1449--opisz-kwadratury-złożone-jaką-mają-one-przewagę-nad-kwadraturami-newtona-cotesa-czy-są-one-związane-z-metodą-romberga-jeśli-tak-to-w-jaki-sposób)
     - [Kwadratura Gaussa](#kwadratura-gaussa)
   - [Macierze](#macierze)
     - [Rozkład LU](#rozkład-lu)
@@ -1519,6 +1523,28 @@ Kwadratura liniowa to kwadratura, która przybliża funkcję f(x)/ Kwadratura li
 
 Ideą tej kwadratury jest całkowanie wielomianu Ln(x) zamiast funkcji f(x). Kwadratura liniowa ma rząd większy lub równy n+1 <=> jest ona kwadraturą interpolacyjną.
 
+##### Zadanie L14.46 : Opisz w szczegółach kwadratury intepolacyjne (m.in. podaj ideę - odpowiedni rysunek mile widziany, wyprowadź wzory na współczynniki, uzwględnij szczególną sytuację gdy węzły są równoodległe, nie zapomnij o najlepszych kwadraturach interpolacyjnych)
+
+<details>
+
+<summary>Rozwiązanie L14.46</summary>
+
+<br />
+
+```
+Idea:
+Zamiast liczyć całkę z jakiejś bardzo trudnej funkcji, możemy policzyć ją z wielomianu interpolacyjnego, który powinien być dokładnym przybliżeniem funkcji.
+Policzenie tej całki jest prostsze - szczególnie jeśli mamy ten wielomian w postaci potęgowej.
+
+Szczególna sytuacja gdy węzły są równoodległe:
+Wtedy możemy zastosować wzór Newtona-Cotesa. Rząd takiej kwadratury to n+1 lub n+2 (w zależności od tego czy mamy nieparzystą czy parzystą ilość węzłów)
+
+Najlepsze kwadratury interpolacyjne:
+Najlepsze kwadratury są najwyższego możliwego rzędu, czyli 2n+2. Nazywamy je kwadraturami Gaussa.
+```
+
+</details>
+
 ### Kwadratura Newtona-Cotesa
 
 Kwadratura Newtona-Cotesa to kwadratura interpolacyjna, w której węzły są równoodległe. k-ty węzeł to $x_k = a + k * h$, gdzie $h = \frac{b-a}{n}$
@@ -1533,9 +1559,67 @@ Jest to metoda rzędu 4. Dla danej funkcji na danym przedziale szacujemy wartoś
 
 $Q_2(f) = \frac{b-a}{w}(\frac{1}{3}f(a) + \frac{4}{3}f(\frac{a+b}{2}) + \frac{1}{3}f(b))$. 
 
+##### Zadanie L14.47 : Opisz ideę kwadratur złożonych. Wyprowadź złożony wzór Simpsona.
+
+<details>
+
+<summary>Rozwiązanie L14.47</summary>
+
+<br />
+
+```
+Idea kwadratury złożonej polega na podziale przedziału całkowania na mniejsze podprzedziały i zastosowaniu metody kwadraturowej (metody numerycznego obliczania całek) na każdym z tych podprzedziałów. Następnie wyniki z poszczególnych podprzedziałów są sumowane, tworząc całkowity przybliżony wynik całkowania na oryginalnym przedziale.
+
+Proces ten ma na celu zwiększenie dokładności przybliżenia, zwłaszcza gdy funkcja podcałkowa może być silnie nieregularna lub oscylująca na danym przedziale.
+
+Złożonego wzoru nie wyprowadzę :(
+```
+
+</details>
+
+
 ### Metoda Romberga
 
 Liczymy elementy T(0,i), wypełniamy tablicę Romberga (macierz dolnotrójkątną)
+
+##### Zadanie L14.48: Opisz metodę Romberga obliczania przybliżonej wartości całki oznaczonej od -3 do 2 z f(x).
+
+<details>
+
+<summary>Rozwiązanie L14.48</summary>
+
+<br />
+
+```
+Wypełniamy tablicę Romberga - w pierwszej kolumnie wyliczamy wartości wzorem trapezów, kolejne wyrazy w danym rzędzie wyliczamy wzorem Romberga. Najdokładniejszy wynik znajduje się w prawym dolnym rogu.
+
+```
+
+</details>
+
+##### Zadanie L14.49 : Opisz kwadratury złożone. Jaką mają one przewagę nad kwadraturami Newtona-Cotesa? Czy są one związane z metodą Romberga? Jeśli tak, to w jaki sposób?
+
+<details>
+
+<summary>Rozwiązanie L14.49</summary>
+
+<br />
+
+```
+Kwadratury złożone to kwadratury, które dzielą przedział całkowania na mniejsze podprzedziały i zastosowują metodę na każdym z tych podprzedziałów. Następnie wyniki z poszczególnych podprzedziałów są sumowane, tworząc całkowity przybliżony wynik całkowania na oryginalnym przedziale.
+
+Przewaga nad kwadraturami Newtona-Cotesa:
+
+Dzielimy przedział na mniejsze podprzedziały, lepiej dopasowując się do funkcji.
+
+Związane z metodą Romberga:
+
+Tak, metoda Romberga jest związana z kwadraturami złożonymi. W metodzie Romberga licząc kolejne T(0,i) dzielimy przedział na mniejsze podprzedziały, lepiej dopasowując się do funkcji.
+
+```
+
+</details>
+
 
 ### Kwadratura Gaussa
 
