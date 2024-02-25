@@ -1,3 +1,8 @@
+// Wojciech Woüniak
+// 3339644
+// PRZ
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
