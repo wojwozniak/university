@@ -1,0 +1,4 @@
+Lista 0:
+- zad 1: 0 (done)
+- zad 2: 1 (done)
+- zad 3: 1 (done)
