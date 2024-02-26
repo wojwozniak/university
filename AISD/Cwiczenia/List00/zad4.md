@@ -11,8 +11,9 @@ res ← res + j
 
 Liniowa ilość od pętli.
 
-n/2 + n/2 + n/4 + n/8 + .... 
+n + n/2 + n/4 + n/8 + .... 
 
+2n-1
 
 Nieparzyste i naprzyste raz
 
