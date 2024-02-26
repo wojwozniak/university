@@ -8,5 +8,6 @@ Lista 0:
 - zad 7: 1/1
 - zad 8: x/1
 - zad 9: 1/1
+- zad 10: x/2 (nie liczy się do sumy)
 
 Suma 8.5 + x / 9.5
