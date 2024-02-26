@@ -16,6 +16,10 @@ d(n) = 2ceil(log(n))
 
 ### Pokaż, że dla każdego k in N istnieje n takie, że wartości x^n mogą być obliczone przy pomocy co najwyżej d(n)-k mnożeń
 
-2^k - 1
+worst case scernario: lb = 2^k - 1
 
-do dokończenia
+binarnie: 11...1
+
+mamy wtedy maksymalną ilość mnożeń czyli 2ceil(log_2(2^k - 1)) - k = ~2k - k = k
+
+dla d(k) - k mielibysmy dokladnie 0 - czyli dziala
