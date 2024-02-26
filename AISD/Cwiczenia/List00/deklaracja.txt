@@ -5,8 +5,8 @@ Lista 0:
 - zad 4: x/1
 - zad 5: 2/2
 - zad 6: x/1.5
-- zad 7: x/1
+- zad 7: 1/1
 - zad 8: x/1
 - zad 9: x/1
 
-Suma 4 + x / 9.5
+Suma 5 + x / 9.5
