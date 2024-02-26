@@ -6,8 +6,8 @@ Lista 0:
 - zad 5: 2/2
 - zad 6: 1.5/1.5
 - zad 7: 1/1
-- zad 8: x/1
+- zad 8: 1/1
 - zad 9: 1/1
 - zad 10: x/2 (nie liczy się do mianownika)
 
-Suma 8.5 + x / 9.5
+Suma 9.5 + x / 9.5
