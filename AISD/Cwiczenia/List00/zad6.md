@@ -20,6 +20,8 @@ worst case scernario: lb = 2^k - 1
 
 binarnie: 11...1
 
+Ile mnożeń wykonamy dla takiej liczby?
+
 mamy wtedy maksymalną ilość mnożeń czyli 2ceil(log_2(2^k - 1)) - k = ~2k - k = k
 
 dla d(k) - k mielibysmy dokladnie 0 - czyli dziala
