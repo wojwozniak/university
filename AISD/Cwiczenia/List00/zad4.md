@@ -1,4 +1,4 @@
-# Oszasuj big O dla poniższego algorytmu
+# Oszasuj sigme dla poniższego algorytmu
 ```
 res ← 0
 for i ← 1 to n do
@@ -10,12 +10,12 @@ res ← res + j
 ### Rozwiązanie
 
 Liniowa ilość od pętli.
-W pętli w najgorszym przypadku wykonamy logarytmiczną_2 ilość operacji.
 
-$Omega(n * log_2(n))$.
-
-
-Ale to nie do konca prawda
+n/2 + n/2 + n/4 + n/8 + .... 
 
 
-Mamy n/2 + 2 * n/2 + 3 * n/4 + 4 * n/8 + ... + n * 1/n i mamy liniową ilość operacji.
+Nieparzyste i naprzyste raz
+
+Ponadto n/4 z podzielnych przez 4
+n/8 z tych przez 8
+...
