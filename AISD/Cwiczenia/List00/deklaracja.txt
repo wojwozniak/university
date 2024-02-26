@@ -7,6 +7,6 @@ Lista 0:
 - zad 6: 1.5/1.5 (do dokonczenia jeszcze + pytanie o te komorki)
 - zad 7: 1/1
 - zad 8: x/1
-- zad 9: x/1
+- zad 9: 1/1
 
-Suma 7.5 + x / 9.5
+Suma 8.5 + x / 9.5
