@@ -11,6 +11,10 @@ res ← res + j
 
 Liniowa ilość od pętli.
 W pętli w najgorszym przypadku wykonamy logarytmiczną_2 ilość operacji.
-Czyli $O(n * log_2(n))$.
+
+
+
+
+$Omega(n * log_2(n))$.
 
 I to chyba tyle?
