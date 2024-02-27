@@ -22,13 +22,9 @@ Operacja przemianowania $\rho$ zmienia nazwę relacji $R$ na $S$. Przykładowo $
 
 Operacja iloczynu kartezjańskiego $\times$ tworzy relację, której kolumny to połączenie kolumn relacji $R$ i $S$, a wiersze to wszystkie możliwe kombinacje wierszy z relacji $R$ i $S$.
 
-### $\cup$
+### $\cup$, $\cap$, $\setminus$
 
-
-### $\cap$
-
-
-### $\setminus$
+Operacje $\cup$, $\cap$, $\setminus$ to odpowiednio suma, iloczyn i różnica zbiorów. Dla relacji $R$ i $S$ operacje te działają na kolumnach relacji $R$ i $S$ jak operacje na zbiorach.
 
 ### $\Join$ - Połączenie (Join) - JOIN 
 
