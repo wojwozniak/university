@@ -24,15 +24,11 @@ Operacja iloczynu kartezjańskiego $\times$ tworzy relację, której kolumny to 
 
 ### $\cup$
 
-Operacja sumy zbiorowej
 
 ### $\cap$
 
-Operacja przecięcia zbiorowego 
 
 ### $\setminus$
-
-Operacja różnicy zbiorowej
 
 ### $\Join$ - Połączenie (Join) - JOIN 
 
