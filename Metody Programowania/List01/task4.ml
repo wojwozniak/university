@@ -1,3 +1,10 @@
+(* Zadanie 4 / Lista 1 *)
+
+(*
+  Zdefniuj funkcję o trzech argumentach będących liczbami całkowitymi, której
+  wynikiem jest suma kwadratów dwóch większych jej argumentów.  
+*)
+
 let sum_square_two_bigger x y z =
   let a = max x (max y z) in
   let b = if (a = x) then max y z else if (a = y) then max x z else max x y in
