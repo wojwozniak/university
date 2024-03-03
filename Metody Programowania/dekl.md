@@ -1,3 +1,7 @@
+# Metody Programowania - v. 2024
+
+
+## Listy zadań
 Lista 1:
 - Zadanie 1 - 1/1pkt
 - Zadanie 2 - 3/3pkt
@@ -18,3 +22,5 @@ Lista 2:
 - Zadanie 8 - 2/2pkt
 - Zadanie 9 - 2/2pkt
 Suma: 14/14pkt (S. kr. 26 / 26 pkt (100%))
+
+
