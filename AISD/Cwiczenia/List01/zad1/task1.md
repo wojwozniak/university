@@ -1,7 +1,9 @@
 # Zadanie 1 / Lista 1
 
 Napisz rekurencyjne funkcje, które dla danego drzewa binarnego T obliczają:
+
 • liczbę wierzchołków w T,
+
 • maksymalną odległość między wierzchołkami w T.
 
 
