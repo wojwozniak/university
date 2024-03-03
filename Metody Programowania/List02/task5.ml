@@ -13,4 +13,8 @@
 let rec maximum xs =
   match xs with
   | [] -> neg_infinity
-  | h :: t -> if t = [] then h else max h (maximum t)
+  | h :: t -> if t = [] then h else max h (maximum t);;
+
+
+maximum [1.; 5.; 0.; 7.; 1.; 4.; 1.; 0.];;
+maximum [];;
