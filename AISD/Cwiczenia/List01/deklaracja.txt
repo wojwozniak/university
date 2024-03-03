@@ -1,10 +1,10 @@
 Lista 1:
 - Zadanie 1: 1/1pkt
 - Zadanie 2: x/1pkt
-- Zadanie 3: x/1pkt
+- Zadanie 3: 1/1pkt
 - Zadanie 4: x/1pkt
 - Zadanie 5: x/1pkt
-- Zadanie 6: x/1,5pkt
+- Zadanie 6: 1,5/1,5pkt
 - Zadanie 7: x/1,5pkt
 - Zadanie 8: x/1pkt
 Suma punktów: 1+x/9pkt
@@ -13,4 +13,4 @@ Zadania dodatkowe, nie liczą się do mianownika:
 - Zadanie 9: y/2pkt
 - Zadanie 10: y/2pkt
 
-Łącznie: 1 + x + y /9pkt
+Łącznie: 4,5 + x + y /9pkt
