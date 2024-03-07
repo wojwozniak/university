@@ -12,3 +12,79 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.photo {
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.photo img {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #333;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.company {
+  font-style: italic;
+  color: #555;
+}
+
+.skills {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.skill {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  font-size: 16px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.about-me {
+  margin-top: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+.about-me h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.about-me p {
+  font-size: 16px;
+  line-height: 1.5;
+}
