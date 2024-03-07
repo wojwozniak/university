@@ -1,0 +1,2 @@
+Lista 1: x/5
+Lista 2: y/8 (x+y)/13
