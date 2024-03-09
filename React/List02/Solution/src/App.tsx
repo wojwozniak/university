@@ -3,6 +3,7 @@ import AddItemPopup from "./components/AddItemPopup"
 import List from "./components/List"
 import { Task } from "./interfaces/task"
 import Popup from "./components/Popup"
+import BottomBar from "./components/BottomBar"
 
 const defaultTasks: Task[] = [
   {
@@ -21,11 +22,13 @@ const defaultTasks: Task[] = [
 
 function App() {
   const [items, updateItems] = useState<Task[]>(defaultTasks);
-  const [displayedItems, setDisplayedItems] = useState<Task[]>(items);
+  const [filteredItems, setFilteredItems] = useState<Task[]>(items);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [filterOutFinished, setFilterOutFinished] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [searchButtonClicked, setSearchButtonClicked] = useState(Date.now());
+  const [activeSort, setActiveSort] = useState("Default (Old to New)");
+  const [pageSize, setPageSize] = useState(0);
 
   const addTask = (task: Task) => {
     updateItems([...items, task])
@@ -54,7 +57,7 @@ function App() {
       itemsCopy = itemsCopy.filter((item) => !item.done);
     }
 
-    setDisplayedItems(itemsCopy);
+    setFilteredItems(itemsCopy);
   }, [items, filterOutFinished, searchButtonClicked]);
 
   return (
@@ -86,8 +89,12 @@ function App() {
         updateRender={setIsPopupOpen}
         component={<AddItemPopup addTask={addTask} updateRender={setIsPopupOpen} />} />
       <List toggleTask={toggleTask}
-        tasks={displayedItems}
+        tasks={filteredItems}
         deleteTask={deleteTask} />
+      <BottomBar activeSort={activeSort}
+        setActiveSort={setActiveSort}
+        pageSize={pageSize}
+        setPageSize={setPageSize} />
     </div>
   )
 }
