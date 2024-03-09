@@ -42,12 +42,19 @@ function App() {
   }
 
   return (
-    <div id="root" className="">
-      <button className="bg-green-500 hover:bg-green-700 p-2 fixed right-0 top-0 m-2 rounded-lg text-white"
-        onClick={() => setIsPopupOpen(!isPopupOpen)}
-      >
-        Add Task
-      </button>
+    <div id="root" className="m-2">
+      <div className="m-2 fixed right-0 top-0 flex flex-row gap-5">
+        <button className="p-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white"
+          onClick={() => setIsPopupOpen(!isPopupOpen)}
+        >
+          Show only active
+        </button>
+        <button className="p-2 bg-green-500 hover:bg-green-700 rounded-lg text-white"
+          onClick={() => setIsPopupOpen(!isPopupOpen)}
+        >
+          Add Task
+        </button>
+      </div>
       <Popup render={isPopupOpen} updateRender={setIsPopupOpen} component={<AddItemPopup addTask={addTask} updateRender={setIsPopupOpen} />} />
       <List toggleTask={toggleTask} tasks={items} deleteTask={deleteTask} />
     </div>
