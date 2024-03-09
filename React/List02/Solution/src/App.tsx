@@ -31,6 +31,8 @@ function App() {
   const [activeSort, setActiveSort] = useState("Default (Old to New)");
   const [enablePagination, setEnablePagination] = useState(false);
   const [pageSize, setPageSize] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pages, setPages] = useState(1);
 
   const addTask = (task: Task) => {
     updateItems([...items, task])
@@ -84,7 +86,10 @@ function App() {
         setActiveSort={setActiveSort}
         pageSize={pageSize}
         enablePagination={enablePagination}
-        setPageSize={setPageSize} />
+        setPageSize={setPageSize}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pages={pages} />
     </div>
   )
 }
