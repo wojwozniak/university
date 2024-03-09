@@ -1,4 +1,3 @@
-import React from 'react'
 import { Task } from '../interfaces/task'
 import SingleTask from './SingleTask'
 
