@@ -24,6 +24,7 @@ const defaultTasks: Task[] = [
 function App() {
   const [items, updateItems] = useState<Task[]>(defaultTasks);
   const [filteredItems, setFilteredItems] = useState<Task[]>(items);
+  const [visibleItems, setVisibleItems] = useState<Task[]>(filteredItems.slice(0, 10));
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [filterOutFinished, setFilterOutFinished] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -33,6 +34,10 @@ function App() {
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState(1);
+
+  // Wymuszanie rerenderu gdy strona się nie zmienia 
+  // ale potrzebna jest zmiana widocznych elementów
+  const [update, setUpdate] = useState(Date.now());
 
   const addTask = (task: Task) => {
     updateItems([...items, task])
@@ -64,6 +69,37 @@ function App() {
     setFilteredItems(itemsCopy);
   }, [items, filterOutFinished, searchButtonClicked]);
 
+  // If active sort changes, we move to the first page
+  useEffect(() => {
+    setCurrentPage(1);
+    setUpdate(Date.now());
+  }, [activeSort, filteredItems, pageSize]);
+
+  // Apply sort and pagination
+  useEffect(() => {
+    // Start with sorting
+    let itemsCopy = [...filteredItems];
+    if (activeSort === "Ascending") {
+      itemsCopy.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (activeSort === "Descending") {
+      itemsCopy.sort((a, b) => b.name.localeCompare(a.name));
+    } else {
+      itemsCopy.sort((a, b) => a.id - b.id);
+    }
+
+    // Then apply pagination
+    if (enablePagination) {
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      itemsCopy = itemsCopy.slice(start, end);
+      setPages(Math.ceil(filteredItems.length / pageSize));
+    } else {
+      setPages(1);
+    }
+
+    setVisibleItems(itemsCopy);
+  }, [currentPage, update]);
+
   return (
     <div id="root" className="m-2">
       <Navigation searchText={searchText}
@@ -80,7 +116,7 @@ function App() {
         updateRender={setIsPopupOpen}
         component={<AddItemPopup addTask={addTask} updateRender={setIsPopupOpen} />} />
       <List toggleTask={toggleTask}
-        tasks={filteredItems}
+        tasks={visibleItems}
         deleteTask={deleteTask} />
       <BottomBar activeSort={activeSort}
         setActiveSort={setActiveSort}
@@ -89,7 +125,8 @@ function App() {
         setPageSize={setPageSize}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        pages={pages} />
+        pages={pages}
+      />
     </div>
   )
 }
