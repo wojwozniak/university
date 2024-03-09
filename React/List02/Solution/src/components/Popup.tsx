@@ -7,6 +7,11 @@ interface PopupProps {
 }
 
 const Popup = ({ component, render, updateRender }: PopupProps) => {
+
+  const closePopup = () => {
+    updateRender(false);
+  }
+
   return (
     render &&
     <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center'>
@@ -14,7 +19,7 @@ const Popup = ({ component, render, updateRender }: PopupProps) => {
         {component}
       </div>
       <button className='fixed top-0 right-0 text-white bg-red-500 hover:bg-red-700 m-2 p-4 rounded-lg w-[60px] h-[60px]'
-        onClick={() => updateRender(false)}
+        onClick={closePopup}
       >
         X
       </button>

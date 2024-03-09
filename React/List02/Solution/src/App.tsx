@@ -28,6 +28,15 @@ function App() {
     updateItems([...items, task])
   }
 
+  const toggleTask = (id: number) => {
+    updateItems(items.map((item) => {
+      if (item.id === id) {
+        return { ...item, done: !item.done }
+      }
+      return item
+    }))
+  }
+
   const deleteTask = (id: number) => {
     updateItems(items.filter((item) => item.id !== id))
   }
@@ -39,8 +48,8 @@ function App() {
       >
         Add Task
       </button>
-      <Popup render={isPopupOpen} updateRender={setIsPopupOpen} component={<AddItemPopup addTask={addTask} />} />
-      <List tasks={items} deleteTask={deleteTask} />
+      <Popup render={isPopupOpen} updateRender={setIsPopupOpen} component={<AddItemPopup addTask={addTask} updateRender={setIsPopupOpen} />} />
+      <List toggleTask={toggleTask} tasks={items} deleteTask={deleteTask} />
     </div>
   )
 }

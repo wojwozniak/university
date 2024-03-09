@@ -5,13 +5,15 @@ import SingleTask from './SingleTask'
 
 interface ListProps {
   tasks: Task[],
-  deleteTask: (id: number) => void
+  deleteTask: (id: number) => void,
+  toggleTask: (id: number) => void
 }
 
-const List = ({ tasks, deleteTask }: ListProps) => {
+const List = ({ tasks, deleteTask, toggleTask }: ListProps) => {
   return (
     <main className='w-full my-4'>
-      {tasks.map((task) => <SingleTask key={task.id} task={task} deleteTask={deleteTask} />)}
+      <h2 className='text-3xl my-4'>Tasks</h2>
+      {tasks.map((task) => <SingleTask key={task.id} toggleTask={toggleTask} task={task} deleteTask={deleteTask} />)}
     </main>
   )
 }
