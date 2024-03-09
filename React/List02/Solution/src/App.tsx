@@ -29,7 +29,8 @@ function App() {
   const [searchText, setSearchText] = useState('');
   const [searchButtonClicked, setSearchButtonClicked] = useState(Date.now());
   const [activeSort, setActiveSort] = useState("Default (Old to New)");
-  const [pageSize, setPageSize] = useState(0);
+  const [enablePagination, setEnablePagination] = useState(false);
+  const [pageSize, setPageSize] = useState(10);
 
   const addTask = (task: Task) => {
     updateItems([...items, task])
@@ -70,6 +71,8 @@ function App() {
         setFilterOutFinished={setFilterOutFinished}
         setSearchButtonClicked={setSearchButtonClicked}
         setIsPopupOpen={setIsPopupOpen}
+        enablePagination={enablePagination}
+        setEnablePagination={setEnablePagination}
       />
       <Popup render={isPopupOpen}
         updateRender={setIsPopupOpen}
@@ -80,6 +83,7 @@ function App() {
       <BottomBar activeSort={activeSort}
         setActiveSort={setActiveSort}
         pageSize={pageSize}
+        enablePagination={enablePagination}
         setPageSize={setPageSize} />
     </div>
   )

@@ -8,6 +8,8 @@ interface NavigationProps {
   filterOutFinished: boolean,
   isPopupOpen: boolean,
   setIsPopupOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  enablePagination: boolean,
+  setEnablePagination: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 const Navigation = ({
@@ -17,10 +19,17 @@ const Navigation = ({
   setFilterOutFinished,
   filterOutFinished,
   isPopupOpen,
-  setIsPopupOpen
+  setIsPopupOpen,
+  enablePagination,
+  setEnablePagination,
 }: NavigationProps) => {
   return (
     <nav className="m-2 fixed right-0 top-0 flex flex-row items-center gap-5">
+      <button className="p-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white"
+        onClick={() => setEnablePagination(!enablePagination)}
+      >
+        {enablePagination ? "Disable pagination" : "Enable pagination"}
+      </button>
       <button className="p-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
         onClick={() => setSearchButtonClicked(Date.now())}
       >
