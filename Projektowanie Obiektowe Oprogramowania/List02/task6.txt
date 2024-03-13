@@ -1,0 +1,1 @@
+Wydaje mi się że nie da się bo będzie albo B albo C (w zależności od wartości v)
