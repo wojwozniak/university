@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 interface BottomBarProps {
   activeSort: string,
@@ -8,8 +8,6 @@ interface BottomBarProps {
   enablePagination: boolean,
   currentPage: number,
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>,
-  pages: number,
-  setPages: React.Dispatch<React.SetStateAction<number>>,
   ammountOfTasks: number
 }
 
@@ -21,14 +19,14 @@ const BottomBar = ({
   enablePagination,
   currentPage,
   setCurrentPage,
-  pages,
-  setPages,
   ammountOfTasks
 }: BottomBarProps) => {
 
   const disabledStyle = {
     backgroundColor: 'red',
   }
+
+  const [pages, setPages] = useState(1);
 
   return (
     <div className="fixed bg-gray-500 w-full p-2 bottom-0 left-0 flex flex-row items-between">

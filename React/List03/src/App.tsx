@@ -14,9 +14,6 @@ function App() {
   const [enablePagination, setEnablePagination] = useState(false);
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pages, setPages] = useState(1);
-
-
 
   const addTask = (task: Task) => {
     updateItems([...items, task])
@@ -59,6 +56,21 @@ function App() {
 
   const togglePagination = () => setEnablePagination(!enablePagination);
 
+  const getItems = () => {
+    return items.filter((task) => checkIfTaskShouldBeRendered(task, queryUsed, filterOutFinished))
+  }
+
+  const sortTasks = (tasks: Task[], sortType: string) => {
+    switch (sortType) {
+      case "Ascending":
+        return tasks.sort((a, b) => a.name.localeCompare(b.name));
+      case "Descending":
+        return tasks.sort((a, b) => b.name.localeCompare(a.name));
+      default:
+        return tasks
+    }
+  }
+
   return (
     <div id="root" className="m-2">
       <Navigation
@@ -70,17 +82,15 @@ function App() {
       />
       <List toggleTask={toggleTask}
         deleteTask={deleteTask}
-        tasks={items.filter((task) => checkIfTaskShouldBeRendered(task, queryUsed, filterOutFinished))}
+        tasks={sortTasks(getItems(), activeSort)}
       />
       <BottomBar activeSort={activeSort}
         currentPage={currentPage}
         enablePagination={enablePagination}
         pageSize={pageSize}
-        pages={pages}
         setActiveSort={setActiveSort}
         setCurrentPage={setCurrentPage}
         setPageSize={setPageSize}
-        setPages={setPages}
         ammountOfTasks={items.length}
       />
     </div>
