@@ -71,6 +71,18 @@ function App() {
     }
   }
 
+  const getTasksOnCurrentPage = (
+    tasks: Task[],
+    currentPage: number,
+    pageSize: number,
+    enabledPagination: boolean
+  ) => {
+    if (!enabledPagination) return tasks;
+    const start = (currentPage - 1) * pageSize;
+    const end = start + pageSize;
+    return tasks.slice(start, end);
+  }
+
   return (
     <div id="root" className="m-2">
       <Navigation
@@ -82,16 +94,16 @@ function App() {
       />
       <List toggleTask={toggleTask}
         deleteTask={deleteTask}
-        tasks={sortTasks(getItems(), activeSort)}
+        tasks={getTasksOnCurrentPage(sortTasks(getItems(), activeSort), currentPage, pageSize, enablePagination)}
       />
       <BottomBar activeSort={activeSort}
-        currentPage={currentPage}
-        enablePagination={enablePagination}
-        pageSize={pageSize}
         setActiveSort={setActiveSort}
+        currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        pageSize={pageSize}
         setPageSize={setPageSize}
-        ammountOfTasks={items.length}
+        enablePagination={enablePagination}
+        ammountOfTasks={getItems().length}
       />
     </div>
   )

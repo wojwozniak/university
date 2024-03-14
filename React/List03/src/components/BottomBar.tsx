@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface BottomBarProps {
   activeSort: string,
@@ -27,6 +27,14 @@ const BottomBar = ({
   }
 
   const [pages, setPages] = useState(1);
+
+  useEffect(() => {
+    const newPages = Math.ceil(ammountOfTasks / pageSize);
+    setPages(newPages);
+    if (currentPage > newPages) {
+      setCurrentPage(newPages);
+    }
+  }, [ammountOfTasks, pageSize])
 
   return (
     <div className="fixed bg-gray-500 w-full p-2 bottom-0 left-0 flex flex-row items-between">
@@ -63,10 +71,8 @@ const BottomBar = ({
         </div>
         <div className='flex flex-row items-center gap-2'>
           <p>Page size:</p>
-          <input className='w-15' type="number" value={pageSize} onChange={(e) => {
-            setPageSize(parseInt(e.target.value));
-            setPages(Math.ceil(ammountOfTasks / pageSize));
-          }} />
+          <input className='w-15' type="number" value={pageSize}
+            onChange={(e) => setPageSize(parseInt(e.target.value))} />
         </div>
       </div>
       }
