@@ -1,0 +1,12 @@
+Zmiany w porównaniu do wersji z listy 2:
+App: zawiera też funkcję sortowania i getter tasków na aktualnej stronie
+BottomBar: nowy komponent do kontrolowania paginacji oraz sortowania
+
+Stary opis z listy 2:
+
+App: główny komponent, przechowuje listę przedmiotów i modyfikatory wyświetlania tych przedmiotów. Zawiera funkcję która sprawdza czy dany element listy powinien być wygenerowany (jeśli nie, to po prostu tego elementu nie przekazuje do List). Zawiera List i Navigation.
+List: Przyjmuje listę elementów i dla każdego z nich generuje obiekt "SingleTask"
+SingleTask: element pojedyńczego zadania, zawiera przycisk Done/Undone i Delete
+Navigation: Górny pasek nawigacji z kontrolą modyfikatorów wyświetlania i przyciskiem do popupu dodawania elementu. Zawiera Popup.
+Popup: Generuje popup z zawartością przekazaną jako parameter ReactNode. W tym zadaniu używany do wyświetlenia AddItemPopup
+AddItemPopup: formularz do uzupełnienia danych nowego elementu.
