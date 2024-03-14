@@ -4,10 +4,10 @@ import AddItemPopup from "./AddItemPopup"
 import { Task } from '../interfaces/task';
 
 interface NavigationProps {
-  filterOutFinished: boolean,
   setFilterOutFinished: React.Dispatch<React.SetStateAction<boolean>>,
+  filterOutFinished: boolean,
   setQueryUsed: React.Dispatch<React.SetStateAction<string>>,
-  addTask: (task: Task) => void,
+  addTask: (task: Task) => void
 }
 
 const Navigation = ({

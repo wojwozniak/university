@@ -36,6 +36,7 @@ function App() {
       />
       <List toggleTask={toggleTask}
         tasks={items}
+        filterOutFinished={filterOutFinished}
         deleteTask={deleteTask}
         queryUsed={queryUsed} />
     </div>
