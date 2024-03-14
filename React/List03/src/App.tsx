@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import List from "./components/List"
 import { Task } from "./interfaces/task"
 import Navigation from "./components/Navigation"
@@ -15,6 +15,11 @@ function App() {
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState(1);
+
+  useEffect(() => {
+    setPages(Math.ceil(items.length / pageSize));
+  }, [pageSize])
+
 
   const addTask = (task: Task) => {
     updateItems([...items, task])
@@ -77,7 +82,8 @@ function App() {
         pages={pages}
         setActiveSort={setActiveSort}
         setCurrentPage={setCurrentPage}
-        setPageSize={setPageSize} />
+        setPageSize={setPageSize}
+      />
     </div>
   )
 }
