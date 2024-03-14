@@ -2,6 +2,8 @@ Zmiany w porównaniu do wersji z listy 2:
 App: zawiera też funkcję sortowania i getter tasków na aktualnej stronie
 BottomBar: nowy komponent do kontrolowania paginacji oraz sortowania
 
+Rozszerzenie obecnej wersji nie byłoby super skomplikowane, chociaż kod staje się już bardziej nieczytelny. 
+
 Stary opis z listy 2:
 
 App: główny komponent, przechowuje listę przedmiotów i modyfikatory wyświetlania tych przedmiotów. Zawiera funkcję która sprawdza czy dany element listy powinien być wygenerowany (jeśli nie, to po prostu tego elementu nie przekazuje do List). Zawiera List i Navigation.
