@@ -1,5 +1,6 @@
 Lista 1: 6/6 pkt
 Lista 2: 9/10 pkt (15 / 16 pkt)
-
+na prac do listy 3 - do poprawy zadania 4 i 7 z listy 2
+ogar z1/l2 - jakie strzalki do abstr i interfejsu
 
 Łącznie: 15 / 16 pkt
