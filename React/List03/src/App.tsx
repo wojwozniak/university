@@ -3,6 +3,7 @@ import List from "./components/List"
 import { Task } from "./interfaces/task"
 import Navigation from "./components/Navigation"
 import { defaultTasks } from "./exampletasks"
+import BottomBar from "./components/BottomBar"
 
 function App() {
   const [items, updateItems] = useState<Task[]>(defaultTasks);
@@ -54,6 +55,8 @@ function App() {
     return false
   }
 
+  const togglePagination = () => setEnablePagination(!enablePagination);
+
   return (
     <div id="root" className="m-2">
       <Navigation
@@ -61,11 +64,20 @@ function App() {
         setFilterOutFinished={setFilterOutFinished}
         setQueryUsed={setQueryUsed}
         addTask={addTask}
+        togglePagination={togglePagination}
       />
       <List toggleTask={toggleTask}
         deleteTask={deleteTask}
         tasks={items.filter((task) => checkIfTaskShouldBeRendered(task, queryUsed, filterOutFinished))}
       />
+      <BottomBar activeSort={activeSort}
+        currentPage={currentPage}
+        enablePagination={enablePagination}
+        pageSize={pageSize}
+        pages={pages}
+        setActiveSort={setActiveSort}
+        setCurrentPage={setCurrentPage}
+        setPageSize={setPageSize} />
     </div>
   )
 }

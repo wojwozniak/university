@@ -7,14 +7,16 @@ interface NavigationProps {
   setFilterOutFinished: React.Dispatch<React.SetStateAction<boolean>>,
   filterOutFinished: boolean,
   setQueryUsed: React.Dispatch<React.SetStateAction<string>>,
-  addTask: (task: Task) => void
+  addTask: (task: Task) => void,
+  togglePagination: () => void
 }
 
 const Navigation = ({
   setQueryUsed,
   setFilterOutFinished,
   filterOutFinished,
-  addTask
+  addTask,
+  togglePagination
 }: NavigationProps) => {
 
   const [searchText, setSearchText] = useState('');
@@ -23,6 +25,11 @@ const Navigation = ({
   return (
     <>
       <nav className="m-2 fixed right-0 top-0 flex flex-row items-center gap-5">
+        <button className="p-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
+          onClick={() => togglePagination()}
+        >
+          Toggle pagination
+        </button>
         <button className="p-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
           onClick={() => setQueryUsed(searchText)}
         >
