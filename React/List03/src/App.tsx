@@ -1,13 +1,19 @@
 import { useState } from "react"
-import List from "../../List02/src/components/List"
+import List from "./components/List"
 import { Task } from "./interfaces/task"
-import Navigation from "../../List02/src/components/Navigation"
+import Navigation from "./components/Navigation"
 import { defaultTasks } from "./exampletasks"
 
 function App() {
   const [items, updateItems] = useState<Task[]>(defaultTasks);
   const [filterOutFinished, setFilterOutFinished] = useState(false);
   const [queryUsed, setQueryUsed] = useState('');
+
+  const [activeSort, setActiveSort] = useState("Default (Old to New)");
+  const [enablePagination, setEnablePagination] = useState(false);
+  const [pageSize, setPageSize] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pages, setPages] = useState(1);
 
   const addTask = (task: Task) => {
     updateItems([...items, task])
