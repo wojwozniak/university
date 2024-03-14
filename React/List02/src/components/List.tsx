@@ -5,10 +5,11 @@ import SingleTask from './SingleTask'
 interface ListProps {
   tasks: Task[],
   deleteTask: (id: number) => void,
-  toggleTask: (id: number) => void
+  toggleTask: (id: number) => void,
+  queryUsed: string,
 }
 
-const List = ({ tasks, deleteTask, toggleTask }: ListProps) => {
+const List = ({ tasks, deleteTask, toggleTask, queryUsed }: ListProps) => {
   return (
     <>
       <h2 className='text-3xl my-4'>Tasks</h2>
