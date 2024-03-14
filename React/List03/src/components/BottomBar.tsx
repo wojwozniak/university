@@ -8,7 +8,9 @@ interface BottomBarProps {
   enablePagination: boolean,
   currentPage: number,
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>,
-  pages: number
+  pages: number,
+  setPages: React.Dispatch<React.SetStateAction<number>>,
+  ammountOfTasks: number
 }
 
 const BottomBar = ({
@@ -19,7 +21,9 @@ const BottomBar = ({
   enablePagination,
   currentPage,
   setCurrentPage,
-  pages
+  pages,
+  setPages,
+  ammountOfTasks
 }: BottomBarProps) => {
 
   const disabledStyle = {
@@ -61,7 +65,10 @@ const BottomBar = ({
         </div>
         <div className='flex flex-row items-center gap-2'>
           <p>Page size:</p>
-          <input className='w-15' type="number" value={pageSize} onChange={(e) => setPageSize(parseInt(e.target.value))} />
+          <input className='w-15' type="number" value={pageSize} onChange={(e) => {
+            setPageSize(parseInt(e.target.value));
+            setPages(Math.ceil(ammountOfTasks / pageSize));
+          }} />
         </div>
       </div>
       }
