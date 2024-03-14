@@ -26,6 +26,28 @@ function App() {
     updateItems(items.filter((item) => item.id !== id))
   }
 
+  const checkIfTaskShouldBeRendered = (task: Task, queryUsed: string, filterOutFinished: boolean) => {
+    if (queryUsed.length > 0 && filterOutFinished) {
+      if (task.name.toLowerCase().includes(queryUsed.toLowerCase()) && !task.done) {
+        return true
+      }
+    }
+    else if (queryUsed.length > 0) {
+      if (task.name.toLowerCase().includes(queryUsed.toLowerCase())) {
+        return true
+      }
+    }
+    else if (filterOutFinished) {
+      if (!task.done) {
+        return true
+      }
+    }
+    else if (!queryUsed.length && !filterOutFinished) {
+      return true
+    }
+    return false
+  }
+
   return (
     <div id="root" className="m-2">
       <Navigation
@@ -35,10 +57,9 @@ function App() {
         addTask={addTask}
       />
       <List toggleTask={toggleTask}
-        tasks={items}
-        filterOutFinished={filterOutFinished}
         deleteTask={deleteTask}
-        queryUsed={queryUsed} />
+        tasks={items.filter((task) => checkIfTaskShouldBeRendered(task, queryUsed, filterOutFinished))}
+      />
     </div>
   )
 }
