@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Popup from './Popup'
 import AddRecipePopup from './AddRecipePopup';
 
@@ -8,7 +8,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="m-2 fixed right-0 top-0 flex flex-row items-center gap-5">
+      <nav className="p-4 w-full flex flex-row items-center justify-end gap-5">
+        <h2 className="text-3xl absolute left-5">Recipe List</h2>
         <button className="p-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
 
         >
@@ -30,7 +31,7 @@ const Navbar = () => {
         <button className="p-2 bg-green-500 hover:bg-green-700 rounded-lg text-white"
           onClick={() => setIsPopupOpen(!isPopupOpen)}
         >
-          Add Task
+          Add Recipe
         </button>
       </nav>
       <Popup render={isPopupOpen}
