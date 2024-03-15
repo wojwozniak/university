@@ -1,13 +1,7 @@
 import React, { createContext, useReducer } from 'react';
-import { Recipe } from "./interfaces/Recipe";
+import { Action } from './interfaces/Action';
 import { RecipeState } from "./interfaces/RecipeState";
 import { exampleRecipes } from './exampleRecipes';
-
-type Action =
-  | { type: 'ADD_RECIPE'; recipe: Recipe }
-  | { type: 'REMOVE_RECIPE'; id: number }
-  | { type: 'ADD_TO_FAVORITES'; id: number }
-  | { type: 'REMOVE_FROM_FAVORITES'; id: number };
 
 const initialState: RecipeState = {
   recipes: exampleRecipes,
