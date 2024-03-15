@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import { Recipe } from "./interfaces/Recipe";
 import { RecipeState } from "./interfaces/RecipeState";
+import { exampleRecipes } from './exampleRecipes';
 
 type Action =
   | { type: 'ADD_RECIPE'; recipe: Recipe }
@@ -9,7 +10,7 @@ type Action =
   | { type: 'REMOVE_FROM_FAVORITES'; id: number };
 
 const initialState: RecipeState = {
-  recipes: [],
+  recipes: exampleRecipes,
   favorites: [],
 };
 
