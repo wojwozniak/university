@@ -36,7 +36,7 @@ const Navbar = () => {
       </nav>
       <Popup render={isPopupOpen}
         updateRender={setIsPopupOpen}
-        component={<AddRecipePopup updateRender={setIsPopupOpen} />} />
+        component={<AddRecipePopup setIsPopupOpen={setIsPopupOpen} />} />
     </>
   )
 }
