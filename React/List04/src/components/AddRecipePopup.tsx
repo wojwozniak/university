@@ -37,8 +37,7 @@ const AddRecipePopup: React.FC<AddRecipePopupProps> = ({ setIsPopupOpen }) => {
           placeholder="Task Name"
           value={recipeName}
           onChange={e => setRecipeName(e.target.value)} />
-        <input className="p-2 m-2 border"
-          type="text"
+        <textarea className="p-2 m-2 border w-80 h-40 resize-none"
           placeholder="Task Description"
           value={recipeDesc}
           onChange={e => setRecipeDesc(e.target.value)} />
