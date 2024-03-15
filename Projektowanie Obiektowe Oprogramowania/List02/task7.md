@@ -6,28 +6,25 @@ Napisać pseudokod dla diagramu sekwencji z rysunku 1.
 
 ## Pseudokod
 
-```c++
+```java
 public class StudentUser {
   Student student = new Student();
   public void show() {
     UsosWebPage usos = new UsosWebPage();
-    List<Course> courses = usos.getStudentGradeInfo(student);
-    for (Course course : courses) {
-      System.out.println(course.mark);
-    }
   }
 }
 
 public class UsosWebPage {
   GradeController gradeController = new GradeController();
   public getStudentGradeInfo(Student student) {
-    return gradeController.getCourses(student);
+    List<Course> courses = gradeController.getCourses(student);
+    return pageLayout(courses);
   }
 }
 
 public class GradeController {
   public List<Course> getCourses(Student student) {
-    return student.courses;
+    return student.courses.forEach(course -> course.getMark(student.id));
   }
 }
 
@@ -38,8 +35,10 @@ public class Student {
 public class Course {
   public int studentId;
   public int mark;
-  public Course(int mark) {
+
+  public Course(int studentId, int mark) {
     this.mark = mark;
+    this.studentId = studentId;
   }
 
   public int getMark(int studentId) {
