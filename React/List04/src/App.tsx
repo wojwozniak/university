@@ -1,8 +1,12 @@
+import Navbar from "./components/Navbar"
+import RecipeList from "./components/RecipeList"
+
 function App() {
   return (
-    <>
-      <p className="text-4xl">test</p>
-    </>
+    <div id="root">
+      <Navbar />
+      <RecipeList />
+    </div>
   )
 }
 
