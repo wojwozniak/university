@@ -13,7 +13,10 @@ const RecipeList = () => {
 
   const getFilteredRecipes = (recipes: Recipe[]): Recipe[] => {
     if (searchQuery === '') return recipes;
-    return recipes.filter(recipe => recipe.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    return recipes.filter(recipe => {
+      return recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
+        || recipe.description.toLowerCase().includes(searchQuery.toLowerCase())
+    });
 
   }
 
