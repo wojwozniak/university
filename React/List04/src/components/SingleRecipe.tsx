@@ -1,0 +1,56 @@
+import React, { useState } from 'react';
+
+interface Recipe {
+  id: number;
+  name: string;
+  description: string;
+}
+
+interface SingleRecipeProps {
+  recipe: Recipe;
+}
+
+const SingleRecipe: React.FC<SingleRecipeProps> = ({ recipe }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toggleDescription = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="border rounded p-4 mb-4">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold">{recipe.name}</h2>
+        <div className='flex gap-5'>
+          <button
+            onClick={toggleDescription}
+            className="p-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white"
+          >
+            {isOpen ? 'Favorite' : 'Favorite'}
+          </button>
+          <button
+            onClick={toggleDescription}
+            className="p-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
+          >
+            {isOpen ? 'Hide Description' : 'Show Description'}
+          </button>
+        </div>
+      </div>
+      {isOpen && (
+        <div className='flex flex-row justify-between pt-4'>
+          <p className="mt-2 text-gray-600">
+            {recipe.description}
+          </p>
+          <button
+            onClick={toggleDescription}
+            className="p-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"
+          >
+            Delete this recipe
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SingleRecipe;
