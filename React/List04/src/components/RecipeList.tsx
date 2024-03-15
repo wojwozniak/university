@@ -13,11 +13,28 @@ const RecipeList = () => {
 
   const getFilteredRecipes = (recipes: Recipe[]): Recipe[] => {
     if (searchQuery === '') return recipes;
-    return recipes.filter(recipe => {
-      return recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
-        || recipe.description.toLowerCase().includes(searchQuery.toLowerCase())
-    });
 
+    /* 
+      Nie wiem czy mamy sprawdzać słowa kluczowe jako jedno query, czy jako osobne
+      dla każdego słowa w query - zrobiłem dwie wersje
+     */
+
+    const searchForEveryWordSeparately = true;
+
+    if (!searchForEveryWordSeparately) {
+      return recipes.filter(recipe => {
+        return recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
+          || recipe.description.toLowerCase().includes(searchQuery.toLowerCase())
+      });
+    } else {
+      const queryWords = searchQuery.toLowerCase().split(' ');
+      return recipes.filter(recipe => {
+        return queryWords.every(word => {
+          return recipe.name.toLowerCase().includes(word)
+            || recipe.description.toLowerCase().includes(word)
+        });
+      });
+    }
   }
 
   const getRecipesAfterFilter = (recipes: Recipe[]): Recipe[] => {

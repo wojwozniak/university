@@ -34,8 +34,8 @@ const Navbar = () => {
           Search
         </button>
         <input type="text"
-          className="p-2 border"
-          placeholder="Text to search for"
+          className="p-2 border w-60"
+          placeholder="Keywords (separated by space)"
           content={searchText}
           onChange={e => setSearchText(e.target.value)} />
         <h2 className="text-xl">Displaying {filterForFavorite ? "favorite" : "all"} recipes</h2>
