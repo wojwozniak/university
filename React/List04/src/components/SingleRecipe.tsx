@@ -42,8 +42,10 @@ const SingleRecipe: React.FC<SingleRecipeProps> = ({ recipe }) => {
     });
   }
 
+  const styleFavourite = isFavorite ? { backgroundColor: "gray" } : {};
+
   return (
-    <div className="border rounded p-4 mb-4">
+    <div className="border rounded p-4 mb-4" style={styleFavourite}>
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">{recipe.name}</h2>
         <div className='flex gap-5'>
@@ -62,13 +64,13 @@ const SingleRecipe: React.FC<SingleRecipeProps> = ({ recipe }) => {
         </div>
       </div>
       {isOpen && (
-        <div className='flex flex-row justify-between pt-4'>
-          <p className="mt-2 text-gray-600">
+        <div className='flex flex-row justify-between items-center pt-4'>
+          <p className="mt-2 text-gray-600 w-3/5">
             {recipe.description}
           </p>
           <button
             onClick={removeRecipe}
-            className="p-2 bg-red-500 hover:bg-red-700 rounded-lg text-white">
+            className="p-2 bg-red-500 hover:bg-red-700 rounded-lg text-white h-fit">
             Delete this recipe
           </button>
         </div>
