@@ -6,7 +6,9 @@ import { exampleFavorites } from './exampleData/exampleFavorites';
 
 const initialState: RecipeState = {
   recipes: exampleRecipes,
-  favorites: exampleFavorites
+  favorites: exampleFavorites,
+  filterOutFinished: false,
+  searchQuery: '',
 };
 
 const recipeReducer = (state: RecipeState, action: Action): RecipeState => {
@@ -30,6 +32,16 @@ const recipeReducer = (state: RecipeState, action: Action): RecipeState => {
       return {
         ...state,
         favorites: state.favorites.filter(id => id !== action.id),
+      };
+    case 'SET_FILTER_OUT_FINISHED':
+      return {
+        ...state,
+        filterOutFinished: action.filterOutFinished,
+      };
+    case 'SET_SEARCH_QUERY':
+      return {
+        ...state,
+        searchQuery: action.searchQuery,
       };
     default:
       return state;
