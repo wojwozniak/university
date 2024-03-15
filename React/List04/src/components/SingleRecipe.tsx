@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { RecipeContext } from '../RecipeContext';
 
 interface Recipe {
   id: number;
@@ -13,9 +14,33 @@ interface SingleRecipeProps {
 const SingleRecipe: React.FC<SingleRecipeProps> = ({ recipe }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const { state, dispatch } = useContext(RecipeContext);
+  const isFavorite = state.favorites.some(fav => fav === recipe.id);
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      dispatch({
+        type: 'REMOVE_FROM_FAVORITES',
+        id: recipe.id,
+      });
+    } else {
+      dispatch({
+        type: 'ADD_TO_FAVORITES',
+        id: recipe.id,
+      });
+    }
+  }
+
   const toggleDescription = () => {
     setIsOpen(!isOpen);
   };
+
+  const removeRecipe = () => {
+    dispatch({
+      type: 'REMOVE_RECIPE',
+      id: recipe.id,
+    });
+  }
 
   return (
     <div className="border rounded p-4 mb-4">
@@ -23,10 +48,10 @@ const SingleRecipe: React.FC<SingleRecipeProps> = ({ recipe }) => {
         <h2 className="text-lg font-semibold">{recipe.name}</h2>
         <div className='flex gap-5'>
           <button
-            onClick={toggleDescription}
+            onClick={toggleFavorite}
             className="p-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white"
           >
-            {isOpen ? 'Favorite' : 'Favorite'}
+            {isFavorite ? 'Delete from favorites' : 'Favorite'}
           </button>
           <button
             onClick={toggleDescription}
@@ -42,9 +67,8 @@ const SingleRecipe: React.FC<SingleRecipeProps> = ({ recipe }) => {
             {recipe.description}
           </p>
           <button
-            onClick={toggleDescription}
-            className="p-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"
-          >
+            onClick={removeRecipe}
+            className="p-2 bg-red-500 hover:bg-red-700 rounded-lg text-white">
             Delete this recipe
           </button>
         </div>
