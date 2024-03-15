@@ -5,15 +5,15 @@ import { RecipeContext } from '../RecipeContext';
 
 const Navbar = () => {
   const { state, dispatch } = useContext(RecipeContext);
-  const { filterOutFinished, searchQuery } = state;
+  const { filterForFavorite, searchQuery } = state;
 
   const [searchText, setSearchText] = useState('');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const setFilterOutFinished = (value: boolean) => {
+  const setFilterOutForFavorite = (value: boolean) => {
     dispatch({
-      type: 'SET_FILTER_OUT_FINISHED',
-      filterOutFinished: value,
+      type: 'SET_FILTER_FOR_FAVORITE',
+      filterForFavorite: value,
     });
   }
 
@@ -38,10 +38,10 @@ const Navbar = () => {
           placeholder="Text to search for"
           content={searchText}
           onChange={e => setSearchText(e.target.value)} />
-        <h2 className="text-xl">Displaying {filterOutFinished ? "favorite" : "all"} recipes</h2>
+        <h2 className="text-xl">Displaying {filterForFavorite ? "favorite" : "all"} recipes</h2>
         <button className="p-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white"
-          onClick={() => setFilterOutFinished(!filterOutFinished)}>
-          {filterOutFinished ? "Show all recipes" : "Show only active recipes"}
+          onClick={() => setFilterOutForFavorite(!filterForFavorite)}>
+          {filterForFavorite ? "Show all recipes" : "Show only favorite recipes"}
         </button>
         <button className="p-2 bg-green-500 hover:bg-green-700 rounded-lg text-white"
           onClick={() => setIsPopupOpen(!isPopupOpen)}>
