@@ -30,8 +30,7 @@ const Navbar = () => {
       <nav className="p-4 w-full flex flex-row items-center justify-end gap-5">
         <h2 className="text-3xl absolute left-5">Recipe List</h2>
         <button className="p-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
-          onClick={() => updateSearchQuery(searchText)}
-        >
+          onClick={() => updateSearchQuery(searchText)}>
           Search
         </button>
         <input type="text"
@@ -41,13 +40,11 @@ const Navbar = () => {
           onChange={e => setSearchText(e.target.value)} />
         <h2 className="text-xl">Displaying {filterOutFinished ? "favorite" : "all"} recipes</h2>
         <button className="p-2 bg-yellow-500 hover:bg-yellow-700 rounded-lg text-white"
-          onClick={() => setFilterOutFinished(!filterOutFinished)}
-        >
+          onClick={() => setFilterOutFinished(!filterOutFinished)}>
           {filterOutFinished ? "Show all recipes" : "Show only active recipes"}
         </button>
         <button className="p-2 bg-green-500 hover:bg-green-700 rounded-lg text-white"
-          onClick={() => setIsPopupOpen(!isPopupOpen)}
-        >
+          onClick={() => setIsPopupOpen(!isPopupOpen)}>
           Add Recipe
         </button>
       </nav>
