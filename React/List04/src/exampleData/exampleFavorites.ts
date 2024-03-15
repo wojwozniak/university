@@ -1,0 +1,1 @@
+export const exampleFavorites = [1, 3, 5];

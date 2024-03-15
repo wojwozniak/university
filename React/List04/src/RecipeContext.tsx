@@ -1,11 +1,12 @@
 import React, { createContext, useReducer } from 'react';
 import { Action } from './interfaces/Action';
 import { RecipeState } from "./interfaces/RecipeState";
-import { exampleRecipes } from './exampleRecipes';
+import { exampleRecipes } from './exampleData/exampleRecipes';
+import { exampleFavorites } from './exampleData/exampleFavorites';
 
 const initialState: RecipeState = {
   recipes: exampleRecipes,
-  favorites: [],
+  favorites: exampleFavorites
 };
 
 const recipeReducer = (state: RecipeState, action: Action): RecipeState => {

@@ -1,4 +1,4 @@
-import { Recipe } from "./interfaces/Recipe";
+import { Recipe } from "../interfaces/Recipe";
 
 export const exampleRecipes: Recipe[] = [
   { id: 1, name: 'Spaghetti', description: 'Spaghetti with tomato sauce' },
