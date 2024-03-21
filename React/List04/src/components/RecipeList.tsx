@@ -52,7 +52,7 @@ const RecipeList = () => {
 
   return (
     <main id="list" className='w-3/5 p-2'>
-      {getRecipesAfterFilter(recipes).map((recipe, index) => <SingleRecipe key={recipe.id} recipe={recipe} />)}
+      {getRecipesAfterFilter(recipes).map((recipe) => <SingleRecipe key={recipe.id} recipe={recipe} />)}
     </main>
   )
 }
