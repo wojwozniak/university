@@ -16,6 +16,11 @@ public class StudentUser {
 
 public class UsosWebPage {
   GradeController gradeController = new GradeController();
+
+    public class GradeController(Student student) {
+    return getStudentGradeInfo(student);
+  }
+  
   public getStudentGradeInfo(Student student) {
     List<Course> courses = gradeController.getCourses(student);
     return pageLayout(courses);
