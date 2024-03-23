@@ -1,4 +1,5 @@
 import { Service } from "../types/Service"
+import SingleService from "./ui/SingleService"
 
 const Services = ({ services }: { services: Service[] }) => {
   return (
@@ -6,12 +7,7 @@ const Services = ({ services }: { services: Service[] }) => {
       <div className="section-content">
         <h2>Our Services</h2>
         <ul>
-          {services.map((service) => (
-            <li key={service.id}>
-              <h3>{service.name}</h3>
-              <p>{service.description}</p>
-            </li>
-          ))}
+          {services.map((service) => <SingleService service={service} key={service.id} />)}
         </ul>
       </div>
     </section>

@@ -1,5 +1,6 @@
-import { BlogPost } from "../types/blogPost"
+import { BlogPost } from "../types/BlogPost"
 import "./Blog.scss"
+import SingleBlogPost from "./ui/SingleBlogPost"
 
 const Blog = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
   return (
@@ -7,14 +8,7 @@ const Blog = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
       <div className="section-content">
         <h2>Latest Blog Posts</h2>
         <div className="blog-posts">
-          {blogPosts.map((post) => (
-            <div key={post.id} className="blog-post">
-              <h3>{post.title}</h3>
-              <p>{post.date}</p>
-              <p>{post.content}</p>
-              <button>Read More</button>
-            </div>
-          ))}
+          {blogPosts.map((post) => <SingleBlogPost post={post} key={post.id} />)}
         </div>
       </div>
     </section>

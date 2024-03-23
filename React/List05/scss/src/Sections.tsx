@@ -8,7 +8,7 @@ import "./Sections.scss"
 
 import { Service } from "./types/Service";
 import { TeamMembers } from "./types/TeamMembers";
-import { BlogPost } from "./types/blogPost";
+import { BlogPost } from "./types/BlogPost";
 
 interface SectionsProps {
   about: string;
