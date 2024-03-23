@@ -8,6 +8,7 @@ import { TeamMembers } from "./types/TeamMembers";
 import { BlogPost } from "./types/BlogPost";
 import Section from "./sections/ui/Section";
 import SingleService from "./sections/ui/SingleService";
+import TeamCard from "./sections/ui/TeamCard";
 
 interface SectionsProps {
   about: string;
@@ -29,16 +30,7 @@ const Sections: React.FC<SectionsProps> = ({ about, services, teamMembers, blogP
       </Section>
       <Section name="team" headerText="Meet Our Team">
         <div className="team-members">
-          {teamMembers.map((member) => (
-            <div key={member.id} className="team-member">
-              <img src={member.image} alt={member.name} />
-              <div>
-                <h3>{member.name}</h3>
-                <p>{member.position}</p>
-                <p>{member.bio}</p>
-              </div>
-            </div>
-          ))}
+          {teamMembers.map((member) => <TeamCard member={member} key={member.id} />)}
         </div>
       </Section>
       <Blog blogPosts={blogPosts} />
