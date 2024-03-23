@@ -1,5 +1,4 @@
 import Contact from "./sections/Contact";
-import Team from "./sections/Team";
 import Blog from "./sections/Blog";
 
 import "./Sections.scss"
@@ -28,7 +27,20 @@ const Sections: React.FC<SectionsProps> = ({ about, services, teamMembers, blogP
           {services.map((service) => <SingleService service={service} key={service.id} />)}
         </ul>
       </Section>
-      <Team teamMembers={teamMembers} />
+      <Section name="team" headerText="Meet Our Team">
+        <div className="team-members">
+          {teamMembers.map((member) => (
+            <div key={member.id} className="team-member">
+              <img src={member.image} alt={member.name} />
+              <div>
+                <h3>{member.name}</h3>
+                <p>{member.position}</p>
+                <p>{member.bio}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
       <Blog blogPosts={blogPosts} />
       <Contact />
     </div>
