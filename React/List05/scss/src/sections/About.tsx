@@ -1,11 +1,9 @@
-import { companyData } from "./companyData"
-
-const About = () => {
+const About = ({ about }: { about: string }) => {
   return (
     <section id="about" className="section about">
       <div className="section-content">
         <h2>About Us</h2>
-        <p>{companyData.about}</p>
+        <p>{about}</p>
       </div>
     </section>
   )

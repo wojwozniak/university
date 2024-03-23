@@ -6,10 +6,14 @@ import Blog from "./sections/Blog";
 
 import "./Sections.scss"
 
-const Sections = () => {
+interface SectionsProps {
+  about: string;
+}
+
+const Sections: React.FC<SectionsProps> = ({ about }) => {
   return (
     <div className="content-card">
-      <About />
+      <About about={about} />
       <Services />
       <Team />
       <Blog />

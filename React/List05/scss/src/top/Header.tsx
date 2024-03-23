@@ -1,11 +1,13 @@
-import { companyData } from '../sections/companyData'
-
-const Header = () => {
+const Header = (
+  { companyName, companySlogan }
+    :
+    { companyName: string, companySlogan: string }
+) => {
   return (
     <header id="header" className="header">
       <div className="header-content">
-        <h1>{companyData.name}</h1>
-        <p>{companyData.slogan}</p>
+        <h1>{companyName}</h1>
+        <p>{companySlogan}</p>
       </div>
     </header>
   )
