@@ -1,4 +1,5 @@
 import { companyData } from "./companyData"
+import "./Team.scss"
 
 const Team = () => {
   return (

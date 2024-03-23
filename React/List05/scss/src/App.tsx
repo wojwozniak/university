@@ -1,13 +1,9 @@
 import { useState } from "react";
-import "./styles.css";
-import Navbar from "./Navbar";
+import "./App.css";
+import Navbar from "./top/Navbar";
+import Header from "./top/Header";
 import Footer from "./Footer";
-import Services from "./Services";
-import Contact from "./Contact";
-import Header from "./Header";
-import About from "./About";
-import Team from "./Team";
-import Blog from "./Blog";
+import Sections from "./Sections";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -20,13 +16,7 @@ const App = () => {
     <div className={`portfolio ${darkMode ? "dark-theme" : "light-theme"}`}>
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
       <Header />
-      <div className="content-card">
-        <About />
-        <Services />
-        <Team />
-        <Blog />
-        <Contact />
-      </div>
+      <Sections />
       <Footer />
     </div>
   );

@@ -1,4 +1,5 @@
 import { companyData } from "./companyData"
+import "./Blog.scss"
 
 const Blog = () => {
   return (

@@ -1,0 +1,23 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio {
+  margin: 0 auto;
+}
+
+/* Light theme */
+.light-theme {
+  background-color: #fff;
+  color: #333;
+  /* Text color for light theme */
+}
+
+/* Dark theme */
+.dark-theme {
+  background-color: #111;
+  color: #fff;
+  /* Text color for dark theme */
+}

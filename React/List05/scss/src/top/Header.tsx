@@ -1,4 +1,4 @@
-import { companyData } from './companyData'
+import { companyData } from '../sections/companyData'
 
 const Header = () => {
   return (
