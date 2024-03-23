@@ -4,8 +4,9 @@ import Navbar from "./top/Navbar";
 import Header from "./top/Header";
 import Footer from "./Footer";
 import Sections from "./Sections";
+import { CompanyData } from "./types/CompanyData";
 
-const companyData = {
+const companyData: CompanyData = {
   name: "Acme Corporation",
   slogan: "Innovation at its best",
   about:
