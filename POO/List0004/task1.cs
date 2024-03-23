@@ -9,18 +9,16 @@ namespace List0004
     public class Singleton
     {
         private static readonly Lazy<Singleton> instanceProcessWide =
-            new Lazy<Singleton>(() => new Singleton(), LazyThreadSafetyMode.ExecutionAndPublication);
-
-        private static readonly ThreadLocal<Singleton> instancePerThread =
-            new ThreadLocal<Singleton>(() => new Singleton());
-
-        private static Singleton? instanceForFiveSeconds;
-        private static readonly object lockObject = new object();
-        private static DateTime lastAccessTime;
-
+            new(() => new Singleton(), LazyThreadSafetyMode.ExecutionAndPublication);
         public static Singleton? InstanceProcessWide => instanceProcessWide.Value;
 
+        private static readonly ThreadLocal<Singleton> instancePerThread =
+            new(() => new Singleton());
         public static Singleton? InstancePerThread => instancePerThread.Value;
+
+        private static Singleton? instanceForFiveSeconds;
+        private static readonly object lockObject = new();
+        private static DateTime lastAccessTime;
 
         public static Singleton InstanceForFiveSeconds
         {
