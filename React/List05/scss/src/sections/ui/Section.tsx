@@ -8,11 +8,11 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ children, headerText, name }) => {
   return (
-    <section id={name} className={name}>
-      <h2>
-        {headerText}
-      </h2>
+    <section id={name} className={"section " + name}>
       <div className="section-content">
+        <h2>
+          {headerText}
+        </h2>
         {children}
       </div>
     </section>
