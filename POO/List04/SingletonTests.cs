@@ -1,4 +1,4 @@
-namespace List0004
+namespace List04
 {
     public class SingletonTests
     {
