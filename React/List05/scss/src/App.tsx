@@ -112,7 +112,10 @@ const App = () => {
       <Header
         companyName={companyData.name}
         companySlogan={companyData.slogan} />
-      <Sections about={companyData.about} />
+      <Sections about={companyData.about}
+        blogPosts={companyData.blogPosts}
+        services={companyData.services}
+        teamMembers={companyData.teamMembers} />
       <Footer name={companyData.name} />
     </div>
   );

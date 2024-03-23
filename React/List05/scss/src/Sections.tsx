@@ -6,17 +6,24 @@ import Blog from "./sections/Blog";
 
 import "./Sections.scss"
 
+import { Service } from "./types/Service";
+import { TeamMembers } from "./types/TeamMembers";
+import { BlogPost } from "./types/blogPost";
+
 interface SectionsProps {
   about: string;
+  services: Service[];
+  teamMembers: TeamMembers[];
+  blogPosts: BlogPost[];
 }
 
-const Sections: React.FC<SectionsProps> = ({ about }) => {
+const Sections: React.FC<SectionsProps> = ({ about, services, teamMembers, blogPosts }) => {
   return (
     <div className="content-card">
       <About about={about} />
-      <Services />
-      <Team />
-      <Blog />
+      <Services services={services} />
+      <Team teamMembers={teamMembers} />
+      <Blog blogPosts={blogPosts} />
       <Contact />
     </div>
   )

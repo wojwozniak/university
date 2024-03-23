@@ -1,12 +1,12 @@
-import { companyData } from './companyData'
+import { Service } from "../types/Service"
 
-const Services = () => {
+const Services = ({ services }: { services: Service[] }) => {
   return (
     <section id="services" className="section services">
       <div className="section-content">
         <h2>Our Services</h2>
         <ul>
-          {companyData.services.map((service) => (
+          {services.map((service) => (
             <li key={service.id}>
               <h3>{service.name}</h3>
               <p>{service.description}</p>

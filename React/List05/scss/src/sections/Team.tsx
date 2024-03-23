@@ -1,13 +1,13 @@
-import { companyData } from "./companyData"
+import { TeamMembers } from "../types/TeamMembers"
 import "./Team.scss"
 
-const Team = () => {
+const Team = ({ teamMembers }: { teamMembers: TeamMembers[] }) => {
   return (
     <section id="team" className="section team">
       <div className="section-content">
         <h2>Meet Our Team</h2>
         <div className="team-members">
-          {companyData.teamMembers.map((member) => (
+          {teamMembers.map((member) => (
             <div key={member.id} className="team-member">
               <img src={member.image} alt={member.name} />
               <div>

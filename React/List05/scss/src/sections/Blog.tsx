@@ -1,13 +1,13 @@
-import { companyData } from "./companyData"
+import { BlogPost } from "../types/blogPost"
 import "./Blog.scss"
 
-const Blog = () => {
+const Blog = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
   return (
     <section id="blog" className="section blog">
       <div className="section-content">
         <h2>Latest Blog Posts</h2>
         <div className="blog-posts">
-          {companyData.blogPosts.map((post) => (
+          {blogPosts.map((post) => (
             <div key={post.id} className="blog-post">
               <h3>{post.title}</h3>
               <p>{post.date}</p>

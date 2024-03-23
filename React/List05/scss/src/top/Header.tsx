@@ -1,8 +1,11 @@
-const Header = (
-  { companyName, companySlogan }
-    :
-    { companyName: string, companySlogan: string }
-) => {
+import "./Header.scss"
+
+interface HeaderProps {
+  companyName: string;
+  companySlogan: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ companyName, companySlogan }) => {
   return (
     <header id="header" className="header">
       <div className="header-content">
