@@ -74,19 +74,20 @@ namespace List05
     {
         static void Main(string[] args)
         {
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (FileStream fileToWrite = File.Create("encrypted.txt"))
             {
-                using (CaesarStream caeToWrite = new CaesarStream(memoryStream, 5))
+                using (CaesarStream caeToWrite = new CaesarStream(fileToWrite, 5))
                 {
-                    byte[] dataToWrite = { 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100 }; // "Hello World"
+                    byte[] dataToWrite = { 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100 }; // "Hello World" in ASCII
                     caeToWrite.Write(dataToWrite, 0, dataToWrite.Length);
                 }
+            }
 
-                memoryStream.Position = 0;
-
-                using (CaesarStream caeToRead = new CaesarStream(memoryStream, -5))
+            using (FileStream fileToRead = File.Open("encrypted.txt", FileMode.Open))
+            {
+                using (CaesarStream caeToRead = new CaesarStream(fileToRead, -5))
                 {
-                    byte[] dataRead = new byte[memoryStream.Length];
+                    byte[] dataRead = new byte[fileToRead.Length];
                     caeToRead.Read(dataRead, 0, dataRead.Length);
                     string decryptedText = System.Text.Encoding.ASCII.GetString(dataRead);
                     Console.WriteLine("Decrypted text: " + decryptedText);
