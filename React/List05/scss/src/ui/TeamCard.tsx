@@ -1,4 +1,4 @@
-import { TeamMembers } from '../../types/TeamMembers'
+import { TeamMembers } from '../types/TeamMembers'
 
 const TeamCard = ({ member }: { member: TeamMembers }) => {
   return (

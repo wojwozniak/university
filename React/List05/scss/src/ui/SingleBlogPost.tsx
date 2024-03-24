@@ -1,4 +1,4 @@
-import { BlogPost } from '../../types/BlogPost'
+import { BlogPost } from '../types/BlogPost'
 
 const SingleBlogPost = ({ post }: { post: BlogPost }) => {
   return (

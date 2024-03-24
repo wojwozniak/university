@@ -1,15 +1,15 @@
 import Contact from "./sections/Contact";
-import Blog from "./sections/Blog";
 
 import "./Sections.scss"
 
 import { Service } from "./types/Service";
 import { TeamMembers } from "./types/TeamMembers";
 import { BlogPost } from "./types/BlogPost";
-import Section from "./sections/ui/Section";
-import SingleService from "./sections/ui/SingleService";
-import TeamCard from "./sections/ui/TeamCard";
-import SingleBlogPost from "./sections/ui/SingleBlogPost";
+import Section from "./ui/Section";
+import SingleService from "./ui/SingleService";
+import TeamCard from "./ui/TeamCard";
+import SingleBlogPost from "./ui/SingleBlogPost";
+import ContactForm from "./ui/ContactForm";
 
 interface SectionsProps {
   about: string;
@@ -39,8 +39,9 @@ const Sections: React.FC<SectionsProps> = ({ about, services, teamMembers, blogP
           {blogPosts.map((post) => <SingleBlogPost post={post} key={post.id} />)}
         </div>
       </Section>
-      <Blog blogPosts={blogPosts} />
-      <Contact />
+      <Section name="contact" headerText="Contact Us">
+        <ContactForm />
+      </Section>
     </div>
   )
 }

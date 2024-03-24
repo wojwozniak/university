@@ -1,4 +1,4 @@
-import { Service } from '../../types/Service'
+import { Service } from '../types/Service'
 
 const SingleService = ({ service }: { service: Service }) => {
   return (
