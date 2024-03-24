@@ -1,3 +1,5 @@
+@use "variables";
+
 .blog-post {
   border-radius: 10px;
   padding: 20px;
@@ -21,31 +23,31 @@
 }
 
 .blog-post button:hover {
-  background-color: #45a049;
+  background-color: variables.$green;
 }
 
 .dark-theme .blog-post {
-  background-color: #222;
-  color: #fff;
+  background-color: variables.$black-tainted;
+  color: variables.$white;
 }
 
 .dark-theme .blog-post button {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: variables.$light-green;
+  color: variables.$white;
 }
 
 .dark-theme .blog-post button:hover {
-  background-color: #45a049;
+  background-color: variables.$green;
 }
 
 .light-theme .blog-post {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: variables.$tained-harder-white;
+  color: variables.$gray;
 }
 
 .light-theme .blog-post button {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: variables.$light-green;
+  color: variables.$white;
 }
 
 .light-theme .blog-post button:hover {

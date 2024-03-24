@@ -1,3 +1,5 @@
+@use "variables";
+
 .team-member {
   flex: 0 0 calc(33.33% - 20px);
   padding: 20px;
@@ -16,11 +18,11 @@
 }
 
 .light-theme .team-member {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: variables.$tainted-white;
+  color: variables.$gray;
 }
 
 .dark-theme .team-member {
-  background-color: #444;
-  color: #fff;
+  background-color: variables.$light-gray;
+  color: variables.$white;
 }

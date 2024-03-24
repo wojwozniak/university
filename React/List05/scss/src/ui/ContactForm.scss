@@ -1,3 +1,5 @@
+@use "variables";
+
 .contact-form {
   max-width: 500px;
   margin: 0 auto;
@@ -34,47 +36,47 @@
 }
 
 .light-theme .contact-form {
-  background-color: #f9f9f9;
-  color: #333;
-  border: 1px solid #ddd;
+  background-color: variables.$white;
+  color: variables.$gray;
+  border: 1px solid variables.$dark-white;
 }
 
 .light-theme .contact input[type="text"],
 .light-theme .contact input[type="email"],
 .light-theme .contact textarea {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
+  background-color: variables.$white;
+  color: variables.$gray;
+  border: 1px solid variables.$darker-white;
 }
 
 .light-theme .contact button {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: variables.$light-green;
+  color: variables.$white;
 }
 
 .light-theme .contact button:hover {
-  background-color: #45a049;
+  background-color: variables.$green;
 }
 
 .dark-theme .contact-form {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #555;
+  background-color: variables.$gray;
+  color: variables.$white;
+  border: 1px solid variables.$light-gray;
 }
 
 .dark-theme .contact input[type="text"],
 .dark-theme .contact input[type="email"],
 .dark-theme .contact textarea {
-  background-color: #444;
-  color: #fff;
-  border: 1px solid #666;
+  background-color: variables.$light-gray;
+  color: variables.$white;
+  border: 1px solid variables.$very-light-gray;
 }
 
 .dark-theme .contact button {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: variables.$light-green;
+  color: variables.$white;
 }
 
 .dark-theme .contact button:hover {
-  background-color: #45a049;
+  background-color: variables.$green;
 }
