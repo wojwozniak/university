@@ -1,13 +1,13 @@
 import "./Sections.scss"
 
-import { Service } from "./types/Service";
-import { TeamMembers } from "./types/TeamMembers";
-import { BlogPost } from "./types/BlogPost";
-import Section from "./ui/Section";
-import SingleService from "./ui/SingleService";
-import TeamCard from "./ui/TeamCard";
-import SingleBlogPost from "./ui/SingleBlogPost";
-import ContactForm from "./ui/ContactForm";
+import { Service } from "../types/Service";
+import { TeamMembers } from "../types/TeamMembers";
+import { BlogPost } from "../types/BlogPost";
+import Section from "../ui/Section";
+import SingleService from "../ui/SingleService";
+import TeamCard from "../ui/TeamCard";
+import SingleBlogPost from "../ui/SingleBlogPost";
+import ContactForm from "../ui/ContactForm";
 
 interface SectionsProps {
   about: string;

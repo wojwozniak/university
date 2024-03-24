@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./App.css";
-import Navbar from "./top/Navbar";
-import Header from "./top/Header";
-import Footer from "./Footer";
-import Sections from "./Sections";
+import "./App.scss";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Sections from "./components/Sections";
 import { CompanyData } from "./types/CompanyData";
 
 const companyData: CompanyData = {
