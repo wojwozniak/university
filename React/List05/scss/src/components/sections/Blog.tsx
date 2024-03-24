@@ -1,6 +1,7 @@
 import Section from '../../ui/Section'
 import SingleBlogPost from '../../ui/SingleBlogPost'
 import { BlogPost } from '../../types/BlogPost'
+import './Blog.scss'
 
 const Blog = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
   return (
