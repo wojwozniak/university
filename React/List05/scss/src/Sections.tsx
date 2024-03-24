@@ -1,5 +1,3 @@
-import Contact from "./sections/Contact";
-
 import "./Sections.scss"
 
 import { Service } from "./types/Service";
