@@ -1,6 +1,7 @@
 import { Service } from '../../types/Service'
 import Section from '../../ui/Section'
 import SingleService from '../../ui/SingleService'
+import './Services.scss'
 
 const Services = ({ services }: { services: Service[] }) => {
   return (
