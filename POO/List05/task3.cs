@@ -35,7 +35,7 @@ namespace List05.Task03
             return x.CompareTo(y);
         }
 
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             ArrayList a = new() { 1, 5, 3, 3, 2, 4, 3 };
 
