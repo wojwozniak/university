@@ -1,10 +1,16 @@
 import { useState } from "react";
-import "./App.scss";
+
+import { CompanyData } from "./types/CompanyData";
+import { ThemeProvider } from '@emotion/react';
+
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sections from "./components/Sections";
-import { CompanyData } from "./types/CompanyData";
+
+import "./App.scss";
+
+import { darkTheme, lightTheme } from "./../themes";
 
 const companyData: CompanyData = {
   name: "Acme Corporation",
@@ -99,25 +105,30 @@ const companyData: CompanyData = {
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+  const toggleTheme = () => setDarkMode(!darkMode);
+  const selectedTheme = darkMode ? darkTheme : lightTheme;
 
   return (
-    <div className={`portfolio ${darkMode ? "dark-theme" : "light-theme"}`}>
-      <Navbar
-        darkMode={darkMode}
-        toggleTheme={toggleTheme} />
-      <Header
-        companyName={companyData.name}
-        companySlogan={companyData.slogan} />
-      <Sections about={companyData.about}
-        blogPosts={companyData.blogPosts}
-        services={companyData.services}
-        teamMembers={companyData.teamMembers} />
-      <Footer name={companyData.name} />
-    </div>
+    <ThemeProvider theme={selectedTheme}>
+      <div css={{
+        color: selectedTheme.color,
+        backgroundColor: selectedTheme.backgroundColor,
+        margin: '0 auto'
+      }}>
+        <Navbar
+          darkMode={darkMode}
+          toggleTheme={toggleTheme} />
+        <Header
+          companyName={companyData.name}
+          companySlogan={companyData.slogan} />
+        <Sections
+          about={companyData.about}
+          blogPosts={companyData.blogPosts}
+          services={companyData.services}
+          teamMembers={companyData.teamMembers} />
+        <Footer name={companyData.name} />
+      </div>
+    </ThemeProvider>
   );
 };
 
