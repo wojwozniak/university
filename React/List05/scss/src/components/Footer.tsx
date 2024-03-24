@@ -1,3 +1,5 @@
+import "./Footer.scss"
+
 const Footer = ({ name }: { name: string }) => {
   return (
     <footer className="footer">

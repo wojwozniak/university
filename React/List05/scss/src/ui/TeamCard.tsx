@@ -1,4 +1,5 @@
 import { TeamMembers } from '../types/TeamMembers'
+import './TeamCard.scss'
 
 const TeamCard = ({ member }: { member: TeamMembers }) => {
   return (

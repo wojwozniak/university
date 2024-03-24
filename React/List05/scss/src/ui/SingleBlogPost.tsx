@@ -1,4 +1,5 @@
 import { BlogPost } from '../types/BlogPost'
+import './SingleBlogPost.scss'
 
 const SingleBlogPost = ({ post }: { post: BlogPost }) => {
   return (

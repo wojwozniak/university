@@ -1,0 +1,80 @@
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact .form-group {
+  margin-bottom: 20px;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+}
+
+.contact textarea {
+  resize: vertical;
+}
+
+.contact button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.light-theme .contact-form {
+  background-color: #f9f9f9;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.light-theme .contact input[type="text"],
+.light-theme .contact input[type="email"],
+.light-theme .contact textarea {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.light-theme .contact button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.light-theme .contact button:hover {
+  background-color: #45a049;
+}
+
+.dark-theme .contact-form {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-theme .contact input[type="text"],
+.dark-theme .contact input[type="email"],
+.dark-theme .contact textarea {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+.dark-theme .contact button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.dark-theme .contact button:hover {
+  background-color: #45a049;
+}

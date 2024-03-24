@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Section.scss";
 
 interface SectionProps {
   children: React.ReactNode;
