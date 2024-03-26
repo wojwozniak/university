@@ -1,14 +1,12 @@
 import { useState } from "react";
 
 import { CompanyData } from "./types/CompanyData";
-import { ThemeProvider } from '@emotion/react';
+import { Global, ThemeProvider, css } from '@emotion/react';
 
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sections from "./components/Sections";
-
-import "./App.scss";
 
 import { darkTheme, lightTheme } from "./../themes";
 
@@ -103,6 +101,14 @@ const companyData: CompanyData = {
   ],
 };
 
+const globalStyles = css`
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const toggleTheme = () => setDarkMode(!darkMode);
@@ -110,26 +116,29 @@ const App = () => {
   const selectedTheme = darkMode ? darkTheme : lightTheme;
 
   return (
-    <ThemeProvider theme={selectedTheme}>
-      <div css={{
-        color: selectedTheme.color,
-        backgroundColor: selectedTheme.backgroundColor,
-        margin: '0 auto'
-      }}>
-        <Navbar
-          darkMode={darkMode}
-          toggleTheme={toggleTheme} />
-        <Header
-          companyName={companyData.name}
-          companySlogan={companyData.slogan} />
-        <Sections
-          about={companyData.about}
-          blogPosts={companyData.blogPosts}
-          services={companyData.services}
-          teamMembers={companyData.teamMembers} />
-        <Footer name={companyData.name} />
-      </div>
-    </ThemeProvider>
+    <>
+      <Global styles={globalStyles} />
+      <ThemeProvider theme={selectedTheme}>
+        <div css={{
+          color: selectedTheme.color,
+          backgroundColor: selectedTheme.backgroundColor,
+          margin: '0 auto'
+        }}>
+          <Navbar
+            darkMode={darkMode}
+            toggleTheme={toggleTheme} />
+          <Header
+            companyName={companyData.name}
+            companySlogan={companyData.slogan} />
+          <Sections
+            about={companyData.about}
+            blogPosts={companyData.blogPosts}
+            services={companyData.services}
+            teamMembers={companyData.teamMembers} />
+          <Footer name={companyData.name} />
+        </div>
+      </ThemeProvider>
+    </>
   );
 };
 
