@@ -10,6 +10,8 @@ export interface CustomTheme extends Theme {
   navbarBackgroundColor: string;
   contentCardBackgroundColor: string;
   sectionNchildBackgroundColor: string;
+  teamCardBackgroundColor: string;
+  teamCardColor: string;
 }
 
 export const lightTheme: CustomTheme = {
@@ -21,7 +23,9 @@ export const lightTheme: CustomTheme = {
   modeHoverBackgroundColor: "#444",
   navbarBackgroundColor: "#f0f0f0",
   contentCardBackgroundColor: "#eee",
-  sectionNchildBackgroundColor: "#f5f5f5"
+  sectionNchildBackgroundColor: "#f5f5f5",
+  teamCardBackgroundColor: "#f5f5f5",
+  teamCardColor: "#333",
 }
 
 export const darkTheme: CustomTheme = {
@@ -34,6 +38,8 @@ export const darkTheme: CustomTheme = {
   navbarBackgroundColor: "#222",
   contentCardBackgroundColor: "#333",
   sectionNchildBackgroundColor: "#444",
+  teamCardBackgroundColor: "#444",
+  teamCardColor: "#fff",
 }
 
 /*

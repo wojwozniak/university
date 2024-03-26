@@ -1,46 +1,29 @@
 import { useTheme } from '@emotion/react'
 import { TeamMembers } from '../types/TeamMembers'
-import './TeamCard.scss'
+import { CustomTheme } from '../../themes';
 
 const TeamCard = ({ member }: { member: TeamMembers }) => {
 
-  /*
-  
-.team-member {
-  flex: 0 0 calc(33.33% - 20px);
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-}
-
-.team-member img {
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-
-.team-member h3 {
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-.light-theme .team-member {
-  background-color: variables.$tainted-white;
-  color: variables.$gray;
-}
-
-.dark-theme .team-member {
-  background-color: variables.$light-gray;
-  color: variables.$white;
-}
-*/
-
-  const theme = useTheme();
+  const theme = useTheme() as CustomTheme;
 
   return (
-    <div css={{ color: theme.color }} key={member.id} className="team-member">
-      <img src={member.image} alt={member.name} />
+    <div css={{
+      flex: '0 0 calc(33.33% - 20px)',
+      padding: '20px',
+      margin: '10px',
+      textAlign: 'center',
+      backgroundColor: theme.teamCardBackgroundColor,
+      color: theme.teamCardColor
+    }} key={member.id} className="team-member">
+      <img src={member.image} alt={member.name} css={{
+        borderRadius: '50%',
+        marginBottom: '20px'
+      }} />
       <div>
-        <h3>{member.name}</h3>
+        <h3 css={{
+          marginBottom: '10px',
+          display: 'inline-block'
+        }}>{member.name}</h3>
         <p>{member.position}</p>
         <p>{member.bio}</p>
       </div>
