@@ -16,6 +16,15 @@ export interface CustomTheme extends Theme {
   blogPostColor: string;
   buttonBackgroundColor: string;
   buttonBackgroundColorHover: string;
+  contactFormBackgroundColor: string;
+  contactFormColor: string;
+  contactFormBorderColor: string;
+  contactButtonBackgroundColor: string;
+  contactButtonColor: string;
+  contactButtonBackgroundColorHover: string;
+  contactInputBackgroundColor: string;
+  contactInputColor: string;
+  contactInputBorderColor: string;
 }
 
 export const lightTheme: CustomTheme = {
@@ -34,6 +43,15 @@ export const lightTheme: CustomTheme = {
   blogPostColor: "#333",
   buttonBackgroundColor: "#4caf50",
   buttonBackgroundColorHover: "#45a049",
+  contactFormBackgroundColor: "#fff",
+  contactFormColor: "#333",
+  contactFormBorderColor: "#ddd",
+  contactButtonBackgroundColor: "#4caf50",
+  contactButtonColor: "#fff",
+  contactButtonBackgroundColorHover: "#45a049",
+  contactInputBackgroundColor: "#fff",
+  contactInputColor: "#333",
+  contactInputBorderColor: "#ccc",
 }
 
 export const darkTheme: CustomTheme = {
@@ -52,6 +70,15 @@ export const darkTheme: CustomTheme = {
   blogPostColor: "#fff",
   buttonBackgroundColor: "#45a049",
   buttonBackgroundColorHover: "#45a049",
+  contactFormBackgroundColor: "#333",
+  contactFormColor: "#fff",
+  contactFormBorderColor: "#444",
+  contactButtonBackgroundColor: "#45a049",
+  contactButtonColor: "#fff",
+  contactButtonBackgroundColorHover: "#45a049",
+  contactInputBackgroundColor: "#444",
+  contactInputColor: "#fff",
+  contactInputBorderColor: "#666",
 }
 
 /*
