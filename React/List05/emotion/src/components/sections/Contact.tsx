@@ -1,10 +1,11 @@
 import Section from '../../ui/Section'
 import ContactForm from '../../ui/ContactForm'
-import './Contact.scss'
 
 const Contact = () => {
   return (
-    <Section name="contact" headerText="Contact Us">
+    <Section name="contact"
+      headerText="Contact Us"
+      styles={{ marginBottom: "40px" }}>
       <ContactForm />
     </Section>
   )
