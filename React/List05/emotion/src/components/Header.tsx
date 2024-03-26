@@ -1,5 +1,3 @@
-import "./Header.scss"
-
 interface HeaderProps {
   companyName: string;
   companySlogan: string;
@@ -7,10 +5,16 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ companyName, companySlogan }) => {
   return (
-    <header id="header" className="header">
-      <div className="header-content">
-        <h1>{companyName}</h1>
-        <p>{companySlogan}</p>
+    <header id="header" css={{
+      padding: "50px 0",
+      textAlign: "center"
+    }}>
+      <div>
+        <h1 css={{
+          fontSize: "3em",
+          marginBottom: "10px"
+        }}>{companyName}</h1>
+        <p css={{ fontSize: "1.5em" }}>{companySlogan}</p>
       </div>
     </header>
   )
