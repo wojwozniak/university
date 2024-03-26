@@ -12,6 +12,10 @@ export interface CustomTheme extends Theme {
   sectionNchildBackgroundColor: string;
   teamCardBackgroundColor: string;
   teamCardColor: string;
+  blogPostBackgroundColor: string;
+  blogPostColor: string;
+  buttonBackgroundColor: string;
+  buttonBackgroundColorHover: string;
 }
 
 export const lightTheme: CustomTheme = {
@@ -26,6 +30,10 @@ export const lightTheme: CustomTheme = {
   sectionNchildBackgroundColor: "#f5f5f5",
   teamCardBackgroundColor: "#f5f5f5",
   teamCardColor: "#333",
+  blogPostBackgroundColor: "#f0f0f0",
+  blogPostColor: "#333",
+  buttonBackgroundColor: "#4caf50",
+  buttonBackgroundColorHover: "#45a049",
 }
 
 export const darkTheme: CustomTheme = {
@@ -40,6 +48,10 @@ export const darkTheme: CustomTheme = {
   sectionNchildBackgroundColor: "#444",
   teamCardBackgroundColor: "#444",
   teamCardColor: "#fff",
+  blogPostBackgroundColor: "#222",
+  blogPostColor: "#fff",
+  buttonBackgroundColor: "#45a049",
+  buttonBackgroundColorHover: "#45a049",
 }
 
 /*
