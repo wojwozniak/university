@@ -9,6 +9,7 @@ export interface CustomTheme extends Theme {
   modeHoverBackgroundColor: string;
   navbarBackgroundColor: string;
   contentCardBackgroundColor: string;
+  sectionNchildBackgroundColor: string;
 }
 
 export const lightTheme: CustomTheme = {
@@ -19,7 +20,8 @@ export const lightTheme: CustomTheme = {
   modeBackgroundColor: "white",
   modeHoverBackgroundColor: "#444",
   navbarBackgroundColor: "#f0f0f0",
-  contentCardBackgroundColor: "#eee"
+  contentCardBackgroundColor: "#eee",
+  sectionNchildBackgroundColor: "#f5f5f5"
 }
 
 export const darkTheme: CustomTheme = {
@@ -30,7 +32,8 @@ export const darkTheme: CustomTheme = {
   modeBackgroundColor: "gray",
   modeHoverBackgroundColor: "#ccc",
   navbarBackgroundColor: "#222",
-  contentCardBackgroundColor: "#333"
+  contentCardBackgroundColor: "#333",
+  sectionNchildBackgroundColor: "#444",
 }
 
 /*
