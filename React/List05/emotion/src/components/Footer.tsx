@@ -1,9 +1,11 @@
-import "./Footer.scss"
-
 const Footer = ({ name }: { name: string }) => {
+
   return (
-    <footer className="footer">
-      <div className="footer-content">
+    <footer css={{
+      padding: "20px 0",
+      textAlign: "center",
+    }}>
+      <div>
         <p>
           &copy; {new Date().getFullYear()} {name}
         </p>

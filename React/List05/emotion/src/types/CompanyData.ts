@@ -1,6 +1,6 @@
 import { Service } from "./Service";
 import { TeamMembers } from "./TeamMembers";
-import { BlogPost } from "./blogPost";
+import { BlogPost } from "./BlogPost";
 
 export interface CompanyData {
   name: string;
