@@ -1,11 +1,33 @@
-export const lightTheme = {
-  backgroundColor: '#fff',
-  color: '#333'
+import { Theme } from "@emotion/react"
+
+export interface CustomTheme extends Theme {
+  backgroundColor: string;
+  color: string;
+  linkColor: string;
+  modeColor: string;
+  modeBackgroundColor: string;
+  modeHoverBackgroundColor: string;
+  navbarBackgroundColor: string;
 }
 
-export const darkTheme = {
+export const lightTheme: CustomTheme = {
+  backgroundColor: '#fff',
+  color: '#333',
+  linkColor: "gray",
+  modeColor: "gray",
+  modeBackgroundColor: "white",
+  modeHoverBackgroundColor: "#444",
+  navbarBackgroundColor: "#f0f0f0"
+}
+
+export const darkTheme: CustomTheme = {
   backgroundColor: '#111',
-  color: '#fff'
+  color: '#fff',
+  linkColor: "white",
+  modeColor: "white",
+  modeBackgroundColor: "gray",
+  modeHoverBackgroundColor: "#ccc",
+  navbarBackgroundColor: "#222"
 }
 
 /*

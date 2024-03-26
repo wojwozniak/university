@@ -106,6 +106,7 @@ const companyData: CompanyData = {
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const toggleTheme = () => setDarkMode(!darkMode);
+
   const selectedTheme = darkMode ? darkTheme : lightTheme;
 
   return (
