@@ -1,0 +1,38 @@
+SELECT DISTINCT c_custkey, c_name, c_phone
+FROM customer
+WHERE c_phone LIKE '34-83%';
+
+SELECT * 
+FROM customer
+JOIN nation ON c_nationkey=n_nationkey
+WHERE n_name='UNITED STATES' AND c_mktsegment='BUILDING' AND c_acctbal>9000
+ORDER BY n_name;
+
+SELECT DISTINCT s_name,r_name,p_type,p_size
+FROM supplier
+JOIN nation ON s_nationkey=n_nationkey
+JOIN region ON n_regionkey=r_regionkey
+JOIN partsupp ON s_suppkey=ps_suppkey
+JOIN part ON ps_partkey=p_partkey
+WHERE r_name='ASIA' AND p_type LIKE '%BRUSHED BRASS' AND p_size=50;
+
+--INSERT INTO lineitem VALUES (500,15519,785,1298,17,24386.67,0.04,0.02,'N','O','1996-03-13','1996-02-12','1996-03-22','DELIVER IN PERSON','TRUCK','egular courts above the');
+--SELECT * FROM lineitem WHERE l_orderkey=500;
+
+--ALTER TABLE lineitem
+--ADD CONSTRAINT fk_lineitem_orders
+--FOREIGN KEY (l_orderkey) REFERENCES orders(o_orderkey)
+--ON UPDATE CASCADE
+
+--UPDATE lineitem
+--SET l_orderkey=1 WHERE l_orderkey=500;
+--SELECT * FROM lineitem WHERE l_orderkey=1;
+
+--ALTER TABLE lineitem
+--ADD CONSTRAINT fk_lineitem_orders
+--FOREIGN KEY (l_orderkey) REFERENCES orders(o_orderkey)
+--ON UPDATE CASCADE;
+
+--UPDATE orders
+--SET o_orderkey=500 WHERE o_orderkey=1;
+--SELECT * FROM lineitem WHERE l_orderkey=500;
