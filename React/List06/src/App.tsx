@@ -1,9 +1,13 @@
-import { Button } from "@mui/material"
+import Navbar from "./components/Navbar"
+import Main from "./components/Main"
+import Footer from "./components/Footer"
 
 function App() {
   return (
-    <div>
-      <Button variant="text">Text</Button>
+    <div id="root">
+      <Navbar />
+      <Main />
+      <Footer />
     </div>
   )
 }
