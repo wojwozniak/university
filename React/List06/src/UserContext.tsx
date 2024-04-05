@@ -3,7 +3,7 @@ import { UserData } from "./types/UserData";
 
 const initialState: UserData = {
   id: 0,
-  name: 'exampleUser',
+  name: 'Example User',
   email: 'example@mail.com',
   avatar: "http://placeholder.co/200",
 };
