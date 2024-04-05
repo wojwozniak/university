@@ -13,11 +13,11 @@ const User = () => {
       <Avatar
         alt="Avatar"
         style={{ cursor: 'pointer' }}
-        src={state.avatar} />
+        src={state.userData.avatar} />
       {isHovered && (
-        <div className="absolute top-15 right-2">
+        <div className="absolute top-[56px] right-2 bg-gray-700 p-2 rounded">
           <p>
-            {state.name}
+            {state.userData.name}
           </p>
         </div>
       )}

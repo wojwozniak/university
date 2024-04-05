@@ -1,22 +1,16 @@
 import { createContext, useReducer } from "react";
-import { UserData } from "./types/UserData";
-
-const initialState: UserData = {
-  id: 0,
-  name: 'Example User',
-  email: 'example@mail.com',
-  avatar: "http://placeholder.co/200",
-};
+import { initialState } from "./initialState";
+import { ShopState } from "./types/ShopState";
 
 export const UserContext = createContext<{
-  state: UserData;
+  state: ShopState;
   dispatch: React.Dispatch<string>;
 }>({
   state: initialState,
   dispatch: () => null,
 });
 
-const userReducer = (state: UserData, action: string): UserData => {
+const userReducer = (state: ShopState, action: string): ShopState => {
   switch (action) {
     default:
       return state;
