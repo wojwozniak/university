@@ -71,7 +71,7 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAl
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Dodawanie produktu</DialogTitle>
-      <DialogContent sx={{ '& > *': { my: 2 } }}>
+      <DialogContent>
         <TextField name="name" label="Nazwa" value={formData.name} onChange={handleFormChange} fullWidth />
         <TextField name="price" label="Cena" type="number" value={formData.price} onChange={handleFormChange} fullWidth />
         <TextField
