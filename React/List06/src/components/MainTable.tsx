@@ -102,9 +102,6 @@ const MainTable = () => {
   return (
     <>
       <div className="flex flex-row gap-2">
-        <Button variant='contained' color='error'>
-          Usuń zaznaczone
-        </Button>
         <Button variant="contained"
           color="success"
           onClick={() => setIsAddItemPopupOpen(true)}>
