@@ -2,6 +2,7 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { UserContext } from '../UserContext';
 import { useContext } from 'react';
 import BooleanEditCell from './../ui/BooleanEditCell';
+import { Product } from '../types/Product';
 
 const booleanToStringFormatter = (params: any) => {
   return params ? 'Tak' : 'Nie';
@@ -50,13 +51,22 @@ const columns: GridColDef[] = [
 ];
 
 const MainTable = () => {
-  const { state } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
+
+  const stateUpdated = (newState: any) => {
+    const arr = Object.values(newState.rows.dataRowIdToModelLookup) as Product[];
+    if (arr !== state.products) {
+      dispatch({ type: 'UPDATE_PRODUCTS', payload: arr });
+    }
+  }
+
   return (
     <div style={{ height: 400, width: '90%' }}>
       <DataGrid
         editMode='row'
         rows={state.products}
         columns={columns}
+        onStateChange={(state) => stateUpdated(state)}
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 5 },
