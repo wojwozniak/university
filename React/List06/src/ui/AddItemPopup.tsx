@@ -6,9 +6,32 @@ interface AddItemPopupProps {
   open: boolean;
   onClose: () => void;
   onAdd: (formData: Product) => void;
+  setAlert: (message: string) => void;
 }
 
-const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd }) => {
+const validateProduct = (product: Product): string => {
+  if (!product.name) {
+    return 'Nazwa produktu jest wymagana!';
+  }
+  if (!product.price) {
+    return 'Cena produktu jest wymagana!';
+  }
+  if (!product.avability) {
+    return 'Dostępność produktu jest wymagana!';
+  }
+  if (!product.stock) {
+    return 'Ilość produktu jest wymagana!';
+  }
+  if (product.price < 0) {
+    return 'Cena produktu nie może być ujemna!';
+  }
+  if (product.stock < 0) {
+    return 'Ilość produktu nie może być ujemna!';
+  }
+  return '';
+};
+
+const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAlert }) => {
   const [formData, setFormData] = useState<Product>({
     id: 0,
     name: '',
@@ -23,16 +46,23 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd }) => 
   };
 
   const handleAddItem = () => {
+    const validationMessage = validateProduct(formData);
+    if (validationMessage) {
+      setAlert(validationMessage);
+      return;
+    }
     onAdd(formData);
-    setFormData({ id: 0, name: '', price: 0, avability: false, stock: 0 });
+    clearData();
   };
+
+  const clearData = () => setFormData({ id: 0, name: '', price: 0, avability: false, stock: 0 });
 
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>
         Dodawanie produktu
       </DialogTitle>
-      <DialogContent sx={{ '& > *': { my: 1 } }}>
+      <DialogContent sx={{ '& > *': { my: 2 } }}>
         <TextField name="name" label="Nazwa" value={formData.name} onChange={handleFormChange} fullWidth />
         <TextField name="price" label="Cena" type="number" value={formData.price} onChange={handleFormChange} fullWidth />
         <TextField name="availability"
@@ -47,6 +77,9 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd }) => 
         <TextField name="stock" label="Ilość" type="number" value={formData.stock} onChange={handleFormChange} fullWidth />
       </DialogContent>
       <DialogActions>
+        <Button variant="contained" color="error" onClick={clearData}>
+          Wyczyść
+        </Button>
         <Button variant="outlined" color="error" onClick={onClose}>
           Anuluj
         </Button>

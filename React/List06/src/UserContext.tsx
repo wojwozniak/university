@@ -28,6 +28,8 @@ const userReducer = (state: ShopState, action: Action): ShopState => {
         ...state,
         products: state.products.filter((product) => product.id !== action.payload),
       };
+    case "ADD_PRODUCT":
+      return { ...state, products: [...state.products, action.payload] };
     default:
       return state;
   }

@@ -14,7 +14,6 @@ const formatCurrency = (value: number): string => {
   return value.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN' });
 };
 
-
 const MainTable = () => {
   const columns: GridColDef[] = [
     {
@@ -77,8 +76,19 @@ const MainTable = () => {
     setDeletedMessage(`Element ${row.name} (id: ${row.id}) został usunięty!`);
   };
 
+  const setAlert = (message: string) => {
+    setDeletedMessage(message);
+  };
+
   const handleAddItem = (formData: any) => {
-    //del
+    const newProduct: Product = {
+      id: Date.now(),
+      name: formData.name,
+      price: formData.price,
+      avability: formData.availability,
+      stock: formData.stock,
+    };
+    dispatch({ type: 'ADD_PRODUCT', payload: newProduct });
     setIsAddItemPopupOpen(false);
   };
 
@@ -118,7 +128,10 @@ const MainTable = () => {
           onClose={handleCloseMessage}
           message={deletedMessage}
         />
-        <AddItemPopup open={isAddItemPopupOpen} onClose={() => setIsAddItemPopupOpen(false)} onAdd={handleAddItem} />
+        <AddItemPopup open={isAddItemPopupOpen}
+          onClose={() => setIsAddItemPopupOpen(false)}
+          onAdd={handleAddItem}
+          setAlert={setAlert} />
       </div>
     </>
   )
