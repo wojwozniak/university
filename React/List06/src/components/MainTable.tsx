@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import BooleanEditCell from './../ui/BooleanEditCell';
 import { Product } from '../types/Product';
 import { Button, Snackbar } from '@mui/material';
+import AddItemPopup from '../ui/AddItemPopup';
 
 const booleanToStringFormatter = (params: any) => {
   return params ? 'Tak' : 'Nie';
@@ -67,6 +68,8 @@ const MainTable = () => {
   const { state, dispatch } = useContext(UserContext);
 
   const [deletedMessage, setDeletedMessage] = useState<string>('');
+  const [isAddItemPopupOpen, setIsAddItemPopupOpen] = useState<boolean>(false);
+
   const handleCloseMessage = () => setDeletedMessage('');
 
   const handleDelete = (row: Product) => {
@@ -74,6 +77,10 @@ const MainTable = () => {
     setDeletedMessage(`Element ${row.name} (id: ${row.id}) został usunięty!`);
   };
 
+  const handleAddItem = (formData: any) => {
+    //del
+    setIsAddItemPopupOpen(false);
+  };
 
   const stateUpdated = (newState: any) => {
     const arr = Object.values(newState.rows.dataRowIdToModelLookup) as Product[];
@@ -83,29 +90,37 @@ const MainTable = () => {
   }
 
   return (
-    <div style={{ height: 400, width: '90%' }}>
-      <DataGrid
-        editMode='row'
-        rows={state.products}
-        columns={columns}
-        onStateChange={(state) => stateUpdated(state)}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
-        checkboxSelection
-        disableRowSelectionOnClick
-        slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
-      />
-      <Snackbar
-        open={!!deletedMessage}
-        autoHideDuration={6000}
-        onClose={handleCloseMessage}
-        message={deletedMessage}
-      />
-    </div>
+    <>
+      <Button variant="contained"
+        color="success"
+        onClick={() => setIsAddItemPopupOpen(true)}>
+        Dodaj produkt
+      </Button>
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          editMode='row'
+          rows={state.products}
+          columns={columns}
+          onStateChange={(state) => stateUpdated(state)}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
+          checkboxSelection
+          disableRowSelectionOnClick
+          slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
+        />
+        <Snackbar
+          open={!!deletedMessage}
+          autoHideDuration={6000}
+          onClose={handleCloseMessage}
+          message={deletedMessage}
+        />
+        <AddItemPopup open={isAddItemPopupOpen} onClose={() => setIsAddItemPopupOpen(false)} onAdd={handleAddItem} />
+      </div>
+    </>
   )
 }
 
