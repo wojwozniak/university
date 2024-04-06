@@ -1,5 +1,5 @@
-import Logo from "./Logo"
-import User from "./User"
+import Logo from "../ui/Logo"
+import User from "../ui/User"
 
 const Navbar = () => {
   return (
