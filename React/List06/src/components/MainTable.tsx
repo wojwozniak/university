@@ -1,8 +1,9 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { UserContext } from '../UserContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import BooleanEditCell from './../ui/BooleanEditCell';
 import { Product } from '../types/Product';
+import { Button, Snackbar } from '@mui/material';
 
 const booleanToStringFormatter = (params: any) => {
   return params ? 'Tak' : 'Nie';
@@ -13,45 +14,66 @@ const formatCurrency = (value: number): string => {
 };
 
 
-const columns: GridColDef[] = [
-  {
-    field: 'id',
-    headerName: 'ID',
-    width: 70
-  },
-  {
-    field: 'name',
-    headerName: 'Nazwa',
-    width: 200,
-    editable: true
-  },
-  {
-    field: 'price',
-    headerName: 'Cena',
-    width: 100,
-    type: 'number',
-    editable: true,
-    valueFormatter: formatCurrency,
-  },
-  {
-    field: 'avability',
-    headerName: 'Dostępne',
-    valueFormatter: booleanToStringFormatter,
-    width: 130,
-    editable: true,
-    renderEditCell: (params) => <BooleanEditCell {...params} />,
-  },
-  {
-    field: 'stock',
-    headerName: 'Ilość',
-    width: 130,
-    type: 'number',
-    editable: true,
-  },
-];
-
 const MainTable = () => {
+  const columns: GridColDef[] = [
+    {
+      field: 'id',
+      headerName: 'ID',
+      width: 70
+    },
+    {
+      field: 'name',
+      headerName: 'Nazwa',
+      width: 200,
+      editable: true
+    },
+    {
+      field: 'price',
+      headerName: 'Cena',
+      width: 100,
+      type: 'number',
+      editable: true,
+      valueFormatter: formatCurrency,
+    },
+    {
+      field: 'avability',
+      headerName: 'Dostępne',
+      valueFormatter: booleanToStringFormatter,
+      width: 130,
+      editable: true,
+      renderEditCell: (params) => <BooleanEditCell {...params} />,
+    },
+    {
+      field: 'stock',
+      headerName: 'Ilość',
+      width: 130,
+      type: 'number',
+      editable: true,
+    },
+    {
+      field: 'delete',
+      headerName: 'Akcja',
+      renderCell: (params) => (
+        <Button variant="outlined"
+          color="error"
+          onClick={() => handleDelete(params.row)}>
+          Usuń
+        </Button>
+      ),
+      sortable: false,
+    },
+  ];
+
   const { state, dispatch } = useContext(UserContext);
+
+  const [deletedMessage, setDeletedMessage] = useState<string>('');
+  const handleCloseMessage = () => setDeletedMessage('');
+
+  const handleDelete = (row: Product) => {
+    dispatch({ type: 'DELETE_PRODUCT', payload: row.id });
+    setDeletedMessage(`Element ${row.name} (id: ${row.id}) został usunięty!`);
+  };
+
 
   const stateUpdated = (newState: any) => {
     const arr = Object.values(newState.rows.dataRowIdToModelLookup) as Product[];
@@ -74,6 +96,14 @@ const MainTable = () => {
         }}
         pageSizeOptions={[5, 10]}
         checkboxSelection
+        disableRowSelectionOnClick
+        slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
+      />
+      <Snackbar
+        open={!!deletedMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseMessage}
+        message={deletedMessage}
       />
     </div>
   )

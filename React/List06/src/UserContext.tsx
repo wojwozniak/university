@@ -23,6 +23,11 @@ const userReducer = (state: ShopState, action: Action): ShopState => {
   switch (action.type) {
     case "UPDATE_PRODUCTS":
       return { ...state, products: action.payload };
+    case "DELETE_PRODUCT":
+      return {
+        ...state,
+        products: state.products.filter((product) => product.id !== action.payload),
+      };
     default:
       return state;
   }
