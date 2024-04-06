@@ -24,7 +24,7 @@ const MainTable = () => {
     {
       field: 'name',
       headerName: 'Nazwa',
-      width: 200,
+      flex: 1,
       editable: true
     },
     {
@@ -101,11 +101,16 @@ const MainTable = () => {
 
   return (
     <>
-      <Button variant="contained"
-        color="success"
-        onClick={() => setIsAddItemPopupOpen(true)}>
-        Dodaj produkt
-      </Button>
+      <div className="flex flex-row gap-2">
+        <Button variant='contained' color='error'>
+          Usuń zaznaczone
+        </Button>
+        <Button variant="contained"
+          color="success"
+          onClick={() => setIsAddItemPopupOpen(true)}>
+          Dodaj produkt
+        </Button>
+      </div>
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid
           editMode='row'
@@ -120,6 +125,11 @@ const MainTable = () => {
           pageSizeOptions={[5, 10]}
           checkboxSelection
           disableRowSelectionOnClick
+          localeText={{
+            footerRowSelected(count) {
+              return `${count.toLocaleString()} wybranych produktów`;
+            },
+          }}
           slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
         />
         <Snackbar
