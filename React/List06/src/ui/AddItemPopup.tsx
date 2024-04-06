@@ -9,28 +9,6 @@ interface AddItemPopupProps {
   setAlert: (message: string) => void;
 }
 
-const validateProduct = (product: Product): string => {
-  if (!product.name) {
-    return 'Nazwa produktu jest wymagana!';
-  }
-  if (!product.price) {
-    return 'Cena produktu jest wymagana!';
-  }
-  if (!product.avability) {
-    return 'Dostępność produktu jest wymagana!';
-  }
-  if (!product.stock) {
-    return 'Ilość produktu jest wymagana!';
-  }
-  if (product.price < 0) {
-    return 'Cena produktu nie może być ujemna!';
-  }
-  if (product.stock < 0) {
-    return 'Ilość produktu nie może być ujemna!';
-  }
-  return '';
-};
-
 const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAlert }) => {
   const [formData, setFormData] = useState<Product>({
     id: 0,
@@ -40,9 +18,12 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAl
     stock: 0,
   });
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prevData => ({ ...prevData, [name]: name === 'availability' ? (value === 'true') : value }));
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: name === 'avability' ? value === 'true' : value,
+    }));
   };
 
   const handleAddItem = () => {
@@ -55,17 +36,46 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAl
     clearData();
   };
 
-  const clearData = () => setFormData({ id: 0, name: '', price: 0, avability: false, stock: 0 });
+  const clearData = () =>
+    setFormData({
+      id: 0,
+      name: '',
+      price: 0,
+      avability: false,
+      stock: 0,
+    });
+
+  const validateProduct = (product: Product): string => {
+    const { name, price, avability, stock } = product;
+    if (!name) {
+      return 'Nazwa produktu jest wymagana!';
+    }
+    if (!price) {
+      return 'Cena produktu jest wymagana!';
+    }
+    if (avability === null) {
+      return 'Dostępność produktu jest wymagana!';
+    }
+    if (!stock) {
+      return 'Ilość produktu jest wymagana!';
+    }
+    if (price < 0) {
+      return 'Cena produktu nie może być ujemna!';
+    }
+    if (stock < 0) {
+      return 'Ilość produktu nie może być ujemna!';
+    }
+    return '';
+  };
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>
-        Dodawanie produktu
-      </DialogTitle>
+      <DialogTitle>Dodawanie produktu</DialogTitle>
       <DialogContent sx={{ '& > *': { my: 2 } }}>
         <TextField name="name" label="Nazwa" value={formData.name} onChange={handleFormChange} fullWidth />
         <TextField name="price" label="Cena" type="number" value={formData.price} onChange={handleFormChange} fullWidth />
-        <TextField name="availability"
+        <TextField
+          name="avability"
           label="Dostępne"
           select
           value={formData.avability.toString()}
