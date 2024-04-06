@@ -4,18 +4,18 @@ import { useContext } from 'react';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'name', headerName: 'Name', width: 200, editable: true },
-  { field: 'price', headerName: 'Price', width: 100, editable: true },
+  { field: 'name', headerName: 'Nazwa', width: 200, editable: true },
+  { field: 'price', headerName: 'Cena', width: 100, editable: true },
   {
     field: 'avability',
-    headerName: 'Avability',
+    headerName: 'Dostępność',
     type: 'boolean',
     width: 130,
     editable: true,
   },
   {
     field: 'stock',
-    headerName: 'stock',
+    headerName: 'Ilość',
     width: 130,
     type: 'number',
     editable: true,
