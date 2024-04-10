@@ -1,7 +1,8 @@
+Lista N: pkt/maxpkt (suma pkt/suma maxpkt)
+
 Lista 1: 6/6 pkt
 Lista 2: 9/10 pkt (15 / 16 pkt) (bez lasta) (na prac 3 zaliczone 4b i 7)
 Lista 3: 8/9 pkt (23 / 25 pkt) (bez lasta)
 Lista 4: 4/5 pkt (27 / 30 pkt)
-Lista 5 : x / 6 pkt (27 + x / 36 pkt)
-
-Łącznie: 27 + x / 36 pkt
+Lista 5: 5/6 pkt (32 / 36 pkt)
+Lista 6: x/6 pkt (32 + x / 42 pkt)
