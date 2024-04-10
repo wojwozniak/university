@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace List04
 {
@@ -18,20 +15,25 @@ namespace List04
 
     public class ShapeFactory
     {
-        private IShapeFactoryWorker? worker;
+        private Dictionary<string, IShapeFactoryWorker> workers = new Dictionary<string, IShapeFactoryWorker>();
 
-        public void RegisterWorker(IShapeFactoryWorker worker)
+        public void RegisterWorker(string shapeName, IShapeFactoryWorker worker)
         {
-            this.worker = worker;
+            if (workers.ContainsKey(shapeName))
+            {
+                throw new InvalidOperationException($"Worker for shape '{shapeName}' is already registered.");
+            }
+            workers.Add(shapeName, worker);
         }
 
         public IShape CreateShape(string shapeName, params object[] parameters)
         {
-            if (worker == null)
+            if (!workers.ContainsKey(shapeName))
             {
-                throw new InvalidOperationException("No registration");
+                throw new InvalidOperationException($"No worker registered for shape '{shapeName}'.");
             }
 
+            var worker = workers[shapeName];
             return worker.CreateShape(parameters);
         }
     }
