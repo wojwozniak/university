@@ -30,5 +30,21 @@ namespace List04
             var instance3 = Singleton.InstanceForFiveSeconds;
             Assert.NotSame(instance2, instance3);
         }
+
+        [Fact]
+        public void TestMultipleThreadsInstancePerThread()
+        {
+            Singleton? instance1 = null;
+            Singleton? instance2 = null;
+            
+            Thread thread1 = new(() => instance1 = Singleton.InstancePerThread);
+            Thread thread2 = new(() => instance2 = Singleton.InstancePerThread);
+            thread1.Start();
+            thread2.Start();
+            thread1.Join();
+            thread2.Join();
+
+            Assert.NotSame(instance1, instance2);
+        }
     }
 }
