@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField, MenuItem } from '@mui/material';
 import { Product } from '../types/Product';
 
 interface AddItemPopupProps {
@@ -22,7 +22,7 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAl
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
-      [name]: name === 'avability' ? value === 'true' : value,
+      [name]: name === 'avability' ? (value === 'true') : value,
     }));
   };
 
@@ -82,8 +82,8 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAl
           value={formData.avability.toString()}
           onChange={handleFormChange}
           fullWidth>
-          <option value="true">Tak</option>
-          <option value="false">Nie</option>
+          <MenuItem value="true">Tak</MenuItem>
+          <MenuItem value="false">Nie</MenuItem>
         </TextField>
         <TextField name="stock" label="Ilość" type="number" value={formData.stock} onChange={handleFormChange} fullWidth margin='dense' />
       </DialogContent>
