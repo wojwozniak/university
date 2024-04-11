@@ -71,20 +71,21 @@ const AddItemPopup: React.FC<AddItemPopupProps> = ({ open, onClose, onAdd, setAl
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Dodawanie produktu</DialogTitle>
-      <DialogContent>
-        <TextField name="name" label="Nazwa" value={formData.name} onChange={handleFormChange} fullWidth />
-        <TextField name="price" label="Cena" type="number" value={formData.price} onChange={handleFormChange} fullWidth />
+      <DialogContent dividers>
+        <TextField name="name" label="Nazwa" value={formData.name} onChange={handleFormChange} fullWidth margin='dense' />
+        <TextField name="price" label="Cena" type="number" value={formData.price} onChange={handleFormChange} fullWidth margin='dense' />
         <TextField
           name="avability"
           label="Dostępne"
           select
+          margin='dense'
           value={formData.avability.toString()}
           onChange={handleFormChange}
           fullWidth>
           <option value="true">Tak</option>
           <option value="false">Nie</option>
         </TextField>
-        <TextField name="stock" label="Ilość" type="number" value={formData.stock} onChange={handleFormChange} fullWidth />
+        <TextField name="stock" label="Ilość" type="number" value={formData.stock} onChange={handleFormChange} fullWidth margin='dense' />
       </DialogContent>
       <DialogActions>
         <Button variant="contained" color="error" onClick={clearData}>
