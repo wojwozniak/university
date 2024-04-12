@@ -22,3 +22,11 @@
   color: purple;
   border-right: 2px solid purple;
 }
+
+.SwitchRoot[data-state='checked'] {
+  background-color: black;
+}
+
+.SwitchThumb[data-state='checked'] {
+  transform: translateX(19px);
+}
