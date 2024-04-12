@@ -48,6 +48,9 @@ const Account = () => {
         />
       </div>
       <RadioGroup.Root value={gender} onValueChange={handleGenderChange} aria-label="Gender">
+        <Label.Root className="Label">
+          Gender:
+        </Label.Root>
         <RadioButton id="male" value="male">Male</RadioButton>
         <RadioButton id="female" value="female">Female</RadioButton>
         <RadioButton id="other" value="other">Other</RadioButton>
