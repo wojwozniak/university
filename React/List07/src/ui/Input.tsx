@@ -10,7 +10,7 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = ({ label, value, handleValueChange }) => {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col my-1'>
       <Label.Root htmlFor="name">{label}</Label.Root>
       <input
         type="text"
