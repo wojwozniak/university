@@ -16,7 +16,7 @@ const Notifications: React.FC<NotificationsProps> = ({ notificationsSettings, ha
       </Label.Root>
       <Select.Root onValueChange={handleNotificationsChange}>
         <Select.Trigger
-          className="inline-flex items-center w-[25%] border my-2 justify-center rounded-md px-4 text-sm leading-none h-9 gap-1 bg-white text-violet-900 shadow-md"
+          className="inline-flex items-center w-[100%] border my-2 justify-center rounded-md px-4 text-sm leading-none h-9 gap-1 bg-white text-violet-900 shadow-md"
           aria-label="Notifications">
           <Select.Value placeholder={notificationsSettings} />
           <Select.Icon className="SelectIcon">
