@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import Button from '../../ui/Button'
-import * as Select from '@radix-ui/react-select';
-import * as Label from '@radix-ui/react-label';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
-import SelectItem from '../../ui/SelectItem';
 import Notifications from './preferencesParts/Notifications';
+import Frequency from './preferencesParts/Frequency';
+import * as Label from '@radix-ui/react-label';
 
 const Preferences = () => {
   const [notificationsSettings, setNotificationsSettings] = useState('All');
@@ -29,6 +27,7 @@ const Preferences = () => {
         Change preferences here. Click save when you're done.
       </h2>
       <Notifications notificationsSettings={notificationsSettings} handleNotificationsChange={handleNotificationsChange} />
+      <Frequency notificationFrequency={notificationFrequency} handleFrequencyChange={handleFrequencyChange} />
       <Button text='Save preferences' onClick={() => { }} />
     </div>
   );
