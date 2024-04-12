@@ -1,7 +1,12 @@
+import Main from "./components/Main"
+
 function App() {
+  const gradient = { background: 'linear-gradient(120deg, #ff6ec4, #32e0c4)' }
   return (
-    <div>
-      <h1 className='text-3xl'>test</h1>
+    <div id="root"
+      className="flex flex-row p-4 h-screen w-screen items-center justify-center"
+      style={gradient}>
+      <Main />
     </div>
   )
 }
