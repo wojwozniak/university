@@ -27,17 +27,22 @@ const Account = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input label={"Name:"} value={name} handleValueChange={handleNameChange} />
-      <Input label={"Username:"} value={username} handleValueChange={handleUsernameChange} />
-      <RadioGroup.Root value={gender} onValueChange={handleGenderChange} aria-label="Gender">
-        <Label.Root>Gender:</Label.Root>
-        <RadioButton id="male" value="male">Male</RadioButton>
-        <RadioButton id="female" value="female">Female</RadioButton>
-        <RadioButton id="other" value="other">Other</RadioButton>
-      </RadioGroup.Root>
-      <Button text='Save changes' onClick={handleSubmit} />
-    </form>
+    <div>
+      <h2 className='text-l mb-5'>
+        Make changes to your account here. Click save when you're done.
+      </h2>
+      <form onSubmit={handleSubmit}>
+        <Input label={"Name:"} value={name} handleValueChange={handleNameChange} />
+        <Input label={"Username:"} value={username} handleValueChange={handleUsernameChange} />
+        <RadioGroup.Root value={gender} onValueChange={handleGenderChange} aria-label="Gender">
+          <Label.Root>Gender:</Label.Root>
+          <RadioButton id="male" value="male">Male</RadioButton>
+          <RadioButton id="female" value="female">Female</RadioButton>
+          <RadioButton id="other" value="other">Other</RadioButton>
+        </RadioGroup.Root>
+        <Button text='Save changes' onClick={handleSubmit} />
+      </form>
+    </div>
   )
 }
 
