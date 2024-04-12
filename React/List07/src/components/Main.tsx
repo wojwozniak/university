@@ -1,7 +1,7 @@
 import * as Tabs from '@radix-ui/react-tabs';
-import Account from './Account';
-import Password from './Password';
-import Preferences from './Preferences';
+import Account from './sections/Account';
+import Password from './sections/Password';
+import Preferences from './sections/Preferences';
 
 const Main = () => {
   const capitalize = (str: string) => {
