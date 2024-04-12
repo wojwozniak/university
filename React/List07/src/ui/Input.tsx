@@ -3,14 +3,15 @@ import React from 'react'
 import * as Label from '@radix-ui/react-label';
 
 interface InputProps {
+  label: string;
   value: string;
   handleValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({ value, handleValueChange }) => {
+const Input: React.FC<InputProps> = ({ label, value, handleValueChange }) => {
   return (
     <div className='flex flex-col'>
-      <Label.Root htmlFor="name">Full Name:</Label.Root>
+      <Label.Root htmlFor="name">{label}</Label.Root>
       <input
         type="text"
         id="name"

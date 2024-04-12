@@ -28,8 +28,8 @@ const Account = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input value={name} handleValueChange={handleNameChange} />
-      <Input value={username} handleValueChange={handleUsernameChange} />
+      <Input label={"Name:"} value={name} handleValueChange={handleNameChange} />
+      <Input label={"Username:"} value={username} handleValueChange={handleUsernameChange} />
       <RadioGroup.Root value={gender} onValueChange={handleGenderChange} aria-label="Gender">
         <Label.Root>Gender:</Label.Root>
         <RadioButton id="male" value="male">Male</RadioButton>
