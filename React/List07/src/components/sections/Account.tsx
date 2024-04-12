@@ -3,6 +3,7 @@ import Button from '../../ui/Button'
 import * as Label from '@radix-ui/react-label';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import RadioButton from '../../ui/RadioButton';
+import Input from '../../ui/Input';
 
 const Account = () => {
   const [name, setName] = useState('');
@@ -27,30 +28,10 @@ const Account = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <Label.Root htmlFor="name" className="Label">Full Name:</Label.Root>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={handleNameChange}
-          className="border border-gray-300 rounded px-3 py-2 w-full"
-        />
-      </div>
-      <div>
-        <Label.Root htmlFor="username" className="Label">Username:</Label.Root>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={handleUsernameChange}
-          className="border border-gray-300 rounded px-3 py-2 w-full"
-        />
-      </div>
+      <Input value={name} handleValueChange={handleNameChange} />
+      <Input value={username} handleValueChange={handleUsernameChange} />
       <RadioGroup.Root value={gender} onValueChange={handleGenderChange} aria-label="Gender">
-        <Label.Root className="Label">
-          Gender:
-        </Label.Root>
+        <Label.Root>Gender:</Label.Root>
         <RadioButton id="male" value="male">Male</RadioButton>
         <RadioButton id="female" value="female">Female</RadioButton>
         <RadioButton id="other" value="other">Other</RadioButton>
