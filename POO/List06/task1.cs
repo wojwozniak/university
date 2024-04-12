@@ -67,9 +67,10 @@ namespace List06
         }
     }
 
-    public class Program
+    // nazwa zmieniona by sie odpalalo w innych miejscach, usunac jedynki by odpalic tutaj
+    public class Program1
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             ILogger logger1 = LoggerFactory.GetLogger(LogType.Console);
             logger1.Log("foo bar");
