@@ -16,3 +16,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+[data-state='active'] .tab-title {
+  color: purple;
+  border-right: 2px solid purple;
+}

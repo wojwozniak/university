@@ -20,15 +20,15 @@ const Main = () => {
         orientation="horizontal"
         aria-label="Vertical Tabs"
         className="w-full h-full flex flex-row">
-        <Tabs.List aria-label="Menu" className="flex flex-col w-1/10 p-2 h-full bg-gray-400">
+        <Tabs.List aria-label="Menu" className="flex flex-col w-[11%] py-2 h-full bg-gray-300 rounded-l-lg">
           {content.map((tab) => (
             <Tabs.Trigger key={tab.id} value={tab.id} aria-label={`${tab.id} Tab`} className="cursor-pointer">
-              {capitalize(tab.id)}
+              <p className='tab-title text-lg px-2'>{capitalize(tab.id)}</p>
             </Tabs.Trigger>
           ))}
         </Tabs.List>
         {content.map((item) =>
-          <Tabs.Content key={item.id} value={item.id} className="w-4/5 h-full p-2">
+          <Tabs.Content key={item.id} value={item.id} className="w-4/5 h-full p-2 bg-[#f6f6f6] rounded-r-lg">
             {item.content}
           </Tabs.Content>
         )}
