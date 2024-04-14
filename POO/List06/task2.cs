@@ -91,9 +91,9 @@ namespace List06
         }
     }
 
-    public class Program
+    public class Program3
     {
-        static void Main(string[] args)
+        static void Main3(string[] args)
         {
             Context ctx = new();
             ctx.SetValue("x", false);
