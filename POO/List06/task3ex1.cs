@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace List06ex
 {
-    public class MainClass
+    public class MainClass5
     {
-        public static void Main()
+        public static void Main5()
         {
             Tree root = new TreeNode()
             {
