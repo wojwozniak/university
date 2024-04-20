@@ -1,5 +1,3 @@
-import "./Sections.scss"
-
 import { Service } from "../types/Service";
 import { TeamMembers } from "../types/TeamMembers";
 import { BlogPost } from "../types/BlogPost";
@@ -18,7 +16,7 @@ interface SectionsProps {
 
 const Sections: React.FC<SectionsProps> = ({ about, services, teamMembers, blogPosts }) => {
   return (
-    <div className="content-card">
+    <div className="rounded-lg my-5 bg-white-darker dark:bg-gray">
       <About about={about} />
       <Services services={services} />
       <Team teamMembers={teamMembers} />
