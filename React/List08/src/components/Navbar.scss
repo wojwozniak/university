@@ -1,0 +1,60 @@
+@use "variables";
+
+.navbar {
+  position: sticky;
+  top: 0;
+  padding: 10px 0;
+  text-align: center;
+  z-index: 1000;
+}
+
+.navbar a {
+  text-decoration: none;
+  padding: 0 20px;
+}
+
+.theme-toggle-button {
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.light-theme .navbar a {
+  color: variables.$gray;
+}
+
+.light-theme .theme-toggle-button {
+  background-color: variables.$gray;
+  color: variables.$white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.light-theme .theme-toggle-button:hover {
+  background-color: variables.$light-gray;
+}
+
+.light-theme .navbar {
+  background-color: variables.$tained-harder-white;
+}
+
+.dark-theme .navbar a {
+  color: variables.$white;
+}
+
+.dark-theme .theme-toggle-button {
+  background-color: variables.$dark-white;
+  color: variables.$gray;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme .theme-toggle-button:hover {
+  background-color: variables.$darker-white;
+}
+
+.dark-theme .navbar {
+  background-color: variables.$black-tainted;
+}
