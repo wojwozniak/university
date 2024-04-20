@@ -1,11 +1,10 @@
 import { useState } from "react";
-import "./App.scss";
-import "./index.css";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sections from "./components/Sections";
 import { CompanyData } from "./types/CompanyData";
+import "./index.css";
 
 const companyData: CompanyData = {
   name: "Acme Corporation",
