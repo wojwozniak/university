@@ -23,6 +23,9 @@ export default {
       fontFamily: {
         sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
       },
+      maxWidth: {
+        '800': '800px',
+      },
     }
   },
   plugins: [],
