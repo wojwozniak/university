@@ -6,15 +6,23 @@ interface NavbarProps {
   toggleTheme: () => void;
 }
 
+const links = [
+  { href: "#header", text: "Home" },
+  { href: "#about", text: "About" },
+  { href: "#services", text: "Services" },
+  { href: "#team", text: "Team" },
+  { href: "#blog", text: "Blog" },
+  { href: "#contact", text: "Contact" },
+];
+
 const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
   return (
     <div className="navbar">
-      <a href="#header">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#team">Team</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
+      {links.map((link, index) => (
+        <a key={index} href={link.href}>
+          {link.text}
+        </a>
+      ))}
       <button onClick={toggleTheme} className="theme-toggle-button">
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
