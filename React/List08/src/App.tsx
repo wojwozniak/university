@@ -106,11 +106,10 @@ const App = () => {
   };
 
   return (
-    <div className={`portfolio ${darkMode ? "dark-theme dark" : "light-theme"}`}>
+    <div className={`m-0 p-0 mx-auto bg-white text-gray dark:text-white dark:bg-black font-sans ${darkMode ? "dark" : ""}`}>
       <Navbar
         darkMode={darkMode}
         toggleTheme={toggleTheme} />
-      <p className="bg-green dark:bg-blue-500">aaa</p>
       <Header
         companyName={companyData.name}
         companySlogan={companyData.slogan} />

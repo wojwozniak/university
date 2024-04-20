@@ -20,6 +20,9 @@ export default {
         green: '#45a049',
         'light-green': '#4caf50',
       },
+      fontFamily: {
+        sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+      },
     }
   },
   plugins: [],
