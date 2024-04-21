@@ -19,9 +19,43 @@ let build_list n f =
   let rec build_list' n f acc =
     if n = 0 then acc
     else build_list' (n-1) f ((f (n-1))::acc)
+     (* zmniejszamy iterator o 1, przekazujemy tę samą funkcję, 
+        a jako akumulator listę z dołączonym f(n-1) jako head *)
   in build_list' n f []
 
 
 (* Test *)
 
 let test_build_list = build_list 5 (fun x -> x + 1);;
+
+(* negatives *)
+
+let negatives n = build_list n (fun x -> -x - 1);;
+
+(* Test *)
+
+let test_negatives = negatives 5;;
+
+(* reciprocals *)
+
+let reciprocals n = build_list n (fun x -> 1. /. (float_of_int (x + 1)));;
+
+(* Test *)
+
+let test_reciprocals = reciprocals 5;;
+
+(* evens *)
+
+let evens n = build_list n (fun x -> 2 * x);;
+
+(* Test *)
+
+let test_evens = evens 5;;
+
+(* identityM *)
+
+let identityM n = build_list n (fun x -> build_list n (fun y -> if x = y then 1 else 0));;
+
+(* Test *)
+
+let test_identityM = identityM 3;;
