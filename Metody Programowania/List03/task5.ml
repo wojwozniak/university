@@ -47,4 +47,4 @@ let t' = insert_bst 7 t;;
     - Node (Leaf , 2, Leaf)
     - Node (Leaf , 8, Node (Leaf , 9, Leaf))
     - Node (Leaf , 5, Node (Node (Leaf , 6, Leaf), 8, Node (Leaf , 9, Leaf)))
-    *)
+*)
