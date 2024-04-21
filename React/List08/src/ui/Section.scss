@@ -1,9 +1,0 @@
-@use "variables";
-
-.section:nth-child(even) {
-  background-color: variables.$tainted-white;
-}
-
-.dark .section:nth-child(even) {
-  background-color: variables.$light-gray;
-}
