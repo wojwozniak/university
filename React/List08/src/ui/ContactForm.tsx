@@ -7,7 +7,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="contact-form">
+    <form onSubmit={handleSubmit} className="mb-10 contact-form">
       <div className="form-group">
         <input type="text" placeholder="Name" required />
       </div>
