@@ -6,17 +6,19 @@ const ContactForm = () => {
     event.preventDefault();
   };
 
+  const elems = [
+    <input type="text" placeholder="Name" required />,
+    <input type="email" placeholder="Email" required />,
+    <textarea rows={5} placeholder="Message" required></textarea>,
+  ]
+
   return (
     <form onSubmit={handleSubmit} className="mb-10 contact-form">
-      <div className="form-group">
-        <input type="text" placeholder="Name" required />
-      </div>
-      <div className="form-group">
-        <input type="email" placeholder="Email" required />
-      </div>
-      <div className="form-group">
-        <textarea rows={5} placeholder="Message" required></textarea>
-      </div>
+      {elems.map((elem, index) => (
+        <div key={index} className="form-group">
+          {elem}
+        </div>
+      ))}
       <button type="submit">Send Message</button>
     </form>
   )
