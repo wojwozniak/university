@@ -1,0 +1,5 @@
+(array_agg(t1.name))[1:4] as example_skill   <- tak mozesz sobie zrobic 
+arraya z n elementow jak na przyklad liczysz counta
+having do filtrowania np. po count
+avg(value)
+count(distinct value)
