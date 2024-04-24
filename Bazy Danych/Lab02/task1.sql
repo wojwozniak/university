@@ -27,3 +27,9 @@ select distinct
 		join t2 on t1.name = t2.n
 		join t3 on t2.n = t3.n
 		order by "stanowiska" desc, "oferty" desc;
+
+
+```
+Poprawki które możnaby tu zrobić korzystając ze wzorcówki:
+- avg(value) zamiast ręcznego liczenia
+- count(distinct o.title) zamiast obchodzenia poprzez t2
