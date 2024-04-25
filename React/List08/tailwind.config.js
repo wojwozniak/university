@@ -23,6 +23,9 @@ export default {
       fontFamily: {
         sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
       },
+      width: {
+        'calc': 'calc(1/3 - 20px)'
+      },
       maxWidth: {
         '800': '800px',
       },
