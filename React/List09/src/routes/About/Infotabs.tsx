@@ -13,10 +13,10 @@ const Infotabs = () => {
   return (
     <div>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+        <Tabs value={value} onChange={handleChange} centered>
+          <Tab label="Edukacja" />
+          <Tab label="Doświadczenie" />
+          <Tab label="Umiejętności" />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
