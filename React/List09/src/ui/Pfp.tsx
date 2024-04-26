@@ -27,10 +27,10 @@ const Pfp: React.FC<PfpProps> = ({ size }) => {
   };
 
   const smallSize = {
-    widthString: '48px',
-    heightString: '48px',
-    width: 48,
-    height: 48
+    widthString: '92px',
+    heightString: '92px',
+    width: 92,
+    height: 92
   };
 
   const setting = size === 'big' ? bigSize : smallSize;
