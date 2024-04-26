@@ -26,10 +26,10 @@ const Infotabs = () => {
         <Edukacja />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Umiejetnosci />
+        <Doswiadczenie />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <Doswiadczenie />
+        <Umiejetnosci />
       </CustomTabPanel>
     </div>
   )
