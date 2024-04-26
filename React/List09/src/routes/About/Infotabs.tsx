@@ -2,6 +2,9 @@ import React from 'react'
 import { Box, Tab, Tabs } from "@mui/material"
 import { useState } from "react";
 import CustomTabPanel from "../../ui/CustomTabPanel";
+import Edukacja from './Edukacja';
+import Umiejetnosci from './Umiejetnosci';
+import Doswiadczenie from './Doswiadczenie';
 
 const Infotabs = () => {
   const [value, setValue] = useState(0);
@@ -20,13 +23,13 @@ const Infotabs = () => {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+        <Edukacja />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <Umiejetnosci />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <Doswiadczenie />
       </CustomTabPanel>
     </div>
   )
