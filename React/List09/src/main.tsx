@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 import Home from "./routes/Home";
-import About from "./routes/About";
+import About from "./routes/About/About";
 import Projects from "./routes/Projects";
 import "./index.css";
 
