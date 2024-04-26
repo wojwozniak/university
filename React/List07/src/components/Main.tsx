@@ -28,7 +28,7 @@ const Main = () => {
           ))}
         </Tabs.List>
         {content.map((item) =>
-          <Tabs.Content key={item.id} value={item.id} className="w-4/5 h-full p-2 bg-[#f6f6f6] rounded-r-lg p-4">
+          <Tabs.Content key={item.id} value={item.id} className="w-4/5 h-full bg-[#f6f6f6] rounded-r-lg p-4">
             {item.content}
           </Tabs.Content>
         )}
