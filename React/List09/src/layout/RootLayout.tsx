@@ -1,31 +1,10 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
-
-const links = [
-  { to: "/", text: "Home" },
-  { to: "/about", text: "About Me" },
-  { to: "/projects", text: "Projects" }
-];
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 
 export default function RootLayout() {
-  const location = useLocation();
-
   return (
     <div>
-      <nav>
-        <ul className="flex justify-center gap-3">
-          {links.map(({ to, text }) => (
-            <li key={to}>
-              <NavLink
-                to={to}
-                className={({ isActive }) => `${isActive ? "underline" : ""}`}
-                state={{ from: location.pathname }}
-              >
-                {text}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <Navbar />
       <main>
         <Outlet />
       </main>
