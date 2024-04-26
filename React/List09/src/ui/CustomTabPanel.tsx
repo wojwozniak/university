@@ -14,7 +14,7 @@ function CustomTabPanel(props: TabPanelProps) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
-      className="p-4 mt-1 min-h-[300px] border-solid border border-gray-300 rounded-md"
+      className="p-4 mt-1 border-solid border border-gray-300 rounded-md"
     >
       {value === index && (
         <>{children}</>
