@@ -22,7 +22,8 @@ const AboutContent = () => {
           W wolnym czasie lubię grać w szachy i chodzić po górach.
           Mówię po polsku, angielsku i niemiecku.
           Masz ofertę pracy lub chcesz się ze mną skontaktować?
-          Skorzystaj z jednego z linków na stronie "Home".
+          Napisz maila lub skorzystaj z jednego z linków na stronie "Home".
+          Poniżej przeczytasz więcej szczegółów na mój temat :)
         </p>
       </div>
     </div>
