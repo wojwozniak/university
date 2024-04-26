@@ -4,7 +4,7 @@ import Socialbar from "../ui/Socialbar";
 
 const Home = () => {
   return (
-    <div className="container mx-auto px-4 py-8 flex flex-col items-center">
+    <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center h-full mt-[15vh]">
       <Pfp size="big" />
       <div id="description" className="flex flex-col items-center">
         <h1 className="text-3xl font-bold mt-8">
