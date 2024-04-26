@@ -1,7 +1,10 @@
+import AboutContent from "./AboutContent"
+
+
 const About = () => {
   return (
-    <div className="">
-      aaa
+    <div id="about" className="px-20">
+      <AboutContent />
     </div>
   )
 }
