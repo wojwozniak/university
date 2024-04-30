@@ -16,7 +16,7 @@ This repository contains my solutions to the tasks from the courses I took at th
 
 ### Semester II:
 - [x] Algebra
-- [x] Metody Programowania
+- [x] Metody Programowania (Racket)
 - [x] Programowanie Obiektowe 
 
 ### Semester III:
@@ -25,3 +25,9 @@ This repository contains my solutions to the tasks from the courses I took at th
 - [x] Analiza Numeryczna
 - [x] Kurs Java
 - [x] Kurs Python 
+
+### Semester IV:
+- [x] Metody Programowania
+- [x] Projektowanie Obiektowe Oprogramowania
+- [x] Bazy Danych
+- [x] Kurs React
