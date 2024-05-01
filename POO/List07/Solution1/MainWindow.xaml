@@ -1,0 +1,29 @@
+﻿<Window x:Class="YourNamespace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.85*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Background="LightGray">
+            <TreeView>
+                <!-- TreeViewItems here -->
+            </TreeView>
+        </Border>
+        
+        <Border Grid.Row="0" Grid.Column="1" Background="LightBlue">
+            <!-- Content here -->
+        </Border>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="LightGreen">
+            <!-- Content here -->
+        </Border>
+    </Grid>
+</Window>
