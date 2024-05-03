@@ -56,6 +56,3 @@ ALTER TABLE skill add CONSTRAINT skill_offer_id_fkey FOREIGN KEY (offer_id)
 select * from offer;
 delete from offer where id = 2;
 select * from offer_archive;
-
--- Przechowuję w osobnej tabeli
--- Można też w tej samej tabeli -> wtedy dodajemy odp. kolumny
