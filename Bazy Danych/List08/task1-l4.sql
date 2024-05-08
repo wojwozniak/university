@@ -23,3 +23,11 @@ update offer
 					  offer.company_branch_id = outputed.company_branch_id
 					  AND offer.company_id = outputed.company_id
 				  );
+
+
+-- ale wzorcówka dużo prostsza:
+update offer
+  set company_id = company_branch.company_id
+  from company_branch
+  where company_branch_id = company_branch.id
+  and offer.company_id = company_branch_company_id;
