@@ -1,0 +1,3 @@
+- wstawiamy do offer krotkę że istnieje firma o takim id i branch o takim id ale branch nie należy do tej firmy
+- zmieniamy company_id w company_branch
+- trzecie idk na razie
