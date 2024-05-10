@@ -1,17 +1,18 @@
-import { Button } from '@mui/material';
+import { useState } from 'react';
+import MainContent from './MainContent';
+import { Endpoint } from '../interfaces/Endpoint';
 
 const Main = () => {
+  const [loaded, setLoaded] = useState<boolean>(true);
+
+  const endpoints: Endpoint[] = [
+    { category: "Potions", url: "https://api.potterdb.com/v1/potions" },
+    { category: "Spells", url: "https://api.potterdb.com/v1/spells" }
+  ];
+
   return (
     <div className="h-4/6 w-full flex flex-col items-center justify-between p-3">
-      <p>Choose a category:</p>
-      <div id="category__selector" className='flex flex-row gap-2'>
-        <Button variant="contained" color="primary" className="mb-4">
-          Potions
-        </Button>
-        <Button variant="contained" color="primary">
-          Spells
-        </Button>
-      </div>
+      {loaded ? <MainContent /> : <></>}
     </div>
   )
 }
