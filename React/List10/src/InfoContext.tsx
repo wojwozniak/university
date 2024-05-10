@@ -5,7 +5,7 @@ import { Action } from "./interfaces/Action";
 const initialState: State = {
   user: "",
   currentScore: 0,
-  inGame: false,
+  selectedCategory: "",
   highScore: 0,
   data: []
 }
@@ -22,7 +22,7 @@ const stateReducer = (state: State, action: Action): State => {
       state.currentScore = 0;
       return state;
     case 'CATEGORY_SCREEN':
-      state.inGame = false;
+      state.selectedCategory = "";
       return state;
     default:
       return state;

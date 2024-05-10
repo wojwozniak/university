@@ -4,6 +4,6 @@ export interface State {
   user: string,
   highScore: number,
   currentScore: number,
-  inGame: boolean,
+  selectedCategory: string,
   data: CategoryData[]
 }
