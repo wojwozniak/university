@@ -41,6 +41,9 @@ const stateReducer = (state: State, action: Action): State => {
         ...state,
         selectedCategory: ""
       };
+    case 'LOAD_DATA':
+      state.data.push(action.payload);
+      return state;
     default:
       return state;
   }
