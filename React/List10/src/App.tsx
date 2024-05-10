@@ -1,4 +1,5 @@
 import { InfoProvider } from "./InfoContext"
+import Bottombar from "./components/Bottombar"
 import Main from "./components/Main"
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
             Harry Potter Quiz
           </div>
           <Main />
-          <div className="h-1/6 bg-blue-900 w-full rounded-b-xl"></div>
+          <Bottombar />
         </div>
       </div>
     </InfoProvider>
