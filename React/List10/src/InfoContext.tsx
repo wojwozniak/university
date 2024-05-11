@@ -42,6 +42,7 @@ const stateReducer = (state: State, action: Action): State => {
         selectedCategory: ""
       };
     case 'LOAD_DATA':
+      state.data = [];  // Moglibyśmy tego nie robić, a przed pobraniem sprawdzać co już mamy
       action.payload.forEach(cat => {
         state.data.push(cat);
       });
