@@ -1,7 +1,7 @@
 import { InfoProvider } from "./InfoContext"
 import Bottombar from "./components/Bottombar"
 import Topbar from "./components/Topbar"
-import Main from "./components/main/Main"
+import Main from "./components/Main"
 
 function App() {
   return (

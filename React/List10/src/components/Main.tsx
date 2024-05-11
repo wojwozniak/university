@@ -1,13 +1,14 @@
 import { useContext, useState, useEffect } from 'react';
-import MainContent from './MainContent';
-import { endpoints } from '../../endpoints';
-import { InfoContext } from '../../InfoContext';
-import { fetchData } from '../../functions/fetchData';
+import { endpoints } from '../endpoints';
+import { InfoContext } from '../InfoContext';
+import { fetchData } from '../functions/fetchData';
+import CategorySelector from '../ui/CategorySelector';
+import GameScreen from '../ui/GameScreen';
 
 
 
 const Main = () => {
-  const { dispatch } = useContext(InfoContext);
+  const { state, dispatch } = useContext(InfoContext);
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Main = () => {
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-400"></div>
         </div>
       )}
-      {loaded && <MainContent />}
+      {loaded && (state.selectedCategory === "" ? <CategorySelector /> : <GameScreen />)}
     </div>
   );
 };
