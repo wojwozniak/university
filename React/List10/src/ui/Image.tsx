@@ -16,7 +16,7 @@ const MyImage = ({ url }: { url?: string | undefined }) => {
           src={url}
           alt="Question Image"
           className="object-cover w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-300"
-          style={{ zIndex: -1 }}
+          style={{ opacity: 0, zIndex: 2 }}
           onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
             (e.target as HTMLImageElement).style.opacity = '1';
           }}
