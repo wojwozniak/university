@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { InfoContext } from '../InfoContext';
-import CategorySelector from '../ui/CategorySelector';
-import GameScreen from '../ui/GameScreen';
+import { InfoContext } from '../../InfoContext';
+import CategorySelector from '../../ui/CategorySelector';
+import GameScreen from '../../ui/GameScreen';
 
 const MainContent = () => {
   const { state } = useContext(InfoContext);

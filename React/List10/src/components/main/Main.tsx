@@ -1,8 +1,8 @@
 import { useContext, useState, useEffect } from 'react';
 import MainContent from './MainContent';
-import { endpoints } from '../endpoints';
-import { InfoContext } from '../InfoContext';
-import { fetchData } from '../functions/fetchData';
+import { endpoints } from '../../endpoints';
+import { InfoContext } from '../../InfoContext';
+import { fetchData } from '../../functions/fetchData';
 
 
 
