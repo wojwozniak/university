@@ -24,7 +24,6 @@ export const generateStage = (items: Item[]): Stage => {
   do {
     correctItem = getRandomItem(items);
   } while (!correctItem.effect.trim());
-  badItems.push(correctItem);
 
   while (badItems.length < 3) {
     const newItem = getRandomItem(items);
