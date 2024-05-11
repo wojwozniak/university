@@ -1,6 +1,6 @@
 import placeholderImage from '../images/placeholder.png'
 
-const MyImage = ({ url }: { url: string }) => {
+const MyImage = ({ url }: { url?: string }) => {
   return (
     <div className="w-[150px] h-[150px] mb-4">
       {/* Placeholder Image */}
@@ -10,7 +10,7 @@ const MyImage = ({ url }: { url: string }) => {
         className="object-cover w-full h-full"
       />
       {/* Main Image */}
-      <img
+      url && <img
         src={url}
         alt="Question Image"
         className="object-cover w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-300"
