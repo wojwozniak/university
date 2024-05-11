@@ -5,7 +5,7 @@ const Bottombar = () => {
   const { state } = useContext(InfoContext);
 
   return (
-    <div className="flex flex-col justify-center items-center h-1/6 bg-blue-900 w-full rounded-b-xl text-white">
+    <div className="flex flex-col justify-center items-center h-[18%] bg-blue-900 w-full rounded-b-xl text-white">
       <p className="text-m">
         Username: {state.user}
       </p>

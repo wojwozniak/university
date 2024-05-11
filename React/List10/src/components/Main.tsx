@@ -32,7 +32,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="h-4/6 w-full flex flex-col items-center justify-between p-3">
+    <div className="h-[78%] w-full flex flex-col items-center justify-between p-3">
       {!loaded && (
         <div className="flex justify-center items-center h-full">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-400"></div>
