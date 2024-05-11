@@ -30,11 +30,10 @@ const stateReducer = (state: State, action: Action): State => {
         highScore: updatedHighScore
       };
     case 'ZERO_POINTS':
-      localStorage.setItem("highScore", "0");
+      localStorage.setItem("currentScore", "0");
       return {
         ...state,
-        currentScore: 0,
-        highScore: 0
+        currentScore: 0
       };
     case 'CATEGORY_SCREEN':
       return {
