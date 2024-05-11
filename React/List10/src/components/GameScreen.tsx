@@ -17,11 +17,11 @@ const GameScreen = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-full">
-      <h2 className="text-2xl font-bold mb-4">{stage?.question}</h2>
+      <h2 className="text-2xl font-bold mb-4 h-[64px] text-center">{stage?.question}</h2>
       <MyImage url={stage?.imageUrl} />
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 mt-10">
         {stage?.answers.map((option, index) => (
-          <Button key={index} variant="contained" color="primary" className="w-full h-[62px]">
+          <Button key={index} variant="contained" color="primary" className="w-[280px] h-[62px]">
             {option}
           </Button>
         ))}
