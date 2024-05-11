@@ -2,8 +2,8 @@ import { useContext, useState, useEffect } from 'react';
 import { endpoints } from '../endpoints';
 import { InfoContext } from '../InfoContext';
 import { fetchData } from '../functions/fetchData';
-import CategorySelector from '../ui/CategorySelector';
-import GameScreen from '../ui/GameScreen';
+import CategorySelector from './CategorySelector';
+import GameScreen from './GameScreen';
 
 
 
