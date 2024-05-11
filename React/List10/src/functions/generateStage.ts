@@ -6,31 +6,41 @@ const getRandomItem = (items: Item[]): Item => {
   return items[randomIndex];
 }
 
-const shuffleStrings = (a: string, b: string, c: string, d: string): string[] => {
-  const stringsArray: string[] = [a, b, c, d];
+const shuffleStrings = (strings: string[]): string[] => {
+  const shuffledStrings = [...strings];
 
-  for (let i = stringsArray.length - 1; i > 0; i--) {
+  for (let i = shuffledStrings.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [stringsArray[i], stringsArray[j]] = [stringsArray[j], stringsArray[i]];
+    [shuffledStrings[i], shuffledStrings[j]] = [shuffledStrings[j], shuffledStrings[i]];
   }
 
-  return stringsArray;
+  return shuffledStrings;
 }
 
 export const generateStage = (items: Item[]): Stage => {
-  const correctItem = getRandomItem(items);
-  const badItem1 = getRandomItem(items);
-  const badItem2 = getRandomItem(items);
-  const badItem3 = getRandomItem(items);
+  let correctItem: Item;
+  let badItems: Item[] = [];
 
-  const answers = shuffleStrings(correctItem.name, badItem1.name, badItem2.name, badItem3.name);
+  do {
+    correctItem = getRandomItem(items);
+  } while (!correctItem.effect.trim());
+  badItems.push(correctItem);
+
+  while (badItems.length < 3) {
+    const newItem = getRandomItem(items);
+    if (!badItems.some(item => item.id === newItem.id) && newItem.id !== correctItem.id) {
+      badItems.push(newItem);
+    }
+  }
+
+  const answers = shuffleStrings([correctItem.name, ...badItems.map(item => item.name)]);
 
   const stage: Stage = {
     question: correctItem.effect,
     correctAnswer: correctItem.name,
-    imageUrl: correctItem.image ? correctItem.image : undefined,
+    imageUrl: correctItem.image,
     answers: answers
-  }
+  };
 
   return stage;
 }
