@@ -42,7 +42,9 @@ const stateReducer = (state: State, action: Action): State => {
         selectedCategory: ""
       };
     case 'LOAD_DATA':
-      state.data.push(action.payload);
+      action.payload.forEach(cat => {
+        state.data.push(cat);
+      });
       return state;
     default:
       return state;
