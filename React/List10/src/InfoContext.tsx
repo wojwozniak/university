@@ -41,6 +41,11 @@ const stateReducer = (state: State, action: Action): State => {
         ...state,
         selectedCategory: ""
       };
+    case 'SET_CATEGORY':
+      return {
+        ...state,
+        selectedCategory: action.payload
+      }
     case 'LOAD_DATA':
       state.data = [];  // Moglibyśmy tego nie robić, a przed pobraniem sprawdzać co już mamy
       action.payload.forEach(cat => {
