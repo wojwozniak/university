@@ -7,7 +7,7 @@ const CategorySelector = () => {
   const btns: string[] = state.data.map(cat => cat.categoryName);
 
   const selectCategory = (cat: string) => {
-
+    dispatch({ type: 'SET_CATEGORY', payload: cat })
   }
 
   return (
@@ -15,7 +15,9 @@ const CategorySelector = () => {
       <p>Choose a category:</p>
       <div id="category__selector" className='flex flex-row gap-2'>
         {btns.map(btn =>
-          <Button variant="contained" color="primary">
+          <Button variant="contained"
+            color="primary"
+            onClick={() => selectCategory(btn)}>
             {btn}
           </Button>)}
       </div>
