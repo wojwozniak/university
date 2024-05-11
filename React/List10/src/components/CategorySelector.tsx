@@ -17,6 +17,7 @@ const CategorySelector = () => {
         {btns.map(btn =>
           <Button variant="contained"
             color="primary"
+            key={btn}
             onClick={() => selectCategory(btn)}>
             {btn}
           </Button>)}
