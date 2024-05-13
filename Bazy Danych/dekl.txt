@@ -1,31 +1,24 @@
+Deklaracje i punkty:
+
 Ćwiczenia:
-
-Lista 1: 6/6 (100%)
-Lista 2: 5/6 (11/12) (91,6%)
-Lista 3: 5,5/6,5 (16,5/18,5) (89,2%)
-Lista 4: 9,5/6,5 (26/25) (104%)
-Lista 5: 6/6 (32/31) (103.2%)
-Lista 6: 2/2 (34/33) (103%)
-Lista 7: 2/0 (36/33) (109%)
-
-W_cw: 109% (36/33)
-
+Lista 1: 5/5
+Lista 2: 5/6 (10/11)
+Lista 3: 5,5/6,5 (15,5/17,5)
+Lista 4: 9,5/6,5 (25/24)
+Lista 5: 6,5/6 (31,5/30)
+W_cw: 105% (31,5/30)
 
 
 Laby:
+Lista 6: 2/2 (2/2)
+Lista 7: 2/0 (4/2)
+Lab 1: 14/14 (18/16)
+Lab 2: 14/14 (32/30)
+Lab 3: x/14 (32+x/44)
+Lab 4: y/14   <-- liczą się tylko trzy laby, więc lepszy wynik z 3 lub 4 przechodzi
+Aktualnie 106,6; pewne 72%
 
-Lab 1: 14/14 (14/14) (100%)
-
-W_sql: 100% (14/14)
+W_sql: 106,6% (32/30)
 
 
 90% z (W_cw + W_sql) / 2 = przepis
-
-Aktualnie:
-(W_cw+W_sql)/2 = 104,5%
-
-Checkpointy przy /42pkt:
-80%: 33,6 pkt
-90%: 37,8 pkt
-100%: 42 pkt
-110%: 46,2 pkt
