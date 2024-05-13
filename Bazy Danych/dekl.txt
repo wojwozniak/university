@@ -6,7 +6,10 @@ Lista 2: 5/6 (10/11)
 Lista 3: 5,5/6,5 (15,5/17,5)
 Lista 4: 9,5/6,5 (25/24)
 Lista 5: 6,5/6 (31,5/30)
-W_cw: 105% (31,5/30)
+
+Lista 6: x/8 (31,5 + x / 38)
+W_cw aktualne: 105% (31,5/30)
+W_cw juz pewne: 82% (31,5/38)
 
 
 Laby:
@@ -14,11 +17,11 @@ Lista 6: 2/2 (2/2)
 Lista 7: 2/0 (4/2)
 Lab 1: 14/14 (18/16)
 Lab 2: 14/14 (32/30)
+
 Lab 3: x/14 (32+x/44)
 Lab 4: y/14   <-- liczą się tylko trzy laby, więc lepszy wynik z 3 lub 4 przechodzi
-Aktualnie 106,6; pewne 72%
 
-W_sql: 106,6% (32/30)
-
+W_sql aktualne: 106,6% (32/30)
+W_sql pewne: 72,7% (32/44)
 
 90% z (W_cw + W_sql) / 2 = przepis
