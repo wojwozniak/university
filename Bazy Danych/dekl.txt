@@ -17,10 +17,10 @@ Lista 7: 2/0 (4/2)
 Lab 1: 14/14 (18/16)
 Lab 2: 14/14 (32/30)
 
-Lab 3: x/14 (32+x/44)
-Lab 4: y/14   <-- liczą się tylko trzy laby, więc lepszy wynik z 3 lub 4 przechodzi
+Lab 3: 13/14 (45/44)
+Lab 4: y/14  <-- można ew. przyjść spróbować dodatkowy punkt zrobić
 
-W_sql aktualne: 106,6% (32/30)
+W_sql aktualne: 102,2% (45/44)
 
 90% z (W_cw + W_sql) / 2 = przepis
 
