@@ -25,7 +25,8 @@ W_sql aktualne: 102,2% (45/44)
 90% z (W_cw + W_sql) / 2 = przepis
 
 
-
 Przepis::
-W_cw juz pewne: 82% (31,5/38)
-W_sql juz pewne: 72,7% (32/44)
+W_sql: 102,2%
+W_cw juz pewne: 82%
+
+184,2 / 2 = 92,1 > 90 a więc chyba juz git
