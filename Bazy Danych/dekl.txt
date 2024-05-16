@@ -6,9 +6,11 @@ Lista 2: 5/6 (10/11)
 Lista 3: 5,5/6,5 (15,5/17,5)
 Lista 4: 9,5/6,5 (25/24)
 Lista 5: 6,5/6 (31,5/30)
+Praca w grupach: 2/0 (33,5/30)
 
-Lista 6: x/8 (31,5 + x / 38)
-W_cw: 105% (31,5/30)
+Lista 6: x/8 (33,5 + x / 38)
+
+W_cw: 88% + x/38% (33,5 + x/38)
 
 
 Laby:
@@ -16,17 +18,15 @@ Lista 6: 2/2 (2/2)
 Lista 7: 2/0 (4/2)
 Lab 1: 14/14 (18/16)
 Lab 2: 14/14 (32/30)
-
 Lab 3: 13/14 (45/44)
-Lab 4: y/14  <-- można ew. przyjść spróbować dodatkowy punkt zrobić
 
-W_sql aktualne: 102,2% (45/44)
+W_sql: 102,2% (45/44)
 
 90% z (W_cw + W_sql) / 2 = przepis
 
 
 Przepis::
 W_sql: 102,2%
-W_cw juz pewne: 82%
+W_cw juz pewne: 88%
 
-184,2 / 2 = 92,1 > 90 a więc chyba juz git
+190,2 / 2 = 95,1 > 90 a więc chyba juz git
