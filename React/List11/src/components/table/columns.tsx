@@ -58,14 +58,14 @@ export const columns: GridColDef[] = [
           color="primary"
           onClick={() => { }} // params.row
         >
-          Edytuj
+          Edit
         </Button>
         <Button
           variant="outlined"
           color="error"
           onClick={() => { }}
         >
-          Usuń
+          Delete
         </Button>
       </div>
     ),
