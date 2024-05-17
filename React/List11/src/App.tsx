@@ -1,4 +1,4 @@
-import BookTable from "./components/BookTable"
+import BookTable from "./components/table/BookTable"
 import Header from "./components/Header"
 
 function App() {
