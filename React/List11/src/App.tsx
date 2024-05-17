@@ -1,4 +1,4 @@
-import BookTable from "./components/table/BookTable"
+import BookTable from "./components/BookTable"
 import Header from "./components/Header"
 import Popup from "./ui/Popup";
 import { useState } from "react";
