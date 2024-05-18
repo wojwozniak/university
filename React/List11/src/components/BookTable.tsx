@@ -4,8 +4,14 @@ import Loading from '../ui/Loading';
 import { formatCurrency } from '../functions/formatCurrency';
 import { GridColDef } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
+import { Book } from '../interfaces/Book';
 
-const BookTable = () => {
+interface BookTableProps {
+  deleteBook: (book: Book) => void,
+  editBook: (book: Book) => void
+}
+
+const BookTable: React.FC<BookTableProps> = ({ deleteBook, editBook }) => {
   const query = useBooks();
 
   const columns: GridColDef[] = [
@@ -18,40 +24,35 @@ const BookTable = () => {
       field: 'title',
       headerName: 'Tytuł',
       flex: 1,
-      editable: true
     },
     {
       field: 'author',
       headerName: 'Autor',
       flex: 1,
-      editable: true
     },
     {
       field: 'publicationYear',
       headerName: 'Rok wydania',
+      type: 'number',
       width: 130,
-      editable: true
     },
     {
       field: 'numberOfCopies',
       headerName: 'Liczba kopii',
       width: 130,
       type: 'number',
-      editable: true
     },
     {
       field: 'price',
       headerName: 'Cena',
       width: 150,
       type: 'number',
-      editable: true,
       valueFormatter: formatCurrency
     },
     {
       field: 'genre',
       headerName: 'Gatunek',
       flex: 1,
-      editable: true
     },
     {
       field: 'actions',
@@ -62,14 +63,14 @@ const BookTable = () => {
           <Button
             variant="outlined"
             color="primary"
-            onClick={() => { }} // params.row
+            onClick={() => { editBook(params.row) }}
           >
             Edit
           </Button>
           <Button
             variant="outlined"
             color="error"
-            onClick={() => { }}
+            onClick={() => { deleteBook(params.row) }}
           >
             Delete
           </Button>
