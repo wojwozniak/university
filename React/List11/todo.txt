@@ -1,3 +1,4 @@
 - kategorie z dropdownu - pobierane z serwera
 - pobieranie pojedyńczej książki przy edycji
 - ogarnięcie błędów przy edycji książi
+- dry textfieldy editbook.tsx
