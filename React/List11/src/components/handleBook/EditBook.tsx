@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { Book } from '../../interfaces/Book';
 
+const shouldConvertToNumber = (name: string): boolean => {
+  return name === 'numberOfCopies' || name === 'price' || name === 'publicationYear';
+}
+
 interface EditBookProps {
   book: Book,
   handleUpdate: (book: Book) => void
@@ -15,7 +19,7 @@ const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
 
     setEditedBook(prevState => ({
       ...prevState,
-      [name]: name === 'numberOfCopies' || name === 'price' ? parseFloat(value) : value,
+      [name]: shouldConvertToNumber(name) ? parseFloat(value) : value,
     }));
   };
 
