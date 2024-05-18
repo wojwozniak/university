@@ -7,7 +7,7 @@ async function fetchBooks(searchTitle?: string, searchAuthor?: string) {
 
 function useBooks(searchTitle?: string, searchAuthor?: string) {
   return useQuery({
-    queryKey: ["posts", "list", { searchTitle, searchAuthor }],
+    queryKey: ["books", "list", { searchTitle, searchAuthor }],
     queryFn: () => fetchBooks(searchTitle, searchAuthor),
   });
 }

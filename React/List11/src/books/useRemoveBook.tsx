@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-async function removeBook(id: string) {
+async function removeBook(id: number) {
   const res = await fetch(`http://localhost:3000/books/${id}`, {
     method: "DELETE",
     headers: {
@@ -10,11 +10,11 @@ async function removeBook(id: string) {
   return await res.json();
 }
 
-function useRemoveBook(id: string) {
+function useRemoveBook() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => removeBook(id),
+    mutationFn: (id: number) => removeBook(id),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["books", "list"],
