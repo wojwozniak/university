@@ -1,5 +1,7 @@
+import useAddBooks from "./books/useAddBook";
 import useBooks from "./books/useBooks";
 import useRemoveBook from "./books/useRemoveBook";
+import useUpdateBook from "./books/useUpdateBook";
 import BookTable from "./components/BookTable"
 import DeleteBook from "./components/handleBook/DeleteBook";
 import EditBook from "./components/handleBook/EditBook";
@@ -15,14 +17,17 @@ function App() {
   const [book, setBook] = useState<Book>(getEmptyBook);
 
   const removeBookMutation = useRemoveBook();
+  const addBookMutation = useAddBooks();
+  const updateBookMutation = useUpdateBook();
 
   const getPopupContent = (book: Book): React.ReactNode => {
     switch (isOpen) {
       case 'DEL':
         return <DeleteBook book={book} handleDelete={handleDelete} />;
       case 'UPD':
-      case 'NEW':
         return <EditBook book={book} handleUpdate={handleUpdate} />;
+      case 'NEW':
+        return <EditBook book={book} handleUpdate={handleAdd} />;
       default:
         return null;
     }
@@ -45,8 +50,26 @@ function App() {
     });
   }
 
-  const handleUpdate = (book: Book) => {
+  const handleAdd = (newBook: Book) => {
+    addBookMutation.mutate(newBook, {
+      onSuccess: () => {
+        setOpen('');
+      },
+      onError: (error) => {
+        console.error('Error adding book:', error);
+      }
+    });
+  };
 
+  const handleUpdate = (updatedBook: Book) => {
+    updateBookMutation.mutate(updatedBook, {
+      onSuccess: () => {
+        setOpen('');
+      },
+      onError: (error) => {
+        console.error('Error updating book:', error);
+      }
+    });
   };
 
   return (
