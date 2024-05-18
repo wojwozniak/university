@@ -12,7 +12,7 @@ interface BookTableProps {
 }
 
 const BookTable: React.FC<BookTableProps> = ({ deleteBook, editBook }) => {
-  const query = useBooks();
+  const { data: books, error, isLoading } = useBooks();
 
   const columns: GridColDef[] = [
     {
@@ -81,22 +81,27 @@ const BookTable: React.FC<BookTableProps> = ({ deleteBook, editBook }) => {
   ];
 
   return (
-    query.isLoading
+    isLoading
       ? <Loading />
-      : <div className='p-4'>
-        <DataGrid
-          rows={query.data}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-          disableRowSelectionOnClick
-          slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
-        />
-      </div>
+      : (
+        error
+          ? <p>Error loading books</p>
+          : <div className='p-4'>
+            <DataGrid
+              rows={books}
+              columns={columns}
+              initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 5 },
+                },
+              }}
+              pageSizeOptions={[5, 10]}
+              disableRowSelectionOnClick
+              slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
+            />
+          </div>
+      )
+
   )
 }
 

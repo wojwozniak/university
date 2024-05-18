@@ -35,12 +35,6 @@ function App() {
 
   const handleDelete = (book: Book) => {
     const id = book.id;
-    //useRemoveBook(id);
-    setOpen('');
-  }
-
-  const handleUpdate = (book: Book) => {
-    const id = book.id;
     removeBookMutation.mutate(id, {
       onSuccess: () => {
         setOpen('');
@@ -49,6 +43,10 @@ function App() {
         console.error('Error removing book:', error);
       }
     });
+  }
+
+  const handleUpdate = (book: Book) => {
+
   };
 
   return (
