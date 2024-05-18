@@ -11,7 +11,7 @@ async function addBook(title: string) {
   return await res.json();
 }
 
-function useAddPosts() {
+function useAddBook() {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -24,4 +24,4 @@ function useAddPosts() {
   });
 }
 
-export default useAddPosts;
+export default useAddBook;
