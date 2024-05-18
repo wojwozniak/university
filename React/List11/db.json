@@ -4,7 +4,7 @@
       "id": 1,
       "title": "The Teutonic Knights",
       "author": "Henryk Sienkiewicz",
-      "year": "1900",
+      "year": 1900,
       "copies": 10,
       "price": 35.50,
       "genre": "Historical Fiction"
@@ -13,7 +13,7 @@
       "id": 2,
       "title": "With Fire and Sword",
       "author": "Henryk Sienkiewicz",
-      "year": "1884",
+      "year": 1884,
       "copies": 8,
       "price": 30.00,
       "genre": "Historical Fiction"
@@ -22,7 +22,7 @@
       "id": 3,
       "title": "Quo Vadis",
       "author": "Henryk Sienkiewicz",
-      "year": "1896",
+      "year": 1896,
       "copies": 7,
       "price": 32.00,
       "genre": "Historical Fiction"
@@ -31,7 +31,7 @@
       "id": 4,
       "title": "God's Playground: A History of Poland",
       "author": "Norman Davies",
-      "year": "1981",
+      "year": 1981,
       "copies": 6,
       "price": 40.00,
       "genre": "Historical Non-Fiction"
@@ -40,7 +40,7 @@
       "id": 5,
       "title": "Poland: A History",
       "author": "Adam Zamoyski",
-      "year": "2009",
+      "year": 2009,
       "copies": 5,
       "price": 25.00,
       "genre": "Historical Non-Fiction"
