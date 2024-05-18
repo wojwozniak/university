@@ -18,7 +18,9 @@ function useAddBook() {
   return useMutation({
     mutationFn: addBook,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["books", "list"] });
+      queryClient.invalidateQueries({
+        queryKey: ["books", "list"],
+      });
     },
   });
 }
