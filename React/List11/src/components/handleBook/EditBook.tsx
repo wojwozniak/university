@@ -6,6 +6,12 @@ const shouldConvertToNumber = (name: string): boolean => {
   return name === 'numberOfCopies' || name === 'price' || name === 'publicationYear';
 }
 
+const safeParseFloat = (input: string): number => {
+  const output = parseFloat(input);
+  if (isNaN(output)) return 0;
+  return output;
+}
+
 interface EditBookProps {
   book: Book,
   handleUpdate: (book: Book) => void
@@ -19,7 +25,7 @@ const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
 
     setEditedBook(prevState => ({
       ...prevState,
-      [name]: shouldConvertToNumber(name) ? parseFloat(value) : value,
+      [name]: shouldConvertToNumber(name) ? safeParseFloat(value) : value,
     }));
   };
 
