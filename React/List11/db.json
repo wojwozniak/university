@@ -48,6 +48,10 @@
   ],
   "genres": [
     {
+      "id": 0,
+      "name": "Other"
+    },
+    {
       "id": 1,
       "name": "Historical Fiction"
     },
