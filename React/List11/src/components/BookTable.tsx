@@ -1,5 +1,5 @@
 import { DataGrid } from '@mui/x-data-grid';
-import useBooks from '../books/useBooks';
+import useBooks from '../hooks/useBooks';
 import Loading from '../ui/Loading';
 import { formatCurrency } from '../functions/formatCurrency';
 import { GridColDef } from '@mui/x-data-grid';
