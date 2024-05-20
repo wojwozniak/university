@@ -1,10 +1,10 @@
 import { DataGrid } from '@mui/x-data-grid';
 import useBooks from '../hooks/useBooks';
-import Loading from '../ui/Loading';
 import { formatCurrency } from '../functions/formatCurrency';
 import { GridColDef } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import { Book } from '../interfaces/Book';
+import Loader from '../ui/Loader';
 
 interface BookTableProps {
   deleteBook: (book: Book) => void,
@@ -81,27 +81,22 @@ const BookTable: React.FC<BookTableProps> = ({ deleteBook, editBook }) => {
   ];
 
   return (
-    isLoading
-      ? <Loading />
-      : (
-        error
-          ? <p>Error loading books</p>
-          : <div className='p-4'>
-            <DataGrid
-              rows={books}
-              columns={columns}
-              initialState={{
-                pagination: {
-                  paginationModel: { page: 0, pageSize: 5 },
-                },
-              }}
-              pageSizeOptions={[5, 10]}
-              disableRowSelectionOnClick
-              slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
-            />
-          </div>
-      )
-
+    <Loader isLoading={isLoading} error={error}>
+      <div className='p-4'>
+        <DataGrid
+          rows={books}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
+          disableRowSelectionOnClick
+          slotProps={{ pagination: { labelRowsPerPage: 'Wybierz rozmiar strony' } }}
+        />
+      </div>
+    </Loader>
   )
 }
 
