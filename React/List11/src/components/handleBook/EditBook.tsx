@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, MenuItem } from '@mui/material';
 import { Book } from '../../interfaces/Book';
 import useGenres from '../../hooks/useGenres';
 import { safeParseFloat } from '../../functions/safeParseFloat';
+import Loader from '../../ui/Loader';
+import useBook from '../../hooks/useBook';
+import { Genre } from '../../interfaces/Genre';
 
 const shouldConvertToNumber = (name: string): boolean => {
   return name === 'numberOfCopies' || name === 'price' || name === 'publicationYear';
@@ -25,57 +28,69 @@ const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
     }));
   };
 
-  //const { data: genres, error, isLoading } = useGenres();
+  const { data: genres, error, isLoading } = useGenres();
+  const { data: bookDetailed, error: error2, isLoading: isLoading2 } = useBook(book.id);
+
+  const genreList: Genre[] = genres;
 
   return (
-    <div className="space-y-4">
-      <TextField
-        label="Title"
-        name="title"
-        value={editedBook.title}
-        onChange={handleInputChange}
-        fullWidth
-      />
+    <Loader isLoading={isLoading || isLoading2} error={[error, error2]}>
+      <div className="space-y-4">
+        <TextField
+          label="Title"
+          name="title"
+          value={editedBook.title}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-      <TextField
-        label="Author"
-        name="author"
-        value={editedBook.author}
-        onChange={handleInputChange}
-        fullWidth
-      />
-      <TextField
-        label="Publication Year"
-        name="publicationYear"
-        value={editedBook.publicationYear}
-        onChange={handleInputChange}
-        fullWidth
-      />
-      <TextField
-        label="Number of Copies"
-        name="numberOfCopies"
-        value={editedBook.numberOfCopies}
-        onChange={handleInputChange}
-        fullWidth
-      />
-      <TextField
-        label="Price"
-        name="price"
-        value={editedBook.price}
-        onChange={handleInputChange}
-        fullWidth
-      />
-      <TextField
-        label="Genre"
-        name="genre"
-        value={editedBook.genre}
-        onChange={handleInputChange}
-        fullWidth
-      />
-      <Button variant="contained" color="primary" onClick={() => handleUpdate(editedBook)}>
-        Save
-      </Button>
-    </div>
+        <TextField
+          label="Author"
+          name="author"
+          value={editedBook.author}
+          onChange={handleInputChange}
+          fullWidth
+        />
+        <TextField
+          label="Publication Year"
+          name="publicationYear"
+          value={editedBook.publicationYear}
+          onChange={handleInputChange}
+          fullWidth
+        />
+        <TextField
+          label="Number of Copies"
+          name="numberOfCopies"
+          value={editedBook.numberOfCopies}
+          onChange={handleInputChange}
+          fullWidth
+        />
+        <TextField
+          label="Price"
+          name="price"
+          value={editedBook.price}
+          onChange={handleInputChange}
+          fullWidth
+        />
+        <TextField
+          select
+          label="Genre"
+          name="genre"
+          value={editedBook.genre}
+          onChange={handleInputChange}
+          fullWidth
+        >
+          {genreList.map((option) => (
+            <MenuItem key={option.id} value={option.name}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </TextField>
+        <Button variant="contained" color="primary" onClick={() => handleUpdate(editedBook)}>
+          Save
+        </Button>
+      </div>
+    </Loader>
   );
 };
 
