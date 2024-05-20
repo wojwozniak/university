@@ -17,7 +17,11 @@ interface EditBookProps {
 }
 
 const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
-  const [editedBook, setEditedBook] = useState<Book>({ ...book });
+
+  const { data: genres, error, isLoading } = useGenres();
+  const { data: bookDetailed, error: error2, isLoading: isLoading2 } = useBook(book.id);
+
+  const [editedBook, setEditedBook] = useState<Book>({ ...bookDetailed });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -27,9 +31,6 @@ const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
       [name]: shouldConvertToNumber(name) ? safeParseFloat(value) : value,
     }));
   };
-
-  const { data: genres, error, isLoading } = useGenres();
-  const { data: bookDetailed, error: error2, isLoading: isLoading2 } = useBook(book.id);
 
   const genreList: Genre[] = genres;
 
@@ -61,7 +62,7 @@ const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
           onChange={handleInputChange}
           fullWidth
         >
-          {genreList.map((option) => (
+          {genreList && genreList.map((option) => (
             <MenuItem key={option.id} value={option.name}>
               {option.name}
             </MenuItem>
