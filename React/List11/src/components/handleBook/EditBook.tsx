@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { Book } from '../../interfaces/Book';
 import useGenres from '../../hooks/useGenres';
+import { safeParseFloat } from '../../functions/safeParseFloat';
 
 const shouldConvertToNumber = (name: string): boolean => {
   return name === 'numberOfCopies' || name === 'price' || name === 'publicationYear';
