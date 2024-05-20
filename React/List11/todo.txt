@@ -1,2 +1,0 @@
-- pobieranie pojedyńczej książki przy edycji
-- ogarnięcie błędów przy edycji książi
