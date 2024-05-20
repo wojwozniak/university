@@ -5,6 +5,7 @@ import { GridColDef } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import { Book } from '../interfaces/Book';
 import Loader from '../ui/Loader';
+import { formatYear } from '../functions/formatYear';
 
 interface BookTableProps {
   deleteBook: (book: Book) => void,
@@ -35,6 +36,7 @@ const BookTable: React.FC<BookTableProps> = ({ deleteBook, editBook }) => {
       headerName: 'Rok wydania',
       type: 'number',
       width: 130,
+      valueFormatter: formatYear
     },
     {
       field: 'numberOfCopies',
