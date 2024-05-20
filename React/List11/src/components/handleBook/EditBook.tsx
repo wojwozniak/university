@@ -9,6 +9,8 @@ import { Genre } from '../../interfaces/Genre';
 import useUpdateBook from '../../hooks/useUpdateBook';
 import useAddBook from '../../hooks/useAddBook';
 
+const defaultGenre: Genre = { id: 0, name: "Other" };
+
 const shouldConvertToNumber = (name: string): boolean => {
   return name === 'numberOfCopies' || name === 'price' || name === 'publicationYear';
 }
@@ -24,7 +26,7 @@ const EditBook: React.FC<EditBookProps> = ({ book, setOpen }) => {
   const addBookMutation = useAddBook();
   const updateBookMutation = useUpdateBook();
 
-  const [editedBook, setEditedBook] = useState<Book>({ ...bookDetailed });
+  const [editedBook, setEditedBook] = useState<Book>({ ...book });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -57,33 +59,51 @@ const EditBook: React.FC<EditBookProps> = ({ book, setOpen }) => {
     }
   };
 
-  const renderTextField = (label: string, name: string, type: 'text' | 'number' = 'text') => (
-    <TextField
-      key={name}
-      label={label}
-      name={name}
-      type={type}
-      value={editedBook[name as keyof Book]}
-      onChange={handleInputChange}
-      fullWidth
-      disabled={bookLoading}
-    />
-  );
-
   return (
     <Loader isLoading={genreLoading || bookLoading} error={[genreError, bookError]}>
-      {bookDetailed && (
+      {bookDetailed && editedBook && (
         <div className="space-y-4">
-          {renderTextField('Title', 'title')}
-          {renderTextField('Author', 'author')}
-          {renderTextField('Publication Year', 'publicationYear', 'number')}
-          {renderTextField('Number of Copies', 'numberOfCopies', 'number')}
-          {renderTextField('Price', 'price', 'number')}
+          <TextField
+            label="Title"
+            name="title"
+            value={editedBook.title}
+            onChange={handleInputChange}
+            fullWidth
+          />
+
+          <TextField
+            label="Author"
+            name="author"
+            value={editedBook.author}
+            onChange={handleInputChange}
+            fullWidth
+          />
+          <TextField
+            label="Publication Year"
+            name="publicationYear"
+            value={editedBook.publicationYear}
+            onChange={handleInputChange}
+            fullWidth
+          />
+          <TextField
+            label="Number of Copies"
+            name="numberOfCopies"
+            value={editedBook.numberOfCopies}
+            onChange={handleInputChange}
+            fullWidth
+          />
+          <TextField
+            label="Price"
+            name="price"
+            value={editedBook.price}
+            onChange={handleInputChange}
+            fullWidth
+          />
           <TextField
             select
             label="Genre"
             name="genre"
-            value={editedBook.genre}
+            value={editedBook.genre ? editedBook.genre : defaultGenre.name}
             onChange={handleInputChange}
             fullWidth
             disabled={genreLoading}
