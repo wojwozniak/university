@@ -19,18 +19,15 @@ interface EditBookProps {
 }
 
 const EditBook: React.FC<EditBookProps> = ({ book, setOpen }) => {
-
-  const { data: genres, error, isLoading } = useGenres();
-  const { data: bookDetailed, error: error2, isLoading: isLoading2 } = useBook(book.id);
+  const { data: genres, error: genreError, isLoading: genreLoading } = useGenres();
+  const { data: bookDetailed, error: bookError, isLoading: bookLoading } = useBook(book.id);
   const addBookMutation = useAddBook();
   const updateBookMutation = useUpdateBook();
 
   const [editedBook, setEditedBook] = useState<Book>({ ...bookDetailed });
-  const genreList: Genre[] = genres;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-
     setEditedBook(prevState => ({
       ...prevState,
       [name]: shouldConvertToNumber(name) ? safeParseFloat(value) : value,
@@ -39,34 +36,26 @@ const EditBook: React.FC<EditBookProps> = ({ book, setOpen }) => {
 
   const handleAdd = (newBook: Book) => {
     addBookMutation.mutate(newBook, {
-      onSuccess: () => {
-        setOpen('');
-      },
-      onError: (error) => {
-        console.error('Error adding book:', error);
-      }
+      onSuccess: () => setOpen(''),
+      onError: (error) => console.error('Error adding book:', error),
     });
   };
 
   const handleUpdate = (updatedBook: Book) => {
     updateBookMutation.mutate(updatedBook, {
-      onSuccess: () => {
-        setOpen('');
-      },
-      onError: (error) => {
-        console.error('Error updating book:', error);
-      }
+      onSuccess: () => setOpen(''),
+      onError: (error) => console.error('Error updating book:', error),
     });
   };
 
-  const handleSubmitClick = (updatedBook: Book) => {
+  const handleSubmitClick = () => {
     if (editedBook.id === 0) {
       editedBook.id = Date.now();
-      handleAdd(updatedBook);
+      handleAdd(editedBook);
     } else {
-      handleUpdate(updatedBook);
+      handleUpdate(editedBook);
     }
-  }
+  };
 
   const renderTextField = (label: string, name: string, type: 'text' | 'number' = 'text') => (
     <TextField
@@ -77,12 +66,13 @@ const EditBook: React.FC<EditBookProps> = ({ book, setOpen }) => {
       value={editedBook[name as keyof Book]}
       onChange={handleInputChange}
       fullWidth
+      disabled={bookLoading}
     />
   );
 
   return (
-    <Loader isLoading={isLoading || isLoading2} error={[error, error2]}>
-      {bookDetailed &&
+    <Loader isLoading={genreLoading || bookLoading} error={[genreError, bookError]}>
+      {bookDetailed && (
         <div className="space-y-4">
           {renderTextField('Title', 'title')}
           {renderTextField('Author', 'author')}
@@ -96,19 +86,24 @@ const EditBook: React.FC<EditBookProps> = ({ book, setOpen }) => {
             value={editedBook.genre}
             onChange={handleInputChange}
             fullWidth
+            disabled={genreLoading}
           >
-            {genreList && genreList.map((option) => (
+            {genres && genres.map((option: Genre) => (
               <MenuItem key={option.id} value={option.name}>
                 {option.name}
               </MenuItem>
             ))}
           </TextField>
-          <Button variant="contained" color="primary" onClick={() => handleSubmitClick(editedBook)}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSubmitClick}
+            disabled={bookLoading || genreLoading}
+          >
             Save
           </Button>
         </div>
-      }
-
+      )}
     </Loader>
   );
 };
