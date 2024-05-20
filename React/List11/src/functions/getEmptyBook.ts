@@ -2,7 +2,7 @@ import { Book } from "../interfaces/Book";
 
 export const getEmptyBook = (): Book => {
   const emptyBook: Book = {
-    id: Date.now(),
+    id: 0,
     title: '',
     author: '',
     genre: '',
