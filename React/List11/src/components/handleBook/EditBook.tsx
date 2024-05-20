@@ -33,45 +33,26 @@ const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
 
   const genreList: Genre[] = genres;
 
+  const renderTextField = (label: string, name: string, type: 'text' | 'number' = 'text') => (
+    <TextField
+      key={name}
+      label={label}
+      name={name}
+      type={type}
+      value={editedBook[name as keyof Book]}
+      onChange={handleInputChange}
+      fullWidth
+    />
+  );
+
   return (
     <Loader isLoading={isLoading || isLoading2} error={[error, error2]}>
       <div className="space-y-4">
-        <TextField
-          label="Title"
-          name="title"
-          value={editedBook.title}
-          onChange={handleInputChange}
-          fullWidth
-        />
-
-        <TextField
-          label="Author"
-          name="author"
-          value={editedBook.author}
-          onChange={handleInputChange}
-          fullWidth
-        />
-        <TextField
-          label="Publication Year"
-          name="publicationYear"
-          value={editedBook.publicationYear}
-          onChange={handleInputChange}
-          fullWidth
-        />
-        <TextField
-          label="Number of Copies"
-          name="numberOfCopies"
-          value={editedBook.numberOfCopies}
-          onChange={handleInputChange}
-          fullWidth
-        />
-        <TextField
-          label="Price"
-          name="price"
-          value={editedBook.price}
-          onChange={handleInputChange}
-          fullWidth
-        />
+        {renderTextField('Title', 'title')}
+        {renderTextField('Author', 'author')}
+        {renderTextField('Publication Year', 'publicationYear', 'number')}
+        {renderTextField('Number of Copies', 'numberOfCopies', 'number')}
+        {renderTextField('Price', 'price', 'number')}
         <TextField
           select
           label="Genre"
