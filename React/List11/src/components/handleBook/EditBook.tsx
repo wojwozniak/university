@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { Book } from '../../interfaces/Book';
+import useGenres from '../../hooks/useGenres';
 
 const shouldConvertToNumber = (name: string): boolean => {
   return name === 'numberOfCopies' || name === 'price' || name === 'publicationYear';
-}
-
-const safeParseFloat = (input: string): number => {
-  const output = parseFloat(input);
-  if (isNaN(output)) return 0;
-  return output;
 }
 
 interface EditBookProps {
@@ -28,6 +23,8 @@ const EditBook: React.FC<EditBookProps> = ({ book, handleUpdate }) => {
       [name]: shouldConvertToNumber(name) ? safeParseFloat(value) : value,
     }));
   };
+
+  //const { data: genres, error, isLoading } = useGenres();
 
   return (
     <div className="space-y-4">
