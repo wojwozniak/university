@@ -1,0 +1,13 @@
+1/
+Albo wersjonowanie (i nawet trigger z archiwum)
+albo tabelka ze wszystkimi elementami jesli kazaliby nam pisac wersjonawanie XDD
+
+2/ repeatable read
+
+3/ serializable albo trigger
+
+4/ j.w.
+
+5/ lekko naciagane ale j.w.
+
+6/ wsm to wszystko moze byc XD
