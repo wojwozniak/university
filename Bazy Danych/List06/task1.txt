@@ -1,0 +1,2 @@
+Albo wersjonowanie (i nawet trigger z archiwum)
+albo tabelka ze wszystkimi elementami jesli kazaliby nam pisac wersjonawanie XDD
