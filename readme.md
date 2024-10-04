@@ -31,3 +31,11 @@ This repository contains my solutions to the tasks from the courses I took at th
 - [x] Projektowanie Obiektowe Oprogramowania
 - [x] Bazy Danych
 - [x] Kurs React
+
+### Semester V:
+- [] Kurs Rust
+- [] Kurs ASP.NET
+- [] Kurs aplikacji z bazami
+- [] Seminarium: Współczesne narzędzia do wytwarzania aplikacji webowych
+- [] Inżynieria oprogramowania
+- [] Machine Learning
