@@ -15,7 +15,7 @@ fn string_to_number(s: &str) -> i64 {
     Rozwiązanie minimalne - nie trzeba podawać typu dla parse
     bo Rust to ogarnie z typu funkcji
     Nie trzeba też dawać or -> ale wtedy jak się popsuje to funkcja spanikuje
-    ew. można matchować Ok / Err jak w podręczniku
+    ew. można matchować Ok / Err jak w podręczniku albo .expect
 */
 fn string_to_number_minimal(s: &str) -> i64 {
     s.parse().unwrap()
