@@ -1,0 +1,5 @@
+- create dir
+- add page via connections tab in `inetmgr`
+- hosts (run as administrator): `C:\Windows\System32\Drivers\etc\hosts`
+- add there: `127.0.0.1   ap1.myserver.com`
+- add `index.html` to dir
