@@ -5,5 +5,5 @@
 - task 5: 1/1
 - task 6: 1/1
 - task 7: 1/1
-- task 8: y/2
-Sum: 7 + x + y / 10
+- task 8: x/2
+Sum: 8 + x / 10
