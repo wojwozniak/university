@@ -1,0 +1,3 @@
+add page same as in task2
+- different language versions
+- using one server for different business segments
