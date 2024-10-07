@@ -3,7 +3,7 @@
 - task 3: 1/1
 - task 4: 1/1
 - task 5: 1/1
-- task 6: x/1
+- task 6: 1/1
 - task 7: 1/1
 - task 8: y/2
 Sum: 7 + x + y / 10
