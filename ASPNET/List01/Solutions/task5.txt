@@ -1,0 +1,8 @@
+- IIS Express jest zoptymalizowany pod development -> szybko się włączy, nie obsłuży wszysktich protokołów/certyfikatów ani tony żądań. Działa na koncie użytkownika i jest ograniczony
+
+- publish do folderu
+- inetmgr z tego folderu
+
+
+- file system
+- najczesciej przez ftp
