@@ -1,0 +1,5 @@
+# PRACOWNIA ASP
+127.0.0.1   ap1.myserver.com
+127.0.0.1   ap2.myserver.com
+127.0.0.1   ap3.myserver.com
+127.0.0.1   ap4.myserver.com
