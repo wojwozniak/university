@@ -38,3 +38,7 @@ SELECT @@IDENTITY AS 'Last Identity Value generated in this session for any tabl
 
 -- IDENT_CURRENT will still return 1020
 SELECT IDENT_CURRENT('Test') AS 'Last Identity Value for Test table across all sessions';
+
+-- Cleanup
+DROP TABLE IF EXISTS Test;
+DROP TABLE IF EXISTS Test2;
