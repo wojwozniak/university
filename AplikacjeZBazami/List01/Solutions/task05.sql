@@ -32,7 +32,7 @@ SELECT
 			SELECT TOP 1 SOD.SalesOrderID
 			FROM SalesLT.SalesOrderDetail SOD
 			GROUP BY SOD.SalesOrderID
-			ORDER BY SUM(SOD.UnitPrice * SOD.OrderQty * SOD.UnitPriceDiscount) DESC;
+			ORDER BY SUM(SOD.UnitPrice * SOD.OrderQty * SOD.UnitPriceDiscount) DESC
 		)
 		ORDER BY SOH.SalesOrderID;
 
