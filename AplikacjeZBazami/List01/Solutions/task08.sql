@@ -11,7 +11,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Check constraint [ShipDate] >= [OrderDate] OR [ShipDate] IS NULL' , @level0type=N'SCHEMA',@level0name=N'SalesLT', @level1type=N'TABLE',@level1name=N'SalesOrderHeader', @level2type=N'CONSTRAINT',@level2name=N'CK_SalesOrderHeader_ShipDate'
 GO
 
--- Constraint: We can't have a row with ShipDate before OrderDate
+
+-- Constraint explained: We can't have a row with ShipDate before OrderDate
 
 -- Try inserting illegal row:
 INSERT INTO [SalesLT].[SalesOrderHeader] 
