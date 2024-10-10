@@ -1,0 +1,2 @@
+- zrobione na list01task05
+- dajemy dostęp do wszystkiego więc wielkie ryzyko przy ataku hakerskim
