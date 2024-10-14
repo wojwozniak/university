@@ -1,0 +1,13 @@
+- Run Burp -> Proxy -> Set intercept to on. Now every request will be catched and will be editable
+- Sending requests from fiddler: Proxy -> HTTP History -> Send to Repeater
+
+Differianciate in Burp:
+- GET sends params in URL
+- POST sends params in request Body
+
+Differianciate in code:
+Request.HttpMethod == "GET"
+
+Params:
+- GET:  string param = Request.QueryString["inputText"];
+- POST: string param = Request.Form["inputText"];
