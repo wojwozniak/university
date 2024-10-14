@@ -1,0 +1,16 @@
+a) Hyperlink
+- sends simple GET request, no server code
+
+b) POST from page X redirecting to Y
+- can send hidden data (and a lot of it)
+- you cannot buffer it
+- no auto-refresh
+
+c) Response.Redirect
+- server sends code HTTP 302 (Redirect)
+- then client sends new request
+
+d) Server.Transfer
+- server transfers request internally
+- no new requests
+- no information for client
