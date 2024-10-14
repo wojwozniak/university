@@ -1,0 +1,11 @@
+- Create EchoHandler, add it to Web.config
+- Create TestForm.html
+
+Test GET by going to
+https://localhost:44313/echo
+
+
+Test POST by going to
+https://localhost:44313/TestForm.html
+
+add sth to input and click button to display request body
