@@ -15,3 +15,7 @@ UPDATE SalesLT.Customer
 		FROM SalesLT.SalesOrderHeader SOH
 		WHERE SOH.CreditCardApprovalCode IS NOT NULL
 	);
+
+SELECT DISTINCT *
+		FROM SalesLT.SalesOrderHeader SOH
+		WHERE SOH.CreditCardApprovalCode IS NOT NULL;
