@@ -12,6 +12,10 @@ SELECT P.Name, PC.Name 'CategoryName'
 
 -- we can check it by running this:
 SELECT *
+	FROM SalesLT.ProductCategory PC;
+
+-- and
+SELECT *
 	FROM SalesLT.ProductCategory PC
 	WHERE PC.ProductCategoryID IN 
 		( SELECT DISTINCT PC.ParentProductCategoryID FROM SalesLT.ProductCategory PC );
