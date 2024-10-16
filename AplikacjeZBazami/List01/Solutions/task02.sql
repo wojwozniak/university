@@ -6,3 +6,13 @@ SELECT PM.Name, COUNT(PM.ProductModelID) 'Count'
 	ORDER BY 'Count' DESC;
 	-- -> counting by id and not names to avoid potential problems
 	-- -> like risk of grouping different products with same name
+
+
+
+SELECT MAX(PM.Name), COUNT(PM.ProductModelID) 'Count'
+	FROM SalesLT.ProductModel PM
+	JOIN SalesLT.Product P ON P.ProductModelID = PM.ProductModelID
+	GROUP BY PM.ProductModelID
+	HAVING COUNT('Count') > 1
+	ORDER BY 'Count' DESC;
+-- -> alternative way with grouping by ids
