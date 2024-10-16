@@ -4,5 +4,5 @@ SELECT PM.Name, COUNT(PM.ProductModelID) 'Count'
 	GROUP BY PM.Name
 	HAVING COUNT('Count') > 1
 	ORDER BY 'Count' DESC;
-	-- -> grouping by id and not names to avoid potential problems
+	-- -> counting by id and not names to avoid potential problems
 	-- -> like risk of grouping different products with same name
