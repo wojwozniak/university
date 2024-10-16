@@ -9,7 +9,7 @@ SELECT PM.Name, COUNT(PM.ProductModelID) 'Count'
 
 
 
-SELECT MAX(PM.Name), COUNT(PM.ProductModelID) 'Count'
+SELECT MAX(PM.Name) 'Name', COUNT(PM.ProductModelID) 'Count'
 	FROM SalesLT.ProductModel PM
 	JOIN SalesLT.Product P ON P.ProductModelID = PM.ProductModelID
 	GROUP BY PM.ProductModelID
