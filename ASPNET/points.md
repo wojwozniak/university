@@ -1,5 +1,6 @@
 # Lists:
-- List01: (x/10)
-- List02: (y/6)
+- List01: (10/10)
+- List02: (6/6)
+- List03: x
 
-Sum: (x+y / 16)
+Sum: (16 / 16)
