@@ -1,7 +1,5 @@
 CREATE OR ALTER FUNCTION late_books (@days_overdue INT)
-	RETURNS TABLE
-	AS
-	RETURN
+	RETURNS TABLE AS RETURN
 (
     SELECT C.PESEL, COUNT(DISTINCT W.Wypozyczenie_ID) 'Late Books'
 		FROM Wypozyczenie W
