@@ -9,7 +9,8 @@
 // - Fill outermost - 1 from each side
 // -> repeat until we fill center black
 
-fn zoom(n: usize) -> String {
+fn zoom(n_int: i32) -> String {
+    let n = n_int as usize;
     // Initialize n x n matrix of empty chars
     let mut matrix = vec![vec![' '; n]; n];
 
