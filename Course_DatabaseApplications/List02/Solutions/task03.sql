@@ -2,8 +2,8 @@ CREATE OR ALTER PROCEDURE AddReader
     @PESEL CHAR(11),
     @Nazwisko NVARCHAR(30),
     @Miasto NVARCHAR(30),
-    @Data_Urodzenia DATE
-AS
+    @Data_Urodzenia NVARCHAR(30)
+	AS
 BEGIN
     -- Validating PESEL - 11 digits
     IF @PESEL NOT LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
