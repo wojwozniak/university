@@ -13,12 +13,6 @@ AS
 BEGIN
     BEGIN TRANSACTION; -- do it as a transaction - all products will be updated at once and if something goes wrong none will
 		
-		-- set discontinued date for nulls
-		UPDATE SalesLT.Product
-			SET DiscontinuedDate = @DiscontinuedDate
-				WHERE ProductID IN (SELECT ProductID FROM @ProductIDs)
-								AND DiscontinuedDate IS NULL;
-
 		-- traverse product ids row by row using cursor and print message for ones that are not null
 		DECLARE @ProductID INT;
 
@@ -40,17 +34,25 @@ BEGIN
 		CLOSE ProductCursor;
 		DEALLOCATE ProductCursor;
 
+		-- set discontinued date for nulls
+		UPDATE SalesLT.Product
+			SET DiscontinuedDate = @DiscontinuedDate
+				WHERE ProductID IN (SELECT ProductID FROM @ProductIDs)
+								AND DiscontinuedDate IS NULL;
+
     COMMIT TRANSACTION;
 END;
 GO
 
+-- table
+SELECT * FROM SalesLT.Product;
 
 -- example use
 USE AdventureWorksLT2022;
 
 DECLARE @ProductIDs dbo.ProductIDTable;
 
-INSERT INTO @ProductIDs (ProductID) VALUES (680), (707), (709), (712);
+INSERT INTO @ProductIDs (ProductID) VALUES (680), (708), (710), (712);
 
 EXEC SetDiscontinuedDateForProducts 
     @ProductIDs = @ProductIDs, 
