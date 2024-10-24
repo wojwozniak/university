@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    function submitPost() {
+      document.getElementById('postForm').submit();
+    }
+
+    function submitGet() {
+      var p1 = document.getElementById('p1').value;
+      var p2 = document.getElementById('p2').value;
+      window.location.href = `task1.html?p1=${p1}&p2=${p2}`;
+    }
+  </script>
+</head>
+
+<body>
+  <a href="#" onclick="submitPost(); return false;">Żądanie POST</a>
+
+  <form id="postForm" method="post" action="task1.html">
+    <input type="hidden" name="p1" value="v1">
+    <input type="hidden" name="p2" value="v2">
+  </form>
+
+  <form onsubmit="submitGet(); return false;">
+    <input type="text" id="p1" name="p1" placeholder="Parametr 1">
+    <input type="text" id="p2" name="p2" placeholder="Parametr 2">
+    <input type="submit" value="Żądanie GET">
+  </form>
+</body>
+
+</html>
