@@ -606,3 +606,4 @@ Cargo.lock
 Course_Rust/*/target
 Course_Rust/*/*/target
 Course_Rust/*/*/*/target
+Course_Rust/*/*/output.ppm
