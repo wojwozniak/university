@@ -19,7 +19,7 @@ HttpContext.Items["requestKey"] = "RequestSpecificValue";
 
 ```
 ## 3. Technika pseudosingletów
-W technice pseudosingletów obiekt, którego czas życia kontrolowany jest przez kontener serwerowy (np. `Application`), może być traktowany jak singleton przez udostępnienie go za pomocą właściwości statycznej lub metody. Zapewnia to dostęp do danych globalnych bez potrzeby tworzenia klasy singletonu.
+W technice pseudosingletów obiekt, którego czas życia kontrolowany jest przez kontener serwerowy (np. `Application`), może być traktowany jak singleton - przykład w kolejnym zadaniu
 
 ## 4. Konieczność ochrony dostępu z wieloma wątkami
 `Application` wymaga dodatkowej ochrony - dajemy lock na get
