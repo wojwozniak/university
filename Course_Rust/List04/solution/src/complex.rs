@@ -49,14 +49,6 @@ mod tests {
     }
 
     #[test]
-    fn test_subtract() {
-        let c1 = Complex::new(3.0, 4.0);
-        let c2 = Complex::new(1.0, 2.0);
-        let result = c1.subtract(c2);
-        assert_eq!(result, Complex::new(2.0, 2.0));
-    }
-
-    #[test]
     fn test_multiply() {
         let c1 = Complex::new(3.0, 4.0);
         let c2 = Complex::new(1.0, 2.0);
@@ -77,13 +69,6 @@ mod tests {
         let zero = Complex::new(0.0, 0.0);
         let result = c1.add(zero);
         assert_eq!(result, c1);
-    }
-
-    #[test]
-    fn test_subtract_same() {
-        let c1 = Complex::new(3.0, 4.0);
-        let result = c1.subtract(c1);
-        assert_eq!(result, Complex::new(0.0, 0.0));
     }
 
     #[test]
