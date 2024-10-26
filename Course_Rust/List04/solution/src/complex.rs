@@ -24,13 +24,6 @@ impl Complex {
         }
     }
 
-    pub fn subtract(self, other: Complex) -> Complex {
-        Complex {
-            real: self.real - other.real,
-            imag: self.imag - other.imag,
-        }
-    }
-
     pub fn multiply(self, other: Complex) -> Complex {
         Complex {
             real: self.real * other.real - self.imag * other.imag,
