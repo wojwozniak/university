@@ -1,3 +1,4 @@
+use std::fs;
 use std::fs::File;
 use std::io;
 use std::io::Write;
@@ -36,6 +37,9 @@ impl Image {
 
     // Function saving to ppm
     pub fn save_to_ppm(&self, filename: &str) -> io::Result<()> {
+        // Create images directory
+        fs::create_dir_all("images").expect("Failed to create images directory");
+
         // # File looks like this #
         // P3
         // width height
@@ -47,7 +51,8 @@ impl Image {
         // In this file we will have a lot of "?" -> it's to avoid unnecessary error
         // handling boilerplate. If an error happens it will be propagated to main
 
-        let mut file = File::create(filename)?;
+        let full_filename = format!("images/{}", filename);
+        let mut file = File::create(full_filename)?;
         writeln!(file, "P3")?;
         writeln!(file, "{} {}", self.width, self.height)?;
         writeln!(file, "255")?;
@@ -77,8 +82,9 @@ mod tests {
         let mut img = Image::new(100, 100);
         img.set_pixel(50, 50, 255, 0, 0);
 
-        let filename = "test_output.ppm";
-        img.save_to_ppm(filename).expect("Failed to save image");
+        let filename = "images/test_output.ppm";
+        img.save_to_ppm("test_output.ppm")
+            .expect("Failed to save image");
 
         assert!(fs::metadata(filename).is_ok());
         fs::remove_file(filename).expect("Failed to delete test image file");
