@@ -1,16 +1,10 @@
+mod color;
 mod complex;
 mod image;
 
-fn get_color(iteration: u32, max_iterations: u32) -> (u8, u8, u8) {
-    if iteration == max_iterations {
-        (0, 0, 0)
-    } else {
-        let color_val = (255 * iteration / max_iterations) as u8;
-        (color_val, color_val, color_val)
-    }
-}
+use color::{get_color, get_hsv_color};
 
-fn generate_mandelbrot(width: u32, height: u32, filename: &str) {
+fn generate_mandelbrot(width: u32, height: u32, filename: &str, use_coloring: bool) {
     let mut img = image::Image::new(width, height);
 
     let (xmin, xmax, ymin, ymax) = (-2.00, 0.47, -1.12, 1.12);
@@ -31,7 +25,11 @@ fn generate_mandelbrot(width: u32, height: u32, filename: &str) {
                 iteration += 1;
             }
 
-            let color = get_color(iteration, max_iterations);
+            let color = if use_coloring {
+                get_hsv_color(iteration, max_iterations)
+            } else {
+                get_color(iteration, max_iterations)
+            };
             img.set_pixel(x, y, color.0, color.1, color.2);
         }
     }
@@ -41,5 +39,5 @@ fn generate_mandelbrot(width: u32, height: u32, filename: &str) {
 }
 
 fn main() {
-    generate_mandelbrot(800, 800, "mandelbrot.ppm");
+    generate_mandelbrot(800, 800, "mandelbrot.ppm", true);
 }
