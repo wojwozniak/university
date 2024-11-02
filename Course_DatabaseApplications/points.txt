@@ -1,5 +1,6 @@
 List01: 10 / 10
 List02: 10 / 10
 List03: x / 10
+List04: y / 10
 
-Sum: 20 + x / 30
+Sum: 20 + x + y / 40
