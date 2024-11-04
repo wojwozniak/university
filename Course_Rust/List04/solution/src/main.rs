@@ -3,6 +3,7 @@ mod complex;
 mod image;
 
 use color::{get_color, get_hsv_color};
+use std::env;
 
 fn generate_mandelbrot(
     width: u32,
@@ -46,9 +47,21 @@ fn generate_mandelbrot(
 }
 
 fn main() {
-    generate_mandelbrot(800, 800, "mandelbrot.ppm", true, -2.0, 0.47, -1.12, 1.12);
-}
+    let args: Vec<String> = env::args().collect();
 
+    let width = args.get(1).and_then(|s| s.parse().ok()).unwrap_or(800);
+    let height = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(800);
+    let filename = args.get(3).map(|s| s.as_str()).unwrap_or("mandelbrot.ppm");
+    let is_colored = args.get(4).and_then(|s| s.parse().ok()).unwrap_or(true);
+    let x_min = args.get(5).and_then(|s| s.parse().ok()).unwrap_or(-2.0);
+    let x_max = args.get(6).and_then(|s| s.parse().ok()).unwrap_or(0.47);
+    let y_min = args.get(7).and_then(|s| s.parse().ok()).unwrap_or(-1.12);
+    let y_max = args.get(8).and_then(|s| s.parse().ok()).unwrap_or(1.12);
+
+    generate_mandelbrot(
+        width, height, filename, is_colored, x_min, x_max, y_min, y_max,
+    );
+}
 #[cfg(test)]
 mod tests {
     use super::*;
