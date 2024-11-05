@@ -1,0 +1,51 @@
+﻿@model list05task01.Models.TaskSubmissionModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Submission Form</title>
+</head>
+<body>
+    <form asp-action="Start" method="post">
+        <div>
+            <h2>Task Submission Form</h2>
+
+            <label for="name">Name:</label>
+            <input asp-for="Name" /><br />
+            <span asp-validation-for="Name"></span><br />
+
+            <label for="date">Date:</label>
+            <input asp-for="Date" type="date" /><br />
+            <span asp-validation-for="Date"></span><br />
+
+            <label for="subject">Subject Name:</label>
+            <input asp-for="Subject" /><br />
+            <span asp-validation-for="Subject"></span><br />
+
+            <label for="setNumber">Set Number:</label>
+            <input asp-for="SetNumber" /><br />
+            <span asp-validation-for="SetNumber"></span><br />
+
+            <h3>Tasks:</h3>
+            <table>
+                @for (int i = 0; i < Model.TaskScores.Count; i++)
+                {
+                    <tr>
+                        <td>Task @(i + 1):</td>
+                        <td>
+                            <input type="number" asp-for="TaskScores[i]" min="0" max="100" style="width: 50px;" />
+                        </td>
+                        <td>Points</td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate.unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

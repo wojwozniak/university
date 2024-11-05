@@ -1,0 +1,41 @@
+﻿@model list05task01.Models.TaskSubmissionModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Task Submission</title>
+</head>
+<body>
+    <h2>Task Submission - Printable</h2>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Set Number</th>
+        </tr>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Date</td>
+            <td>@Model.Subject</td>
+            <td>@Model.SetNumber</td>
+        </tr>
+    </table>
+
+    <h3>Tasks</h3>
+    <table border="1">
+        <tr>
+            <th>Task</th>
+            <th>Points</th>
+        </tr>
+        @for (int i = 0; i < Model.TaskScores.Count; i++)
+        {
+            <tr>
+                <td>Task @(i + 1)</td>
+                <td>@Model.TaskScores[i]</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
