@@ -1,0 +1,24 @@
+﻿@model Student
+
+<h1>Add Student</h1>
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="Index"></label>
+        <input asp-for="Index" />
+    </div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Surname"></label>
+        <input asp-for="Surname" />
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+    </div>
+    <input type="submit" value="Add" />
+</form>
+<a asp-action="Index">Back</a>
