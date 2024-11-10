@@ -1,3 +1,8 @@
+/*
+    Main function doing the task. All the hard work is being done in gen_data.
+    Here we use generated command_string, sizes and offsets to fill in grid
+    and then convert it into single string
+*/
 fn execute(s: &str) -> String {
     // I keep part of code in separate function for simplicity and ease of testing
     let (command_string, width, height, offset_x, offset_y) = gen_data(s);
