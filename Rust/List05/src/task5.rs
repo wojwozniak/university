@@ -131,17 +131,48 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_gen_data_1() {
+        let (command_string, width, height, offset_x, offset_y) = gen_data("");
+        assert_eq!(command_string, "");
+        assert_eq!(width, 1);
+        assert_eq!(height, 1);
+        assert_eq!(offset_x, 0);
+        assert_eq!(offset_y, 0);
+    }
+
+    #[test]
+    fn test_execute_1() {
         assert_eq!(execute(""), "*");
     }
 
     #[test]
-    fn test_2() {
+    fn test_gen_data_2() {
+        let (command_string, width, height, offset_x, offset_y) = gen_data("FFFFF");
+        assert_eq!(command_string, "FFFFF");
+        assert_eq!(width, 6);
+        assert_eq!(height, 1);
+        assert_eq!(offset_x, 0);
+        assert_eq!(offset_y, 0);
+    }
+
+    #[test]
+    fn test_execute_2() {
         assert_eq!(execute("FFFFF"), "******");
     }
 
     #[test]
-    fn test_3() {
+    fn test_gen_data_3() {
+        let (command_string, width, height, offset_x, offset_y) =
+            gen_data("FFFFFLFFFFFLFFFFFLFFFFFL");
+        assert_eq!(command_string, "FFFFFLFFFFFLFFFFFLFFFFFL");
+        assert_eq!(width, 6);
+        assert_eq!(height, 6);
+        assert_eq!(offset_x, 0);
+        assert_eq!(offset_y, 5);
+    }
+
+    #[test]
+    fn test_execute_3() {
         assert_eq!(
             execute("FFFFFLFFFFFLFFFFFLFFFFFL"),
             "******\r\n*    *\r\n*    *\r\n*    *\r\n*    *\r\n******"
@@ -149,7 +180,18 @@ mod tests {
     }
 
     #[test]
-    fn test_4() {
+    fn test_gen_data_4() {
+        let (command_string, width, height, offset_x, offset_y) =
+            gen_data("LFFFFFRFFFRFFFRFFFFFFF");
+        assert_eq!(command_string, "LFFFFFRFFFRFFFRFFFFFFF");
+        assert_eq!(width, 8);
+        assert_eq!(height, 6);
+        assert_eq!(offset_x, 4);
+        assert_eq!(offset_y, 5);
+    }
+
+    #[test]
+    fn test_execute_4() {
         assert_eq!(
             execute("LFFFFFRFFFRFFFRFFFFFFF"),
             "    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   "
@@ -157,7 +199,17 @@ mod tests {
     }
 
     #[test]
-    fn test_5() {
+    fn test_gen_data_5() {
+        let (command_string, width, height, offset_x, offset_y) = gen_data("LF5RF3RF3RF7");
+        assert_eq!(command_string, "LFFFFFRFFFRFFFRFFFFFFF");
+        assert_eq!(width, 8);
+        assert_eq!(height, 6);
+        assert_eq!(offset_x, 4);
+        assert_eq!(offset_y, 5);
+    }
+
+    #[test]
+    fn test_execute_5() {
         assert_eq!(
             execute("LF5RF3RF3RF7"),
             "    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   "
