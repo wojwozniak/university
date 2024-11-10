@@ -1,4 +1,58 @@
 fn execute(s: &str) -> String {
+    // I keep part of code in separate function for simplicity and ease of testing
+    let (command_string, width, height, offset_x, offset_y) = gen_data(s);
+
+    // Initialize grid. We could not use it, but this way it is more understandable
+    let mut grid = vec![vec![' '; width]; height];
+
+    // Initialise start position, using provided offsets
+    let mut x = (0 + offset_x) as usize;
+    let mut y = (0 + offset_y) as usize;
+    grid[y][x] = '*';
+
+    // Keep direction
+    let mut dir = 'R';
+
+    // Fill movement
+    for command in command_string.chars() {
+        if command == 'F' {
+            match dir {
+                'R' => x += 1,
+                'L' => x -= 1,
+                'B' => y += 1,
+                'T' => y -= 1,
+                _ => {}
+            }
+            if x < width && y < height {
+                grid[y][x] = '*';
+            }
+        } else {
+            dir = rotate(dir, command);
+        }
+    }
+
+    // Convert the grid to the required output string format
+    let output = grid
+        .into_iter()
+        .map(|row| row.iter().collect::<String>())
+        .collect::<Vec<_>>()
+        .join("\r\n");
+
+    output
+}
+
+/*
+   Function doing first iteration over string with commands
+   It returns:
+       - unwrapped command string (so one without numbers)
+       - width of grid
+       - height of grid
+       and offsets: (if we go to the left to negative values
+       we have to account for that)
+       - x offset of grid
+       - y offset of grid
+*/
+fn gen_data(s: &str) -> (String, usize, usize, i32, i32) {
     // Six auxiliary values that will let us determine height and width of the grid
     let mut curr_w = 0; // width of grid - current value
     let mut max_w = 0; // max value that width had
@@ -49,40 +103,7 @@ fn execute(s: &str) -> String {
     let full_width = (max_w - min_w + 1) as usize;
     let full_height = (max_h - min_h + 1) as usize;
 
-    // Initialize grid. We could not use it, but this way it is more understandable
-    let mut grid = vec![vec![' '; full_width]; full_height];
-
-    // Initialise start position
-    let mut x = (0 - min_w) as usize;
-    let mut y = (0 - min_h) as usize;
-    grid[y][x] = '*';
-
-    // Fill movement
-    for command in command_string.chars() {
-        if command == 'F' {
-            match dir {
-                'R' => x += 1,
-                'L' => x -= 1,
-                'B' => y += 1,
-                'T' => y -= 1,
-                _ => {}
-            }
-            if x < full_width && y < full_height {
-                grid[y][x] = '*';
-            }
-        } else {
-            dir = rotate(dir, command);
-        }
-    }
-
-    // Convert the grid to the required output string format
-    let output = grid
-        .into_iter()
-        .map(|row| row.iter().collect::<String>())
-        .collect::<Vec<_>>()
-        .join("\r\n");
-
-    output
+    (command_string, full_width, full_height, -min_w, -min_h)
 }
 
 /* Auxiliary function returning new direction */
