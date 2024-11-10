@@ -47,15 +47,15 @@ fn execute(s: &str) -> String {
 }
 
 /*
-   Function doing first iteration over string with commands
-   It returns:
-       - unwrapped command string (so one without numbers)
-       - width of grid
-       - height of grid
-       and offsets: (if we go to the left to negative values
-       we have to account for that)
-       - x offset of grid
-       - y offset of grid
+    Function doing first iteration over string with commands
+    It returns:
+        - unwrapped command string (so one without numbers)
+        - width of grid
+        - height of grid
+        and offsets: (if we go to the left to negative values
+        we have to account for that)
+        - x offset of grid
+        - y offset of grid
 */
 fn gen_data(s: &str) -> (String, usize, usize, i32, i32) {
     // Six auxiliary values that will let us determine height and width of the grid
