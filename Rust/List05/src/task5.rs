@@ -28,14 +28,14 @@ fn execute(s: &str) -> String {
                 _ => {}
             }
         } else if let Some(num) = c.to_digit(10) {
-            for _ in 0..num {
+            for _ in 0..num - 1 {
                 command_string.push('F');
             }
             match dir {
-                'R' => curr_w += num as i32,
-                'L' => curr_w -= num as i32,
-                'B' => curr_h += num as i32,
-                'T' => curr_h -= num as i32,
+                'R' => curr_w += (num - 1) as i32,
+                'L' => curr_w -= (num - 1) as i32,
+                'B' => curr_h += (num - 1) as i32,
+                'T' => curr_h -= (num - 1) as i32,
                 _ => {}
             }
         }
