@@ -45,40 +45,16 @@ fn execute(s: &str) -> String {
         min_h = min_h.min(curr_h);
     }
 
-    let full_width = (max_w - min_w) as usize + 1;
-    let full_height = (max_h - min_h) as usize + 1;
+    let mut full_width = max_w - min_w;
+    let mut full_height = max_h - min_h;
 
-    // Initialize the grid with spaces
-    let mut grid = vec![vec![' '; full_width]; full_height];
+    // In this place, we have unwrapped command string and target width and
+    // height. Now we can generate output string
 
-    // Set starting position
-    let mut x = (0 - min_w) as usize;
-    let mut y = (0 - min_h) as usize;
-    grid[y][x] = '*';
+    let mut output = String::new();
 
-    for command in command_string.chars() {
-        if command == 'F' {
-            match dir {
-                'R' => x += 1,
-                'L' => x -= 1,
-                'B' => y += 1,
-                'T' => y -= 1,
-                _ => {}
-            }
-            grid[y][x] = '*';
-        } else {
-            dir = rotate(dir, command);
-        }
-    }
-
-    // Convert grid to output string with lines ending in \r\n
-    let output: String = grid
-        .into_iter()
-        .map(|row| row.iter().collect::<String>())
-        .collect::<Vec<_>>()
-        .join("\r\n");
-
-    output
+    command_string
+    //output
 }
 
 /* Auxiliary function returning new direction */
