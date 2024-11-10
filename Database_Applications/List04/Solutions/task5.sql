@@ -20,7 +20,7 @@ S2:
 update liczby1 set liczba=10
 
 -- on read uncommited/commited there should not be a deadlock
--- unless there isn't some unlucky timing with updates
+-- unless there is some unlucky timing with updates
 
 -- on repeatable read and serializable locks are held for 
 -- entire transaction and we try to update row that is already there
