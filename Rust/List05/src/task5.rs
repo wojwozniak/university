@@ -1,5 +1,5 @@
 fn execute(s: &str) -> String {
-    // Six auxilliary values that will let us determine height and width of the grid
+    // Six auxiliary values that will let us determine height and width of the grid
     let mut curr_w = 0; // width of grid - current value
     let mut max_w = i32::MIN; // max value that width had
     let mut min_w = i32::MAX; // min value that width had
@@ -10,7 +10,7 @@ fn execute(s: &str) -> String {
     let mut command_string = String::new(); // We generate command string,
                                             // unwrapping numbers if there are any
 
-    let mut dir = 'U'; // T - top, B - bottom, L - left, R - right, U - undefined
+    let mut dir = 'R'; // T - top, B - bottom, L - left, R - right
 
     // We go over chars, unwrapping numbers and calculating dimensions in the process
     for c in s.chars() {
@@ -28,14 +28,14 @@ fn execute(s: &str) -> String {
                 _ => {}
             }
         } else if let Some(num) = c.to_digit(10) {
-            for _ in 0..num - 1 {
+            for _ in 0..num {
                 command_string.push('F');
             }
             match dir {
-                'R' => curr_w += (num - 1) as i32,
-                'L' => curr_w -= (num + 1) as i32,
-                'B' => curr_h += (num - 1) as i32,
-                'T' => curr_h -= (num + 1) as i32,
+                'R' => curr_w += num as i32,
+                'L' => curr_w -= num as i32,
+                'B' => curr_h += num as i32,
+                'T' => curr_h -= num as i32,
                 _ => {}
             }
         }
@@ -45,16 +45,44 @@ fn execute(s: &str) -> String {
         min_h = min_h.min(curr_h);
     }
 
-    let mut full_width = max_w - min_w;
-    let mut full_height = max_h - min_h;
+    // Calculate full width and height
+    let full_width = (max_w - min_w + 1) as usize;
+    let full_height = (max_h - min_h + 1) as usize;
 
-    // In this place, we have unwrapped command string and target width and
-    // height. Now we can generate output string
+    // Initialize grid. We could not use it, but this way it is more understandable
+    let mut grid = vec![vec![' '; full_width]; full_height];
 
-    let mut output = String::new();
+    // Initialise start position
+    let mut x = (0 - min_w) as usize;
+    let mut y = (0 - min_h) as usize;
+    grid[y][x] = '*';
 
-    command_string
-    //output
+    // Fill movement
+    for command in command_string.chars() {
+        if command == 'F' {
+            match dir {
+                'R' => x += 1,
+                'L' => x -= 1,
+                'B' => y += 1,
+                'T' => y -= 1,
+                _ => {}
+            }
+            if x < full_width && y < full_height {
+                grid[y][x] = '*';
+            }
+        } else {
+            dir = rotate(dir, command);
+        }
+    }
+
+    // Convert the grid to the required output string format
+    let output = grid
+        .into_iter()
+        .map(|row| row.iter().collect::<String>())
+        .collect::<Vec<_>>()
+        .join("\r\n");
+
+    output
 }
 
 /* Auxiliary function returning new direction */
