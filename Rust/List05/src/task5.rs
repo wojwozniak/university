@@ -1,11 +1,11 @@
 fn execute(s: &str) -> String {
     // Six auxiliary values that will let us determine height and width of the grid
     let mut curr_w = 0; // width of grid - current value
-    let mut max_w = i32::MIN; // max value that width had
-    let mut min_w = i32::MAX; // min value that width had
+    let mut max_w = 0; // max value that width had
+    let mut min_w = 0; // min value that width had
     let mut curr_h = 0; // height of grid - current value
-    let mut max_h = i32::MIN; // max value that height had
-    let mut min_h = i32::MAX; // min value that height had
+    let mut max_h = 0; // max value that height had
+    let mut min_h = 0; // min value that height had
 
     let mut command_string = String::new(); // We generate command string,
                                             // unwrapping numbers if there are any
