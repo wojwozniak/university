@@ -27,7 +27,11 @@ SELECT DISTINCT c.PESEL, c.Nazwisko
 -- while 2 and 3 are functionally the same in the eyes of the engine
 
 
--- after adding more data query 1 became as fast as other ones, if we generated way more it should be the fastest
+-- after adding more data to czytelnik and egzemplarz query 1 became as fast as other ones
+
+-- after generating a ton of rows to wypozyczenie 1 becomest the slowest one again, with
+-- query 3 being the fastest. Seems that in this scenario (where Wypozyczenie would be the most
+-- populated table) engine is non optimising perfectly, while using query 3 is the best solution. 
 
 
   INSERT INTO [Test].[dbo].[Czytelnik] ([PESEL], [Nazwisko], [Miasto], [Data_Urodzenia], [Ostatnie_Wypozyczenie])
@@ -88,4 +92,22 @@ VALUES
 ('978-0-452-28423-4', 'Wielki Gatsby', 'F. Scott Fitzgerald', 1925, 59.99, 1),
 ('978-0-14-028329-7', '1984', 'George Orwell', 1949, 19.99, 0);
 
---SELECT * FROM dbo.Egzemplarz;
+DECLARE @Czytelnik_ID INT;
+DECLARE @Egzemplarz_ID INT;
+DECLARE @Data DATE;
+DECLARE @Liczba_Dni INT;
+DECLARE @Counter INT = 0;
+
+WHILE @Counter < 999
+BEGIN
+    SELECT @Czytelnik_ID = Czytelnik_ID FROM dbo.Czytelnik ORDER BY NEWID() OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+    SELECT @Egzemplarz_ID = Egzemplarz_ID FROM dbo.Egzemplarz ORDER BY NEWID() OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+    
+    SET @Data = DATEADD(DAY, -ABS(CHECKSUM(NEWID()) % 365), GETDATE());
+    SET @Liczba_Dni = (ABS(CHECKSUM(NEWID()) % 30)) + 1;
+    
+    INSERT INTO dbo.Wypozyczenie (Czytelnik_ID, Egzemplarz_ID, Data, Liczba_Dni)
+    VALUES (@Czytelnik_ID, @Egzemplarz_ID, @Data, @Liczba_Dni);
+
+    SET @Counter = @Counter + 1;
+END
