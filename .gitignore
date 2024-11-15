@@ -603,8 +603,8 @@ AISD/Cwiczenia/List01/zad4/task4.md
 POO/List08/task01.cs
 POO/List08/Task01.cs
 Cargo.lock
-Course_Rust/*/target
-Course_Rust/*/*/target
-Course_Rust/*/*/*/target
-Course_Rust/*/*/output.ppm
+Rust/*/target
+Rust/*/*/target
+Rust/*/*/*/target
+Rust/*/*/output.ppm
 *.ppm
