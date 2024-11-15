@@ -1,23 +1,11 @@
-// Just a simple bubblesort style solution with a escape clause (if we reach
-// currect reachable maximum (full length of outside loop) then we instant return
-// to not waste time. We could aim for some small optimisation here (f.e.
-// go from top to bottom in middle loop and do max_diff check after first iter)
-fn largest_difference(data: &[i32]) -> usize {
-    let mut max_diff = 0;
-    let n = data.len();
+fn comp(a: Vec<i32>, b: Vec<i32>) -> bool {
+    let mut a_squared: Vec<i32> = a.into_iter().map(|x| x * x).collect();
+    let mut b = b;
 
-    for i in 0..n {
-        for j in i..n {
-            if data[i] <= data[j] {
-                max_diff = max_diff.max(j - i);
-            }
-        }
-        if n - i - 1 == max_diff {
-            return max_diff;
-        }
-    }
+    a_squared.sort_unstable();
+    b.sort_unstable();
 
-    max_diff
+    a_squared == b
 }
 
 #[cfg(test)]
@@ -25,52 +13,72 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_example_1() {
-        assert_eq!(largest_difference(&[1, 2, 3]), 2);
+    fn test_valid_case_1() {
+        let a = vec![121, 144, 19, 161, 19, 144, 19, 11];
+        let b = vec![121, 14641, 20736, 361, 25921, 361, 20736, 361];
+        assert!(comp(a, b));
     }
 
     #[test]
-    fn test_no_valid_pairs() {
-        assert_eq!(largest_difference(&[3, 2, 1]), 0);
+    fn test_invalid_case_1() {
+        let a = vec![121, 144, 19, 161, 19, 144, 19, 11];
+        let b = vec![132, 14641, 20736, 361, 25921, 361, 20736, 361];
+        assert!(!comp(a, b));
     }
 
     #[test]
-    fn test_all_elements_equal() {
-        assert_eq!(largest_difference(&[1, 1, 1]), 2);
+    fn test_invalid_case_2() {
+        let a = vec![121, 144, 19, 161, 19, 144, 19, 11];
+        let b = vec![121, 14641, 20736, 36100, 25921, 361, 20736, 361];
+        assert!(!comp(a, b));
     }
 
     #[test]
-    fn test_pair_1_3() {
-        assert_eq!(largest_difference(&[1, 2, 1, 3]), 3);
+    fn test_valid_small_case() {
+        let a = vec![2, 3, 5];
+        let b = vec![4, 9, 25];
+        assert!(comp(a, b));
     }
 
     #[test]
-    fn test_pair_1_3_with_extra() {
-        assert_eq!(largest_difference(&[1, 2, 1, 3, 2]), 4);
+    fn test_invalid_small_case() {
+        let a = vec![2, 3, 5];
+        let b = vec![4, 9, 26];
+        assert!(!comp(a, b));
     }
 
     #[test]
-    fn test_single_element() {
-        assert_eq!(largest_difference(&[5]), 0);
+    fn test_empty_arrays() {
+        let a: Vec<i32> = vec![];
+        let b: Vec<i32> = vec![];
+        assert!(comp(a, b));
     }
 
     #[test]
-    fn test_small_array_valid_pair() {
-        assert_eq!(largest_difference(&[1, 2]), 1);
+    fn test_single_element_valid() {
+        let a = vec![2];
+        let b = vec![4];
+        assert!(comp(a, b));
     }
 
     #[test]
-    fn test_small_array_no_valid_pair() {
-        assert_eq!(largest_difference(&[2, 1]), 0);
+    fn test_single_element_invalid() {
+        let a = vec![2];
+        let b = vec![5];
+        assert!(!comp(a, b));
     }
 
     #[test]
-    fn test_pair_1_5() {
-        assert_eq!(largest_difference(&[1, 3, 2, 1, 5]), 4);
+    fn test_zeroes() {
+        let a = vec![0, 0, 0];
+        let b = vec![0, 0, 0];
+        assert!(comp(a, b));
     }
 
     #[test]
-    fn test_no_valid_pairs_large() {
-        assert_eq!(largest_difference(&[10, 8, 4, 2, 1]), 0);
+    fn test_negative_numbers() {
+        let a = vec![-2, -3, -4];
+        let b = vec![4, 9, 16];
+        assert!(comp(a, b));
     }
 }
