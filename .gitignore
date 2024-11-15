@@ -608,3 +608,5 @@ Rust/*/*/target
 Rust/*/*/*/target
 Rust/*/*/output.ppm
 *.ppm
+--- Don't upload WIP
+Database_Applications/List05/Solutions/task3.sql
