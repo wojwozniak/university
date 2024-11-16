@@ -1,0 +1,23 @@
+﻿@model list06task03.Models.LoginModel
+@using list06task03.Helpers
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<h2>Login</h2>
+
+
+<p>Wersja login</p>
+<form method="post" action="/Login/Index">
+    @Html.Login("UserName", "Password")
+    <button type="submit">Submit</button>
+</form>
+
+<br />
+
+<p>Wersja loginFor</p>
+<form method="post" action="/Login/Index">
+    @Html.LoginFor(m => m.UserName, m => m.Password)
+    <button type="submit">Submit</button>
+</form>
