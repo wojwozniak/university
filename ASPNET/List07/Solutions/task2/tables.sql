@@ -1,5 +1,8 @@
 USE list05task05;
 
+--DROP TABLE UserTable;
+--DROP TABLE PasswordTable;
+
 CREATE TABLE UserTable (
     UserID INT IDENTITY(1,1) PRIMARY KEY,
     UserName NVARCHAR(100) NOT NULL,
@@ -16,3 +19,6 @@ CREATE TABLE PasswordTable (
     PasswordSetDate DATETIME NOT NULL,
     CONSTRAINT FK_Password_User FOREIGN KEY (UserID) REFERENCES UserTable(UserID) ON DELETE CASCADE
 );
+
+SELECT * FROM UserTable;
+SELECT * FROM PasswordTable;
