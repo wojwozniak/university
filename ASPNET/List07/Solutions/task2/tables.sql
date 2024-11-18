@@ -1,0 +1,18 @@
+USE list05task05;
+
+CREATE TABLE UserTable (
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    UserName NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(200) NOT NULL,
+    CONSTRAINT UC_User_Email UNIQUE (Email)
+);
+
+CREATE TABLE PasswordTable (
+    PasswordID INT IDENTITY(1,1) PRIMARY KEY,
+    UserID INT NOT NULL,
+    PasswordHash NVARCHAR(500) NOT NULL,
+    Salt NVARCHAR(100) NOT NULL,
+    HashRounds INT NOT NULL,
+    PasswordSetDate DATETIME NOT NULL,
+    CONSTRAINT FK_Password_User FOREIGN KEY (UserID) REFERENCES UserTable(UserID) ON DELETE CASCADE
+);
