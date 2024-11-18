@@ -44,3 +44,12 @@ CREATE TABLE UsersRoles (
 
 SELECT * FROM Roles;
 SELECT * FROM UsersRoles;
+
+--INSERT INTO Roles (RoleName)
+    --VALUES ('Admin');
+
+--INSERT INTO UsersRoles (UserID, RoleID)
+    --VALUES (1, 1);
+
+--DELETE FROM UsersRoles
+	--WHERE UserID = 1 AND RoleID = 1;
