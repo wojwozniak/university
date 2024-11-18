@@ -5,6 +5,8 @@ using System.Text;
 using System.Linq;
 using list07task02.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace list07task02.Controllers
 {
@@ -24,7 +26,7 @@ namespace list07task02.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
             var user = _context.UserTable.FirstOrDefault(u => u.Email == email);
             if (user != null)
@@ -35,11 +37,33 @@ namespace list07task02.Controllers
                     var hashedPassword = HashPassword(password, passwordRecord.Salt);
                     if (hashedPassword == passwordRecord.PasswordHash)
                     {
+                        var roles = _context.UsersRoles
+                            .Where(ur => ur.UserID == user.UserId)
+                            .Select(ur => _context.Roles.FirstOrDefault(r => r.RoleID == ur.RoleID).RoleName)
+                            .ToList();
+
+                        var claims = new List<Claim>
+                        {
+                            new(ClaimTypes.Name, user.UserName),
+                            new(ClaimTypes.Email, user.Email)
+                        };
+
+                        foreach (var role in roles)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Role, role));
+                        }
+
+                        var identity = new ClaimsIdentity(claims, "CookieAuth");
+                        var principal = new ClaimsPrincipal(identity);
+
+                        await HttpContext.SignInAsync("CookieAuth", principal);
+
                         return RedirectToAction("Index", "Home");
                     }
                 }
             }
 
+            ModelState.AddModelError("", "Invalid email or password");
             return View();
         }
 
