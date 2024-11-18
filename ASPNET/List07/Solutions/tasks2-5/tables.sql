@@ -22,3 +22,25 @@ CREATE TABLE PasswordTable (
 
 SELECT * FROM UserTable;
 SELECT * FROM PasswordTable;
+
+-- ### ZAD 3
+
+--DROP TABLE Roles;
+--DROP TABLE UsersRoles;
+
+CREATE TABLE Roles (
+    RoleID INT IDENTITY(1,1) PRIMARY KEY,
+    RoleName NVARCHAR(100) NOT NULL,
+    CONSTRAINT UC_RoleName UNIQUE (RoleName)
+);
+
+CREATE TABLE UsersRoles (
+    UserID INT NOT NULL,
+    RoleID INT NOT NULL,
+    CONSTRAINT PK_UsersRoles PRIMARY KEY (UserID, RoleID),
+    CONSTRAINT FK_UsersRoles_User FOREIGN KEY (UserID) REFERENCES UserTable(UserID) ON DELETE CASCADE,
+    CONSTRAINT FK_UsersRoles_Role FOREIGN KEY (RoleID) REFERENCES Roles(RoleID) ON DELETE CASCADE
+);
+
+SELECT * FROM Roles;
+SELECT * FROM UsersRoles;
