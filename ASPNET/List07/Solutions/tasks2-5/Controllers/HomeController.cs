@@ -16,6 +16,9 @@ namespace list07task02.Controllers
 
         public IActionResult Index()
         {
+            var userName = User.Identity.IsAuthenticated ? User.Identity.Name : "Guest";
+            ViewData["UserName"] = userName;
+
             return View();
         }
 

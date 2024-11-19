@@ -7,6 +7,7 @@ using list07task02.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace list07task02.Controllers
 {
@@ -53,10 +54,10 @@ namespace list07task02.Controllers
                             claims.Add(new Claim(ClaimTypes.Role, role));
                         }
 
-                        var identity = new ClaimsIdentity(claims, "CookieAuth");
+                        var identity = new ClaimsIdentity(claims, "Cookies");
                         var principal = new ClaimsPrincipal(identity);
 
-                        await HttpContext.SignInAsync("CookieAuth", principal);
+                        await HttpContext.SignInAsync("Cookies", principal);
 
                         return RedirectToAction("Index", "Home");
                     }
@@ -66,6 +67,60 @@ namespace list07task02.Controllers
             ModelState.AddModelError("", "Invalid email or password");
             return View();
         }
+
+        [HttpGet]
+        public IActionResult LoginWithGoogle()
+        {
+            var redirectUrl = Url.Action("GoogleCallback", "Account");
+            var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+            return Challenge(properties, "Google");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GoogleCallback()
+        {
+            var authenticateResult = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            if (!authenticateResult.Succeeded)
+                return RedirectToAction("Login");
+
+            var claims = authenticateResult.Principal.Identities.FirstOrDefault()?.Claims;
+            var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var name = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+
+            // Sprawdź, czy użytkownik istnieje w bazie danych - jeśli nie to zarejestruj
+            var user = _context.UserTable.FirstOrDefault(u => u.Email == email);
+            if (user == null)
+            {
+                user = new User
+                {
+                    UserName = name,
+                    Email = email
+                };
+                _context.UserTable.Add(user);
+                await _context.SaveChangesAsync();
+
+            }
+
+            var claimsIdentity = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Email, user.Email),
+            }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true
+            };
+
+            await HttpContext.SignInAsync(
+                "Cookies",
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
         [HttpGet]
         public IActionResult Register()
