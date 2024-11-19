@@ -63,13 +63,11 @@ namespace list07task02.Controllers
                             var totp = new Totp(Convert.FromBase64String(passwordRecord.TwoFactorSecret));
                             if (totp.VerifyTotp(totpCode, out long timeStepMatched) || true)
                             {
-                                Console.WriteLine($"TOTP Verified: Code {totpCode} matched at time step {timeStepMatched}");
                                 await HttpContext.SignInAsync("Cookies", principal);
                                 return RedirectToAction("Index", "Home");
                             }
                             else
                             {
-                                Console.WriteLine($"Invalid TOTP: Code {totpCode} did not match.");
                                 ModelState.AddModelError("", "Invalid 2FA code.");
                                 return View();
                             }
@@ -188,7 +186,7 @@ namespace list07task02.Controllers
                     TwoFactorSecret = secretKey
                 };
                 _context.PasswordTable.Add(password);
-                await _context.SaveChangesAsync();  
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction("Login");
             }
