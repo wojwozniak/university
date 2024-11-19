@@ -2,6 +2,8 @@
 
 Mniejszy problem przy wycieku danych (np. przy ataku). Wielu ludzi korzysta z tych samych haseł w wielu miejscach, więc wyciek spowodowałby duże straty. Poza tym (również z powodu tych samych haseł w wielu miejscach) byłoby też ryzyko nielegalnego ich użycia przez pracownika (osoby obsługującej bazę danych)
 
+I też nie trzeba robić nullability przy użyciu googla
+
 ## (b) Dlaczego niektóre funkcje skrótu (które?) są niewskazane w praktyce?
 
 MD-5 i SHA-1 są podatne na brute-force i ataki słownikowe
