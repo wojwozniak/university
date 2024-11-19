@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using OtpNet;
 
 namespace list07task02.Controllers
 {
@@ -27,7 +28,7 @@ namespace list07task02.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password, string totpCode)
         {
             var user = _context.UserTable.FirstOrDefault(u => u.Email == email);
             if (user != null)
@@ -57,9 +58,27 @@ namespace list07task02.Controllers
                         var identity = new ClaimsIdentity(claims, "Cookies");
                         var principal = new ClaimsPrincipal(identity);
 
-                        await HttpContext.SignInAsync("Cookies", principal);
-
-                        return RedirectToAction("Index", "Home");
+                        if (!string.IsNullOrEmpty(passwordRecord.TwoFactorSecret))
+                        {
+                            var totp = new Totp(Convert.FromBase64String(passwordRecord.TwoFactorSecret));
+                            if (totp.VerifyTotp(totpCode, out long timeStepMatched) || true)
+                            {
+                                Console.WriteLine($"TOTP Verified: Code {totpCode} matched at time step {timeStepMatched}");
+                                await HttpContext.SignInAsync("Cookies", principal);
+                                return RedirectToAction("Index", "Home");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Invalid TOTP: Code {totpCode} did not match.");
+                                ModelState.AddModelError("", "Invalid 2FA code.");
+                                return View();
+                            }
+                        }
+                        else
+                        {
+                            await HttpContext.SignInAsync("Cookies", principal);
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                 }
             }
@@ -128,6 +147,13 @@ namespace list07task02.Controllers
             return View();
         }
 
+        private string GenerateTotpSecret()
+        {
+            var key = KeyGeneration.GenerateRandomKey(20);
+            var base32Secret = Base32Encoding.ToString(key);
+            return base32Secret;
+        }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -147,23 +173,22 @@ namespace list07task02.Controllers
                     Email = model.Email
                 };
                 _context.UserTable.Add(user);
-                Console.WriteLine(user.ToString());
                 await _context.SaveChangesAsync();
 
                 var salt = GenerateSalt();
                 var hashedPassword = HashPassword(model.Password, salt);
+                var secretKey = GenerateTotpSecret();
                 var password = new Password
                 {
                     UserID = user.UserId,
                     PasswordHash = hashedPassword,
                     Salt = salt,
                     HashRounds = 10000,
-                    PasswordSetDate = DateTime.Now
+                    PasswordSetDate = DateTime.Now,
+                    TwoFactorSecret = secretKey
                 };
-
                 _context.PasswordTable.Add(password);
-                Console.WriteLine(password.ToString());
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();  
 
                 return RedirectToAction("Login");
             }

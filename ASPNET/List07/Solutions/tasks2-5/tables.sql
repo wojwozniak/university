@@ -49,7 +49,13 @@ SELECT * FROM UsersRoles;
     --VALUES ('Admin');
 
 --INSERT INTO UsersRoles (UserID, RoleID)
-    --VALUES (1, 1);
+    --VALUES (7, 1);
 
 --DELETE FROM UsersRoles
-	--WHERE UserID = 1 AND RoleID = 1;
+	--WHERE UserID = 7 AND RoleID = 1;
+
+-- DELETE FROM UserTable WHERE UserID = 6;
+
+-- ### ZAD 5
+ALTER TABLE PasswordTable
+	ADD TwoFactorSecret NVARCHAR(100);

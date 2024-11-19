@@ -7,6 +7,7 @@
         public string PasswordHash { get; set; }
         public string Salt { get; set; }
         public int HashRounds { get; set; }
+        public string TwoFactorSecret { get; set; }
         public DateTime PasswordSetDate { get; set; }
     }
 }
