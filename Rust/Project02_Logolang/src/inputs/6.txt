@@ -1,0 +1,7 @@
+clearscreen
+setturtle 2 penup right 90 forward 100 left 90 pendown
+repeat 100 [
+  setturtle 1 forward random 4
+  setturtle 2 forward random 4
+  wait 2
+]

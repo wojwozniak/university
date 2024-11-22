@@ -1,0 +1,12 @@
+clearscreen window hideturtle
+repeat 144 [
+  setlabelheight repcount
+  penup
+  fd repcount * repcount / 30
+  label "Logo
+  bk repcount * repcount / 30
+  pendown
+  rt 10
+  wait 5
+]
+showturtle
