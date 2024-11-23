@@ -610,12 +610,4 @@ Rust/*/*/output.ppm
 *.ppm
 
 # Temporary hidden - almost good solutions but i will do other tasks first
-Machine_Learning/List02/List02Task01.ipynb
-Machine_Learning/List02/List02Task02.ipynb
-Machine_Learning/List02/List02Task03.ipynb
-Machine_Learning/List02/List02Task04.ipynb
-Machine_Learning/List02/List02Task05.ipynb
-Machine_Learning/List02/List02Task06.ipynb
-Machine_Learning/List02/List02Task07.ipynb
-Machine_Learning/List02/List02Task08.ipynb
-Machine_Learning/List02/List02Task09.ipynb
+Machine_Learning/List02/Solutions/*
