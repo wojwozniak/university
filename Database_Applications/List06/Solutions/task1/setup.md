@@ -15,16 +15,29 @@ builder.Services.AddSingleton<IMongoClient, MongoClient>(sp =>
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-
-
-app.MapGet("/authors", async (IMongoClient client) =>
+app.MapGet("/", async (IMongoClient client) =>
 {
     var library = client.GetDatabase("library");
-    var authors = library.GetCollection<Author>("authors");
-    var items = await authors.Find(_ => true).ToListAsync();
+    var booksCollection = library.GetCollection<Book>("books");
+    var books = await booksCollection.Find(_ => true).ToListAsync();
 
-    return items.Select(a => a.Name);
+    return books.Select(b => new
+    {
+        b.ISBN,
+        b.Title,
+        b.Author,
+        b.YearOfPublication,
+        b.Price,
+        Copies = b.Copies.Select(c => new
+        {
+            c.CopyId,
+            c.Signature,
+            c.Status,
+            c.BorrowedBy,
+            c.BorrowDate,
+            c.ReturnDate
+        })
+    });
 });
 
 app.Run();
