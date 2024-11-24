@@ -1,0 +1,46 @@
+[{
+  "_id": 1,
+  "pesel": "12345678901",
+  "last_name": "Kowalski",
+  "city": "Warsaw",
+  "birth_date": {
+    "$date": "1990-05-15T00:00:00.000Z"
+  },
+  "last_borrowing": {
+    "$date": "2024-11-22T00:00:00.000Z"
+  },
+  "borrowings": [
+    {
+      "bookId": 1,
+      "copyId": 2,
+      "borrowDate": {
+        "$date": "2024-11-22T00:00:00.000Z"
+      },
+      "returnDate": null
+    }
+  ]
+},
+{
+  "_id": 2,
+  "pesel": "98765432109",
+  "last_name": "Nowak",
+  "city": "Krakow",
+  "birth_date": {
+    "$date": "1985-11-10T00:00:00.000Z"
+  },
+  "last_borrowing": {
+    "$date": "2024-11-20T00:00:00.000Z"
+  },
+  "borrowings": [
+    {
+      "bookId": 2,
+      "copyId": 2,
+      "borrowDate": {
+        "$date": "2024-11-20T00:00:00.000Z"
+      },
+      "returnDate": {
+        "$date": "2024-11-25T00:00:00.000Z"
+      }
+    }
+  ]
+}]
