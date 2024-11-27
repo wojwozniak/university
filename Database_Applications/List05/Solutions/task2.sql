@@ -1,4 +1,6 @@
+Use Test;
 -- CTRL + M for execution plan
+-- Run all queries at the same time for cost comparison in Ctrl+M menu
 
 
 -- First query
