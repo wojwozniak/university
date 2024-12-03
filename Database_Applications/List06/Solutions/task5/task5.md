@@ -43,7 +43,7 @@ db.books.insertOne({ _id: 1, title: "Mistrz i Małgorzata" });
 db.books.find();
 ```
 - Check replication on secondary
-```js
+```powershell
 mongosh --port 20000
 db.books.find();
 ```
