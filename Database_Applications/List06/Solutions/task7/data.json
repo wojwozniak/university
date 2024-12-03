@@ -1,0 +1,44 @@
+[
+    {
+        "item": "apple",
+        "quantity": 10,
+        "price": 2,
+        "category": "fruit",
+        "date": "2024-11-01T00:00:00Z"
+    },
+    {
+        "item": "banana",
+        "quantity": 20,
+        "price": 1,
+        "category": "fruit",
+        "date": "2024-11-02T00:00:00Z"
+    },
+    {
+        "item": "carrot",
+        "quantity": 15,
+        "price": 3,
+        "category": "vegetable",
+        "date": "2024-11-03T00:00:00Z"
+    },
+    {
+        "item": "apple",
+        "quantity": 5,
+        "price": 2,
+        "category": "fruit",
+        "date": "2024-11-04T00:00:00Z"
+    },
+    {
+        "item": "carrot",
+        "quantity": 7,
+        "price": 3,
+        "category": "vegetable",
+        "date": "2024-11-05T00:00:00Z"
+    },
+    {
+        "item": "apple",
+        "quantity": 8,
+        "price": 2,
+        "category": "fruit",
+        "date": "2024-11-06T00:00:00Z"
+    }
+]
