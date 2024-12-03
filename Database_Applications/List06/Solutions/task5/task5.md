@@ -12,13 +12,14 @@ Where if primary goes down, secondaries elect a new primary
 ## Example
 - We start by creating three directories for each database
 - Start those servers on different ports
-```
+```powershell
 .\mongod.exe --config D:\mongo\bin\mongod-primary.cfg
 .\mongod.exe --config D:\mongo\bin\mongod-secondary.cfg
 .\mongod.exe --config D:\mongo\bin\mongod-arbiter.cfg
 ```
 - Connect to the first instance
 - Setup replica set
+  
 ```js
 var rsConfig = {
     _id: "demo",
@@ -34,6 +35,7 @@ rs.initiate(rsConfig);
 rs.status(); // Check status
 // 10000 not primary before insert -> check again after inserting
 ```
+
 - Insert a document on the primary node
 ```js
 use test;
