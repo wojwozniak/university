@@ -104,3 +104,10 @@ for (let i = 0; i < 100; i++) {
 db.testCollection.getShardDistribution();
 ```
 
+### Proof that it works
+
+Setting this up uses 7 different terminals, so to be able to show solution in acceptable time i made some screenshots of this working
+
+![Proof 1](proof/proof-1.png)
+
+![Proof 2](proof/proof-2.png)
