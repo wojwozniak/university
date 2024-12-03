@@ -2,7 +2,8 @@ List01: 10 / 10
 List02: 10 / 10
 List03: 10 / 10
 List04: 10 / 10
-List05: x / 10
-List06: y / 10
+List05: 9 / 10
+List06: x / 10
+List07: y / 10
 
-Sum: 40 + x + y / 60
+Sum: 49 + x + y / 70 (probably there will be 120)
