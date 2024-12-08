@@ -1,5 +1,0 @@
-to star
-  repeat 5 [ fd 100 rt 144 ]
-end
-clearscreen
-star

@@ -1,6 +1,0 @@
-[package]
-name = "project02_logolang"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
