@@ -1,0 +1,78 @@
+Table users {
+  id integer [primary key]
+  username varchar[30]
+  email varchar[70]
+  contact_phone varchar[15]
+  adress nvarchar
+  type char[2]
+  created_at timestamp
+}
+
+Table passwords {
+  id integer [primary key]
+  id_user integer
+  password_hash varchar[500]
+  salt varchar[100]
+  hash_rounds integer
+  password_set_date datetime
+  two_factor_secret varchar[256]
+}
+
+Ref: users.id < passwords.id_user
+
+Table postings {
+  id integer [primary key]
+  title varchar
+  feature_picture_link varchar[50]
+  short_desc varchar[500]
+  user_id integer
+  status char[2]
+  created_at timestamp
+}
+
+Ref: postings.user_id > users.id
+
+Table postings_content {
+  id integer [primary key]
+  id_posting integer
+  body text
+}
+
+Ref: postings_content.id_posting > postings.id
+
+Table messages {
+  id integer [primary key]
+  sender_id integer
+  receiver_id integer
+  message_body text
+  created_at timestamp
+  is_read boolean
+}
+
+Ref: messages.sender_id > users.id
+Ref: messages.receiver_id > users.id
+
+Table adoptions {
+  id integer [primary key]
+  posting_id integer
+  adopter_id integer
+  adoption_date timestamp
+  status char[2]
+}
+
+Ref: adoptions.posting_id > postings.id
+Ref: adoptions.adopter_id > users.id
+
+Table walks {
+  id integer [primary key]
+  user_id integer
+  volounteer_id integer
+  posting_id integer
+  date datetime
+  status char[2]
+  date_updated datetime
+}
+
+Ref: walks.user_id < users.id
+Ref: walks.volounteer_id < users.id
+Ref: walks.posting_id < postings.id
