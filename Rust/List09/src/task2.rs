@@ -4,9 +4,10 @@ fn accum(s: &str) -> String {
 
     for c in s.chars() {
         let mut part = c.to_uppercase().to_string();
+        let to_push = c.to_lowercase().to_string().chars().next().unwrap();
 
         for _ in 0..index {
-            part.push(c.to_lowercase().to_string().chars().next().unwrap());
+            part.push(to_push);
         }
 
         result.push(part);
