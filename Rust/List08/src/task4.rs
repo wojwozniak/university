@@ -25,13 +25,11 @@ fn calculate_katas(n_max: i32) -> (Vec<i32>, Vec<i32>) {
 }
 
 fn john(n: i32) -> Vec<i32> {
-    let (_, john_katas) = calculate_katas(n);
-    john_katas
+    calculate_katas(n).1
 }
 
 fn ann(n: i32) -> Vec<i32> {
-    let (ann_katas, _) = calculate_katas(n);
-    ann_katas
+    calculate_katas(n).0
 }
 
 fn sum_john(n: i32) -> i32 {
