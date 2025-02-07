@@ -78,8 +78,8 @@ Prosta indukcja po ilości wierzchołków.
 - Udowodnijmy dla n+1:
 
 Istnieje ścieżka n-wierzchołkowa dla wierzchołków $v_{1}$...$v_{n+1}$. Pokażmy, że da się dołożyć do tej ścieżki $v_{0}$:
-- Idziemy wzdłuż ścieżki. Szukamy pierwszego miejsca takiego że $v_{i}$ ma krawędź wchodzącą do $v_{0}$ i wychodząca do $v_{i+1}$. Jeśli znajdziemy taką krawędź wkładamy $v_{0}$ między te dwa wierzchołki, wydłużając ścieżkę o 1.
+- Idziemy wzdłuż ścieżki. Szukamy pierwszego miejsca takiego że $v_{i}$ ma krawędź wchodzącą do $v_{0}$, a ten wychodzącą do $v_{i+1}$. Jeśli znajdziemy taką krawędź wkładamy $v_{0}$ między te dwa wierzchołki, wydłużając ścieżkę o 1.
 
 Edge case'y:
 - Pierwsza krawędź jest wchodząca -> $v_{0}$ ląduje na początku
-- Każda jest wychodząca -> $v_{0}$ ląduje na końcu 
+- Nie znaleźliśmy takiej krawędzi -> ostatnia jest wychodząca do $v_{0}$ -> $v_{0}$ ląduje na końcu 
