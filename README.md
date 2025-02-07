@@ -33,10 +33,17 @@ This repository contains my solutions to the tasks from the courses I took at th
 - [x] React Course
 - [x] Group project (with ZF company) 
 
-### Semester V (now here!):
-- [] Rust Course
-- [] ASP.NET Course
-- [] Database Applications Course
-- [] Seminar - Modern Web Technologies
-- [] Software Engineering
-- [] Machine Learning
+### Semester V:
+- [x] Rust Course
+- [x] ASP.NET Course
+- [x] Database Applications Course
+- [x] Seminar - Modern Web Technologies
+- [x] Software Engineering
+- [x] Machine Learning
+
+### Semester VI (now here!):
+- [] Algorithms and Data Structures
+- [] Programming Methods (OCaml)
+- [] Probability Calculus
+- [] Computer Networks
+- [] Computer Systems
