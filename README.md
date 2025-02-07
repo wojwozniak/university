@@ -2,7 +2,8 @@
 
 ## Introduction
 
-This repository contains my solutions to the tasks from the courses I took at the University of Warsaw. The courses are listed below. The repository is organized by courses. Each course has its own directory. The directory contains the tasks and the solutions.
+This repository contains my solutions to the tasks from the courses I took at the University of Warsaw. The courses are listed below. The repository is organized by courses. Each course has its own directory containing the tasks and their solutions.
+Summaries directory contains notes I made to pass hardest exams.
 
 ## Table of Contents
 
@@ -47,3 +48,8 @@ This repository contains my solutions to the tasks from the courses I took at th
 - [] Probability Calculus
 - [] Computer Networks
 - [] Computer Systems
+
+## Summaries
+- `algebra.md` - overview of topics and typical tasks from Algebra Course
+- `numeryczna.md` - overview of topics and typical tasks from Numerical Analysis course
+- `Dyskretna` - directory with some topics and solutions to typical tasks from `Discrete Mathematics` course
