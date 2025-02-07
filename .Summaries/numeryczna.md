@@ -2,8 +2,6 @@
 
 Podsumowanie materiału z Analizy Numerycznej przed egzaminem. Skrótowe notatki z wykładu i przykładowe rozwiązania typowych zadań. 
 
-Zobacz też notatkę od whiskeyo, tam jest dokładniej rozpisana teoria (i dosyć dużo tego co jest tutaj na niej bazuje)
-
 ## Spis treści
 - [Analiza Numeryczna (L) - notatka](#analiza-numeryczna-l---notatka)
   - [Spis treści](#spis-treści)
