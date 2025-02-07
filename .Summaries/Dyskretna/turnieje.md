@@ -49,10 +49,22 @@ Z dowodu 1. wiemy że mamy conajmniej jednego króla. Dowód 2 uniemożliwia ist
 
 ## 4. W turnieju dwudzielnym istnieje wierzchołek z którego da się dojść do każdego innego w czterech krokach
 
-Weźmy wierzchołek z największą ilością krawędzi wychodzących z A. Nazwijmy go $v$. 
+Weźmy wierzchołek z największą ilością krawędzi wychodzących z A. Nazwijmy go $v$. Jeśli jest nadajnikiem -> trywialne zadanie w dwóch krokach. W przeciwnym wypadku:
 
 Zbiór wierzchołków z $B$ z krawędziami wchodzącymi z $v$ nazywamy $B_{\alpha}$. Z wychodzącymi do $v$ $B_{\beta}$.
 
 Zbiór wierzchołków z $A$ do których da się dojść w dwóch krokach (za pośrednictwem $B_{\alpha}$ nazwijmy $A_{\alpha}$). Takich do których się nie da - $A_{\beta}$.
 
-Zastanówmy się, jak będą wyglądać krawędzie wierzchołków z $A_{\alpha}$. Muszą mieć one krawędzie wychodzące do każdego elementu $B_{\alpha}$ (by nie dało się dojść w dwóch krokach). Mamy więc conajmniej $|B_{\alpha}|$ krawędzi wychodzących dla każdego z tych elementu.
+Zastanówmy się, jak będą wyglądać krawędzie wierzchołków z $A_{\beta}$.:
+
+- Muszą mieć one krawędzie wychodzące do każdego elementu $B_{\alpha}$ (by nie dało się dojść w dwóch krokach). 
+- Mamy więc conajmniej $|B_{\alpha}|$ krawędzi wychodzących dla każdego z tych elementu.
+- $v$ z założenia ma najwięcej krawędzi wychodzących, więc elementy z $A_{\beta}$ nie mogą mieć już żadnych innych krawędzi wychodzących.
+
+Oznacza to, że każdy element z $A_{\beta}$ musi mieć dokładnie taką samą strukturę krawędzi jak $v$ -> wychodzące i wchodzące do dokładnie tych samych wierzchołków.
+
+Weźmy teraz dowolny element z $B_{\beta}$. (Z założenia że $v$ nie jest nadajnikiem, na pewno jakiś istnieje). Nazwijmy go $v'$.
+
+- $v'$ dochodzi do $v$ oraz do każdego elementu z $A_{\beta}$ w dokładnie jednym kroku.
+- Te elementy $B_{\alpha}$ dochodzą do całego zbioru $A_{\alpha}$ w dwóch krokach (Łącznie 3 kroki). Dotarliśmy do każdego elementu z $A$.
+- Z każdego elementu z $A$ dochodzimy do każdego z $B$ w jednym kroku (Łącznie 4 kroki).
