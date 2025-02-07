@@ -68,3 +68,18 @@ Weźmy teraz dowolny element z $B_{\beta}$. (Z założenia że $v$ nie jest nada
 - $v'$ dochodzi do $v$ oraz do każdego elementu z $A_{\beta}$ w dokładnie jednym kroku.
 - Te elementy $B_{\alpha}$ dochodzą do całego zbioru $A_{\alpha}$ w dwóch krokach (Łącznie 3 kroki). Dotarliśmy do każdego elementu z $A$.
 - Z każdego elementu z $A$ dochodzimy do każdego z $B$ w jednym kroku (Łącznie 4 kroki).
+
+
+## 5. W każdym turnieju istnieje ścieżka Hamiltona
+
+Prosta indukcja po ilości wierzchołków.
+- n = 1; działa
+- Załóżmy że dla n wierzchołków twierdzenie jest prawdziwe.
+- Udowodnijmy dla n+1:
+
+Istnieje ścieżka n-wierzchołkowa dla wierzchołków $v_{1}$...$v_{n+1}$. Pokażmy, że da się dołożyć do tej ścieżki $v_{0}$:
+- Idziemy wzdłuż ścieżki. Szukamy pierwszego miejsca takiego że $v_{i}$ ma krawędź wchodzącą do $v_{0}$ i wychodząca do $v_{i+1}$. Jeśli znajdziemy taką krawędź wkładamy $v_{0}$ między te dwa wierzchołki, wydłużając ścieżkę o 1.
+
+Edge case'y:
+- Pierwsza krawędź jest wchodząca -> $v_{0}$ ląduje na początku
+- Każda jest wychodząca -> $v_{0}$ ląduje na końcu 
