@@ -45,7 +45,7 @@ Summaries directory contains notes I made to pass hardest exams.
 ### Semester VI (now here!):
 - [] Algorithms and Data Structures
 - [] Programming Methods (OCaml)
-- [] Probability Calculus
+- [] Probability Calculus and Statistics
 - [] Computer Networks
 - [] Computer Systems
 
