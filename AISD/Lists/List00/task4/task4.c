@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 /* Stary kod z kursu C */
-/* Rozwiązanie zad1 / L1 od około ~100 linijki */
+/* Rozwiązanie zad4 / L0 od około ~100 linijki */
 
 typedef struct node
 {
