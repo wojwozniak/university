@@ -167,3 +167,74 @@ Np. w TCP/IP:
 - Warstwa transportowa (TCP/UDP) dodaje nagłówek z portami.
 - Warstwa sieciowa (IP) dodaje adresy IP.
 - Warstwa łącza danych (np. Ethernet) dodaje adresy MAC i - ramkę.
+
+## Wykład 2
+
+### 1.1. Z czego wynika hierarchia adresów IP? 
+
+Hierarchia adresów IP wynika z ich struktury, która dzieli adres na części: sieciową i hosta. Adres IP (np. IPv4: 192.168.1.10) składa się z dwóch elementów:
+- Część sieciowa: Określa sieć, do której należy urządzenie (np. `192.168.1.0`).
+- Część hosta: Identyfikuje konkretne urządzenie w tej sieci (np. `.10`).
+- Maska podsieci (np. `/24` lub `255.255.255.0`) definiuje, ile bitów przypada na sieć, a ile na hosta.
+
+### 1.2. Jaki ^ ma wpływ na konstrukcję tablic routingu?
+
+Hierarchiczne adresy pozwalają na dopasowanie wzorców (np. „jeśli adres zaczyna się od 10.0.0.0/8, wyślij do X”), co przyspiesza decyzje routingu. Bez hierarchii tablice musiałyby zawierać miliony indywidualnych wpisów dla każdego hosta – hierarchia redukuje to do tysięcy bloków sieciowych.
+
+### 2. Notacja CIDR
+
+CIDR (Classless Inter-Domain Routing) to sposób zapisu adresów IP i masek podsieci, który zastąpił stare klasy adresów (A, B, C). Używa się go do elastycznego określania granic sieci i hostów.
+
+<b>Format:</b> Adres IP + ukośnik + liczba bitów sieciowych, np. `192.168.1.0/24`
+
+/24 znaczy, że 24 bity to sieć, a 8 bitów (32 – 24) to hosty.
+
+`Liczba hostów = 2^(bity hosta) – 2 (na adres sieci i broadcast)`. Np. dla /24: 2^8 – 2 = 254 hosty.
+
+<b>Przykłady:</b>
+- 10.0.0.0/8:
+  - Sieć: 10.0.0.0 – 10.255.255.255
+  - Maska: 255.0.0.0
+  - Hosty: 2^24 – 2 = ~16,7 miliona
+- 192.168.1.0/24:
+  - Sieć: 192.168.1.0 – 192.168.1.255
+  - Maska: 255.255.255.0
+  - Hosty: 254
+
+### 3. Co to jest adres rozgłoszeniowy?
+
+Adres rozgłoszeniowy (ang. broadcast address) to specjalny adres IP w sieci, który służy do wysyłania danych do wszystkich urządzeń w tej samej podsieci jednocześnie.
+
+<b>Struktura:</b> Jest to najwyższy adres w zakresie podsieci, gdzie wszystkie bity części hosta są ustawione na 1.
+
+Przykład:
+
+Dla sieci 192.168.1.0/24 (maska: 255.255.255.0):
+- Adres sieci: 192.168.1.0 (bity hosta = 0)
+- Adres rozgłoszeniowy: 192.168.1.255 (bity hosta = 1)
+
+### 4. Co to jest maska podsieci?
+
+Maska podsieci (ang. subnet mask) to liczba w formacie binarnym lub dziesiętnym, która określa, która część adresu IP należy do sieci, a która do hosta w tej sieci. Używa się jej razem z adresem IP, by podzielić sieć na mniejsze podsieci.
+
+Np. `255.255.255.0` (binarnie: `11111111.11111111.11111111.00000000`) = 24 bity sieciowe, 8 bitów na hosty.
+
+<b>Przykład:</b>
+- Adres IP: 192.168.1.10.
+- Maska: 255.255.255.0 (/24).
+- Część sieciowa: 192.168.1.0 (pierwsze 24 bity).
+- Część hosta: .10 (ostatnie 8 bitów).
+
+### 5. Opisz sieci IP klasy A, B i C.
+
+W oryginalnym systemie adresowania IPv4 (przed CIDR) adresy były dzielone na klasy na podstawie pierwszych bitów adresu. Klasy A, B i C różnią się rozmiarem części sieciowej i hosta, co określa ich zastosowanie.
+
+| **Klasa** | **Kluczowa cecha**             |
+| --------- | ------------------------------ |
+| A         | Duże sieci, ~16M hostów, /8    |
+| B         | Średnie sieci, 65K hostów, /16 |
+| C         | Małe sieci, 254 hosty, /24     |
+
+### 6. Co to jest pętla lokalna (loopback)?
+
+Pętla lokalna (ang. loopback) to specjalny adres IP używany do testowania komunikacji sieciowej na tym samym urządzeniu, bez wysyłania danych poza nie. Adres `127.0.0.1`. (Zarezerwowany jest cały blok `127.n.n.n`)
