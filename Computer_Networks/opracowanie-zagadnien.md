@@ -89,3 +89,81 @@ Potrzebne jest 7 warstw OSI (z ich wbudowanymi "bezpiecznikami" - każdy myślni
 | Routing źródłowy                | Kontrola nad trasą, ale nieefektywny. Dead tech                                            |
 | Wykorzystujący tablice routingu | Elastyczny, skalowalny, dla Internetu. Aktualnie dominuje                                  |
 | Wirtualne przełączanie obwodów  | Stabilny, ale wymaga konfiguracji. Możliwość rezerwacji zasobów - dobre do strumieniowania |
+
+### 9. Co to jest komunikacja pełnodupleksowa, półdupleksowa i simpleksowa?
+
+Określamy w ten sposób podział kanału
+- Simpleksowa -> tylko w jednym kierunku, np. klawiatura -> komputer
+- Półdupleksowa -> jeden kanał dzielony naprzemiennie dla dwóch kierunków, np. krótkofalówka
+- Dupleksowa -> w obu kierunkach równocześnie (min. 2 kanały), np. rozmowa telefoniczna
+
+### 10. Do czego służy polecenie traceroute? Co pokazuje?
+
+`traceroute` (win: `tracert`) służy do śledzenia trasy pakietu od nas do wyznaczonego nadawcy.
+| **Aspekt**   | **Opis**                             |
+| ------------ | ------------------------------------ |
+| Cel          | Śledzenie trasy pakietów w sieci     |
+| Co pokazuje  | Routery, czas RTT, problemy w trasie |
+| Zastosowanie | Diagnostyka i testowanie sieci       |
+
+### 11.1. Po co stosuje się bufory w routerach? 
+
+Bufory w routerach służą do tymczasowego przechowywania pakietów danych, gdy ich napływ przekracza zdolność routera do natychmiastowego przetworzenia lub przesłania.
+
+### 11.2. Co to jest przeciążenie?
+Przeciążenie to przekroczenie przez przychodzące pakiety przepustowości routera i jego bufora. Nadmiarowe pakiety są odrzucane (`drop`).
+
+### 12. Jakie są przyczyny opóźnień pakietów?
+
+| **Przyczyna opóźnienia** | **Kluczowa cecha**                          |
+| ------------------------ | ------------------------------------------- |
+| Propagacyjne             | Zależy od odległości i medium               |
+| Transmisyjne             | Zależy od przepustowości i rozmiaru pakietu |
+| Przetwarzania            | Zależy od wydajności routera                |
+| Kolejkowania             | Zależy od obciążenia sieci                  |
+| Jitter i retransmisje    | Zależy od stabilności połączenia            |
+
+### 13.1. Co to jest BDP?
+
+BDP (Bandwidth-Delay Product) to iloczyn przepustowości łącza (ang. bandwidth) i opóźnienia w obie strony (RTT – Round Trip Time). Wyraża, ile danych może być „w locie” w sieci w danym momencie.
+
+### 13.2. Co to jest czas propagacji?
+
+Czas propagacji (ang. propagation delay) to czas, jaki sygnał potrzebuje, by fizycznie pokonać odległość od nadawcy do odbiorcy w medium transmisyjnym.
+
+### 14.1. Co umożliwia protokół IP?
+
+| **Funkcja protokołu IP** | **Opis**                                                                                                        |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Adresowanie              | Przydziela unikalne adresy IP urządzeniom, co pozwala identyfikować nadawcę i odbiorcę (np. IPv4: 192.168.1.1). |
+| Routing                  | Umożliwia przekazywanie pakietów między sieciami za pomocą routerów, niezależnie od ich fizycznej topologii.    |
+| Fragmentacja i składanie | Dzieli duże pakiety na mniejsze fragmenty (jeśli to konieczne) i składa je z powrotem u odbiorcy.               |
+| Bezpołączeniowość        | Przesyła pakiety niezależnie, bez ustanawiania stałego połączenia między nadawcą a odbiorcą.                    |
+| Uniwersalność            | Działa na różnych technologiach sieciowych (Ethernet, Wi-Fi, itp.), tworząc podstawę Internetu.                 |
+
+### 14.2. Co to znaczy, że protokół realizuje zasadę best effort?
+
+Zasada „best effort” oznacza, że protokół IP stara się dostarczyć pakiety do celu, ale nie gwarantuje ich dotarcia, kolejności ani braku opóźnień.
+
+### 15. Jakie są zalety i wady zasady end-to-end?
+
+Zasada end-to-end (ang. end-to-end principle) mówi, że funkcje takie jak niezawodność, kontrola błędów czy szyfrowanie powinny być realizowane na końcach komunikacji (nadawca i odbiorca), a nie w pośrednich węzłach sieci (np. routerach). Sieć ma tylko przesyłać dane.
+
+| **Aspekt** | **Opis**                                   |
+| ---------- | ------------------------------------------ |
+| Zalety     | Prostota sieci, elastyczność, skalowalność |
+| Wady       | Złożoność końcówek, brak QoS, opóźnienia   |
+
+### 16. Po co wprowadza się porty?
+
+Porty w sieciach komputerowych służą do rozróżniania różnych aplikacji lub usług działających na tym samym urządzeniu. Dzięki nim komputer wie, do którego programu skierować przychodzące dane, mimo że wszystkie używają jednego adresu IP.
+
+### 17. Wyjaśnij pojęcie enkapsulacji i dekapsulacji
+
+Enkapsulacja to proces „pakowania” danych w sieciach komputerowych, gdy są przesyłane z wyższej warstwy modelu OSI/TCP do niższej. Dekapsulacja to odwrócenie tego procesu.
+
+Np. w TCP/IP:
+- Aplikacja tworzy dane.
+- Warstwa transportowa (TCP/UDP) dodaje nagłówek z portami.
+- Warstwa sieciowa (IP) dodaje adresy IP.
+- Warstwa łącza danych (np. Ethernet) dodaje adresy MAC i - ramkę.
