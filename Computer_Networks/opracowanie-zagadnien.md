@@ -238,3 +238,20 @@ W oryginalnym systemie adresowania IPv4 (przed CIDR) adresy były dzielone na kl
 ### 6. Co to jest pętla lokalna (loopback)?
 
 Pętla lokalna (ang. loopback) to specjalny adres IP używany do testowania komunikacji sieciowej na tym samym urządzeniu, bez wysyłania danych poza nie. Adres `127.0.0.1`. (Zarezerwowany jest cały blok `127.n.n.n`)
+
+### 7.1. Do czego służy pole TTL w pakiecie IP? 
+
+TTL (Time To Live) to pole w nagłówku pakietu IP, które określa, jak długo pakiet może „żyć” w sieci, zanim zostanie odrzucony.
+
+<b>Do czego służy?</b>
+- Zapobiega zapętlaniu: Chroni przed nieskończonym krążeniem pakietów w sieci z powodu błędów routingu (np. pętli).
+- Licznik hopów: Każdy router zmniejsza TTL o 1. Gdy TTL osiągnie 0, pakiet jest odrzucany, a nadawca może dostać komunikat ICMP (np. „Time Exceeded”).
+
+### 7.2. Do czego służy pole protokół?
+
+Pole protokół (Protocol) w nagłówku IP wskazuje, jaki protokół warstwy wyższej jest używany w danych pakietu.
+
+<b>Wartość:</b> 8-bitowa liczba, np.:
+- 1 = ICMP (np. ping).
+- 6 = TCP.
+- 17 = UDP.
