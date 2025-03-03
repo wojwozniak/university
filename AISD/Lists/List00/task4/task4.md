@@ -2,13 +2,6 @@
 
 Napisz rekurencyjne funkcje, które dla danego drzewa binarnego T obliczają:
 
-• liczbę wierzchołków w T,
-
-• maksymalną odległość między wierzchołkami w T.
-
-
-Nie podaję tutaj funkcji pomocnicznych - albo były na kursie C, albo są trywialne.
-W razie czego można znaleźć je w kodzie.
 
 ### a) Liczba wierzchołków
 
@@ -34,12 +27,7 @@ int max_distance(node *root)
     }
 
     /*
-        I tu lekko bardziej rozpiszę, bo tu jest mała pułapka.
-        Drzewo może być niesymetryczne - wtedy nie możemy po prostu zsumować
-        głębokości lewego i prawego poddrzewa.
-
-        Oprócz tego musimy liczyć maksymalną odległość między wierzchołkami w
-        poddrzewach, i sprawdzić czy tam coś większego się nie znajdzie.
+        Pułapka - niesymetryczne drzewa - oprócz sum of depths trzeba sprawdzać rekurencyjnie na dzieciach
     */
 
     // Wyliczamy potrzebne nam wartości
@@ -48,10 +36,7 @@ int max_distance(node *root)
     int max_distance_left = max_distance(root->l);
     int max_distance_right = max_distance(root->r);
 
-    // Tu mamy sumę głębokości lewego i prawego poddrzewa
     int sum_of_depths = max_depth_left + max_depth_right;
-
-    // A tu jeszcze max wartości rekurencyjnie dla dzieci
     int max_distance_children = max(max_distance_left, max_distance_right);
 
     // Zwracamy większą z dwóch wartości
