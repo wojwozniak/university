@@ -4,3 +4,24 @@ Niech G będzie nieskierowanym grafem ważonym, w którym waga dokładnie jednej
 
 ## Rozwiązanie
 
+Na pewno nie działa w każdym przypadku -> kontrprzykład:
+
+```
+SO - 1 - A
+|      /
+4   -5 
+| /
+B
+```
+Algotytm Dijkstry:
+- Source: -> D(A) = 1; D(B) = 4; del source from unvisited
+- A: -> D(B) = -4; del A from unvisited
+- B: -> brak unvisited sąsiadów, del B from unvisited
+- Result: D(S) = 0; D(A) = 1; D(B) = -4
+
+Ale S -> B -> A ma koszt -1, nie znaleźliśmy tej najtańszej ścieżki
+
+
+### Potencjalny warunek żeby działało
+
+Wydaje mi się że zadziała jeśli krawędź ujemna graniczy ze źródłem.
