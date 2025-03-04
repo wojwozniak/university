@@ -28,7 +28,7 @@ Jeśli graf skierowany to po prostu DFSik do punktu docelowego zapamiętując cz
 - Usuwamy krawędź którą weszliśmy
 - DFS z przejściowego do docelowego (acykliczność wymusza że nie będzie powtarzał się żaden wierzchołek)
 
-## Algorytm dla skierowanych
+## Algorytm 1
 
 ```py
 Tin[] <- dana lista n-1 krawędzi (ojciec, syn)
@@ -51,4 +51,29 @@ def dfs(int current, int target, int to_pass, bool visited):
     return false
 
 dfs(root, target, to_pass, false)
+```
+
+## Algorytm 2, raczej lepszy
+
+(Robimy słownik z entry / out)
+
+```py
+void DFS():  
+    t = 0;  
+    oznacz każdy jako nieodwiedzony;  
+    visit(root);  
+
+void visit(w, t):  
+    oznacz jako odw;  
+    entry_time = t;  
+    Dla każdego v na L sąsiedztwa:  
+        jeśli nie odw.  
+            t++  
+            visit(v, t);  
+    leave_time = t;  
+
+bool isOn():  
+    if przejsciowy.entry < target.entry and przejsciowy.finish >= target.finish
+        return true;  
+    return false;  
 ```
