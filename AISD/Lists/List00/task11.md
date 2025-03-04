@@ -4,4 +4,3 @@ Niech G będzie nieskierowanym grafem ważonym, w którym waga dokładnie jednej
 
 ## Rozwiązanie
 
-Może nawet dla kilku - warunek -> ujemne graniczą ze startem (lub ze sobą mając w ścieżce ujemnych start)
