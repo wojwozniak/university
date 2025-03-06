@@ -11,4 +11,4 @@ Oprócz tego pisemne zadania za łącznie 20pkt egzaminacyjnych
 ### Lista 1
 - 12 / 10 pkt
 - 64.2 - 12 = 52.2 do zaliczenia
-- 24/7 pkt -> 3 i 3/7 pkt do egzaminu
+- 24/7 pkt -> 3 i 3/7 pkt / 46 pkt na egzamin
