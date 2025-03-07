@@ -13,4 +13,12 @@ I nowe
 # Wyzwanie
 
 - Wszystkie komendy jak wcześniej
-- Chcemy powiadomić kartę sieciową
+
+### Ostatnie pytanie wyzwania
+
+Brak NAT -> V0 działa jako router między lokalnymi sieciami a internetem, ale nie ma skonfigurowanego NAT (Network Adress Translation)
+
+```sh
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -t nat -A POSTROUTING -o enp-ext -j MASQUERADE
+```
