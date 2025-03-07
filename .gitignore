@@ -608,4 +608,6 @@ Rust/*/*/target
 Rust/*/*/*/target
 Rust/*/*/output.ppm
 *.ppm
-AISD/Workshops/*/*.rs
+AISD/Workshops/*/Cargo.toml
+AISD/Workshops/*/src
+AISD/Workshops/*/target
