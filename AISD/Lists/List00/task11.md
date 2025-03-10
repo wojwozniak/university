@@ -30,5 +30,6 @@ Wydaje mi się że zadziała jeśli krawędź ujemna graniczy ze źródłem.
 
 ### Działające dla wszystkich pozycji pojedyńczej krawędzi
 
+- usuwamy krawędź ujemną
 - 3 Dijkstry -> start i dwa końce krawędzi
 - odległość dla i to: min(bcost[i], bcost[u] + ucost[i] + n_weight, bcost[v] + vcost[i] + n_weight)
