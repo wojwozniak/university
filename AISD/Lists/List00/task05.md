@@ -28,87 +28,47 @@ bool ins(node **rootptr, int val) // ** bo rootptr może być nullem
 }
 ```
 
+### Successor
+```py
+def findSuccessor(rootNode, value):
+    current = rootNode
+    succesor = None
 
-### Delete (BST)
-
-```c
-node *deleteNode(node *root, int val)
-{
-    if (root == NULL)
-    {
-        return NULL;
-    }
-
-    if (val < root->val)
-    {
-        root->l = deleteNode(root->l, val);
-    }
-    else if (val > root->val)
-    {
-        root->r = deleteNode(root->r, val);
-    }
-    else
-    {
-        // Znaleźliśmy, usuwamy
-        // Jeśli jedno dziecko to prosto 
-        // -> dziecko przesuwa się do góry
-        // (obsługuje to automatycznie liść)
-        if (root->l == NULL)
-        {
-            node *temp = root->r;
-            free(root);
-            return temp;
-        }
-        else if (root->r == NULL)
-        {
-            node *temp = root->l;
-            free(root);
-            return temp;
-        }
-
-        // Dla dwóch dzieci największa zabawa
-        // 1) Szukamy min. prawego poddrzewa
-        // 2) Zastępujemy nim wartość node'a do usunięcia
-        // 3) Rekurencyjnie usuwamy to minimum
-        node *temp = findMin(root->r);
-        root->val = temp->val;
-        root->r = deleteNode(root->r, temp->val);
-    }
-    return root;
-}
+    while current is not null:
+        if current.value < value:
+            current = current.right
+        else if current.value == value:
+            successor = findMin(current.right)
+        else:
+            successor = findMin(current)
+            break
+    
+    return successor
 ```
 
-
-### Successor (BST)
-
-```c
-int findSuccessor(node *root, int val)
-{
-    node *current = root;
-    node *successor = NULL;
-
-    while (current != NULL)
-    {
-        if (current->val > val)
-        {
-            // Sukcesor to min. value większe niż zadane
-            successor = findMin(root->r);
-        }
-        else if (current->val < val)
-        {
-            current = current->r;
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    if (successor != NULL)
-    {
-        return successor->val;
-    }
-
-    return -1;
-}
+### Delete
+```py
+def delNode(node, value):
+    if node == None:
+        return None
+    else if value < node.value:
+        node = delNode(node.left, value)
+    else if value > node.value:
+        node = delNode(node.right, value)   
+    else:
+        # Znaleziono node
+        if node.left == NULL:
+            temp = node.right
+            free(node.right)
+            return temp
+        if node.right == NULL:
+            temp = node.left
+            free(node.left)
+            return temp
+        # w tym przypadku dwójka dzieci
+        temp = findMin(node.right)
+        node.val = temp.val
+        node.right = deleteNode(root.right, temp.val)
+        # gdzie ostatnia funkcja już nie wywoła na pewno rekurencji
+    return node
 ```
