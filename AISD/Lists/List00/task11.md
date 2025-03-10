@@ -25,3 +25,10 @@ Ale S -> B -> A ma koszt -1, nie znaleźliśmy tej najtańszej ścieżki
 ### Potencjalny warunek żeby działało
 
 Wydaje mi się że zadziała jeśli krawędź ujemna graniczy ze źródłem.
+
+(W razie czego 2 dijskry na dwóch stronach tej krawędzi, i min start, druga - waga ale raczej nie trzeba)
+
+### Działające dla wszystkich pozycji pojedyńczej krawędzi
+
+- 3 Dijkstry -> start i dwa końce krawędzi
+- odległość dla i to: min(bcost[i], bcost[u] + ucost[i] + n_weight, bcost[v] + vcost[i] + n_weight)
