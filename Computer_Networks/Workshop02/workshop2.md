@@ -19,6 +19,6 @@ I nowe
 Brak NAT -> V0 działa jako router między lokalnymi sieciami a internetem, ale nie ma skonfigurowanego NAT (Network Adress Translation)
 
 ```sh
-echo 1 > /proc/sys/net/ipv4/ip_forward
+apt install iptables
 iptables -t nat -A POSTROUTING -o enp-ext -j MASQUERADE
 ```
