@@ -7,7 +7,7 @@ Niech G będzie nieskierowanym grafem ważonym, w którym waga dokładnie jednej
 Na pewno nie działa w każdym przypadku -> kontrprzykład:
 
 ```
-SO - 1 - A
+SO - 1 - A - 1 - C
 |      /
 4   -5 
 | /
@@ -15,11 +15,11 @@ B
 ```
 Algotytm Dijkstry:
 - Source: -> D(A) = 1; D(B) = 4; del source from unvisited
-- A: -> D(B) = -4; del A from unvisited
-- B: -> brak unvisited sąsiadów, del B from unvisited
-- Result: D(S) = 0; D(A) = 1; D(B) = -4
+- A: -> D(B) = -4; D(C) = 2; del A from unvisited
+- B: -> D(A) = -1;
+- Result: D(S) = 0; D(A) = -1; D(B) = -4; D(C) = 2
 
-Ale S -> B -> A ma koszt -1, nie znaleźliśmy tej najtańszej ścieżki
+Ale S -> B -> A -> C ma koszt 0, nie znaleźliśmy tej najtańszej ścieżki
 
 
 ### Potencjalny warunek żeby działało
