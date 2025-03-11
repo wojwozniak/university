@@ -34,7 +34,7 @@ def findSuccessor(root, value):
     if root is null:
         return null
 
-    succesor = null
+    successor = null
     curr = root
 
     while curr != null:
@@ -55,7 +55,7 @@ def findSuccessor(root, value):
         else:
             curr = curr.r # Za mała, szukamy większych
 
-    return null
+    return successor
 ```
 
 ### Delete
