@@ -12,3 +12,9 @@
 - Zadeklarowane: 3,4,5,7 -> 4,5 / 7,5 pkt
 - Prezentacja: 5 do dokończenia na początku przyszłych
 - Pozostałe: 8, 9, 10, 11
+
+### Ćwiczenia 2 (11.03.2025, zastępstwo)
+- Były zadania: 8,9,10,11 z Listy 0 i 1 z Listy 1
+- Zadeklarowane 8,10,11 z Listy 0 -> 4,5/5,5 pkt (Suma: 9/13 pkt)
+- Prezentacja: 5, mniej więcej git, dowiedzieć się czy punkty
+- Pozostałe: 2,3,4,5 z Listy 1
