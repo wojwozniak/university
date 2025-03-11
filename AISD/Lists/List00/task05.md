@@ -68,14 +68,12 @@ def delNode(node, value):
     else if value > node.value:
         node = delNode(node.right, value)   
     else:
-        # Znaleziono node
+        # Znaleziono node do usunięcia
         if node.left == NULL:
             temp = node.right
-            free(node)
             return temp
         if node.right == NULL:
             temp = node.left
-            free(node)
             return temp
         # w tym przypadku dwójka dzieci
         temp = findMin(node.right)
