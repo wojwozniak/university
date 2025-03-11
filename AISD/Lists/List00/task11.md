@@ -17,6 +17,7 @@ Algotytm Dijkstry:
 - Source: -> D(A) = 1; D(B) = 4; del source from unvisited
 - A: -> D(B) = -4; D(C) = 2; del A from unvisited
 - B: -> D(A) = -1;
+- C: brak zmian;
 - Result: D(S) = 0; D(A) = -1; D(B) = -4; D(C) = 2
 
 Ale S -> B -> A -> C ma koszt 0, nie znaleźliśmy tej najtańszej ścieżki
