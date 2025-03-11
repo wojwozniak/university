@@ -30,20 +30,32 @@ bool ins(node **rootptr, int val) // ** bo rootptr może być nullem
 
 ### Successor
 ```py
-def findSuccessor(rootNode, value):
-    current = rootNode
-    succesor = None
+def findSuccessor(root, value):
+    if root is null:
+        return null
 
-    while current is not null:
-        if current.value < value:
-            current = current.right
-        else if current.value == value:
-            successor = findMin(current.right)
+    succesor = null
+    curr = root
+
+    while curr != null:
+        if curr.val == value # Znaleźliśmy wartość której sukcesora szukamy
+            # Jeśli wartość której sukcesora szukamy ma większe dziecko,
+            # szukamy min prawego poddrzewa
+            if curr.r != null:
+                return findMin(curr.r)
+            # Jeśli nie ma dzieci, sukcesor mógł być nodem, z którego poszliśmy w lewo
+            else:
+                return successor
+
+        # Jeśli aktualna większa niż zadana to jest potencjalnym
+        # sukcesorem, sprawdzamy dalej dla mniejszych dzieci
+        else if curr.val > value:
+            successor = curr
+            curr = curr.l
         else:
-            successor = findMin(current)
-            break
-    
-    return successor
+            curr = curr.r # Za mała, szukamy większych
+
+    return null
 ```
 
 ### Delete
