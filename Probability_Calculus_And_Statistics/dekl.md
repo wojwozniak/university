@@ -11,3 +11,10 @@
 - 12 / 10 pkt
 - 64.4 - 12 = 52.4 do zaliczenia
 - 24/7 pkt -> 3 i 3/7 pkt / 46 pkt na egzamin
+
+### Lista 2
+- 11 / 10 pkt
+- 52.4 - 11 = 41.4 do zaliczenia
+- 22 / 7 -> 3 i 1/7 pkt na egzamin
+- Łącznie z poprzednią 23 / 23 (20) punktów
+- 6 i 4/7 pkt / 46 pkt na egzamin
