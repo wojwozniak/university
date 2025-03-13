@@ -255,3 +255,88 @@ Pole protokół (Protocol) w nagłówku IP wskazuje, jaki protokół warstwy wy�
 - 1 = ICMP (np. ping).
 - 6 = TCP.
 - 17 = UDP.
+
+### 8. Jakie reguły zawierają tablice routingu?
+- Adres docelowy
+- Adres pośredni (via)
+- Interfejs sieciowy (np. enp0s3)
+
+### 9. Na czym polega reguła najdłuższego pasującego prefiksu?
+
+Reguła najdłuższego pasującego prefiksu (ang. Longest Prefix Match, LPM) to zasada stosowana przez routery do wyboru najbardziej odpowiedniej trasy w tablicy routingu, gdy istnieje kilka możliwych dopasowań dla adresu docelowego pakietu.
+
+Prefiks -> maska. Wybieramy sieć z największą maską (najbardziej specific zasada)
+
+### 10. Co to jest trasa domyślna?
+
+Trasa którą wyślemy pakiety jeśli nie ma żadnej innej, bardziej specyficznej sieci do której możnaby wysłać pakietu. Jej adres to `0.0.0.0/0`, oznaczamy jako `default`
+
+### 11. Do czego służy protokół ICMP? Jakie znasz typy komunikatów ICMP?
+
+| **Typ** | **Nazwa**               | **Opis**                                                                                      |
+| ------- | ----------------------- | --------------------------------------------------------------------------------------------- |
+| 0       | Echo Reply              | Odpowiedź na żądanie „Echo Request” – używane w narzędziu `ping` do potwierdzenia odpowiedzi. |
+| 3       | Destination Unreachable | Cel nieosiągalny – np. host, sieć lub port nie istnieje albo jest zablokowany.                |
+| 5       | Redirect                | Sugestia zmiany trasy – router proponuje inną bramę dla pakietu.                              |
+| 8       | Echo Request            | Żądanie echa – wysyłane przez `ping`, by sprawdzić, czy host odpowiada.                       |
+| 11      | Time Exceeded           | Czas życia pakietu (TTL) osiągnął 0 – używane w `traceroute` do mapowania trasy.              |
+| 12      | Parameter Problem       | Problem z nagłówkiem IP – pakiet odrzucony z powodu błędu w strukturze.                       |
+
+### 12. Jak działa polecenie ping?
+
+Komputer:
+- Wysyła ICMP Echo Request (Typ 8) do celu.
+- Czeka na ICMP Echo Reply (Typ 0) od hosta.
+- Mierzy czas RTT i raportuje wynik.
+
+### 13. Jak działa polecenie traceroute?
+
+Komputer:
+- Wysyła pakiety z rosnącym TTL (1, 2, 3...).
+- Każdy router po drodze zmniejsza TTL i, gdy dojdzie do 0, odsyła ICMP Time Exceeded.
+- Pokazuje adresy IP i RTT dla każdego hopu, aż dotrze do celu.
+
+### 14. Dlaczego do tworzenia gniazd surowych wymagane są uprawnienia administratora?
+
+Bezpieczeństwo. Ryzyko:
+- spoofing
+- DDoS
+- podsłuchiwanie ruchu
+
+### 15. Co to jest sieciowa kolejność bajtów?
+
+Sieciowa kolejność bajtów zawsze używa big-endian, co zapewnia spójność w komunikacji między urządzeniami o różnych architekturach (np. Intel x86 – little-endian, vs. starsze procesory sieciowe – big-endian).
+- <b>Big-endian</b>: Najbardziej znaczący bajt (MSB, most significant byte) jest zapisywany jako pierwszy (od lewej).
+- <b>Little-endian</b>: Najmniej znaczący bajt (LSB, least significant byte) jest zapisywany jako pierwszy.
+
+### 16. Co robią funkcje socket(), recvfrom() i sendto()?
+
+- `socket()`: Tworzy gniazdo do komunikacji (np. UDP, TCP, surowe).
+- `sendto()`: Wysyła dane do konkretnego adresu przez gniazdo.
+- `recvfrom()`: Odbiera dane i podaje, skąd przyszły.
+
+### 17. Jakie informacje zawiera struktura adresowa sockaddr_in?
+
+Struktura sockaddr_in przechowuje informacje o adresie sieciowym, takie jak adres IP i numer portu, w formacie odpowiednim dla funkcji sieciowych, takich jak `sendto()`, `recvfrom()`, `bind()` czy `connect()`. Definiuje „gdzie” w sieci wysłać lub skąd odebrać dane.
+
+### 18. Co to jest tryb blokujący i nieblokujący? Co to jest aktywne czekanie?
+
+- Blokujący recvfrom() na gnieździe ICMP czeka na Echo Reply
+- Nieblokujący pozwala sprawdzać wiele rzeczy naraz, np. odpowiedzi od różnych hostów.
+- Aktywne czekanie to prymitywna metoda testowania, np. „czy brama już odpowiedziała?”.
+
+| **Aspekt**          | **Blokujący**            | **Nieblokujący**     | **Aktywne czekanie**        |
+| ------------------- | ------------------------ | -------------------- | --------------------------- |
+| **Czekanie**        | Pasywne (system blokuje) | Brak (wraca od razu) | Aktywne (pętla w programie) |
+| **Efektywność CPU** | Wysoka (proces śpi)      | Wysoka (nie czeka)   | Niska (zużywa CPU)          |
+
+### 19. Jakie jest działanie funkcji select()?
+
+`select()` pozwala programowi:
+
+- Sprawdzić, które gniazda (lub inne deskryptory) są gotowe do:
+  - Odczytu (np. dane przyszły na gniazdo).
+  - Zapisu (np. można wysłać dane bez blokowania).
+  - Obsługi wyjątków (np. błąd na gnieździe).
+- Czekać na te zdarzenia z określonym limitem czasu, zamiast aktywnie sprawdzać w pętli.
+- Obsługiwać wiele gniazd jednocześnie w jednym wątku.
