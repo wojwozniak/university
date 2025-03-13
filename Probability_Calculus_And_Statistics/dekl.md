@@ -14,7 +14,8 @@
 
 ### Lista 2
 - 11 / 10 pkt
-- 52.4 - 11 = 41.4 do zaliczenia
-- 22 / 7 -> 3 i 1/7 pkt na egzamin
-- Łącznie z poprzednią 23 / 23 (20) punktów
-- 6 i 4/7 pkt / 46 pkt na egzamin
+- 1 pkt bonus za prezentacje zad 6
+- 52.4 - 12 = 40.4 do zaliczenia
+- 24 / 7 -> 3 i 3/7 pkt na egzamin
+- Łącznie z poprzednią 24 / 23 (20) punktów
+- 6 i 6/7 pkt / 46 pkt na egzamin
