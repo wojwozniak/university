@@ -340,3 +340,140 @@ Struktura sockaddr_in przechowuje informacje o adresie sieciowym, takie jak adre
   - Obsługi wyjątków (np. błąd na gnieździe).
 - Czekać na te zdarzenia z określonym limitem czasu, zamiast aktywnie sprawdzać w pętli.
 - Obsługiwać wiele gniazd jednocześnie w jednym wątku.
+
+## Wykład 3
+
+### 1. Co to jest cykl w routingu? Co go powoduje?
+
+Cykl w routingu (ang. routing loop) to sytuacja, w której pakiet danych w sieci krąży w pętli między routerami, zamiast dotrzeć do swojego celu. Oznacza to, że routery przesyłają sobie nawzajem ten sam pakiet w kółko, co prowadzi do jego niekończącego się obiegu, aż do wygaśnięcia.
+
+### 2. Czym różni się tablica routingu od tablicy przekazywania?
+
+| Cecha                | Tablica routingu               | Tablica przekazywania               |
+| -------------------- | ------------------------------ | ----------------------------------- |
+| **Funkcja**          | Decyzje o trasach              | Szybkie przekazywanie pakietów      |
+| **Zawartość**        | Pełne dane (metryki, trasy)    | Uproszczone dane (next hop, port)   |
+| **Poziom działania** | Control plane (logika)         | Data plane (przekazywanie)          |
+| **Aktualizacja**     | Dynamiczna (protokół routingu) | Wywiedziona z tablicy routingu      |
+| **Wydajność**        | Wolniejsza, bardziej złożona   | Zoptymalizowana pod kątem szybkości |
+
+### 3. Dlaczego w algorytmach routingu dynamicznego obliczamy najkrótsze ścieżki?
+
+| Aspekt            | Dlaczego obliczamy najkrótsze ścieżki?                   |
+| ----------------- | -------------------------------------------------------- |
+| **Efektywność**   | Minimalizuje opóźnienia w transmisji danych              |
+| **Optymalizacja** | Zmniejsza zużycie zasobów sieci (przepustowość, energia) |
+| **Adaptacja**     | Umożliwia szybkie reagowanie na zmiany w sieci           |
+
+### 4. Co to jest metryka? Jakie metryki mają sens?
+
+Metryka określa "koszt" danej trasy.
+
+- Proste sieci: Liczba przeskoków (RIP) – łatwa do wdrożenia, ale mało precyzyjna.
+- Sieci enterprise: Przepustowość i koszt (OSPF) – dobrze skalują się w dużych sieciach.
+- Sieci krytyczne: Opóźnienie i niezawodność (EIGRP) – kluczowe dla aplikacji wrażliwych na czas.
+
+### 5. Czym różnią się algorytmy wektora odległości od algorytmów stanów łączy?
+- Algorytm wektora odległości - zna tylko odległość do celu i kolejny hop (Bellman-Ford)
+- Algorytm stanów łączy - zna pełną mapę sieci (Dijsktra)
+
+### 6. Jak router może stwierdzić, że bezpośrednio podłączona sieć jest nieosiągalna?
+
+| Metoda wykrywania      | Jak działa?                              | Przyczyna nieosiągalności              |
+| ---------------------- | ---------------------------------------- | -------------------------------------- |
+| **Stan interfejsu**    | Sprawdza "up/down" interfejsu            | Odłączony kabel, awaria sprzętu        |
+| **Protokół warstwy 2** | Monitoruje działanie protokołu (np. PPP) | Brak keepalives, błąd negocjacji       |
+| **ARP**                | Brak odpowiedzi na zapytania ARP         | Wyłączone urządzenia, zła konfiguracja |
+| **ICMP/Ping**          | Brak odpowiedzi na ping                  | Sieć lub urządzenia niedostępne        |
+
+### 7. Co to znaczy, że stan tablic routingu jest stabilny?
+
+Stabilny stan tablic routingu oznacza, że w sieci z routingiem dynamicznym wszystkie routery osiągnęły <b>konwergencję</b> – czyli ich tablice routingu są spójne, aktualne i nie ulegają dalszym zmianom, dopóki topologia sieci lub konfiguracja się nie zmieni.
+
+### 8. Jak zalewać sieć informacją? Co to są komunikaty LSA?
+
+Zalewanie sieci informacją (flooding) to technika stosowana w protokołach routingu dynamicznego, głównie w algorytmach stanów łączy. Router generuje komunikat o stanie swoich łączy i wysyła go do wszystkich swoich sąsiadów.
+
+LSA (Link State Advertisement) to specjalne komunikaty używane w protokole OSPF (Open Shortest Path First) do przekazywania informacji o stanie łączy podczas zalewania sieci.
+
+### 9. Co wchodzi w skład wektora odległości?
+
+| Element                             | Opis                                     | Przykład                 |
+| ----------------------------------- | ---------------------------------------- | ------------------------ |
+| **Adres docelowy**                  | Sieć lub host, do którego prowadzi trasa | 10.0.0.0/8               |
+| **Odległość**                       | Metryka kosztu dotarcia do celu          | 2 przeskoki              |
+| **Następny skok**                   | Adres routera na trasie                  | 192.168.1.2              |
+| **Interfejs (opcjonalnie)**         | Port wyjściowy                           | eth0                     |
+| **Dodatkowe metryki (opcjonalnie)** | Przepustowość, opóźnienie itp.           | EIGRP: opóźnienie 100 ms |
+
+### 10. W jaki sposób podczas działania algorytmu routingu dynamicznego może powstać cykl w routingu?
+
+- Mamy A->B->C->target
+- Awaria, C traci drogę do target
+- C aktualizuje informacją od B że ma drogę długości 2 do target
+- B aktualizuje że ma 3
+- C że ma 4
+- ....
+
+### 11. Co to jest problem zliczania do nieskończoności? Kiedy występuje?
+
+j.w.
+
+### 12. Na czym polega technika zatruwania ścieżki zwrotnej (poison reverse)?
+
+Po stracie połączenia z jakąś siecią router ogłasza że ścieżka już nie istnieje.
+
+### 13. Po co w algorytmach wektora odległości definiuje się największą odległość w sieci (16 w protokole RIPv1)?
+
+By unikać pętli.
+
+### 14. Po co stosuje się przyspieszone uaktualnienia?
+
+Przyspieszone uaktualnienia (ang. triggered updates) w algorytmach routingu dynamicznego to mechanizm, który polega na natychmiastowym wysyłaniu aktualizacji tablic routingu do sąsiadów w odpowiedzi na zmianę w sieci (np. awarię łącza, zmianę metryki), zamiast czekać na standardowy, okresowy cykl aktualizacji (np. co 30 sekund w RIP).
+
+### 15. Co to jest system autonomiczny (AS)? Jakie znasz typy AS?
+
+| Typ AS            | Opis                                     | Zastosowanie                     | Przykład             |
+| ----------------- | ---------------------------------------- | -------------------------------- | -------------------- |
+| **Stub AS**       | Połączony z jednym AS-em                 | Małe firmy, klienci końcowi      | Firma X → ISP        |
+| **Transit AS**    | Przekazuje ruch między AS-ami            | Duże ISP, operatorzy szkieletowi | Level 3 (AS3356)     |
+| **Multihomed AS** | Połączony z wieloma AS-ami, bez tranzytu | Redundancja, niezawodność        | Bank z dwoma ISP     |
+| **IXP AS**        | Ułatwia peering w punktach wymiany       | Punkty IXP (np. DE-CIX)          | AS w punkcie wymiany |
+
+
+### 16. Czym różnią się połączenia dostawca-klient pomiędzy systemami autonomicznymi od łącz partnerskich (peering)?
+
+| Cecha        | Dostawca-Klient                    | Peering                             |
+| ------------ | ---------------------------------- | ----------------------------------- |
+| **Relacja**  | Hierarchiczna, klient płaci        | Równorzędna, zwykle bez opłat       |
+| **Ruch**     | Tranzyt do całego Internetu        | Tylko między AS-ami i ich klientami |
+| **Koszty**   | Płatne przez klienta               | Bezpłatne (settlement-free)         |
+| **Trasy**    | Dostawca: wszystkie, Klient: swoje | Oba: tylko swoje i klientów         |
+| **Przykład** | Firma → ISP                        | Google ↔ Cloudflare                 |
+
+### 17. Dlaczego w routingu pomiędzy systemami autonomicznymi nie stosuje się najkrótszych ścieżek?
+
+Bo zamiast tego można zroutować:
+- przez klienta, lub jeśli się nie da to
+- przez partnera, lub jeśli nie
+- to dopiero przez dostawcę
+
+### 18. Które trasy w BGP warto rozgłaszać i komu? A które wybierać?
+
+| Aspekt              | Które trasy rozgłaszać?        | Komu?                                     | Które wybierać?                        |
+| ------------------- | ------------------------------ | ----------------------------------------- | -------------------------------------- |
+| **Własne prefiksy** | Zawsze swoje sieci             | Dostawcy, klienci, peering                | -                                      |
+| **Trasy klientów**  | Sieci klientów                 | Dostawcy, peering (nie dostawcy klientom) | -                                      |
+| **Trasy dostawców** | Tylko klientom                 | Klienci                                   | -                                      |
+| **Kryteria wyboru** | -                              | -                                         | 1. Local Pref, 2. AS_PATH, 3. MED itd. |
+| **Przykład**        | 192.168.1.0/24 do ISP i peerów | ISP: wszystko, Peer: swoje                | Trasa z Local Pref 200                 |
+
+### 19. Jak BGP może współpracować z algorytmami routingu wewnątrz AS?
+
+| Mechanizm             | Jak BGP współpracuje z IGP?           | Przykład                            |
+| --------------------- | ------------------------------------- | ----------------------------------- |
+| **Redystrybucja**     | Trasy BGP → IGP i IGP → BGP           | Trasa 10.0.0.0/8 z BGP do OSPF      |
+| **iBGP**              | Rozprowadzanie tras BGP wewnątrz AS   | eBGP → iBGP, OSPF tylko wewnętrznie |
+| **IGP do next hop**   | IGP prowadzi do routerów BGP          | OSPF kieruje do 192.168.1.1 (BGP)   |
+| **Metryki IGP w BGP** | BGP używa kosztu IGP do wyboru tras   | Trasa z niższym kosztem OSPF        |
+| **Zastosowanie**      | Mały AS: redystrybucja, Duży AS: iBGP | OSPF + iBGP w dużym ISP             |
