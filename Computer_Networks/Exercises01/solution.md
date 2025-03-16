@@ -346,52 +346,51 @@ I tu już widzimy że informacja o tym że sieć była przerwana będzie "ucieka
 
 ## Zadanie 9
 
-Pokaż, że przy wykorzystaniu algorytmu stanu łączy też może powstać cykl w routingu. W tym celu skonstruuj sieć z dwoma wyróżnionymi, sąsiadującymi ze sobą routerami A i B. Załóż, że wszystkie routery znają graf całej sieci. W pewnym momencie łącze między A i B ulega awarii, o czym A i B od razu się dowiadują. Zalewają one sieć odpowiednią aktualizacją. Pokaż, że w okresie propagowania tej
-aktualizacji (kiedy dotarła ona już do części routerów a do części nie) może powstać cykl w routingu.
+Pokaż, że przy wykorzystaniu algorytmu stanu łączy też może powstać cykl w routingu. W tym celu skonstruuj sieć z dwoma wyróżnionymi, sąsiadującymi ze sobą routerami A i B. Załóż, że wszystkie routery znają graf całej sieci. W pewnym momencie łącze między A i B ulega awarii, o czym A i B od razu się dowiadują. Zalewają one sieć odpowiednią aktualizacją. Pokaż, że w okresie propagowania tej aktualizacji (kiedy dotarła ona już do części routerów a do części nie) może powstać cykl w routingu.
 
 ### Rozwiązanie
 
 ```
-   A ---1--- B
-   |         |
-   1         1
-   |         |
-   C ---2--- D
-   |         |
-   1         1
-   |         |
-   E -------/
+   A --1-- B
+   |    /  |
+   5   3   1
+   |  /    |
+   C --1-- D
 ```
+
+B->A: koszt 1
 
 #### Wysiada połączenie między A i B, floodują sieć tą informacją
-- Pakiet dociera do C, ale jeszcze nie do D
+- Informacja dociera do D ale nie do C
+- Chcemy wysłać B->A
+- B wysyła do D
+- D wysyła do C
+- C nie dostało informacji że A-B się popsuło więc wysyła znów do B
 
-W C: 
-```
-   A         B
-   |         |
-   1         1
-   |         |
-   C ---2--- D
-   |         |
-   1         1
-   |         |
-   E -------/
-```
-
-W D:
-```
-   A ---1--- B
-   |         |
-   1         1
-   |         |
-   C ---2--- D
-   |         |
-   1         1
-   |         |
-   E -------/
-```
 
 ## Zadanie 10
 
 Załóżmy, że sieć składa się z łączy jednokierunkowych (tj. łącza w sieci tworzą graf skierowany) i nie zawiera cykli. Rozważmy niekontrolowany algorytm „zalewający” sieć jakimś komunikatem: komunikat zostaje wysłany początkowo przez pewien router; każdy router, który dostanie dany komunikat przesyła go dalej wszystkimi wychodzącymi z niego krawędziami. Pokaż, że istnieją takie sieci z n routerami, w których przesyłanie informacji zakończy się po czasie 2^Ω(n). Zakładamy, że przez jedno łącze można przesłać tylko jeden komunikat naraz, a przesłanie go trwa jednostkę czasu.
+
+### Rozwiązanie
+
+Dla n routerów, 2^(min n, liniowo) czasu na propagację
+
+```
+          a
+      b      b
+   c    c c     c
+d   d  dddd    d  d
+...
+```
+- Rozkładamy warstwami -> 1, 2, 4, 8...
+- Każda warstwa ma krawędź wchodzącą od każdego routera w poprzednich
+- Każdy na lewo wysyła do wszystkich na prawo w swojej warstwie
+- Warstwa 1 wysyła n-1 pakietów
+- n-2 + n-3
+- n - 4 + n-5 + n-6 + n-7
+- ...
+
+Łącznie n! wysyłanych pakietów
+
+ale idk jak to przerobić ładnie
