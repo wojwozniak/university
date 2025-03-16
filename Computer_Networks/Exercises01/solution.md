@@ -384,13 +384,14 @@ d   d  dddd    d  d
 ...
 ```
 - Rozkładamy warstwami -> 1, 2, 4, 8...
-- Każda warstwa ma krawędź wchodzącą od każdego routera w poprzednich
-- Każdy na lewo wysyła do wszystkich na prawo w swojej warstwie
-- Warstwa 1 wysyła n-1 pakietów
-- n-2 + n-3
-- n - 4 + n-5 + n-6 + n-7
-- ...
+- Każda warstwa ma krawędź wchodzącą od każdego routera w poprzedniej
+- Warstwa 1 wysyła 2 pakiety
+- Warstwa 2 wysyła 4, każdy musi odebrać 2
+- W w3 każdy router odbiera 4
+- W i+1 każdy router odbiera 2^i
 
-Łącznie n! wysyłanych pakietów
+Łącznie 2^i-1 + 2^i-2 + ... ~= 2^i
 
-ale idk jak to przerobić ładnie
+dla każdego routera w ostatniej warstwie
+
+2^(n/2) jest klasy 2^(omega(n))
