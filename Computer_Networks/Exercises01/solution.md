@@ -350,21 +350,23 @@ Pokaż, że przy wykorzystaniu algorytmu stanu łączy też może powstać cykl 
 ### Rozwiązanie
 
 ```
-   A --1-- B
-   |    /  |
-   5   3   1
-   |  /    |
-   C --1-- D
+   A ----- B
+   |       |
+   |       C
+   |       |
+   |       x
+   |       |
+   E ----- D
+
+gdzie x to bardzo ciężka krawędź której algorytm chce uniknąć
 ```
 
-B->A: koszt 1
-
-#### Wysiada połączenie między A i B, floodują sieć tą informacją
-- Informacja dociera do D ale nie do C
-- Chcemy wysłać B->A
-- B wysyła do D
-- D wysyła do C
-- C nie dostało informacji że A-B się popsuło więc wysyła znów do B
+- Router wysiada, rozsyłana jest informacja.
+- A, B wiedzą od razu, przekazują to do B i E -> D jeszcze nie wie
+- Chcemy wysłać pakiet E->B
+- E wysyła pakiet do D bo wie że to jedyna ścieżka
+- D wysyła do E bo to najkrótsza (według niego)
+- Wysyłają sobie w kółko dopóki D się nie dowie że nie A-B nie istnieje
 
 
 ## Zadanie 10
@@ -373,24 +375,24 @@ Załóżmy, że sieć składa się z łączy jednokierunkowych (tj. łącza w si
 
 ### Rozwiązanie
 
-Dla n routerów, 2^(min n, liniowo) czasu na propagację
-
+Robimy romby
 ```
-          a
-      b      b
-   c    c c     c
-d   d  dddd    d  d
+   |
+   o1
+ /  \
+o    o
+\   /
+  o
+  |
+  o2
+/  \
+o  o
+\  /
+ o3
+ |
 ...
 ```
-- Rozkładamy warstwami -> 1, 2, 4, 8...
-- Każda warstwa ma krawędź wchodzącą od każdego routera w poprzedniej
-- Warstwa 1 wysyła 2 pakiety
-- Warstwa 2 wysyła 4, każdy musi odebrać 2
-- W w3 każdy router odbiera 4
-- W i+1 każdy router odbiera 2^i
 
-Łącznie 2^i-1 + 2^i-2 + ... ~= 2^i
+Pierwszy odbiera/wysyła 1 komunikat, drugi 2, trzeci 4...
 
-dla każdego routera w ostatniej warstwie
-
-2^(n/2) jest klasy 2^(omega(n))
+Łącznie 2^(1/4 n)
