@@ -382,9 +382,9 @@ Robimy romby
  /  \
 o    o
 \   /
-  o
-  |
   o2
+  |
+  o
 /  \
 o  o
 \  /
@@ -393,6 +393,6 @@ o  o
 ...
 ```
 
-Pierwszy odbiera/wysyła 1 komunikat, drugi 2, trzeci 4...
+o1 wysyła/odbiera 1 komunikat, o2 2 komunikaty, o3 4...
 
 Łącznie 2^(1/4 n)
