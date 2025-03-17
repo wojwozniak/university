@@ -377,22 +377,29 @@ Załóżmy, że sieć składa się z łączy jednokierunkowych (tj. łącza w si
 
 Robimy romby
 ```
-   |
-   o1
- /  \
-o    o
-\   /
-  o2
-  |
-  o
-/  \
-o  o
-\  /
- o3
- |
+    |
+    o1
+   /  \
+  o    o
+  \   /
+    o
+    |
+    o2
+   /  \
+  o    o
+   \  /
+    o
+    |
+    o3
+   /  \
+  o    o
+  \   /
+    o
+    |
+    o4
 ...
 ```
 
-o1 wysyła/odbiera 1 komunikat, o2 2 komunikaty, o3 4...
+o1 wysyła/odbiera 1 komunikat, o2 2 komunikaty, o3 4, o4 8...
 
 Łącznie 2^(1/4*n)
