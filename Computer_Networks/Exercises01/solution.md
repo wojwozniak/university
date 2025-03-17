@@ -395,4 +395,4 @@ o  o
 
 o1 wysyła/odbiera 1 komunikat, o2 2 komunikaty, o3 4...
 
-Łącznie 2^(1/4 n)
+Łącznie 2^(1/4*n)
