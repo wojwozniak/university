@@ -163,11 +163,10 @@ Wykonaj powyższe zadanie dla tablicy
 
 ### Rozwiązanie
 
-- 0.0.0.0/0 - Od 0.0.0.0 do 255.255.255.255 → do routera A  
-- 10.0.0.0/8 - Od 10.0.0.0 do 10.255.255.255 → do routera B  
-- 10.3.0.0/24 - Od 10.3.0.0 do 10.3.0.255 → do routera C  
-- 10.3.0.32/27 - Od 10.3.0.32 do 10.3.0.63 → do routera B  
-- 10.3.0.64/26 - Od 10.3.0.64 do 10.3.0.127 → do routera B
+- 0.0.0.0/0 - do routera A  
+- 10.0.0.0/8 - do routera B  
+- 10.0.3.0/27 - do C
+- 10.0.3.128/25 - do C
 
 ## Zadanie 5
 
