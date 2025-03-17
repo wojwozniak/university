@@ -5,9 +5,11 @@ W2: 5/5pkt
 
 Warszaty suma: 10/40
 
-Ćwiczenia suma: 0/20
+Ć1: 9/10pkt
+
+Ćwiczenia suma: 9/20
 
 Pracownia suma: 0/40
 
 
-Łącznie: 10/100pkt
+Łącznie: 19/100pkt
