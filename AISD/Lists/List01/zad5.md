@@ -1,9 +1,10 @@
 # Zadanie 5 / Lista 1
 
-Ułóż algorytm, który dla zadanego acyklicznego grafu skierowanego G znajduje długość 
-najdłuższej drogi w G. Następnie zmodyfikuj swój algorytm tak, by wypisywał drogę o naj-
-większej długości (jeśli jest kilka takich dróg, to Twój algorytm powinien wypisać dowolną z
-nich).
+Ułóż algorytm, który dla zadanego acyklicznego grafu
+skierowanego G znajduje długość najdłuższej drogi w G. 
+Następnie zmodyfikuj swój algorytm tak, by wypisywał drogę 
+o największej długości (jeśli jest kilka takich dróg, to 
+Twój algorytm powinien wypisać dowolną z nich).
 
 ## Algorytm bez odtwarzania ścieżki
 Wejście: Graf G = (V, E)
