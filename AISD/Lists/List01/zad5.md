@@ -7,6 +7,7 @@ nich).
 
 ## Algorytm bez odtwarzania ścieżki
 Wejście: Graf G = (V, E)
+
 Wyjście: Długość najdłuższej drogi w G
 
 1. Wykonaj sortowanie topologiczne wierzchołków grafu G, uzyskując uporządkowaną listę L.
@@ -20,7 +21,8 @@ Wyjście: Długość najdłuższej drogi w G
 ## Algorytm
 
 Wejście: Graf G = (V, E)
-Wyjście: Długość najdłuższej drogi w G
+
+Wyjście: Długość najdłuższej drogi w G, ścieżka
 
 1. Wykonaj sortowanie topologiczne wierzchołków grafu G, uzyskując uporządkowaną listę L.
 2. Dla każdego wierzchołka v w V zainicjuj:
