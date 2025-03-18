@@ -9,7 +9,7 @@ Napisz algorytm, który dla danych k uporządkowanych niemalejąco list \(L_1, .
 
 ## Pomysł
 
-Nie wiem czy a będzie narzucone czy sami sobie wybieramy ale algorytm będzie podobny. Jeśli nienarzucone to `a = najmniejszy element wszystkich list`
+Na start `a = najmniejszy element wszystkich list`. Sprawdzamy wszystkie kombinacje aż wyczerpiemy którąś z list.
 
 ### Złożoność
 O(n * k) -> k ilość list, n długość najdłuższej listy
