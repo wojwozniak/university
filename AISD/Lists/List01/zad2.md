@@ -9,33 +9,45 @@ Napisz algorytm, który dla danych k uporządkowanych niemalejąco list \(L_1, .
 
 ## Pomysł
 
-Na start `a = najmniejszy element wszystkich list`. Sprawdzamy wszystkie kombinacje aż wyczerpiemy którąś z list.
+Na start `a = najmniejszy element wszystkich list`. Sprawdzamy po kolei wszystkie kombinacje aż wyczerpiemy którąś z list.
+
+Korzystamy z min-heap, który dla każdego elementu oprócz wartości (po których jest posortowany) ma doczepioną informację z której jest listy i który miał indeks.
+
+Będziemy z tym heapem:
+- sprawdzali aktualne minimum (O(1))
+- zamieniali aktualne minimum nową wartością (aktualizujac przy tym zmienną pomocniczą o której poniżej) (O(log_2(k)))
+
+Przechowujemy też informację o największym elemencie w heapie w osobnej zmiennej. 
 
 ### Złożoność
-O(n * k) -> k ilość list, n długość najdłuższej listy
+- k to ilość list, n to długość najdłuższej listy
+- O(k) by zapełnić startową listę
+- Pętla wykona się co najwyżej n*k razy
+- W każdej pętli aktualizacja minimum to log_2(k)
+- Ostatecznie: O(n * k * log_2(k))
+
+### Algorytm
 
 ```py
 def findMinR(k, L1, L2, ..., Lk):
-    p[1..k] = 0 # tablica wskaźników, zainicjalizowana na 0
-    v[1..k] = L[1]...,L[k] # tablica wartości, v[i] = L_i[p_i]
+    H[] # min heap, zainicjalizowany do pierwszych elementów list (co zajmie O(n))
     min_r = NUM_MAX
+    M = max.H # Aktualizujemy wkładając do heap
 
-    while True: # wszystkie p[i] < długość L_i
-        # Wyznaczamy r, jeśli możemy aktualizujemy na mniejsze
-        m = min(v[1], v[2], ..., v[k])
-        M = max(v[1], v[2], ..., v[k])
+    while True: # koniec gdy wyczerpie się jakaś lista
+        m = H.min()
         r = M - m
         min_r = min(min_r, r)
 
-        i = numery list z najmniejszym elementem
-        p[i] += 1
-        if Li[p[i]] exists:
-            v[i] = Li[p[i]]
-        else:
-            # Nie przesuniemy już przedziału w górę bo dotarliśmy
-            # do końca jakiejś listy
-            # Nie poprawimy już więc wyniku, kóńczymy algorytm
-            break
+        new_val = H.min_update() # odp. lista, indeks + 1
+        if new_val is null:
+            break # wyczerpaliśmy listę, koniec algorytmu
+        
+        M = max(M, new_val)
     
     return min_r
 ```
+
+### Dlaczego przerywamy gdy wyczerpie się tylko jedna lista?
+
+Dolna granica już się nie przesunie w górę, górna może tylko rosnąć -> nie znajdziemy mniejszej wartości.
