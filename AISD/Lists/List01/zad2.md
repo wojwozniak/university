@@ -32,7 +32,7 @@ Przechowujemy też informację o największym elemencie w heapie w osobnej zmien
 def findMinR(k, L1, L2, ..., Lk):
     H[] # min heap, zainicjalizowany do pierwszych elementów list (co zajmie O(n))
     min_r = NUM_MAX
-    M = max.H # Aktualizujemy wkładając do heap
+    M # Aktualizujemy wkładając do heap
 
     while True: # koniec gdy wyczerpie się jakaś lista
         m, k, i = H.min()
