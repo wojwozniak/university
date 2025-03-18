@@ -39,8 +39,6 @@ def findMinR(k, L1, L2, ..., Lk):
         r = M - m
         min_r = min(min_r, r)
 
-
-        
         new_val = H.min_update(k, i+1) # odp. lista, indeks + 1
         if new_val is null:
             break # wyczerpaliśmy listę, koniec algorytmu
