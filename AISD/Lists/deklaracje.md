@@ -18,3 +18,8 @@
 - Zadeklarowane 8,10,11 z Listy 0 -> 4,5/5,5 pkt (Suma: 9/13 pkt)
 - Prezentacja: 5, mniej więcej git, dowiedzieć się czy punkty
 - Pozostałe: 2,3,4,5 z Listy 1
+
+### Ćwiczenia 3 (18.03.2025)
+- Były zadania 2,3,4,5 z Listy 1
+- Zadeklarowane 2,3,5 -> 3,5/5,5pkt (Suma: 12,5 / 18,5)
+- Pozostałe: cała Lista 2
