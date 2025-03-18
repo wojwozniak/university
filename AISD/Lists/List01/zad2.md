@@ -35,11 +35,13 @@ def findMinR(k, L1, L2, ..., Lk):
     M = max.H # Aktualizujemy wkładając do heap
 
     while True: # koniec gdy wyczerpie się jakaś lista
-        m = H.min()
+        m, k, i = H.min()
         r = M - m
         min_r = min(min_r, r)
 
-        new_val = H.min_update() # odp. lista, indeks + 1
+
+        
+        new_val = H.min_update(k, i+1) # odp. lista, indeks + 1
         if new_val is null:
             break # wyczerpaliśmy listę, koniec algorytmu
         
