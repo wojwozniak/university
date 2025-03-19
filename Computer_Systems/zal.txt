@@ -7,5 +7,6 @@ Rok temu total 106 pkt -> 53 na 3; pewnie +/- parę pkt
 
 Listy: 
 Lista 1: 7 / 7 (Total: 7 / 7)
-Lista 2: 5 / 6 (Total 12 / 13) (7-10 kolejna lista)
-Lista 3: 3 / 9 (Total: 15 / 22) (5+4) (4 na kolejny tydzień)
+Lista 2: 5 / 6 (Total 12 / 13) (7-10 przeniesione na kolejną listę)
+Lista 2cd: 1 / 4 (Total 13 / 16) (7-10 z poprzedniej)
+Lista 3: 3 / 5 (Total: 16 / 21) (4 przeniesione na kolejną listę)
