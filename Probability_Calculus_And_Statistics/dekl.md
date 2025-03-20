@@ -19,3 +19,10 @@
 - 24 / 7 -> 3 i 3/7 pkt na egzamin
 - Łącznie z poprzednią 24 / 23 (20) punktów
 - 6 i 6/7 pkt / 46 pkt na egzamin
+
+### Lista 3
+- 12 / 10 pkt
+- 40.4 - 12 = 28.4 do zaliczenia
+- 24 / 7 -> 3 i 3/7 pkt na egzamin
+- Łącznie z poprzednią 36 / 35 (30) punktów
+- 10 i 2/7 pkt / 46 pkt na egzamin
