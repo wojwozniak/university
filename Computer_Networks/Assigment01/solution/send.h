@@ -8,7 +8,7 @@ u_int16_t compute_icmp_checksum(const void *buff, int length);
  * icd_seq must be updated manually,
  * outside of function for each packet sent
  */
-struct icmp setup_icmp_header(int id);
+struct icmp setup_icmp_header(u_int16_t id);
 
 /**
  * Setup target structure (contains IP adress

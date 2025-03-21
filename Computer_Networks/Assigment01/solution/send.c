@@ -17,7 +17,7 @@ u_int16_t compute_icmp_checksum(const void *buff, int length)
     return (u_int16_t)(~(sum + (sum >> 16U)));
 }
 
-struct icmp setup_icmp_header(int id)
+struct icmp setup_icmp_header(u_int16_t id)
 {
     struct icmp header;
     header.icmp_type = ICMP_ECHO;
