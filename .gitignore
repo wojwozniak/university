@@ -611,5 +611,7 @@ Rust/*/*/output.ppm
 AISD/Workshops/*/Cargo.toml
 AISD/Workshops/*/src
 AISD/Workshops/*/target
-Computer_Networks/*/solution/*
+Computer_Networks/*/solution/receive.c
+Computer_Networks/*/solution/traceroute
+Computer_Networks/*/solution/main.c
 AISD/Workshops/B/pracB.rs
