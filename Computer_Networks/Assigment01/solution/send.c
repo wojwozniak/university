@@ -46,15 +46,12 @@ void send_packets(int sockfd, struct icmp icmp_header, struct sockaddr_in target
     {
         int icd_seq = (ttl - 1) * 3 + i;
         icmp_header.icmp_hun.ih_idseq.icd_seq = icd_seq;
-        printf("Sending packet with TTL %d - icd_seq %d\n", ttl, icd_seq);
-        ssize_t bytes_sent = sendto(
+        sendto(
             sockfd,
             &icmp_header,
             sizeof(icmp_header),
             0,
             (struct sockaddr *)&target,
             sizeof(target));
-
-        printf("Bytes sent %zd\n", bytes_sent);
     }
 }
