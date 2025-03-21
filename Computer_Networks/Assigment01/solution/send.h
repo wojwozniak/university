@@ -16,3 +16,14 @@ struct icmp setup_icmp_header(int id);
  * TTL has to be updated via socket
  */
 struct sockaddr_in setup_icmp_target(char *target_ip_adress);
+
+/**
+ * Function to send packets
+ * - send to target
+ * - with given header
+ * - from given socket
+ * - with given Time To Live
+ * - send packet_count packets at the same time
+ * - icd_seq is updated according to TTL
+ */
+void send_packets(int sockfd, struct icmp icmp_header, struct sockaddr_in target, int ttl, int packet_count);
