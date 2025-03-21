@@ -19,14 +19,14 @@ u_int16_t compute_icmp_checksum(const void *buff, int length)
     return ~(sum + (sum >> 16U));
 }
 
-struct icmp setup_icmp_header()
+struct icmp setup_icmp_header(int seq)
 {
     struct icmp header;
     memset(&header, 0, sizeof(header));
     header.icmp_type = ICMP_ECHO;
     header.icmp_code = 0;
     header.icmp_hun.ih_idseq.icd_id = getpid();
-    header.icmp_hun.ih_idseq.icd_seq = 0;
+    header.icmp_hun.ih_idseq.icd_seq = seq;
     header.icmp_cksum = compute_icmp_checksum(
         (u_int16_t *)&header, sizeof(header));
 
@@ -52,7 +52,8 @@ void send_packets(int sockfd, struct icmp icmp_header, struct sockaddr_in target
     }
     for (int i = 0; i < packet_count; i++)
     {
-        struct icmp icmp_header = setup_icmp_header();
+        int seq = (ttl - 1) * 3 + i;
+        struct icmp icmp_header = setup_icmp_header(seq);
         sendto(
             sockfd,
             &icmp_header,
