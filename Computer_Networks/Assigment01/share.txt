@@ -1,3 +1,5 @@
+dhclient -v enp0s3
+
 C:\Users\wozni\Desktop\C\Uni\Computer_Networks\Assigment01\solution
 
 mkdir folder
