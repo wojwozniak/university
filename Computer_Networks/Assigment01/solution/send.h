@@ -8,7 +8,7 @@ u_int16_t compute_icmp_checksum(const void *buff, int length);
  * icd_seq must be updated manually,
  * outside of function for each packet sent
  */
-struct icmp setup_icmp_header(u_int16_t id);
+struct icmp setup_icmp_header();
 
 /**
  * Setup target structure (contains IP adress
@@ -20,10 +20,9 @@ struct sockaddr_in setup_icmp_target(char *target_ip_adress);
 /**
  * Function to send packets
  * - send to target
- * - with given header
  * - from given socket
  * - with given Time To Live
  * - send packet_count packets at the same time
  * - icd_seq is updated according to TTL
  */
-void send_packets(int sockfd, struct icmp icmp_header, struct sockaddr_in target, int ttl, int packet_count);
+void send_packets(int sockfd, struct sockaddr_in target, int ttl, int packet_count);

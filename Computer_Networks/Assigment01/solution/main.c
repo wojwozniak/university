@@ -29,8 +29,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    struct icmp icmp_header = setup_icmp_header(42);
-
     struct sockaddr_in target = setup_icmp_target(argv[1]);
 
     struct pollfd ps;
@@ -38,5 +36,5 @@ int main(int argc, char *argv[])
     ps.events = POLLIN;
     ps.revents = 0;
 
-    return traceroute(sockfd, icmp_header, target, ps);
+    return traceroute(sockfd, target, ps);
 }

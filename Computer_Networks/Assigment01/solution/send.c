@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <netinet/ip_icmp.h>
@@ -14,15 +16,16 @@ u_int16_t compute_icmp_checksum(const void *buff, int length)
     for (; length > 0; length -= 2)
         sum += *ptr++;
     sum = (sum >> 16U) + (sum & 0xffffU);
-    return (u_int16_t)(~(sum + (sum >> 16U)));
+    return ~(sum + (sum >> 16U));
 }
 
-struct icmp setup_icmp_header(u_int16_t id)
+struct icmp setup_icmp_header()
 {
     struct icmp header;
+    memset(&header, 0, sizeof(header));
     header.icmp_type = ICMP_ECHO;
     header.icmp_code = 0;
-    header.icmp_hun.ih_idseq.icd_id = id;
+    header.icmp_hun.ih_idseq.icd_id = getpid();
     header.icmp_hun.ih_idseq.icd_seq = 0;
     header.icmp_cksum = compute_icmp_checksum(
         (u_int16_t *)&header, sizeof(header));
@@ -41,11 +44,15 @@ struct sockaddr_in setup_icmp_target(char *target_ip_adress)
 
 void send_packets(int sockfd, struct icmp icmp_header, struct sockaddr_in target, int ttl, int packet_count)
 {
-    setsockopt(sockfd, IPPROTO_IP, IP_TTL, &ttl, sizeof(int));
+    int upt_sock = setsockopt(sockfd, IPPROTO_IP, IP_TTL, &ttl, sizeof(int));
+    if (upt_sock < 0)
+    {
+        printf("ERROR: Could not update sock!");
+        exit(EXIT_FAILURE);
+    }
     for (int i = 0; i < packet_count; i++)
     {
-        int icd_seq = (ttl - 1) * 3 + i;
-        icmp_header.icmp_hun.ih_idseq.icd_seq = icd_seq;
+        struct icmp icmp_header = setup_icmp_header();
         sendto(
             sockfd,
             &icmp_header,
