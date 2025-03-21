@@ -612,3 +612,4 @@ AISD/Workshops/*/Cargo.toml
 AISD/Workshops/*/src
 AISD/Workshops/*/target
 Computer_Networks/*/solution/*
+AISD/Workshops/B/pracB.rs
