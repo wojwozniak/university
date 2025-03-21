@@ -1,0 +1,1 @@
+void print_output(int ttl, int res_count, uint32_t *ip_addresses, long long *timestamps);
