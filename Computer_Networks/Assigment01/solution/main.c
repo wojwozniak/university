@@ -13,6 +13,13 @@
 #include "send.h"
 #include "traceroute.h"
 
+/**
+ * Main function
+ * - validates arguments
+ * - sets up raw socket
+ * - set up structures for poll and icmp target
+ * - starts traceroute
+ */
 int main(int argc, char *argv[])
 {
     int arg_validation_result = validate_arguments(argc, argv);
