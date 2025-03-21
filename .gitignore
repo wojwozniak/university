@@ -613,5 +613,6 @@ AISD/Workshops/*/src
 AISD/Workshops/*/target
 Computer_Networks/*/solution/receive_lecture.c
 Computer_Networks/*/solution/traceroute
-Computer_Networks/*/solution/main.c
+Computer_Networks/*/solution/traceroute.c
+Computer_Networks/*/solution/traceroute.h
 AISD/Workshops/B/pracB.rs
