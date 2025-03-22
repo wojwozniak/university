@@ -42,6 +42,9 @@ int main(int argc, char *argv[])
 
     struct sockaddr_in target = setup_icmp_target(argv[1]);
 
+    char target_str[20];
+    inet_ntop(AF_INET, &(target.sin_addr), target_str, sizeof(target_str));
+
     struct pollfd ps;
     ps.fd = sockfd;
     ps.events = POLLIN;
@@ -53,7 +56,7 @@ int main(int argc, char *argv[])
     {
         send_packets(sockfd, target, ttl, 3);
 
-        int res = receive_packets(sockfd, target, traceroute_start, ttl, ps);
+        int res = receive_packets(sockfd, target_str, traceroute_start, ttl, ps);
         if (res == 0)
         {
             break;
