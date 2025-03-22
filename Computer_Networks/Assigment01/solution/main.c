@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 
 #include <poll.h>
 #include <arpa/inet.h>
@@ -11,7 +12,10 @@
 
 #include "validate.h"
 #include "send.h"
-#include "traceroute.h"
+#include "receive.h"
+#include "time_util.h"
+
+#define MAX_TTL 30
 
 /**
  * Main function
@@ -43,5 +47,18 @@ int main(int argc, char *argv[])
     ps.events = POLLIN;
     ps.revents = 0;
 
-    return traceroute(sockfd, target, ps);
+    long long traceroute_start = get_current_time_ms();
+
+    for (int ttl = 1; ttl <= MAX_TTL; ttl++)
+    {
+        send_packets(sockfd, target, ttl, 3);
+
+        int res = receive_packets(sockfd, target, traceroute_start, ttl, ps);
+        if (res == 0)
+        {
+            break;
+        }
+    }
+
+    return 0;
 }
