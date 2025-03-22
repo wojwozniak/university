@@ -11,5 +11,7 @@ int validate_arguments(int argc, char *argv[]);
 
 /**
  * Function validating icmp packet
+ * Checking if it belongs to our proccess
+ * And if it is of correct ttl
  */
 bool validate_packet(struct icmp *icmp_reply, int ttl);
