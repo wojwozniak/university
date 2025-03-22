@@ -10,9 +10,10 @@
 #include "output.h"
 #include "validate.h"
 
-int receive_packets(int sockfd, char *target, long long traceroute_start, int ttl, struct pollfd ps)
+int receive_packets(int sockfd, char *target, int ttl, struct pollfd ps)
 {
-    long long deadline = get_current_time_ms() + 1000;
+    long long start_time = get_current_time_ms();
+    long long deadline = start_time + 1000;
     long long time_left = 0;
 
     int correct_responses = 0;
@@ -67,7 +68,7 @@ int receive_packets(int sockfd, char *target, long long traceroute_start, int tt
             }
 
             ip_addresses[correct_responses] = addr;
-            timestamps[correct_responses] = get_current_time_ms() - traceroute_start;
+            timestamps[correct_responses] = get_current_time_ms() - start_time;
             correct_responses += 1;
 
             if (correct_responses == 3)

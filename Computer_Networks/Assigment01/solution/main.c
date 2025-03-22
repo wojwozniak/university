@@ -45,13 +45,11 @@ int main(int argc, char *argv[])
     ps.events = POLLIN;
     ps.revents = 0;
 
-    long long traceroute_start = get_current_time_ms();
-
     for (int ttl = 1; ttl <= MAX_TTL; ttl++)
     {
         send_packets(sockfd, target, ttl, 3);
 
-        int res = receive_packets(sockfd, target_str, traceroute_start, ttl, ps);
+        int res = receive_packets(sockfd, target_str, ttl, ps);
         if (res == 0)
         {
             break;
