@@ -37,7 +37,7 @@ int print_output(int ttl, int res_count, char *target_str, uint32_t *ip_addresse
     }
     else
     {
-        printf(" ???\n");
+        printf("???\n");
     }
 
     for (int i = 0; i < res_count; i++)
