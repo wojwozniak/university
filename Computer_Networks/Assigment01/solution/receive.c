@@ -18,8 +18,8 @@ int receive_packets(int sockfd, char *target, int ttl, struct pollfd ps)
     long long time_left = 0;
 
     int correct_responses = 0;
-    uint32_t ip_addresses[3];
-    long long timestamps[3];
+    uint32_t ip_addresses[3] = {0};
+    long long timestamps[3] = {0};
 
     for (;;)
     {
@@ -50,6 +50,11 @@ int receive_packets(int sockfd, char *target, int ttl, struct pollfd ps)
             {
                 fprintf(stderr, "Error receiving packet!\n");
                 exit(EXIT_FAILURE);
+            }
+
+            if (packet_len < (ssize_t)(sizeof(struct ip) + sizeof(struct icmp)))
+            {
+                continue;
             }
 
             struct ip *ip_header = (struct ip *)buffer;

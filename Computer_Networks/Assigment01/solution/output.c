@@ -15,7 +15,11 @@ int print_output(int ttl, int res_count, char *target_str, uint32_t *ip_addresse
     char sender_ip_str[res_count][20];
     for (int i = 0; i < res_count; i++)
     {
-        inet_ntop(AF_INET, &ip_addresses[i], sender_ip_str[i], sizeof(sender_ip_str[i]));
+        if (inet_ntop(AF_INET, &ip_addresses[i], sender_ip_str[i], sizeof(sender_ip_str[i])) == NULL)
+        {
+            fprintf(stderr, "Error converting IP adress!\n");
+            return 1;
+        }
     }
 
     printf("%s ", sender_ip_str[0]);
@@ -29,14 +33,14 @@ int print_output(int ttl, int res_count, char *target_str, uint32_t *ip_addresse
 
     if (res_count == 3)
     {
-        printf(" %lld ms\n", (timestamps[0] + timestamps[1] + timestamps[2]) / 3);
+        printf("%lld ms\n", (timestamps[0] + timestamps[1] + timestamps[2]) / 3);
     }
     else
     {
         printf(" ???\n");
     }
 
-    for (int i = 1; i < res_count; i++)
+    for (int i = 0; i < res_count; i++)
     {
         if (strcmp(sender_ip_str[i], target_str) == 0)
         {

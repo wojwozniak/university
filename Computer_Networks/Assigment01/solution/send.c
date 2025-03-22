@@ -39,7 +39,11 @@ struct sockaddr_in setup_icmp_target(char *target_ip_adress)
     struct sockaddr_in target;
     memset(&target, 0, sizeof(target));
     target.sin_family = AF_INET;
-    inet_pton(AF_INET, target_ip_adress, &target.sin_addr);
+    if (inet_pton(AF_INET, target_ip_adress, &target.sin_addr) <= 0)
+    {
+        fprintf(stderr, "Invalid target IP address: %s\n", target_ip_adress);
+        exit(EXIT_FAILURE);
+    }
     return target;
 }
 
@@ -48,19 +52,18 @@ void send_packets(int sockfd, struct sockaddr_in target, int ttl, int packet_cou
     int upt_sock = setsockopt(sockfd, IPPROTO_IP, IP_TTL, &ttl, sizeof(int));
     if (upt_sock < 0)
     {
-        printf("ERROR: Could not update sock!");
+        fprintf(stderr, "ERROR: Could not update sock!");
         exit(EXIT_FAILURE);
     }
     for (int i = 0; i < packet_count; i++)
     {
         int seq = (ttl - 1) * 3 + i;
         struct icmp icmp_header = setup_icmp_header(seq);
-        sendto(
-            sockfd,
-            &icmp_header,
-            sizeof(icmp_header),
-            0,
-            (struct sockaddr *)&target,
-            sizeof(target));
+        ssize_t sent = sendto(sockfd, &icmp_header, sizeof(icmp_header), 0, (struct sockaddr *)&target, sizeof(target));
+        if (sent < 0)
+        {
+            fprintf(stderr, "Error sending packet!\n");
+            exit(EXIT_FAILURE);
+        }
     }
 }

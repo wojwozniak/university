@@ -5,6 +5,7 @@
 #include <arpa/inet.h>
 #include <netinet/ip_icmp.h>
 #include <netinet/in.h>
+#include <string.h>
 
 #include "validate.h"
 #include "send.h"
@@ -36,10 +37,16 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    struct sockaddr_in target = setup_icmp_target(argv[1]);
+    struct sockaddr_in target;
+    memset(&target, 0, sizeof(target));
+    target = setup_icmp_target(argv[1]);
 
     char target_str[20];
-    inet_ntop(AF_INET, &(target.sin_addr), target_str, sizeof(target_str));
+    if (inet_ntop(AF_INET, &(target.sin_addr), target_str, sizeof(target_str)) == NULL)
+    {
+        fprintf(stderr, "Error converting IP adress!\n");
+        exit(EXIT_FAILURE);
+    }
 
     struct pollfd ps;
     ps.fd = sockfd;

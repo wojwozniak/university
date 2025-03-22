@@ -42,7 +42,8 @@ int validate_arguments(int argc, char *argv[])
         fprintf(stderr, "Error: Too many arguments!\n");
         return 1;
     }
-    if (inet_addr(argv[1]) == (in_addr_t)(-1))
+    struct in_addr addr;
+    if (inet_pton(AF_INET, argv[1], &addr) != 1)
     {
         fprintf(stderr, "Error: Incorrect IP adress!\n");
         return 1;
