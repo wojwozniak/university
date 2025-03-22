@@ -2,7 +2,7 @@ TARGET = traceroute
 
 CC = gcc
 
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -std=gnu99 -Wextra
 
 SOURCES = main.c validate.c send.c time_util.c receive.c output.c
 
