@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -g
 
-SOURCES = main.c validate.c send.c time_util.c receive.c
+SOURCES = main.c validate.c send.c time_util.c receive.c output.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
