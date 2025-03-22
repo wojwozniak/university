@@ -1,3 +1,5 @@
+// Wojciech Woźniak 339644
+
 /**
  * Auxiliary function to print out line of output
  * Also checks for destination IP - returns 0 if we are there and should stop

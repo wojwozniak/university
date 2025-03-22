@@ -1,3 +1,5 @@
+// Wojciech Woźniak 339644
+
 #include <sys/time.h>
 #include <stdio.h>
 

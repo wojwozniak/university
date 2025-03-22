@@ -1,3 +1,5 @@
+// Wojciech Woźniak 339644
+
 /**
  * Calculate ICMP checksum for packet that you are sending
  */
