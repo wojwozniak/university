@@ -35,8 +35,7 @@ bool validate_packet(struct icmp *icmp_reply, int ttl)
 
 int receive_packets(int sockfd, char *target, long long traceroute_start, int ttl, struct pollfd ps)
 {
-    long long interval_start = get_current_time_ms();
-    long long deadline = interval_start + 1000;
+    long long deadline = get_current_time_ms() + 1000;
     long long time_left = 0;
 
     int correct_responses = 0;
