@@ -1,11 +1,7 @@
 #include <stdio.h>
-#include <errno.h>
 #include <stdlib.h>
-#include <string.h>
-#include <time.h>
 #include <stdbool.h>
 #include <unistd.h>
-
 #include <poll.h>
 #include <arpa/inet.h>
 #include <netinet/ip_icmp.h>

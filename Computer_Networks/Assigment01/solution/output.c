@@ -1,16 +1,6 @@
 #include <stdio.h>
-#include <errno.h>
-#include <stdlib.h>
 #include <string.h>
-#include <time.h>
-#include <stdbool.h>
-#include <unistd.h>
-
-#include <poll.h>
 #include <arpa/inet.h>
-#include <netinet/ip_icmp.h>
-#include <netinet/in.h>
-#include <netinet/ip.h>
 
 int print_output(int ttl, int res_count, char *target_str, uint32_t *ip_addresses, long long *timestamps)
 {

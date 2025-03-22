@@ -1,7 +1,4 @@
 #include <stdio.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
 #include <arpa/inet.h>
 
 int validate_arguments(int argc, char *argv[])

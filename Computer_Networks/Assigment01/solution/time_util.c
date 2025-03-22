@@ -1,5 +1,4 @@
 #include <sys/time.h>
-#include <assert.h>
 #include <stdio.h>
 
 long long get_current_time_ms()
