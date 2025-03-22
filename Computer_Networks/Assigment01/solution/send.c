@@ -42,7 +42,7 @@ struct sockaddr_in setup_icmp_target(char *target_ip_adress)
     return target;
 }
 
-void send_packets(int sockfd, struct icmp icmp_header, struct sockaddr_in target, int ttl, int packet_count)
+void send_packets(int sockfd, struct sockaddr_in target, int ttl, int packet_count)
 {
     int upt_sock = setsockopt(sockfd, IPPROTO_IP, IP_TTL, &ttl, sizeof(int));
     if (upt_sock < 0)
