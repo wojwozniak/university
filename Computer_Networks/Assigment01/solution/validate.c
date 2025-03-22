@@ -22,7 +22,8 @@ bool validate_packet(struct icmp *icmp_reply, int ttl)
     else if (icmp_reply->icmp_type == ICMP_TIME_EXCEEDED)
     {
         struct ip *body = (struct ip *)&icmp_reply->icmp_data;
-        struct icmp *body_icmp = (struct icmp *)((char *)body + 4 * body->ip_hl);
+        u_int8_t *icmp_packet = icmp_reply->icmp_data + 4 * body->ip_hl;
+        struct icmp *body_icmp = (struct icmp *)icmp_packet;
         return validate_icmp(body_icmp, ttl);
     }
     return false;
