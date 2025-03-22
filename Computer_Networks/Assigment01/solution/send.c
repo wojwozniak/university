@@ -26,7 +26,7 @@ struct icmp setup_icmp_header(int seq)
     memset(&header, 0, sizeof(header));
     header.icmp_type = ICMP_ECHO;
     header.icmp_code = 0;
-    header.icmp_hun.ih_idseq.icd_id = getpid();
+    header.icmp_hun.ih_idseq.icd_id = getpid() & 0xFFFF;
     header.icmp_hun.ih_idseq.icd_seq = seq;
     header.icmp_cksum = compute_icmp_checksum(
         (u_int16_t *)&header, sizeof(header));

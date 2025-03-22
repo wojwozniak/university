@@ -9,7 +9,7 @@
 
 bool validate_icmp(struct icmp *icmp_reply, int ttl)
 {
-    bool is_ours = icmp_reply->icmp_id == getpid();
+    bool is_ours = icmp_reply->icmp_id == (getpid() & 0xFFFF);
     bool is_correct_ttl = icmp_reply->icmp_seq / 3 == (ttl - 1);
     return is_ours && is_correct_ttl;
 }
