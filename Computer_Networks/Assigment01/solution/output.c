@@ -23,12 +23,13 @@ int print_output(int ttl, int res_count, char *target_str, uint32_t *ip_addresse
     }
 
     printf("%s ", sender_ip_str[0]);
-    for (int i = 1; i < res_count; i++)
+    if (strcmp(sender_ip_str[1], sender_ip_str[0]) != 0 && res_count > 1)
     {
-        if (strcmp(sender_ip_str[i], sender_ip_str[i - 1]) != 0)
-        {
-            printf("%s ", sender_ip_str[i]);
-        }
+        printf("%s ", sender_ip_str[1]);
+    }
+    if (strcmp(sender_ip_str[2], sender_ip_str[0]) != 0 && strcmp(sender_ip_str[2], sender_ip_str[1]) != 0 && res_count > 2)
+    {
+        printf("%s ", sender_ip_str[2]);
     }
 
     if (res_count == 3)
