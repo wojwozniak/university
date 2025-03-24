@@ -1,4 +1,4 @@
-# Zadanie 4 / Lista 2
+# Zadanie 6 / Lista 2
 
 Ułóż algorytm, który dla danego n-wierzchołkowego drzewa i liczby k, pokoloruje jak najwięcej wierzchołków tak, by na każdej ścieżce prostej było nie więcej niż k pokolorowanych wierzchołków.
 
