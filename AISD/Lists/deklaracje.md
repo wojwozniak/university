@@ -16,15 +16,17 @@
 ### Ćwiczenia 2 (11.03.2025, zastępstwo)
 - Były zadania: 8,9,10,11 z Listy 0 i 1 z Listy 1
 - Zadeklarowane 8,10,11 z Listy 0 -> 4,5/5,5 pkt (Suma: 9/13 pkt)
-- Prezentacja: 5, mniej więcej git, dowiedzieć się czy punkty
+- Prezentacja: 5, mniej więcej git + 1pkt
 - Pozostałe: 2,3,4,5 z Listy 1
 
 ### Ćwiczenia 3 (18.03.2025)
 - Były zadania 2,3,4,5 z Listy 1
 - Zadeklarowane 2,3,5 -> 3,5/5,5pkt (Suma: 12,5 / 18,5)
+- 0 prezentowanych, łącznie 1 z prezentacji
 - Pozostałe: cała Lista 2
 
 ### Ćwiczenia 4 (25.03.2025)
 - Były zadania 1,2,3,4,5 z Listy 2
 - Zadeklarowane 1,2,3,5 -> 5/7pkt (Suma: 17,5 / 25,5)
+- 0 prezentowanych, łącznie 1 z prezentacji
 - Pozostałe: reszta listy
