@@ -23,3 +23,8 @@
 - Były zadania 2,3,4,5 z Listy 1
 - Zadeklarowane 2,3,5 -> 3,5/5,5pkt (Suma: 12,5 / 18,5)
 - Pozostałe: cała Lista 2
+
+### Ćwiczenia 4 (25.03.2025)
+- Były zadania 1,2,3,4,5 z Listy 2
+- Zadeklarowane 1,2,3,5 -> 5/7pkt (Suma: 17,5 / 25,5)
+- Pozostałe: reszta listy
