@@ -33,16 +33,11 @@ Zauważmy, że optymalne swapy to swapy takie, że:
 
 ## Lematy
 ### SUMA DODATNICH PRZESUNIĘĆ JEST RÓWNA SUMIE UJEMNYCH PRZESUNIĘĆ
-Robią się pętle (permutacje rozłączne?)
+- Z permutacji domyślnej można swapami osiągnąć dowolną. 
+- Swap zwiększa jednemu elementowi i zmiejsza drugiemu przesunięcie o tę samą wartość.
 
 ### FLIPY ZNAKÓW
-Unikamy ich wydając zmienną do końca.
-
-### ZNAKI NA POCZĄTKU
-- Na początku musi być 0 lub + (inaczej wyjdziemy poza tablicę)
-- Wykorzystujemy tego plusa wydając go na minusy
-- Na 1 powstaje 0 (a możliwe że trochę dalszych też to 0) - czyli jakby skróciła nam się lista
-- Więc znowu musi być na początku 0 lub + ...
+- Unikamy ich wydając zmienną do końca.
 
 
 ## Pomysł
@@ -78,7 +73,7 @@ Pierwszy swap to swap(1,3). Otrzymujemy:
 Robimy pointery:
 - curr_ptr -> aktualna pozycja elementu który wydajemy
 - curr_val -> wartość do wydania
-- return_ptr -> jeśli mijamy inny dodatni po raz pierwszy to aktualizujemy
+- return_ptr -> jeśli mijamy inny dodatni po raz pierwszy to aktualizujemy - można bez niego dla czytelności
 - check_ptr -> wartość którą aktualnie sprawdzamy
 
 - przesuwamy curr_ptr od 0 w prawo do pierwszej dodatniej
