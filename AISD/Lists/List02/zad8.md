@@ -34,7 +34,14 @@ Zauważmy, że optymalne swapy to swapy takie, że:
 Robią się pętle (permutacje rozłączne?)
 
 ### FLIPY ZNAKÓW
-Mogą się wydarzyć, lekko upierdliwe bo przez to nie liniowo tylko O(n log n)
+Unikamy ich wydając zmienną do końca.
+
+### ZNAKI NA POCZĄTKU
+- Na początku musi być 0 lub + (inaczej wyjdziemy poza tablicę)
+- Wykorzystujemy tego plusa wydając go na minusy
+- Na 1 powstaje 0 (a możliwe że trochę dalszych też to 0) - czyli jakby skróciła nam się lista
+- Więc znowu musi być na początku 0 lub + ...
+
 
 ## Pomysł
 
