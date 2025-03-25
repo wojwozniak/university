@@ -21,6 +21,8 @@ Ale jest to niewygodnie. Zamiast tego zapiszmy to o wartości przesunięć:
 +3  0  -2  -1   0   0  +2  -1  -1 
 ``` 
 
+Przy czym nie musimy tego "zapisywać". My o tym tak myślimy ale poprzez value - index to osiągamy bez dodatkowej struktury w pamięci.
+
 ## Obserwacje
 
 Zauważmy, że optymalne swapy to swapy takie, że:
@@ -70,3 +72,34 @@ Pierwszy swap to swap(1,3). Otrzymujemy:
 0   0   +1  -1   0   0  +2  -1  -1
 ```
 
+
+## DA SIĘ JESZCZE LEPIEJ
+
+Robimy pointery:
+- curr_ptr -> aktualna pozycja elementu który wydajemy
+- curr_val -> wartość do wydania
+- return_ptr -> jeśli mijamy inny dodatni po raz pierwszy to aktualizujemy
+- check_ptr -> wartość którą aktualnie sprawdzamy
+
+- przesuwamy curr_ptr od 0 w prawo do pierwszej dodatniej
+- idziemy dalej w prawo szukając ujemnej, zaznaczając pierwszą dodatnią po drodze jako return_ptr
+- gdy znajdziemy ujemną to swap(curr_ptr, check_ptr). 
+- Jeśli wydaliśmy curr_val to:
+  - curr_ptr = return_ptr (jeśli istnieje)
+  - curr_val = return_ptr value
+  - check_ptr bez zmian
+  - lecimy dalej z wydawaniem (od return_ptr)
+- Jeśli nie to:
+  - curr_ptr bez zmian
+  - curr_val = curr_val - check_val
+  - check_ptr = check_ptr + 1
+  - lecimy dalej z wydawaniem (szukając nowej ujemnej)
+
+- NIGDY NIE COFA SIĘ POINTER
+- W KAŻDYM KROKU MIN 1 POINTER IDZIE O MIN 1 W PRAWO
+- OPERACJE WEWNĄTRZ PĘTLI SĄ STAŁE
+
+## ZŁOŻONOŚĆ
+
+- czasowo: O(n) - jedno przejście po liniowej strukturze
+- pamięciowo: O(1) - stała pamięć przy założeniu że wypisujemy output od razu
