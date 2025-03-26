@@ -32,4 +32,4 @@
 - Były zadania 1,2,3,4,5 z Listy 2
 - Zadeklarowane 1,2,3,5 -> 5/7pkt (Suma: 17,5 / 25,5)
 - 0 prezentowanych, łącznie 2 z prezentacji
-- Pozostałe: reszta listy
+- Pozostałe: reszta listy (6 - 10 / L2)
