@@ -8,6 +8,5 @@ Rok temu total 106 pkt -> 53 na 3; pewnie +/- parę pkt
 Listy: 
 - Lista 1: 7 / 7 (Total: 7 / 7)
 - Lista 2: 5 / 6 (Total 12 / 13) (zad.7-10 przeniesione na kolejną listę)
-- Lista 2cd: 1 / 4 (Total 13 / 16) (zad.7-10 z poprzedniej, pokazywane łącznie z lst. 3)
-- Lista 3: 3 / 6 (Total: 16 / 22) 
+- Lista 2cd + 3: 4 / 10 (Total: 16 / 22) 
 - Lista 4: 4 / 4 (Total: 20 / 26) (zad.5-7 przeniesione na kolejną listę)
