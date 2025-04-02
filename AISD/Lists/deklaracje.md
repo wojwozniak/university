@@ -24,12 +24,18 @@
 
 ### Ćwiczenia 3 (18.03.2025)
 - Były zadania 2,3,4,5 z Listy 1
-- Zadeklarowane 2,3,5 -> 3,5/5,5pkt (Suma: 12,5 / 18,5)
-- 0 prezentowanych, łącznie 2 z prezentacji
+- Zadeklarowane 2,3,5 -> 3,5/5,5 pkt (Suma: 12,5 / 18,5)
+- Łącznie 2 pkt z prezentacji so far
 - Pozostałe: cała Lista 2
 
 ### Ćwiczenia 4 (25.03.2025)
 - Były zadania 1,2,3,4,5 z Listy 2
-- Zadeklarowane 1,2,3,5 -> 5/7pkt (Suma: 17,5 / 25,5)
-- 0 prezentowanych, łącznie 2 z prezentacji
+- Zadeklarowane 1,2,3,5 -> 5/7 pkt (Suma: 17,5 / 25,5)
+- Łącznie 2 pkt z prezentacji so far
 - Pozostałe: reszta listy (6 - 10 / L2)
+
+### Ćwiczenia 4 (01.04.2025)
+- Były zadania 6,7 z Listy 2
+- Zadeklarowane 6,7 -> 3,5/3,5 pkt (Suma: 21 / 29)
+- Łącznie 2 pkt z prezentacji so far
+- Pozostałe: reszta listy (8 - 10 / L2) i cała Lista 3
