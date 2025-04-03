@@ -1,5 +1,7 @@
 # Opracowanie zagadnień z końca wykładu
 
+Niektóre odpowiedzi bazują na https://hackmd.io/@ZdZE9rvDRBmq3azjnK2_WA/Hym36xbu3
+
 Na końcu każdego wykładu są zagadnienia, podobno przydatne pod egzamin. Będę tu rozpisywał odpowiedzi na każde z pytań - powtórzenie po wykładzie. Niektóre pytania (bardziej złożone) będą podzielone na mniejsze części.
 
 ## Wykład 1
@@ -580,3 +582,106 @@ Tablicę przypisań $(A, P_a, C, P_c) -> P_b$
 - P_c - port docelowy
 - P_b - port docelowy w NAT
 
+## Wykład 5
+
+### 1. Jakie są zadania warstwy łącza danych a jakie warstwy fizycznej?
+
+#### Warstwa łącza danych:
+
+- Komunikacja między sąsiadującymi urządzeniami
+- Wysyłanie ramek (zawodne)
+- Musi sobie radzić z błędami transmisji
+- Być może współdzielony kanał komunikacyjny
+
+### 2. Czym różni się koncentrator od przełącznika sieciowego?
+
+Koncentrator (hub) jest urządzeniem pasywnym, które przekazuje dane przychodzące na wszystkie podłączone porty, powodując kolizje i ograniczając przepustowość, podczas gdy przełącznik sieciowy (switch) jest urządzeniem aktywnym, które przesyła dane tylko do docelowego portu na podstawie adresów MAC, co zwiększa wydajność sieci i eliminuje kolizje.
+
+### 3. Jak działa algorytm rundowy i bezrundowy ALOHA?
+
+Komputery wysyłają ramki w rundach. Jeśli kilka komputerów wyśle na raz w jednej rundzie, to zakłócenie. Jeśli tylko 1 to sukces. (Wysyłamy wielokrotnie).
+
+Bezrundowy nie ma globalnego zegara rund - każdy komputer ma swój własny.
+
+### 4. Jak działa algorytm odczekiwania wykładniczego?
+
+Wysyłaj ramki z coraz większym odstępem (za każdym razem *2 z lekką losowością). Stosowane w Wi-Fi i Ethernet.
+
+### 5. Wyjaśnij skróty CSMA/CD i CSMA/CA.
+
+Carrier Sense Multiple Access with Collision Detection
+- m ← 1
+- Poczekaj aż kanał będzie pusty i zacznij nadawać.
+- Podczas nadawania, nasłuchuj. Jeśli usłyszysz kolizję:
+- skończ nadawać,
+- wylosuj k ze zbioru { 0, …, 2m - 1 } i odczekaj k rund,
+- m ← m + 1,
+- wróć do kroku 2.
+
+Można stosować jedynie jeśli umiemy jednocześnie nadawać i odbierać tak żeby wiedzieć czy są kolizje.
+Trzeba tylko dobrze dobrać długość rundy. Najlepiej ustawić R = czas wysyłania 64 bajtów.
+
+Carrier Sense Multiple Access with Collision Avoidance
+Taki sam jak ten poprzedni algorytm, tylko stosujemy potwierdzanie ramek. Ramki są zawsze nadawane do końca. Odczekujemy pewien czas, nawet jeśli kanał właśnie się zwolnił.
+
+### 6. Opisz budowę ramki Ethernetowej.
+
+Ramka ethernetowa zawiera:
+- adres docelowy MAC
+- adres źródłowy MAC
+- typ - identyfikuje portokół w danych, no 0x0800 = IP
+- dane
+- sumę kontrolną
+
+### 7. Co to jest adres MAC?
+
+MAC to 6 bajtowy unikatowy ciąg teorytycznie przypisany do karty sieciowej, w praktyce
+łatwo go zmienić. Pierwsze 3 bajty przyznaje IEEE producentowi kart sieciowych, 3 kolejne
+nadaje producent.
+
+### 8. Do czego służy tryb nasłuchu (promiscuous mode)?
+
+Przekazywania do systemu wszystkich widzialnych ramek. - Karta sieciowa w trybie nasłuchu (promiscuous mode) przekazuje do systemu wszystkie widziane ramki (Wireshark)
+
+### 9. Po co w Ethernecie definiuje się minimalną długość ramki?
+
+Aby łatwo odróżnić ramkę od śmieci oraz czas wysyłania trwało conajmniej 2*czas propagacji, wtedy albo ramka dotrze do odbiorcy albo dowiemy sięo kolizcji podczas jej nadawania. Długość ramki powinna być proporcjonalna w jakiś sposób do odległości między urządzeniami.
+
+### 10. Do czego służą protokoły ARP i DHCP?
+
+ARP = Address Resolution Protocol
+Służy do dowiedzenia się “kto ma dany adres IP”. Jest zawarty w ramkach wysyła na adres rozgłoszeniowy. (FF:FF:FF:FF:FF:FF), pole type w takiej ramce to 0x0806.
+Jeden komputer odpowiada.
+Wszyscy słyszą odpowiedź i zapisują ją w lokalnej tablicy ARP na jakiś czas.
+
+DHCP = Dynamic Host Configuration Protocol
+Przydziela automatycznie adresy IP.
+
+### 11. Czym różni się łączenie dwóch sieci za pomocą mostu od łączenia ich za pomocą routera?
+
+Most to przełącznik z dwoma portami, który łączy 2 sieci. Łączenie za pomocą mostu jest szybsze, bo podmiane podlega jedynie nagłówki oraz suma kontrolna, ale most nie rozumie IP, więc nie dokona fragmentacji.
+
+### 12. Jak warstwa łącza danych realizuje rozgłaszanie?
+
+Każdy otrzymuje informacje jeśli nadana ona jest na adres rozgłoszeniowy MAC. (FF:FF:FF:FF:FF:FF)
+Czyli idea jest podobna do broadcastu IP, tylko, że rozmawiamy na poziomie innej warstwy
+
+### 13. Na czym polega tryb uczenia się w przełączniku sieciowym?
+
+Przełącznik uczy się które adresy MAC są podłączone do których portów. Na początku broadcastuje taki pakiecik do wszystkich urządzeń, a z czasem, liczbą zdobytej wiedzy zapisanej w tablicy przesyła je do coraz mniejszej liczby odbiorców, żeby finalnie przesyłać do tego jedynego właściwego.
+
+### 14. Po co w przełączanym Ethernecie stosuje się algorytm drzewa spinającego?
+
+Chcemy osiągnąć topologię bez cykli (a przy okazji mieć krótkie ścieżki)
+
+### 15. Co to jest sieć VLAN? Po co się ją stosuje?
+
+VLAN - wirtualna sieć lokalna. Dzielimy logicznie sieć na niezależne grupy.
+
+### 16. Wyjaśnij zjawisko ukrytej stacji.
+
+Zjawisko ukrytej stacji występuje w sieciach komputerowych, gdy dwa lub więcej urządzeń znajdują się w odległościach względem siebie tak, że nie mogą wzajemnie wykrywać swojego sygnału transmisyjnego. Oznacza to, że każde urządzenie może być w stanie komunikować się bezkolizyjnie z dostępnym punktem dostępu (AP) lub innymi urządzeniami, ale nie ma wiedzy o transmisjach innych urządzeń w tej samej sieci.
+
+### 17. Na czym polega rezerwowanie łącza za pomocą RTS i CTS?
+
+Rozwiązuje to problem ukrytej stacji. RTS (Real Time Strategy/Request to Send) - urządzenie pytana o pozowolenie na nadawanie AP i wtedy ono mu odpowiada CTS (Clear to Send) - co oznacza że nie ma konkurentów do nadawania i może lecieć.
