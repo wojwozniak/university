@@ -477,3 +477,106 @@ Bo zamiast tego można zroutować:
 | **IGP do next hop**   | IGP prowadzi do routerów BGP          | OSPF kieruje do 192.168.1.1 (BGP)   |
 | **Metryki IGP w BGP** | BGP używa kosztu IGP do wyboru tras   | Trasa z niższym kosztem OSPF        |
 | **Zastosowanie**      | Mały AS: redystrybucja, Duży AS: iBGP | OSPF + iBGP w dużym ISP             |
+
+## Wykład 4
+
+### 1. Co to są prywatne adresy IP? Jakie pule adresów są zarezerwowane na takie adresy?
+
+Adresy prywatne to adresy przeznaczone do sieci lokalnych. Pula adresów to:
+- 10.0.0.0/8 (1 adres klasy A)
+- 172.16.0.0/12 (16 adresów klasy B)
+- 192.168.0.0/16 (256 adresów klasy C)
+
+### 2. Co robi funkcja bind()?
+
+Przypisuje port do gniazda.
+
+### 3. Czym różnią się porty o numerach mniejszych niż 1024 od innych?
+
+Są domyślnie zarezerwowane dla usług systemowych, wymagają uprawnień administratora do użycia.
+
+### 4. Jakie są zadania procesora routingu, portu wejściowego, portu wyjściowego i struktury przełączającej?
+
+- Procesor routingu tworzy tablice przekazywania, wysyła je do portów wejściowych, zarządza strukturą przekazywania (do odpowiedniego portu wyjściowego)
+- Port wejściowy: odbiera pakiety, sprawdza nagłówki, przekazuje do struktury przełączającej
+- Port wyjściowy: odbiera pakiety ze struktury przełączającej, wysyła je do odpowiedniego portu fizycznego
+
+### 5. Czym się różni przełączanie pakietów w routerze za pomocą RAM od przełączania za pomocą struktury przełączającej?
+
+- RAM: Przechowuje tablice routingu, pakiety są przetwarzane przez CPU, co może prowadzić do opóźnień.
+- Struktura przełączająca: Umożliwia równoległe przetwarzanie pakietów, co zwiększa wydajność i zmniejsza opóźnienia.
+
+### 6. Jakie są pożądane cechy struktury przełączającej w routerze?
+
+Przekazywanie pakietów w czasie bliskim rzeczywistemu (szybkości łącza).
+
+### 7. Gdzie w routerze stosuje się buforowanie? Po co?
+
+- W portach wejściowych: Gdy pakiety przychodzą szybciej niż mogą być przetwarzane, buforowanie zapobiega utracie danych.
+- W portach wyjściowych: Gdy port wyjściowy jest zajęty, buforowanie pozwala na przechowywanie pakietów do momentu, gdy będą mogły być wysłane (Kolejka FIFO)
+
+### 8. Po co w portach wyjściowych klasyfikuje się pakiety?
+
+By ustawić priorytety z którymi muszą być wysłane.
+
+### 9. Co to jest blokowanie początku kolejki? Gdzie występuje? Jak się go rozwiązuje?
+
+Jeśli w jednej kolejce są pakiety do dwóch portów wyjściowych, gdzie port wyjściowy dla pierwszego jest zapełniony a drugi nie, to drugi czeka mimo że mógłby być wysłany.
+
+Rozwiązujemy osobną kolejką do każdego wyjściowego.
+
+### 10. Rozwiń skrót LPM.
+
+Longest Prefix Match
+
+### 11. Jakie znasz struktury danych implementujące LPM? Porównaj je.
+
+Lista prefixów, drzewo trie, tablica haszująca. Porównanie #todo.
+
+### 12. Co to jest pamięć TCAM? Jak można ją zastosować do implementacji LPM?
+
+Pamięć TCAM (Ternary Content Addressable Memory) to rodzaj pamięci, która pozwala na równoległe porównywanie wielu wartości. Umożliwia szybkie wyszukiwanie prefiksów w tablicach routingu.
+
+### 13. Na czym polega fragmentacja IP? Gdzie się ją stosuje i dlaczego? Gdzie łączy się fragmenty?
+
+Dzielimy pakiety zbyt duże do przesłania jako jeden w którymś miejscu na trasie na mniejsze. Łączymy je na końcu trasy (komputer docelowy).
+
+### 14. Co to jest MTU? Na czym polega technika wykrywania wartości MTU dla ścieżki?
+
+MTU - Max Transmission Unit, maksymalny rozmiar pakietu, który można przesłać przez łącze bez fragmentacji.
+
+Wykrywamy go wysyłając pakiet z flagą DF (Don't Fragment). Jeśli pakiet jest za duży, router odrzuca go i wysyła komunikat ICMP „Fragmentation Needed” z informacją o maksymalnym rozmiarze. Robimy aż dotrzemy do celu (wyznaczając MTU).
+
+### 15. Jak działa szeregowanie pakietów w buforze wyjściowym routera?
+
+Szeregujemy pakiety na strumienie o różnych priorytetach lub round-robin - po tyle samo z każdego strumienia.
+
+### 16. Jakie są różnice pomiędzy nagłówkami IPv4 i IPv6?
+
+- 20 bajtów vs 40 bajtów
+- IPv4: 32 bity, IPv6: 128 bitów
+- Dodatkowe pola w IPv6 - np. Flow Label, umożliwiające identyfikację strumieni danych
+
+### 17. Zapisz adres IPv6 0321:0000:0000:0123:0000:0000:0000:0001 w najkrótszej możliwej postaci.
+
+Pomijamy wiądące zera, zastępujemy jeden ciąg zer `::`. (Można tylko jeden).
+
+`321:0:0:123::1`
+
+### 18. Co to jest tunelowanie 6in4?
+
+Gdy IPv6 nie jest dostępny w danej sieci, można go przesłać przez IPv4. Wysyłamy pakiety IPv6 w pakietach IPv4, które są przesyłane przez sieć IPv4. Na końcu tunelu pakiety IPv6 są wydobywane i przekazywane do docelowego adresu IPv6.
+
+### 19. Na czym polega NAT i po co się go stosuje? Jakie są jego zalety i wady?
+
+NAT to tłumaczenie adresu i portu z sieci lokalnej na adres i port routera widoczny z internetu. Rozwiązujemy problem braku adresów IP, zmieniać adresy w sieci wewnętrznej bez ogłaszania tego i zmieniać dostawcę internetu bez zmiany adresów w sieci wewnętrznej. Komputery są jednak nieosiągalne z internetu.
+
+### 20. Jaki stan musi przechowywać router z funkcją NAT?
+
+Tablicę przypisań $(A, P_a, C, P_c) -> P_b$
+- A - adres IP
+- P_a - port źródłowy
+- C - adres docelowy
+- P_c - port docelowy
+- P_b - port docelowy w NAT
+
