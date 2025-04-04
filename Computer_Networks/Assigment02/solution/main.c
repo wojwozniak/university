@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <poll.h>
 #include <unistd.h>
 #include <arpa/inet.h>
 
@@ -33,12 +34,19 @@ int main(int argc, char *argv[])
 
     setup_server(sock_fd, IS_DEBUG_MODE);
 
+    struct pollfd ps;
+    ps.fd = sock_fd;
+    ps.events = POLLIN;
+    ps.revents = 0;
+
     for (;;)
     {
         send_table(sock_fd, IS_DEBUG_MODE);
         uptick();
         sleep(TURN_INTERVAL_SECONDS);
-        receive_table(sock_fd, IS_DEBUG_MODE, 5000);
+        receive_table(sock_fd, IS_DEBUG_MODE, 5000, ps);
         print_routing_table(IS_DEBUG_MODE);
     }
+
+    close(sock_fd);
 }

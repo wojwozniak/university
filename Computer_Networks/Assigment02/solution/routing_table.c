@@ -124,7 +124,6 @@ void print_routing_table(bool debug)
         }
         if (debug)
         {
-            printf("Additional debug info for network above:\n");
             printf("Last updated %u ticks ago\n", routing_table[i].last_update);
         }
     }
