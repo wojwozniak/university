@@ -45,11 +45,11 @@ void init_routing_table(int initial_size)
 }
 
 // Not to be used directly, will be called by update_routing_entry() if needed
-void add_routing_entry(uint32_t ip, uint8_t mask, uint32_t dist, uint32_t next)
+void add_routing_entry(uint32_t ip, uint8_t mask, uint32_t dist, uint32_t next, bool is_direct)
 {
     if (entry_count >= table_capacity)
     {
-        table_capacity = table_capacity ? table_capacity + 1 : 25;
+        table_capacity = table_capacity ? table_capacity * 2 : 25;
         RoutingEntry *temp = realloc(routing_table, table_capacity * sizeof(RoutingEntry));
         if (temp == NULL)
         {
@@ -65,31 +65,71 @@ void add_routing_entry(uint32_t ip, uint8_t mask, uint32_t dist, uint32_t next)
     routing_table[entry_count].next_hop = next;
     routing_table[entry_count].is_direct = (next == 0);
     routing_table[entry_count].last_update = 0;
+    routing_table[entry_count].address_given_as_direct = is_direct;
     entry_count++;
 }
 
-void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_t new_next)
+uint32_t find_distance(uint32_t ip2, uint8_t mask)
+{
+    uint32_t full_mask = (mask == 0) ? 0 : (0xFFFFFFFF << (32 - mask));
+    uint32_t ip = ip2 & full_mask;
+
+    print_ip(ip, mask);
+    printf("\n");
+    for (int i = 0; i < entry_count; i++)
+    {
+        print_ip(routing_table[i].network_ip, routing_table[i].mask);
+        if (routing_table[i].network_ip == ip && routing_table[i].mask == mask)
+        {
+            printf("Found distance %u\n", routing_table[i].distance);
+            return routing_table[i].distance;
+        }
+    }
+    printf("Distance not found\n");
+    return 0;
+}
+
+void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_t new_next, bool is_direct)
 {
     uint32_t ip = ntohl(ip2);
     for (int i = 0; i < entry_count; i++)
     {
         if (routing_table[i].network_ip == ip && routing_table[i].mask == mask)
         {
+            // printf("Correctly\n");
+            if (new_next != 0)
+            {
+                uint32_t hop_dist = find_distance(new_next, mask);
+                if (hop_dist == 0 && routing_table[i].address_given_as_direct == false)
+                {
+                    printf("break - do not update \n");
+                    return;
+                }
+                printf("Hop distance %u\n", hop_dist);
+                if (routing_table[i].address_given_as_direct == false)
+                {
+                    new_dist += hop_dist;
+                }
+            }
+
             if (new_dist < routing_table[i].distance)
             {
                 routing_table[i].distance = new_dist;
                 routing_table[i].next_hop = new_next;
                 routing_table[i].is_direct = (new_next == 0);
                 routing_table[i].last_update = 0;
+                printf("Update - reworked\n");
             }
             else if (new_dist == routing_table[i].distance)
             {
                 routing_table[i].last_update = 0;
+                printf("Update - same distance\n");
             }
             return;
         }
     }
-    add_routing_entry(ip, mask, new_dist, new_next);
+
+    add_routing_entry(ip, mask, new_dist, new_next, is_direct);
 }
 
 void free_routing_table()

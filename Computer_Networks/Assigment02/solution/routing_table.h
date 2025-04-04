@@ -14,6 +14,7 @@ typedef struct
     uint32_t next_hop; // 0 if direct
     bool is_direct;    // Syntax sugar for next_hop == 0
     int last_update;
+    bool address_given_as_direct;
 } RoutingEntry;
 
 /*
@@ -24,7 +25,7 @@ void init_routing_table(int initial_size);
 /*
     Updating or adding an entry to the routing table
 */
-void update_routing_entry(uint32_t ip, uint8_t mask, uint32_t new_dist, uint32_t new_next);
+void update_routing_entry(uint32_t ip, uint8_t mask, uint32_t new_dist, uint32_t new_next, bool is_direct);
 
 /*
     Function updating last_update field of all entries

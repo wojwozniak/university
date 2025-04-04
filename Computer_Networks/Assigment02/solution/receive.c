@@ -61,15 +61,14 @@ void receive_table(int sockfd, bool debug, int cooldown_time_ms, struct pollfd p
             uint8_t mask = buffer[4];
             uint32_t dist;
             memcpy(&dist, buffer + 5, 4);
-            ip = ntohl(ip);
             dist = ntohl(dist);
             if (debug)
             {
                 printf("Received entry: IP=");
-                print_ip(ntohl(ip), mask);
+                print_ip(ip, mask);
                 printf(" dist=%u\n", dist);
             }
-            update_routing_entry(ip, mask, dist, sender.sin_addr.s_addr);
+            update_routing_entry(ntohl(ip), mask, dist, ntohl(sender.sin_addr.s_addr), false);
         }
     }
 }

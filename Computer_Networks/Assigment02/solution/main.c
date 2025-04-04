@@ -12,16 +12,9 @@
 #include "send.h"
 #include "receive.h"
 
-#define TURN_INTERVAL_SECONDS 5 // Low, so we can test it quickly
+#define TURN_INTERVAL_SECONDS 2 // Low, so we can test it quickly
 #define IS_DEBUG_MODE true
 
-/*
-    Main function of the program
-    Routing table is defined in routing_table files
-    It is initialized by handle_setup() function
-    we access it via global variable:
-        static RoutingEntry *routing_table
-*/
 int main(int argc, char *argv[])
 {
     handle_setup(argc, argv, IS_DEBUG_MODE);

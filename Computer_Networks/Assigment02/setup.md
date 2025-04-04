@@ -75,7 +75,7 @@ copy running-config startup-config
 exit
 
 cd folder
-./router 3 172.16.0.0/16 distance 4 192.168.2.0/24 distance 2 10.0.0.8/8 distance 3
+./router 3 172.16.0.0/16 distance 4 192.168.2.0/24 distance 2 10.0.1.2/8 distance 3
 ```
 
 ### C: local1 local3

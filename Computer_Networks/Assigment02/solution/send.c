@@ -28,7 +28,7 @@ struct sockaddr_in *get_broadcast_addresses(int *count)
         {
             if (direct_count >= capacity)
             {
-                capacity = capacity + 1;
+                capacity = capacity * 2;
                 struct sockaddr_in *temp = realloc(broadcast_addresses, capacity * sizeof(struct sockaddr_in));
                 if (temp == NULL)
                 {
