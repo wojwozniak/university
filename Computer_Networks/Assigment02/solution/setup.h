@@ -12,4 +12,4 @@ void handle_setup(int argc, char *argv[], bool debug);
     Sets socket options
     Binds address and port
 */
-void setup_server(int sockfd);
+void setup_server(int sockfd, bool debug);

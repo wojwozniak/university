@@ -9,7 +9,7 @@
 #include "time_util.h"
 
 #define TURN_INTERVAL_SECONDS 5 // Low, so we can test it quickly
-#define DEBUG_MODE true
+#define IS_DEBUG_MODE true
 
 /*
     Main function of the program
@@ -20,7 +20,7 @@
 */
 int main(int argc, char *argv[])
 {
-    handle_setup(argc, argv, DEBUG_MODE);
+    handle_setup(argc, argv, IS_DEBUG_MODE);
 
     int sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sock_fd < 0)
@@ -29,15 +29,14 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    setup_server(sock_fd);
+    setup_server(sock_fd, IS_DEBUG_MODE);
 
-    // long long turn_start_timestamp = get_current_time_ms();
     for (int i = 0; i < 3; i++)
     {
         // send_table();
         uptick();
         sleep(TURN_INTERVAL_SECONDS);
         // receive_table();
-        print_routing_table(DEBUG_MODE);
+        print_routing_table(IS_DEBUG_MODE);
     }
 }

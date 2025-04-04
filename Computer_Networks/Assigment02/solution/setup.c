@@ -52,10 +52,10 @@ void handle_setup(int argc, char *argv[], bool debug)
     print_routing_table(debug);
 }
 
-void setup_server(int sockfd)
+void setup_server(int sockfd, bool debug)
 {
     int broadcastPermission = 1;
-    int upt_sock = setsockopt(sock_fd, SOL_SOCKET, SO_BROADCAST, (void *)&broadcastPermission, sizeof(broadcastPermission));
+    int upt_sock = setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, (void *)&broadcastPermission, sizeof(broadcastPermission));
     if (upt_sock < 0)
     {
         fprintf(stderr, "Error updating socket options!\n");
@@ -65,11 +65,24 @@ void setup_server(int sockfd)
     struct sockaddr_in server;
     memset(&server, 0, sizeof(server));
     server.sin_family = AF_INET;
-    server.sin_port = htons(32345);
+    server.sin_port = htons(54321);
     server.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    bind(
+    int res = bind(
         sockfd,
-        (struct sockaddr *)&server_address,
-        sizeof(server_address));
+        (struct sockaddr *)&server,
+        sizeof(server));
+
+    if (res < 0)
+    {
+        fprintf(stderr, "Error binding socket!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (debug)
+    {
+        char ip_str[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &server.sin_addr, ip_str, sizeof(ip_str));
+        printf("Server is running on %s:%d\n", ip_str, ntohs(server.sin_port));
+    }
 }
