@@ -18,7 +18,7 @@
 */
 int main(int argc, char *argv[])
 {
-    handle_setup(argc, argv);
+    handle_setup(argc, argv, DEBUG_MODE);
     // long long turn_start_timestamp = get_current_time_ms();
     for (int i = 0; i < 3; i++)
     {

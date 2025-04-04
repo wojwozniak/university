@@ -42,4 +42,4 @@ void print_routing_table(bool debug);
 /*
     Function to handle command line arguments and setup
 */
-void handle_setup(int argc, char *argv[]);
+void handle_setup(int argc, char *argv[], bool debug);

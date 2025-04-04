@@ -102,7 +102,8 @@ void print_routing_table(bool debug)
         }
         if (debug)
         {
-            printf("Network above was last updated %u ticks ago\n", routing_table[i].last_update);
+            printf("Additional debug info for network above:\n");
+            printf("Last updated %u ticks ago\n", routing_table[i].last_update);
         }
     }
 }
@@ -115,7 +116,7 @@ void uptick()
     }
 }
 
-void handle_setup(int argc, char *argv[])
+void handle_setup(int argc, char *argv[], bool debug)
 {
     if (argc < 2)
     {
@@ -154,5 +155,5 @@ void handle_setup(int argc, char *argv[])
         add_routing_entry(ip, mask, distance, 0);
     }
 
-    print_routing_table(false);
+    print_routing_table(debug);
 }
