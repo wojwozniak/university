@@ -20,14 +20,6 @@ void send_table(int sockfd, bool debug)
         exit(EXIT_FAILURE);
     }
 
-    uint32_t *network_distances = malloc(capacity * sizeof(uint32_t));
-    if (network_distances == NULL)
-    {
-        fprintf(stderr, "malloc error!\n");
-        free(broadcast_addresses);
-        exit(EXIT_FAILURE);
-    }
-
     int count_tab = get_entry_count();
     RoutingEntry *table = get_routing_table();
     for (int i = 0; i < count_tab; i++)
@@ -42,20 +34,9 @@ void send_table(int sockfd, bool debug)
                 {
                     fprintf(stderr, "realloc error!\n");
                     free(broadcast_addresses);
-                    free(network_distances);
                     exit(EXIT_FAILURE);
                 }
                 broadcast_addresses = temp_addr;
-
-                uint32_t *temp_dist = realloc(network_distances, capacity * sizeof(uint32_t));
-                if (temp_dist == NULL)
-                {
-                    fprintf(stderr, "realloc error!\n");
-                    free(broadcast_addresses);
-                    free(network_distances);
-                    exit(EXIT_FAILURE);
-                }
-                network_distances = temp_dist;
             }
 
             memset(&broadcast_addresses[direct_count], 0, sizeof(struct sockaddr_in));
@@ -65,7 +46,6 @@ void send_table(int sockfd, bool debug)
             uint8_t mask = table[i].mask;
             uint32_t broadcast_ip = network_ip | (0xFFFFFFFF >> mask);
             broadcast_addresses[direct_count].sin_addr.s_addr = htonl(broadcast_ip);
-            network_distances[direct_count] = table[i].is_direct ? 0 : table[i].distance;
             direct_count++;
         }
     }
@@ -77,7 +57,6 @@ void send_table(int sockfd, bool debug)
             printf("Nowhere to send to!\n");
         }
         free(broadcast_addresses);
-        free(network_distances);
         return;
     }
 
@@ -88,7 +67,7 @@ void send_table(int sockfd, bool debug)
         packet[4] = table[i].mask;
         for (int j = 0; j < direct_count; j++)
         {
-            uint32_t dist = htonl(table[i].distance + network_distances[j]);
+            uint32_t dist = htonl(table[i].distance);
             memcpy(packet + 5, &dist, 4);
 
             ssize_t bytes_sent = sendto(sockfd, packet, 9, 0,
@@ -116,5 +95,4 @@ void send_table(int sockfd, bool debug)
     }
 
     free(broadcast_addresses);
-    free(network_distances);
 }
