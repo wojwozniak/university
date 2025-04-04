@@ -68,7 +68,7 @@ void receive_table(int sockfd, bool debug, int cooldown_time_ms, struct pollfd p
                 print_ip(ip, mask);
                 printf(" dist=%u\n", dist);
             }
-            update_routing_entry(ntohl(ip), mask, dist, ntohl(sender.sin_addr.s_addr), false);
+            update_routing_entry(ntohl(ip), mask, dist, ntohl(sender.sin_addr.s_addr), false, debug);
         }
     }
 }
