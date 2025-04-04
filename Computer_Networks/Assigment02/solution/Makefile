@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -g -std=gnu99 -Wextra
 
-SOURCES = main.c
+SOURCES = main.c routing_table.c time_util.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
