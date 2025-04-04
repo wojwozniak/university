@@ -1,0 +1,5 @@
+C:\Users\wozni\Desktop\C\Uni\Computer_Networks\Assigment02\solution
+
+mkdir folder
+
+sudo mount -t vboxsf solution folder
