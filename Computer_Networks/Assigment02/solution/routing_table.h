@@ -37,6 +37,26 @@ void uptick();
 void free_routing_table();
 
 /*
+    Printing well formatted IP address
+*/
+void print_ip(uint32_t ip, uint8_t mask);
+
+/*
     Print table to stdout
 */
 void print_routing_table(bool debug);
+
+/*
+    Function to get entry count
+*/
+int get_entry_count();
+
+/*
+    Function to get addresses list
+*/
+RoutingEntry *get_routing_table();
+
+/*
+    Set entry to unreachable
+*/
+void set_entry_unreachable(int index);

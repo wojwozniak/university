@@ -13,6 +13,25 @@ static RoutingEntry *routing_table = NULL;
 static int entry_count = 0;
 static int table_capacity = 0;
 
+int get_entry_count()
+{
+    return entry_count;
+}
+
+RoutingEntry *get_routing_table()
+{
+    return routing_table;
+}
+
+void set_entry_unreachable(int index)
+{
+    if (index >= 0 && index < entry_count)
+    {
+        routing_table[index].distance = INFINITY;
+        routing_table[index].last_update = 0;
+    }
+}
+
 void init_routing_table(int initial_size)
 {
     routing_table = malloc(initial_size * sizeof(RoutingEntry));
@@ -80,7 +99,7 @@ void free_routing_table()
     table_capacity = 0;
 }
 
-static void print_ip(uint32_t ip, uint8_t mask)
+void print_ip(uint32_t ip, uint8_t mask)
 {
     printf("%u.%u.%u.%u/%u", (ip >> 24) & 0xFF, (ip >> 16) & 0xFF, (ip >> 8) & 0xFF, ip & 0xFF, mask);
 }
