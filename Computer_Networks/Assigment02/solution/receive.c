@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <string.h>
 #include <poll.h>
 #include <arpa/inet.h>
 #include <netinet/ip_icmp.h>
@@ -11,6 +12,7 @@
 #include <netinet/ip.h>
 
 #include "time_util.h"
+#include "routing_table.h"
 
 void receive_table(int sockfd, bool debug, int cooldown_time_ms, struct pollfd ps)
 {
@@ -49,13 +51,25 @@ void receive_table(int sockfd, bool debug, int cooldown_time_ms, struct pollfd p
             ssize_t datagram_len = recvfrom(sockfd, buffer, IP_MAXPACKET, 0, (struct sockaddr *)&sender, &sender_len);
             char sender_ip_str[20];
             inet_ntop(AF_INET, &(sender.sin_addr), sender_ip_str, sizeof(sender_ip_str));
-            printf("Received UDP packet from IP address: %s, port: %d\n", sender_ip_str, ntohs(sender.sin_port));
-            buffer[datagram_len] = 0;
-            printf("%ld-byte message: +%s+\n", datagram_len, buffer);
             if (debug)
             {
-                printf("Debug\n");
+                printf("Received UDP packet from IP address: %s, port: %d\n", sender_ip_str, ntohs(sender.sin_port));
             }
+            buffer[datagram_len] = 0;
+            uint32_t ip;
+            memcpy(&ip, buffer, 4);
+            uint8_t mask = buffer[4];
+            uint32_t dist;
+            memcpy(&dist, buffer + 5, 4);
+            ip = ntohl(ip);
+            dist = ntohl(dist);
+            if (debug)
+            {
+                printf("Received entry: IP=");
+                print_ip(ntohl(ip), mask);
+                printf(" dist=%u\n", dist);
+            }
+            update_routing_entry(ip, mask, dist, sender.sin_addr.s_addr);
         }
     }
 }

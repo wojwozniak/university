@@ -68,8 +68,9 @@ void add_routing_entry(uint32_t ip, uint8_t mask, uint32_t dist, uint32_t next)
     entry_count++;
 }
 
-void update_routing_entry(uint32_t ip, uint8_t mask, uint32_t new_dist, uint32_t new_next)
+void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_t new_next)
 {
+    uint32_t ip = ntohl(ip2);
     for (int i = 0; i < entry_count; i++)
     {
         if (routing_table[i].network_ip == ip && routing_table[i].mask == mask)
@@ -99,9 +100,8 @@ void free_routing_table()
     table_capacity = 0;
 }
 
-void print_ip(uint32_t ip2, uint8_t mask)
+void print_ip(uint32_t ip, uint8_t mask)
 {
-    uint32_t ip = ntohl(ip2);
     printf("%u.%u.%u.%u/%u", (ip >> 24) & 0xFF, (ip >> 16) & 0xFF, (ip >> 8) & 0xFF, ip & 0xFF, mask);
 }
 
