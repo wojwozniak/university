@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     setup_server(sock_fd, IS_DEBUG_MODE);
 
-    for (int i = 0; i < 3; i++)
+    for (;;)
     {
         send_table(sock_fd, IS_DEBUG_MODE);
         uptick();
