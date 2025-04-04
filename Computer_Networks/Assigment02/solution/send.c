@@ -43,10 +43,10 @@ struct sockaddr_in *get_broadcast_addresses(int *count)
             broadcast_addresses[direct_count].sin_family = AF_INET;
             broadcast_addresses[direct_count].sin_port = htons(54321);
 
-            uint32_t network_ip = table[i].network_ip;
+            uint32_t network_ip = ntohl(table[i].network_ip);
             uint8_t mask = table[i].mask;
-            uint32_t broadcast_ip = network_ip | (htonl(0xFFFFFFFF) >> mask);
-            broadcast_addresses[direct_count].sin_addr.s_addr = broadcast_ip;
+            uint32_t broadcast_ip = network_ip | (0xFFFFFFFF >> mask);
+            broadcast_addresses[direct_count].sin_addr.s_addr = htonl(broadcast_ip);
 
             direct_count++;
         }
