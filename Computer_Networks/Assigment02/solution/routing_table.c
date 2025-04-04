@@ -99,8 +99,9 @@ void free_routing_table()
     table_capacity = 0;
 }
 
-void print_ip(uint32_t ip, uint8_t mask)
+void print_ip(uint32_t ip2, uint8_t mask)
 {
+    uint32_t ip = ntohl(ip2);
     printf("%u.%u.%u.%u/%u", (ip >> 24) & 0xFF, (ip >> 16) & 0xFF, (ip >> 8) & 0xFF, ip & 0xFF, mask);
 }
 
