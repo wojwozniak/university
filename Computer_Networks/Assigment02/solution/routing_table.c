@@ -69,61 +69,34 @@ void add_routing_entry(uint32_t ip, uint8_t mask, uint32_t dist, uint32_t next, 
     entry_count++;
 }
 
-uint32_t find_distance(uint32_t ip2, uint8_t mask)
-{
-    uint32_t full_mask = (mask == 0) ? 0 : (0xFFFFFFFF << (32 - mask));
-    uint32_t ip = ip2 & full_mask;
-
-    // print_ip(ip, mask);
-    // printf("\n");
-    for (int i = 0; i < entry_count; i++)
-    {
-        // print_ip(routing_table[i].network_ip, routing_table[i].mask);
-        if (routing_table[i].network_ip == ip && routing_table[i].mask == mask)
-        {
-            // printf("Found distance %u\n", routing_table[i].distance);
-            return routing_table[i].distance;
-        }
-    }
-    // printf("Distance not found\n");
-    return 0;
-}
-
-void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_t new_next, bool is_direct)
+void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_t new_next, bool is_direct, bool debug)
 {
     uint32_t ip = ntohl(ip2);
+    if (debug)
+    {
+        printf("Updating entry: IP=");
+        print_ip(ip, mask);
+        printf("\n");
+        printf("New distance %u\n", new_dist);
+    }
     for (int i = 0; i < entry_count; i++)
     {
         if (routing_table[i].network_ip == ip && routing_table[i].mask == mask)
         {
-            // printf("Correctly\n");
-            if (new_next != 0)
-            {
-                uint32_t hop_dist = find_distance(new_next, mask);
-                if (hop_dist == 0 && routing_table[i].address_given_as_direct == false)
-                {
-                    // printf("break - do not update \n");
-                    return;
-                }
-                // printf("Hop distance %u\n", hop_dist);
-                if (routing_table[i].address_given_as_direct == false)
-                {
-                    new_dist += hop_dist;
-                }
-            }
-
             if (new_dist < routing_table[i].distance)
             {
                 routing_table[i].distance = new_dist;
                 routing_table[i].next_hop = new_next;
                 routing_table[i].is_direct = (new_next == 0);
                 routing_table[i].last_update = 0;
-                // printf("Update - reworked\n");
             }
             else if (new_dist == routing_table[i].distance)
             {
                 routing_table[i].last_update = 0;
-                // printf("Update - same distance\n");
+            }
+            else
+            {
+                printf("Did not update at all\n");
             }
             return;
         }
