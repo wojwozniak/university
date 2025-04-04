@@ -1,3 +1,5 @@
+// Wojciech Woźniak 339644
+
 #include <stdint.h>
 #include <stdbool.h>
 
