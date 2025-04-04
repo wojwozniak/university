@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
+#include "setup.h"
 #include "routing_table.h"
 #include "time_util.h"
 
@@ -19,14 +21,24 @@
 int main(int argc, char *argv[])
 {
     handle_setup(argc, argv, DEBUG_MODE);
+
+    int sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sock_fd < 0)
+    {
+        fprintf(stderr, "Error opening a socket!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int broadcastPermission = 1;
+    setsockopt(sock_fd, SOL_SOCKET, SO_BROADCAST, (void *)&broadcastPermission, sizeof(broadcastPermission));
+
     // long long turn_start_timestamp = get_current_time_ms();
     for (int i = 0; i < 3; i++)
     {
         // send_table();
         uptick();
         sleep(TURN_INTERVAL_SECONDS);
-        print_routing_table(DEBUG_MODE);
         // receive_table();
-        // print_routing_table();
+        print_routing_table(DEBUG_MODE);
     }
 }

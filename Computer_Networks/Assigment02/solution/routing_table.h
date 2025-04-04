@@ -38,8 +38,3 @@ void free_routing_table();
     Print table to stdout
 */
 void print_routing_table(bool debug);
-
-/*
-    Function to handle command line arguments and setup
-*/
-void handle_setup(int argc, char *argv[], bool debug);
