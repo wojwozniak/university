@@ -51,3 +51,25 @@ void handle_setup(int argc, char *argv[], bool debug)
 
     print_routing_table(debug);
 }
+
+void setup_server(int sockfd)
+{
+    int broadcastPermission = 1;
+    int upt_sock = setsockopt(sock_fd, SOL_SOCKET, SO_BROADCAST, (void *)&broadcastPermission, sizeof(broadcastPermission));
+    if (upt_sock < 0)
+    {
+        fprintf(stderr, "Error updating socket options!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    struct sockaddr_in server;
+    memset(&server, 0, sizeof(server));
+    server.sin_family = AF_INET;
+    server.sin_port = htons(32345);
+    server.sin_addr.s_addr = htonl(INADDR_ANY);
+
+    bind(
+        sockfd,
+        (struct sockaddr *)&server_address,
+        sizeof(server_address));
+}

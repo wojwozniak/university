@@ -29,8 +29,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    int broadcastPermission = 1;
-    setsockopt(sock_fd, SOL_SOCKET, SO_BROADCAST, (void *)&broadcastPermission, sizeof(broadcastPermission));
+    setup_server(sock_fd);
 
     // long long turn_start_timestamp = get_current_time_ms();
     for (int i = 0; i < 3; i++)
