@@ -65,7 +65,7 @@ void send_table(int sockfd, bool debug)
             uint8_t mask = table[i].mask;
             uint32_t broadcast_ip = network_ip | (0xFFFFFFFF >> mask);
             broadcast_addresses[direct_count].sin_addr.s_addr = htonl(broadcast_ip);
-            network_distances[direct_count] = table[i].distance;
+            network_distances[direct_count] = table[i].is_direct ? 0 : table[i].distance;
             direct_count++;
         }
     }
