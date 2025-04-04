@@ -55,6 +55,10 @@ void receive_table(int sockfd, bool debug, int cooldown_time_ms, struct pollfd p
             {
                 printf("Received UDP packet from IP address: %s, port: %d\n", sender_ip_str, ntohs(sender.sin_port));
             }
+            if (port != 54321)
+            {
+                continue;
+            }
             buffer[datagram_len] = 0;
             uint32_t ip;
             memcpy(&ip, buffer, 4);
