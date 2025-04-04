@@ -9,9 +9,10 @@
 #include <sys/socket.h>
 #include "routing_table.h"
 
-struct sockaddr_in *get_broadcast_addresses(int *count)
+void send_table(int sockfd, bool debug)
 {
     int capacity = 1;
+    int direct_count = 0;
     struct sockaddr_in *broadcast_addresses = malloc(capacity * sizeof(struct sockaddr_in));
     if (broadcast_addresses == NULL)
     {
@@ -19,7 +20,14 @@ struct sockaddr_in *get_broadcast_addresses(int *count)
         exit(EXIT_FAILURE);
     }
 
-    int direct_count = 0;
+    uint32_t *network_distances = malloc(capacity * sizeof(uint32_t));
+    if (network_distances == NULL)
+    {
+        fprintf(stderr, "malloc error!\n");
+        free(broadcast_addresses);
+        exit(EXIT_FAILURE);
+    }
+
     int count_tab = get_entry_count();
     RoutingEntry *table = get_routing_table();
     for (int i = 0; i < count_tab; i++)
@@ -29,59 +37,63 @@ struct sockaddr_in *get_broadcast_addresses(int *count)
             if (direct_count >= capacity)
             {
                 capacity = capacity * 2;
-                struct sockaddr_in *temp = realloc(broadcast_addresses, capacity * sizeof(struct sockaddr_in));
-                if (temp == NULL)
+                struct sockaddr_in *temp_addr = realloc(broadcast_addresses, capacity * sizeof(struct sockaddr_in));
+                if (temp_addr == NULL)
                 {
                     fprintf(stderr, "realloc error!\n");
                     free(broadcast_addresses);
+                    free(network_distances);
                     exit(EXIT_FAILURE);
                 }
-                broadcast_addresses = temp;
+                broadcast_addresses = temp_addr;
+
+                uint32_t *temp_dist = realloc(network_distances, capacity * sizeof(uint32_t));
+                if (temp_dist == NULL)
+                {
+                    fprintf(stderr, "realloc error!\n");
+                    free(broadcast_addresses);
+                    free(network_distances);
+                    exit(EXIT_FAILURE);
+                }
+                network_distances = temp_dist;
             }
 
             memset(&broadcast_addresses[direct_count], 0, sizeof(struct sockaddr_in));
             broadcast_addresses[direct_count].sin_family = AF_INET;
             broadcast_addresses[direct_count].sin_port = htons(54321);
-
             uint32_t network_ip = table[i].network_ip;
             uint8_t mask = table[i].mask;
             uint32_t broadcast_ip = network_ip | (0xFFFFFFFF >> mask);
             broadcast_addresses[direct_count].sin_addr.s_addr = htonl(broadcast_ip);
-
+            network_distances[direct_count] = table[i].distance;
             direct_count++;
         }
     }
 
-    *count = direct_count;
-    return broadcast_addresses;
-}
-
-void send_table(int sockfd, bool debug)
-{
-    int direct_count;
-    struct sockaddr_in *broadcast_addresses = get_broadcast_addresses(&direct_count);
-    if (broadcast_addresses == NULL)
+    if (direct_count == 0)
     {
         if (debug)
         {
             printf("Nowhere to send to!\n");
         }
+        free(broadcast_addresses);
+        free(network_distances);
         return;
     }
 
-    int count = get_entry_count();
-    RoutingEntry *table = get_routing_table();
     uint8_t packet[9];
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < count_tab; i++)
     {
         memcpy(packet, &table[i].network_ip, 4);
         packet[4] = table[i].mask;
-        uint32_t dist = htonl(table[i].distance);
-        memcpy(packet + 5, &dist, 4);
-
         for (int j = 0; j < direct_count; j++)
         {
-            ssize_t bytes_sent = sendto(sockfd, packet, 9, 0, (struct sockaddr *)&broadcast_addresses[j], sizeof(broadcast_addresses[j]));
+            uint32_t dist = htonl(table[i].distance + network_distances[j]);
+            memcpy(packet + 5, &dist, 4);
+
+            ssize_t bytes_sent = sendto(sockfd, packet, 9, 0,
+                                        (struct sockaddr *)&broadcast_addresses[j],
+                                        sizeof(broadcast_addresses[j]));
             if (bytes_sent < 0)
             {
                 if (debug)
@@ -104,4 +116,5 @@ void send_table(int sockfd, bool debug)
     }
 
     free(broadcast_addresses);
+    free(network_distances);
 }

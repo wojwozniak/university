@@ -13,7 +13,7 @@
 #include "receive.h"
 
 #define TURN_INTERVAL_SECONDS 2 // Low, so we can test it quickly
-#define IS_DEBUG_MODE true
+#define IS_DEBUG_MODE false
 
 int main(int argc, char *argv[])
 {
