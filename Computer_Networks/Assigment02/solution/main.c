@@ -1,4 +1,5 @@
 // Wojciech Woźniak 339644
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -37,7 +38,7 @@ int main(int argc, char *argv[])
         send_table(sock_fd, IS_DEBUG_MODE);
         uptick();
         sleep(TURN_INTERVAL_SECONDS);
-        // receive_table();
+        receive_table(sock_fd, IS_DEBUG_MODE, 5000);
         print_routing_table(IS_DEBUG_MODE);
     }
 }
