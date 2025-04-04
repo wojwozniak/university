@@ -7,6 +7,7 @@
 #include "setup.h"
 #include "routing_table.h"
 #include "time_util.h"
+#include "send.h"
 
 #define TURN_INTERVAL_SECONDS 5 // Low, so we can test it quickly
 #define IS_DEBUG_MODE true
@@ -33,7 +34,7 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < 3; i++)
     {
-        // send_table();
+        send_table(sock_fd, IS_DEBUG_MODE);
         uptick();
         sleep(TURN_INTERVAL_SECONDS);
         // receive_table();
