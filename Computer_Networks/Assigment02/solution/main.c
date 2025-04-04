@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define TURN_INTERVAL_SECONDS 5 // Low, so we can test it quickly
-#define DEBUG_MODE true
-
 #include "routing_table.h"
 #include "time_util.h"
+
+#define TURN_INTERVAL_SECONDS 5 // Low, so we can test it quickly
+#define DEBUG_MODE true
 
 /*
     Main function of the program
@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 3; i++)
     {
         // send_table();
-        // uptick();
         uptick();
         sleep(TURN_INTERVAL_SECONDS);
         print_routing_table(DEBUG_MODE);
