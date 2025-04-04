@@ -46,7 +46,7 @@ void handle_setup(int argc, char *argv[], bool debug)
 
         uint8_t mask = atoi(mask_str);
         uint32_t distance = atoi(distance_str);
-        update_routing_entry(ip, mask, distance, 0, true);
+        update_routing_entry(ip, mask, distance, 0, true, debug);
     }
 
     print_routing_table(debug);
