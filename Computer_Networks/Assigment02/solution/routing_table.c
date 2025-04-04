@@ -107,6 +107,8 @@ void print_ip(uint32_t ip, uint8_t mask)
 
 void print_routing_table(bool debug)
 {
+    printf("\n");
+    printf("Routing table:------------------------------------\n");
     for (int i = 0; i < entry_count; i++)
     {
         print_ip(routing_table[i].network_ip, routing_table[i].mask);
@@ -128,6 +130,7 @@ void print_routing_table(bool debug)
             printf("Last updated %u ticks ago\n", routing_table[i].last_update);
         }
     }
+    printf("--------------------------------------------------\n");
 }
 
 void uptick()
