@@ -89,14 +89,25 @@ void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_
                 routing_table[i].next_hop = new_next;
                 routing_table[i].is_direct = (new_next == 0);
                 routing_table[i].last_update = 0;
+                if (debug)
+                {
+                    printf("Updated entry\n");
+                }
             }
             else if (new_dist == routing_table[i].distance)
             {
                 routing_table[i].last_update = 0;
+                if (debug)
+                {
+                    printf("Updated last update\n");
+                }
             }
             else
             {
-                printf("Did not update at all\n");
+                if (debug)
+                {
+                    printf("Not updating entry\n");
+                }
             }
             return;
         }
