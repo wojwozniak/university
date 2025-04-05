@@ -88,3 +88,81 @@ Nie widzę tego - zapytać?
 ### Usuń trasy domyślne
 
 `ip route del default` na każdej
+
+## Tutorial 2
+
+```
+nano /etc/frr/daemons
+systemctl start frr
+vtysh
+show ip route
+configure terminal
+router ospf
+```
+
+### dla V1
+```
+network 192.168.1.0/24 area 0
+network 192.168.4.0/24 area 0
+```
+
+### dla V2
+```
+network 192.168.1.0/24 area 0
+network 192.168.2.0/24 area 0
+```
+
+### dla V3
+```
+network 192.168.2.0/24 area 0
+network 192.168.3.0/24 area 0
+```
+
+### dla V4
+```
+network 192.168.3.0/24 area 0
+network 192.168.4.0/24 area 0
+```
+
+```
+end
+end
+show running-config
+copy running-config startup-config
+```
+
+### Czy OSPF korzysta z warstwy transportowej czy jest bezpośrednio w pakietach IP?
+
+Bezpośrednio w pakietach IP
+
+
+### Włącz enp-all, przypisz mu adresy, uruchom OSPF dla tej sieci
+all
+
+```
+ip link set up dev enp-all
+```
+1-4
+```
+ip addr add 172.16.16.1/24 dev enp-all
+ip addr add 172.16.16.2/24 dev enp-all
+ip addr add 172.16.16.3/24 dev enp-all
+ip addr add 172.16.16.4/24 dev enp-all
+```
+all in vtysh
+```
+configure terminal
+router ospf
+network 172.16.0.0/16 area 0
+end
+end
+show running-config
+copy running-config startup-config
+```
+
+### Ścieżka o długości 3
+- Wyłączamy enp-all i enp-rem4 w V1
+- Wyłączamy enp-all w V2
+- sprawdzamy z V1 192.168.3.0
+
+Ścieżki o długości 4 nie da się uzyskać, trzebaby przejść przez jakiś router 2 razy a ospf tego nie zrobi
