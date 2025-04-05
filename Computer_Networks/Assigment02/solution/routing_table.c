@@ -6,8 +6,10 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 #include "routing_table.h"
+#include "util.h"
 
 static RoutingEntry *routing_table = NULL;
 static int entry_count = 0;
@@ -72,6 +74,33 @@ void add_routing_entry(uint32_t ip, uint8_t mask, uint32_t dist, uint32_t next, 
 void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_t new_next, bool is_direct, bool debug)
 {
     uint32_t ip = ntohl(ip2);
+
+    // Added in setup - we know it won't be on the list
+    if (is_direct)
+    {
+        add_routing_entry(ip, mask, new_dist, new_next, is_direct);
+    }
+
+    // We did not send this packet ourselves - need to update distance
+    if (!is_my_address(new_next))
+    {
+        for (int i = 0; i < entry_count; i++)
+        {
+            uint32_t network_ip = new_next & (0xFFFFFFFF << (32 - routing_table[i].mask));
+            if (routing_table[i].network_ip == network_ip)
+            {
+                new_dist += routing_table[i].distance;
+                if (debug)
+                {
+                    printf("Updating distance with distance from the list\n");
+                    printf("New distance %u\n", new_dist);
+                }
+
+                break;
+            }
+        }
+    }
+
     if (debug)
     {
         printf("Updating entry: IP=");
@@ -113,7 +142,7 @@ void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_
         }
     }
 
-    add_routing_entry(ip, mask, new_dist, new_next, is_direct);
+    add_routing_entry(ip, mask, new_dist, new_next, false);
 }
 
 void free_routing_table()
@@ -122,6 +151,14 @@ void free_routing_table()
     routing_table = NULL;
     entry_count = 0;
     table_capacity = 0;
+}
+
+void uptick()
+{
+    for (int i = 0; i < entry_count; i++)
+    {
+        routing_table[i].last_update++;
+    }
 }
 
 void print_ip(uint32_t ip, uint8_t mask)
@@ -162,12 +199,4 @@ void print_routing_table(bool debug)
         }
     }
     printf("--------------------------------------------------\n");
-}
-
-void uptick()
-{
-    for (int i = 0; i < entry_count; i++)
-    {
-        routing_table[i].last_update++;
-    }
 }
