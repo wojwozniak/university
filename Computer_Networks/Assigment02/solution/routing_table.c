@@ -81,8 +81,10 @@ void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_
         add_routing_entry(ip, mask, new_dist, new_next, is_direct);
     }
 
+    bool from_own_adress = is_my_address(new_next);
+
     // We did not send this packet ourselves - need to update distance
-    if (!is_my_address(new_next))
+    if (!from_own_adress)
     {
         for (int i = 0; i < entry_count; i++)
         {
@@ -125,7 +127,14 @@ void update_routing_entry(uint32_t ip2, uint8_t mask, uint32_t new_dist, uint32_
             }
             else if (new_dist == routing_table[i].distance)
             {
-                routing_table[i].last_update = 0;
+                // if packet is from_own_adress and we are not connected directly, we don't update last_update
+                if (from_own_adress && !routing_table[i].is_direct)
+                {
+                }
+                else
+                {
+                    routing_table[i].last_update = 0;
+                }
                 if (debug)
                 {
                     printf("Updated last update\n");
