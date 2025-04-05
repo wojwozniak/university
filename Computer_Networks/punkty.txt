@@ -2,14 +2,16 @@ Warsztaty:
 
 W1: 5/5pkt
 W2: 5/5pkt
+W3: 5/5pkt
 
-Warszaty suma: 10/40
+Warszaty suma: 15/40
 
 Ć1: 9/10pkt
 
 Ćwiczenia suma: 9/20
 
-Pracownia suma: 0/40
+P1: 10/10pkt
+Pracownia suma: 10/40
 
 
-Łącznie: 19/100pkt
+Łącznie: 34/100pkt
