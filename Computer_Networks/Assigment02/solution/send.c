@@ -24,7 +24,7 @@ void send_table(int sockfd, bool debug)
     RoutingEntry *table = get_routing_table();
     for (int i = 0; i < count_tab; i++)
     {
-        if (table[i].is_direct)
+        if (table[i].is_direct || table[i].address_given_as_direct)
         {
             if (direct_count >= capacity)
             {
@@ -75,14 +75,14 @@ void send_table(int sockfd, bool debug)
                                         sizeof(broadcast_addresses[j]));
             if (bytes_sent < 0)
             {
+                uint32_t target_ip = broadcast_addresses[j].sin_addr.s_addr;
                 if (debug)
                 {
                     printf("sendto failed to address ");
-                    uint32_t network_ip = broadcast_addresses[j].sin_addr.s_addr;
-                    print_ip(ntohl(network_ip), 0);
+                    print_ip(ntohl(target_ip), 0);
                     printf("\n");
                 }
-                set_entry_unreachable(i);
+                set_entry_unreachable(target_ip);
             }
             else if (debug)
             {

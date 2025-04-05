@@ -61,4 +61,4 @@ RoutingEntry *get_routing_table();
 /*
     Set entry to unreachable
 */
-void set_entry_unreachable(int index);
+void set_entry_unreachable(uint32_t target_ip);

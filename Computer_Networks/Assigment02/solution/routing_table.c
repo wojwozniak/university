@@ -25,12 +25,17 @@ RoutingEntry *get_routing_table()
     return routing_table;
 }
 
-void set_entry_unreachable(int index)
+void set_entry_unreachable(uint32_t target_ip)
 {
-    if (index >= 0 && index < entry_count)
+    for (int i = 0; i < entry_count; i++)
     {
-        // routing_table[index].distance = INFINITY;
-        // routing_table[index].last_update = 0;
+        uint32_t network_ip = target_ip & (0xFFFFFFFF << (32 - routing_table[i].mask));
+        if (routing_table[i].network_ip == network_ip)
+        {
+            routing_table[i].distance = INFINITY;
+            routing_table[i].last_update = TICKS_TIMEOUT;
+            routing_table[i].next_hop = 0;
+        }
     }
 }
 
