@@ -11,7 +11,7 @@
 #include <netinet/in.h>
 #include <netinet/ip.h>
 
-#include "time_util.h"
+#include "util.h"
 #include "routing_table.h"
 
 void receive_table(int sockfd, bool debug, int cooldown_time_ms, struct pollfd ps)
