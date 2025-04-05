@@ -11,8 +11,9 @@ typedef struct
     uint32_t network_ip; // Big Endian IP adress
     uint8_t mask;        // Mask (0-32)
     uint32_t distance;
-    uint32_t next_hop; // 0 if direct
-    bool is_direct;    // Syntax sugar for next_hop == 0
+    uint32_t original_distance; // Original distance (so we can recover it when we regain network access)
+    uint32_t next_hop;          // 0 if direct
+    bool is_direct;             // Syntax sugar for next_hop == 0
     int last_update;
     bool address_given_as_direct;
 } RoutingEntry;

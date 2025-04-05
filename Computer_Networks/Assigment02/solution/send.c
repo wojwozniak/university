@@ -78,7 +78,8 @@ void send_table(int sockfd, bool debug)
                 if (debug)
                 {
                     printf("sendto failed to address ");
-                    print_ip(ntohl(table[i].network_ip), table[i].mask);
+                    uint32_t network_ip = broadcast_addresses[j].sin_addr.s_addr;
+                    print_ip(ntohl(network_ip), 0);
                     printf("\n");
                 }
                 set_entry_unreachable(i);
