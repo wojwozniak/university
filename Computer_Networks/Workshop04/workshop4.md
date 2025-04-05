@@ -166,3 +166,62 @@ copy running-config startup-config
 - sprawdzamy z V1 192.168.3.0
 
 Ścieżki o długości 4 nie da się uzyskać, trzebaby przejść przez jakiś router 2 razy a ospf tego nie zrobi
+
+## Challenge
+
+CV0:
+```
+ip link set enp0s3 name enp-ext
+dhclient -v enp0s3
+
+ip link set enp0s8 name enp-add1
+ip link set up dev enp-add1
+ip addr add 192.168.0.1/24 dev enp-add1
+
+ip link set enp0s9 name enp-loc1
+ip link set up dev enp-loc1
+ip addr add 172.18.0.1/16 dev enp-loc1
+```
+
+CV1:
+```
+ip link set enp0s3 name enp-loc1
+ip link set up dev enp-loc1
+ip addr add 172.18.0.2/16 dev enp-loc1
+```
+
+CV2:
+```
+ip link set enp0s3 name enp-add1
+ip link set up dev enp-add1
+ip addr add 192.168.0.2/24 dev enp-add1
+```
+
+### Sprawdź uzyskany adres
+
+10.0.2.15
+
+### Ustaw domyślną dla V1 przez V0
+
+`ip route add default via 172.18.0.1`
+
+### Co się będzie działo przy pingowaniu 8.8.8.8 / V2?
+
+V2 możemy spingować, 8.8.8.8 nie przez brak NAT
+
+### Konfiguracja NAT
+
+Błąd w komendzie (chyba, u mnie ta z poradnika nie działała)
+
+```
+nft add table ip my_table
+
+nft add chain ip my_table my_rules \
+{type nat hook postrouting priority srcnat\; }
+
+nft add rule ip my_table my_rules ip saddr 172.18.0.0/16 snat to 10.0.2.15
+```
+
+### Ostatnie pytanie
+
+Teraz nie dostaniemy odpowiedzi od V2. Wszystko jest routowane przez 10.0.2.15
