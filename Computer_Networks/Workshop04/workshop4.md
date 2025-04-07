@@ -167,7 +167,7 @@ copy running-config startup-config
 
 Ścieżki o długości 4 nie da się uzyskać, trzebaby przejść przez jakiś router 2 razy a ospf tego nie zrobi
 
-Jednak sie da:
+Jednak sie da na chwile zliczaniem do nieskonczonosci:
 - V2 rem2
 - V3 rem2
 - V4 all
