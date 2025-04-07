@@ -167,6 +167,13 @@ copy running-config startup-config
 
 Ścieżki o długości 4 nie da się uzyskać, trzebaby przejść przez jakiś router 2 razy a ospf tego nie zrobi
 
+Jednak sie da:
+- V2 rem2
+- V3 rem2
+- V4 all
+- V1 all rem4
+- i z 1 ping 4
+
 ## Challenge
 
 CV0:
