@@ -64,4 +64,5 @@ dopóki pointer != n:
     w.p.p:
         - daj swap(indeks a1, indeks b) na stos i wykonaj porównanie dla (a2, b)...
         - w szczególności szukamy ciągu a1,a2,...,ak gdzie ak >= b. 
-        - wrzucamy na stos po kolei swapy(a1, a2); (a2,a3); (a3,a4)...(ak-1, ak). Gdy dotrzemy do ak, wypisujemy swapy
+        - wrzucamy na stos po kolei swapy(a1, a2); (a2,a3); (a3,a4)...(ak-1, ak). Gdy dotrzemy do ak, wypisujemy swapy (od najnowszego do najstarszego)
+```
