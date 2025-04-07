@@ -36,3 +36,5 @@ Idąc algorytmem weźmiemy po kolei każdy pojedyńczy zbiór
 suma 1/i to około całka 1/x na tym samym przedziale
 
 oznacza to że OPT suma 1/i to około OPT * log(n) co mieliśmy pokazać.
+
+Dokładniej to jest H(n) - n'ta liczba Harmoniczna - suma 1/k od 1 do n to wprost definicja
