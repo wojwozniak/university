@@ -34,8 +34,15 @@
 - Łącznie 2 pkt z prezentacji so far
 - Pozostałe: reszta listy (6 - 10 / L2)
 
-### Ćwiczenia 4 (01.04.2025)
+### Ćwiczenia 5 (01.04.2025)
 - Były zadania 6,7 z Listy 2
 - Zadeklarowane 6,7 -> 3,5/3,5 pkt (Suma: 21 / 29)
 - Łącznie 2 pkt z prezentacji so far
 - Pozostałe: reszta listy (8 - 10 / L2) i cała Lista 3
+
+### Ćwiczenia 6 (08.04.2025)
+- Było 8-10 z L2 i 1-3 z L3
+- Zadeklarowane 8,9,1 -> 3,5 / 7 pkt (Suma: 24,5 / 36)
+- 4 punkty za prezentację - 6 so far
+- Pozostałe: reszta L3
+- Łącznie punkty z prezentacjami: 30,5 / 36
