@@ -33,3 +33,10 @@
 - 20 / 7 -> 2 i 6/7 pkt na egzamin
 - Łącznie z poprzednią 46 / 45 (40) punktów
 - 13 i 1/7 pkt / 46 pkt na egzamin
+
+### Lista 5
+- 12 / 10 pkt
+- 18.4 - 12 = 6.4 pkt do zaliczenia ćwiczeń
+- 24 / 7 -> 3 i 3/7 pkt na egzamin
+- Łącznie z poprzednimi 58 / 57 (50) punktów
+- 16 i 4/7 pkt na egzamin
