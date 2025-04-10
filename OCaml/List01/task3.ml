@@ -1,4 +1,8 @@
 (* Zadanie 3 / Lista 1 *)
+(*
+  W poniższych wyrażeniach zlokalizuj wolne i związane wystąpienia zmiennych.
+  Które wystąpienia wiążą każde z wystąpień związanych?
+*)
 
 (* a) Po prostu niezwiązany x *)
 x;;
