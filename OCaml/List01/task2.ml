@@ -1,4 +1,4 @@
-(* Zadanie 2 *)
+(* Zadanie 2, Lista 2 *)
 (*
   Dla każdego z poniższych wyrażeń stwierdź, czy jest poprawnie otypowane,
   jeśli tak, to podaj jego typ. Uzasadnij swoją odpowiedź
