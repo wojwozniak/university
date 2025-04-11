@@ -22,6 +22,7 @@ module type OrderedType = sig
   val compare : t -> t -> int
 end
 
+(* Korzystamy z wbudowanego map *)
 module MakeMapDict (Ord : OrderedType) : KDICT with type key = Ord.t = struct
   module MapDict = Map.Make(Ord)
 
@@ -44,6 +45,7 @@ module MakeMapDict (Ord : OrderedType) : KDICT with type key = Ord.t = struct
   let to_list dict = MapDict.bindings dict
 end
 
+(* I to już jak wcześniej *)
 module CharOrd = struct
   type t = char
   let compare = Char.compare
