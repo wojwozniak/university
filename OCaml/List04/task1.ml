@@ -27,7 +27,9 @@ end
 
 module ListDict : DICT = struct
   type ('a, 'b) dict = ('a * 'b) list
+
   let empty = []
+
   let insert key value dict = (key, value)::dict
 
   let remove key dict = List.filter (fun (k, _) -> k <> key) dict
@@ -43,4 +45,5 @@ module ListDict : DICT = struct
     | None -> raise Not_found
 
   let to_list dict = dict
+  
 end
