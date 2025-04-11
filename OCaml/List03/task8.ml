@@ -1,4 +1,12 @@
 (* Zadanie 8 / Lista 3 *)
+(*
+  Zmodyfikuj funkcję insert_bst z zadania 5 (wstawiającą element do drzewa BST)
+  tak, aby możliwe było tworzenie drzew BST z duplikatami. Możesz założyć,
+  że elementy równe elementowi w korzeniu drzewa będą trafiać do prawego
+  poddrzewa.
+  Zaimplementuj funkcję tree_sort xs, implementującą algorytm sortowania
+  przy użyciu drzew BST:
+*)
 type 'a tree = Leaf | Node of 'a tree * 'a * 'a tree;;
 
 let t =
