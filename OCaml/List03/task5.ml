@@ -33,3 +33,6 @@ let rec insert_bst x t =
       else if v < x
       then Node (l, v, insert_bst x r)
       else Node (insert_bst x l, v, r);;
+
+
+(* Drzewo t będzie dzieliło się z nowym wszystkim poza wstawionym nodem i jego dziećmi *)
