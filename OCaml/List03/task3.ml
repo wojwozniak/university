@@ -23,7 +23,10 @@ let build_list n f =
 
 let negatives n = build_list n (fun x -> -x-1);;
 
+negatives 6;;
+
 let reciprocals n = build_list n (fun x -> 1.0 /. (float_of_int(x) +. 1.0));;
+
 let evens n = build_list n (fun x -> x * 2);;
 
 let identityM n =
@@ -32,3 +35,5 @@ let identityM n =
       if i = j then 1 else 0
     )
   );;
+
+identityM 3;;
