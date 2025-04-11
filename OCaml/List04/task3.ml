@@ -15,6 +15,11 @@
   end
 *)
 
+module type OrderedType = sig
+  type t
+  val compare : t -> t -> int
+end
+
 module type KDICT = sig
   type key
   type 'a dict
@@ -26,19 +31,19 @@ module type KDICT = sig
   val to_list : 'a dict -> (key * 'a) list
 end
 
-
-module ListDict : KDICT = struct
-  type key
-  type 'a dict = (key * 'a) list
+(* Definiujemy typ jako OrderedType, dajemy with type i porównywanie na Ord.compare *)
+module MakeListDict (Ord : OrderedType) : KDICT with type key = Ord.t = struct
+  type key = Ord.t
+  type 'a dict = (Ord.t * 'a) list
 
   let empty = []
 
   let insert key value dict = (key, value) :: dict
 
-  let remove key dict = List.filter (fun (k, _) -> k <> key) dict
+  let remove key dict = List.filter (fun (k, _) -> Ord.compare k key <> 0) dict
 
   let find_opt key dict =
-    match List.find_opt (fun (k, _) -> k = key) dict with
+    match List.find_opt (fun (k, _) -> Ord.compare k key = 0) dict with
     | Some (_, v) -> Some v
     | None -> None
 
@@ -50,30 +55,14 @@ module ListDict : KDICT = struct
   let to_list dict = dict
 end
 
-module MakeListDict(Key : sig type t val compare : t -> t -> int end) : KDICT with type key = Key.t = struct
-  type key = Key.t
-  type 'a dict = (key * 'a) list
-
-  let empty = []
-
-  let insert key value dict = (key, value) :: dict
-
-  let remove key dict = List.filter (fun (k, _) -> Key.compare k key <> 0) dict
-
-  let find_opt key dict =
-    match List.find_opt (fun (k, _) -> Key.compare k key = 0) dict with
-    | Some (_, v) -> Some v
-    | None -> None
-
-  let find key dict =
-    match find_opt key dict with
-    | Some v -> v
-    | None -> raise Not_found
-
-  let to_list dict = dict
+(* Zdefiniowanie typu i compare dla char *)
+module CharOrd = struct
+  type t = char
+  let compare = Char.compare
 end
 
-module CharListDict = MakeListDict(Char)
+(* Prosty konstruktor *)
+module CharListDict = MakeListDict(CharOrd)
 
-let d = CharListDict.empty
-let d' = CharListDict.insert 'a' 42 d
+(* Test *)
+let d = CharListDict.find_opt 'a' (CharListDict.insert 'a' 42 CharListDict.empty);;
