@@ -26,7 +26,7 @@ module type DICT = sig
 end
 
 module ListDict : DICT = struct
-  type ('a, 'b) dict = ('a * 'b) list
+  type ('a, 'b) dict = ('a * 'b) list (* Po prostu lista dwóch wartości zdefiniowanych wyżej *)
 
   let empty = []
 
@@ -45,5 +45,5 @@ module ListDict : DICT = struct
     | None -> raise Not_found
 
   let to_list dict = dict
-  
+
 end
