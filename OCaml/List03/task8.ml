@@ -34,4 +34,6 @@ let rec list_to_tree xs t =
   | [] -> t
   | x::ys -> list_to_tree ys (insert_bst x t);;
 
-list_to_tree [5,4,3,1,2] Leaf;;
+let rec tree_sort xs = flatten (list_to_tree xs Leaf);;
+
+tree_sort [5;3;4;5;21;2];;
