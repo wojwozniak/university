@@ -11,7 +11,7 @@
 #include "send.h"
 #include "receive.h"
 
-#define TURN_INTERVAL_SECONDS 4 // Low, so we can test it quickly, #todo update to 15 when sending
+#define TURN_INTERVAL_SECONDS 15
 #define IS_DEBUG_MODE false
 
 int main(int argc, char *argv[])
