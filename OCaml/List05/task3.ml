@@ -1,4 +1,4 @@
-(* Zadanie 3 / Lista 4 *)
+(* Zadanie 3 / Lista 5 *)
 (*
   Zaimplementuj funkcję
     parens_ok : string -> bool

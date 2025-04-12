@@ -1,4 +1,4 @@
-(* Zadanie 4 / Lista 4 *)
+(* Zadanie 4 / Lista 5 *)
 (*
   Rozbuduj funkcję parens_ok z poprzedniego zadania tak, by sprawdzała poprawne
   nawiasowania składające się z symboli ’(’, ’)’, ’[’, ’]’, ’{’ oraz ’}’. 
