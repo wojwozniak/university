@@ -50,3 +50,27 @@ let rec eval (e : expr) : value =
 
 let interp (s : string) : value =
   eval (parse s)
+
+
+(* 
+  Zadanie 1 
+  Funkcja closed sprawdzająca czy nie ma w wyrażeniu zmiennych wolnych 
+*)
+let closed (e : expr) : bool =
+  (* Wewnątrz robimy funkcję rekurencyjną z listą etykiet *)
+  (* Nie ma żadnego "popowania" 
+    -> tylko wrzucamy na stos etykiety dla odpowiednich podwyrażeń *)
+  let rec closed_with_env (env : string list) (e : expr) : bool =
+    match e with
+    | Int _ -> true
+    | Bool _ -> true
+    | Var x -> List.mem x env (* Dotrzemy do zmiennej - sprawdzamy czy była zdefiniowana *)
+    | Binop (_, e1, e2) -> closed_with_env env e1 && closed_with_env env e2
+    | If (cond, e1, e2) ->
+        closed_with_env env cond && closed_with_env env e1 && closed_with_env env e2
+    | Let (x, e1, e2) ->
+        closed_with_env env e1 && closed_with_env (x :: env) e2 (* Definiujemy - wrzucamy na stos *)
+  in
+  closed_with_env [] e
+
+let c (str:string) = closed (parse str)
