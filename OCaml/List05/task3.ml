@@ -10,7 +10,7 @@ let list_of_string s = String . to_seq s |> List . of_seq;;
 let parens_ok s =
   let rec it count lst =
     match lst with
-      | [] -> true
+      | [] -> if count = 0 then true else false
       | x::ys -> 
         match x with
         | '(' -> it (count+1) ys
