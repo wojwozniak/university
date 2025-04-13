@@ -7,8 +7,9 @@ type value =
   | VInt of int
   | VBool of bool
   | VUnit
+  | VPair of value * value
 
-let eval_op (op : bop) (val1 : value) (val2 : value) : value =
+let rec eval_op (op : bop) (val1 : value) (val2 : value) : value =
   match op, val1, val2 with
   | Add,  VInt  v1, VInt  v2 -> VInt  (v1 + v2)
   | Sub,  VInt  v1, VInt  v2 -> VInt  (v1 - v2)
@@ -18,6 +19,8 @@ let eval_op (op : bop) (val1 : value) (val2 : value) : value =
   | Or,   VBool v1, VBool v2 -> VBool (v1 || v2)
   | Leq,  VInt  v1, VInt  v2 -> VBool (v1 <= v2)
   | Eq,   VUnit,    VUnit    -> VBool true
+  | Eq,   VPair (a1, b1), VPair (a2, b2) -> 
+    VBool (eval_op Eq a1 a2 = VBool true && eval_op Eq b1 b2 = VBool true)
   | Eq,   _,        _        -> VBool (val1 = val2)
   | _,    _,        _        -> failwith "type error"
 
@@ -28,13 +31,15 @@ let rec subst (x : ident) (s : expr) (e : expr) : expr =
   | Var y -> if x = y then s else e
   | Let (y, e1, e2) ->
       Let (y, subst x s e1, if x = y then e2 else subst x s e2)
+  | Pair (e1, e2) -> Pair (subst x s e1, subst x s e2)
   | _ -> e
 
-let reify (v : value) : expr =
+let rec reify (v : value) : expr =
   match v with
   | VInt a -> Int a
   | VBool b -> Bool b
   | VUnit -> Unit
+  | VPair (v1, v2) -> Pair (reify v1, reify v2)
 
 let rec eval (e : expr) : value =
   match e with
@@ -50,6 +55,15 @@ let rec eval (e : expr) : value =
            | _ -> failwith "type error")
   | Let (x, e1, e2) ->
       eval (subst x (reify (eval e1)) e2)
+  | Pair (fst, snd) -> VPair (eval fst, eval snd)
+  | Fst e ->
+    (match eval e with
+      | VPair (v1, _) -> v1
+      | _ -> failwith "type error")
+  | Snd e ->
+    (match eval e with 
+      | VPair (_, v2) -> v2
+      | _ -> failwith "type error")
   | Var x -> failwith ("unknown var " ^ x)
 
 let interp (s : string) : value =
@@ -75,6 +89,10 @@ let closed (e : expr) : bool =
         closed_with_env env cond && closed_with_env env e1 && closed_with_env env e2
     | Let (x, e1, e2) ->
         closed_with_env env e1 && closed_with_env (x :: env) e2 (* Definiujemy - wrzucamy na stos *)
+    | Pair (fst, snd) ->
+      closed_with_env env fst && closed_with_env env snd
+    | Fst (fst) -> closed_with_env env fst
+    | Snd (snd) -> closed_with_env env snd
   in
   closed_with_env [] e
 

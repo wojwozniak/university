@@ -22,6 +22,9 @@ open Ast
 %token LPAREN
 %token RPAREN
 %token EOF
+%token COMMA
+%token FST
+%token SND
 
 %start <Ast.expr> main
 
@@ -30,6 +33,7 @@ open Ast
 %left PLUS MINUS
 %left TIMES DIV
 %nonassoc UNIT
+%nonassoc FST SND
 
 %%
 
@@ -56,6 +60,9 @@ expr:
     | e1 = expr; OR; e2 = expr { Binop(Or, e1, e2) }
     | e1 = expr; EQ; e2 = expr { Binop(Eq, e1, e2) }
     | e1 = expr; LEQ; e2 = expr { Binop(Leq, e1, e2) }
+    | LPAREN; e1 = expr; COMMA; e2 = expr; RPAREN { Pair(e1, e2) }
+    | FST; e = expr { Fst e }
+    | SND; e = expr { Snd e }
     | LPAREN; e = mexpr; RPAREN { e }
     ;
 

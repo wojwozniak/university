@@ -22,6 +22,9 @@ rule read =
     | "()" { UNIT }
     | "(" { LPAREN }
     | ")" { RPAREN }
+    | "," { COMMA }
+    | "fst" { FST }
+    | "snd" { SND }
     | "if" { IF }
     | "then" { THEN }
     | "let" { LET }
