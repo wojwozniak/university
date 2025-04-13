@@ -6,6 +6,7 @@ let parse (s : string) : expr =
 type value =
   | VInt of int
   | VBool of bool
+  | VUnit
 
 let eval_op (op : bop) (val1 : value) (val2 : value) : value =
   match op, val1, val2 with
@@ -16,6 +17,7 @@ let eval_op (op : bop) (val1 : value) (val2 : value) : value =
   | And,  VBool v1, VBool v2 -> VBool (v1 && v2)
   | Or,   VBool v1, VBool v2 -> VBool (v1 || v2)
   | Leq,  VInt  v1, VInt  v2 -> VBool (v1 <= v2)
+  | Eq,   VUnit,    VUnit    -> VBool true
   | Eq,   _,        _        -> VBool (val1 = val2)
   | _,    _,        _        -> failwith "type error"
 
@@ -32,11 +34,13 @@ let reify (v : value) : expr =
   match v with
   | VInt a -> Int a
   | VBool b -> Bool b
+  | VUnit -> Unit
 
 let rec eval (e : expr) : value =
   match e with
   | Int i -> VInt i
   | Bool b -> VBool b
+  | Unit -> VUnit
   | Binop (op, e1, e2) ->
       eval_op op (eval e1) (eval e2)
   | If (b, t, e) ->
@@ -64,6 +68,7 @@ let closed (e : expr) : bool =
     match e with
     | Int _ -> true
     | Bool _ -> true
+    | Unit -> true
     | Var x -> List.mem x env (* Dotrzemy do zmiennej - sprawdzamy czy była zdefiniowana *)
     | Binop (_, e1, e2) -> closed_with_env env e1 && closed_with_env env e2
     | If (cond, e1, e2) ->

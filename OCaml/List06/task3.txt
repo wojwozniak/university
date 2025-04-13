@@ -1,0 +1,1 @@
+unit nie potrzebuje destruktorów bo ma tylko jedną wartość "()", nie ma potrzeby wyciągania żadnych danych.

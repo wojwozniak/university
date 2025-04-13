@@ -19,6 +19,7 @@ rule read =
     | "||" { OR }
     | "=" { EQ }
     | "<=" { LEQ }
+    | "()" { UNIT }
     | "(" { LPAREN }
     | ")" { RPAREN }
     | "if" { IF }

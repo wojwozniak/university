@@ -5,6 +5,7 @@ open Ast
 %token <bool> BOOL
 %token <int> INT
 %token <string> IDENT
+%token UNIT
 %token IF
 %token THEN
 %token ELSE
@@ -28,6 +29,7 @@ open Ast
 %nonassoc EQ LEQ
 %left PLUS MINUS
 %left TIMES DIV
+%nonassoc UNIT
 
 %%
 
@@ -44,6 +46,7 @@ mexpr:
 expr:
     | i = INT { Int i }
     | b = BOOL { Bool b }
+    | UNIT { Unit }
     | x = IDENT { Var x }
     | e1 = expr; PLUS; e2 = expr { Binop(Add, e1, e2) }
     | e1 = expr; MINUS; e2 = expr { Binop(Sub, e1, e2) }

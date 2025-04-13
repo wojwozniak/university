@@ -12,8 +12,9 @@ type expr =
   | Int   of int
   | Binop of bop * expr * expr
   | Bool  of bool
+  | Unit
   | If    of expr * expr * expr
   | Let   of ident * expr * expr
   | Var   of ident
-  | For   of ident * expr * expr * expr (* zad.2 -  ident, target, step, body *)
-  | Integral of expr * expr * expr * ident (* zad.2 - from, to, body, by_which *)
+  (*| For   of ident * expr * expr * expr (* zad.2 -  ident, target, step, body *)
+  | Integral of expr * expr * expr * ident (* zad.2 - from, to, body, by_which *)*)
