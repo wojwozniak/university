@@ -23,8 +23,8 @@ open Ast
 %token RPAREN
 %token EOF
 %token COMMA
-%token FST
-%token SND
+%token MATCH
+%token WITH
 
 %start <Ast.expr> main
 
@@ -33,7 +33,7 @@ open Ast
 %left PLUS MINUS
 %left TIMES DIV
 %nonassoc UNIT
-%nonassoc FST SND
+%nonassoc MATCH
 
 %%
 
@@ -44,6 +44,7 @@ main:
 mexpr:
     | IF; e1 = mexpr; THEN; e2 = mexpr; ELSE; e3 = mexpr { If(e1,e2,e3) }
     | LET; x = IDENT; EQ; e1 = mexpr; IN; e2 = mexpr { Let(x,e1,e2) }
+    | MATCH; p = mexpr; WITH; LPAREN; x = IDENT; COMMA; y = IDENT; RPAREN; EQ; e = mexpr { Match(p, x, y, e)}
     | e = expr { e }
     ;
 
@@ -61,8 +62,6 @@ expr:
     | e1 = expr; EQ; e2 = expr { Binop(Eq, e1, e2) }
     | e1 = expr; LEQ; e2 = expr { Binop(Leq, e1, e2) }
     | LPAREN; e1 = expr; COMMA; e2 = expr; RPAREN { Pair(e1, e2) }
-    | FST; e = expr { Fst e }
-    | SND; e = expr { Snd e }
     | LPAREN; e = mexpr; RPAREN { e }
     ;
 

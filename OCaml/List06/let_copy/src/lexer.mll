@@ -23,8 +23,8 @@ rule read =
     | "(" { LPAREN }
     | ")" { RPAREN }
     | "," { COMMA }
-    | "fst" { FST }
-    | "snd" { SND }
+    | "match" { MATCH }
+    | "with" { WITH }
     | "if" { IF }
     | "then" { THEN }
     | "let" { LET }

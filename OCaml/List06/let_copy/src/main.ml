@@ -32,6 +32,9 @@ let rec subst (x : ident) (s : expr) (e : expr) : expr =
   | Let (y, e1, e2) ->
       Let (y, subst x s e1, if x = y then e2 else subst x s e2)
   | Pair (e1, e2) -> Pair (subst x s e1, subst x s e2)
+  | Match (p, x', y', e') ->
+      Match (subst x s p, x', y',
+            if x = x' || x = y' then e' else subst x s e')
   | _ -> e
 
 let rec reify (v : value) : expr =
@@ -56,44 +59,13 @@ let rec eval (e : expr) : value =
   | Let (x, e1, e2) ->
       eval (subst x (reify (eval e1)) e2)
   | Pair (fst, snd) -> VPair (eval fst, eval snd)
-  | Fst e ->
-    (match eval e with
-      | VPair (v1, _) -> v1
-      | _ -> failwith "type error")
-  | Snd e ->
-    (match eval e with 
-      | VPair (_, v2) -> v2
-      | _ -> failwith "type error")
   | Var x -> failwith ("unknown var " ^ x)
+  | Match (p, x, y, e) ->
+    (match eval p with
+     | VPair (v1, v2) ->
+         let e' = subst y (reify v2) (subst x (reify v1) e) in
+         eval e'
+     | _ -> failwith "type error")
 
 let interp (s : string) : value =
   eval (parse s)
-
-
-(* 
-  Zadanie 1 
-  Funkcja closed sprawdzająca czy nie ma w wyrażeniu zmiennych wolnych 
-*)
-let closed (e : expr) : bool =
-  (* Wewnątrz robimy funkcję rekurencyjną z listą etykiet *)
-  (* Nie ma żadnego "popowania" 
-    -> tylko wrzucamy na stos etykiety dla odpowiednich podwyrażeń *)
-  let rec closed_with_env (env : string list) (e : expr) : bool =
-    match e with
-    | Int _ -> true
-    | Bool _ -> true
-    | Unit -> true
-    | Var x -> List.mem x env (* Dotrzemy do zmiennej - sprawdzamy czy była zdefiniowana *)
-    | Binop (_, e1, e2) -> closed_with_env env e1 && closed_with_env env e2
-    | If (cond, e1, e2) ->
-        closed_with_env env cond && closed_with_env env e1 && closed_with_env env e2
-    | Let (x, e1, e2) ->
-        closed_with_env env e1 && closed_with_env (x :: env) e2 (* Definiujemy - wrzucamy na stos *)
-    | Pair (fst, snd) ->
-      closed_with_env env fst && closed_with_env env snd
-    | Fst (fst) -> closed_with_env env fst
-    | Snd (snd) -> closed_with_env env snd
-  in
-  closed_with_env [] e
-
-let c (str:string) = closed (parse str)

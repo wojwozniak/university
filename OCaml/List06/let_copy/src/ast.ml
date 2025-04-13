@@ -17,7 +17,4 @@ type expr =
   | Let   of ident * expr * expr
   | Var   of ident
   | Pair  of expr * expr
-  | Fst   of expr
-  | Snd   of expr
-  (*| For   of ident * expr * expr * expr (* zad.2 -  ident, target, step, body *)
-  | Integral of expr * expr * expr * ident (* zad.2 - from, to, body, by_which *)*)
+  | Match of expr * ident * ident * expr (* match p with (x, y) -> e *)
