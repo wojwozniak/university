@@ -1,5 +1,10 @@
 # Zadanie 8 / Lista 3
 
+Inwersją w ciągu A = a1, ..., an nazywamy parę indeksów 1 ≤ i < j ≤ n, taką że ai > aj.
+Pokaż, jak można obliczyć liczbę inwersji w A podczas sortowania przez scalanie.
+
+## Idea
+
 - Inwersja - gdy trzeba zeswapować element dla posortowania.
 - Dla zamiany $a_i$ i $a_n$ mamy $n-i+1$ inwersji
 
