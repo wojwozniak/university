@@ -46,3 +46,10 @@
 - 4 punkty za prezentację - 6 so far
 - Pozostałe: reszta L3
 - Łącznie punkty z prezentacjami: 30,5 / 36
+
+### Ćwiczenia 7 (15.04.2025)
+- Było 4,5,6,8 z L3
+- Zadeklarowane 4,6,8 -> 4,5 / 6,5 pkt (Suma: 29 / 42,5)
+- Łącznie 6 pkt za prezentrację so far
+- Pozostałe: reszta L3, cała L4
+- Łączne punkty z prezentacjami: 35 / 42,5
