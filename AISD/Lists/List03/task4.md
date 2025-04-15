@@ -8,15 +8,6 @@ Ułóż algorytm znajdujący wszystkie proste widoczne z punktu $(0, +∞)$.
 
 ## Idea
 
-Typowy D&C, podobny do mergesorta
-
-Reprezentujemy proste poprzez pary $(a_i, b_i)$
-
-1) Preprocessing -> Jeśli jakieś dwa a są takie same -> wywalamy ten z mniejszym b
-2) Dzielimy zbiór na dwa zbiory, na których wywołujemy rekurencyjnie funkcję
-3) Dla małych wyznaczamy brute-forcem widoczne proste wraz z punktem od którego są widoczne (idąc od lewej)
-4) Mergujemy -> na lewy stos, dodajemy od najmniejszego poprzedniego elementu
-
 
 ```py
 L = # posortowana lista prostych, O(n*log(n)) na sortowanie
