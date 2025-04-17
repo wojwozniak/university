@@ -40,3 +40,16 @@
 - 24 / 7 -> 3 i 3/7 pkt na egzamin
 - Łącznie z poprzednimi 58 / 57 (50) punktów
 - 16 i 4/7 pkt na egzamin
+
+### Lista 6
+- 11 / 10 pkt
+- 6.4 - 11 = zaliczone ćwiczenia (tylko zostaje do zdobycia 45% z 4 ostatnich)
+- 22 / 7 -> 3 i 1/7 pkt na egzamin
+- Łącznie z poprzednimi 69 / 68 (60) punktów
+- 19 i 5/7 pkt na egzamin
+
+### Lista 7
+- 10 / 10 pkt 
+- 20 / 7 -> 2 i 6/7 pkt na egzamin
+- Łącznie z poprzednimi 79 / 80 (70) punktów
+- 22 i 4/7 pkt na egzamin
