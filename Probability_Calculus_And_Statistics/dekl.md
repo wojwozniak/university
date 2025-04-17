@@ -49,7 +49,7 @@
 - 19 i 5/7 pkt na egzamin
 
 ### Lista 7
-- 9 / 10 pkt 
-- 18 / 7 -> 2 i 4/7 pkt na egzamin
-- Łącznie z poprzednimi 78 / 79 (70) punktów
-- 22 i 2/7 pkt na egzamin
+- 8 / 10 pkt 
+- 16 / 7 -> 2 i 2/7 pkt na egzamin
+- Łącznie z poprzednimi 77 / 79 (70) punktów
+- 22 pkt na egzamin
