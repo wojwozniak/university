@@ -45,3 +45,14 @@ ip addr add 192.168.0.2/24 dev enp0
 
 ### Czy odpowiedzi ARP są wysyłane do konkretnego komputera czy na adres rozgłoszeniowy?
 - Do konkretnego, pytającego się
+
+## Tutorial 3
+
+Komendy osobno bo inaczej coś się psuje
+
+```
+ip addr del 192.168.0.2/24 dev enp0
+ip addr add 192.168.0.123/24 dev enp0
+```
+
+Opis co się dzieje jest w zadaniu
