@@ -56,3 +56,20 @@ ip addr add 192.168.0.123/24 dev enp0
 ```
 
 Opis co się dzieje jest w zadaniu
+
+
+## Wyzwanie
+
+Robimy setup zgodnie z opisem, pamiętając o UP (bo inaczej tak samo się buguje/blokuje)
+
+### Główne pytanie
+
+#### Jaka jest sugerowana przez V2 zmiana tablicy routingu V1?
+- Zmiana default (lub do tej sieci?) na routing bezpośrednio przez 192.168.1.3
+
+#### Dlaczego taka zmiana ma sens?
+- Skracamy ścieżkę -> Zamiast przez kilka routerów w tej samej sieci wysyłamy tylko przez 2
+
+#### W jaki sposób V2 mogła wykryć ten problem?
+
+Wysyła od V1 przez V3 -> wie że obydwa są w tej samej sieci, więc mogą komunikować się bezpośrednio
