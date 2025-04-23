@@ -12,4 +12,4 @@ Listy:
 - Lista 4: 4 / 4 (Total: 20 / 26) (zad.5-7 przeniesione na kolejną listę)
 - Lista 4cd + 5: 7 / 10 (Total: 27 / 36) (zad. 8-9 przeniesione na kolejną listę)
 - Lista 5cd + 6: 10 / 10 (Total: 37 / 46) (zad. 9-11 przeniesione na kolejną listę)
-- Lista 6cd + 7: 2 + x / 10 (Total: 39 + x / 56) (zad.8-9 przeniesione na kolejną listę)
+- Lista 6cd + 7: 7 / 10 (Total: 44 / 56) (zad.8-9 przeniesione na kolejną listę)
