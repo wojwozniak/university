@@ -54,8 +54,12 @@
 - Łącznie z poprzednimi 77 / 79 (70) punktów
 - 22 pkt na egzamin
 
+### Egzaminacyjne 1
+- 9/10 pkt
+- Łącznie 31 pkt na egzamin
 
-## Zadania egzaminacyjne
-- 1 - 9/10 pkt
-- 2 - x pkt
-- 3 - x pkt
+### Lista 8
+- 9 / 10 pkt
+- 18 / 7 -> 2 i 4/7 pkt na egzamin
+- Łącznie z poprzednimi 86 / 90 (80) punktów
+- 33 i 4/7 pkt na egzamin
