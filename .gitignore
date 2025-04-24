@@ -613,7 +613,6 @@ AISD/Workshops/*/src
 AISD/Workshops/*/target
 Computer_Networks/*/solution/traceroute
 AISD/Workshops/B/pracB.rs
-Probability_Calculus_And_Statistics/Egzaminacyjne01
 Computer_Systems/*.md
 Computer_Networks/Assigment02/udp_client.c
 Computer_Networks/Assigment02/udp_server.c
