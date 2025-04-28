@@ -13,7 +13,8 @@ Warszaty suma: 25/40
 Ćwiczenia suma: 9/20
 
 P1: 10/10pkt
-Pracownia suma: 10/40
+P2: 10/10pkt
+Pracownia suma: 20/40
 
 
-Łącznie: 44/100pkt
+Łącznie: 54/100pkt
