@@ -3,8 +3,10 @@ Warsztaty:
 W1: 5/5pkt
 W2: 5/5pkt
 W3: 5/5pkt
+W4: 5/5pkt
+W5: 5/5pkt
 
-Warszaty suma: 15/40
+Warszaty suma: 25/40
 
 Ć1: 9/10pkt
 
@@ -14,4 +16,4 @@ P1: 10/10pkt
 Pracownia suma: 10/40
 
 
-Łącznie: 34/100pkt
+Łącznie: 44/100pkt
