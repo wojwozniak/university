@@ -63,3 +63,7 @@
 - 18 / 7 -> 2 i 4/7 pkt na egzamin
 - Łącznie z poprzednimi 86 / 90 (80) punktów
 - 33 i 4/7 pkt na egzamin
+
+### Egzaminacyjne 2
+- 7 / 6 pkt
+- Łącznie 40 i 4/7 pkt na egzamin
