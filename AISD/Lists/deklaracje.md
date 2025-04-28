@@ -53,3 +53,7 @@
 - Łącznie 6 pkt za prezentrację so far
 - Pozostałe: reszta L3, cała L4
 - Łączne punkty z prezentacjami: 35 / 42,5
+
+### (22.04.2025) przerwa świąteczna
+
+### Ćwiczenia 8 (29.04.2025)
