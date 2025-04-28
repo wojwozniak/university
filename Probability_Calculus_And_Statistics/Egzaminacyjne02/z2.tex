@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[top=0.5in]{geometry}
+\usepackage{titling}
+\usepackage{systeme}
+\usepackage{setspace}
+\usepackage{amsmath}
+\onehalfspacing
+\begin{document}
+
+\title{Zadanie egzaminacyjne 2\\
+    Rachunek prawdopodobieństwa i statystyka}
+\author{Wojciech Woźniak}
+\date{}
+\maketitle
+
+\section*{Opis zadania}
+Mój numer indeksu kończy się $44$, więc n = 5; m = 5.
+\\
+Na trójkącie o wierzchołkach $(0,0), (5,0), (5,5)$ zmienna $(X,Y)$ ma stałą gęstość $f(x,y) = C$. Mamy wyznaczyć gęstość zmiennej $T = X + 2Y$.
+
+\section{Rysunek poglądowy, wyznaczenie wartości C}
+
+\noindent
+\begin{minipage}[t]{0.6\textwidth}
+    \vspace*{-4.5cm}
+    Rysunek poglądowy początkowego trójkąta.\\
+    Trójkąt wyznaczony jest prostymi y = x, y = 0 i x = 5.\\
+    Pole tego trójkąta to $\frac{25}{2}$, więc C we wzorze na gęstość to $\frac{2}{25}$.\\
+    $f(x,y)$ = $\frac{2}{25}$
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{skrt.png}
+\end{minipage}
+
+\section{Przejście do zmiennej (S, T), odwrócenie równania i obliczenie modułu Jakobianu}
+
+\begin{flalign*}
+    \systeme{
+        T = X + 2Y \quad \quad \Rightarrow \quad \quad X = T - 2Y,
+        S = Y
+    } &  &
+\end{flalign*}
+\begin{flalign*}
+    \systeme{
+        X = T-2S,
+        Y = S
+    } &  &
+\end{flalign*}
+\begin{flalign*}
+    |J| = \det \left( \begin{bmatrix}
+                          \frac{\partial X}{\partial T} & \frac{\partial X}{\partial S} \\
+                          \frac{\partial Y}{\partial T} & \frac{\partial Y}{\partial S}
+                      \end{bmatrix} \right)
+    = \det \left( \begin{bmatrix}
+                      1 & -2 \\
+                      0 & 1
+                  \end{bmatrix} \right)
+    = 1 &  &
+\end{flalign*}
+
+\pagebreak
+\onehalfspacing
+
+\section{Całka nieoznaczona z gęstości (wzór z s)}
+$g(t,s) = f_{X,Y}(x(t,s), y(t,s)) \times |J| = \frac{2}{25} * 1 = \frac{2}{25}$\\\\
+$\int g(t,s) ds = \frac{2}{25} s + C$
+
+\section{Ograniczenia t}
+$t = x + 2y$ \quad \quad \quad $y = x$ \quad \quad \quad $t = x + 2x = 3x$\\\\
+$x \in [0,5] \rightarrow t \in [0, 15]$
+
+\section{Ograniczenia s przy zmieniającym się t}
+$0 \leq x \leq 5$ \quad \quad \quad \quad $0 \leq y \leq x$\\
+$0 \leq t-2s \leq 5$ \quad \quad $0 \leq s \leq t-2s$\\\\
+Rozwiązując te dwie podwójne nierówności otrzymujemy:\\\\
+max(0, $\frac{T-5}{2}$) $\leq s \leq \frac{T}{3}$
+
+\section{Wyznaczenie przedziałów dla funkcji gęstości}
+Proste s = 0 i $s = \frac{t-5}{2}$ przecinają się gdy $t = 5$ (najpierw większa
+jest pierwsza, potem druga). Mamy więc:\\ - $t \in [0,5] \rightarrow s \in [0,
+        \frac{t}{3}]$\\ - $t \in [5, 15] \rightarrow s \in [\frac{t-5}{2},
+        \frac{t}{3}]$\\ \noindent \\ \includegraphics[width=1\linewidth]{Bez
+    tytułu2.png}\\ Rysunek poglądowy, zauważmy że $\frac{t-5}{2} \leq \frac{t}{3}$
+dla $t \in [0, 15]$
+
+\section{Wyznaczenie wzoru funkcji gęstości}
+Liczymy całki z g(t,s) ds na odpowiednich przedziałach. (Pierwsza od 0 do
+$\frac{t}{3}$, druga od $\frac{t-5}{2}$ do $\frac{t}{3}$). Otrzymujemy:\\\\ $
+    g_1(t) =
+    \begin{cases}
+        \frac{2}{75}t     & \text{dla } t \in [0,5]  \\[10pt]
+        \frac{15 - t}{75} & \text{dla } t \in [5,15]
+    \end{cases}
+$
+
+\section{Sprawdzenie wyniku}
+\noindent
+
+$$
+    \int_0^5 \frac{2}{75}t \, dt + \int_5^{15} \frac{15-t}{75} \, dt = \frac{1}{3} + \frac{2}{3} = 1,
+    \quad \text{więc } g_1(t) \text{ jest gęstością.}
+$$
+
+\end{document}
