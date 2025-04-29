@@ -57,3 +57,8 @@
 ### (22.04.2025) przerwa świąteczna
 
 ### Ćwiczenia 8 (29.04.2025)
+- Było 7,9 z L3 i 1,2 z L4
+- Zadeklarowane 7, 1 -> 3 / 6 pkt (Suma: 32 / 45,5)
+- Łącznie 6 za prezentacje
+- Pozostałe: reszta L4
+- Łączne punkty z prezentacjami: 38 / 45,5
