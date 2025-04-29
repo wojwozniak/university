@@ -1,1 +1,3 @@
+Robiłem samemu ale tu jest wytłumaczone bardzo zrozumiale (bardziej niż w mojej wersji XD)
+
 https://compgeek.co.in/held-karp-algorithm-for-tsp/
