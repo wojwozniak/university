@@ -48,9 +48,6 @@ def hirschberg_lcs(X: str, Y: str) -> str:
         # Prawa strona z Y od tyłu
         score_right = lcs_length(X[mid:][::-1], Y[::-1])[::-1]
 
-        # Znajdujemy miejsce podziału Y maksymalizujący wynik
-        # Maksymalizujący -> docinamy Y w taki sposób by dobrze przydzielić części
-        # Y Xsowi
         k = 0
         max_score = -1
         for j in range(n + 1):
