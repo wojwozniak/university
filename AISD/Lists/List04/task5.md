@@ -34,3 +34,8 @@ def max_independent_set(n, edges, weights):
     dfs(0, -1)
     return max(dp[0][0], dp[0][1])
 ```
+### Opis
+
+DFSik ciągnący -> najpierw liczymy w niższe wartości, potem dopiero zciągamy te wartości. 
+
+Pokazując rysunek -> root zamalowany, dzieci niezamalowane lub na odwrót
