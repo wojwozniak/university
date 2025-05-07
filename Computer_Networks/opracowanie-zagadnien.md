@@ -685,3 +685,257 @@ Zjawisko ukrytej stacji występuje w sieciach komputerowych, gdy dwa lub więcej
 ### 17. Na czym polega rezerwowanie łącza za pomocą RTS i CTS?
 
 Rozwiązuje to problem ukrytej stacji. RTS (Real Time Strategy/Request to Send) - urządzenie pytana o pozowolenie na nadawanie AP i wtedy ono mu odpowiada CTS (Clear to Send) - co oznacza że nie ma konkurentów do nadawania i może lecieć.
+
+## Wykład 6
+
+### 1. Co może stać się z przesyłanym ciągiem pakietów IP podczas zawodnego i niezawodnego transportu?
+Podczas zawodnego transportu (np. UDP), pakiety mogą zostać zgubione, zdublowane lub przyjść w złej kolejności, a aplikacja nie otrzymuje gwarancji ich dostarczenia. W niezawodnym transporcie (np. TCP), mechanizmy retransmisji, kontroli błędów i potwierdzeń zapewniają uporządkowane i niezawodne dostarczenie pakietów.
+
+### 2. Co to jest kontrola przepływu?
+Kontrola przepływu to mechanizm zapobiegający przeciążeniu odbiorcy danymi przesyłanymi przez nadawcę. Umożliwia dostosowanie tempa wysyłania do możliwości odbiorcy.
+
+### 3. Czym różnią się protokoły UDP i TCP? Podaj zastosowania każdego z nich.
+TCP to protokół połączeniowy, oferujący niezawodność, uporządkowanie i kontrolę przepływu. UDP jest bezpołączeniowy i szybki, ale zawodny. TCP stosuje się w HTTP, FTP, SMTP; UDP w transmisjach wideo, VoIP, DNS.
+
+### 4. Co to jest segmentacja? Dlaczego segmenty mają ograniczoną wielkość? Rozwiń skrót MSS.
+Segmentacja to dzielenie dużych danych na mniejsze jednostki — segmenty. Ich wielkość ogranicza MSS (Maximum Segment Size), by zapobiec fragmentacji na poziomie IP i zapewnić zgodność z MTU.
+
+### 5. Jak nazywają się jednostki danych przesyłane w kolejnych warstwach?
+Aplikacja: wiadomości;  
+Transportowa: segmenty/datagramy;  
+Sieciowa: pakiety;  
+Łącza danych: ramki;  
+Fizyczna: bity.
+
+### 6. Jak małe pakiety zmniejszają opóźnienie przesyłania danych?
+Małe pakiety szybciej się transmitują i przetwarzają, co redukuje czas oczekiwania na ich zakończenie, zmniejszając opóźnienia — zwłaszcza w interaktywnych aplikacjach.
+
+### 7. Wytłumacz znaczenie skrótów RTT i RTO. Na jakiej podstawie ustalana jest wartość RTO?
+RTT (Round Trip Time) to czas pełnej podróży pakietu i jego potwierdzenia. RTO (Retransmission Timeout) to czas oczekiwania na ACK przed retransmisją. RTO ustala się dynamicznie na podstawie średniego RTT i jego wariancji.
+
+### 8. Jak protokoły niezawodnego transportu wykrywają duplikaty pakietów i potwierdzeń?
+Wykorzystują numery sekwencyjne i potwierdzenia (ACK). Duplikaty mają identyczne numery jak już przetworzone dane i są ignorowane.
+
+### 9. Opisz algorytm Stop-and-Wait. Jakie są jego wady i zalety?
+Nadaje jeden segment, czeka na ACK, potem kolejny. Zaleta: prostota. Wada: niska wydajność przy dużym opóźnieniu (mały BDP).
+
+### 10. Do czego służą numery sekwencyjne w niezawodnym protokole transportowym?
+Służą do identyfikacji segmentów, umożliwiają wykrywanie duplikatów i składanie danych w odpowiedniej kolejności.
+
+### 11. Opisz algorytm okna przesuwnego.
+Nadawca może wysłać wiele segmentów bez czekania na każde ACK. Okno przesuwa się po otrzymaniu ACK, co zwiększa przepustowość.
+
+### 12. Jaki jest związek między rozmiarem okna a BDP (bandwidth-delay product)?
+Okno musi być co najmniej równe BDP, by maksymalnie wykorzystać przepustowość łącza bez czekania na ACK.
+
+### 13. Opisz i porównaj następujące mechanizmy potwierdzania: Go-Back-N, potwierdzanie selektywne, potwierdzanie skumulowane.
+- **Go-Back-N**: retransmituje wszystkie od zgubionego segmentu.
+- **Selektywne**: retransmituje tylko brakujące.
+- **Skumulowane**: ACK obejmuje wszystkie dane do określonego punktu.
+
+### 14. Dlaczego istotne jest potwierdzanie odbioru duplikatów segmentów?
+Pozwala to nadawcy wykryć utracone segmenty — np. przez trzy duplikaty ACK — i szybko je retransmitować (Fast Retransmit).
+
+### 15. Co to jest okno oferowane? Jak pomaga w kontroli przepływu?
+To rozmiar bufora odbiorcy komunikowany nadawcy. Nadawca nie przekracza tej wartości, co zapobiega przepełnieniu.
+
+### 16. Jakie mechanizmy niezawodnego transportu i kontroli przepływu implementowane są w protokole TCP?
+TCP implementuje: retransmisję, potwierdzania, numery sekwencyjne, kontrolę przeciążenia (np. slow start), kontrolę przepływu (okno oferowane).
+
+### 17. Na czym polega opóźnione wysyłanie ACK w protokole TCP?
+Odbiorca chwilę czeka przed wysłaniem ACK, by móc wysłać go razem z danymi, zmniejszając liczbę pakietów.
+
+### 18. Na czym polega mechanizm Nagle'a? Kiedy nie należy go stosować?
+Łączy małe segmenty w jeden większy przed wysłaniem. Oszczędza pakiety, ale zwiększa opóźnienia. Nie stosować w aplikacjach interaktywnych (np. SSH, gry).
+
+### 19. Co oznaczają pola ,,numer sekwencyjny'' i ,,numer potwierdzenia'' w nagłówku TCP?
+Numer sekwencyjny: bajt rozpoczynający segment. Numer potwierdzenia: bajt, którego odbiorca oczekuje jako następny — potwierdzenie wszystkich poprzednich.
+
+### 20. Czy warstwa transportowa implementowana jest na routerach? Dlaczego?
+Nie. Routery pracują na warstwach 1–3 (fizyczna–sieciowa). Warstwa transportowa działa na końcówkach komunikacji (hostach).
+
+### 21. Sformułuj słabą i silną zasadę end-to-end.
+- **Słaba**: sieć może wspomagać niezawodność, ale końcówki nadal odpowiadają za integralność danych.  
+- **Silna**: cała odpowiedzialność za poprawność danych spoczywa wyłącznie na końcówkach komunikacji.
+
+
+## Wykład 7
+
+### 1. Co to jest gniazdo?
+Gniazdo (socket) to punkt końcowy komunikacji w sieciach komputerowych, wykorzystywany do przesyłania danych pomiędzy procesami. Składa się z adresu IP, numeru portu oraz typu protokołu (TCP/UDP).
+
+### 2. Czym różni się gniazdo nasłuchujące od gniazda połączonego? Czy w protokole UDP mamy gniazda połączone?
+Gniazdo nasłuchujące oczekuje na nowe połączenia przychodzące (typowe dla serwerów TCP), natomiast gniazdo połączone jest przypisane do konkretnego połączenia klient-serwer. W UDP nie ma formalnych połączeń, więc nie występują gniazda połączone w tym samym sensie co w TCP.
+
+### 3. Co robią funkcję jądra bind(), listen(), accept(), connect()?
+- `bind()`: przypisuje gniazdu lokalny adres (IP i port),
+- `listen()`: ustawia gniazdo w tryb nasłuchu,
+- `accept()`: akceptuje przychodzące połączenie i zwraca nowe gniazdo,
+- `connect()`: inicjuje połączenie z adresem zdalnym (tylko w TCP).
+
+### 4. Czym różni się komunikacja bezpołączeniowa od połączeniowej?
+W komunikacji połączeniowej (TCP) przed przesyłaniem danych nawiązywane jest połączenie. W bezpołączeniowej (UDP) dane są wysyłane bez wcześniejszego ustanowienia połączenia, co może prowadzić do ich utraty lub zmiany kolejności.
+
+### 5. Czym różni się otwarcie bierne od otwarcia aktywnego? Czy serwer może wykonać otwarcie aktywne?
+Otwarcie aktywne to rozpoczęcie połączenia przez klienta (`connect()`), otwarcie bierne to oczekiwanie na połączenie przez serwer (`listen()` + `accept()`). Serwer zwykle nie wykonuje otwarcia aktywnego.
+
+### 6. Do czego służą flagi SYN, ACK, FIN i RST stosowane w protokole TCP?
+- `SYN`: inicjalizacja połączenia,
+- `ACK`: potwierdzenie otrzymanych danych,
+- `FIN`: zakończenie połączenia,
+- `RST`: resetowanie połączenia przy błędzie lub nieoczekiwanej sytuacji.
+
+### 7. Opisz trójstopniowe nawiązywanie połączenia w TCP. Jakie informacje są przesyłane w trakcie takiego połączenia?
+1. Klient wysyła `SYN` z numerem sekwencyjnym.
+2. Serwer odpowiada `SYN-ACK` (własny numer sekwencyjny i potwierdzenie klienta).
+3. Klient wysyła `ACK`, kończąc proces inicjalizacji.
+Wymieniane są numery sekwencyjne, by zapewnić niezawodność transmisji.
+
+### 8. Dlaczego przesyłanych bajtów nie numeruje się od zera?
+Numeracja od zera mogłaby prowadzić do kolizji przy ponownym nawiązaniu połączenia z tym samym hostem/portem. Użycie losowego numeru startowego zwiększa bezpieczeństwo i zmniejsza ryzyko pomyłek.
+
+### 9. Jakie segmenty są wymieniane podczas zamykania połączenia w protokole TCP?
+Połączenie zamyka się przez wymianę segmentów `FIN` i `ACK`. Każda strona wysyła `FIN` i oczekuje `ACK` od drugiej strony.
+
+### 10. Co zwraca funkcja recv() wywołana na gnieździe w blokującym i nieblokującym trybie?
+- W trybie blokującym: `recv()` czeka na dane i zwraca odebrane bajty.
+- W nieblokującym: `recv()` zwraca natychmiast, może zwrócić 0 bajtów lub kod błędu, jeśli dane nie są dostępne.
+
+### 11. Po co wprowadzono stan TIME_WAIT?
+Stan `TIME_WAIT` zapobiega ponownemu wykorzystaniu tych samych numerów portów zbyt szybko i umożliwia dostarczenie opóźnionych segmentów TCP, chroniąc przed kolizjami danych z poprzednich połączeń.
+
+### 12. Na podstawie diagramu stanów TCP opisz możliwe scenariusze nawiązywania i kończenia połączenia.
+Nawiązywanie: klient przechodzi przez `CLOSED → SYN_SENT → ESTABLISHED`, a serwer przez `LISTEN → SYN_RECEIVED → ESTABLISHED`.
+
+Zamykanie: każda strona osobno przechodzi przez `ESTABLISHED → FIN_WAIT_1 → FIN_WAIT_2 → TIME_WAIT → CLOSED` (dla zamykającego) lub `ESTABLISHED → CLOSE_WAIT → LAST_ACK → CLOSED` (dla drugiej strony). Obie strony muszą potwierdzić zamknięcie.
+
+## Wykład 8
+
+### 1. Opisz budowę adresu URL. Opisz budowę adresu URL w przypadku schematu http.
+Adres URL (Uniform Resource Locator) składa się z następujących elementów:
+`schemat://użytkownik@host:port/ścieżka?parametry#fragment`
+
+Dla HTTP typowy URL wygląda tak:
+`http://www.example.com:80/index.html?search=test#top`
+
+- **schemat** – np. http, https, ftp,
+- **host** – np. www.example.com,
+- **port** – domyślny dla HTTP to 80,
+- **ścieżka** – zasób na serwerze, np. /index.html,
+- **parametry zapytania** – po znaku `?`, np. search=test,
+- **fragment** – lokalizacja wewnątrz dokumentu, np. #top.
+
+---
+
+### 2. W jakim celu serwer WWW ustawia typ MIME dla wysyłanej zawartości? Podaj kilka przykładów typów MIME.
+Typ MIME informuje klienta (przeglądarkę), jaki jest typ danych w odpowiedzi, by mógł je odpowiednio przetworzyć. Przykłady:
+- `text/html` – dokument HTML,
+- `text/css` – arkusz stylów CSS,
+- `application/json` – dane JSON,
+- `image/png` – obraz PNG,
+- `video/mp4` – plik wideo.
+
+---
+
+### 3. Po co w nagłówku żądania HTTP/1.1 podaje się pole Host?
+Pole `Host` umożliwia obsługę wielu wirtualnych serwerów (virtual hosting) na jednym adresie IP. Dzięki niemu serwer wie, który z hostów ma obsłużyć żądanie.
+
+---
+
+### 4. Do czego służą pola Accept, Accept-Language, User-Agent, Server, Content-Length, Content-Type w nagłówku HTTP?
+- `Accept` – informuje serwer, jakie typy MIME akceptuje klient,
+- `Accept-Language` – preferencje językowe klienta,
+- `User-Agent` – identyfikuje aplikację kliencką (np. przeglądarkę),
+- `Server` – informuje klienta o oprogramowaniu serwera,
+- `Content-Length` – długość ciała wiadomości (w bajtach),
+- `Content-Type` – typ zawartości przesyłanej w żądaniu lub odpowiedzi.
+
+---
+
+### 5. Jak implementuje się przechowywanie stanu w komunikacji HTTP?
+Ponieważ HTTP jest bezstanowy, przechowywanie stanu realizuje się przez:
+- **Cookies** – dane zapisane po stronie klienta,
+- **Tokeny** (np. JWT) – przekazywane w nagłówkach,
+- **Sesje** – identyfikator sesji przechowywany np. w cookie, dane po stronie serwera.
+
+---
+
+### 6. Jak wygląda warunkowe zapytanie GET protokołu HTTP?
+Warunkowe zapytanie GET używa nagłówków:
+- `If-Modified-Since: <data>` – żądaj tylko jeśli plik był zmodyfikowany po tej dacie,
+- `If-None-Match: <ETag>` – żądaj tylko jeśli identyfikator ETag się zmienił.
+
+Pozwala to uniknąć pobierania niezmienionych zasobów.
+
+---
+
+### 7. Jakie znasz kody odpowiedzi protokołu HTTP?
+- `200 OK` – sukces,
+- `301 Moved Permanently` – trwałe przekierowanie,
+- `302 Found` – tymczasowe przekierowanie,
+- `400 Bad Request` – nieprawidłowe żądanie,
+- `401 Unauthorized` – brak autoryzacji,
+- `403 Forbidden` – brak dostępu,
+- `404 Not Found` – nie znaleziono zasobu,
+- `500 Internal Server Error` – błąd serwera.
+
+---
+
+### 8. Na czym polegają połączenia trwałe w HTTP/1.1? Do czego służy opcja Connection: close w nagłówku HTTP?
+HTTP/1.1 domyślnie używa połączeń trwałych (keep-alive), co oznacza, że jedno połączenie TCP może obsłużyć wiele żądań. `Connection: close` wymusza zamknięcie połączenia po wykonaniu żądania.
+
+---
+
+### 9. Po co stosuje się metodę POST?
+Metoda `POST` służy do przesyłania danych do serwera (np. z formularza), modyfikując zasoby. Umożliwia przesyłanie dużych i złożonych danych w ciele żądania.
+
+---
+
+### 10. Co to jest technologia REST?
+REST (Representational State Transfer) to styl architektury systemów rozproszonych oparty na HTTP. REST wykorzystuje metody HTTP (GET, POST, PUT, DELETE) do operacji na zasobach z unikalnymi URL.
+
+---
+
+### 11. Do czego służą serwery proxy?
+Serwery proxy pośredniczą w ruchu sieciowym między klientem a serwerem docelowym. Mogą:
+- buforować dane,
+- ukrywać tożsamość klienta,
+- filtrować treść,
+- rejestrować ruch.
+
+---
+
+### 12. Co to jest odwrotne proxy? Co to jest CDN?
+- **Odwrotne proxy (reverse proxy)** – stoi przed serwerem i przekazuje ruch do serwera backendowego. Może realizować balansowanie obciążenia, SSL, cache.
+- **CDN (Content Delivery Network)** – sieć rozproszonych serwerów odwrotnych proxy służących do szybszego dostarczania treści statycznych użytkownikom z różnych lokalizacji.
+
+---
+
+### 13. Jak skłonić klienta, żeby łączył się z serwerem proxy a nie bezpośrednio ze stroną WWW?
+Można to osiągnąć przez:
+- konfigurację przeglądarki/systemu (ręcznie lub przez PAC – Proxy Auto-Config),
+- transparentny proxy ustawiony przez administratora sieci,
+- użycie VPN przekierowującego ruch.
+
+---
+
+### 14. Jakie informacje dołączane są przez serwer proxy do zapytania?
+Proxy może dołączyć nagłówki:
+- `Via` – ślad serwerów pośredniczących,
+- `X-Forwarded-For` – adres IP klienta,
+- `Forwarded` – nowoczesny nagłówek ze szczegółami trasy żądania (IP, protokół, porty, itp.).
+
+---
+
+### 15. Co to są anonimowe serwery proxy?
+To serwery, które nie przekazują adresu IP użytkownika do serwera docelowego, ukrywając jego tożsamość. Nie dodają nagłówków takich jak `X-Forwarded-For`.
+
+---
+
+### 16. W jakim celu powstał protokół QUIC? Jakie funkcje spełnia?
+QUIC (Quick UDP Internet Connections) został zaprojektowany przez Google jako szybki, bezpieczny i niezawodny protokół transportowy oparty na UDP. Łączy funkcje TCP + TLS + HTTP/2:
+- mniejsze opóźnienia przy łączeniu,
+- lepsze działanie przy utracie pakietów,
+- szyfrowanie end-to-end,
+- multiplexing bez blokowania (head-of-line blocking).
+
