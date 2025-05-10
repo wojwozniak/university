@@ -23,3 +23,11 @@ Po prostu lecimy jak napisane, wszystko widać
 ### Tutorial 3
 
 Szukany datagram zaczyna się od 03 77 a kończy na 6c 00
+
+### Challenge
+
+`http_request` źle się kopiuje - dodaj podkreślenie gdzie trzeba
+
+Od razu zmień w przejętym requeście content i content-length (żeby było widać że to nasz ręcznie wysłany request) (Po wyłączeniu nc i otwarciu go nano)
+
+Po wyłączeniu nc wywali stronę - trzeba zmienić znów na default proxy settings żeby się wczytała. Wyślemy znów formularz, więc będzie dwa razy odp (w tym raz nasza zmieniona)
