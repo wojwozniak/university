@@ -22,3 +22,4 @@ type expr =
   | BooleanP of expr 
   | PairP of expr 
   | UnitP of expr
+  | Fold of expr * ident * ident * expr * expr (* Zad 4 *)

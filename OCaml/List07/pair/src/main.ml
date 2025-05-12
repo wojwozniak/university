@@ -34,6 +34,7 @@ let rec subst (x : ident) (s : expr) (e : expr) : expr =
   | BooleanP e -> BooleanP (subst x s e) 
   | PairP e -> PairP (subst x s e) 
   | UnitP e -> UnitP (subst x s e)
+  | Fold (e1, z, acc, e2, e3) -> Fold (subst x s e1, z, acc, (if x = z || x = acc then e2 else subst x s e2), subst x s e3)
   | _ -> e
 
 let rec reify (v : value) : expr =
@@ -79,6 +80,15 @@ let rec eval (e : expr) : value =
   | BooleanP e -> (match eval e with | VBool _ -> VBool true | _ -> VBool false) 
   | PairP e -> (match eval e with | VPair _ -> VBool true | _ -> VBool false) 
   | UnitP e -> (match eval e with | VUnit -> VBool true | _ -> VBool false)
+  | Fold (e1, x, acc, e2, e3) -> 
+    (match eval e1 with 
+      | VUnit -> eval e3 
+      | VPair (v1, v2) -> 
+        e2 
+        |> subst x (reify v1) 
+        |> subst acc (reify (eval (Fold (reify v2, x, acc, e2, e3)))) 
+        |> eval 
+      | _ -> failwith "Type error")
 
 let interp (s : string) : value =
   eval (parse s)

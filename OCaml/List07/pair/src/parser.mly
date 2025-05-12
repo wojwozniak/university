@@ -35,6 +35,8 @@ open Ast
 %token LBRACK 
 %token RBRACK 
 %token SEMI
+%token FOLD 
+%token ANDKW
 
 %start <Ast.expr> main
 
@@ -56,6 +58,7 @@ mexpr:
         { Let(x, e1, e2) }
     | MATCH; e1 = mexpr; WITH; LPAREN; x = IDENT; COMMA; y = IDENT; RPAREN; ARR; e2 = mexpr
         { Match(e1, x, y, e2) }
+    | FOLD; e1 = mexpr; WITH; LPAREN; x = IDENT; COMMA; acc = IDENT; RPAREN; ARR; e2 = mexpr; ANDKW; e3 = mexpr { Fold(e1, x, acc, e2, e3) }
     | e = expr
         { e }
     ;

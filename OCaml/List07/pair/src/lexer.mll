@@ -42,6 +42,8 @@ rule read =
     | "[" { LBRACK } 
     | "]" { RBRACK } 
     | ";" { SEMI } 
+    | "fold" { FOLD } 
+    | "and" { ANDKW } 
     | number { INT ( int_of_string (Lexing.lexeme lexbuf)) }
     | ident { IDENT (Lexing.lexeme lexbuf) }
     | eof { EOF }
