@@ -15,8 +15,6 @@ let eval_op (op : bop) (val1 : value) (val2 : value) : value =
   | Sub,  VInt  v1, VInt  v2 -> VInt  (v1 - v2)
   | Mult, VInt  v1, VInt  v2 -> VInt  (v1 * v2)
   | Div,  VInt  v1, VInt  v2 -> VInt  (v1 / v2)
-  | And,  VBool v1, VBool v2 -> VBool (v1 && v2)
-  | Or,   VBool v1, VBool v2 -> VBool (v1 || v2)
   | Leq,  VInt  v1, VInt  v2 -> VBool (v1 <= v2)
   | Eq,   _,        _        -> VBool (val1 = val2)
   | _,    _,        _        -> failwith "type error"

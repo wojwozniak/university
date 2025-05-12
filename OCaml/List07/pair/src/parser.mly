@@ -61,8 +61,8 @@ expr:
     | e1 = expr; MINUS; e2 = expr { Binop(Sub, e1, e2) }
     | e1 = expr; DIV; e2 = expr { Binop(Div, e1, e2) }
     | e1 = expr; TIMES; e2 = expr { Binop(Mult, e1, e2) }
-    | e1 = expr; AND; e2 = expr { Binop(And, e1, e2) }
-    | e1 = expr; OR; e2 = expr { Binop(Or, e1, e2) }
+    | e1 = expr; AND; e2 = expr { If (e1, e2, Bool false) } // Zad 1
+    | e1 = expr; OR; e2 = expr { If (e1, Bool true, e2) } // Zad 1
     | e1 = expr; EQ; e2 = expr { Binop(Eq, e1, e2) }
     | e1 = expr; LEQ; e2 = expr { Binop(Leq, e1, e2) }
     | LPAREN; e1 = mexpr; COMMA; e2 = mexpr; RPAREN { Pair (e1,e2) }

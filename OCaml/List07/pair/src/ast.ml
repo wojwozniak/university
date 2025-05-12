@@ -1,8 +1,6 @@
 type bop =
   (* arithmetic *)
   | Add | Sub | Mult | Div
-  (* logic *)
-  | And | Or
   (* comparison *)
   | Eq | Leq
 
