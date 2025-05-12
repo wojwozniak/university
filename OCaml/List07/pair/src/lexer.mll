@@ -39,6 +39,9 @@ rule read =
     | "unit?" { UNITP }
     | "match" { MATCH }
     | "with" { WITH }
+    | "[" { LBRACK } 
+    | "]" { RBRACK } 
+    | ";" { SEMI } 
     | number { INT ( int_of_string (Lexing.lexeme lexbuf)) }
     | ident { IDENT (Lexing.lexeme lexbuf) }
     | eof { EOF }

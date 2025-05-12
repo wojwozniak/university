@@ -32,6 +32,9 @@ open Ast
 %token BOOLEANP 
 %token PAIRP 
 %token UNITP
+%token LBRACK 
+%token RBRACK 
+%token SEMI
 
 %start <Ast.expr> main
 
@@ -78,6 +81,7 @@ expr:
     | PAIRP; e = expr { PairP e } 
     | UNITP; e = expr { UnitP e } 
     | LPAREN; e = mexpr; RPAREN { e }
+    | LBRACK; es = expr_list; RBRACK { es }
     ;
 
-
+expr_list: | { Unit } | e = mexpr { Pair (e, Unit) } | e = mexpr; SEMI; es = expr_list { Pair (e, es) } ;
