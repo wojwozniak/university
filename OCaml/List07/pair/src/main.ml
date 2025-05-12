@@ -90,5 +90,8 @@ let rec eval (e : expr) : value =
         |> eval 
       | _ -> failwith "Type error")
 
+let prog_of_list (xs : int list) : string =
+  List.fold_right (fun x s -> "(" ^ string_of_int x ^ "," ^ s ^ ")") xs "()"
+
 let interp (s : string) : value =
   eval (parse s)
