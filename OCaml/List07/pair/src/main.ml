@@ -30,6 +30,10 @@ let rec subst (x : ident) (s : expr) (e : expr) : expr =
   | Fst e -> Fst (subst x s e)
   | Snd e -> Snd (subst x s e)
   | Match (e1, z, y, e2) -> Match (subst x s e1, z, y, (if x = z || x = y then e2 else subst x s e2))
+  | NumberP e -> NumberP (subst x s e) 
+  | BooleanP e -> BooleanP (subst x s e) 
+  | PairP e -> PairP (subst x s e) 
+  | UnitP e -> UnitP (subst x s e)
   | _ -> e
 
 let rec reify (v : value) : expr =
@@ -71,6 +75,10 @@ let rec eval (e : expr) : value =
             |> eval
         | _ -> failwith "Type error")
   | Var x -> failwith ("unknown var " ^ x)
+  | NumberP e -> (match eval e with | VInt _ -> VBool true | _ -> VBool false) 
+  | BooleanP e -> (match eval e with | VBool _ -> VBool true | _ -> VBool false) 
+  | PairP e -> (match eval e with | VPair _ -> VBool true | _ -> VBool false) 
+  | UnitP e -> (match eval e with | VUnit -> VBool true | _ -> VBool false)
 
 let interp (s : string) : value =
   eval (parse s)

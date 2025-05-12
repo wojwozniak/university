@@ -28,6 +28,10 @@ open Ast
 %token MATCH
 %token WITH
 %token ARR
+%token NUMBERP 
+%token BOOLEANP 
+%token PAIRP 
+%token UNITP
 
 %start <Ast.expr> main
 
@@ -69,6 +73,10 @@ expr:
     | UNIT { Unit }
     | FST; e = expr { Fst e }
     | SND; e = expr { Snd e }
+    | NUMBERP; e = expr { NumberP e } 
+    | BOOLEANP; e = expr { BooleanP e } 
+    | PAIRP; e = expr { PairP e } 
+    | UNITP; e = expr { UnitP e } 
     | LPAREN; e = mexpr; RPAREN { e }
     ;
 

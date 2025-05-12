@@ -33,6 +33,10 @@ rule read =
     | "()" { UNIT }
     | "fst" { FST }
     | "snd" { SND }
+    | "number?" { NUMBERP } 
+    | "boolean?" { BOOLEANP } 
+    | "pair?" { PAIRP } 
+    | "unit?" { UNITP }
     | "match" { MATCH }
     | "with" { WITH }
     | number { INT ( int_of_string (Lexing.lexeme lexbuf)) }

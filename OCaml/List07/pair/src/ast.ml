@@ -18,3 +18,7 @@ type expr =
   | Fst   of expr
   | Snd   of expr
   | Match of expr * ident * ident * expr
+  | NumberP of expr 
+  | BooleanP of expr 
+  | PairP of expr 
+  | UnitP of expr
