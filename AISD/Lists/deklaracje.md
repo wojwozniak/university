@@ -59,3 +59,7 @@ Punkty działają dziwnie - na liście to w sumie prank punkty, tak naprawdę za
 - Było 3,4,5,6 z L4
 - Prezentacja 5 -> +1pkt
 - Zadeklarowane all-in -> 3/2pkt (Suma: 17 / 20)
+
+### Ćwiczenia 10 (13.05.2025)
+- Było 7,8 z L4 i 1 z L5
+- Zadeklarowane 1 z L5 0.5 / 1.5 pkt (Suma 17.5 / 21.5)
