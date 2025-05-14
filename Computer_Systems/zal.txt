@@ -14,4 +14,5 @@ Listy:
 - Lista 5cd + 6: 10 / 10 (Total: 37 / 46) (zad. 9-11 przeniesione na kolejną listę)
 - Lista 6cd + 7: 7 / 9 (Total: 44 / 55) (zad. 7-9 przeniesione na kolejną listę)
 - Lista 7cd + 8: 6 / 8 (Total: 50 / 63)
-- Lista 9: 4/5 (Total: 54 / 68)
+- Lista 9: 4 / 5 (Total: 54 / 68)
+- Lista 10: 5 / 7 (Total: 59 / 73)
