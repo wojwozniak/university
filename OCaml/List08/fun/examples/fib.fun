@@ -4,4 +4,4 @@ let fib =
       then n
       else fib (n - 1) + fib (n - 2)
 in
-  fib 35
+  fib 25
