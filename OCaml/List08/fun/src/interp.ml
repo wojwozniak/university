@@ -170,3 +170,59 @@ let rec cp_env (env : cp_env) (e : expr) : expr =
   | Match (e1, x, y, e2) -> Match (cp_env env e1, x, y, cp_env env e2)
 
 let cp (e : expr) : expr = cp_env M.empty e
+
+(* 
+  Zadanie 2 - sprawdzanie alfarównoważności
+  Dwa wyrażenia są alfarównoważne,
+  gdy różnią się tylko nazwami zmiennych związanych i mają taką samą strukturę
+  przypisywania zmiennych
+
+  Rozwiązuję w pierwszej wersji, tj. mapowanie na dwa środowska
+*)
+let rec alpha_equiv_env (env1 : string M.t) (env2 : string M.t) (e1 : expr) (e2 : expr) : bool =
+  match e1, e2 with
+  | Int n1, Int n2 -> n1 = n2
+  | Bool b1, Bool b2 -> b1 = b2
+  | Unit, Unit -> true
+  (* Dostajemy dwie zmienne ->
+    Szukamy wartości dwóch zmiennych w ich własnych środowskach
+    Sprawdzamy czy ich wartości odpowiadają drugiej zmiennej
+    Gdzie tu zapisujemy która zmienna odpowiada której więc jest to legalne
+    (To nie tak że porównujemy niepodstawione z podstawionym więc są rózne typy,
+    tylko podstawienie ze zmiennej na zmienną)
+  *)
+  | Var x, Var y ->
+      (match M.find_opt x env1, M.find_opt y env2 with
+       | Some x', Some y' -> x' = y && y' = x
+       | None, None -> x = y
+       | _, _ -> false)
+  | Binop (op1, e1a, e1b), Binop (op2, e2a, e2b) ->
+      op1 = op2 && alpha_equiv_env env1 env2 e1a e2a && alpha_equiv_env env1 env2 e1b e2b
+  | If (c1, t1, f1), If (c2, t2, f2) ->
+      alpha_equiv_env env1 env2 c1 c2 && alpha_equiv_env env1 env2 t1 t2 && alpha_equiv_env env1 env2 f1 f2
+  | Let (x1, e1a, e1b), Let (x2, e2a, e2b) ->
+      alpha_equiv_env env1 env2 e1a e2a &&
+      alpha_equiv_env (M.add x1 x2 env1) (M.add x2 x1 env2) e1b e2b
+  | Pair (e1a, e1b), Pair (e2a, e2b) ->
+      alpha_equiv_env env1 env2 e1a e2a && alpha_equiv_env env1 env2 e1b e2b
+  | Fst e1', Fst e2' -> alpha_equiv_env env1 env2 e1' e2'
+  | Snd e1', Snd e2' -> alpha_equiv_env env1 env2 e1' e2'
+  | IsPair e1', IsPair e2' -> alpha_equiv_env env1 env2 e1' e2'
+  | Fun (x1, body1), Fun (x2, body2) ->
+      alpha_equiv_env (M.add x1 x2 env1) (M.add x2 x1 env2) body1 body2
+  | Funrec (f1, x1, body1), Funrec (f2, x2, body2) ->
+      alpha_equiv_env
+        (M.add f1 f2 (M.add x1 x2 env1))
+        (M.add f2 f1 (M.add x2 x1 env2))
+        body1 body2
+  | App (e1a, e1b), App (e2a, e2b) ->
+      alpha_equiv_env env1 env2 e1a e2a && alpha_equiv_env env1 env2 e1b e2b
+  | Match (e1a, x1, y1, e1b), Match (e2a, x2, y2, e2b) ->
+      alpha_equiv_env env1 env2 e1a e2a &&
+      alpha_equiv_env
+        (M.add x1 x2 (M.add y1 y2 env1))
+        (M.add x2 x1 (M.add y2 y1 env2))
+        e1b e2b
+  | _, _ -> false
+
+let alpha_equiv (e1 : expr) (e2 : expr) : bool = alpha_equiv_env M.empty M.empty e1 e2
