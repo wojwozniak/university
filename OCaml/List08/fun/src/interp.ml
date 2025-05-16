@@ -226,3 +226,64 @@ let rec alpha_equiv_env (env1 : string M.t) (env2 : string M.t) (e1 : expr) (e2 
   | _, _ -> false
 
 let alpha_equiv (e1 : expr) (e2 : expr) : bool = alpha_equiv_env M.empty M.empty e1 e2
+
+(* Zadanie 3 *)
+let rec rename_env (env : string M.t) (path : string) (e : expr) : expr =
+  match e with
+  | Int n -> Int n
+  | Bool b -> Bool b
+  | Unit -> Unit
+  (* Zwracamy zmienną jak jest już w środowisku (nie chcemy tej samej zmiennej
+  nazwać na kilka różnych sposóbów. Jeśli jest wolna to też jej nazwy tu nie 
+  zmieniamy. Ogólnie nazwy ustawimy na poziomie leta, korzystając z wcześniej
+  utworzonej wartości patha)*)
+  | Var x ->
+    (match M.find_opt x env with
+      | Some new_name -> Var new_name
+      | None -> Var x)
+  (* Basic wyrażenie, wywołanie rekurencyjne na lewej i prawej stronie *)
+  | Binop (op, e1, e2) ->
+      Binop (op, rename_env env (path ^ "L") e1, rename_env env (path ^ "R") e2)
+  | If (cond, t, f) ->
+      If (rename_env env (path ^ "C") cond,
+          rename_env env (path ^ "T") t,
+          rename_env env (path ^ "F") f)
+  (* 
+    Tu ciekawe - pierwsze ustawianie nowej nazwy
+    Wytwarzamy nową nazwę poprzez konkatekację "#" z path
+    Generujemy nowe środowisko z dodaną stworzoną zmienną
+    Zwracamy Leta -> ze zmienioną nazwą, przetwarzamy rekurencyjne e1, 
+    i e2 ze zmienionym środowiskiem z dodaną zmienną
+  *)
+  | Let (x, e1, e2) ->
+      let new_name = "#" ^ path in
+        let env' = M.add x new_name env in
+          Let (new_name,
+              rename_env env (path ^ "V") e1,
+              rename_env env' (path ^ "B") e2)
+  | Pair (e1, e2) ->
+      Pair (rename_env env (path ^ "L") e1, rename_env env (path ^ "R") e2)
+  | Fst e -> Fst (rename_env env (path ^ "F") e)
+  | Snd e -> Snd (rename_env env (path ^ "S") e)
+  | IsPair e -> IsPair (rename_env env (path ^ "P") e)
+  | Fun (x, body) ->
+      let new_name = "#" ^ path in
+      let env' = M.add x new_name env in
+      Fun (new_name, rename_env env' (path ^ "B") body)
+  | Funrec (f, x, body) ->
+      let new_f = "#" ^ path ^ "F" in
+      let new_x = "#" ^ path ^ "X" in
+      let env' = M.add f new_f (M.add x new_x env) in
+      Funrec (new_f, new_x, rename_env env' (path ^ "B") body)
+  | App (e1, e2) ->
+      App (rename_env env (path ^ "L") e1, rename_env env (path ^ "R") e2)
+  | Match (e1, x, y, e2) ->
+      let new_x = "#" ^ path ^ "X" in
+      let new_y = "#" ^ path ^ "Y" in
+      let env' = M.add x new_x (M.add y new_y env) in
+      Match (rename_env env (path ^ "M") e1,
+             new_x,
+             new_y,
+             rename_env env' (path ^ "B") e2)
+
+let rename_expr (e : expr) : expr = rename_env M.empty "" e
