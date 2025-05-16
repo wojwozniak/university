@@ -1,6 +1,12 @@
 %{
 open Ast
+
+let rec build_fun ids body =
+  match ids with
+  | [] -> body
+  | id :: rest -> Fun (id, build_fun rest body)
 %}
+(* Zad 4 - build_fun, pomocnicza funkcja do budowania zagnieżdżonych funkcji *)
 
 %token <bool> BOOL
 %token <int> INT
@@ -49,6 +55,7 @@ main:
     | e = mexpr; EOF { e }
     ;
 
+(* Zad4 - dodajmy linię dla zagnieżdżonej funkcji *)
 mexpr:
     | IF; e1 = mexpr; THEN; e2 = mexpr; ELSE; e3 = mexpr
         { If(e1, e2, e3) }
@@ -58,6 +65,8 @@ mexpr:
         { Match(e1, x, y, e2) }
     | FUN; x = IDENT; ARR; e = mexpr
         { Fun(x, e) }
+    | FUN; params = ident_list; ARR; body = mexpr
+        { build_fun params body }
     | FUNREC; f = IDENT; x = IDENT; ARR; e = mexpr
         { Funrec(f, x, e) }
     | e = expr
@@ -87,6 +96,12 @@ app_expr:
     | e = base_expr { e }
     ;
 
+(* Nowa forma ident_list na potrzeby zad 4 *)
+ident_list:
+  | x = IDENT { [x] }
+  | x = IDENT xs = ident_list { x :: xs }
+  ;
+
 base_expr:
     | x = IDENT { Var x }
     | i = INT { Int i }
@@ -95,3 +110,4 @@ base_expr:
     | LPAREN; e1 = mexpr; COMMA; e2 = mexpr; RPAREN { Pair (e1,e2) }
     | LPAREN; e = mexpr; RPAREN { e }
     ;
+%%
