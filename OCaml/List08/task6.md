@@ -1,0 +1,1 @@
+Po prostu ctrl c, ctrl v - nasz język jest na tyle potężny że działa od razu.
