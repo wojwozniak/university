@@ -40,6 +40,7 @@ let rec build_fun ids body =
 %token ARR
 %token ISPAIR
 %token FUN
+%token REC
 %token FUNREC
 
 %start <Ast.expr> main
@@ -56,11 +57,14 @@ main:
     ;
 
 (* Zad4 - dodajmy linię dla zagnieżdżonej funkcji *)
+(* Zad5 - jedna linijka dla lukieru synktatycznego *)
 mexpr:
     | IF; e1 = mexpr; THEN; e2 = mexpr; ELSE; e3 = mexpr
         { If(e1, e2, e3) }
     | LET; x = IDENT; EQ; e1 = mexpr; IN; e2 = mexpr
         { Let(x, e1, e2) }
+    | LET; REC; f = IDENT; x = IDENT; EQ; e1 = mexpr; IN; e2 = mexpr
+        { Let(f, Funrec(f, x, e1), e2) }
     | MATCH; e1 = mexpr; WITH; LPAREN; x = IDENT; COMMA; y = IDENT; RPAREN; ARR; e2 = mexpr
         { Match(e1, x, y, e2) }
     | FUN; x = IDENT; ARR; e = mexpr
