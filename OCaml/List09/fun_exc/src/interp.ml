@@ -134,6 +134,17 @@ let rec eval_env (env : env) (e : expr) : value comp =
       (match eval_env env e1 with
         | Some v1 -> Some v1
         | None -> eval_env env e2)
+  | While (cond, body) ->
+    let rec loop () =
+      let* vcond = eval_env env cond in
+      match vcond with
+      | VBool true ->
+          let* _ = eval_env env body in
+          loop ()
+      | VBool false -> return VUnit
+      | _ -> failwith "Expected boolean in while condition"
+    in
+    loop ()
 
 let eval e = eval_env M.empty e
 

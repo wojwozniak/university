@@ -26,3 +26,4 @@ type expr =
   | App    of expr * expr
   | Throw
   | Try    of expr * expr
+  | While  of expr * expr  (* z1: while (condition, body) *)

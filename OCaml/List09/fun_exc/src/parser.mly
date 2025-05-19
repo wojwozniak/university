@@ -37,6 +37,8 @@ open Ast
 %token FUNREC
 %token THROW
 %token TRY
+%token WHILE (* z1 *)
+%token DO (* z1 *)
 
 %start <Ast.expr> main
 
@@ -64,6 +66,8 @@ mexpr:
         { Funrec(f, x, e) }
     | TRY; e1 = mexpr; WITH; e2 = mexpr
         { Try(e1, e2) }
+    | WHILE; cond = mexpr; DO; body = mexpr 
+        { While (cond, body) }
     | e = expr
         { e }
     ;

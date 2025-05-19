@@ -44,6 +44,8 @@ rule read =
     | "funrec" { FUNREC }
     | "try" { TRY }
     | "throw" { THROW }
+    | "while" { WHILE } (* z1 *)
+    | "do" { DO }
     | number { INT ( int_of_string (Lexing.lexeme lexbuf)) }
     | ident { IDENT (Lexing.lexeme lexbuf) }
     | eof { EOF }
