@@ -943,17 +943,52 @@ QUIC (Quick UDP Internet Connections) został zaprojektowany przez Google jako s
 
 ### 1. Jaki jest cel systemu nazw DNS?
 
+Daje on nazwy łatwiejsze do zapamiętania przez ludzi. Pozwala na zmianę adresu IP (np. zmiana ISP) bez powiadamiania klientów o zmianie.
+
 ### 2. Do czego służy plik /etc/hosts?
+
+Zawiera on przypisania domena -> adres IP. Nie jest to rozwiązanie dobrze skalowalne, dlatego się go już zbytnio nie używa (było w początkach internetu).
 
 ### 3. Rozwiń skrót TLD (kontekst: DNS), podaj parę przykładów.
 
+Top level domains, górny poziom hierarchii nazw domen. (gdzie hierarchia to drzewo, którego root oznaczamy kropką).
+
+Przykłady: `pl`, `com` `uk` `pizza`.
+
 ### 4. Czym są strefy i delegacje DNS?
+
+Strefa DNS to fragment przestrzeni nazw DNS, który jest zarządzany przez konkretny serwer DNS lub grupę serwerów. 
+
+Delegacja DNS to mechanizm, w którym zarządzanie częścią przestrzeni nazw (np. subdomeną) jest przekazywane innemu serwerowi DNS.
 
 ### 5. Czym różni się rekurencyjne odpytywanie serwerów DNS od iteracyjnego?
 
+#### Iteracyjne
+
+- Pytamy serwer DNS dla `.`, on nie wie, ale mówi czyja to delegacja (DNS i adres)
+- Pytamy się oddelegowanego, np. `foo.uk` o adresie `1.2.3.4`, znowu to samo
+- Schodzimy w dół aż do najniższego, jak na warsztatach.
+
+#### Rekurencyjne
+
+Pytamy resolver DNS, on wykonuje odpytywanie za nas. (Resolver może być serwerem odpowiedzialnym za jakąś strefę)
+
 ### 6. Jak działa odwrotny DNS? Jaki typ rekordów i jaką domenę wykorzystuje?
 
+Typ PTR: nazwa ("odwrócony" adres IP) i wartość (główna nazwa domeny)
+
+Na przykład:
+- nazwa: 11.4.17.156.in-addr.arpa
+- wartość: ii.uni.wroc.pl
+
 ### 7. Jakie znasz typy rekordów DNS? Co to jest rekord CNAME?
+
+- Typ A - wartość = adres IPv4 (216.58.209.67)
+- Typ AAAA - wartość = adres IPv6 (2a00:1450:401b:801::2003)
+
+Rekord CNAME (canonical name) przechowuje aliasy domeny:
+- nazwa = alias domeny (www.ii.uni.wroc.pl)
+- wartość = „główna“ nazwa domeny (ii.uni.wroc.pl) 
 
 ### 8. Do czego służy protokół SMTP a do czego IMAP?
 
