@@ -992,9 +992,19 @@ Rekord CNAME (canonical name) przechowuje aliasy domeny:
 
 ### 8. Do czego służy protokół SMTP a do czego IMAP?
 
+SMTP służy do wysyłania, a IMAP do odbierania poczty.
+
 ### 9. Co to są przekaźniki SMTP (relays)?
 
+Przekaźniki SMTP (ang. SMTP relays) to serwery lub usługi pośredniczące w przesyłaniu wiadomości e-mail. Ich zadaniem jest przekazywanie wiadomości e-mail od nadawcy do serwera odbiorcy, działając jako pośrednik w procesie wysyłania poczty.
+
 ### 10. Jaki rekord DNS jest sprawdzany przed wysłaniem poczty do danej domeny?
+
+Przed wysłaniem poczty do danej domeny serwer SMTP sprawdza rekord MX (Mail Exchange) w systemie DNS, np.
+
+```
+przyklad.pl. 3600 IN MX 10 mail.przyklad.pl.
+```
 
 ### 11. Wymień parę popularnych pól w nagłówku maila. Do czego służą pola Received i Bcc?
 
