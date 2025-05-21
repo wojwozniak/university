@@ -939,3 +939,74 @@ QUIC (Quick UDP Internet Connections) został zaprojektowany przez Google jako s
 - szyfrowanie end-to-end,
 - multiplexing bez blokowania (head-of-line blocking).
 
+## Wykład 9
+
+### 1. Jaki jest cel systemu nazw DNS?
+
+### 2. Do czego służy plik /etc/hosts?
+
+### 3. Rozwiń skrót TLD (kontekst: DNS), podaj parę przykładów.
+
+### 4. Czym są strefy i delegacje DNS?
+
+### 5. Czym różni się rekurencyjne odpytywanie serwerów DNS od iteracyjnego?
+
+### 6. Jak działa odwrotny DNS? Jaki typ rekordów i jaką domenę wykorzystuje?
+
+### 7. Jakie znasz typy rekordów DNS? Co to jest rekord CNAME?
+
+### 8. Do czego służy protokół SMTP a do czego IMAP?
+
+### 9. Co to są przekaźniki SMTP (relays)?
+
+### 10. Jaki rekord DNS jest sprawdzany przed wysłaniem poczty do danej domeny?
+
+### 11. Wymień parę popularnych pól w nagłówku maila. Do czego służą pola Received i Bcc?
+
+### 12. Co umożliwia standard MIME?
+
+### 13. Co to jest spam? Jakie znasz metody walki ze spamem?
+
+### 14. Na czym polega mechanizm SPF?
+
+### 15. Jaka jest rola trackera w sieci Bittorrent?
+
+### 16. Po co w plikach .torrent stosuje się funkcje skrótu?
+
+### 17. Jakie są różnice w postępowaniu seedera i leechera w sieci BitTorrent?
+
+### 18. Na czym polegają połączenia odwrócone? Jak stosuje się je w protokole FTP?
+
+### 19. Opisz podobieństwa i różnice asymetrycznych (cone) NAT (pełnego i ograniczonego) i symetrycznych NAT.
+
+### 20. Opisz technikę wybijania dziur (hole punching) w NAT. Po co konieczny jest serwer pośredniczący?
+
+## Wykład 10
+
+### 1. Jakie znasz typy kodów detekcyjnych? Do czego służą i jakie są między nimi różnice?
+
+### 2. Jakie rodzaje błędów mają wykrywać kody detekcyjne? Z czego biorą się błędy przy przesyłaniu danych?
+
+### 3. Jak działa algorytm obliczania sum kontrolnych CRC?
+
+### 4. W jaki sposób działa wykrywanie błędów przy sumie kontrolnej CRC?
+
+### 5. Jakie znasz metody korygowania błędów w transmisji?
+
+### 6. Co to jest (a,b)-kod? Podaj przykład.
+
+### 7. Co to jest odległość Hamminga? Jak wpływa na możliwość detekcji i korekcji błędów?
+
+### 8. Do czego służą kody MAC? Co to jest HMAC?
+
+### 9. Jakie własności powinna mieć kryptograficzna funkcja skrótu?
+
+### 10. Czym różni się poufność od integralności?
+
+### 11. Co to są szyfry monoalfabetyczne? Dlaczego łatwo je złamać?
+
+### 12. Na czym polegają ataki z wybranym tekstem jawnym, znanym tekstem jawnym i znanym szyfrogramem?
+
+### 13. Co to jest szyfrowanie one-time pad?
+
+### 14. Na czym polega szyfrowanie blokowe? Czym różni się tryb ECB od CBC?
