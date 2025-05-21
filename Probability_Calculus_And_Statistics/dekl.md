@@ -65,5 +65,10 @@
 - 33 i 4/7 pkt na egzamin
 
 ### Egzaminacyjne 2
-- 7 / 6 pkt
-- Łącznie 40 i 4/7 pkt na egzamin
+- 8 / 6 pkt
+- Łącznie 41 i 4/7 pkt na egzamin
+
+### Lista 9 i 10 - skip przez chorobę :((
+- Nadal 41 i 4/7 pkt na egzamin
+- Max wzrasta do 100 punktów
+- Z list 86 / 100 punktów
