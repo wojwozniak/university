@@ -63,3 +63,8 @@ Punkty działają dziwnie - na liście to w sumie prank punkty, tak naprawdę za
 ### Ćwiczenia 10 (13.05.2025)
 - Było 7,8 z L4 i 1 z L5
 - Zadeklarowane 1 z L5 0.5 / 1.5 pkt (Suma 17.5 / 21.5)
+
+### Ćwiczenia 11 (20.05.2025)
+- Było 2,3,4,5,6,7 z L5 (gdzie 5 to bonusowe)
+- Zadeklarowane 4,6,7 z L5 -> 1.5 / 2.5pkt (Suma 19 / 23 pkt)
+- Pozostało 8 z L5 i cała L6
