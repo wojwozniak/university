@@ -72,3 +72,23 @@
 - Nadal 41 i 4/7 pkt na egzamin
 - Max wzrasta do 100 punktów
 - Z list 86 / 100 punktów
+
+### Lista 11
+- x / 10 punktów
+- y łącznie
+- z na egzamin
+
+### Lista 12
+- x / 10 punktów
+- y łącznie
+- z na egzamin
+
+### Lista 13
+- x / 10 punktów
+- y łącznie
+- z na egzamin
+
+### Lista 14
+- x / 10 punktów
+- y łącznie
+- z na egzamin
