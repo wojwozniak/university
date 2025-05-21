@@ -1,0 +1,1 @@
+Nie wrzucam tu rozwiązań bo rozwiązania z tego przedmiotu i tak są na publicznym hacku
