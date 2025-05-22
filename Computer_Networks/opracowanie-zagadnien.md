@@ -1055,3 +1055,39 @@ przyklad.pl. 3600 IN MX 10 mail.przyklad.pl.
 ### 13. Co to jest szyfrowanie one-time pad?
 
 ### 14. Na czym polega szyfrowanie blokowe? Czym różni się tryb ECB od CBC?
+
+## Wykład 11
+
+### 1. Czym szyfrowanie symetryczne różni się od asymetrycznego?
+
+### 2. Na czym polega bezpieczeństwo przy szyfrowaniu asymetrycznym?
+
+### 3. Opisz algorytm RSA.
+
+### 4. Czy różni się szyfrowanie od uwierzytelniania?
+
+### 5. Co to jest atak powtórzeniowy?
+
+### 6. Czy w szyfrowaniu asymetrycznym szyfrujemy kluczem publicznym czy prywatnym?
+
+### 7. Na czym polega podpisywanie wiadomości? Jakim kluczem to robimy?
+
+### 8. Jak można wykorzystać podpisy cyfrowe do uwierzytelniania?
+
+### 9. Czy HMAC można wykorzystać do uwierzytelniania? Czy HMAC jest podpisem cyfrowym?
+
+### 10. Dlaczego lepiej podpisywać funkcję skrótu wiadomości niż samą wiadomość? Z jakim ryzykiem się to wiąże?
+
+### 11. Co to są certyfikaty? Co to jest ścieżka certyfikacji?
+
+### 12. Co to jest urząd certyfikacji (CA)?
+
+### 13. Jak TLS zapewnia bezpieczeństwo połączenia?
+
+### 14. W jaki sposób w TLS następuje uwierzytelnienie serwera, z którym się łączymy?
+
+### 15. Co to są klucze sesji? Po co się je stosuje?
+
+### 16. Co to są kolizje kryptograficznej funkcji skrótu?
+
+### 17. Na czym polega atak urodzinowy?
