@@ -1007,24 +1007,49 @@ przyklad.pl. 3600 IN MX 10 mail.przyklad.pl.
 ```
 
 ### 11. Wymień parę popularnych pól w nagłówku maila. Do czego służą pola Received i Bcc?
+- From - od kogo
+- To - Główny odbiorca / odbiorcy
+- Cc - Carbon copy - odbiorcy otrzymujący kopię wiadomości, widoczną dla wszystkich
+- Subject - temat
+- Reply-To - na jaki adres mają iść odpowiedzi
+
+- Received - pole dodawane przez serwer pośredniczący (czasami łańcuch kilku) - służy do śledzenia trasy wiadomości
+- Bcc - Pole "Blind Carbon Copy" - Jak Cc, ale ukryta lista odbiorców, np. do wysyłania newslettera
 
 ### 12. Co umożliwia standard MIME?
+Definiowanie / obsługa róznych typów treści - definiuje je za pomocą nagłówków Content-Type. 
 
 ### 13. Co to jest spam? Jakie znasz metody walki ze spamem?
+Są to niechciane wiadomości pocztowe. Można korzystać z uczenia maszynowego, blokować zakresy IP, spowalniać połączenie.
 
 ### 14. Na czym polega mechanizm SPF?
 
+Jest to rekord w DNSie definiujący jakie komputery są uprawnione do wysyłania poczty z danym polem From.
+
 ### 15. Jaka jest rola trackera w sieci Bittorrent?
+
+Zna on adresy członków sieci - na prośbę udziela adresy niektórych.
 
 ### 16. Po co w plikach .torrent stosuje się funkcje skrótu?
 
+Do weryfikacji poprawności fragmentów plików (czy nie został uszkodzony ani wysłany zawirusowany).
+
 ### 17. Jakie są różnice w postępowaniu seedera i leechera w sieci BitTorrent?
+
+- Seeder ma 100% pliku i udostępnia ją w sieci torrent innym użytkownikom
+- Leecher ma <100% pliku i pobiera i wysyła równocześnie dane
 
 ### 18. Na czym polegają połączenia odwrócone? Jak stosuje się je w protokole FTP?
 
+Połączenia odwrócone w FTP (tryb aktywny) polegają na tym, że serwer inicjuje połączenie danych do klienta, a nie odwrotnie, co odróżnia je od standardowego kierunku połączeń. W trybie aktywnym klient wysyła polecenie PORT, określając adres i port, na który serwer ma się połączyć, co może być problematyczne w sieciach z zaporami lub NAT. Tryb pasywny, gdzie klient inicjuje oba połączenia, jest obecnie częściej stosowany ze względu na większą kompatybilność.
+
 ### 19. Opisz podobieństwa i różnice asymetrycznych (cone) NAT (pełnego i ograniczonego) i symetrycznych NAT.
 
+Asymetryczne NAT (cone) utrzymują stałe mapowanie portów, różniąc się otwartością: pełny pozwala na połączenia od dowolnego hosta, a ograniczony tylko od wcześniej kontaktowanych adresów IP. Symetryczny NAT przydziela nowy port dla każdego połączenia zewnętrznego, co zwiększa bezpieczeństwo, ale utrudnia aplikacje peer-to-peer.
+
 ### 20. Opisz technikę wybijania dziur (hole punching) w NAT. Po co konieczny jest serwer pośredniczący?
+
+Hole punching to technika umożliwiająca bezpośrednią komunikację peer-to-peer między urządzeniami za NAT poprzez tymczasowe otwarcie portów w zaporach sieciowych. Serwer pośredniczący (np. STUN) jest konieczny, aby umożliwić wymianę publicznych adresów IP i portów między klientami, co pozwala im nawiązać bezpośrednie połączenie. Technika ta jest kluczowa dla aplikacji takich jak VoIP czy gry online, gdzie NAT utrudnia bezpośrednią komunikację.
 
 ## Wykład 10
 
