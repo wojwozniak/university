@@ -1055,31 +1055,149 @@ Hole punching to technika umożliwiająca bezpośrednią komunikację peer-to-pe
 
 ### 1. Jakie znasz typy kodów detekcyjnych? Do czego służą i jakie są między nimi różnice?
 
+- Bit parzystości – dodaje jeden bit tak, by liczba jedynek była parzysta (wykrywa nieparzystą liczbę błędów).
+
+- Sumy kontrolne – np. IP/TCP/UDP dodają sumę 16-/32-bitowych słów (nie wykrywają przestawień słów).
+
+- CRC (Cyclic Redundancy Check) – oparty na dzieleniu wielomianów nad F₂; skuteczny i sprzętowo efektywny.
+
+- Różnice: różnią się złożonością, skutecznością wykrywania błędów i zastosowaniem (np. warstwa łącza vs. sieciowa).
+
 ### 2. Jakie rodzaje błędów mają wykrywać kody detekcyjne? Z czego biorą się błędy przy przesyłaniu danych?
+
+#### Rodzaje błędów:
+
+- pojedyncze błędy bitowe,
+
+- grupy przekłamanych bitów,
+
+- zgubione lub dodane bity.
+
+#### Źródła:
+
+- zakłócenia w sygnale analogowym w warstwie fizycznej,
+
+- błędy sprzętowe (RAM),
+
+- błędy w oprogramowaniu
 
 ### 3. Jak działa algorytm obliczania sum kontrolnych CRC?
 
+Wiadomość jako wielomian M(x).
+
+Znany wielomian G(x) stopnia r.
+
+Liczymy: xr · M(x) = Q(x) · G(x) + R(x).
+
+S(x) = R(x) – to suma kontrolna.
+
+Wysyłana wiadomość: m#s ↔ xr · M(x) + S(x).
+
 ### 4. W jaki sposób działa wykrywanie błędów przy sumie kontrolnej CRC?
+
+Odbiorca otrzymuje b' = b + e.
+
+Sprawdza, czy G(x) dzieli B'(x).
+
+- Jeśli nie: wykryto błąd (G(x) ∤ E(x)).
+
+- Jeśli tak: przyjmuje, że transmisja była poprawna.
 
 ### 5. Jakie znasz metody korygowania błędów w transmisji?
 
+- (3,1)-kod – powtórzenie bitu 3x (korekcja 1 błędu).
+
+- Kod Hamminga (np. (7,4)) – wykrywa 2 błędy, koryguje 1, dodając bity parzystości.
+
+Ogólnie: jeśli odległość Hamminga ≥ k, można:
+
+- wykryć do k-1 błędów,
+
+- skorygować do (k-1)/2 błędów.
+
 ### 6. Co to jest (a,b)-kod? Podaj przykład.
+
+Zamienia wiadomość długości b na kod długości a (a ≥ b).
+
+Przykład: bit parzystości dla 7-bitowego ciągu → (8,7)-kod.
 
 ### 7. Co to jest odległość Hamminga? Jak wpływa na możliwość detekcji i korekcji błędów?
 
+Liczba bitów, które trzeba zmienić, by jeden kod "przejść" w drugi.
+
+Odległość ≥ k:
+
+detekcja do k-1 błędów,
+
+korekcja do (k-1)/2 błędów.
+
 ### 8. Do czego służą kody MAC? Co to jest HMAC?
+
+MAC (Message Authentication Code): wykrywa celowe modyfikacje.
+
+HMAC: bezpieczny MAC, h(s#h(s#m)), odporny na ataki przedłużeniowe, używany w TLS, OpenVPN.
 
 ### 9. Jakie własności powinna mieć kryptograficzna funkcja skrótu?
 
+Szybko obliczalna.
+
+Daje wynik stałej długości.
+
+Trudno znaleźć:
+
+- dwie różne wiadomości o tym samym haszu (kolizja),
+
+- wiadomość do danego hasza (preimage),
+
+- inną wiadomość z tym samym haszem (second preimage).
+
 ### 10. Czym różni się poufność od integralności?
+
+- Poufność: nikt poza odbiorcą nie może odczytać wiadomości.
+
+- Integralność: wiadomość nie została zmodyfikowana.
 
 ### 11. Co to są szyfry monoalfabetyczne? Dlaczego łatwo je złamać?
 
+- Każdej literze przypisywana inna (np. Cezara, ROT13).
+
+- Łatwo je złamać: zachowują statystykę języka, podatne na analizę częstotliwości.
+
 ### 12. Na czym polegają ataki z wybranym tekstem jawnym, znanym tekstem jawnym i znanym szyfrogramem?
+
+- Wybrany tekst jawny: atakujący wybiera tekst jawny i obserwuje szyfrogram.
+
+- Znany tekst jawny: zna pary (jawny, szyfrogram).
+
+- Znany szyfrogram: tylko szyfrogram – stosuje analizę statystyczną.
 
 ### 13. Co to jest szyfrowanie one-time pad?
 
+EK(m) = m XOR K, gdzie K jest tak długi jak m.
+
+Teoretycznie idealnie bezpieczne, ale:
+
+- klucz nie może być ponownie użyty,
+
+- trudności z jego dystrybucją.
+
 ### 14. Na czym polega szyfrowanie blokowe? Czym różni się tryb ECB od CBC?
+
+#### ECB (Electronic Codebook):
+
+- każdy blok szyfrowany niezależnie.
+
+- identyczne bloki → identyczne szyfrogramy.
+
+#### CBC (Cipher Block Chaining):
+
+XOR z poprzednim blokiem szyfrogramu.
+
+- Pierwszy blok XOR z losowym IV.
+
+- Lepsza ukrywalność wzorców niż ECB.
+
+
 
 ## Wykład 11
 
