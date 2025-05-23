@@ -1203,34 +1203,127 @@ XOR z poprzednim blokiem szyfrogramu.
 
 ### 1. Czym szyfrowanie symetryczne różni się od asymetrycznego?
 
+- **Symetryczne**: ten sam klucz do szyfrowania i deszyfrowania (np. AES).
+- **Asymetryczne**: różne klucze – publiczny (do szyfrowania) i prywatny (do deszyfrowania) (np. RSA).
+- W asymetrycznym każdy może zaszyfrować wiadomość, ale tylko właściciel prywatnego klucza ją odszyfruje.
+
+---
+
 ### 2. Na czym polega bezpieczeństwo przy szyfrowaniu asymetrycznym?
+
+- Opiera się na **jednokierunkowych operacjach matematycznych**, np. faktoryzacji liczb pierwszych.
+- Znając klucz publiczny i szyfrogram, **niemożliwe jest efektywne wyliczenie klucza prywatnego ani tekstu jawnego**.
+
+---
 
 ### 3. Opisz algorytm RSA.
 
+1. Wybieramy dwie duże liczby pierwsze `p`, `q`.
+2. Obliczamy `n = p * q` i `φ(n) = (p-1)*(q-1)`.
+3. Wybieramy `e` względnie pierwsze z `φ(n)`.
+4. Obliczamy `d`, takie że `d * e ≡ 1 (mod φ(n))`.
+5. Klucz publiczny: `(e, n)`, prywatny: `(d, p, q)`.
+6. Szyfrowanie: `c = m^e mod n`, deszyfrowanie: `m = c^d mod n`.
+
+---
+
 ### 4. Czy różni się szyfrowanie od uwierzytelniania?
+
+- **Szyfrowanie** zapewnia poufność: ukrycie treści wiadomości.
+- **Uwierzytelnianie** potwierdza tożsamość nadawcy wiadomości.
+- W asymetrycznym: szyfrowanie = kluczem publicznym, uwierzytelnianie = podpis kluczem prywatnym.
+
+---
 
 ### 5. Co to jest atak powtórzeniowy?
 
+- Przechwycenie podpisanego komunikatu `(m, podpis)` i ponowne jego wysłanie.
+- Używany do podszywania się lub wywoływania tych samych skutków.
+
+---
+
 ### 6. Czy w szyfrowaniu asymetrycznym szyfrujemy kluczem publicznym czy prywatnym?
+
+- Do **szyfrowania** używamy **klucza publicznego**.
+- Do **deszyfrowania** używamy **klucza prywatnego**.
+
+---
 
 ### 7. Na czym polega podpisywanie wiadomości? Jakim kluczem to robimy?
 
+- **Podpis** to zaszyfrowanie (najczęściej skrótu wiadomości) kluczem prywatnym.
+- Każdy może go zweryfikować kluczem publicznym nadawcy.
+
+---
+
 ### 8. Jak można wykorzystać podpisy cyfrowe do uwierzytelniania?
+
+- Jeśli podpis może wygenerować tylko osoba posiadająca prywatny klucz, to **zweryfikowanie podpisu** oznacza, że nadawcą jest właściciel tego klucza.
+
+---
 
 ### 9. Czy HMAC można wykorzystać do uwierzytelniania? Czy HMAC jest podpisem cyfrowym?
 
+- **HMAC**: uwierzytelnia nadawcę, o ile klucz tajny jest znany tylko stronom.
+- **Nie jest podpisem cyfrowym**, bo nie zapewnia niezaprzeczalności – każdy znający klucz może go wygenerować.
+
+---
+
 ### 10. Dlaczego lepiej podpisywać funkcję skrótu wiadomości niż samą wiadomość? Z jakim ryzykiem się to wiąże?
+
+- **Skróty są krótsze** → szybsze operacje.
+- Chroni przed manipulacjami wiadomości.
+- **Ryzyko**: słaba funkcja skrótu → możliwe kolizje → fałszywe wiadomości z tym samym haszem.
+
+---
 
 ### 11. Co to są certyfikaty? Co to jest ścieżka certyfikacji?
 
+- **Certyfikat** to podpisany przez CA dokument łączący tożsamość (np. domeny) z kluczem publicznym.
+- **Ścieżka certyfikacji**: ciąg certyfikatów weryfikujących jeden drugi aż do zaufanego CA.
+
+---
+
 ### 12. Co to jest urząd certyfikacji (CA)?
+
+- **CA (Certificate Authority)** to zaufana instytucja, która:
+  - weryfikuje tożsamość podmiotów,
+  - wydaje certyfikaty,
+  - pozwala przeglądarkom ufać stronom WWW.
+
+---
 
 ### 13. Jak TLS zapewnia bezpieczeństwo połączenia?
 
+- Używa **asymetrycznego szyfrowania** do ustalenia **klucza sesji**.
+- Potem dane są szyfrowane szybkim **szyfrem symetrycznym** (np. AES).
+- Zapewnia **poufność**, **integralność** i **uwierzytelnianie serwera**.
+
+---
+
 ### 14. W jaki sposób w TLS następuje uwierzytelnienie serwera, z którym się łączymy?
+
+- Przeglądarka sprawdza **certyfikat serwera**, podpisany przez zaufany CA.
+- Weryfikuje, czy certyfikat pasuje do odwiedzanej domeny i czy jest ważny.
+
+---
 
 ### 15. Co to są klucze sesji? Po co się je stosuje?
 
+- Klucz sesji = tymczasowy klucz do szyfrowania w jednej sesji.
+- Szyfrowanie **symetryczne** jest znacznie szybsze niż asymetryczne.
+- Klucz sesji przesyłany bezpiecznie (np. szyfrowany kluczem publicznym serwera).
+
+---
+
 ### 16. Co to są kolizje kryptograficznej funkcji skrótu?
 
+- Dwie różne wiadomości `m1 ≠ m2`, dla których `h(m1) = h(m2)`.
+- Kolizje **podważają bezpieczeństwo** podpisów i HMAC.
+
+---
+
 ### 17. Na czym polega atak urodzinowy?
+
+- Wykorzystuje **paradoks urodzin**: w zbiorze 2ⁿ⁄² elementów istnieje duża szansa na kolizję.
+- Zamiast szukać konkretnego `m'` do danego `m`, szuka się **dowolnej** kolizji `h(m1) = h(m2)`.
