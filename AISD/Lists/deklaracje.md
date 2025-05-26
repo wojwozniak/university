@@ -68,3 +68,5 @@ Punkty działają dziwnie - na liście to w sumie prank punkty, tak naprawdę za
 - Było 2,3,4,5,6,7 z L5 (gdzie 5 to bonusowe)
 - Zadeklarowane 4,6,7 z L5 -> 1.5 / 2.5pkt (Suma 19 / 23 pkt)
 - Pozostało 8 z L5 i cała L6
+
+Aktualnie w arkuszu: 27,5 / 34,25
