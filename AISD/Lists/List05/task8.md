@@ -2,7 +2,7 @@
 
 Rozważmy problem wyznaczenia za pomocą porównań elementów największego i drugiego największego z kolei w zbiorze n-elementowym. Udowodnij że n + $\lceil \log(n) \rceil$ - 2 porównań potrzeba i wystarcza do wyznaczenia tych zbiorów.
 
-## Idea - wystarczy
+## Idea - wystarczy (więcej niż tyle nie jest potrzebne)
 
 Wyznaczamy największy w turnieju, później drugi największy będzie wśród tych które przegrały z największym - logarytmicznie dużo. 
 
@@ -12,16 +12,27 @@ Najpierw znajdujemy element największy - robimy to drzewem decyzyjnym. Robimy t
 
 Patrzymy na ścieżkę -> potencjalnym elementem drugim-największym będą wszystkie elementy które przegrały pojedynek z największym - jest ich $\lceil \log(n) \rceil$ - wysokość drzewa. Aby znaleźć największy z tych elementów wystarczy $\lceil \log(n) \rceil - 1$ porównań.
 
+Skoro tak, to łącznie osiągamy szukaną wartość - wystarczy tyle porównań, nie trzeba więcej.
 
 ## Idea - potrzeba (nie da się mniej)
 
-Powyższy opis nie udowadnia (chyba) że nie da się mniej - zrobimy to tutaj. Powyższy algorytm daje nam element największy, drugi największy i n-2 elementów mniejszych. 
+Powyższy opis nie udowadnia że nie da się mniej - zrobimy to tutaj. 
 
-Rozważmy problem znalezienia $n-2$ elementów mniejszych od y2. Oczywiście będzie n-2 porównań - chcemy pokazać więc że porównań do znalezienia y1 będzie $\log(n)$
+Mamy n elementów w zbiorze, weźmy jakiś algorytm wyznaczający drugi największy element w tym zbiorze. Algorytm ten musi wyznaczyć największy element (no bo inaczej nie wiedziałby który jest drugi). Wiemy że wyznaczenie największego to $n-1$ porównań. Chcemy pokazać, że wyznaczenie drugiego największego zajmie conajmniej $\lceil \log(n) \rceil$ - 1 porównań.
+
+$n-1$ porównań wyznaczających $M_1$ pozwala nam ograniczyć zbiór potencjalnych kandydatów na $M_2$, ale nie daje nam żadnych informacji co do relacji między tymi kandydatami.
+
+By znaleźć $M_2$ potrzebujemy rozpatrzeć liczby, które przegrały z $M_1$.
 
 ## Rozwiązanie - potrzeba
 
-Wprowadzamy oznaczenie - $L(x)$ oznacza licznośc zbioru składającego się z elementów mniejszych lub równych x. 
+Pokażmy przez grę z adwersarzem jaka jest dolna granica na to dla dowolnych danych.
+
+Każdej liczbie ze zbioru przypisujemy wagę 1.
+
+Niezmiennik: wagi zbioru sumują się do n.
+
+Kończymy działanie algorytmu gdy 1 element ma wagę n.
 
 - Jeśli porównujemy x i y, to gdy $x <= y$ to $L(x) <= L(y)$
 - Po porównaniu mamy $L(y) = L(y) + L(x)$ - bo muszą być mniejsze (pokazujemy że potrzeba, więc tutaj założenie że dokładnie się sumuje jest na naszą niekorzyść - a więc dobre)
@@ -32,5 +43,3 @@ I stąd mamy:
 - $L(y1) = n = 2^k$ (co logarytmujemy)
 - $\log(n) <= k$
 - $\lceil \log(n) \rceil <= k$, bo k to całkowita (możemy zrobić więc wyższą lewą stronę nic nie tracąc)
-
-Potrzeba więc n + $\lceil \log(n) \rceil$ - 2 porównań by wykonać to zadanie.
