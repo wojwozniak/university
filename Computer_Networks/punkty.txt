@@ -9,12 +9,15 @@ W5: 5/5pkt
 Warszaty suma: 25/40
 
 Ć1: 9/10pkt
+Ć2: 10/10pkt
 
-Ćwiczenia suma: 9/20
+Ćwiczenia suma: 19/20
 
 P1: 10/10pkt
 P2: 10/10pkt
 Pracownia suma: 20/40
 
 
-Łącznie: 54/100pkt
+Łącznie: 64/100pkt
+
+Każdy punkt powyżej 60 to 1% niższy próg z egzaminu
