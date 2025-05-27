@@ -70,3 +70,9 @@ Punkty działają dziwnie - na liście to w sumie prank punkty, tak naprawdę za
 - Pozostało 8 z L5 i cała L6
 
 Aktualnie w arkuszu: 27,5 / 34,25
+
+### Ćwiczenia 12 (27.05.2025)
+- Było 8 z L5 i 1,2,3,5 z L6
+- Zadeklarowane 8,1,2,5 -> 2 / 2.5 pkt
+- Pozostało 4 i od 6 z L6
+- Suma 21 / 25.5 albo 29.5 / 36.75
