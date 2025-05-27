@@ -17,7 +17,7 @@ P1: 10/10pkt
 P2: 10/10pkt
 Pracownia suma: 20/40
 
+Każdy punkt powyżej 60 to 1% niższy próg z egzaminu
 
 Łącznie: 64/100pkt
-
-Każdy punkt powyżej 60 to 1% niższy próg z egzaminu
+Aktualny próg egzaminu: 56%
