@@ -78,19 +78,10 @@
 - 96 / 110 łącznie
 - 20/7 = 2 i 6/7 pkt na egzamin
 - Łącznie 44 i 3/7 pkt na egzamin
-- 25 % z 4 ostatnich list / 45% wymagane
+- 25 z 4 ostatnich list / 45 wymagane
 
 ### Lista 12
-- x / 10 punktów
-- y łącznie
-- z na egzamin
-
-### Lista 13
-- x / 10 punktów
-- y łącznie
-- z na egzamin
-
-### Lista 14
-- x / 10 punktów
-- y łącznie
-- z na egzamin
+- 8 / 10 punktów
+- 104 / 120 łącznie
+- 46 i 3/7 pkt na egzamin
+- 45 / 45 z czterech ostatnich
