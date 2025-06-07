@@ -75,3 +75,10 @@ to naprawi.
 `gpg --verify veracrypt.deb.sig veracrypt.deb`
 
 `gpg --recv-keys 5069A233D55A0EEB174A5FC3821ACD02680D16DE`
+
+## Challenge 1
+
+flagi przy szyfrowaniu to ascii, recipent, sign&encrypt (moga byc chyba osobno?)
+
+reszta dokladnie jak napisane (tylko podkreslnik zle zenkodowany w ostatnim 
+poleceniu, dodaj go recznie)
