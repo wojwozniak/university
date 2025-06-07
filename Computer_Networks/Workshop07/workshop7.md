@@ -59,3 +59,19 @@ i jeszcze raz mail jak wyzej. komenda stad bo ofc encoding popsuty w pdfie
 
 ## Tutorial 2
 
+haslo: `abc`
+
+pobierz, cd into downloads
+
+jesli pobierzesz jednak z domyslna nazwa to:
+
+```
+mv VeraCrypt-1.26.24-x86_64.AppImage veracrypt.deb
+mv VeraCrypt-1.26.24-x86_64.AppImage.sig veracrypt.deb.sig
+```
+
+to naprawi.
+
+`gpg --verify veracrypt.deb.sig veracrypt.deb`
+
+`gpg --recv-keys 5069A233D55A0EEB174A5FC3821ACD02680D16DE`
