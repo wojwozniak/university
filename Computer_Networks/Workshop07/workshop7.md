@@ -82,3 +82,6 @@ flagi przy szyfrowaniu to ascii, recipent, sign&encrypt (moga byc chyba osobno?)
 
 reszta dokladnie jak napisane (tylko podkreslnik zle zenkodowany w ostatnim 
 poleceniu, dodaj go recznie)
+
+
+Rozwiazania T1, T2, C1 kompatybilne, wiec zapisane wszystko na V1, V2, V3
