@@ -5,8 +5,9 @@ W2: 5/5pkt
 W3: 5/5pkt
 W4: 5/5pkt
 W5: 5/5pkt
+W6: 5/5pkt
 
-Warszaty suma: 25/40
+Warszaty suma: 30/40
 
 Ć1: 9/10pkt
 Ć2: 10/10pkt
@@ -19,5 +20,5 @@ Pracownia suma: 20/40
 
 Każdy punkt powyżej 60 to 1% niższy próg z egzaminu
 
-Łącznie: 64/100pkt
-Aktualny próg egzaminu: 56%
+Łącznie: 69/100pkt
+Aktualny próg egzaminu: 51%
