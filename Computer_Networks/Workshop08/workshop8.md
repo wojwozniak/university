@@ -104,3 +104,59 @@ chain my_input_rules {
     drop
 }
 ```
+
+# Challenge
+
+Odpal wszędzie świeże wiresharki, przyda się później
+
+Całość na początku ma wyglądać tak:
+```
+#!/usr/sbin/nft -f
+flush ruleset
+table inet my_table {
+    chain my_input_rules {
+        type filter hook input priority filter;
+        ct state established,related accept
+        iif lo accept
+        ip protocol icmp icmp type echo-request accept
+        ct state new tcp dport 22 accept
+        log
+        drop
+    }
+    chain my_forward_rules {
+        type filter hook forward priority filter;
+        ct state established,related accept
+        iif enp-loc0 oif enp-rem0 ct state new accept
+        log
+        drop
+    }
+    chain my_output_rules {
+        type filter hook output priority filter;
+        accept
+    }
+}
+```
+zmiana względem końca tutoriala 2 to
+
+```
+chain my_forward_rules {
+    type filter hook forward priority filter;
+    ct state established,related accept
+    iif enp-loc0 oif enp-rem0 ct state new accept
+    log
+    drop
+}
+```
+
+potem
+
+```
+table inet my_nat_table {
+    chain my_source_nat_rules {
+        type nat hook postrouting priority srcnat;
+        ip saddr 192.168.1.0/24 oif enp-rem0 snat 172.20.0.2
+    }
+}
+```
+
+I reszta działa
