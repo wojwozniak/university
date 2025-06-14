@@ -1330,43 +1330,42 @@ XOR z poprzednim blokiem szyfrogramu.
 
 ## Wykład 12
 
-### 1. Jakie znasz typy kodów detekcyjnych? Do czego służą i jakie są między nimi różnice?
+### 1. Co to jest pamięć CAM i jak stosuje się ją w przełącznikach? Jak można ją przepełnić?
 
-### 2. Co to jest pamięć CAM i jak stosuje się ją w przełącznikach? Jak można ją przepełnić?
+### 2. Opisz atak typu ARP spoofing.
 
-### 3. Opisz atak typu ARP spoofing.
+### 3. Co oznacza termin IP spoofing? Na czym polega metoda weryfikacji tak zmodyfikowanych pakietów (ingress filtering)?
 
-### 4. Co oznacza termin IP spoofing? Na czym polega metoda weryfikacji tak zmodyfikowanych pakietów (ingress filtering)?
+### 4. Na czym polega atak RIP spoofing?
 
-### 5. Na czym polega atak RIP spoofing?
+### 5. Na czym polega zatruwanie pamięci podręcznej serwera DNS?
 
-### 6. Na czym polega zatruwanie pamięci podręcznej serwera DNS?
+### 6. Jak wygląda uwierzytelnianie serwera SSH?
 
-### 7. Jak wygląda uwierzytelnianie serwera SSH?
+### 7. Na czym polega uwierzytelnianie użytkownika przez SSH z wykorzystaniem kluczy RSA?
 
-### 8. Na czym polega uwierzytelnianie użytkownika przez SSH z wykorzystaniem kluczy RSA?
+### 8. Podaj przykłady tunelowania.
 
-### 9. Podaj przykłady tunelowania.
+### 9. Rozwiń skrót VPN. Do czego służy?
 
-### 10. Rozwiń skrót VPN. Do czego służy?
+### 10. Porównaj wady i zalety filtrów pakietów: prostych, stanowych i działających w warstwie aplikacji.
 
-### 11. Porównaj wady i zalety filtrów pakietów: prostych, stanowych i działających w warstwie aplikacji.
+### 11. Do czego służą moduły input, output, forward w filtrze Netfilter/nftables?
 
-### 12. Do czego służą moduły input, output, forward w filtrze Netfilter/nftables?
+### 12. W jakich łańcuchach zapory Linuksa wykonywany jest źródłowy a w jakich docelowy NAT?
 
-### 13. W jakich łańcuchach zapory Linuksa wykonywany jest źródłowy a w jakich docelowy NAT?
+### 13. Przedstaw przykładowe ataki wykorzystujące brak sprawdzania poprawności wprowadzanych danych.
 
-### 14. Przedstaw przykładowe ataki wykorzystujące brak sprawdzania poprawności wprowadzanych danych.
+### 14. Wyjaśnij pojęcia: robak internetowy, botnet.
 
-### 15. Wyjaśnij pojęcia: robak internetowy, botnet.
+### 15. Na czym polega phishing?
 
-### 16. Na czym polega phishing?
+### 16. Co to jest skanowanie portów? Po co się je wykonuje?
 
-### 17. Co to jest skanowanie portów? Po co się je wykonuje?
+### 17. Co to są ataki DoS i DDoS?
 
-### 18. Co to są ataki DoS i DDoS?
+### 18. Na czym polega atak typu odbity (reflected) DoS?
 
-### 19. Na czym polega atak typu odbity (reflected) DoS?
 
 ## Wykład 13
 
