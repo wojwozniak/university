@@ -1424,41 +1424,178 @@ Trudniej wyśledzić, większe odpowiedzi niż requesty (np. DNS 70:1)
 
 ### 1. Czym różni się kontrola przepływu od kontroli przeciążenia?
 
+**Kontrola przepływu:**
+- Celem jest nie zalać odbiorcy danymi
+- Nadawca dostosowuje prędkość transmisji do szybkości przetwarzania danych przez odbiorcę
+- SWS = oferowane okno (wysyłane przez odbiorcę)
+
+**Kontrola przeciążenia:**
+- Celem jest nie zalać sieci danymi
+- Parametr cwnd (congestion window) obliczany przez nadawcę
+- SWS = min { oferowane okno, cwnd }
+
 ### 2. Co to jest przeciążenie?
+
+Przeciążenie występuje gdy:
+- Różne strumienie danych przesyłane tym samym łączem (statystyczny multipleksing)
+- Przepustowość łącza R < R1 + R2 (suma przepustowości strumieni)
+- Bufory przy łączach wyjściowych się przepełniają
+- Pakiety są odrzucane z powodu przepełnienia buforów
 
 ### 3. Na czym polega mechanizm opóźnionych potwierdzeń?
 
+Mechanizm opóźnionych potwierdzeń (delayed ACK) polega na celowym opóźnieniu wysłania potwierdzenia odbioru pakietu TCP, aby zmniejszyć liczbę pakietów i obciążenie sieci. Zmniejsza (np. o 200ms) bo może przyjdzie kolejny pakiet i wyśle wspólne potwierdzenie (lub będzie musiał sam coś wysłać i podepnie potwierdzenie)
+
 ### 4. Jaka jest zależność między rozmiarem okna nadawcy a prędkością transmisji?
+
+**Zależność:** Dane wysyłane są ze średnią prędkością **SWS / RTT**
+
+- SWS = rozmiar okna nadawcy (Sliding Window Size)
+- RTT = Round Trip Time
+- Jeśli okno jest mniejsze od BDP (Bandwidth-Delay Product = przepustowość × RTT), nadawca nie może wykorzystać całego łącza
 
 ### 5. Czy nieskończone bufory rozwiązałyby problem przeciążenia?
 
+**NIE** - większe bufory nie rozwiązują problemu:
+- Rozmiar bufora nie wpływa na przepustowość (wynika z najwolniejszego łącza)
+- Większe bufory → większe kolejki → większe opóźnienie
+- Przy dużych buforach pakiety są tak opóźniane, że TCP zaczyna wysyłać je ponownie → jeszcze bardziej zwiększa przeciążenie
+
 ### 6. Jak zależy średni rozmiar kolejki od średniej prędkości nadchodzenia pakietów?
+
+Według teorii kolejek matematycznych:
+- Przy przepustowości nieskończonej: rozmiar kolejki = 0
+- Przy przepustowości R: rozmiar kolejki rośnie wraz ze wzrostem średniej prędkości nadchodzenia pakietów
+- Opóźnienie jest liniową funkcją rozmiaru kolejki
 
 ### 7. Jakie są cele kontroli przeciążenia?
 
+**Główne cele:**
+- Wysokie wykorzystanie łączy (szybkie przesyłanie danych)
+- Sprawiedliwy podział łącza (fairness)
+
+**Dodatkowe cele:**
+- Rozproszony algorytm
+- Szybka reakcja na zmieniające się warunki
+
 ### 8. Jak można definiować sprawiedliwy podział łącza? Co to jest max-min fairness?
+
+**Max-Min fairness:**
+- "Maksymalizuj minimalną przepustowość"
+- Przypisanie jest max-min fair, jeśli nie można zwiększyć szybkości żadnego strumienia bez spowolnienia innego strumienia, który jest wolniejszy lub tak samo szybki
 
 ### 9. Na jakiej podstawie zmienia się rozmiar okna przeciążenia?
 
+**Podstawa:** Obserwowane zdarzenia (utrata pakietów)
+
+**AIMD (Additive Increase, Multiplicative Decrease):**
+- **Pakiet wysłany poprawnie** (otrzymano ACK): cwnd ← cwnd + 1/cwnd
+- **Pakiet zgubiony/opóźniony** (brak ACK przed RTO): cwnd ← cwnd/2
+
 ### 10. Kiedy TCP wnioskuje, że pakiet zaginął?
+
+**Dwa źródła informacji:**
+1. **Timeout dla pakietu** - przekroczenie czasu oczekiwania (RTO)
+2. **Wielokrotny ACK** - przykład: odbiorca dostaje segmenty 1,2,3,5,6 → wysyła ACK 1, ACK 2, ACK 3, ACK 3, ACK 3
 
 ### 11. Opisz algorytm ustalania rozmiaru okna przeciążenia
 
+**Dwie fazy:**
+
+**Faza wolnego startu:**
+- Zaczynamy od cwnd = MSS
+- Po każdym ACK: cwnd += MSS
+- Co RTT cwnd zwiększa się dwukrotnie
+- Trwa do utraty pierwszego pakietu lub cwnd > ssthresh
+
+**Faza unikania przeciążenia (AIMD):**
+- ACK: cwnd += MSS²/cwnd (wzrost liniowy)
+- Utrata pakietu: cwnd = cwnd/2
+
+**Przy utracie pakietu w dowolnej fazie:**
+- ssthresh = cwnd/2
+- Przejście do fazy wolnego startu
+
 ### 12. Rozwiń skrót AIMD. Czego dotyczy?
+
+**AIMD = Additive Increase, Multiplicative Decrease**
+
+Dotyczy algorytmu kontroli przeciążenia:
+- **Additive Increase:** liniowy wzrost okna przy sukcesie
+- **Multiplicative Decrease:** wykładniczy spadek okna przy stracie
 
 ### 13. W jaki sposób AIMD gwarantuje sprawiedliwy podział łącza?
 
+**Własność AIMD:** Strumienie A₁...Aₙ rozpoczynające transmisje w dowolnych momentach → ich rozmiary okien zbiegną do R/n
+
+**Mechanizm:**
+- Rozmiary cwnd₁ i cwnd₂ jednocześnie rosną o 1 lub maleją dwukrotnie
+- Docelowo: sprawiedliwy podział łącza i cwnd₁ + cwnd₂ oscylujące w przedziale [R/2, R]
+
 ### 14. Opisz fazy unikania przeciążenia i wolnego startu w TCP.
+
+**Faza wolnego startu:**
+- Początek: cwnd = MSS, ssthresh = ∞
+- Po każdym ACK: cwnd += MSS (wzrost wykładniczy)
+- Kończy się gdy: cwnd > ssthresh lub strata pakietu
+
+**Faza unikania przeciążenia:**
+- Wzrost liniowy: cwnd += MSS²/cwnd przy ACK
+- Przy stracie: ssthresh = cwnd/2, cwnd = cwnd/2
+
+**Przejścia:**
+- Strata pakietu → wolny start z cwnd = MSS
+- cwnd > ssthresh → unikanie przeciążenia
 
 ### 15. Opisz mechanizm szybkiej retransmisji i szybkiego przywracania.
 
+**Szybka retransmisja:**
+- Przy wielokrotnym ACK (np. 3 identyczne ACK)
+- Wysyłamy brakujący segment bez czekania na timeout
+
+**Szybkie przywracanie:**
+- Pomijamy fazę wolnego startu
+- ssthresh = cwnd/2
+- cwnd = ssthresh (zamiast cwnd = MSS)
+- Statystycznie mniejsza szansa na długie przeciążenie
+
 ### 16. Na czym polega mechanizm RED?
+
+**RED (Random Early Detection):**
+- Router wyrzuca losowe pakiety
+- Prawdopodobieństwo wyrzucenia = rosnąca funkcja średniej długości kolejki
+- Nie reaguje na krótkotrwałe zwiększenia kolejki
+
+**Korzyści:**
+- Krótsze kolejki → mniejsze opóźnienia
+- Desynchronizacja strumieni (zmniejszają prędkości w różnych momentach)
 
 ### 17. Opisz działanie mechanizmu ECN (explicit congestion notification).
 
+**Mechanizm:**
+1. **Router** przy bliskim przeciążeniu ustawia bity ECN w nagłówku IP
+2. **Odbiorca** ustawia bity ECN w nagłówku TCP ACK
+3. **Nadawca** reaguje tak, jak na utratę pakietu (zmniejsza cwnd)
+
+**Zaleta:** Informacja o przeciążeniu bez utraty pakietów
+
 ### 18. Jaka jest relacja w AIMD między przepustowością a traconymi pakietami?
+
+**Zależność:** T = √(3/2) × (1/RTT) × (1/√p)
+
+Gdzie:
+- T = przepustowość (segmentów/sekundę)
+- p = frakcja traconych pakietów
+- RTT = Round Trip Time
+
+**Wnioski:**
+- Przepustowość proporcjonalna do 1/√p
+- Aby osiągnąć wysoką przepustowość, potrzeba bardzo małej frakcji strat
+- Dla łącza 10 Gbit/s: p ≈ 2×10⁻¹⁰ (praktycznie niemożliwe)
 
 ### 19. Jakie modyfikacje wprowadza FastTCP do AIMD? Dlaczego?
 
+Agresywniej zwiększa i łagodniej zmiejsza cwnd, by maksymalne prędkości dla najszybszych
+łączy były realnie osiągalne (10Gbit/s jest praktycznie nieosiągalne przez AIMD)
 
 ## Wykład gościa o IPv6
