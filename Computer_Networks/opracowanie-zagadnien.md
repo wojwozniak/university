@@ -1327,3 +1327,86 @@ XOR z poprzednim blokiem szyfrogramu.
 
 - Wykorzystuje **paradoks urodzin**: w zbiorze 2ⁿ⁄² elementów istnieje duża szansa na kolizję.
 - Zamiast szukać konkretnego `m'` do danego `m`, szuka się **dowolnej** kolizji `h(m1) = h(m2)`.
+
+## Wykład 12
+
+### 1. Jakie znasz typy kodów detekcyjnych? Do czego służą i jakie są między nimi różnice?
+
+### 2. Co to jest pamięć CAM i jak stosuje się ją w przełącznikach? Jak można ją przepełnić?
+
+### 3. Opisz atak typu ARP spoofing.
+
+### 4. Co oznacza termin IP spoofing? Na czym polega metoda weryfikacji tak zmodyfikowanych pakietów (ingress filtering)?
+
+### 5. Na czym polega atak RIP spoofing?
+
+### 6. Na czym polega zatruwanie pamięci podręcznej serwera DNS?
+
+### 7. Jak wygląda uwierzytelnianie serwera SSH?
+
+### 8. Na czym polega uwierzytelnianie użytkownika przez SSH z wykorzystaniem kluczy RSA?
+
+### 9. Podaj przykłady tunelowania.
+
+### 10. Rozwiń skrót VPN. Do czego służy?
+
+### 11. Porównaj wady i zalety filtrów pakietów: prostych, stanowych i działających w warstwie aplikacji.
+
+### 12. Do czego służą moduły input, output, forward w filtrze Netfilter/nftables?
+
+### 13. W jakich łańcuchach zapory Linuksa wykonywany jest źródłowy a w jakich docelowy NAT?
+
+### 14. Przedstaw przykładowe ataki wykorzystujące brak sprawdzania poprawności wprowadzanych danych.
+
+### 15. Wyjaśnij pojęcia: robak internetowy, botnet.
+
+### 16. Na czym polega phishing?
+
+### 17. Co to jest skanowanie portów? Po co się je wykonuje?
+
+### 18. Co to są ataki DoS i DDoS?
+
+### 19. Na czym polega atak typu odbity (reflected) DoS?
+
+## Wykład 13
+
+### 1. Czym różni się kontrola przepływu od kontroli przeciążenia?
+
+### 2. Co to jest przeciążenie?
+
+### 3. Na czym polega mechanizm opóźnionych potwierdzeń?
+
+### 4. Jaka jest zależność między rozmiarem okna nadawcy a prędkością transmisji?
+
+### 5. Czy nieskończone bufory rozwiązałyby problem przeciążenia?
+
+### 6. Jak zależy średni rozmiar kolejki od średniej prędkości nadchodzenia pakietów?
+
+### 7. Jakie są cele kontroli przeciążenia?
+
+### 8. Jak można definiować sprawiedliwy podział łącza? Co to jest max-min fairness?
+
+### 9. Na jakiej podstawie zmienia się rozmiar okna przeciążenia?
+
+### 10. Kiedy TCP wnioskuje, że pakiet zaginął?
+
+### 11. Opisz algorytm ustalania rozmiaru okna przeciążenia
+
+### 12. Rozwiń skrót AIMD. Czego dotyczy?
+
+### 13. W jaki sposób AIMD gwarantuje sprawiedliwy podział łącza?
+
+### 14. Opisz fazy unikania przeciążenia i wolnego startu w TCP.
+
+### 15. Opisz mechanizm szybkiej retransmisji i szybkiego przywracania.
+
+### 16. Na czym polega mechanizm RED?
+
+### 17. Opisz działanie mechanizmu ECN (explicit congestion notification).
+
+### 18. Jaka jest relacja w AIMD między przepustowością a traconymi pakietami?
+
+### 19. Jakie modyfikacje wprowadza FastTCP do AIMD? Dlaczego?
+
+
+## Wykład gościa o IPv6
