@@ -1332,40 +1332,93 @@ XOR z poprzednim blokiem szyfrogramu.
 
 ### 1. Co to jest pamięć CAM i jak stosuje się ją w przełącznikach? Jak można ją przepełnić?
 
+CAM (content adressable memory) przechowuje wpisy sprzętowej tablicy adresowej (czyli lista "adres MAC -> port").
+
+Można ją przepełnić zmieniając ciągle adres MAC.
+
 ### 2. Opisz atak typu ARP spoofing.
+
+Atak ARP spoofing polega na wysyłaniu fałszywych odpowiedzi ARP, które przypisują adres MAC atakującego do adresu IP ofiary (originalnego celu wiadomości).
+Jest to atak typu Man In The Middle.
 
 ### 3. Co oznacza termin IP spoofing? Na czym polega metoda weryfikacji tak zmodyfikowanych pakietów (ingress filtering)?
 
+IP spoofing to fałszowanie adresu źródłowego IP w pakietach, by ukryć tożsamość nadawcy lub podszyć się pod inny host. Ingress filtering polega na odrzucaniu pakietów przychodzących z nieautoryzowanymi (spoofowanymi) adresami źródłowymi na routerach brzegowych.
+
 ### 4. Na czym polega atak RIP spoofing?
+
+Ogłaszamy że mamy ścieżkę o małym koszcie do jakiejś sieci by przechwytywać ruch idący do tych serwerów.
 
 ### 5. Na czym polega zatruwanie pamięci podręcznej serwera DNS?
 
+Podajemy fałszywe IP dla danej domeny. Jest sprawdzane 16-bitowe ID odpowiedzi, ale można wysłać 2^16 różnych ID by pokryć wszystkie możliwości.
+
 ### 6. Jak wygląda uwierzytelnianie serwera SSH?
+
+- Serwer wysyła klucz publiczny
+- Klient oblicza funkcję skrótu klucza
+- Sprawdzamy w jakiś sposób (np. komunikacja z adminem) czy skrót jest poprawny
+- Zapisujemy lokalnie ten klucz
 
 ### 7. Na czym polega uwierzytelnianie użytkownika przez SSH z wykorzystaniem kluczy RSA?
 
+- Serwer ma zapisany klucz publiczny użytkownika
+- Użytkownik chce się zalogować
+- Serwer wysyła mu "wyzwanie" (wiadomość do podpisania kluczem prywatnym)
+- Użytkownik odsyła podpisane dane
+- Serwer porównuje kluczem publicznym czy zgadza się podpis
+
 ### 8. Podaj przykłady tunelowania.
+- VPN (IPSec, szyfrowane pakiety IP w danych pakietów IP)
+- VPN (OpenVPN, szyfrowane pakiety IP w danych protokołu UDP)
+- Tunelowanie pakietów IPv6 w pakietach IPv4 (kilka wykładów temu opisane)
 
 ### 9. Rozwiń skrót VPN. Do czego służy?
+Virtual Private Network, wirtualna sieć prywatna. Służy do bezpiecznego łączenia dwóch sieci połączonych internetem.
+
+Zakładamy że transmisja wewnątrz sieci jest safe, ale internet już nie - tunelujemy pakiety.
 
 ### 10. Porównaj wady i zalety filtrów pakietów: prostych, stanowych i działających w warstwie aplikacji.
 
+- Filtry proste analizują tylko nagłówki IP i porty - szybkie ale bardzo nieprecyzyjne
+- Filtry stanowe analizują nagłówki IP i TCP - średnia prędkość i precyzja, śledzą połączenia TCP i pamiętają ich stan
+- Filtry aplikacji są najwolniejsze i najdokładniejsze, analizują zawartości segmentów i datagramów
+
 ### 11. Do czego służą moduły input, output, forward w filtrze Netfilter/nftables?
+
+Definiują które pakiety (przychodzące, wychodzące, przekazywane) mają być przetwarzane i jak
 
 ### 12. W jakich łańcuchach zapory Linuksa wykonywany jest źródłowy a w jakich docelowy NAT?
 
+- DNAT (destination NAT) w preroutingu lub outpucie (np. przekierowanie portów)
+- np. mamy serwer w sieci domowej, by z zewnątrz ktoś się mógł połączyć zmieniany jest adres IP na poprawny
+- SNAT (source NAT) w postroutingu (zmiana adresu źrodłowego, np. masquarade by dochodziły pakiety z internetu do sieci wewnętrznej)
+- właśnie jak na ćwiczeniach - by serwer z którym się łączymy z sieci domowej wiedział dokąd odpowiedzieć zmieniamy adres wychodzącego pakietu na taki publicznie znany
 ### 13. Przedstaw przykładowe ataki wykorzystujące brak sprawdzania poprawności wprowadzanych danych.
 
 ### 14. Wyjaśnij pojęcia: robak internetowy, botnet.
 
+- Robak internetowy to wirus rozpowszechniący się samoistnie wykorzystując luki w bezpieczeństwie
+- Botnet to wiele zainfekowanych komputerów (które można wykorzystać np. do DDOSa)
+
 ### 15. Na czym polega phishing?
+
+Podszywanie się (by oszukać człowieka), np. fake strona banku.
 
 ### 16. Co to jest skanowanie portów? Po co się je wykonuje?
 
+Wyszukiwanie otwartych portów (nmap) by zobaczyć jakie są wystawione usługi (np. serwer WWW na porcie 80, SSH na 22).
+
 ### 17. Co to są ataki DoS i DDoS?
+
+- DoS - denial of service, zasypujemy usługę requestami by ją przeciążyć
+- DDoS - to samo ale distributed - czyli z wielu komputerów, zwykle botnet
 
 ### 18. Na czym polega atak typu odbity (reflected) DoS?
 
+Wysyłamy zapytania z `source = adres_ofiary` by przychodziły do niej odpowiedzi.
+
+Trudniej wyśledzić, większe odpowiedzi niż requesty (np. DNS 70:1)
 
 ## Wykład 13
 
