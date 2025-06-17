@@ -1,8 +1,4 @@
-# Opracowanie zagadnień z końca wykładu
-
-Niektóre odpowiedzi bazują na https://hackmd.io/@ZdZE9rvDRBmq3azjnK2_WA/Hym36xbu3
-
-Na końcu każdego wykładu są zagadnienia, podobno przydatne pod egzamin. Będę tu rozpisywał odpowiedzi na każde z pytań - powtórzenie po wykładzie. Niektóre pytania (bardziej złożone) będą podzielone na mniejsze części.
+# Opracowanie zagadnień z końców wykładów
 
 ## Wykład 1
 ### 1.1. Co to jest protokół komunikacyjny? 
@@ -1597,5 +1593,3 @@ Gdzie:
 
 Agresywniej zwiększa i łagodniej zmiejsza cwnd, by maksymalne prędkości dla najszybszych
 łączy były realnie osiągalne (10Gbit/s jest praktycznie nieosiągalne przez AIMD)
-
-## Wykład gościa o IPv6
