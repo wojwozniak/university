@@ -480,11 +480,22 @@ Bo zamiast tego można zroutować:
 
 ### 1. Co to są prywatne adresy IP? Jakie pule adresów są zarezerwowane na takie adresy?
 
-Adresy prywatne to adresy przeznaczone do sieci lokalnych. Pula adresów to:
-- 10.0.0.0/8 (1 adres klasy A)
-- 172.16.0.0/12 (16 adresów klasy B)
-- 192.168.0.0/16 (256 adresów klasy C)
+#### Klasa A
+- **Zakres adresów:** `0.0.0.0` – `127.255.255.255`
+- **Adresy użyteczne (hosty):** `1.0.0.0` – `126.255.255.255`
+- **Maska podsieci:** `255.0.0.0` (`/8`)
+- **Liczba hostów w sieci:** 16 777 214
 
+#### Klasa B
+- **Zakres adresów:** `128.0.0.0` – `191.255.255.255`
+- **Maska podsieci:** `255.255.0.0` (`/16`)
+- **Liczba hostów w sieci:** 65 534
+
+#### Klasa C
+- **Zakres adresów:** `192.0.0.0` – `223.255.255.255`
+- **Maska podsieci:** `255.255.255.0` (`/24`)
+- **Liczba hostów w sieci:** 254
+  
 ### 2. Co robi funkcja bind()?
 
 Przypisuje port do gniazda.
