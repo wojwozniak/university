@@ -42,7 +42,7 @@ Summaries directory contains notes I made to pass hardest exams.
 - [x] Software Engineering
 - [x] Machine Learning
 
-### Semester VI (now here!):
+### Semester VI:
 - [x] Algorithms and Data Structures
 - [x] Programming Methods (OCaml)
 - [x] Probability Calculus and Statistics
