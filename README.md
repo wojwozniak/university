@@ -13,7 +13,7 @@ Summaries directory contains notes I made to pass hardest exams.
 - [x] C Course
 - [x] Introduction to Computer Science
 - [x] Frontend Development Course
-- [x] Economics (Manipulacje i nadużycia na rynkach finansowych)
+- [x] Economics (MINNRF)
 
 ### Semester II:
 - [x] Algebra
@@ -32,7 +32,7 @@ Summaries directory contains notes I made to pass hardest exams.
 - [x] OOP Oriented Designing
 - [x] Databases
 - [x] React Course
-- [x] Group project (with ZF company) 
+- [x] Group project (with `ZF`) 
 
 ### Semester V:
 - [x] Rust Course
@@ -43,11 +43,11 @@ Summaries directory contains notes I made to pass hardest exams.
 - [x] Machine Learning
 
 ### Semester VI (now here!):
-- [] Algorithms and Data Structures
-- [] Programming Methods (OCaml)
-- [] Probability Calculus and Statistics
-- [] Computer Networks
-- [] Computer Systems
+- [x] Algorithms and Data Structures
+- [x] Programming Methods (OCaml)
+- [x] Probability Calculus and Statistics
+- [x] Computer Networks
+- [x] Computer Systems
 
 ## Summaries
 - `algebra.md` - overview of topics and typical tasks from Algebra Course
